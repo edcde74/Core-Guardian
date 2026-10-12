@@ -36,7 +36,7 @@ public class CoreGuardianSessionTests
     [Test] public void CsvRejectsDuplicateNegativeAndMissingReference()
     {
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies")+"\nAttack,25,1,2,3,0,0,0,provisional",Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("25,1,2","-25,1,2"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
+        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Attack,"+Data().Enemies[EnemyKind.Attack].Health+",","Attack,-1,"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Boss,300,0.6,10,120,0,0,0,provisional",""),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
     }
     [Test] public void UndefinedNumericKindsMissingWaveOneAndCaseDuplicateUpgradeAreRejected()
@@ -72,7 +72,7 @@ public class CoreGuardianSessionTests
     }
     [Test] public void KillGoldAndActualDamageAreAccountedOnceWithoutOverkill()
     {
-        var s=Game();var e=s.DebugSpawn(EnemyKind.Attack);Assert.That(s.ApplyDamage(e,100,"Player"),Is.EqualTo(25));Assert.That(s.ApplyDamage(e,100,"Player"),Is.Zero);Assert.That(s.Gold,Is.EqualTo(3));Assert.That(s.DamageTotals["Player"],Is.EqualTo(25));
+        var s=Game();var e=s.DebugSpawn(EnemyKind.Attack);int initialHealth=e.Health;Assert.That(s.ApplyDamage(e,100,"Player"),Is.EqualTo(initialHealth));Assert.That(s.ApplyDamage(e,100,"Player"),Is.Zero);Assert.That(s.Gold,Is.EqualTo(3));Assert.That(s.DamageTotals["Player"],Is.EqualTo(initialHealth));
     }
     [Test] public void CoreArrivalNeverRewardsAndNeverHitsTwice()
     {
@@ -90,7 +90,7 @@ public class CoreGuardianSessionTests
     [Test] public void MultishotUsesThreeDistinctTargetsWithNoSplash()
     {
         var s=Game();string r;var tower=s.TryInstall(TowerKind.Multi,new Vector2Int(2,1),out r);s.StartCombat();var a=s.DebugSpawn(EnemyKind.Attack,0);var b=s.DebugSpawn(EnemyKind.Buff,1);var d=s.DebugSpawn(EnemyKind.Defense,2);var fourth=s.DebugSpawn(EnemyKind.Attack,0);
-        s.Tick(.01f,Away);var p=s.Projectiles.Where(x=>x.Source=="Tower:"+tower.Id).ToArray();Assert.That(p.Length,Is.EqualTo(3));Assert.That(p.Select(x=>x.Target.Id).Distinct().Count(),Is.EqualTo(3));CollectionAssert.Contains(p.Select(x=>x.Target).ToArray(),d);CollectionAssert.Contains(p.Select(x=>x.Target).ToArray(),b);Assert.That(fourth.Health,Is.EqualTo(25));
+        s.Tick(.01f,Away);var p=s.Projectiles.Where(x=>x.Source=="Tower:"+tower.Id).ToArray();Assert.That(p.Length,Is.EqualTo(3));Assert.That(p.Select(x=>x.Target.Id).Distinct().Count(),Is.EqualTo(3));CollectionAssert.Contains(p.Select(x=>x.Target).ToArray(),d);CollectionAssert.Contains(p.Select(x=>x.Target).ToArray(),b);Assert.That(fourth.Health,Is.EqualTo(s.Data.Enemies[EnemyKind.Attack].Health));
     }
     [Test] public void SupportAddsDamagePercentOnlyToAttackTowers()
     {

@@ -1,0 +1,69 @@
+{
+  "status": "completed",
+  "duration": 5.42,
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianHudInteractionTests.CardRevealIgnoresDoubleClickAndAllowsSelectionBeforeOtherCardsOpen",
+      "Status": "Passed",
+      "Duration": 1.0788832,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHudInteractionTests.ClosingDuringRevealCancelsSparksAndLeavesNoPendingSelection",
+      "Status": "Passed",
+      "Duration": 1.2170619,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_ElevenRoundsKeepTowerAndHud_ThenRestartResetsSession",
+      "Status": "Passed",
+      "Duration": 1.717227,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_WaveOneCombatAwardsGoldAndKeepsPrefabFeetAnchored",
+      "Status": "Passed",
+      "Duration": 0.225078,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.PlayerCellTower_ManualDeparture_AndReentryBlocked",
+      "Status": "Passed",
+      "Duration": 0.3508271,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.BeanProjectilePlayModeTests.BeanProjectile_HitsLiveTargetExactlyOnce",
+      "Status": "Passed",
+      "Duration": 0.2608714,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.EnemyMovementPlayModeTests.Enemy_VisitsWaypointsInOrder_ThenExitsOnce",
+      "Status": "Passed",
+      "Duration": 0.5098203,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.HealthPlayModeTests.Health_DiesOnce_WhenDamageReachesMaximum",
+      "Status": "Passed",
+      "Duration": 0.0104622,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

@@ -1,0 +1,524 @@
+{
+  "status": "completed",
+  "duration": 0.69,
+  "summary": {
+    "total": 73,
+    "passed": 73,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Silver_Gold",
+      "Status": "Passed",
+      "Duration": 0.0130632,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Silver_Crystals",
+      "Status": "Passed",
+      "Duration": 0.0000798,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Silver_Flawless",
+      "Status": "Passed",
+      "Duration": 0.0000551,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Silver_Player",
+      "Status": "Passed",
+      "Duration": 0.0000499,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Silver_Towers",
+      "Status": "Passed",
+      "Duration": 0.0000479,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Silver_Core",
+      "Status": "Passed",
+      "Duration": 0.0000899,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Gold_Gold",
+      "Status": "Passed",
+      "Duration": 0.0000715,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Gold_Crystals",
+      "Status": "Passed",
+      "Duration": 0.0000483,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Gold_Flawless",
+      "Status": "Passed",
+      "Duration": 0.000045,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Gold_Player",
+      "Status": "Passed",
+      "Duration": 0.0000459,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Gold_Towers",
+      "Status": "Passed",
+      "Duration": 0.0000462,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Gold_Core",
+      "Status": "Passed",
+      "Duration": 0.0000444,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Platinum_Gold",
+      "Status": "Passed",
+      "Duration": 0.0000442,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Platinum_Crystals",
+      "Status": "Passed",
+      "Duration": 0.0000445,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Platinum_Flawless",
+      "Status": "Passed",
+      "Duration": 0.0000438,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Platinum_Player",
+      "Status": "Passed",
+      "Duration": 0.0000453,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Platinum_Towers",
+      "Status": "Passed",
+      "Duration": 0.000046,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.CardEffects_Platinum_Core",
+      "Status": "Passed",
+      "Duration": 0.0000459,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.BonusProjectilesShareTargetAndCurrentDamageAndTowerBuffAddsToSupport",
+      "Status": "Passed",
+      "Duration": 0.02489,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.BossAcceleratesExactlyAtHalfAndSlowRefreshesWithoutStacking",
+      "Status": "Passed",
+      "Duration": 0.0018667,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.BossArrivalHasNoGoldOrAugmentationAndWaitsForOtherEnemies",
+      "Status": "Passed",
+      "Duration": 0.0225686,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.BossKillWaitsForAllSpawnsAwardsOnceAndBlocksPreparationUntilSelection",
+      "Status": "Passed",
+      "Duration": 0.0297459,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.DrawExcludesHistoryThenReusesOnlyWhenGradeExhaustedWithoutDuplicates",
+      "Status": "Passed",
+      "Duration": 0.0092295,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.FlawlessRequiresNoCoreDamageAndResetClearsAllEffects",
+      "Status": "Passed",
+      "Duration": 0.001628,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.GradeThresholdsAndHighestLeftmostTimeoutAreCorrect",
+      "Status": "Passed",
+      "Duration": 0.0186429,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.LethalBossArrivalDoesNotAwardRoundReward",
+      "Status": "Passed",
+      "Duration": 0.0224175,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Silver_Gold",
+      "Status": "Passed",
+      "Duration": 0.0054861,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Silver_Crystals",
+      "Status": "Passed",
+      "Duration": 0.0109041,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Silver_Flawless",
+      "Status": "Passed",
+      "Duration": 0.0012114,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Silver_Player",
+      "Status": "Passed",
+      "Duration": 0.0009059,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Silver_Towers",
+      "Status": "Passed",
+      "Duration": 0.0008981,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Silver_Core",
+      "Status": "Passed",
+      "Duration": 0.0009495,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Gold_Gold",
+      "Status": "Passed",
+      "Duration": 0.0012428,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Gold_Crystals",
+      "Status": "Passed",
+      "Duration": 0.001559,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Gold_Flawless",
+      "Status": "Passed",
+      "Duration": 0.0008962,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Gold_Player",
+      "Status": "Passed",
+      "Duration": 0.0011315,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Gold_Towers",
+      "Status": "Passed",
+      "Duration": 0.0008492,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Gold_Core",
+      "Status": "Passed",
+      "Duration": 0.0010432,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Platinum_Gold",
+      "Status": "Passed",
+      "Duration": 0.0059693,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Platinum_Crystals",
+      "Status": "Passed",
+      "Duration": 0.0038589,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Platinum_Flawless",
+      "Status": "Passed",
+      "Duration": 0.001411,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Platinum_Player",
+      "Status": "Passed",
+      "Duration": 0.0024796,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Platinum_Towers",
+      "Status": "Passed",
+      "Duration": 0.0013169,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAugmentationTests.SessionSelection_Platinum_Core",
+      "Status": "Passed",
+      "Duration": 0.0012741,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRoundFlowTests.AllNineSchedulesAwardOnceAndEndAtNine",
+      "Status": "Passed",
+      "Duration": 0.0165597,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRoundFlowTests.CoreDefeatHasNoCompletionRewardOrNextRound",
+      "Status": "Passed",
+      "Duration": 0.0013813,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRoundFlowTests.DiagnosticIsSeparateAndCanResetAfterLaterRound",
+      "Status": "Passed",
+      "Duration": 0.0051585,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRoundFlowTests.NextPreparationKeepsBuildAndGrowthAndCoreState",
+      "Status": "Passed",
+      "Duration": 0.0029473,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRoundFlowTests.NextPreparationTimeoutStartsWithoutTower",
+      "Status": "Passed",
+      "Duration": 0.0013739,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRoundFlowTests.PrototypeIncludesBossTenAndFullElevenSchedule",
+      "Status": "Passed",
+      "Duration": 0.0032811,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRoundFlowTests.WaitingForFutureSpawnDoesNotFinishRound",
+      "Status": "Passed",
+      "Duration": 0.00931,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.AttackRateRetainsFractionalCooldownAndSupportsMultipleShotsPerStep",
+      "Status": "Passed",
+      "Duration": 0.0025061,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.AuraAtBoundaryIsIndependentOfSourceInsertionOrder",
+      "Status": "Passed",
+      "Duration": 0.0009436,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.CoreArrivalNeverRewardsAndNeverHitsTwice",
+      "Status": "Passed",
+      "Duration": 0.0008259,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.CsvRejectsDuplicateNegativeAndMissingReference",
+      "Status": "Passed",
+      "Duration": 0.0028053,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DamageFeedbackIgnoresZeroDamageMissingTargetsAndCoreArrival",
+      "Status": "Passed",
+      "Duration": 0.0010756,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DamageFeedbackReportsEachActualHitIncludingLethalDamage",
+      "Status": "Passed",
+      "Duration": 0.0022475,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DeadTargetProjectilesVanishWithoutCollateralDamage",
+      "Status": "Passed",
+      "Duration": 0.00092,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EnemyBuffDoesNotStackAndSourceCannotBuffItself",
+      "Status": "Passed",
+      "Duration": 0.0014189,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.FirstTargetIsFirstArrivalThenRangeExitReacquiresPriority",
+      "Status": "Passed",
+      "Duration": 0.0022041,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.KillGoldAndActualDamageAreAccountedOnceWithoutOverkill",
+      "Status": "Passed",
+      "Duration": 0.000812,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.MultishotUsesThreeDistinctTargetsWithNoSplash",
+      "Status": "Passed",
+      "Duration": 0.0043848,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.PlacementRejectsPathCoreDuplicateAndCombatButAllowsPlayerCell",
+      "Status": "Passed",
+      "Duration": 0.0013921,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.PlayerPricesHaveIncreasingIncrementAndIndependentStats",
+      "Status": "Passed",
+      "Duration": 0.0021276,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.PriorityUsesRoleThenHealthThenRemainingPathDistance",
+      "Status": "Passed",
+      "Duration": 0.0010444,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.RefundIncludesActualUpgradesOnce",
+      "Status": "Passed",
+      "Duration": 0.0008735,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SupportAddsDamagePercentOnlyToAttackTowers",
+      "Status": "Passed",
+      "Duration": 0.0012546,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.TimeoutStartsCombatWithoutTowerAndCurrencyStartsCorrectly",
+      "Status": "Passed",
+      "Duration": 0.0008091,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.UndefinedNumericKindsMissingWaveOneAndCaseDuplicateUpgradeAreRejected",
+      "Status": "Passed",
+      "Duration": 0.002143,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.CoreGuardianRulesTests.Damage_RoundsAfterDefense(12.5f,0.0f,13)",
+      "Status": "Passed",
+      "Duration": 0.0006668,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.CoreGuardianRulesTests.Damage_RoundsAfterDefense(12.5f,1.0f,12)",
+      "Status": "Passed",
+      "Duration": 0.0000541,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.CoreGuardianRulesTests.Damage_RoundsAfterDefense(15.0f,100.0f,0)",
+      "Status": "Passed",
+      "Duration": 0.0000359,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.TowerCombatStatsTests.BannerBuff_ChangesBaseStatsOnce_AndRestoresThem",
+      "Status": "Passed",
+      "Duration": 0.0003495,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

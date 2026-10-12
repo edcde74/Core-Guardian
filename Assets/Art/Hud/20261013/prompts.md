@@ -1,0 +1,13 @@
+# HUD 이미지 제작 프롬프트
+
+2026-10-13. 내장 imagegen, transparent_background=true. 게임용 원본을 현재 폴더에 복사하고 Unity 에디터 API로 슬라이스/정규화했다.
+
+## HudAtlasSource.png
+
+Production game UI sprite atlas, Core Guardian 2D pixel tower defense. Reference style: dark iron rectangular panels, crisp brass reinforced corners, restrained turquoise crystal accents, large deliberate pixels. Transparent background. No text letters numbers labels whatsoever. Exactly 4 columns by 4 rows, uniform square cells in a 1024x1024 atlas, every asset centered fully inside its cell with 24px transparent gutters. Row1: empty dark iron brass panel frame, empty dark iron brass button frame, empty bright cyan hover button frame, empty gray disabled button frame. Frames front-facing perfectly rectangular with flat plain dark interiors, clearly bounded corners suitable for nine slicing. Row2: cyan core crystal in metal housing, red wave flag, gold coin, blue resource crystal. Row3: stone metal turret with cyan plus, cyan play arrow, metal wrench with cyan up arrow, red X cancel. Row4: cyan circular restart arrow, double cyan speed arrows, silver crossed weapons damage symbol, cyan magic augmentation rune medallion. Each frame or icon is a separate sprite and nothing bridges cells. Pixel art only, sharp nearest neighbor edges, no blurry glow, no captions, no characters, no scenery. SAVE generated PNG for runtime atlas import.
+
+## CardBackTiersSource.png
+
+참조: 승인 원본 CardBackSource.png.
+
+Create final 2D game sprites based on this approved Core Guardian augmentation card BACK design. Three separate upright card backs side by side in equal-width columns, fully separated with transparent gutters, 1536x1024 wide composition. All three cards same size, sharp large deliberate pixel art grid, front-facing rectangle, central crystal/rune is identical motif, no writing whatsoever: NO tier text NO titles NO numerals NO labels NO badges. LEFT card: silver/steel outer frame with thin simple engraving, cool silver central crystal restrained light, visually modest. MIDDLE: reinforced thick GOLD/brass double outer frame, richly gold central crystal and gold circuit inlay, stronger glow. RIGHT: PLATINUM silver-white/cyan triple ornamental frame, brilliant pale cyan-white central crystal and energetic luminous circuit inlay, most ornate and exciting. Dark iron interior for all. Preserve original design silhouette and flat pixel art style. Whole cards fully visible no cropping, transparent outside each card; no background, no fuzzy ambient bloom outside silhouettes. They must immediately signal rarity purely via card-back art. This is the final sprite atlas, not a presentation sheet.
