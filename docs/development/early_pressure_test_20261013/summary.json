@@ -1,0 +1,161 @@
+{
+  "baseline": {
+    "attackHealth": 25,
+    "waves": {
+      "1": {
+        "medianSeconds": 39.74643,
+        "peakAlive": [
+          9,
+          9,
+          9
+        ],
+        "minimumRemaining": [
+          77.47185,
+          77.47577,
+          77.46584
+        ],
+        "damage": [
+          [
+            "Tower:1:375"
+          ],
+          [
+            "Tower:1:375"
+          ],
+          [
+            "Tower:1:375"
+          ]
+        ]
+      },
+      "2": {
+        "medianSeconds": 40.0327072,
+        "peakAlive": [
+          9,
+          9,
+          9
+        ],
+        "minimumRemaining": [
+          77.46626,
+          77.46439,
+          77.46594
+        ],
+        "damage": [
+          [
+            "Tower:1:400"
+          ],
+          [
+            "Tower:1:400"
+          ],
+          [
+            "Tower:1:400"
+          ]
+        ]
+      }
+    }
+  },
+  "fast": {
+    "attackHealth": 25,
+    "waves": {
+      "1": {
+        "medianSeconds": 37.8722229,
+        "peakAlive": [
+          10,
+          10,
+          10
+        ],
+        "minimumRemaining": [
+          76.84345,
+          76.84305,
+          76.84255
+        ],
+        "damage": [
+          [
+            "Tower:1:375"
+          ],
+          [
+            "Tower:1:375"
+          ],
+          [
+            "Tower:1:375"
+          ]
+        ]
+      },
+      "2": {
+        "medianSeconds": 39.59103,
+        "peakAlive": [
+          10,
+          10,
+          10
+        ],
+        "minimumRemaining": [
+          75.38827,
+          75.38834,
+          75.36909
+        ],
+        "damage": [
+          [
+            "Tower:1:400"
+          ],
+          [
+            "Tower:1:400"
+          ],
+          [
+            "Tower:1:400"
+          ]
+        ]
+      }
+    }
+  },
+  "fastHp": {
+    "attackHealth": 26,
+    "waves": {
+      "1": {
+        "medianSeconds": 37.8731461,
+        "peakAlive": [
+          10,
+          10,
+          10
+        ],
+        "minimumRemaining": [
+          76.83493,
+          76.8369446,
+          76.8579941
+        ],
+        "damage": [
+          [
+            "Tower:1:390"
+          ],
+          [
+            "Tower:1:390"
+          ],
+          [
+            "Tower:1:390"
+          ]
+        ]
+      },
+      "2": {
+        "medianSeconds": 39.59541,
+        "peakAlive": [
+          10,
+          10,
+          10
+        ],
+        "minimumRemaining": [
+          75.3755951,
+          75.39,
+          75.40201
+        ],
+        "damage": [
+          [
+            "Tower:1:416"
+          ],
+          [
+            "Tower:1:416"
+          ],
+          [
+            "Tower:1:416"
+          ]
+        ]
+      }
+    }
+  }
+}

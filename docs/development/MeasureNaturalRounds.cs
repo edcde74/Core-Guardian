@@ -28,6 +28,8 @@ public static class MeasureNaturalRounds
         public string variant="baseline";
         public int repeat;
         public bool scheduleInvariant;
+        public int attackHealth;
+        public string[] testedSchedules;
     }
     static CoreGuardianPrototype p;
     static Report report;
@@ -53,6 +55,15 @@ public static class MeasureNaturalRounds
         Directory.CreateDirectory(Path.GetDirectoryName(comparisonPath));
         return StartInternal(policy,variant,repeat,speed,6);
     }
+    public static string StartEarlyComparison(string policy,string variant,int repeat,float speed=5)
+    {
+        if(variant!="baseline"&&variant!="fast"&&variant!="fastHp")throw new ArgumentException("Unknown early variant");
+        if(repeat<1||speed<=0||speed>5)throw new ArgumentException("Invalid comparison settings");
+        string dir=Path.Combine(Directory.GetParent(Application.dataPath).FullName,"docs/development/early_pressure_test_20261013");
+        if(File.Exists(Path.Combine(dir,policy+"_"+variant+"_"+repeat+".json")))throw new InvalidOperationException("Refusing to overwrite previous result");
+        Directory.CreateDirectory(dir);
+        return StartInternal(policy,variant,repeat,speed,2);
+    }
     static string StartInternal(string policy,string variant,int repeat,float speed,int stopWave)
     {
         if(running) throw new InvalidOperationException("Measurement already active");
@@ -66,7 +77,7 @@ public static class MeasureNaturalRounds
         report=new Report {policy=policy,variant=variant,repeat=repeat,scene=p.gameObject.scene.path,timeScale=speed,
             method="Actual Play Mode Update; normal Place/UpgradePlayer/UpgradeTower/StartCombat/TryStep APIs; no forced damage or currency; preparation skipped with normal start command; stationary player after legal movement; accelerated time"};
         output=Path.Combine(Directory.GetParent(Application.dataPath).FullName,"docs/development/natural_rounds_20261010_"+policy+".json");
-        if(stopWave>0)output=Path.Combine(Directory.GetParent(Application.dataPath).FullName,"docs/development/tension_test_20261013/"+policy+"_"+variant+"_"+repeat+".json");
+        if(stopWave>0)output=Path.Combine(Directory.GetParent(Application.dataPath).FullName,"docs/development/"+(stopWave==2?"early_pressure_test_20261013":"tension_test_20261013")+"/"+policy+"_"+variant+"_"+repeat+".json");
         stopAfterWave=stopWave;
         var wave=p.Session.Data.Waves.Where(x=>x.Wave==6).OrderBy(x=>x.Start).ToArray();
         if(variant=="clusterA")
@@ -75,6 +86,16 @@ public static class MeasureNaturalRounds
             for(int i=6;i<=10;i++)wave[i].Start=9+(i-6)*.75f;
         }
         report.scheduleInvariant=wave.Sum(x=>x.Count)==18&&wave.Sum(x=>x.Count*p.Session.Data.Enemies[x.Kind].Health)==555&&wave.Sum(x=>x.Count*p.Session.Data.Enemies[x.Kind].Gold)==61&&Math.Abs(wave.Max(x=>x.Start+(x.Count-1)*x.Interval)-25.5f)<.001f;
+        if(stopWave==2)
+        {
+            var early=p.Session.Data.Waves.Where(x=>x.Wave<=2).ToArray();
+            if(early.Where(x=>x.Wave==1).Sum(x=>x.Count)!=15||early.Where(x=>x.Wave==2).Sum(x=>x.Count)!=16||early.Any(x=>x.Kind!=EnemyKind.Attack)||p.Session.Data.Enemies[EnemyKind.Attack].Health!=25)throw new InvalidOperationException("Unexpected early schema");
+            if(variant=="fast"||variant=="fastHp")foreach(var r in early){r.Start*=.9f;r.Interval*=.9f;}
+            if(variant=="fastHp")p.Session.Data.Enemies[EnemyKind.Attack].Health=26;
+            report.scheduleInvariant=early.Sum(x=>x.Count)==31&&early.Sum(x=>x.Count*p.Session.Data.Enemies[x.Kind].Gold)==93;
+            report.testedSchedules=early.Select(x=>"wave="+x.Wave+" start="+x.Start.ToString("R",System.Globalization.CultureInfo.InvariantCulture)+" interval="+x.Interval.ToString("R",System.Globalization.CultureInfo.InvariantCulture)+" count="+x.Count).ToArray();
+        }
+        report.attackHealth=p.Session.Data.Enemies[EnemyKind.Attack].Health;
         preparedWave=0; active=null; actions.Clear();
         started=runStarted=Time.time;realStarted=EditorApplication.timeSinceStartup;
         running=true;
