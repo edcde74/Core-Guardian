@@ -14,7 +14,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
     Font font;
     TMP_FontAsset damageFont;
     Material damageMaterial;
-    RectTransform canvas, installPanel, playerPanel, towerPanel, damagePanel, damageContent, topDetails;
+    RectTransform canvas, worldFeedback, installPanel, playerPanel, towerPanel, damagePanel, damageContent, topDetails;
     UnityEngine.UI.Text status, center, feedback, towerInfo;
     readonly List<Action> refresh = new List<Action>();
     float nextRefresh;
@@ -47,6 +47,10 @@ public sealed class CoreGuardianHud : MonoBehaviour
         var c=root.GetComponent<Canvas>();c.renderMode=RenderMode.ScreenSpaceOverlay;c.sortingOrder=2000;
         var scale=root.GetComponent<UnityEngine.UI.CanvasScaler>();scale.uiScaleMode=UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize;scale.referenceResolution=new Vector2(1920,1080);scale.matchWidthOrHeight=.5f;
         if(EventSystem.current==null)new GameObject("CombatEventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule)).transform.SetParent(transform);
+        worldFeedback=Box("WorldFeedback",canvas,new Vector2(.5f,.5f),Vector2.zero,Vector2.zero,false);
+        worldFeedback.anchorMin=Vector2.zero;worldFeedback.anchorMax=Vector2.one;worldFeedback.sizeDelta=Vector2.zero;
+        // Floating combat feedback always renders before every HUD panel and modal.
+        worldFeedback.SetAsFirstSibling();
         Build();game.Changed+=Refresh;game.Session.DamageApplied+=ShowDamageNumber;
         BuildAugmentationSelection();
     }
@@ -103,6 +107,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
         var debug=Box("PrototypeActions",canvas,new Vector2(0,1),new Vector2(16,-14),new Vector2(262,66));
         Button("RoleDiagnostic",debug,new Vector2(8,-8),new Vector2(246,48),()=>"3종 역할 검증 / 재설정",()=>game.Diagnostic());
         Button("Reload",canvas,new Vector2(1630,-16),new Vector2(260,48),()=>"처음부터 다시 시작",()=>game.Restart());
+        Button("TestSpeed",canvas,new Vector2(1630,-70),new Vector2(260,30),()=>"테스트 배속 ×"+game.TestSpeed,()=>game.CycleTestSpeed());
 
         installPanel=Box("TowerInstallPanel",canvas,new Vector2(0,0),new Vector2(380,88),new Vector2(492,246));
         BuildInstallCategories();installPanel.gameObject.SetActive(false);
@@ -182,9 +187,19 @@ public sealed class CoreGuardianHud : MonoBehaviour
     void BuildInstallList(bool support)
     {
         ClearInstallButtons();
-        if(support)InstallButton(0,"지원 포탑\n"+game.Session.Data.Towers[TowerKind.Support].Cost+"수정",()=>{game.ChooseTower(TowerKind.Support);Refresh();},()=>game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support));
-        else{InstallButton(0,"단일 고속\n"+game.Session.Data.Towers[TowerKind.Single].Cost+"수정",()=>{game.ChooseTower(TowerKind.Single);Refresh();});InstallButton(1,"범위 공격\n"+game.Session.Data.Towers[TowerKind.Multi].Cost+"수정",()=>{game.ChooseTower(TowerKind.Multi);Refresh();});}
+        if(support)InstallTowerButton(0,TowerKind.Support);
+        else{InstallTowerButton(0,TowerKind.Single);InstallTowerButton(1,TowerKind.Multi);}
         InstallButton(8,"분류로 돌아가기",BuildInstallCategories);Refresh();
+    }
+    void InstallTowerButton(int index,TowerKind kind)
+    {
+        int before=refresh.Count;
+        var b=Button("Install_"+kind,installPanel,new Vector2(12+(index%3)*160,-12-(index/3)*76),new Vector2(148,64),()=> {
+            string reason=game.Session.Crystals<game.Session.Data.Towers[kind].Cost?"\n수정 부족":kind==TowerKind.Support&&!game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support)?"\n공격 포탑 필요":"";
+            return TowerName(kind)+"\n"+game.Session.Data.Towers[kind].Cost+"수정"+reason;
+        },()=>{game.ChooseTower(kind);Refresh();},()=>game.Session.Phase==SessionPhase.Preparation&&game.Session.Crystals>=game.Session.Data.Towers[kind].Cost&&(kind!=TowerKind.Support||game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support)));
+        b.GetComponentInChildren<UnityEngine.UI.Text>().fontSize=16;
+        installRefresh.Add(refresh[before]);
     }
     public bool CancelInstallation()
     {
@@ -202,7 +217,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
         var number=FloatingNumber("GoldNumber","+"+amount,position,new Color(1f,.76f,.22f),0);
         var text=number.Text;
         float textWidth=Mathf.Ceil(text.GetPreferredValues(text.text).x);
-        var group=Box("GoldFeedback",canvas,new Vector2(.5f,.5f),Vector2.zero,new Vector2(40+textWidth,52),false);
+        var group=Box("GoldFeedback",worldFeedback,new Vector2(.5f,.5f),Vector2.zero,new Vector2(40+textWidth,52),false);
         text.rectTransform.SetParent(group,false);
         text.rectTransform.anchorMin=text.rectTransform.anchorMax=text.rectTransform.pivot=new Vector2(0,.5f);
         text.rectTransform.anchoredPosition=new Vector2(40,0);
@@ -215,7 +230,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
     public void ShowCoreNumber(Vector3 position,int amount)=>FloatingNumber("CoreDamageNumber","-"+amount,position,new Color(1f,.36f,.32f),0);
     DamageNumber FloatingNumber(string name,string value,Vector3 position,Color color,int lane)
     {
-        var rect=Box(name,canvas,new Vector2(.5f,.5f),Vector2.zero,new Vector2(200,52),false);
+        var rect=Box(name,worldFeedback,new Vector2(.5f,.5f),Vector2.zero,new Vector2(200,52),false);
         var text=rect.gameObject.AddComponent<TextMeshProUGUI>();
         text.font=damageFont;text.fontSharedMaterial=damageMaterial;text.fontSize=32;
         text.alignment=TextAlignmentOptions.Center;text.text=value;text.color=color;

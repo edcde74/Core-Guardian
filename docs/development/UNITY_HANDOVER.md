@@ -23,10 +23,12 @@
 - 2~9라운드의 고정 순서·시점은 사용자 승인 완료. `waves.csv`에 반영됨.
 - 실제 전투·적/포탑 3종·설치/강화/파괴/환급·피해 숫자·전투 효과 구현. 별도 역할 검증 모드 유지.
 - 보스 가속·도착/처치 보상,18종 증강 효과/선택,10~11 구현. 보스 전용 안광V3 정지 아트 사용자 선택·적용 완료. 미완성: 보행/공격 애니메이션·BGM 적용. 기존 Windows 빌드는1~9이며 이번 기능 미포함; 사용자 지시로 추가 빌드/실행하지 않음.
-- 마지막 Unity 확인 (2026-10-13 안광 보스 적용 후): ready, 전투 씬saved=true, Play stopped, compiling=false,domainReload=false,timeScale1. Verify 성공/승인 A길·원본3종 참조·플레이어(15,10) 보존. 최신 회귀EditMode73/73 + PlayMode6/6. 빌드/실행파일 실행 없음.
+- 마지막 Unity 확인 (2026-10-13 설치/배속/HUD 수정 후): ready, 전투 씬saved=true, Play stopped, compiling=false,domainReload=false,timeScale1. Verify 성공/승인 A길·원본3종 참조·플레이어(15,10) 보존. 최신 회귀EditMode73/73 + PlayMode6/6, 콘솔 현재 오류0. 빌드/실행파일 실행 없음.
 - 2026-10-13 로컬 Git 구성. Unity 소스·에셋·메타·설정·문서를 초기 커밋에 보존하고 캐시·빌드는 제외. GitHub 연결 없음. 기능 수정 전후 복구 기준 커밋은 [LOCAL_GIT.md](LOCAL_GIT.md), 구성 기록은 [git_setup_20261013.md](git_setup_20261013.md) 참조.
 
 ## 최근 검증과 다음 작업
+
+- 설치 버튼·테스트 배속·HUD 순서(2026-10-13): 수정 부족 시 개별 포탑 버튼 비활성/부족 문구, 비용 회복 시 재활성. 테스트1→2→3배(준비·전투·증강 시간 포함), 재시작1배. 전투 숫자는 HUD 아래 WorldFeedback에 생성. 노션 HUD 규칙 반영·재조회 확인. 실제 구매/보상/배속/계층 검사 및 EditMode73/73·PlayMode6/6 통과. [상세·검증·화면](hud_controls_20261013.md). 테스트 배속 정식 채택·사람 플레이/다른 해상도 검증은 남음. 수정전복구28320e1.
 
 - 보스 아트 최신(2026-10-13): 사용자가 오른쪽 안광V3를 선택해 일반/분노 공통 외형으로 적용 완료. 새 Resources BossEyePrefab, 실제64×80·PPU32·배율0.6·Point/무압축/mipmap없음. 기존 임시 수비형1.4배/전체틴트 제거, 발피벗·그림자·체력바 상단 검증. HP300/.6 및150/격노/.78에서 승인Sprite색/배율/루트 검사 통과. 최신EditMode73/73·PlayMode6/6, 실제화면 확인. [적용·검증·복구](boss_art_applied_20261013.md), [공통 화풍 기준](../art/MONSTER_ART_STYLE.md). 원본프리팹/씬/HUD/BGM 변경 없음. 수정전복구3394eb2. 애니메이션·사람플레이 밸런스 승인은 남음.
 - 최신 보스/증강 구현: [기능·검증 기록](boss_augmentation_20261013.md), [계획](boss_augmentation_plan_20261013.md), [EditMode73](boss_editmode_20261013.json), [PlayMode6](boss_playmode_20261013.json).18종 실제 선택/효과/누적/재설정, 보스 처치/도착/패배, 자동 선택, 실제 카드 버튼과11 종료 확인. 흐름 진단에 강제 처치를 사용했고 새 난이도 실측·최종 아트/밸런스 승인은 아님.

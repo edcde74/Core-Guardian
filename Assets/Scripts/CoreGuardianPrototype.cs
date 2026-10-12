@@ -118,6 +118,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     {
         CancelInstall();
         if(Session.Phase!=SessionPhase.Preparation){Notify("전투 중에는 설치할 수 없습니다.");return;}
+        if(Session.Crystals<Session.Data.Towers[kind].Cost){Notify("수정 부족 · 필요 "+Session.Data.Towers[kind].Cost+"수정");return;}
+        if(kind==TowerKind.Support&&!Session.Towers.Any(t=>t.Kind!=TowerKind.Support)){Notify("공격 포탑을 먼저 설치하세요.");return;}
         Installing=kind;
         ghost=Instantiate(towerArt[(int)kind]);ghost.name="TowerPlacementPreview";
         var shadow=ghost.transform.Find("그림자");if(shadow!=null)shadow.gameObject.SetActive(false);
@@ -164,7 +166,14 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         occupied.ClearAllTiles();foreach(var t in Session.Towers)occupied.SetTile(new Vector3Int(t.Position.x,t.Position.y,0),occupiedTile);
         SynchronizeViews();Notify("역할 검증 모드 — 정식 라운드 편성·재화와 별도");
     }
-    public void Restart(){UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);}
+    public int TestSpeed {get;private set;}=1;
+    public void CycleTestSpeed()
+    {
+        TestSpeed=TestSpeed==3?1:TestSpeed+1;
+        Time.timeScale=TestSpeed;
+        Notify("테스트 배속 ×"+TestSpeed+" · 준비/전투/증강 시간 함께 적용");
+    }
+    public void Restart(){if(TestSpeed!=1)Time.timeScale=1;UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);}
     public void Notify(string text){Feedback=string.IsNullOrEmpty(text)?Session.LastMessage:text;notificationUntil=Time.unscaledTime+3;Changed?.Invoke();}
     void SynchronizeViews()
     {
@@ -228,6 +237,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     }
     void OnDestroy()
     {
+        if(TestSpeed!=1)Time.timeScale=1;
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
         Cursor.visible=true;
         if(occupiedTile!=null)Destroy(occupiedTile);
