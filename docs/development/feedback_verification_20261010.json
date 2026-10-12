@@ -1,0 +1,107 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/VerifyCombatFeedback.cs",
+      "entry": "VerifyCombatFeedback.CheckDamage"
+    },
+    "result": {
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "message": "'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+          "line": 12,
+          "column": 101,
+          "id": "CS0618",
+          "source": "static CoreGuardianPrototype Game()=>UnityEngine.Object.FindObjectsByType<CoreGuardianPrototype>(FindObjectsSortMode.None).Single();"
+        },
+        {
+          "severity": "warning",
+          "message": "'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+          "line": 12,
+          "column": 41,
+          "id": "CS0618",
+          "source": "static CoreGuardianPrototype Game()=>UnityEngine.Object.FindObjectsByType<CoreGuardianPrototype>(FindObjectsSortMode.None).Single();"
+        },
+        {
+          "severity": "warning",
+          "message": "'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+          "line": 44,
+          "column": 65,
+          "id": "CS0618",
+          "source": "Require(!UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsSortMode.None).Any(t=>t.name==\"InstallationTile\"),\"Esc left tile highlights\");"
+        },
+        {
+          "severity": "warning",
+          "message": "'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+          "line": 44,
+          "column": 17,
+          "id": "CS0618",
+          "source": "Require(!UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsSortMode.None).Any(t=>t.name==\"InstallationTile\"),\"Esc left tile highlights\");"
+        },
+        {
+          "severity": "warning",
+          "message": "'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+          "line": 55,
+          "column": 61,
+          "id": "CS0618",
+          "source": "var texts=UnityEngine.Object.FindObjectsByType<Text>(FindObjectsSortMode.None).Where(t=>t.name==\"HitDamage\").ToArray();"
+        },
+        {
+          "severity": "warning",
+          "message": "'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+          "line": 55,
+          "column": 18,
+          "id": "CS0618",
+          "source": "var texts=UnityEngine.Object.FindObjectsByType<Text>(FindObjectsSortMode.None).Where(t=>t.name==\"HitDamage\").ToArray();"
+        },
+        {
+          "severity": "warning",
+          "message": "'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+          "line": 59,
+          "column": 61,
+          "id": "CS0618",
+          "source": "Require(UnityEngine.Object.FindObjectsByType<Canvas>(FindObjectsSortMode.None).Length==1,\"Existing HUD canvas must be reused\");"
+        },
+        {
+          "severity": "warning",
+          "message": "'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+          "line": 59,
+          "column": 16,
+          "id": "CS0618",
+          "source": "Require(UnityEngine.Object.FindObjectsByType<Canvas>(FindObjectsSortMode.None).Length==1,\"Existing HUD canvas must be reused\");"
+        },
+        {
+          "severity": "warning",
+          "message": "'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+          "line": 65,
+          "column": 60,
+          "id": "CS0618",
+          "source": "Require(!UnityEngine.Object.FindObjectsByType<Text>(FindObjectsSortMode.None).Any(t=>t.name==\"HitDamage\"),\"Damage numbers did not expire\");"
+        },
+        {
+          "severity": "warning",
+          "message": "'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+          "line": 65,
+          "column": 17,
+          "id": "CS0618",
+          "source": "Require(!UnityEngine.Object.FindObjectsByType<Text>(FindObjectsSortMode.None).Any(t=>t.name==\"HitDamage\"),\"Damage numbers did not expire\");"
+        }
+      ],
+      "compileMs": 39,
+      "executeMs": 5,
+      "assemblyName": "PipelineRunScript_VerifyCombatFeedback_38571e4c11ae40aca3faf09b262d8163",
+      "success": true,
+      "result": "{\"success\":true,\"damage\":[\"12\",\"12\",\"13\"],\"raycastsBlocked\":false,\"escCancelled\":true,\"tileCursorCentered\":true,\"timeScale\":0.0}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

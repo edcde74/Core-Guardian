@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-22 11:39:07Z" end-time="2026-09-22 11:39:07Z" duration="0.0501036">
+  <test-suite type="TestSuite" id="1000" name="CD" fullname="CD" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:39:07Z" end-time="2026-09-22 11:39:07Z" duration="0.050104" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1003" name="Fortress.Game.EditModeTests.dll" fullname="C:/Users/edcde/OneDrive/Desktop/CD/Library/ScriptAssemblies/Fortress.Game.EditModeTests.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:39:07Z" end-time="2026-09-22 11:39:07Z" duration="0.041052" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24772" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1004" name="Fortress" fullname="Fortress" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:39:07Z" end-time="2026-09-22 11:39:07Z" duration="0.040556" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1005" name="Game" fullname="Fortress.Game" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:39:07Z" end-time="2026-09-22 11:39:07Z" duration="0.040337" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1006" name="Tests" fullname="Fortress.Game.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:39:07Z" end-time="2026-09-22 11:39:07Z" duration="0.040044" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="TowerCombatStatsTests" fullname="Fortress.Game.Tests.TowerCombatStatsTests" classname="Fortress.Game.Tests.TowerCombatStatsTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:39:07Z" end-time="2026-09-22 11:39:07Z" duration="0.038440" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1002" name="BannerBuff_ChangesBaseStatsOnce_AndRestoresThem" fullname="Fortress.Game.Tests.TowerCombatStatsTests.BannerBuff_ChangesBaseStatsOnce_AndRestoresThem" methodname="BannerBuff_ChangesBaseStatsOnce_AndRestoresThem" classname="Fortress.Game.Tests.TowerCombatStatsTests" runstate="Runnable" seed="1209086165" result="Passed" start-time="2026-09-22 11:39:07Z" end-time="2026-09-22 11:39:07Z" duration="0.016720" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/edcde/AppData/LocalLow/DefaultCompany/CD\TestResults.xml
+Saving results to: C:/Users/edcde/AppData/LocalLow/DefaultCompany/CD\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

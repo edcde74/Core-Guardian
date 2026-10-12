@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/VerifyCombatFeedback.cs",
+      "entry": "VerifyCombatFeedback.CombatCapture"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 148,
+      "executeMs": 11,
+      "assemblyName": "PipelineRunScript_VerifyCombatFeedback_3df1513b0c1142b7a266b0746d6ae011",
+      "success": true,
+      "result": "{\"success\":true,\"actualProjectileHits\":1,\"damageTotals\":{\"Tower:4\":15}}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,1216 @@
+{
+  "success": true,
+  "command": "command get_scene_hierarchy",
+  "data": {
+    "command": "get_scene_hierarchy",
+    "parameters": {},
+    "result": {
+      "sceneName": "ArtReview_20261008_PathContrast_A",
+      "scenePath": "Assets/Scenes/ArtReview_20261008_PathContrast_A.unity",
+      "isDirty": false,
+      "isActive": true,
+      "roots": [
+        {
+          "name": "Main Camera",
+          "instanceId": 23089744224259,
+          "hierarchyPath": "/Main Camera",
+          "activeSelf": true,
+          "components": [
+            "Transform",
+            "Camera",
+            "AudioListener",
+            "UniversalAdditionalCameraData"
+          ],
+          "children": []
+        },
+        {
+          "name": "Global Light 2D",
+          "instanceId": 20890720968730,
+          "hierarchyPath": "/Global Light 2D",
+          "activeSelf": true,
+          "components": [
+            "Transform",
+            "Light2D"
+          ],
+          "children": []
+        },
+        {
+          "name": "D_InsideCore_Prototype",
+          "instanceId": 18691697712674,
+          "hierarchyPath": "/D_InsideCore_Prototype",
+          "activeSelf": true,
+          "components": [
+            "Transform"
+          ],
+          "children": [
+            {
+              "name": "Grid_D_Prototype",
+              "instanceId": 5497558180759,
+              "hierarchyPath": "/D_InsideCore_Prototype/Grid_D_Prototype",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "Grid"
+              ],
+              "children": [
+                {
+                  "name": "Ground_Prototype",
+                  "instanceId": 3298534925226,
+                  "hierarchyPath": "/D_InsideCore_Prototype/Grid_D_Prototype/Ground_Prototype",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "Tilemap",
+                    "TilemapRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "EnemyPath_Prototype",
+                  "instanceId": 3298534925230,
+                  "hierarchyPath": "/D_InsideCore_Prototype/Grid_D_Prototype/EnemyPath_Prototype",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "Tilemap",
+                    "TilemapRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "Core_Prototype",
+                  "instanceId": 3298534925222,
+                  "hierarchyPath": "/D_InsideCore_Prototype/Grid_D_Prototype/Core_Prototype",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "Tilemap",
+                    "TilemapRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "TowerOccupiedCells_Prototype",
+                  "instanceId": 1099511669684,
+                  "hierarchyPath": "/D_InsideCore_Prototype/Grid_D_Prototype/TowerOccupiedCells_Prototype",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "Tilemap",
+                    "TilemapRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "PathArt_WideStraight",
+                  "instanceId": 7696581436293,
+                  "hierarchyPath": "/D_InsideCore_Prototype/Grid_D_Prototype/PathArt_WideStraight",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "Tilemap",
+                    "TilemapRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "PathArt_ConnectedCorners",
+                  "instanceId": 23089744224329,
+                  "hierarchyPath": "/D_InsideCore_Prototype/Grid_D_Prototype/PathArt_ConnectedCorners",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "Tilemap",
+                    "TilemapRenderer"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "EnemyRoute_Waypoints_Prototype",
+              "instanceId": 20890720968767,
+              "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype",
+              "activeSelf": true,
+              "components": [
+                "Transform"
+              ],
+              "children": [
+                {
+                  "name": "01_Entry",
+                  "instanceId": 29686813991707,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/01_Entry",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "02_FirstBend",
+                  "instanceId": 20890720968405,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/02_FirstBend",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "03_OuterTopLeft",
+                  "instanceId": 23089744224297,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/03_OuterTopLeft",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "04_OuterTopRight",
+                  "instanceId": 7696581436315,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/04_OuterTopRight",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "05_OuterBottomRight",
+                  "instanceId": 18691697712668,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/05_OuterBottomRight",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "06_InnerBottomLeft",
+                  "instanceId": 7696581436309,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/06_InnerBottomLeft",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "07_InnerTopLeft",
+                  "instanceId": 18691697713082,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/07_InnerTopLeft",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "08_InnerTopRight",
+                  "instanceId": 20890720968638,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/08_InnerTopRight",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "09_Core",
+                  "instanceId": 3298534925218,
+                  "hierarchyPath": "/D_InsideCore_Prototype/EnemyRoute_Waypoints_Prototype/09_Core",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "PlayerStart_Prototype",
+              "instanceId": 18691697713181,
+              "hierarchyPath": "/D_InsideCore_Prototype/PlayerStart_Prototype",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "SpriteRenderer",
+                "PrototypeGridMovement"
+              ],
+              "children": [
+                {
+                  "name": "PlayerArt",
+                  "instanceId": 1099511669804,
+                  "hierarchyPath": "/D_InsideCore_Prototype/PlayerStart_Prototype/PlayerArt",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "ArtDepthSorting"
+                  ],
+                  "children": [
+                    {
+                      "name": "2D Sprite",
+                      "instanceId": 1099511669806,
+                      "hierarchyPath": "/D_InsideCore_Prototype/PlayerStart_Prototype/PlayerArt/2D Sprite",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "그림자",
+                      "instanceId": 1099511669809,
+                      "hierarchyPath": "/D_InsideCore_Prototype/PlayerStart_Prototype/PlayerArt/그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform"
+                      ],
+                      "children": [
+                        {
+                          "name": "바깥 그림자",
+                          "instanceId": 1099511669811,
+                          "hierarchyPath": "/D_InsideCore_Prototype/PlayerStart_Prototype/PlayerArt/그림자/바깥 그림자",
+                          "activeSelf": true,
+                          "components": [
+                            "Transform",
+                            "SpriteRenderer"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "name": "접촉 그림자",
+                          "instanceId": 1099511669814,
+                          "hierarchyPath": "/D_InsideCore_Prototype/PlayerStart_Prototype/PlayerArt/그림자/접촉 그림자",
+                          "activeSelf": true,
+                          "components": [
+                            "Transform",
+                            "SpriteRenderer"
+                          ],
+                          "children": []
+                        },
+                        {
+                          "name": "바닥 밀착선",
+                          "instanceId": 1099511669817,
+                          "hierarchyPath": "/D_InsideCore_Prototype/PlayerStart_Prototype/PlayerArt/그림자/바닥 밀착선",
+                          "activeSelf": true,
+                          "components": [
+                            "Transform",
+                            "SpriteRenderer"
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "NewArt_SizeReview_Medium",
+          "instanceId": 3298534925220,
+          "hierarchyPath": "/NewArt_SizeReview_Medium",
+          "activeSelf": true,
+          "components": [
+            "Transform"
+          ],
+          "children": [
+            {
+              "name": "enemy_buff",
+              "instanceId": 1099511669769,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669771,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669774,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669776,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669779,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669782,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "tower_support",
+              "instanceId": 1099511669900,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/tower_support",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669902,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/tower_support/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669905,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/tower_support/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669907,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_support/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669910,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_support/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669913,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_support/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "enemy_attack",
+              "instanceId": 1099511669689,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669691,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669694,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669696,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669699,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669702,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "enemy_defense",
+              "instanceId": 1099511669721,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669723,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669726,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669728,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669731,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669734,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "enemy_attack",
+              "instanceId": 1099511669705,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669707,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669710,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669712,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669715,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669718,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "tower_multi",
+              "instanceId": 1099511669852,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/tower_multi",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669854,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/tower_multi/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669857,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/tower_multi/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669859,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_multi/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669862,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_multi/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669865,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_multi/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "enemy_defense",
+              "instanceId": 1099511669820,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669822,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669825,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669827,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669830,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669833,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "enemy_attack",
+              "instanceId": 1099511669868,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669870,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669873,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669875,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669878,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669881,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "enemy_defense",
+              "instanceId": 1099511669737,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669739,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669742,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669744,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669747,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669750,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_defense/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "tower_single",
+              "instanceId": 1099511669836,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/tower_single",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669838,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/tower_single/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669841,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/tower_single/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669843,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_single/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669846,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_single/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669849,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/tower_single/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "enemy_buff",
+              "instanceId": 1099511669753,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669755,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669758,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669760,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669763,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669766,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_buff/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "core",
+              "instanceId": 1099511669785,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/core",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669787,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/core/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669790,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/core/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669792,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/core/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669795,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/core/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669798,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/core/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "바닥 수정빛",
+                  "instanceId": 1099511669801,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/core/바닥 수정빛",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "enemy_attack",
+              "instanceId": 1099511669884,
+              "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack",
+              "activeSelf": true,
+              "components": [
+                "Transform",
+                "ArtDepthSorting"
+              ],
+              "children": [
+                {
+                  "name": "2D Sprite",
+                  "instanceId": 1099511669886,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/2D Sprite",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform",
+                    "SpriteRenderer"
+                  ],
+                  "children": []
+                },
+                {
+                  "name": "그림자",
+                  "instanceId": 1099511669889,
+                  "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자",
+                  "activeSelf": true,
+                  "components": [
+                    "Transform"
+                  ],
+                  "children": [
+                    {
+                      "name": "바깥 그림자",
+                      "instanceId": 1099511669891,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/바깥 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "접촉 그림자",
+                      "instanceId": 1099511669894,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/접촉 그림자",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    },
+                    {
+                      "name": "바닥 밀착선",
+                      "instanceId": 1099511669897,
+                      "hierarchyPath": "/NewArt_SizeReview_Medium/enemy_attack/그림자/바닥 밀착선",
+                      "activeSelf": true,
+                      "components": [
+                        "Transform",
+                        "SpriteRenderer"
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

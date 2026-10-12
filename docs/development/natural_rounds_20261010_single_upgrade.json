@@ -1,0 +1,142 @@
+{
+  "policy": "single_upgrade",
+  "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+  "method": "Actual Play Mode Update; normal Place/UpgradePlayer/UpgradeTower/StartCombat/TryStep APIs; no forced damage or currency; preparation skipped with normal start command; stationary player after legal movement; accelerated time",
+  "outcome": "Defeat",
+  "error": null,
+  "timeScale": 5.0,
+  "completedWave": 6,
+  "core": 0,
+  "gold": 92,
+  "crystals": 50,
+  "rounds": [
+    {
+      "wave": 1,
+      "coreStart": 20,
+      "coreEnd": 20,
+      "goldStart": 0,
+      "goldEnd": 45,
+      "crystalsStart": 0,
+      "crystalsEnd": 20,
+      "reward": 20,
+      "expected": 15,
+      "seconds": 38.73201,
+      "outcome": "Completed",
+      "actions": [
+        "install Single (14, 15) cost=100 success=True"
+      ],
+      "damage": [
+        "Tower:1:375"
+      ]
+    },
+    {
+      "wave": 2,
+      "coreStart": 20,
+      "coreEnd": 20,
+      "goldStart": 45,
+      "goldEnd": 93,
+      "crystalsStart": 20,
+      "crystalsEnd": 40,
+      "reward": 20,
+      "expected": 16,
+      "seconds": 39.05946,
+      "outcome": "Completed",
+      "actions": [],
+      "damage": [
+        "Tower:1:400"
+      ]
+    },
+    {
+      "wave": 3,
+      "coreStart": 20,
+      "coreEnd": 18,
+      "goldStart": 93,
+      "goldEnd": 140,
+      "crystalsStart": 40,
+      "crystalsEnd": 60,
+      "reward": 20,
+      "expected": 16,
+      "seconds": 107.32132,
+      "outcome": "Completed",
+      "actions": [],
+      "damage": [
+        "Tower:1:425"
+      ]
+    },
+    {
+      "wave": 4,
+      "coreStart": 18,
+      "coreEnd": 14,
+      "goldStart": 40,
+      "goldEnd": 88,
+      "crystalsStart": 60,
+      "crystalsEnd": 80,
+      "reward": 20,
+      "expected": 17,
+      "seconds": 111.222977,
+      "outcome": "Completed",
+      "actions": [
+        "player damage + cost=100"
+      ],
+      "damage": [
+        "Tower:1:463"
+      ]
+    },
+    {
+      "wave": 5,
+      "coreStart": 14,
+      "coreEnd": 8,
+      "goldStart": 88,
+      "goldEnd": 134,
+      "crystalsStart": 0,
+      "crystalsEnd": 25,
+      "reward": 25,
+      "expected": 17,
+      "seconds": 112.834534,
+      "outcome": "Completed",
+      "actions": [
+        "tower damage + cost=80"
+      ],
+      "damage": [
+        "Tower:1:465"
+      ]
+    },
+    {
+      "wave": 6,
+      "coreStart": 8,
+      "coreEnd": 3,
+      "goldStart": 134,
+      "goldEnd": 183,
+      "crystalsStart": 25,
+      "crystalsEnd": 50,
+      "reward": 25,
+      "expected": 18,
+      "seconds": 113.024506,
+      "outcome": "Completed",
+      "actions": [],
+      "damage": [
+        "Tower:1:505"
+      ]
+    },
+    {
+      "wave": 7,
+      "coreStart": 3,
+      "coreEnd": 0,
+      "goldStart": 43,
+      "goldEnd": 92,
+      "crystalsStart": 50,
+      "crystalsEnd": 50,
+      "reward": 0,
+      "expected": 18,
+      "seconds": 105.066589,
+      "outcome": "Defeat",
+      "actions": [
+        "player damage + cost=140"
+      ],
+      "damage": [
+        "Tower:1:500"
+      ]
+    }
+  ],
+  "runtimeErrors": []
+}

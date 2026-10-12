@@ -1,0 +1,50 @@
+[
+  {
+    "key": "core",
+    "footWidth": 1.68750012,
+    "shadowWidth": 1.99125,
+    "shadowHeight": 0.385
+  },
+  {
+    "key": "enemy_attack",
+    "footWidth": 0.4875,
+    "shadowWidth": 0.57524997,
+    "shadowHeight": 0.171600014
+  },
+  {
+    "key": "enemy_buff",
+    "footWidth": 0.43125,
+    "shadowWidth": 0.508875,
+    "shadowHeight": 0.1518
+  },
+  {
+    "key": "enemy_defense",
+    "footWidth": 0.39375,
+    "shadowWidth": 0.464625,
+    "shadowHeight": 0.1386
+  },
+  {
+    "key": "Player",
+    "footWidth": 0.39375,
+    "shadowWidth": 0.464625,
+    "shadowHeight": 0.1386
+  },
+  {
+    "key": "tower_multi",
+    "footWidth": 0.712500036,
+    "shadowWidth": 0.84075,
+    "shadowHeight": 0.37125
+  },
+  {
+    "key": "tower_single",
+    "footWidth": 0.731250048,
+    "shadowWidth": 0.862875044,
+    "shadowHeight": 0.37125
+  },
+  {
+    "key": "tower_support",
+    "footWidth": 0.75,
+    "shadowWidth": 0.885,
+    "shadowHeight": 0.33
+  }
+]

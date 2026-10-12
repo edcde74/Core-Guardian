@@ -1,0 +1,21 @@
+{
+  "source": "Assets/Scenes/ArtReview_20261008_Depth.unity",
+  "sourceHash": "55-6E-9B-FF-36-A3-87-C7-F7-14-CF-54-16-C9-40-3A-AA-29-6E-29-8E-4E-A2-2F-1C-DF-8E-46-37-C7-6E-F6",
+  "originalUnchanged": true,
+  "variants": [
+    {
+      "key": "A",
+      "scene": "Assets/Scenes/ArtReview_20261008_PathContrast_A.unity",
+      "tint": "RGBA(2.150, 2.180, 2.220, 1.000)",
+      "approvedArtworkLayoutCameraMovementUnchanged": true,
+      "shadowVerification": "Approved art/shadow fingerprint preserved"
+    },
+    {
+      "key": "B",
+      "scene": "Assets/Scenes/ArtReview_20261008_PathContrast_B.unity",
+      "tint": "RGBA(1.700, 1.750, 1.800, 0.580)",
+      "approvedArtworkLayoutCameraMovementUnchanged": true,
+      "shadowVerification": "Approved art/shadow fingerprint preserved"
+    }
+  ]
+}

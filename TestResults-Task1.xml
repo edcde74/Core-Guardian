@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-22 11:34:51Z" end-time="2026-09-22 11:34:51Z" duration="0.048351">
+  <test-suite type="TestSuite" id="1010" name="CD" fullname="CD" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:34:51Z" end-time="2026-09-22 11:34:51Z" duration="0.048351" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1013" name="Fortress.Game.PlayModeTests.dll" fullname="C:/Users/edcde/OneDrive/Desktop/CD/Library/ScriptAssemblies/Fortress.Game.PlayModeTests.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:34:51Z" end-time="2026-09-22 11:34:51Z" duration="0.038705" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="23672" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1014" name="Fortress" fullname="Fortress" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:34:51Z" end-time="2026-09-22 11:34:51Z" duration="0.037570" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1015" name="Game" fullname="Fortress.Game" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:34:51Z" end-time="2026-09-22 11:34:51Z" duration="0.037154" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1016" name="Tests" fullname="Fortress.Game.Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:34:51Z" end-time="2026-09-22 11:34:51Z" duration="0.036671" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1011" name="HealthPlayModeTests" fullname="Fortress.Game.Tests.HealthPlayModeTests" classname="Fortress.Game.Tests.HealthPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:34:51Z" end-time="2026-09-22 11:34:51Z" duration="0.035074" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1012" name="Health_DiesOnce_WhenDamageReachesMaximum" fullname="Fortress.Game.Tests.HealthPlayModeTests.Health_DiesOnce_WhenDamageReachesMaximum" methodname="Health_DiesOnce_WhenDamageReachesMaximum" classname="Fortress.Game.Tests.HealthPlayModeTests" runstate="Runnable" seed="234888906" result="Passed" start-time="2026-09-22 11:34:51Z" end-time="2026-09-22 11:34:51Z" duration="0.017354" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/edcde/AppData/LocalLow/DefaultCompany/CD\TestResults.xml
+Saving results to: C:/Users/edcde/AppData/LocalLow/DefaultCompany/CD\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

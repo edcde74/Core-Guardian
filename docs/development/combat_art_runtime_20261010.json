@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "projectileSources": [
+    "EngineerChip",
+    "SingleBolt",
+    "MultiBolt"
+  ],
+  "damage": [
+    12,
+    25
+  ],
+  "killGold": 3,
+  "coreDamage": 2,
+  "coreArrivalGold": false,
+  "tmpFont": "PixelifySansBoldDamage",
+  "clicksBlocked": false
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.789773">
+  <test-suite type="TestSuite" id="1014" name="CD" fullname="CD" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.789773" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1021" name="Fortress.Game.PlayModeTests.dll" fullname="C:/Users/edcde/OneDrive/Desktop/CD/Library/ScriptAssemblies/Fortress.Game.PlayModeTests.dll" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.782454" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="25836" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1022" name="Fortress" fullname="Fortress" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.782006" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1023" name="Game" fullname="Fortress.Game" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.781704" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1024" name="Tests" fullname="Fortress.Game.Tests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.781336" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1015" name="BeanProjectilePlayModeTests" fullname="Fortress.Game.Tests.BeanProjectilePlayModeTests" classname="Fortress.Game.Tests.BeanProjectilePlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.275612" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1016" name="BeanProjectile_HitsLiveTargetExactlyOnce" fullname="Fortress.Game.Tests.BeanProjectilePlayModeTests.BeanProjectile_HitsLiveTargetExactlyOnce" methodname="BeanProjectile_HitsLiveTargetExactlyOnce" classname="Fortress.Game.Tests.BeanProjectilePlayModeTests" runstate="Runnable" seed="177047682" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.263295" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1017" name="EnemyMovementPlayModeTests" fullname="Fortress.Game.Tests.EnemyMovementPlayModeTests" classname="Fortress.Game.Tests.EnemyMovementPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.502410" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1018" name="Enemy_VisitsWaypointsInOrder_ThenExitsOnce" fullname="Fortress.Game.Tests.EnemyMovementPlayModeTests.Enemy_VisitsWaypointsInOrder_ThenExitsOnce" methodname="Enemy_VisitsWaypointsInOrder_ThenExitsOnce" classname="Fortress.Game.Tests.EnemyMovementPlayModeTests" runstate="Runnable" seed="385880802" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.501551" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1019" name="HealthPlayModeTests" fullname="Fortress.Game.Tests.HealthPlayModeTests" classname="Fortress.Game.Tests.HealthPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.001973" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1020" name="Health_DiesOnce_WhenDamageReachesMaximum" fullname="Fortress.Game.Tests.HealthPlayModeTests.Health_DiesOnce_WhenDamageReachesMaximum" methodname="Health_DiesOnce_WhenDamageReachesMaximum" classname="Fortress.Game.Tests.HealthPlayModeTests" runstate="Runnable" seed="1359981687" result="Passed" start-time="2026-09-22 11:42:30Z" end-time="2026-09-22 11:42:30Z" duration="0.001390" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/edcde/AppData/LocalLow/DefaultCompany/CD\TestResults.xml
+Saving results to: C:/Users/edcde/AppData/LocalLow/DefaultCompany/CD\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

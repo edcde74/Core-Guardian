@@ -1,0 +1,41 @@
+{
+  "prompts": [
+    [
+      "enemy_attack_v2",
+      "Edit target: FIRST image is the old enemy to REPLACE with a friendlier restyled sprite. SECOND image is the repair technician STYLE REFERENCE ONLY, do not include or copy the technician or backpack into the enemy. Make the enemy belong in the SAME game as that second image: chunky low-resolution pixel art, SHORT compact humanoid body, BIG head about one third of body height, broad simplified solid-color armor shapes, short thick boots, very few details. About 10-12 palette colors, only 2 shades per material, blocky square pixels like a native 32x48 sprite scaled nearest-neighbor. Normal human soldier, NOT monster. Dull steel-gray armor and muted brick-red uniform cloth, NOT crimson, NOT blood. No glowing red eyes, blood, red cracks, fleshy mutations, skulls, spikes, horror, realistic anatomy, torn ribbons or shredded clothing. Corruption shown ONLY by two or three rounded bent armor panels pointing slightly outward. Single isolated full-body sprite three-quarter down-left view, generous transparent margin, no floor or shadow, no labels. Genuinely transparent background. Keep role silhouette: ONE long simple spear leaning forward beside a compact soldier and slightly leaning shoulders. Rounded helmet, one broad shoulder plate. Spear narrow, not a gigantic serrated blade.",
+      [
+        "C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Art\\ScreenTests\\20260930\\Source\\enemy_attack.png",
+        "C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Art\\ScreenTests\\20260930\\Source\\player.png"
+      ]
+    ],
+    [
+      "enemy_defense_v2",
+      "Edit target: FIRST image is the old enemy to REPLACE with a friendlier restyled sprite. SECOND image is the repair technician STYLE REFERENCE ONLY, do not include or copy the technician or backpack into the enemy. Make the enemy belong in the SAME game as that second image: chunky low-resolution pixel art, SHORT compact humanoid body, BIG head about one third of body height, broad simplified solid-color armor shapes, short thick boots, very few details. About 10-12 palette colors, only 2 shades per material, blocky square pixels like a native 32x48 sprite scaled nearest-neighbor. Normal human soldier, NOT monster. Dull steel-gray armor and muted brick-red uniform cloth, NOT crimson, NOT blood. No glowing red eyes, blood, red cracks, fleshy mutations, skulls, spikes, horror, realistic anatomy, torn ribbons or shredded clothing. Corruption shown ONLY by two or three rounded bent armor panels pointing slightly outward. Single isolated full-body sprite three-quarter down-left view, generous transparent margin, no floor or shadow, no labels. Genuinely transparent background. Keep role silhouette: ONE wide plain rectangular shield with a muted red center and broad gray metal rim, heavy short boots and a compact sturdy soldier. No weapon, no flag. Shield must be a simple big color shape, no jagged edges or tiny markings.",
+      [
+        "C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Art\\ScreenTests\\20260930\\Source\\enemy_defense.png",
+        "C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Art\\ScreenTests\\20260930\\Source\\player.png"
+      ]
+    ],
+    [
+      "enemy_buff_v2",
+      "Edit target: FIRST image is the old enemy to REPLACE with a friendlier restyled sprite. SECOND image is the repair technician STYLE REFERENCE ONLY, do not include or copy the technician or backpack into the enemy. Make the enemy belong in the SAME game as that second image: chunky low-resolution pixel art, SHORT compact humanoid body, BIG head about one third of body height, broad simplified solid-color armor shapes, short thick boots, very few details. About 10-12 palette colors, only 2 shades per material, blocky square pixels like a native 32x48 sprite scaled nearest-neighbor. Normal human soldier, NOT monster. Dull steel-gray armor and muted brick-red uniform cloth, NOT crimson, NOT blood. No glowing red eyes, blood, red cracks, fleshy mutations, skulls, spikes, horror, realistic anatomy, torn ribbons or shredded clothing. Corruption shown ONLY by two or three rounded bent armor panels pointing slightly outward. Single isolated full-body sprite three-quarter down-left view, generous transparent margin, no floor or shadow, no labels. Genuinely transparent background. Keep role silhouette: ONE upright military standard above a compact soldier, flag muted brick red with ONE clean slight notch in its edge, simple cloth rectangle, not torn or ragged. Body proportions MATCH technician style reference, banner top reaches about 1.6 times soldier height, NOT giant cloth. No spear, no shield, no heraldic tiny symbols.",
+      [
+        "C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Art\\ScreenTests\\20260930\\Source\\enemy_buff.png",
+        "C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Art\\ScreenTests\\20260930\\Source\\player.png"
+      ]
+    ],
+    [
+      "ground_slab_v2",
+      "Generate ONE seamless SQUARE floor texture for a two-by-two-cell area in a 2D Unity pixel-art repaired stone fortress. Fill canvas. Very quiet pale warm gray broad stone slabs, just ONE or TWO large plain stone shapes spanning most of the square with faint seams at the outside edges, NO four-by-four or two-by-two grid inside. Absolutely NO tiny repeated cracks, rough noise, pebbles, scratches, cyan crystals, metal studs. Large flat subdued color masses, about 4 close gray shades only, flat top-down surface, hard square pixels like native64x64 enlarged nearest-neighbor. Low contrast to keep blue characters and red soldiers visible. Entire square opaque, no text, no perspective wall sides.",
+      null
+    ],
+    [
+      "path_straight_v2",
+      "Edit the input into ONE square seamless top-down STRAIGHT horizontal corridor tile for a repaired stone fortress. Single broad flat charcoal stone corridor. EXACTLY TWO muted brass boundary rails: one along TOP edge and one along BOTTOM edge, hugging the outer edge. NO rails through the middle. LEFT and RIGHT edges are OPEN continuing to next tile. Both edges must have identical rail thickness and gray floor cross-section. Very broad plain gray floor masses, extremely sparse texture, NO thin grid of paving stones. No cyan marker in this variant. Chunky native32x32 pixel-art enlarged nearest-neighbor, around 6 muted colors only, no noise, no perspective, no text. Square opaque canvas filled edge to edge.",
+      [
+        "C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Art\\ScreenTests\\20260930\\Source\\path_tile.png"
+      ]
+    ]
+  ],
+  "cornerPrompt": "Edit the provided horizontal straight corridor TILE into its matching ONE 90-degree corner TILE, a flat top-down game tile (not an illustration). Keep IDENTICAL charcoal stone palette, muted brass rail color, rail thickness about 8 percent of tile, pixel density, lighting and materials. Square canvas, full opaque tile, NO perspective. The corner has OPEN exits at TOP/NORTH and RIGHT/EAST, so a vertical path entering from the top turns right. The wide flat dark stone floor is continuous through the corner. The outer brass boundary makes a continuous right-angle L along the LEFT and BOTTOM edges, joining cleanly at bottom-left; no brass rail across the central walking floor. A tiny inner bend of matching brass rail sits just at the TOP-RIGHT corner, connecting the right boundary of the north exit to the top boundary of the east exit. NORTH edge has the same floor-and-rail cross section as the straight tile rotated vertical, EAST edge has the same floor-and-rail cross section as the horizontal straight tile. No closed cap across either exit. Large blocky pixel art like native48x48 enlarged nearest neighbor, very simple broad stone shapes and absolutely no tiny repeating pebbles. Single corner tile only, no arrows, text, cyan markers, sheet or background scenery."
+}

@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "source": "Assets/Art/Combat/20261010/Fonts/PixelifySans-Bold.ttf",
+  "fontPath": "Assets/Resources/CoreGuardian/Fonts/PixelifySansBoldDamage.asset",
+  "materialPath": "Assets/Resources/CoreGuardian/Fonts/PixelifySansBoldDamageOutline.mat",
+  "fontResource": "CoreGuardian/Fonts/PixelifySansBoldDamage",
+  "materialResource": "CoreGuardian/Fonts/PixelifySansBoldDamageOutline",
+  "family": "Pixelify Sans",
+  "style": "Bold",
+  "population": "Static",
+  "glyphs": "0123456789+-., ",
+  "glyphCount": 15,
+  "atlasWidth": 512,
+  "atlasHeight": 512,
+  "shader": "TextMeshPro/Mobile/Distance Field",
+  "outlineWidth": 0.12,
+  "smokeCharacters": 14,
+  "smokeVertices": 44
+}

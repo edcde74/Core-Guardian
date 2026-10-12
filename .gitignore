@@ -1,0 +1,50 @@
+# Unity generated caches and local editor state
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Generated builds (keep source assets and development records)
+/[Bb]uild/
+/[Bb]uilds/
+
+# IDE-generated projects and local settings
+/.vs/
+/.vscode/
+/.idea/
+/*.csproj
+/*.unityproj
+/*.sln
+/*.slnx
+/*.suo
+/*.user
+/*.userprefs
+/*.pidb
+/*.booproj
+/*.svd
+/*.pdb
+/*.mdb
+/*.opendb
+/*.VC.db
+
+# OS and temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak
+__pycache__/
+*.pyc
+
+# Local secrets and Unity crash output
+.env
+.env.*
+!.env.example
+/sysinfo.txt
+/crash.dmp
+
+# Separate existing tool repository; preserve it on disk
+/HUDDesigner/

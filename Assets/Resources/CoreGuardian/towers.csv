@@ -1,0 +1,4 @@
+id,cost,damage,rate,range,projectileSpeed,buffDamage,status
+Single,100,12.5,1.2,3.5,6,0,provisional
+Multi,100,12.5,0.6,3,6,0,provisional
+Support,100,0,0,1,0,20,provisional

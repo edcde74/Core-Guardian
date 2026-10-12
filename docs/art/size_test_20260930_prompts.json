@@ -1,0 +1,46 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "First in-game size-readability prototype; no production art approval",
+  "player": "Use case: stylized-concept. Asset type: single transparent 2D game sprite for Core Guardian Unity tower defense, first size-readability prototype. Generate ONLY one full-body repair-technician soldier, no sheet, no text, no frame, no background, no floor, no shadow. Three-quarter front view with a slight top-down game camera angle, standing facing down-left. Distinctive large rectangular repair equipment backpack visible sticking out to the right behind the shoulder, blue working tunic, brown boots, warm brass metal backpack reinforcement, small hand wrench as secondary detail. Large chunky pixel art with extremely simple silhouette, hard square pixel stair steps, limited palette about 12 colors, at most two shading tones per material, dark charcoal outline. Design as if authored on a 32 by 48 pixel grid then enlarged using nearest neighbor: truly blocky oversized pixels, not fine-grained painted or smooth art. The backpack and head must be readable at tiny game size. Occupy central 75 percent of canvas with generous transparent padding, entire body and gear uncut. This is an individual production test sprite, not an illustration, no labels, no UI.",
+  "base": "Use case: stylized-concept. Asset type: ONE isolated transparent 2D sprite for Core Guardian Unity tower defense, size-readability test. Large chunky pixel art, hard square step edges, roughly a 32x48 logical pixel grid for soldiers or 48x64 for machines enlarged with nearest neighbor. Very simple bold silhouette, limited palette, only two shading tones per material, dark charcoal outlines. Three-quarter front view with slightly top-down game angle facing down-left. Exactly one subject centered with 15 percent transparent margin. Genuinely transparent alpha background. No backdrop, no glow haze outside silhouette, no floor, no shadow, no labels, text, UI, sheet, or watermark. ",
+  "jobs": [
+    [
+      "enemy_attack",
+      "An invading corrupted human SOLDIER, normal humanoid body (not beast). Charcoal steel armor with muted dark red cloth, armor plates visibly cracked and bent outward at the shoulders. ATTACK type silhouette: a LONG narrow crooked spear held up on the left, forward leaning shoulders, slim agile legs. Spear and leaning shoulders must be readable at tiny scale. No magical beast mutations."
+    ],
+    [
+      "enemy_defense",
+      "An invading corrupted human SOLDIER, normal humanoid body (not beast). Charcoal steel armor with muted dark red cloth, thick armor plates cracked and bent outward. DEFENSE type silhouette: a VERY broad bulging rectangular shield held in front on the left, blocky heavy shoulders and short thick legs. Shield dominates silhouette, no spear, no banner."
+    ],
+    [
+      "enemy_buff",
+      "An invading corrupted human SOLDIER, normal humanoid body (not beast). Charcoal steel armor with muted dark red cloth, armor edges cracked and bent outward. BUFF type silhouette: a VERY tall crooked military banner with torn dark red cloth rising above and to the left of the head. Slim soldier beneath the flag. Banner dominates height, no shield, no spear tip."
+    ],
+    [
+      "tower_single",
+      "ONE repaired magitech fortress turret. Common broad octagonal old gray stone base reinforced by fresh brass corner brackets. Blue-painted metal upper assembly with a SINGLE narrow TALL cannon barrel pointing up-left, one long slender muzzle clearly visible. A small cyan crystal accent. Simple chunky silhouette, no banners, no person. Tall single barrel, not three barrels."
+    ],
+    [
+      "tower_multi",
+      "ONE repaired magitech fortress turret. Common broad octagonal old gray stone base reinforced by fresh brass corner brackets. Blue-painted metal WIDE upper assembly with THREE distinct chunky launch nozzles fanning apart, each individually obvious. Small cyan crystal accents. It fires separate projectiles at three targets, not a splash mortar; NO bomb, explosion or flame. No banner, no person."
+    ],
+    [
+      "tower_support",
+      "ONE repaired magitech fortress support relay. Common broad octagonal old gray stone base reinforced by fresh brass corner brackets. Blue-painted metal upright housing supports a LARGE OPEN U-SHAPED ring with a clear gap at its TOP, cyan small hovering crystal between ring arms. No cannon barrel, no weapon muzzle, no banner, no person. Open ring silhouette must differ clearly from closed core cage."
+    ],
+    [
+      "core",
+      "ONE fortress power CORE: large faceted bright cyan crystal mounted in a NEW broad brass-and-dark-blue METAL support cage above a sturdy gray stone hexagonal platform. Crystal dominates center, broad symmetrical silhouette, closed arched outer supports, visibly wider and more monumental than a turret. Simple cyan light confined to crystal, no atmospheric glow, no banner, no person, no weapon."
+    ]
+  ],
+  "tiles": [
+    [
+      "ground_tile",
+      "ONE square seamless top-down pixel-art ground tile for Core Guardian repaired stone fortress. Broad quiet pale warm gray stone slab area, only two large joined slab shapes and a few blocky cracks near corners, extremely low contrast, no scattered noisy speckles. Large chunky pixels as if a native 32x32 tile enlarged nearest-neighbor. Edges must tile into continuous floor. Flat top surface ONLY, no perspective side walls. No crystals, no bright details, no text, no frame, no shadows. Fill entire square canvas. Background opaque."
+    ],
+    [
+      "path_tile",
+      "ONE square seamless top-down pixel-art PATH tile for Core Guardian repaired stone fortress. Dark charcoal old stone paving overlaid with two very simple flat dark bronze metal reinforcement strips running horizontally all the way across, worn slabs, muted golden-brown border strip near TOP and BOTTOM edges; a very tiny cyan square marker centered. Chunky large pixels as if native 32x32 enlarged nearest-neighbor. Seamless repeating horizontal metal-and-stone defense corridor, top-down flat surface ONLY. No perspective side walls, no scenery, no text, no labels, no bright glow. Fill entire square canvas. Opaque background."
+    ]
+  ]
+}
