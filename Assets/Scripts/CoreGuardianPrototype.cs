@@ -31,6 +31,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     Tile occupiedTile;
     CoreGuardianHud hud;
     CoreGuardianCombatArt combatArt;
+    GameObject bossArt;
     int previousGold;
     int previousCore;
     float notificationUntil;
@@ -43,6 +44,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         try
         {
             if(ground==null||player==null||occupied==null)throw new InvalidOperationException("Missing gameplay scene references");
+            bossArt=Resources.Load<GameObject>("CoreGuardian/Art/BossEye/BossEyePrefab");
+            if(bossArt==null)throw new InvalidOperationException("Missing approved boss art prefab");
             Session=new Session(CombatData.Load(enemiesCsv.text,towersCsv.text,stageCsv.text,upgradesCsv.text,wavesCsv.text));
             var cells=new[]{new Vector2Int(0,12),new Vector2Int(11,12),new Vector2Int(11,18),new Vector2Int(35,18),new Vector2Int(35,6),new Vector2Int(17,6),new Vector2Int(17,12),new Vector2Int(29,12),new Vector2Int(29,9)};
             route=cells.Select(c=>World(c)).ToArray();
@@ -173,13 +176,11 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             GameObject view;
             if(!enemyViews.TryGetValue(e.Id,out view))
             {
-                view=Instantiate(enemyArt[e.Kind==EnemyKind.Boss?1:(int)e.Kind]);view.name="Enemy_"+e.Kind+"_"+e.Id;enemyViews.Add(e.Id,view);
-                if(e.Kind==EnemyKind.Boss)view.transform.localScale*=1.4f;
+                view=Instantiate(e.Kind==EnemyKind.Boss?bossArt:enemyArt[(int)e.Kind]);view.name="Enemy_"+e.Kind+"_"+e.Id;enemyViews.Add(e.Id,view);
                 var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
-                bar.transform.SetParent(view.transform,false);bar.transform.localPosition=new Vector3(0,.8f,0);healthViews[e.Id]=bar.transform;
+                bar.transform.SetParent(view.transform,false);bar.transform.localPosition=new Vector3(0,e.Kind==EnemyKind.Boss?1.4f:.8f,0);healthViews[e.Id]=bar.transform;
             }
             view.transform.position=World(e.Position);
-            if(e.Kind==EnemyKind.Boss)foreach(var renderer in view.GetComponentsInChildren<SpriteRenderer>())if(renderer.name!="Health")renderer.color=e.Enraged?new Color(1f,.42f,.36f):new Color(.88f,.7f,1f);
             healthViews[e.Id].localScale=new Vector3(.35f*e.Health/e.Spec.Health,.035f,1);
             if(e.Buffed&&!auraViews.ContainsKey(e.Id))auraViews[e.Id]=combatArt.Marker("EnemySpeedBuff",World(e.Position),.17f);
             if(auraViews.TryGetValue(e.Id,out var aura)){aura.SetActive(e.Buffed);aura.transform.position=World(e.Position)+Vector3.up*1.02f;}
