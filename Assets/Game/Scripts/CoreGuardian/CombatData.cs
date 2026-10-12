@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace CoreGuardian
 {
-    public enum EnemyKind { Attack, Defense, Buff }
+    public enum EnemyKind { Attack, Defense, Buff, Boss }
     public enum TowerKind { Single, Multi, Support }
-    public enum SessionPhase { Preparation, Combat, Victory, Defeat }
+    public enum SessionPhase { Preparation, Combat, Victory, Defeat, Augmentation }
     public sealed class EnemySpec { public EnemyKind Kind; public int Health, CoreDamage, Gold; public float Speed, Defense, BuffRadius, BuffSpeed; }
     public sealed class TowerSpec { public TowerKind Kind; public int Cost; public float Damage, Rate, Range, ProjectileSpeed, BuffDamage; }
     public sealed class UpgradeSpec { public string Target, Stat; public float Delta; public int Cost, CostIncrement; }
@@ -63,7 +63,7 @@ namespace CoreGuardian
             d.Player=new CombatStats{Damage=F(settings["playerDamage"]),Rate=F(settings["playerRate"]),Range=F(settings["playerRange"]),ProjectileSpeed=F(settings["playerProjectileSpeed"])};
             foreach(var r in Rows(upgrades,6)) { var u=new UpgradeSpec{Target=r[1],Stat=r[2],Delta=F(r[3]),Cost=I(r[4]),CostIncrement=I(r[5])}; u.Target=string.Equals(u.Target,"Player",StringComparison.OrdinalIgnoreCase)?"Player":Kind<TowerKind>(u.Target).ToString();if(!new[]{"damage","rate","range","projectileSpeed","buffDamage"}.Contains(u.Stat))throw new ArgumentException("Unknown upgrade stat");if(d.Upgrades.Any(x=>x.Target==u.Target&&x.Stat==u.Stat))throw new ArgumentException("Duplicate target/stat upgrade");d.Upgrades.Add(u); }
             foreach(var r in Rows(waves,6)) { var kind=Kind<EnemyKind>(r[2]);if(!d.Enemies.ContainsKey(kind))throw new ArgumentException("Missing enemy reference");d.Waves.Add(new WaveSpec{Wave=I(r[1]),Kind=kind,Count=I(r[3]),Interval=F(r[4]),Start=F(r[5])}); }
-            if(!d.Waves.Any(w=>w.Wave==1)||d.Enemies.Count!=3||d.Towers.Count!=3||d.CoreEnergy<=0||d.Player.Rate<=0||d.Player.ProjectileSpeed<=0||d.Enemies.Values.Any(x=>x.Health<=0||x.Speed<=0)||d.Towers.Values.Any(x=>x.Kind!=TowerKind.Support&&(x.Rate<=0||x.ProjectileSpeed<=0))||d.Waves.Any(x=>x.Wave<=0||x.Count<=0||x.Interval<=0))throw new ArgumentException("Incomplete or invalid combat data");
+            if(!d.Waves.Any(w=>w.Wave==1)||!new[]{EnemyKind.Attack,EnemyKind.Defense,EnemyKind.Buff}.All(d.Enemies.ContainsKey)||d.Towers.Count!=3||d.CoreEnergy<=0||d.Player.Rate<=0||d.Player.ProjectileSpeed<=0||d.Enemies.Values.Any(x=>x.Health<=0||x.Speed<=0)||d.Towers.Values.Any(x=>x.Kind!=TowerKind.Support&&(x.Rate<=0||x.ProjectileSpeed<=0))||d.Waves.Any(x=>x.Wave<=0||x.Count<=0||x.Interval<=0))throw new ArgumentException("Incomplete or invalid combat data");
             return d;
         }
         public int PlayerUpgradePrice(int step) { if(step<1)throw new ArgumentOutOfRangeException(nameof(step));return checked(PlayerFirstCost+(step-1)*PlayerSecondIncrease+PlayerIncreaseStep*(step-1)*(step-2)/2); }
@@ -73,7 +73,7 @@ namespace CoreGuardian
         public static int Damage(float damage,float defense) { return Mathf.FloorToInt(Mathf.Max(0,damage*(1-defense/100f))+.5f); }
         public static EnemyState Priority(IEnumerable<EnemyState> enemies) { return enemies.Where(e=>e.Alive).OrderBy(e=>e.Kind==EnemyKind.Defense?0:e.Kind==EnemyKind.Buff?1:2).ThenBy(e=>e.Health).ThenBy(e=>e.PathRemaining).ThenBy(e=>e.Id).FirstOrDefault(); }
     }
-    public sealed class EnemyState { public int Id,Health;public EnemyKind Kind;public Vector2 Position;public float PathTravelled,PathRemaining;public bool Buffed,Exited;public EnemySpec Spec;public bool Alive {get{return Health>0&&!Exited;}} }
+    public sealed class EnemyState { public int Id,Health;public EnemyKind Kind;public Vector2 Position;public float PathTravelled,PathRemaining,SlowRemaining;public bool Buffed,Exited;public EnemySpec Spec;public bool Enraged => Kind==EnemyKind.Boss&&Health<=Spec.Health/2f;public float MovementSpeed => Spec.Speed*(Enraged?1.3f:1)*(SlowRemaining>0?.8f:1);public bool Alive {get{return Health>0&&!Exited;}} }
     public sealed class TowerState { public int Id,Spent;public TowerKind Kind;public Vector2Int Position;public CombatStats Stats;internal float Cooldown;internal EnemyState Target;internal bool AcquiredOnce; }
     public sealed class ProjectileState { public int Id;public Vector2 Position;public EnemyState Target;public string Source;public float Damage,Speed; }
 }

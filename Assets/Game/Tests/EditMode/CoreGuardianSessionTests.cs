@@ -37,7 +37,7 @@ public class CoreGuardianSessionTests
     {
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies")+"\nAttack,25,1,2,3,0,0,0,provisional",Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("25,1,2","-25,1,2"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves").Replace("Attack","Boss")));
+        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Boss,300,0.6,10,120,0,0,0,provisional",""),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
     }
     [Test] public void UndefinedNumericKindsMissingWaveOneAndCaseDuplicateUpgradeAreRejected()
     {

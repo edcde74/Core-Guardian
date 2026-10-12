@@ -6,6 +6,19 @@ using CoreGuardian;
 
 public class CoreGuardianRoundFlowTests
 {
+    [Test] public void PrototypeIncludesBossTenAndFullElevenSchedule()
+    {
+        var d=Data();
+        Assert.That(d.Waves.Max(w=>w.Wave),Is.EqualTo(11));
+        EnemyKind boss;
+        Assert.That(Enum.TryParse("Boss",out boss),Is.True);
+        Assert.That(d.Enemies[boss].Health,Is.EqualTo(300));
+        Assert.That(d.Enemies[boss].Gold,Is.EqualTo(120));
+        Assert.That(d.Waves.Where(w=>w.Wave==10).Sum(w=>w.Count),Is.EqualTo(15));
+        Assert.That(d.Waves.Where(w=>w.Wave==11).Sum(w=>w.Count),Is.EqualTo(21));
+        Assert.That(d.RewardForWave(10),Is.EqualTo(35));
+        Assert.That(d.RewardForWave(11),Is.EqualTo(30));
+    }
     static readonly Vector2 Away = new Vector2(100,100);
     static CombatData Data() => CombatData.Load(Resources.Load<TextAsset>("CoreGuardian/enemies").text,Resources.Load<TextAsset>("CoreGuardian/towers").text,Resources.Load<TextAsset>("CoreGuardian/stage").text,Resources.Load<TextAsset>("CoreGuardian/upgrades").text,Resources.Load<TextAsset>("CoreGuardian/waves").text);
     static Session Game(CombatData d)
@@ -23,7 +36,7 @@ public class CoreGuardianRoundFlowTests
     }
     [Test] public void AllNineSchedulesAwardOnceAndEndAtNine()
     {
-        var s=Game(Data());int[] rewards={20,20,20,20,25,25,25,25,25};
+        var d=Data();d.Waves.RemoveAll(w=>w.Wave>9);var s=Game(d);int[] rewards={20,20,20,20,25,25,25,25,25};
         for(int wave=1;wave<=9;wave++)
         {
             Assert.That(s.Wave,Is.EqualTo(wave));Assert.That(s.StartCombat(),Is.True);

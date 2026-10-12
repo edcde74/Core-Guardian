@@ -11,7 +11,7 @@ using UnityEditor.SceneManagement;
 public class CoreGuardianRuntimePlayModeTests
 {
     [UnityTest]
-    public IEnumerator ActualScene_NineRoundsKeepTowerAndHud_ThenRestartResetsSession()
+    public IEnumerator ActualScene_ElevenRoundsKeepTowerAndHud_ThenRestartResetsSession()
     {
 #if UNITY_EDITOR
         EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
@@ -24,7 +24,7 @@ public class CoreGuardianRuntimePlayModeTests
         Time.timeScale=0;
         try
         {
-            for(int wave=1;wave<=9;wave++)
+            for(int wave=1;wave<=11;wave++)
             {
                 type.GetMethod("StartCombat").Invoke(runtime,null);
                 for(int i=0;i<1000&&s.Phase==CoreGuardian.SessionPhase.Combat;i++)
@@ -37,11 +37,12 @@ public class CoreGuardianRuntimePlayModeTests
                 type.GetMethod("Notify").Invoke(runtime,new object[]{s.LastMessage});
                 yield return null;
                 Assert.That(GameObject.Find("Tower_Single_1"),Is.Not.Null);
-                Assert.That(GameObject.Find("Status").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("라운드 "+s.Wave+" / 9"));
-                Assert.That(s.Phase,Is.EqualTo(wave==9?CoreGuardian.SessionPhase.Victory:CoreGuardian.SessionPhase.Preparation));
+                Assert.That(GameObject.Find("Status").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("라운드 "+s.Wave+" / 11"));
+                Assert.That(s.Phase,Is.EqualTo(wave==11?CoreGuardian.SessionPhase.Victory:wave==10?CoreGuardian.SessionPhase.Augmentation:CoreGuardian.SessionPhase.Preparation));
+                if(wave==10){Assert.That(GameObject.Find("AugmentationSelection"),Is.Not.Null);Assert.That(s.AugmentationChoices.Count,Is.EqualTo(3));Assert.That(GameObject.Find("ChoiceTimer").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("30초"));Assert.That(GameObject.Find("RoleDiagnostic").GetComponent<UnityEngine.UI.Button>().interactable,Is.False);Assert.That(GameObject.Find("Reload").GetComponent<UnityEngine.UI.Button>().interactable,Is.False);int gold=s.Gold,crystals=s.Crystals;var card=s.AugmentationChoices[0];GameObject.Find("AugmentationCard0").GetComponent<UnityEngine.UI.Button>().onClick.Invoke();Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Preparation));if(card.Family==CoreGuardian.AugmentationFamily.Gold)Assert.That(s.Gold-gold,Is.EqualTo(card.Value(100,300,600)));if(card.Family==CoreGuardian.AugmentationFamily.Crystals)Assert.That(s.Crystals-crystals,Is.EqualTo(card.Value(80,240,480)));Assert.That(s.PreparationRemaining,Is.EqualTo(50));Assert.That(GameObject.Find("Reload").GetComponent<UnityEngine.UI.Button>().interactable,Is.True);}
             }
-            Assert.That(s.Gold,Is.EqualTo(510));Assert.That(s.Crystals,Is.EqualTo(205));Assert.That(s.CoreEnergy,Is.EqualTo(20));
-            Assert.That(GameObject.Find("Preparation").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("1~9라운드 검증 완료"));
+            Assert.That(s.Gold,Is.GreaterThanOrEqualTo(752));Assert.That(s.Crystals,Is.GreaterThanOrEqualTo(270));Assert.That(s.CoreEnergy,Is.GreaterThanOrEqualTo(20));
+            Assert.That(GameObject.Find("Preparation").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("1~11라운드 검증 완료"));
             type.GetMethod("Restart").Invoke(runtime,null);
             yield return null;yield return null;
             runtime=UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();

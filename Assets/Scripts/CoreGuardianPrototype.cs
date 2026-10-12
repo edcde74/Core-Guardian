@@ -73,6 +73,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         if(!Ready)return;
         var phase=Session.Phase;
         Session.Tick(Time.deltaTime,PlayerTile());
+        player.enabled=Session.Phase!=SessionPhase.Augmentation;
         if(Session.Gold>previousGold){ Feedback="+"+(Session.Gold-previousGold)+" 골드 획득";notificationUntil=Time.unscaledTime+2; }
         previousGold=Session.Gold;
         if(Session.CoreEnergy<previousCore){combatArt.CoreDamaged(previousCore-Session.CoreEnergy);Feedback="코어 에너지 -"+(previousCore-Session.CoreEnergy);Changed?.Invoke();}
@@ -172,11 +173,13 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             GameObject view;
             if(!enemyViews.TryGetValue(e.Id,out view))
             {
-                view=Instantiate(enemyArt[(int)e.Kind]);view.name="Enemy_"+e.Kind+"_"+e.Id;enemyViews.Add(e.Id,view);
+                view=Instantiate(enemyArt[e.Kind==EnemyKind.Boss?1:(int)e.Kind]);view.name="Enemy_"+e.Kind+"_"+e.Id;enemyViews.Add(e.Id,view);
+                if(e.Kind==EnemyKind.Boss)view.transform.localScale*=1.4f;
                 var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
                 bar.transform.SetParent(view.transform,false);bar.transform.localPosition=new Vector3(0,.8f,0);healthViews[e.Id]=bar.transform;
             }
             view.transform.position=World(e.Position);
+            if(e.Kind==EnemyKind.Boss)foreach(var renderer in view.GetComponentsInChildren<SpriteRenderer>())if(renderer.name!="Health")renderer.color=e.Enraged?new Color(1f,.42f,.36f):new Color(.88f,.7f,1f);
             healthViews[e.Id].localScale=new Vector3(.35f*e.Health/e.Spec.Health,.035f,1);
             if(e.Buffed&&!auraViews.ContainsKey(e.Id))auraViews[e.Id]=combatArt.Marker("EnemySpeedBuff",World(e.Position),.17f);
             if(auraViews.TryGetValue(e.Id,out var aura)){aura.SetActive(e.Buffed);aura.transform.position=World(e.Position)+Vector3.up*1.02f;}
@@ -187,7 +190,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         {
             if(!towerViews.TryGetValue(t.Id,out var view)){view=Instantiate(towerArt[(int)t.Kind]);view.name="Tower_"+t.Kind+"_"+t.Id;towerViews.Add(t.Id,view);}
             view.transform.position=World(t.Position);
-            bool supported=t.Kind!=TowerKind.Support&&Session.Towers.Any(s=>s.Kind==TowerKind.Support&&Vector2.Distance(s.Position,t.Position)<=s.Stats.Range);
+            bool supported=t.Kind!=TowerKind.Support&&(Session.Augments.TowerBuffPercent>0||Session.Towers.Any(s=>s.Kind==TowerKind.Support&&Vector2.Distance(s.Position,t.Position)<=s.Stats.Range));
             if(supported&&!towerAuraViews.ContainsKey(t.Id))towerAuraViews[t.Id]=combatArt.Marker("TowerDamageBuff",World(t.Position),.2f);
             if(towerAuraViews.TryGetValue(t.Id,out var aura)){aura.SetActive(supported);aura.transform.position=World(t.Position)+Vector3.up*.88f;}
         }
