@@ -1,0 +1,42 @@
+[
+  {
+    "state": "normal",
+    "size": [
+      64,
+      80
+    ],
+    "alpha": [
+      0,
+      255
+    ],
+    "bbox": [
+      1,
+      8,
+      62,
+      74
+    ],
+    "colors": 19,
+    "palette_match": true,
+    "bottom_row": 73
+  },
+  {
+    "state": "enraged",
+    "size": [
+      64,
+      80
+    ],
+    "alpha": [
+      0,
+      255
+    ],
+    "bbox": [
+      1,
+      8,
+      63,
+      74
+    ],
+    "colors": 23,
+    "palette_match": true,
+    "bottom_row": 73
+  }
+]
