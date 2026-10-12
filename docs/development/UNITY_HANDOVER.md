@@ -22,12 +22,13 @@
 - 코어 파괴 시 패배하며 완료 보상·다음 준비로 진행하지 않음.
 - 2~9라운드의 고정 순서·시점은 사용자 승인 완료. `waves.csv`에 반영됨.
 - 실제 전투·적/포탑 3종·설치/강화/파괴/환급·피해 숫자·전투 효과 구현. 별도 역할 검증 모드 유지.
-- 미구현: 보스·증강·10~11라운드·최종 보행/공격 애니메이션·최신 Windows 빌드.
-- 마지막 Unity 확인 (2026-10-10 투사체/골드 표시 수정·회귀 검사 후): CD 연결 ready, 전투 씬 저장됨, Play stopped, compiling=false, domainReloadInProgress=false, timeScale=1. Verify 내부 success=true, 플레이어 (15,10), 승인 A 길·적/포탑 3종·참조 정상. 컴파일 실패 플래그false, 현재 콘솔 오류0.
-- 2026-10-13 로컬 Git 구성. Unity 소스·에셋·메타·설정·문서를 초기 커밋에 보존하고 캐시·빌드는 제외. GitHub 연결 없음. 기능 수정 전후 복구 기준 커밋은 [LOCAL_GIT.md](LOCAL_GIT.md), 구성 기록은 [git_setup_20261013.md](git_setup_20261013.md) 참조. Unity 상태는 이번 Git 작업에서 재검사하지 않음.
+- 미구현: 보스·증강·10~11라운드·최종 보행/공격 애니메이션·BGM. 최신 Windows 빌드는 2026-10-13 생성.
+- 마지막 Unity 확인 (2026-10-13 Windows 빌드 후): CD 연결 응답 정상, 전투 씬 isDirty=false, Play stopped, compiling=false, Windows64 대상 유지. 빌드 중 중복 전역 조명/CLI 시간초과 메시지는 상세 기록 참조. 마지막 게임 회귀 검사는 2026-10-10의 EditMode28/28 + PlayMode6/6이며 이번 빌드에서 재실행하지 않음.
+- 2026-10-13 로컬 Git 구성. Unity 소스·에셋·메타·설정·문서를 초기 커밋에 보존하고 캐시·빌드는 제외. GitHub 연결 없음. 기능 수정 전후 복구 기준 커밋은 [LOCAL_GIT.md](LOCAL_GIT.md), 구성 기록은 [git_setup_20261013.md](git_setup_20261013.md) 참조.
 
 ## 최근 검증과 다음 작업
 
+- 최신 배포: `Builds/CoreGuardian_Windows_20261013.zip` / `Builds/Windows_20261013/CoreGuardian.exe`. 최신 전투 씬만 포함, BuildReport Succeeded, 기본 로딩 검사 통과. 중복 전역 조명·패키지 셰이더 메시지는 남음. 그래픽/입력/전체 라운드 수동 플레이는 미검증. [빌드 상세 기록](windows_build_20261013.md).
 - 최신 표시 수정: 사용자 요청으로 투사체 3종 폭25% 증가(기술병0.20/포탑0.275). 처치 골드 심볼36×36과 숫자를 같은 HUD 그룹에 간격4로 붙여 동시 이동·페이드·삭제. 기존 피해·재화 판정은 유지. 실제 처치 +3, 여러 자리 +123, 만료·재설정·클릭 차단 없음 확인. [수정/검증 기록](feedback_polish_20261010.md).
 - 최신 회귀 결과: 표시 수정 후 EditMode28/28 + PlayMode6/6, 총34개 통과. 새 표시의 사용자 체감 확인은 남아 있으며 선택 체감은 사용자 답변상 아직 미확인. 최종 밸런스 승인으로 처리하지 않음.
 - 이전 연속 검증: 실제 Play Mode의 정상 이동·구매 API와 자동 공격으로 세 연속 실행 측정. 저장 선택 6R 패배, 포탑 강화 선택 7R 패배, 경로에 한 칸 더 가까운 기술병/포탑 배치에서 1~9R 완료·코어20 유지. 최종 골드80/수정105, 기술병 강화 4/6/9R에 100/140/190골드. 결과는 [자동 조작 연속 실행](natural_playtest_20261010.md).
@@ -111,4 +112,4 @@ $cgProject = 'C:\Users\edcde\OneDrive\Desktop\CD'
 - 일반 sandbox 터미널 초기화 문제가 있었고 require_escalated 실행을 사용한 이력이 있음. 실패를 성공으로 간주하지 않음.
 - Application.runInBackground=true. 임시 timeScale 변경 시 복구 후 Play 종료.
 - HUD 포함 캡처는 Play 중 source=screen. 반환 savedPath 확인.
-- 오래된 실행 파일: `Builds/Windows_20261002/CoreGuardian.exe`는 B 비교 씬 빌드. 최신 기능 미반영. 새 빌드 시 시작/포함 씬·폰트 라이선스 확인.
+- 최신 실행 파일: `Builds/Windows_20261013/CoreGuardian.exe`, 전달 ZIP: `Builds/CoreGuardian_Windows_20261013.zip`. 전체 폴더를 함께 유지. 포함 씬·폰트 라이선스·남은 빌드 메시지는 windows_build_20261013.md 참조. `Builds/Windows_20261002`는 이전 B 비교 씬 빌드로 보존.
