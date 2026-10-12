@@ -1,0 +1,55 @@
+{
+  "variant": "fastHp8",
+  "attackHealth": 27,
+  "repeats": 3,
+  "rounds": [
+    {
+      "wave": 1,
+      "medianSeconds": 41.9132843,
+      "peakAlive": [
+        12,
+        12,
+        12
+      ],
+      "minimumRemaining": [
+        72.79654,
+        72.7931442,
+        72.79743
+      ],
+      "playerDamage": [
+        11.0,
+        20.0,
+        11.0
+      ],
+      "playerSharePercent": [
+        2.72,
+        4.94,
+        2.72
+      ]
+    },
+    {
+      "wave": 2,
+      "medianSeconds": 43.494606,
+      "peakAlive": [
+        13,
+        13,
+        13
+      ],
+      "minimumRemaining": [
+        71.4861,
+        71.44014,
+        71.49477
+      ],
+      "playerDamage": [
+        105.0,
+        114.0,
+        118.0
+      ],
+      "playerSharePercent": [
+        24.31,
+        26.39,
+        27.31
+      ]
+    }
+  ]
+}

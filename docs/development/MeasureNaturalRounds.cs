@@ -57,7 +57,7 @@ public static class MeasureNaturalRounds
     }
     public static string StartEarlyComparison(string policy,string variant,int repeat,float speed=5)
     {
-        if(variant!="baseline"&&variant!="fast"&&variant!="fastHp")throw new ArgumentException("Unknown early variant");
+        if(variant!="baseline"&&variant!="fast"&&variant!="fastHp"&&variant!="fastHp8")throw new ArgumentException("Unknown early variant");
         if(repeat<1||speed<=0||speed>5)throw new ArgumentException("Invalid comparison settings");
         string dir=Path.Combine(Directory.GetParent(Application.dataPath).FullName,"docs/development/early_pressure_test_20261013");
         if(File.Exists(Path.Combine(dir,policy+"_"+variant+"_"+repeat+".json")))throw new InvalidOperationException("Refusing to overwrite previous result");
@@ -90,8 +90,9 @@ public static class MeasureNaturalRounds
         {
             var early=p.Session.Data.Waves.Where(x=>x.Wave<=2).ToArray();
             if(early.Where(x=>x.Wave==1).Sum(x=>x.Count)!=15||early.Where(x=>x.Wave==2).Sum(x=>x.Count)!=16||early.Any(x=>x.Kind!=EnemyKind.Attack)||p.Session.Data.Enemies[EnemyKind.Attack].Health!=25)throw new InvalidOperationException("Unexpected early schema");
-            if(variant=="fast"||variant=="fastHp")foreach(var r in early){r.Start*=.9f;r.Interval*=.9f;}
+            if(variant=="fast"||variant=="fastHp"||variant=="fastHp8")foreach(var r in early){r.Start*=.9f;r.Interval*=.9f;}
             if(variant=="fastHp")p.Session.Data.Enemies[EnemyKind.Attack].Health=26;
+            if(variant=="fastHp8")p.Session.Data.Enemies[EnemyKind.Attack].Health=27;
             report.scheduleInvariant=early.Sum(x=>x.Count)==31&&early.Sum(x=>x.Count*p.Session.Data.Enemies[x.Kind].Gold)==93;
             report.testedSchedules=early.Select(x=>"wave="+x.Wave+" start="+x.Start.ToString("R",System.Globalization.CultureInfo.InvariantCulture)+" interval="+x.Interval.ToString("R",System.Globalization.CultureInfo.InvariantCulture)+" count="+x.Count).ToArray();
         }
