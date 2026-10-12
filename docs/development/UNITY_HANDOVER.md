@@ -24,7 +24,7 @@
 - 실제 전투·적/포탑 3종·설치/강화/파괴/환급·피해 숫자·전투 효과 구현. 별도 역할 검증 모드 유지.
 - 보스 가속·도착/처치 보상,18종 증강 효과/선택,10~11 구현. 보스 전용 안광V3 정지 아트 사용자 선택·적용 완료. 미완성: 보행/공격 애니메이션·BGM 적용. 기존 Windows 빌드는1~9이며 이번 기능 미포함; 사용자 지시로 추가 빌드/실행하지 않음.
 - BGM 별도 제작: 2026-10-13 Assets 외부에 30~60초 루프 WAV 시안 3개와 제작/라이선스/검증 자료를 생성. Unity 적용은 미구현, 음악 방향·청취 품질은 사용자 미승인. [제작 기록](bgm_sketches_20261013.md).
-- 마지막 Unity 확인 (2026-10-13 HP8% 비교 종료): ready, 전투 씬saved=true/dirty=false, Play stopped, compiling=false,domainReload=false,timeScale1. 후속실제비교3회 게임오류0·Verify 성공/A길·원본3종 참조·플레이어(15,10) 보존. 회귀EditMode73/73·PlayMode6/6은이전검증이며이번재실행없음. 콘솔현재오류0, 빌드/실행파일 실행 없음.
+- 마지막 Unity 확인 (2026-10-13 사람 테스트 데이터 적용): ready, 전투 씬dirty=false, Play stopped, compiling=false,timeScale1. 씬참조 CSV ImportAsset 후 CombatData.Load로 HP27/1R1.62초·15마리/2R1.53초·16슬롯 확인. 콘솔현재오류0/컴파일실패false. 회귀EditMode73/73·PlayMode6/6은이전검증이며이번재실행없음. 빌드/실행파일 실행 없음.
 - 2026-10-13 로컬 Git 구성. Unity 소스·에셋·메타·설정·문서를 초기 커밋에 보존하고 캐시·빌드는 제외. GitHub 연결 없음. 기능 수정 전후 복구 기준 커밋은 [LOCAL_GIT.md](LOCAL_GIT.md), 구성 기록은 [git_setup_20261013.md](git_setup_20261013.md) 참조.
 
 ## 최근 검증과 다음 작업
@@ -40,7 +40,7 @@
 - 최신 보스/증강 구현: [기능·검증 기록](boss_augmentation_20261013.md), [계획](boss_augmentation_plan_20261013.md), [EditMode73](boss_editmode_20261013.json), [PlayMode6](boss_playmode_20261013.json).18종 실제 선택/효과/누적/재설정, 보스 처치/도착/패배, 자동 선택, 실제 카드 버튼과11 종료 확인. 흐름 진단에 강제 처치를 사용했고 새 난이도 실측·최종 아트/밸런스 승인은 아님.
 - BGM 파일 검사: 3개 모두 48kHz/16bit/스테레오 PCM, 43.636/36.923/34.286초, 클리핑0·샘플 루프 경계 검사 통과. 직접 청취·게임 효과음 혼합·Unity 재생 미검증. 이번 음악 제작에서 Unity 상태를 다시 조회하거나 게임을 변경하지 않음. 다음 음악 작업은 시안 청취·방향 선택. [상세 기록](bgm_sketches_20261013.md).
 - 2026-10-13 `core-guardian-balance` 스킬 작성·개인 스킬 폴더 설치. 최신 담당 노션10페이지·실행 CSV/코드·기존 자동 Play3정책으로1~10R 시험 분석. 현재 구현1~9R의 정적 수급/발수와 과거 실측을 분리하고10R/증강은 기획 가안·미구현으로 표시. 형식 검증·분석 도구9개 행동 검사·독립 분석/획득가능성 보완 재검증 통과. 게임/노션 변경 없음, 밸런스 승인 아님. [시험 보고서](balance_analysis_20261013/report.md), [스킬 원본](../skills/core-guardian-balance/SKILL.md), [검증·재실행](balance_analysis_20261013/validation.md).
-- 밸런스 후속(2026-10-13 초반 비교): 기존/간격10%단축/단축+HP26 각3회 이후, 사용자 요청 공격형HP25→27(+8%)·간격단축을 새 Play3회 추가 검증(총12회). HP27 모두코어20·종료골드93/수정40, 최대생존1R12/2R13, 시간중앙41.913/43.495초, 기술병실제피해1R11~20/2R105~118. 원본CSV/Assets/노션 유지·런타임변형후폐기. [조건·결과·재실행](early_pressure_test_20261013/report.md), [이전6R A안](tension_test_20261013/report.md). 다음1배속사람입력·다른배치/첫포탑선택비교. 정식미적용·밸런스미승인.
+- 밸런스 후속(2026-10-13 사람 테스트 적용): 사용자 요청으로 CSV에 공격형HP25→27(+8%, 모든라운드공용), 1~2R간격10%단축(1.62/1.53초·2R슬롯start도단축)을 실제 적용. 편성·수급·3R이후일정 유지. 씬참조→CombatData.Load 값 확인·콘솔현재오류0. [적용·복구·재개](early_pressure_applied_20261013.md), [이전12회자동비교](early_pressure_test_20261013/report.md), [이전6R A안](tension_test_20261013/report.md). 다음 사람플레이·이후라운드HP27영향 검증. 사람테스트용수치이며 최종밸런스미승인.
 - 밸런스 분석 중 Unity 읽기 조회: CD ready, 전투 씬active/loaded/dirty=false, Play stopped, compiling=false, domainReload=false,timeScale1. CSV5종 씬참조·로더·계산 경로는 정적 확인. 새 Play/Verify/게임 회귀 검사를 실행하지 않음. 콘솔 조회에서 빌드의 중복 글로벌 조명2건·API 타임아웃1건을 읽었고 후속 응답 현재 groundTruth는 오류0/컴파일실패false. 빌드 상세는 아래 별도 작업 기록을 보존함.
 - 최신 배포: `Builds/CoreGuardian_Windows_20261013.zip` / `Builds/Windows_20261013/CoreGuardian.exe`. 최신 전투 씬만 포함, BuildReport Succeeded, 기본 로딩 검사 통과. 중복 전역 조명·패키지 셰이더 메시지는 남음. 그래픽/입력/전체 라운드 수동 플레이는 미검증. [빌드 상세 기록](windows_build_20261013.md).
 - 최신 표시 수정: 사용자 요청으로 투사체 3종 폭25% 증가(기술병0.20/포탑0.275). 처치 골드 심볼36×36과 숫자를 같은 HUD 그룹에 간격4로 붙여 동시 이동·페이드·삭제. 기존 피해·재화 판정은 유지. 실제 처치 +3, 여러 자리 +123, 만료·재설정·클릭 차단 없음 확인. [수정/검증 기록](feedback_polish_20261010.md).
