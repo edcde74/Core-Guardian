@@ -1,0 +1,161 @@
+{
+  "baseline": {
+    "runs": 3,
+    "medianSeconds": 45.17456,
+    "wave6": [
+      {
+        "wave": 6,
+        "coreStart": 20,
+        "coreEnd": 20,
+        "goldStart": 12,
+        "goldEnd": 73,
+        "crystalsStart": 5,
+        "crystalsEnd": 30,
+        "reward": 25,
+        "expected": 18,
+        "seconds": 45.17607,
+        "outcome": "Completed",
+        "actions": [
+          "install Multi (17, 16) cost=100 success=True",
+          "player damage + cost=140"
+        ],
+        "damage": [
+          "Player:142",
+          "Tower:1:413"
+        ],
+        "peakAlive": 13,
+        "peakAliveFrom8To18": 10,
+        "minimumRemaining": 70.93663
+      },
+      {
+        "wave": 6,
+        "coreStart": 20,
+        "coreEnd": 20,
+        "goldStart": 12,
+        "goldEnd": 73,
+        "crystalsStart": 5,
+        "crystalsEnd": 30,
+        "reward": 25,
+        "expected": 18,
+        "seconds": 45.17456,
+        "outcome": "Completed",
+        "actions": [
+          "install Multi (17, 16) cost=100 success=True",
+          "player damage + cost=140"
+        ],
+        "damage": [
+          "Player:142",
+          "Tower:1:413"
+        ],
+        "peakAlive": 13,
+        "peakAliveFrom8To18": 10,
+        "minimumRemaining": 70.92222
+      },
+      {
+        "wave": 6,
+        "coreStart": 20,
+        "coreEnd": 20,
+        "goldStart": 12,
+        "goldEnd": 73,
+        "crystalsStart": 5,
+        "crystalsEnd": 30,
+        "reward": 25,
+        "expected": 18,
+        "seconds": 45.16237,
+        "outcome": "Completed",
+        "actions": [
+          "install Multi (17, 16) cost=100 success=True",
+          "player damage + cost=140"
+        ],
+        "damage": [
+          "Player:142",
+          "Tower:1:413"
+        ],
+        "peakAlive": 13,
+        "peakAliveFrom8To18": 10,
+        "minimumRemaining": 70.93156
+      }
+    ]
+  },
+  "clusterA": {
+    "runs": 3,
+    "medianSeconds": 45.186676,
+    "wave6": [
+      {
+        "wave": 6,
+        "coreStart": 20,
+        "coreEnd": 20,
+        "goldStart": 12,
+        "goldEnd": 73,
+        "crystalsStart": 5,
+        "crystalsEnd": 30,
+        "reward": 25,
+        "expected": 18,
+        "seconds": 45.16716,
+        "outcome": "Completed",
+        "actions": [
+          "install Multi (17, 16) cost=100 success=True",
+          "player damage + cost=140"
+        ],
+        "damage": [
+          "Player:120",
+          "Tower:1:399",
+          "Tower:2:36"
+        ],
+        "peakAlive": 13,
+        "peakAliveFrom8To18": 11,
+        "minimumRemaining": 67.86404
+      },
+      {
+        "wave": 6,
+        "coreStart": 20,
+        "coreEnd": 20,
+        "goldStart": 12,
+        "goldEnd": 73,
+        "crystalsStart": 5,
+        "crystalsEnd": 30,
+        "reward": 25,
+        "expected": 18,
+        "seconds": 45.3837128,
+        "outcome": "Completed",
+        "actions": [
+          "install Multi (17, 16) cost=100 success=True",
+          "player damage + cost=140"
+        ],
+        "damage": [
+          "Player:142",
+          "Tower:1:389",
+          "Tower:2:24"
+        ],
+        "peakAlive": 13,
+        "peakAliveFrom8To18": 11,
+        "minimumRemaining": 68.2707
+      },
+      {
+        "wave": 6,
+        "coreStart": 20,
+        "coreEnd": 20,
+        "goldStart": 12,
+        "goldEnd": 73,
+        "crystalsStart": 5,
+        "crystalsEnd": 30,
+        "reward": 25,
+        "expected": 18,
+        "seconds": 45.186676,
+        "outcome": "Completed",
+        "actions": [
+          "install Multi (17, 16) cost=100 success=True",
+          "player damage + cost=140"
+        ],
+        "damage": [
+          "Player:132",
+          "Tower:1:387",
+          "Tower:2:36"
+        ],
+        "peakAlive": 13,
+        "peakAliveFrom8To18": 11,
+        "minimumRemaining": 67.9725
+      }
+    ]
+  }
+}

@@ -15,6 +15,8 @@ public static class MeasureNaturalRounds
         public float seconds;
         public string outcome;
         public string[] actions, damage;
+        public int peakAlive, peakAliveFrom8To18;
+        public float minimumRemaining=-1;
     }
     [Serializable] public class Report
     {
@@ -23,6 +25,9 @@ public static class MeasureNaturalRounds
         public int completedWave, core, gold, crystals;
         public List<Round> rounds = new List<Round>();
         public List<string> runtimeErrors = new List<string>();
+        public string variant="baseline";
+        public int repeat;
+        public bool scheduleInvariant;
     }
     static CoreGuardianPrototype p;
     static Report report;
@@ -33,8 +38,22 @@ public static class MeasureNaturalRounds
     static double realStarted;
     static int preparedWave;
     static bool running;
+    static int stopAfterWave;
 
     public static string Start(string policy)
+    {
+        return StartInternal(policy,"baseline",0,5,0);
+    }
+    public static string StartComparison(string policy,string variant,int repeat,float speed=5)
+    {
+        if(variant!="baseline"&&variant!="clusterA")throw new ArgumentException("Unknown variant");
+        if(repeat<1||speed<=0||speed>5)throw new ArgumentException("Invalid comparison settings");
+        string comparisonPath=Path.Combine(Directory.GetParent(Application.dataPath).FullName,"docs/development/tension_test_20261013/"+policy+"_"+variant+"_"+repeat+".json");
+        if(File.Exists(comparisonPath))throw new InvalidOperationException("Refusing to overwrite previous result");
+        Directory.CreateDirectory(Path.GetDirectoryName(comparisonPath));
+        return StartInternal(policy,variant,repeat,speed,6);
+    }
+    static string StartInternal(string policy,string variant,int repeat,float speed,int stopWave)
     {
         if(running) throw new InvalidOperationException("Measurement already active");
         if(!EditorApplication.isPlaying) throw new InvalidOperationException("Play required");
@@ -44,15 +63,24 @@ public static class MeasureNaturalRounds
         if(policy!="single_save" && policy!="single_upgrade" && policy!="multi_save" && policy!="coverage_save")
             throw new ArgumentException("Unknown policy");
         oldScale=Time.timeScale;
-        report=new Report {policy=policy,scene=p.gameObject.scene.path,timeScale=5,
+        report=new Report {policy=policy,variant=variant,repeat=repeat,scene=p.gameObject.scene.path,timeScale=speed,
             method="Actual Play Mode Update; normal Place/UpgradePlayer/UpgradeTower/StartCombat/TryStep APIs; no forced damage or currency; preparation skipped with normal start command; stationary player after legal movement; accelerated time"};
         output=Path.Combine(Directory.GetParent(Application.dataPath).FullName,"docs/development/natural_rounds_20261010_"+policy+".json");
+        if(stopWave>0)output=Path.Combine(Directory.GetParent(Application.dataPath).FullName,"docs/development/tension_test_20261013/"+policy+"_"+variant+"_"+repeat+".json");
+        stopAfterWave=stopWave;
+        var wave=p.Session.Data.Waves.Where(x=>x.Wave==6).OrderBy(x=>x.Start).ToArray();
+        if(variant=="clusterA")
+        {
+            if(wave.Length!=18||wave.Any(x=>x.Count!=1)||Math.Abs(wave.Last().Start-25.5f)>.001f)throw new InvalidOperationException("Unexpected current wave6 schema");
+            for(int i=6;i<=10;i++)wave[i].Start=9+(i-6)*.75f;
+        }
+        report.scheduleInvariant=wave.Sum(x=>x.Count)==18&&wave.Sum(x=>x.Count*p.Session.Data.Enemies[x.Kind].Health)==555&&wave.Sum(x=>x.Count*p.Session.Data.Enemies[x.Kind].Gold)==61&&Math.Abs(wave.Max(x=>x.Start+(x.Count-1)*x.Interval)-25.5f)<.001f;
         preparedWave=0; active=null; actions.Clear();
         started=runStarted=Time.time;realStarted=EditorApplication.timeSinceStartup;
         running=true;
         Application.logMessageReceived+=OnLog;
         EditorApplication.update+=Observe;
-        Time.timeScale=5;
+        Time.timeScale=speed;
         return "Observer started: "+output;
     }
     static void OnLog(string text,string stack,LogType type)
@@ -66,6 +94,13 @@ public static class MeasureNaturalRounds
         {
             if(!EditorApplication.isPlaying || p==null){Finish("interrupted");return;}
             var s=p.Session;
+            if(active!=null&&s.Phase==SessionPhase.Combat)
+            {
+                active.peakAlive=Math.Max(active.peakAlive,s.Enemies.Count(e=>e.Alive));
+                float elapsed=Time.time-started;
+                if(elapsed>=8&&elapsed<=18)active.peakAliveFrom8To18=Math.Max(active.peakAliveFrom8To18,s.Enemies.Count(e=>e.Alive));
+                foreach(var e in s.Enemies.Where(e=>e.Alive))active.minimumRemaining=active.minimumRemaining<0?e.PathRemaining:Math.Min(active.minimumRemaining,e.PathRemaining);
+            }
             if(active!=null && (s.Phase!=SessionPhase.Combat || s.Wave!=active.wave))
             {
                 active.seconds=Time.time-started; active.coreEnd=s.CoreEnergy;
@@ -76,6 +111,7 @@ public static class MeasureNaturalRounds
                 report.rounds.Add(active);active=null;Write();
             }
             if(s.Phase==SessionPhase.Victory || s.Phase==SessionPhase.Defeat){Finish(s.Phase.ToString());return;}
+            if(stopAfterWave>0&&s.CompletedWave>=stopAfterWave){Finish("CompletedComparison");return;}
             if(Time.time-runStarted>2000 || EditorApplication.timeSinceStartup-realStarted>480)
             {Finish("timeout");return;}
             if(s.Phase!=SessionPhase.Preparation)return;
