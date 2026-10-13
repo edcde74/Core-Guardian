@@ -24,7 +24,7 @@ public sealed class CoreGuardianAugmentationView : MonoBehaviour, IPointerEnterH
         front=Rect("Front",body,Vector2.zero,body.sizeDelta-new Vector2(48,48)).gameObject;
         float width=((RectTransform)front.transform).rect.width;
         symbol=CoreGuardianHudSkin.Icon(front.transform,FamilyIcon(card.Family),new Vector2((width-80)/2,-28),new Vector2(80,80));
-        title=Label("Title",front.transform,font,new Vector2(14,-128),new Vector2(width-28,48),26);title.text=card.Title;
+        title=Label("Title",front.transform,Resources.Load<Font>("CoreGuardian/Fonts/Galmuri11-Bold")??font,new Vector2(14,-128),new Vector2(width-28,48),26);title.text=card.Title;
         description=Label("Effect",front.transform,font,new Vector2(14,-188),new Vector2(width-28,144),20);description.text=card.Description;
         Label("Choose",front.transform,font,new Vector2(14,-354),new Vector2(width-28,34),18).text="다시 클릭하여 선택";
         front.SetActive(false);audioSource=gameObject.AddComponent<AudioSource>();audioSource.playOnAwake=false;audioSource.ignoreListenerPause=true;

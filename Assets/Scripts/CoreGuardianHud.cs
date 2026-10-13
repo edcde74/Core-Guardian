@@ -11,7 +11,7 @@ using TMPro;
 public sealed class CoreGuardianHud : MonoBehaviour
 {
     CoreGuardianPrototype game;
-    Font font;
+    Font font, titleFont;
     TMP_FontAsset damageFont;
     Material damageMaterial;
     RectTransform canvas, worldFeedback, installPanel, playerPanel, towerPanel, damagePanel, damageContent, topDetails;
@@ -42,7 +42,9 @@ public sealed class CoreGuardianHud : MonoBehaviour
     public void Configure(CoreGuardianPrototype prototype)
     {
         game=prototype;
-        font=Font.CreateDynamicFontFromOSFont("Malgun Gothic",20);
+        font=Resources.Load<Font>("CoreGuardian/Fonts/Galmuri11");
+        titleFont=Resources.Load<Font>("CoreGuardian/Fonts/Galmuri11-Bold");
+        if(font==null||titleFont==null)throw new InvalidOperationException("Galmuri HUD fonts missing");
         damageFont=Resources.Load<TMP_FontAsset>("CoreGuardian/Fonts/PixelifySansBoldDamage");
         damageMaterial=Resources.Load<Material>("CoreGuardian/Fonts/PixelifySansBoldDamageOutline");
         if(damageFont==null||damageMaterial==null)throw new InvalidOperationException("Pixelify Sans Bold TMP assets missing");
@@ -102,7 +104,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
     UnityEngine.UI.Text Text(string name,Transform parent,Vector2 position,Vector2 size,int textSize=20)
     {
         var r=Box(name,parent,new Vector2(0,1),position,size,false);var t=r.gameObject.AddComponent<UnityEngine.UI.Text>();
-        t.font=font;t.fontSize=textSize;t.color=Color.white;t.raycastTarget=false;t.alignment=TextAnchor.MiddleLeft;t.horizontalOverflow=HorizontalWrapMode.Wrap;t.verticalOverflow=VerticalWrapMode.Truncate;return t;
+        t.font=name=="Title"||name=="Preparation"?titleFont:font;t.fontSize=textSize;t.color=Color.white;t.raycastTarget=false;t.alignment=TextAnchor.MiddleLeft;t.horizontalOverflow=HorizontalWrapMode.Wrap;t.verticalOverflow=VerticalWrapMode.Truncate;return t;
     }
     UnityEngine.UI.Button Button(string name,Transform parent,Vector2 position,Vector2 size,Func<string> label,Action action,Func<bool> enabled=null)
     {
@@ -331,5 +333,5 @@ public sealed class CoreGuardianHud : MonoBehaviour
             var bar=Box("Bar",row,new Vector2(0,1),new Vector2(4,-34),new Vector2(max==0?0:280f*pair.Value/max,16));bar.GetComponent<UnityEngine.UI.Image>().color=new Color(.22f,.78f,.8f);
         }
     }
-    void OnDestroy(){if(game!=null){game.Changed-=Refresh;if(game.Session!=null)game.Session.DamageApplied-=ShowDamageNumber;}ClearDamageNumbers();if(font!=null)Destroy(font);}
+    void OnDestroy(){if(game!=null){game.Changed-=Refresh;if(game.Session!=null)game.Session.DamageApplied-=ShowDamageNumber;}ClearDamageNumbers();}
 }

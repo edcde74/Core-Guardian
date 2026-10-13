@@ -24,14 +24,16 @@
 - 실제 전투·적/포탑 3종·설치/강화/파괴/환급·피해 숫자·전투 효과 구현. 별도 역할 검증 모드 유지.
 - 보스 가속·도착/처치 보상,18종 증강 효과/선택,10~11 구현. 보스 전용 안광V3 정지 아트 사용자 선택·적용 완료. 미완성: 보행/공격 애니메이션·BGM 적용. 기존 Windows 빌드는1~9이며 이번 기능 미포함; 사용자 지시로 추가 빌드/실행하지 않음.
 - BGM 별도 제작: 2026-10-13 Assets 외부에 30~60초 루프 WAV 시안 3개와 제작/라이선스/검증 자료를 생성. Unity 적용은 미구현, 음악 방향·청취 품질은 사용자 미승인. [제작 기록](bgm_sketches_20261013.md).
-- 마지막 Unity 확인 (2026-10-13 HUD 적용 종료): ready, 전투 씬active/loaded/dirty=false, Play stopped, compiling=false,domainReload=false. EditMode73/73·PlayMode8/8, BuildCombatPrototype.Verify success/A길/원본3종/플레이어(15,10)/saved=true. 최종 콘솔현재오류0/컴파일실패false·경고1. 사용자 적용 HP27/간격 CSV 보존. 빌드/실행파일 실행 없음.
+- 마지막 Unity 확인 (2026-10-13 갈무리 적용 종료): ready, 전투 씬active/loaded/dirty=false, Play stopped, compiling=false,domainReload=false. 최신PlayMode8/8·HUD18종글리프/영역검사 통과. 콘솔현재오류0/컴파일실패false·경고0. 기존EditMode73/73·BuildCombatPrototype.Verify 기록은 HUD 적용 기록 참조(이번에 반복하지 않음). 사용자 적용 HP27/간격 CSV 보존. 빌드/실행파일 실행 없음.
 - 2026-10-13 로컬 Git 구성. Unity 소스·에셋·메타·설정·문서를 초기 커밋에 보존하고 캐시·빌드는 제외. GitHub 연결 없음. 기능 수정 전후 복구 기준 커밋은 [LOCAL_GIT.md](LOCAL_GIT.md), 구성 기록은 [git_setup_20261013.md](git_setup_20261013.md) 참조.
 
 ## 최근 검증과 다음 작업
 
+- A안 갈무리 적용(2026-10-13): 사용자 A선택/적용 승인에 따라 HUD 본문 Galmuri11·패널/단계/증강 제목 Galmuri11 Bold 연결. 공식TTF·OFL 번들, Dynamic/HintedRaster·리소스 자산 해제 수정, 기존 승인 피해 숫자/중복접기 제거 유지. 실제1920×1080 설치/강화/지원4줄/접힌 상태·18종 공개 카드에서 폰트·글리프·텍스트 영역 검사 위반0, 최신PlayMode8/8. 밸런스CSV/씬/아트 보존·빌드 미갱신. 다른 화면비/축소 판독 체감은 미검증. [적용·화면·검사·복구](hud_font_applied_20261013/report.md).
+
 - 중복 접기 제거(2026-10-13): InstallFold/PlayerFold와 설치 분류 안 `접기` 삭제. 기존 하단 타워 설치/플레이어 강화로 열기·닫기 유지, 분류 이동·설치 취소와 다른 고유 접기는 유지. 실제 클릭으로 두 패널 토글/설치 선택 유지/분류 복귀/취소·강조 상태 검사 통과,1920×1080 화면 확인. 종료ready/stopped/컴파일false·씬dirty=false·현재콘솔오류0/경고1. 폰트 시안 미적용·밸런스/씬/아트 보존, 전체 회귀/빌드 미실행. [변경·검사·화면·복구](hud_toggle_cleanup_20261013/report.md).
 
-- HUD 한글 폰트 시안(2026-10-13): 공식 갈무리/Neo둥근모/검은고딕 TTF·OFL을 Assets 외부에 보관, 실제 HUD 프레임으로 A/B/C 브라우저 비교판 제작. A갈무리 추천·C굵은 제목 대안, 사용자 선택/적용 승인 대기. 4폰트 로드·시안 영역 초과0·3안×18종 카드54조합 초과0, Neo화살표는 갈무리 fallback으로 보완. Unity 폰트/씬/밸런스/승인 피해 숫자 변경 없음, 새Play/테스트/빌드 없음. 읽기 상태ready/stopped/컴파일false·전투씬dirty=false. 선택 후 Unity14px 라벨/픽셀 격자/다른 화면비 검사 필요. [시안·출처·검사](hud_font_review_20261013/review.md).
+- HUD 한글 폰트 시안(2026-10-13): 공식 갈무리/Neo둥근모/검은고딕 TTF·OFL을 Assets 외부에 보관, 실제 HUD 프레임으로 A/B/C 브라우저 비교판 제작. 사용자 A선택/적용 완료는 위 최신 기록 참조. 4폰트 로드·시안 영역 초과0·3안×18종 카드54조합 초과0, Neo화살표는 갈무리 fallback으로 보완. [원래 시안·출처·검사](hud_font_review_20261013/review.md).
 
 - HUD 글자/상자 맞춤(2026-10-13): 설치·플레이어/타워 강화 버튼과 패널 확대, 심볼 자리/라벨 여백16·9-slice 테두리 축소, 단계/안내를 상자 내부 줄로 배치. 증강350×460 카드의 제목/효과/선택 안내 여백 분리, 지원 정보4줄/접힘/눌림·18종 카드 문구와 긴 숫자13항목 검사 위반0. 피해 목록클립/휠 입력 확인, 최신PlayMode8/8·Verify saved/A길/3종/(15,10) 통과. 실제1920×1080 화면 확인, 다른 비율/사람 사용성은 미검증. 종료ready/stopped/컴파일false·씬dirty=false·현재콘솔오류0. 밸런스CSV/전투규칙/저장씬/원본아트 보존, 빌드 미갱신. [수정·검사·화면·복구](hud_text_fit_20261013/report.md).
 
