@@ -12,6 +12,8 @@ public static class CoreGuardianHudSkin
     public static void Frame(Image image, string name="Panel")
     {
         image.sprite=Sprite(name); image.type=Image.Type.Sliced; image.color=Color.white;
+        // Keep the ornamental border out of the text area, including short buttons.
+        image.pixelsPerUnitMultiplier=2.5f;
     }
     public static Image Icon(Transform parent,string name,Vector2 position,Vector2 size)
     {

@@ -21,11 +21,12 @@ public sealed class CoreGuardianAugmentationView : MonoBehaviour, IPointerEnterH
         rim=body.gameObject.AddComponent<Image>();CoreGuardianHudSkin.Frame(rim,"Disabled");rim.color=colors[(int)card.Grade];rim.raycastTarget=false;
         back=Rect("Back",body,Vector2.zero,body.sizeDelta-new Vector2(16,16)).gameObject;
         var art=back.AddComponent<Image>();art.sprite=CoreGuardianHudSkin.Sprite("CardBack"+card.Grade);art.preserveAspect=true;art.raycastTarget=false;
-        front=Rect("Front",body,Vector2.zero,body.sizeDelta-new Vector2(20,20)).gameObject;
-        symbol=CoreGuardianHudSkin.Icon(front.transform,FamilyIcon(card.Family),new Vector2(105,-34),new Vector2(90,90));
-        title=Label("Title",front.transform,font,new Vector2(20,-144),new Vector2(260,70),27);title.text=card.Title;
-        description=Label("Effect",front.transform,font,new Vector2(20,-225),new Vector2(260,115),21);description.text=card.Description;
-        Label("Choose",front.transform,font,new Vector2(20,-355),new Vector2(260,38),19).text="다시 클릭하여 선택";
+        front=Rect("Front",body,Vector2.zero,body.sizeDelta-new Vector2(48,48)).gameObject;
+        float width=((RectTransform)front.transform).rect.width;
+        symbol=CoreGuardianHudSkin.Icon(front.transform,FamilyIcon(card.Family),new Vector2((width-80)/2,-28),new Vector2(80,80));
+        title=Label("Title",front.transform,font,new Vector2(14,-128),new Vector2(width-28,48),26);title.text=card.Title;
+        description=Label("Effect",front.transform,font,new Vector2(14,-188),new Vector2(width-28,144),20);description.text=card.Description;
+        Label("Choose",front.transform,font,new Vector2(14,-354),new Vector2(width-28,34),18).text="다시 클릭하여 선택";
         front.SetActive(false);audioSource=gameObject.AddComponent<AudioSource>();audioSource.playOnAwake=false;audioSource.ignoreListenerPause=true;
     }
     public void Click(){if(Busy||allowed==null||!allowed())return;if(Revealed){select();return;}StartCoroutine(Flip());}
@@ -52,7 +53,7 @@ public sealed class CoreGuardianAugmentationView : MonoBehaviour, IPointerEnterH
     IEnumerator Ray(int index)
     {
         float seed=index*2.399963f;int edge=index%4;Vector2 dir=edge==0?Vector2.left:edge==1?Vector2.right:edge==2?Vector2.up:Vector2.down;
-        float along=Mathf.Sin(seed);Vector2 start=edge<2?new Vector2(dir.x*160,along*190):new Vector2(along*150,dir.y*200);
+        float along=Mathf.Sin(seed);Vector2 half=GetComponent<RectTransform>().rect.size*.5f;Vector2 start=edge<2?new Vector2(dir.x*half.x,along*(half.y-10)):new Vector2(along*(half.x-10),dir.y*half.y);
         var rt=Rect("RevealSpark",transform,start,new Vector2(3,10+(index%4)*5));var img=rt.gameObject.AddComponent<Image>();img.raycastTarget=false;
         rt.localRotation=Quaternion.Euler(0,0,Mathf.Atan2(dir.y,dir.x)*Mathf.Rad2Deg-90);
         float began=Time.unscaledTime;float life=.3f+(index%5)*.055f;
@@ -71,5 +72,5 @@ public sealed class CoreGuardianAugmentationView : MonoBehaviour, IPointerEnterH
     public void OnPointerEnter(PointerEventData e){hover=true;}public void OnPointerExit(PointerEventData e){hover=false;}public void OnSelect(BaseEventData e){hover=true;}public void OnDeselect(BaseEventData e){hover=false;}
     public static string FamilyIcon(AugmentationFamily f)=>f==AugmentationFamily.Gold?"Gold":f==AugmentationFamily.Crystals?"Crystal":f==AugmentationFamily.Core||f==AugmentationFamily.Flawless?"Core":f==AugmentationFamily.Player?"Upgrade":"Install";
     static RectTransform Rect(string name,Transform parent,Vector2 pos,Vector2 size){var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.anchoredPosition=pos;r.sizeDelta=size;return r;}
-    static Text Label(string name,Transform parent,Font font,Vector2 pos,Vector2 size,int points){var r=Rect(name,parent,pos,size);r.anchorMin=r.anchorMax=r.pivot=new Vector2(0,1);var t=r.gameObject.AddComponent<Text>();t.font=font;t.fontSize=points;t.color=new Color(1,.95f,.84f);t.alignment=TextAnchor.MiddleCenter;t.raycastTarget=false;return t;}
+    static Text Label(string name,Transform parent,Font font,Vector2 pos,Vector2 size,int points){var r=Rect(name,parent,pos,size);r.anchorMin=r.anchorMax=r.pivot=new Vector2(0,1);var t=r.gameObject.AddComponent<Text>();t.font=font;t.fontSize=points;t.color=new Color(1,.95f,.84f);t.alignment=TextAnchor.MiddleCenter;t.horizontalOverflow=HorizontalWrapMode.Wrap;t.verticalOverflow=VerticalWrapMode.Truncate;t.raycastTarget=false;return t;}
 }

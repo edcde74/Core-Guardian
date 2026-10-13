@@ -60,20 +60,21 @@ public sealed class CoreGuardianHud : MonoBehaviour
     }
     void BuildAugmentationSelection()
     {
-        var bossPlate=Box("BossPlate",canvas,new Vector2(.5f,1),new Vector2(0,-124),new Vector2(660,42));
-        CoreGuardianHudSkin.Icon(bossPlate,"Damage",new Vector2(10,-6),new Vector2(30,30));
-        bossStatus=Text("BossStatus",bossPlate,new Vector2(46,0),new Vector2(606,42),22);
+        var bossPlate=Box("BossPlate",canvas,new Vector2(.5f,1),new Vector2(0,-224),new Vector2(740,60));
+        CoreGuardianHudSkin.Icon(bossPlate,"Damage",new Vector2(16,-15),new Vector2(30,30));
+        bossStatus=Text("BossStatus",bossPlate,new Vector2(54,-14),new Vector2(666,32),22);
         refresh.Add(()=>bossPlate.gameObject.SetActive(!string.IsNullOrEmpty(bossStatus.text)));
         bossStatus.color=new Color(1f,.6f,.45f);
         augmentationPanel=Box("AugmentationSelection",canvas,new Vector2(.5f,.5f),Vector2.zero,new Vector2(1920,1080));
         augmentationPanel.anchorMin=Vector2.zero;augmentationPanel.anchorMax=Vector2.one;augmentationPanel.sizeDelta=Vector2.zero;
         var shade=augmentationPanel.GetComponent<UnityEngine.UI.Image>();shade.sprite=null;shade.color=new Color(.015f,.025f,.04f,.82f);
-        var panel=Box("Cards",augmentationPanel,new Vector2(.5f,.5f),new Vector2(0,30),new Vector2(1040,580));
+        var panel=Box("Cards",augmentationPanel,new Vector2(.5f,.5f),new Vector2(0,0),new Vector2(1140,650));
         cardsRoot=panel;
-        CoreGuardianHudSkin.Icon(panel,"Augment",new Vector2(28,-22),new Vector2(30,30));
-        Text("Title",panel,new Vector2(70,-14),new Vector2(900,42),30).text="보스 격파 · 증강 1개 선택";
-        augmentationTimer=Text("ChoiceTimer",panel,new Vector2(30,-60),new Vector2(980,54),21);
-        var fold=Button("AugmentFold",augmentationPanel,new Vector2(1340,-220),new Vector2(180,42),()=>cardsFolded?"증강 펼치기":"증강 접기",()=>{cardsFolded=!cardsFolded;cardsRoot.gameObject.SetActive(!cardsFolded);});
+        CoreGuardianHudSkin.Icon(panel,"Augment",new Vector2(24,-24),new Vector2(30,30));
+        Text("Title",panel,new Vector2(66,-18),new Vector2(1050,44),30).text="보스 격파 · 증강 1개 선택";
+        augmentationTimer=Text("ChoiceTimer",panel,new Vector2(24,-74),new Vector2(1092,68),21);
+        var fold=Button("AugmentFold",augmentationPanel,new Vector2(0,0),new Vector2(196,56),()=>cardsFolded?"증강 펼치기":"증강 접기",()=>{cardsFolded=!cardsFolded;cardsRoot.gameObject.SetActive(!cardsFolded);});
+        var foldRect=fold.GetComponent<RectTransform>();foldRect.anchorMin=foldRect.anchorMax=foldRect.pivot=new Vector2(.5f,.5f);foldRect.anchoredPosition=new Vector2(470,369);
         augmentationButtons.Add(fold);
         augmentationPanel.gameObject.SetActive(false);
         topDetails.SetAsLastSibling();
@@ -85,7 +86,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
         foreach(var b in augmentationButtons.Where(b=>b.name.StartsWith("AugmentationCard")).ToArray()){augmentationButtons.Remove(b);b.gameObject.SetActive(false);Destroy(b.gameObject);}
         cardsFolded=false;cardsRoot.gameObject.SetActive(true);
         for(int i=0;i<game.Session.AugmentationChoices.Count;i++){
-            int index=i;var r=Box("AugmentationCard"+i,cardsRoot,new Vector2(0,1),new Vector2(30+i*330,-138),new Vector2(320,410));
+            int index=i;var r=Box("AugmentationCard"+i,cardsRoot,new Vector2(0,1),new Vector2(24+i*370,-164),new Vector2(350,460));
             var b=r.gameObject.AddComponent<UnityEngine.UI.Button>();augmentationButtons.Add(b);
             r.gameObject.AddComponent<CoreGuardianAugmentationView>().Configure(game.Session.AugmentationChoices[i],font,()=>{
                 if(game.Session.ChooseAugmentation(index)){game.Notify(game.Session.LastMessage);Refresh();}
@@ -101,86 +102,87 @@ public sealed class CoreGuardianHud : MonoBehaviour
     UnityEngine.UI.Text Text(string name,Transform parent,Vector2 position,Vector2 size,int textSize=20)
     {
         var r=Box(name,parent,new Vector2(0,1),position,size,false);var t=r.gameObject.AddComponent<UnityEngine.UI.Text>();
-        t.font=font;t.fontSize=textSize;t.color=Color.white;t.raycastTarget=false;t.alignment=TextAnchor.MiddleLeft;t.horizontalOverflow=HorizontalWrapMode.Wrap;return t;
+        t.font=font;t.fontSize=textSize;t.color=Color.white;t.raycastTarget=false;t.alignment=TextAnchor.MiddleLeft;t.horizontalOverflow=HorizontalWrapMode.Wrap;t.verticalOverflow=VerticalWrapMode.Truncate;return t;
     }
     UnityEngine.UI.Button Button(string name,Transform parent,Vector2 position,Vector2 size,Func<string> label,Action action,Func<bool> enabled=null)
     {
         var r=Box(name,parent,new Vector2(0,1),position,size);CoreGuardianHudSkin.Frame(r.GetComponent<UnityEngine.UI.Image>(),"Button");
         var b=r.gameObject.AddComponent<UnityEngine.UI.Button>();b.onClick.AddListener(()=>action());
-        float iconSize=Mathf.Min(30,size.y-12);CoreGuardianHudSkin.Icon(r,CoreGuardianHudSkin.Symbol(name),new Vector2(10,-(size.y-iconSize)/2),new Vector2(iconSize,iconSize));
-        var t=Text("Label",r,new Vector2(46,0),size-new Vector2(56,0),size.y<38?14:18);
+        float iconSize=Mathf.Min(30,size.y-24);CoreGuardianHudSkin.Icon(r,CoreGuardianHudSkin.Symbol(name),new Vector2(16,-(size.y-iconSize)/2),new Vector2(iconSize,iconSize));
+        var t=Text("Label",r,new Vector2(54,-16),size-new Vector2(70,32),size.y<=48?14:18);
         var reaction=r.gameObject.AddComponent<CoreGuardianHudReaction>();
         reaction.Selected=()=>name=="Installation"?installOpen:name=="PlayerGrowth"?playerOpen:name.StartsWith("Install_")&&game.Installing.HasValue&&name=="Install_"+game.Installing.Value;
         refresh.Add(()=>{t.text=label();b.interactable=enabled==null||enabled();t.color=b.interactable?new Color(1,.95f,.84f):new Color(.78f,.8f,.82f);});return b;
     }
     void Build()
     {
-        topDetails=Box("TopStatus",canvas,new Vector2(.5f,1),new Vector2(0,-12),new Vector2(920,64));
+        topDetails=Box("TopStatus",canvas,new Vector2(.5f,1),new Vector2(0,-12),new Vector2(920,72));
         status=Text("Status",topDetails,new Vector2(24,0),new Vector2(875,64),23);status.color=Color.clear;
         string[] symbols={"Core","Wave","Gold","Crystal","Augment"};
-        for(int i=0;i<5;i++){int index=i;CoreGuardianHudSkin.Icon(topDetails,symbols[i],new Vector2(12+i*181,-16),new Vector2(30,30));var value=Text("Status_"+symbols[i],topDetails,new Vector2(48+i*181,-6),new Vector2(130,50),19);
+        for(int i=0;i<5;i++){int index=i;CoreGuardianHudSkin.Icon(topDetails,symbols[i],new Vector2(16+i*181,-21),new Vector2(30,30));var value=Text("Status_"+symbols[i],topDetails,new Vector2(52+i*181,-16),new Vector2(126,40),19);
             refresh.Add(()=>{var s=game.Session;value.text=index==0?"코어 "+s.CoreEnergy+"/"+s.CoreMaximum:index==1?"라운드 "+s.Wave+"/"+s.LastWave:index==2?"골드 "+s.Gold:index==3?"수정 "+s.Crystals:"증강 "+s.Augments.Selected.Count;});}
-        var controls=Box("BottomControls",canvas,new Vector2(.5f,0),new Vector2(0,12),new Vector2(1160,68));
-        Button("Installation",controls,new Vector2(12,-10),new Vector2(200,48),()=>"타워 설치",()=>SetInstallPanelOpen(!installOpen),()=>game.Session.Phase==SessionPhase.Preparation);
-        Button("Start",controls,new Vector2(462,-10),new Vector2(236,48),()=>game.Session.Phase==SessionPhase.Preparation?"라운드 시작":game.Session.Phase==SessionPhase.Combat?"전투 진행":game.Session.Phase==SessionPhase.Augmentation?"증강 선택 중":game.Session.Phase==SessionPhase.Defeat?"패배":"검증 완료",()=>game.StartCombat(),()=>game.Session.Phase==SessionPhase.Preparation);
-        Button("PlayerGrowth",controls,new Vector2(946,-10),new Vector2(202,48),()=>"플레이어 강화",()=>{playerOpen=!playerOpen;playerPanel.gameObject.SetActive(playerOpen);});
-        var stagePlate=Box("StagePlate",canvas,new Vector2(.5f,1),new Vector2(0,-82),new Vector2(620,40));
-        CoreGuardianHudSkin.Icon(stagePlate,"Wave",new Vector2(12,-6),new Vector2(28,28));
-        center=Text("Preparation",stagePlate,new Vector2(50,0),new Vector2(554,40),21);
-        feedback=Text("Feedback",canvas,new Vector2(430,-898),new Vector2(1060,36),20);
-        var debug=Box("PrototypeActions",canvas,new Vector2(0,1),new Vector2(16,-14),new Vector2(262,66));
-        Button("RoleDiagnostic",debug,new Vector2(8,-8),new Vector2(246,48),()=>"3종 역할 검증 / 재설정",()=>game.Diagnostic());
-        Button("Reload",canvas,new Vector2(1630,-16),new Vector2(260,48),()=>"처음부터 다시 시작",()=>game.Restart());
-        Button("TestSpeed",canvas,new Vector2(1630,-70),new Vector2(260,30),()=>"테스트 배속 ×"+game.TestSpeed,()=>game.CycleTestSpeed());
+        var controls=Box("BottomControls",canvas,new Vector2(.5f,0),new Vector2(0,12),new Vector2(1160,88));
+        Button("Installation",controls,new Vector2(16,-16),new Vector2(200,56),()=>"타워 설치",()=>SetInstallPanelOpen(!installOpen),()=>game.Session.Phase==SessionPhase.Preparation);
+        Button("Start",controls,new Vector2(462,-16),new Vector2(236,56),()=>game.Session.Phase==SessionPhase.Preparation?"라운드 시작":game.Session.Phase==SessionPhase.Combat?"전투 진행":game.Session.Phase==SessionPhase.Augmentation?"증강 선택 중":game.Session.Phase==SessionPhase.Defeat?"패배":"검증 완료",()=>game.StartCombat(),()=>game.Session.Phase==SessionPhase.Preparation);
+        Button("PlayerGrowth",controls,new Vector2(920,-16),new Vector2(224,56),()=>"플레이어 강화",()=>{playerOpen=!playerOpen;playerPanel.gameObject.SetActive(playerOpen);});
+        var stagePlate=Box("StagePlate",canvas,new Vector2(.5f,1),new Vector2(0,-96),new Vector2(900,116));
+        CoreGuardianHudSkin.Icon(stagePlate,"Wave",new Vector2(16,-16),new Vector2(28,28));
+        center=Text("Preparation",stagePlate,new Vector2(54,-14),new Vector2(826,32),21);
+        feedback=Text("Feedback",stagePlate,new Vector2(20,-52),new Vector2(860,48),18);
+        var debug=Box("PrototypeActions",canvas,new Vector2(0,1),new Vector2(16,-14),new Vector2(302,88));
+        Button("RoleDiagnostic",debug,new Vector2(16,-16),new Vector2(270,56),()=>"3종 역할 검증 / 재설정",()=>game.Diagnostic());
+        Button("Reload",canvas,new Vector2(1630,-16),new Vector2(276,56),()=>"처음부터 다시 시작",()=>game.Restart());
+        Button("TestSpeed",canvas,new Vector2(1630,-80),new Vector2(276,48),()=>"테스트 배속 ×"+game.TestSpeed,()=>game.CycleTestSpeed());
 
-        installPanel=Box("TowerInstallPanel",canvas,new Vector2(0,0),new Vector2(380,88),new Vector2(492,246));
+        installPanel=Box("TowerInstallPanel",canvas,new Vector2(.5f,0),new Vector2(-126,112),new Vector2(660,328));
         BuildInstallCategories();installPanel.gameObject.SetActive(false);
-        Button("CancelPlacement",canvas,new Vector2(18,-1000),new Vector2(270,48),()=>"설치 취소 · Esc",()=>CancelInstallation(),()=>game.Installing.HasValue||installOpen);
-        playerPanel=Box("PlayerGrowthPanel",canvas,new Vector2(1,0),new Vector2(-380,88),new Vector2(440,310));
-        CoreGuardianHudSkin.Icon(playerPanel,"Upgrade",new Vector2(16,-10),new Vector2(28,28));
-        Text("Title",playerPanel,new Vector2(52,-4),new Vector2(370,40),22).text="플레이어 능력치 강화";
+        Button("CancelPlacement",canvas,new Vector2(18,-1000),new Vector2(270,56),()=>"설치 취소 · Esc",()=>CancelInstallation(),()=>game.Installing.HasValue||installOpen);
+        playerPanel=Box("PlayerGrowthPanel",canvas,new Vector2(.5f,0),new Vector2(500,112),new Vector2(520,412));
+        CoreGuardianHudSkin.Icon(playerPanel,"Upgrade",new Vector2(16,-16),new Vector2(28,28));
+        Text("Title",playerPanel,new Vector2(54,-14),new Vector2(446,32),22).text="플레이어 능력치 강화";
         var stats=new[]{"damage","rate","projectileSpeed","range"};var names=new[]{"공격력","공격속도","투사체 속도","사거리"};
         for(int i=0;i<stats.Length;i++)
         {
             string stat=stats[i],label=names[i];
-            Button(stat,playerPanel,new Vector2(16,-48-i*62),new Vector2(408,56),()=>UpgradeLabel(game.Session.Player,"Player",stat,game.Session.PlayerUpgradePrice(stat),"골드"),()=>PurchasePlayer(stat),()=>game.Session.Gold>=game.Session.PlayerUpgradePrice(stat)&&(game.Session.Phase==SessionPhase.Preparation||game.Session.Phase==SessionPhase.Combat));
+            Button(stat,playerPanel,new Vector2(16,-60-i*84),new Vector2(488,80),()=>UpgradeLabel(game.Session.Player,"Player",stat,game.Session.PlayerUpgradePrice(stat),"골드"),()=>PurchasePlayer(stat),()=>game.Session.Gold>=game.Session.PlayerUpgradePrice(stat)&&(game.Session.Phase==SessionPhase.Preparation||game.Session.Phase==SessionPhase.Combat));
         }
         playerPanel.gameObject.SetActive(false);
-        towerPanel=Box("TowerInformation",canvas,new Vector2(0,1),new Vector2(16,-120),new Vector2(390,460));
-        towerInfo=Text("Stats",towerPanel,new Vector2(16,-8),new Vector2(358,120),20);
+        towerPanel=Box("TowerInformation",canvas,new Vector2(0,1),new Vector2(24,-120),new Vector2(460,560));
+        towerInfo=Text("Stats",towerPanel,new Vector2(16,-16),new Vector2(428,112),20);
         foreach(var stat in new[]{"damage","rate","projectileSpeed","range","buffDamage"})
         {
             int index=Array.IndexOf(new[]{"damage","rate","projectileSpeed","range","buffDamage"},stat);string captured=stat;
-            var button=Button("Tower_"+stat,towerPanel,new Vector2(16,-134-index*54),new Vector2(358,48),()=>Selected()==null?"":UpgradeLabel(Selected().Stats,Selected().Kind.ToString(),captured,Price(captured),"수정"),()=>PurchaseTower(captured),()=>TowerCanUpgrade(captured));
+            var button=Button("Tower_"+stat,towerPanel,new Vector2(16,-140-index*84),new Vector2(428,80),()=>Selected()==null?"":UpgradeLabel(Selected().Stats,Selected().Kind.ToString(),captured,Price(captured),"수정"),()=>PurchaseTower(captured),()=>TowerCanUpgrade(captured));
             refresh.Add(()=>
             {
                 var t=Selected();bool relevant=t!=null&&Relevant(t,captured);button.gameObject.SetActive(relevant);
-                if(relevant)button.GetComponent<RectTransform>().anchoredPosition=new Vector2(16,-134-(t.Kind==TowerKind.Support?(captured=="range"?0:1):index)*54);
+                if(relevant)button.GetComponent<RectTransform>().anchoredPosition=new Vector2(16,-140-(t.Kind==TowerKind.Support?(captured=="range"?0:1):index)*84);
             });
         }
-        Button("Destroy",towerPanel,new Vector2(16,-402),new Vector2(358,42),()=>"파괴 · 실제 지출 50% 환급",()=>game.DestroySelected());
+        Button("Destroy",towerPanel,new Vector2(16,-488),new Vector2(428,56),()=>"파괴 · 실제 지출 50% 환급",()=>game.DestroySelected());
         towerPanel.gameObject.SetActive(false);
-        Button("TowerFold",canvas,new Vector2(16,-590),new Vector2(180,38),()=>towerFolded?"타워 펼치기":"타워 접기",()=>{towerFolded=!towerFolded;});
-        damagePanel=Box("DamagePanel",canvas,new Vector2(1,1),new Vector2(-16,-104),new Vector2(280,490));
-        CoreGuardianHudSkin.Icon(damagePanel,"Damage",new Vector2(14,-8),new Vector2(28,28));
-        Text("Title",damagePanel,new Vector2(50,-2),new Vector2(220,40),20).text="라운드 누적 피해";
-        var scroll=Box("Scroll",damagePanel,new Vector2(0,1),new Vector2(10,-48),new Vector2(260,430),false);
-        var viewport=Box("Viewport",scroll,new Vector2(0,1),Vector2.zero,new Vector2(260,430));
-        viewport.gameObject.AddComponent<UnityEngine.UI.Mask>().showMaskGraphic=false;
-        damageContent=Box("Content",viewport,new Vector2(0,1),Vector2.zero,new Vector2(260,0),false);
+        Button("TowerFold",canvas,new Vector2(24,-692),new Vector2(180,48),()=>towerFolded?"타워 펼치기":"타워 접기",()=>{towerFolded=!towerFolded;});
+        damagePanel=Box("DamagePanel",canvas,new Vector2(1,1),new Vector2(-16,-140),new Vector2(320,380));
+        CoreGuardianHudSkin.Icon(damagePanel,"Damage",new Vector2(16,-16),new Vector2(28,28));
+        Text("Title",damagePanel,new Vector2(54,-14),new Vector2(250,32),20).text="라운드 누적 피해";
+        var scroll=Box("Scroll",damagePanel,new Vector2(0,1),new Vector2(16,-56),new Vector2(288,308),false);
+        var viewport=Box("Viewport",scroll,new Vector2(0,1),Vector2.zero,new Vector2(288,308),false);
+        var scrollSurface=viewport.gameObject.AddComponent<UnityEngine.UI.Image>();scrollSurface.color=Color.clear;scrollSurface.raycastTarget=true;
+        viewport.gameObject.AddComponent<UnityEngine.UI.RectMask2D>();
+        damageContent=Box("Content",viewport,new Vector2(0,1),Vector2.zero,new Vector2(288,0),false);
         var layout=damageContent.gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();layout.spacing=8;layout.childControlHeight=true;layout.childForceExpandHeight=false;layout.childControlWidth=true;
         damageContent.gameObject.AddComponent<UnityEngine.UI.ContentSizeFitter>().verticalFit=UnityEngine.UI.ContentSizeFitter.FitMode.PreferredSize;
         var sr=scroll.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();sr.viewport=viewport;sr.content=damageContent;sr.horizontal=false;sr.movementType=UnityEngine.UI.ScrollRect.MovementType.Clamped;
-        Button("DamageFold",canvas,new Vector2(1730,-610),new Vector2(174,38),()=>damagePanel.gameObject.activeSelf?"피해 접기":"피해 펼치기",()=>damagePanel.gameObject.SetActive(!damagePanel.gameObject.activeSelf));
-        Button("InstallFold",canvas,new Vector2(380,-938),new Vector2(150,34),()=>installOpen?"설치 접기":"설치 펼치기",()=>SetInstallPanelOpen(!installOpen));
-        Button("PlayerFold",canvas,new Vector2(1390,-938),new Vector2(150,34),()=>playerOpen?"강화 접기":"강화 펼치기",()=>{playerOpen=!playerOpen;playerPanel.gameObject.SetActive(playerOpen);});
+        Button("DamageFold",canvas,new Vector2(1730,-532),new Vector2(174,48),()=>damagePanel.gameObject.activeSelf?"피해 접기":"피해 펼치기",()=>damagePanel.gameObject.SetActive(!damagePanel.gameObject.activeSelf));
+        Button("InstallFold",canvas,new Vector2(380,-938),new Vector2(150,48),()=>installOpen?"설치 접기":"설치 펼치기",()=>SetInstallPanelOpen(!installOpen));
+        Button("PlayerFold",canvas,new Vector2(1390,-938),new Vector2(150,48),()=>playerOpen?"강화 접기":"강화 펼치기",()=>{playerOpen=!playerOpen;playerPanel.gameObject.SetActive(playerOpen);});
         // Top compact display retains all four critical values when collapsed.
-        Button("TopFold",canvas,new Vector2(1425,-20),new Vector2(150,36),()=>topDetails.sizeDelta.y>40?"상태 접기":"상태 펼치기",()=>{topDetails.sizeDelta=new Vector2(920,topDetails.sizeDelta.y>40?40:64);foreach(Transform child in topDetails){var rt=child as RectTransform;if(rt!=null)rt.anchoredPosition=new Vector2(rt.anchoredPosition.x,topDetails.sizeDelta.y>40?(child.name.StartsWith("Symbol")?-16:-6):-4);}});
+        Button("TopFold",canvas,new Vector2(1432,-24),new Vector2(170,48),()=>topDetails.sizeDelta.y>52?"상태 접기":"상태 펼치기",()=>{bool compact=topDetails.sizeDelta.y>52;topDetails.sizeDelta=new Vector2(920,compact?52:72);foreach(Transform child in topDetails){var rt=child as RectTransform;if(rt==null||child.name=="Status")continue;bool symbol=child.name.StartsWith("Symbol");rt.anchoredPosition=new Vector2(rt.anchoredPosition.x,compact?-12:(symbol?-21:-16));if(!symbol)rt.sizeDelta=new Vector2(rt.sizeDelta.x,compact?28:40);}});
         Refresh();
-        Pin("Reload",new Vector2(1,1),new Vector2(-30,-16));Pin("TestSpeed",new Vector2(1,1),new Vector2(-30,-70));
-        Pin("DamageFold",new Vector2(1,1),new Vector2(-16,-610));
-        Pin("PlayerFold",new Vector2(1,0),new Vector2(-215,88));
-        Pin("InstallFold",new Vector2(0,0),new Vector2(218,88));
+        Pin("Reload",new Vector2(1,1),new Vector2(-30,-16));Pin("TestSpeed",new Vector2(1,1),new Vector2(-30,-80));
+        Pin("DamageFold",new Vector2(1,1),new Vector2(-16,-532));
+        Pin("PlayerFold",new Vector2(.5f,0),new Vector2(847,112));
+        Pin("InstallFold",new Vector2(.5f,0),new Vector2(-539,112));
         Pin("CancelPlacement",new Vector2(0,0),new Vector2(18,32));
     }
     void Pin(string name,Vector2 anchor,Vector2 position){var r=canvas.Find(name) as RectTransform;if(r==null)return;r.anchorMin=r.anchorMax=r.pivot=anchor;r.anchoredPosition=position;}
@@ -224,7 +226,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
     void ClearInstallButtons(){foreach(var a in installRefresh)refresh.Remove(a);installRefresh.Clear();foreach(Transform child in installPanel){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
     void InstallButton(int index,string label,Action action,Func<bool> available=null)
     {
-        int before=refresh.Count;Button(label,installPanel,new Vector2(12+(index%3)*160,-12-(index/3)*76),new Vector2(148,64),()=>label,action,()=>game.Session.Phase==SessionPhase.Preparation&&(available==null||available()));
+        int before=refresh.Count;Button(label,installPanel,new Vector2(16+(index%3)*212,-16-(index/3)*100),new Vector2(204,96),()=>label,action,()=>game.Session.Phase==SessionPhase.Preparation&&(available==null||available()));
         installRefresh.Add(refresh[before]);
     }
     void BuildInstallList(bool support)
@@ -237,7 +239,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
     void InstallTowerButton(int index,TowerKind kind)
     {
         int before=refresh.Count;
-        var b=Button("Install_"+kind,installPanel,new Vector2(12+(index%3)*160,-12-(index/3)*76),new Vector2(148,64),()=> {
+        var b=Button("Install_"+kind,installPanel,new Vector2(16+(index%3)*212,-16-(index/3)*100),new Vector2(204,96),()=> {
             string reason=game.Session.Crystals<game.Session.Data.Towers[kind].Cost?"\n수정 부족":kind==TowerKind.Support&&!game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support)?"\n공격 포탑 필요":"";
             return TowerName(kind)+"\n"+game.Session.Data.Towers[kind].Cost+"수정"+reason;
         },()=>{game.ChooseTower(kind);Refresh();},()=>game.Session.Phase==SessionPhase.Preparation&&game.Session.Crystals>=game.Session.Data.Towers[kind].Cost&&(kind!=TowerKind.Support||game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support)));
@@ -326,11 +328,11 @@ public sealed class CoreGuardianHud : MonoBehaviour
         int max=totals.Length==0?0:totals[0].Value;
         foreach(var pair in totals)
         {
-            var row=Box(pair.Key,damageContent,new Vector2(0,1),Vector2.zero,new Vector2(260,60),false);
+            var row=Box(pair.Key,damageContent,new Vector2(0,1),Vector2.zero,new Vector2(288,60),false);
             row.gameObject.AddComponent<UnityEngine.UI.LayoutElement>().preferredHeight=60;
             CoreGuardianHudSkin.Icon(row,pair.Key=="Player"?"Upgrade":"Install",new Vector2(4,-2),new Vector2(25,25));
-            Text("Value",row,new Vector2(34,-2),new Vector2(218,28),17).text=SourceName(pair.Key)+"  "+pair.Value;
-            var bar=Box("Bar",row,new Vector2(0,1),new Vector2(4,-34),new Vector2(max==0?0:248f*pair.Value/max,16));bar.GetComponent<UnityEngine.UI.Image>().color=new Color(.22f,.78f,.8f);
+            Text("Value",row,new Vector2(34,-2),new Vector2(250,28),17).text=SourceName(pair.Key)+"  "+pair.Value;
+            var bar=Box("Bar",row,new Vector2(0,1),new Vector2(4,-34),new Vector2(max==0?0:280f*pair.Value/max,16));bar.GetComponent<UnityEngine.UI.Image>().color=new Color(.22f,.78f,.8f);
         }
     }
     void OnDestroy(){if(game!=null){game.Changed-=Refresh;if(game.Session!=null)game.Session.DamageApplied-=ShowDamageNumber;}ClearDamageNumbers();if(font!=null)Destroy(font);}
