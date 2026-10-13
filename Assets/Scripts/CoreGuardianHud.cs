@@ -174,15 +174,11 @@ public sealed class CoreGuardianHud : MonoBehaviour
         damageContent.gameObject.AddComponent<UnityEngine.UI.ContentSizeFitter>().verticalFit=UnityEngine.UI.ContentSizeFitter.FitMode.PreferredSize;
         var sr=scroll.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();sr.viewport=viewport;sr.content=damageContent;sr.horizontal=false;sr.movementType=UnityEngine.UI.ScrollRect.MovementType.Clamped;
         Button("DamageFold",canvas,new Vector2(1730,-532),new Vector2(174,48),()=>damagePanel.gameObject.activeSelf?"피해 접기":"피해 펼치기",()=>damagePanel.gameObject.SetActive(!damagePanel.gameObject.activeSelf));
-        Button("InstallFold",canvas,new Vector2(380,-938),new Vector2(150,48),()=>installOpen?"설치 접기":"설치 펼치기",()=>SetInstallPanelOpen(!installOpen));
-        Button("PlayerFold",canvas,new Vector2(1390,-938),new Vector2(150,48),()=>playerOpen?"강화 접기":"강화 펼치기",()=>{playerOpen=!playerOpen;playerPanel.gameObject.SetActive(playerOpen);});
         // Top compact display retains all four critical values when collapsed.
         Button("TopFold",canvas,new Vector2(1432,-24),new Vector2(170,48),()=>topDetails.sizeDelta.y>52?"상태 접기":"상태 펼치기",()=>{bool compact=topDetails.sizeDelta.y>52;topDetails.sizeDelta=new Vector2(920,compact?52:72);foreach(Transform child in topDetails){var rt=child as RectTransform;if(rt==null||child.name=="Status")continue;bool symbol=child.name.StartsWith("Symbol");rt.anchoredPosition=new Vector2(rt.anchoredPosition.x,compact?-12:(symbol?-21:-16));if(!symbol)rt.sizeDelta=new Vector2(rt.sizeDelta.x,compact?28:40);}});
         Refresh();
         Pin("Reload",new Vector2(1,1),new Vector2(-30,-16));Pin("TestSpeed",new Vector2(1,1),new Vector2(-30,-80));
         Pin("DamageFold",new Vector2(1,1),new Vector2(-16,-532));
-        Pin("PlayerFold",new Vector2(.5f,0),new Vector2(847,112));
-        Pin("InstallFold",new Vector2(.5f,0),new Vector2(-539,112));
         Pin("CancelPlacement",new Vector2(0,0),new Vector2(18,32));
     }
     void Pin(string name,Vector2 anchor,Vector2 position){var r=canvas.Find(name) as RectTransform;if(r==null)return;r.anchorMin=r.anchorMax=r.pivot=anchor;r.anchoredPosition=position;}
@@ -220,7 +216,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
     void BuildInstallCategories()
     {
         ClearInstallButtons();
-        InstallButton(0,"공격 포탑",()=>BuildInstallList(false));InstallButton(1,"지원 포탑",()=>BuildInstallList(true));InstallButton(8,"접기",()=>SetInstallPanelOpen(false));
+        InstallButton(0,"공격 포탑",()=>BuildInstallList(false));InstallButton(1,"지원 포탑",()=>BuildInstallList(true));
     }
     readonly List<Action> installRefresh = new List<Action>();
     void ClearInstallButtons(){foreach(var a in installRefresh)refresh.Remove(a);installRefresh.Clear();foreach(Transform child in installPanel){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
