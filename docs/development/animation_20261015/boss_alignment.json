@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/animation_20261015/InstallAlignedBoss.cs",
+      "entry": "InstallAlignedBoss.Main"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 1480,
+      "executeMs": 504,
+      "assemblyName": "PipelineRunScript_InstallAlignedBoss_75fc78510c834e2f9579a0eb4db96985",
+      "success": true,
+      "result": "{\"success\":true,\"oldPivot\":[54.0,8.5],\"newPivot\":[32.5,6.5],\"originalPreserved\":true}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/animation_20261015/InstallAlignedBoss.cs",
+      "entry": "InstallAlignedBoss.Correct"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 95,
+      "executeMs": 621,
+      "assemblyName": "PipelineRunScript_InstallAlignedBoss_f09a1d1bec8140c0aac0c7b2c398660b",
+      "success": true,
+      "result": "Aligned both shoes at pivot(42,6.5), excluding axe pixels beginning at row15; original PNG and prefab preserved"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

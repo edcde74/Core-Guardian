@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/animation_20261015/PrepareAnimationAssets.cs",
+      "entry": "PrepareAnimationAssets.Main"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 448,
+      "executeMs": 3072,
+      "assemblyName": "PipelineRunScript_PrepareAnimationAssets_9eb3343cd56b44e6940ffba4b496eb51",
+      "success": true,
+      "result": "{\"success\":true,\"results\":[{\"role\":\"Attack\",\"targetHeight\":64,\"frames\":16,\"reference\":\"Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_attack_v2.png\",\"palette\":56},{\"role\":\"Defense\",\"targetHeight\":48,\"frames\":16,\"reference\":\"Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_defense_v2.png\",\"palette\":56},{\"role\":\"Buff\",\"targetHeight\":80,\"frames\":16,\"reference\":\"Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_buff_v2.png\",\"palette\":56},{\"role\":\"Boss\",\"targetHeight\":66,\"frames\":16,\"reference\":\"Assets/Resources/CoreGuardian/Art/BossEye/BossEye.png\",\"palette\":23},{\"role\":\"Player\",\"targetHeight\":48,\"frames\":16,\"reference\":\"Assets/Art/ScreenTests/20260930/Sprites/player.png\",\"palette\":56},{\"role\":\"Single\",\"targetHeight\":64,\"frames\":17,\"reference\":\"Assets/Art/ScreenTests/20260930/Sprites/tower_single.png\",\"palette\":56},{\"role\":\"Multi\",\"targetHeight\":56,\"frames\":17,\"reference\":\"Assets/Art/ScreenTests/20260930/Sprites/tower_multi.png\",\"palette\":56},{\"role\":\"Support\",\"targetHeight\":64,\"frames\":17,\"reference\":\"Assets/Art/ScreenTests/20260930/Sprites/tower_support.png\",\"palette\":56}]}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

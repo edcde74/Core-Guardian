@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/animation_20261015/VerifyAnimationRuntime.cs",
+      "entry": "VerifyAnimationRuntime.Begin"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 173,
+      "executeMs": 49,
+      "assemblyName": "PipelineRunScript_VerifyAnimationRuntime_e259a56eb6eb46db8bbe21ee2b9d90b7",
+      "success": true,
+      "result": "{\"success\":true,\"launches\":5,\"mode\":\"Visual diagnostic only; injected encounter; not balance evidence\",\"actors\":[{\"name\":\"Tower_Support_3\",\"Loaded\":true,\"Direction\":3,\"ShotCount\":0,\"muzzle\":[8.709375,9.909375]},{\"name\":\"Tower_Single_1\",\"Loaded\":true,\"Direction\":2,\"ShotCount\":1,\"muzzle\":[8.643291,11.0720711]},{\"name\":\"Enemy_Buff_7\",\"Loaded\":true,\"Direction\":3,\"ShotCount\":0,\"muzzle\":[8.979375,11.859375]},{\"name\":\"Enemy_Boss_4\",\"Loaded\":true,\"Direction\":3,\"ShotCount\":0,\"muzzle\":[11.1309748,11.7281256]},{\"name\":\"Enemy_Attack_1\",\"Loaded\":true,\"Direction\":3,\"ShotCount\":0,\"muzzle\":[9.345375,11.7093754]},{\"name\":\"Enemy_Attack_5\",\"Loaded\":true,\"Direction\":3,\"ShotCount\":0,\"muzzle\":[7.785375,11.7093754]},{\"name\":\"Enemy_Defense_6\",\"Loaded\":true,\"Direction\":3,\"ShotCount\":0,\"muzzle\":[8.378175,11.5593758]},{\"name\":\"PlayerStart_Prototype\",\"Loaded\":true,\"Direction\":2,\"ShotCount\":1,\"muzzle\":[9.290626,10.7718754]},{\"name\":\"Enemy_Buff_3\",\"Loaded\":true,\"Direction\":3,\"ShotCount\":0,\"muzzle\":[10.5393744,11.859375]},{\"name\":\"Tower_Multi_2\",\"Loaded\":true,\"Direction\":2,\"ShotCount\":1,\"muzzle\":[10.2934017,10.9216642]},{\"name\":\"Enemy_Defense_2\",\"Loaded\":true,\"Direction\":3,\"ShotCount\":0,\"muzzle\":[9.938175,11.5593758]}]}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": "{\r\n  \"status\": \"completed\",\r\n  \"duration\": 0.26,\r\n  \"summary\": {\r\n    \"total\": 3,\r\n    \"passed\": 0,\r\n    \"failed\": 3,\r\n    \"skipped\": 0,\r\n    \"inconclusive\": 0\r\n  },\r\n  \"results\": [\r\n    {\r\n      \"FullName\": \"CoreGuardianAnimationTimingTests.AugmentedVolleyPublishesEveryProjectile_WithoutChangingDamageOrCadence\",\r\n      \"Status\": \"Failed\",\r\n      \"Duration\": 0.0398809,\r\n      \"Message\": \"  Expected: not null\\r\\n  But was:  null\\r\\n\",\r\n      \"StackTrace\": \"at CoreGuardianAnimationTimingTests.AugmentedVolleyPublishesEveryProjectile_WithoutChangingDamageOrCadence () [0x00040] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\Assets\\\\Game\\\\Tests\\\\EditMode\\\\CoreGuardianAnimationTimingTests.cs:51\\r\\n\"\r\n    },\r\n    {\r\n      \"FullName\": \"CoreGuardianAnimationTimingTests.LaunchFeedbackOccursAtCreation_EvenWhenProjectileHitsWithinSameTick(1.0f)\",\r\n      \"Status\": \"Failed\",\r\n      \"Duration\": 0.0015828,\r\n      \"Message\": \"  Animation must receive the actual shot, including same-tick hits\\r\\n  Expected: not null\\r\\n  But was:  null\\r\\n\",\r\n      \"StackTrace\": \"at CoreGuardianAnimationTimingTests.LaunchFeedbackOccursAtCreation_EvenWhenProjectileHitsWithinSameTick (System.Single rate) [0x00058] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\Assets\\\\Game\\\\Tests\\\\EditMode\\\\CoreGuardianAnimationTimingTests.cs:30\\r\\n\"\r\n    },\r\n    {\r\n      \"FullName\": \"CoreGuardianAnimationTimingTests.LaunchFeedbackOccursAtCreation_EvenWhenProjectileHitsWithinSameTick(8.0f)\",\r\n      \"Status\": \"Failed\",\r\n      \"Duration\": 0.0007709,\r\n      \"Message\": \"  Animation must receive the actual shot, including same-tick hits\\r\\n  Expected: not null\\r\\n  But was:  null\\r\\n\",\r\n      \"StackTrace\": \"at CoreGuardianAnimationTimingTests.LaunchFeedbackOccursAtCreation_EvenWhenProjectileHitsWithinSameTick (System.Single rate) [0x00058] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\Assets\\\\Game\\\\Tests\\\\EditMode\\\\CoreGuardianAnimationTimingTests.cs:30\\r\\n\"\r\n    }\r\n  ]\r\n}",
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

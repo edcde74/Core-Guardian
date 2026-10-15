@@ -31,6 +31,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     Tile occupiedTile;
     CoreGuardianHud hud;
     CoreGuardianCombatArt combatArt;
+    CoreGuardianCombatAnimation combatAnimation;
     GameObject bossArt;
     int previousGold;
     int previousCore;
@@ -44,7 +45,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         try
         {
             if(ground==null||player==null||occupied==null)throw new InvalidOperationException("Missing gameplay scene references");
-            bossArt=Resources.Load<GameObject>("CoreGuardian/Art/BossEye/BossEyePrefab");
+            bossArt=Resources.Load<GameObject>("CoreGuardian/Animation/Boss/BossAnimated");
             if(bossArt==null)throw new InvalidOperationException("Missing approved boss art prefab");
             Session=new Session(CombatData.Load(enemiesCsv.text,towersCsv.text,stageCsv.text,upgradesCsv.text,wavesCsv.text));
             var cells=new[]{new Vector2Int(0,12),new Vector2Int(11,12),new Vector2Int(11,18),new Vector2Int(35,18),new Vector2Int(35,6),new Vector2Int(17,6),new Vector2Int(17,12),new Vector2Int(29,12),new Vector2Int(29,9)};
@@ -54,6 +55,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             square=MakeSprite(false);dot=MakeSprite(true);
             hud=gameObject.AddComponent<CoreGuardianHud>();hud.Configure(this);
             combatArt=gameObject.AddComponent<CoreGuardianCombatArt>();combatArt.Configure(this,hud);
+            combatAnimation=gameObject.AddComponent<CoreGuardianCombatAnimation>();combatAnimation.Configure(this);
             previousGold=Session.Gold;
             previousCore=Session.CoreEnergy;
             Feedback="공격 포탑을 선택하고 바닥 칸을 클릭하세요. WASD: 한 칸 이동";
@@ -190,6 +192,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
                 bar.transform.SetParent(view.transform,false);bar.transform.localPosition=new Vector3(0,e.Kind==EnemyKind.Boss?1.4f:.8f,0);healthViews[e.Id]=bar.transform;
             }
             view.transform.position=World(e.Position);
+            combatAnimation.Enemy(e,view);
             healthViews[e.Id].localScale=new Vector3(.35f*e.Health/e.Spec.Health,.035f,1);
             if(e.Buffed&&!auraViews.ContainsKey(e.Id))auraViews[e.Id]=combatArt.Marker("EnemySpeedBuff",World(e.Position),.17f);
             if(auraViews.TryGetValue(e.Id,out var aura)){aura.SetActive(e.Buffed);aura.transform.position=World(e.Position)+Vector3.up*1.02f;}
@@ -200,6 +203,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         {
             if(!towerViews.TryGetValue(t.Id,out var view)){view=Instantiate(towerArt[(int)t.Kind]);view.name="Tower_"+t.Kind+"_"+t.Id;towerViews.Add(t.Id,view);}
             view.transform.position=World(t.Position);
+            combatAnimation.Tower(t,view);
             bool supported=t.Kind!=TowerKind.Support&&(Session.Augments.TowerBuffPercent>0||Session.Towers.Any(s=>s.Kind==TowerKind.Support&&Vector2.Distance(s.Position,t.Position)<=s.Stats.Range));
             if(supported&&!towerAuraViews.ContainsKey(t.Id))towerAuraViews[t.Id]=combatArt.Marker("TowerDamageBuff",World(t.Position),.2f);
             if(towerAuraViews.TryGetValue(t.Id,out var aura)){aura.SetActive(supported);aura.transform.position=World(t.Position)+Vector3.up*.88f;}
@@ -208,10 +212,11 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         foreach(var p in Session.Projectiles)
         {
             if(!projectileViews.TryGetValue(p.Id,out var view)){view=CreateSprite("Projectile_"+p.Id,combatArt.Projectile(p),World(p.Position),Color.white,1500);CoreGuardianCombatArt.SetWidth(view.GetComponent<SpriteRenderer>(),p.Source=="Player"?.2f:.275f);projectileViews.Add(p.Id,view);}
-            view.transform.position=World(p.Position)+Vector3.up*.25f;
-            var direction=p.Target.Position-p.Position;
+            view.transform.position=combatAnimation.ProjectilePosition(p);
+            var direction=World(p.Target.Position)+Vector3.up*.25f-view.transform.position;
             if(direction.sqrMagnitude>.000001f)view.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
         }
+        combatAnimation.Player();
     }
     void SyncRemoved(Dictionary<int,GameObject> views,IEnumerable<int> active)
     {

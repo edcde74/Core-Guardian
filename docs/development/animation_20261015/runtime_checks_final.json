@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/animation_20261015/VerifyAnimationRuntime.cs",
+      "entry": "VerifyAnimationRuntime.Check"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 42,
+      "executeMs": 6,
+      "assemblyName": "PipelineRunScript_VerifyAnimationRuntime_1671ac9424c04ada9512c2086509417e",
+      "success": true,
+      "result": "{\"success\":true,\"results\":[{\"name\":\"Tower_Support_3\",\"directions\":0,\"frames\":[]},{\"name\":\"Tower_Single_1\",\"directions\":0,\"frames\":[]},{\"name\":\"Enemy_Buff_7\",\"directions\":4,\"frames\":[\"Buff_0_2\",\"Buff_1_0\",\"Buff_2_2\",\"Buff_3_0\"]},{\"name\":\"Enemy_Boss_4\",\"directions\":4,\"frames\":[\"Boss_0_2\",\"Boss_1_0\",\"Boss_2_2\",\"Boss_3_0\"]},{\"name\":\"Enemy_Attack_1\",\"directions\":4,\"frames\":[\"Attack_0_2\",\"Attack_1_0\",\"Attack_2_2\",\"Attack_3_0\"]},{\"name\":\"Enemy_Attack_5\",\"directions\":4,\"frames\":[\"Attack_0_2\",\"Attack_1_0\",\"Attack_2_2\",\"Attack_3_0\"]},{\"name\":\"Enemy_Defense_6\",\"directions\":4,\"frames\":[\"Defense_0_2\",\"Defense_1_0\",\"Defense_2_2\",\"Defense_3_0\"]},{\"name\":\"PlayerStart_Prototype\",\"directions\":8,\"frames\":[\"Player_0_1\",\"Player_1_1\",\"Player_2_1\",\"Player_3_1\",\"Player_4_1\",\"Player_5_1\",\"Player_6_1\",\"Player_7_1\"]},{\"name\":\"Enemy_Buff_3\",\"directions\":4,\"frames\":[\"Buff_0_2\",\"Buff_1_0\",\"Buff_2_2\",\"Buff_3_0\"]},{\"name\":\"Tower_Multi_2\",\"directions\":0,\"frames\":[]},{\"name\":\"Enemy_Defense_2\",\"directions\":4,\"frames\":[\"Defense_0_2\",\"Defense_1_0\",\"Defense_2_2\",\"Defense_3_0\"]}]}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
