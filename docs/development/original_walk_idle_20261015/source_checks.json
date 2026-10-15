@@ -1,0 +1,125 @@
+[
+  {
+    "role": "Attack",
+    "source": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_attack_v2.png",
+    "difference": 0,
+    "layers": [
+      {
+        "name": "Body",
+        "pixels": 905
+      },
+      {
+        "name": "LeftUpper",
+        "pixels": 97
+      },
+      {
+        "name": "LeftLower",
+        "pixels": 105
+      },
+      {
+        "name": "RightUpper",
+        "pixels": 84
+      },
+      {
+        "name": "RightLower",
+        "pixels": 99
+      }
+    ]
+  },
+  {
+    "role": "Defense",
+    "source": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_defense_v2.png",
+    "difference": 0,
+    "layers": [
+      {
+        "name": "Body",
+        "pixels": 954
+      },
+      {
+        "name": "LeftUpper",
+        "pixels": 24
+      },
+      {
+        "name": "LeftLower",
+        "pixels": 10
+      },
+      {
+        "name": "RightUpper",
+        "pixels": 61
+      },
+      {
+        "name": "RightLower",
+        "pixels": 96
+      }
+    ]
+  },
+  {
+    "role": "Buff",
+    "source": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_buff_v2.png",
+    "difference": 0,
+    "layers": [
+      {
+        "name": "Body",
+        "pixels": 1364
+      },
+      {
+        "name": "LeftUpper",
+        "pixels": 72
+      },
+      {
+        "name": "LeftLower",
+        "pixels": 96
+      },
+      {
+        "name": "RightUpper",
+        "pixels": 64
+      },
+      {
+        "name": "RightLower",
+        "pixels": 74
+      }
+    ]
+  },
+  {
+    "role": "Boss",
+    "source": "Assets/Resources/CoreGuardian/Art/BossEye/BossEye.png",
+    "difference": 0,
+    "layers": [
+      {
+        "name": "Body",
+        "pixels": 1710
+      },
+      {
+        "name": "LeftUpper",
+        "pixels": 86
+      },
+      {
+        "name": "LeftLower",
+        "pixels": 97
+      },
+      {
+        "name": "RightUpper",
+        "pixels": 97
+      },
+      {
+        "name": "RightLower",
+        "pixels": 131
+      }
+    ]
+  },
+  {
+    "role": "Player",
+    "source": "Assets/Art/ScreenTests/20260930/Sprites/player.png",
+    "difference": 0,
+    "layers": [
+      {
+        "name": "Feet",
+        "pixels": 209
+      },
+      {
+        "name": "Upper",
+        "pixels": 822
+      }
+    ]
+  }
+]

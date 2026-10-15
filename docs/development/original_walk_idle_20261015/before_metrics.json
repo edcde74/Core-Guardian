@@ -1,0 +1,162 @@
+[
+  {
+    "role": "Attack",
+    "frameMetrics": [
+      {
+        "frame": -1,
+        "minY": 8,
+        "maxY": 71,
+        "minX": 27,
+        "maxX": 68
+      },
+      {
+        "frame": 0,
+        "minY": 8,
+        "maxY": 71,
+        "minX": 23,
+        "maxX": 63
+      },
+      {
+        "frame": 1,
+        "minY": 8,
+        "maxY": 73,
+        "minX": 24,
+        "maxX": 62
+      },
+      {
+        "frame": 2,
+        "minY": 8,
+        "maxY": 70,
+        "minX": 19,
+        "maxX": 64
+      },
+      {
+        "frame": 3,
+        "minY": 8,
+        "maxY": 71,
+        "minX": 23,
+        "maxX": 62
+      }
+    ]
+  },
+  {
+    "role": "Defense",
+    "frameMetrics": [
+      {
+        "frame": -1,
+        "minY": 8,
+        "maxY": 55,
+        "minX": 32,
+        "maxX": 64
+      },
+      {
+        "frame": 0,
+        "minY": 8,
+        "maxY": 55,
+        "minX": 34,
+        "maxX": 61
+      },
+      {
+        "frame": 1,
+        "minY": 8,
+        "maxY": 55,
+        "minX": 35,
+        "maxX": 61
+      },
+      {
+        "frame": 2,
+        "minY": 8,
+        "maxY": 55,
+        "minX": 34,
+        "maxX": 62
+      },
+      {
+        "frame": 3,
+        "minY": 8,
+        "maxY": 55,
+        "minX": 36,
+        "maxX": 62
+      }
+    ]
+  },
+  {
+    "role": "Buff",
+    "frameMetrics": [
+      {
+        "frame": -1,
+        "minY": 8,
+        "maxY": 87,
+        "minX": 31,
+        "maxX": 65
+      },
+      {
+        "frame": 0,
+        "minY": 8,
+        "maxY": 87,
+        "minX": 21,
+        "maxX": 63
+      },
+      {
+        "frame": 1,
+        "minY": 8,
+        "maxY": 87,
+        "minX": 21,
+        "maxX": 63
+      },
+      {
+        "frame": 2,
+        "minY": 8,
+        "maxY": 87,
+        "minX": 21,
+        "maxX": 63
+      },
+      {
+        "frame": 3,
+        "minY": 8,
+        "maxY": 86,
+        "minX": 21,
+        "maxX": 64
+      }
+    ]
+  },
+  {
+    "role": "Boss",
+    "frameMetrics": [
+      {
+        "frame": -1,
+        "minY": 14,
+        "maxY": 79,
+        "minX": 17,
+        "maxX": 78
+      },
+      {
+        "frame": 0,
+        "minY": 8,
+        "maxY": 73,
+        "minX": 18,
+        "maxX": 71
+      },
+      {
+        "frame": 1,
+        "minY": 8,
+        "maxY": 74,
+        "minX": 23,
+        "maxX": 67
+      },
+      {
+        "frame": 2,
+        "minY": 8,
+        "maxY": 72,
+        "minX": 18,
+        "maxX": 72
+      },
+      {
+        "frame": 3,
+        "minY": 8,
+        "maxY": 73,
+        "minX": 17,
+        "maxX": 72
+      }
+    ]
+  }
+]

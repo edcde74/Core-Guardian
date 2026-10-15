@@ -36,7 +36,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         }
         float dt=Time.deltaTime;
         var previous=previousEnemies[enemy.Id];
-        animation.Move(dt>0?(enemy.Position-previous)/dt:Vector2.zero,dt);
+        animation.Move(dt>0?(Vector2)(game.World(enemy.Position)-game.World(previous))/dt:Vector2.zero,dt);
         previousEnemies[enemy.Id]=enemy.Position;
         animation.Present(dt);
     }

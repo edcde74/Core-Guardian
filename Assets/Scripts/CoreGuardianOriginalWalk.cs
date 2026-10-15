@@ -1,0 +1,90 @@
+using UnityEngine;
+
+// Two legs cut from the approved source PNG; never loads a generated directional atlas.
+public sealed class CoreGuardianOriginalWalk
+{
+    readonly SpriteRenderer original, body;
+    readonly Transform rig;
+    readonly SpriteRenderer[] layers;
+    readonly float ppu, cyclePixels, lift;
+    readonly Leg left,right;
+    float phase,weight;
+    bool walking,mirror;
+    Vector2 groundDirection=Vector2.left;
+    sealed class Leg
+    {
+        public Vector2 hip,knee,ankle;
+        public Transform upper,lower;
+    }
+    public float Phase => phase;
+    public CoreGuardianOriginalWalk(SpriteRenderer artwork,string role)
+    {
+        original=artwork;ppu=original.sprite.pixelsPerUnit;
+        rig=new GameObject("OriginalWalk").transform;rig.SetParent(artwork.transform,false);
+        body=Layer("Body",role);var lu=Layer("LeftUpper",role);var ll=Layer("LeftLower",role);var ru=Layer("RightUpper",role);var rl=Layer("RightLower",role);
+        layers=new[]{body,lu,ll,ru,rl};
+        if(role=="Attack") {left=Bone(lu,ll,18,43,19,49,17,57);right=Bone(ru,rl,30,43,31,51,35,60);cyclePixels=14;lift=1.8f;}
+        else if(role=="Defense") {left=Bone(lu,ll,17,31,17,36,17,42);right=Bone(ru,rl,24,29,24,36,27,44);cyclePixels=10;lift=1.4f;}
+        else if(role=="Buff") {left=Bone(lu,ll,13,61,12,67,9,74);right=Bone(ru,rl,22,60,24,69,24,77);cyclePixels=12;lift=1.6f;}
+        else {left=Bone(lu,ll,32,51,32,59,28,67);right=Bone(ru,rl,47,51,49,60,53,70);cyclePixels=18;lift=2.2f;}
+        rig.gameObject.SetActive(false);
+    }
+    SpriteRenderer Layer(string name,string role)
+    {
+        var sprite=Resources.Load<Sprite>("CoreGuardian/OriginalWalk/"+role+"/"+name);
+        if(sprite==null)throw new System.InvalidOperationException("Missing original walk layer "+role+"/"+name);
+        var renderer=new GameObject(name).AddComponent<SpriteRenderer>();renderer.transform.SetParent(rig,false);renderer.sprite=sprite;renderer.sharedMaterial=original.sharedMaterial;return renderer;
+    }
+    Vector2 Point(float x,float top)=>(new Vector2(x,original.sprite.rect.height-top)-original.sprite.pivot);
+    Leg Bone(SpriteRenderer upper,SpriteRenderer lower,float hx,float hy,float kx,float ky,float ax,float ay)=>new Leg{hip=Point(hx,hy),knee=Point(kx,ky),ankle=Point(ax,ay),upper=upper.transform,lower=lower.transform};
+    public void Move(Vector2 worldVelocity,float delta)
+    {
+        walking=worldVelocity.sqrMagnitude>.000001f;
+        if(!walking)return;
+        Vector2 local=original.transform.InverseTransformVector(worldVelocity);
+        if(local.x>.0001f)mirror=true;else if(local.x<-.0001f)mirror=false;
+        phase=Mathf.Repeat(phase+local.magnitude*Mathf.Max(0,delta)*ppu/cyclePixels,1);
+        if(mirror)local.x=-local.x;
+        groundDirection=local.normalized;
+    }
+    // Stance lasts exactly half a cycle for either leg. The other half is a lifted return.
+    public static Vector2 FootOffset(float phase,float cyclePixels,float lift,Vector2 direction)
+    {
+        float p=Mathf.Repeat(phase,1),stride=cyclePixels*.5f;
+        if(p<.5f)return direction*(stride*(.5f-p*2));
+        float t=(p-.5f)*2,forward=t*t*(3-2*t);
+        return direction*(stride*(forward-.5f))+Vector2.up*(lift*Mathf.Sin(t*Mathf.PI));
+    }
+    public void Present(float delta)
+    {
+        weight=Mathf.MoveTowards(weight,walking?1:0,Mathf.Max(0,delta)*8);
+        original.flipX=mirror;
+        bool active=weight>.0001f;rig.gameObject.SetActive(active);original.enabled=!active;
+        if(!active)return;
+        rig.localScale=new Vector3(mirror?-1:1,1,1);
+        foreach(var layer in layers){layer.color=original.color;layer.sortingLayerID=original.sortingLayerID;layer.sortingOrder=original.sortingOrder;}
+        body.sortingOrder=original.sortingOrder+1;
+        // Two equal weight transfers per cycle, rather than one deep dip on a single leg.
+        Vector2 pelvis=Vector2.up*((-.65f+.3f*Mathf.Cos(phase*Mathf.PI*4))*weight);
+        body.transform.localPosition=pelvis/ppu;
+        Pose(left,FootOffset(phase,cyclePixels,lift,groundDirection)*weight,pelvis);
+        Pose(right,FootOffset(phase+.5f,cyclePixels,lift,groundDirection)*weight,pelvis);
+    }
+    void Pose(Leg leg,Vector2 offset,Vector2 pelvis)
+    {
+        Vector2 hip=leg.hip+pelvis,goal=leg.ankle+offset;
+        float upper=Vector2.Distance(leg.hip,leg.knee),lower=Vector2.Distance(leg.knee,leg.ankle);
+        Vector2 difference=goal-hip;float distance=Mathf.Clamp(difference.magnitude,Mathf.Abs(upper-lower)+.001f,upper+lower-.001f);
+        var direction=difference.normalized;float along=(upper*upper-lower*lower+distance*distance)/(2*distance);
+        var rest=leg.ankle-leg.hip;var kneeRest=leg.knee-leg.hip;float side=Mathf.Sign(rest.x*kneeRest.y-rest.y*kneeRest.x);if(side==0)side=1;
+        Vector2 knee=hip+direction*along+new Vector2(-direction.y,direction.x)*(side*Mathf.Sqrt(Mathf.Max(0,upper*upper-along*along)));
+        Vector2 ankle=hip+direction*distance;
+        Place(leg.upper,leg.hip,hip,Vector2.SignedAngle(leg.knee-leg.hip,knee-hip));
+        Place(leg.lower,leg.knee,knee,Vector2.SignedAngle(leg.ankle-leg.knee,ankle-knee));
+    }
+    void Place(Transform part,Vector2 sourceJoint,Vector2 destination,float angle)
+    {
+        var rotation=Quaternion.Euler(0,0,angle);part.localRotation=rotation;
+        part.localPosition=((Vector3)destination-rotation*(Vector3)sourceJoint)/ppu;
+    }
+}

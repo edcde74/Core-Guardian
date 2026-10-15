@@ -42,7 +42,8 @@ public class CoreGuardianAnimationPlayModeTests
             var unit=movement.GetComponent(Find("CoreGuardianUnitAnimation"));
             Assert.That((int)unit.GetType().GetProperty("ShotCount").GetValue(unit),Is.GreaterThan(0));
             unit.GetType().GetMethod("Present").Invoke(unit,new object[]{1f});
-            Assert.That(art.enabled,Is.True);Assert.That(rig.gameObject.activeSelf,Is.False,"Recovery must restore the unmodified original sprite");
+            Assert.That(rig.gameObject.activeSelf,Is.False,"Recovery must end the attack pose");
+            Assert.That(art.transform.Find("OriginalIdle").gameObject.activeSelf,Is.True,"Stationary player returns to original-pixel Idle");
         }
         finally{Time.timeScale=oldScale;}
 #else
@@ -83,7 +84,17 @@ public class CoreGuardianAnimationPlayModeTests
                 var unit=animationType.GetMethod("Attach").Invoke(null,new object[]{clone,roles[i]});
                 var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");
                 var directions=new[]{Vector2.right,Vector2.left,Vector2.up,Vector2.down};
-                for(int d=0;d<4;d++){animationType.GetMethod("Move").Invoke(unit,new object[]{directions[d],.3f});animationType.GetMethod("Present").Invoke(unit,new object[]{0f});Assert.That(art.sprite.name,Does.StartWith(roles[i]+"_"+d+"_"));}
+                var source=art.sprite;var root=art.transform.localPosition;
+                for(int d=0;d<4;d++)
+                {
+                    animationType.GetMethod("Move").Invoke(unit,new object[]{directions[d],.3f});animationType.GetMethod("Present").Invoke(unit,new object[]{.3f});
+                    Assert.That(art.sprite,Is.SameAs(source),"Movement must keep approved source, never generated frame art");
+                    Assert.That(art.transform.localPosition,Is.EqualTo(root));
+                    Assert.That((int)animationType.GetProperty("Direction").GetValue(unit),Is.EqualTo(d));
+                    Assert.That(art.transform.Find("OriginalWalk").gameObject.activeSelf,Is.True);
+                }
+                animationType.GetMethod("Move").Invoke(unit,new object[]{Vector2.zero,.3f});animationType.GetMethod("Present").Invoke(unit,new object[]{.3f});
+                Assert.That(art.enabled,Is.True);Assert.That(art.transform.Find("OriginalWalk").gameObject.activeSelf,Is.False);
             }
             finally{UnityEngine.Object.Destroy(clone);}
         }
