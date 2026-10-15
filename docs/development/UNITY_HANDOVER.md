@@ -17,7 +17,7 @@
 - 실제 프로토타입은 **1~11라운드**다. 준비 50초→전투→완료 수정→다음 준비로 진행한다. 10라운드 보스 처치 후 증강 3장/30초 선택→11라운드 준비로 연결된다. 보스가 도착해도 코어가 살아 있으면 증강 없이 진행한다. 코어 파괴는 패배, 11라운드 완료는 프로토타입 검증 종료다.
 - 라운드 사이 포탑·강화·기술병 위치·재화·코어를 유지하며 처음부터 재시작하면 초기화한다. 적/포탑 3종, 설치/강화/파괴/환급, 피해/재화 숫자, 전투 효과, 역할 진단, 증강 18종의 선택/누적/재설정을 구현했다.
 - 애니메이션 수정 전 복구 기준은 `6a910bd`, 그 이전 게임 적용은 `dfa046b`(갈무리)다. `12ff270`의 플레이어/포탑 외형은 사용자 거부 후 원본 복구했다. 최신 복구 커밋은 로컬 git log로 확인한다. 전체 HUD `ba72484`, 사람 테스트용 초반 수치 `d5c45db` 유지. GitHub push 없음.
-- **마지막 Unity 실시간 확인은 2026-10-15 원본 보행/Idle 수정 후**다. ready, **Play 중·TimeScale3**, compiling=false, 전투 씬dirty=false. 사용 중인 Play를 중단하거나 배속을 바꾸지 않았다. 읽기 전용 확인에서 enemy_attack_v2 원본/OriginalWalk 활성. 새 WalkIdle 빌드는 Play 검사에서 중단돼 아직 미생성, 현재 Play 종료 가능 여부를 사용자에게 확인 중이다. [재개 상태](original_walk_idle_20261015/README.md). 원본 씬/프리팹/CSV 변경 없음. 콘솔 과거 이력을 임의 삭제하지 않았다.
+- **마지막 Unity 실시간 확인은 2026-10-15 원본 보행/Idle 빌드·실행 후**다. ready, Play stopped, compiling=false, 전투 씬dirty=false, TimeScale1. 사용자가 Play 종료 후 진행을 승인해 새 WalkIdle 빌드를 실행했다. 실행 창응답/예외 로그0 확인. 원본 씬/프리팹/CSV 변경 없음. [현재 검증과 실행 경로](original_walk_idle_20261015/README.md). 과거 콘솔 이력을 임의 삭제하지 않았다.
 - 최신 원본 보행/Idle 후 전체 EditMode **78/78**, 전체 PlayMode **10/10 completed**. 원본 Sprite/루트 유지, 4방향 이동·정지 복귀·Idle 발 고정·공격 우선/이동 억제 확인. 몬스터4종+Idle 재합성 픽셀 차이0, 실제 Unity 캡처의 원본 비교 열/Idle 발 영역 동일. [현재 결과와 범위](original_walk_idle_20261015/README.md). 이전 공격 동작 75/75는 [과거 기록](original_animation_rework_20261015/README.md)이다. 기능 통과는 사람 체감/아트 승인의 근거가 아니다.
 
 ## 밸런스 재개 기준
@@ -43,7 +43,7 @@
 기존 플레이어·포탑 외형을 유지한 애니메이션 재작업이 먼저다. 얼굴/복장/무기·포신/받침대 비율까지 원본과 같은 방향·같은 픽셀 배율로 비교해야 한다. 새 도안이나 팔레트 일치만으로 완료 처리하지 않는다. 이후 밸런스 실측, BGM, 다른 화면비 HUD/사운드 검토가 남는다. 몬스터 코어 타격/사망 클립·최종 Pixel Perfect 규격은 미확정이다.
 
 - BGM 루프 WAV 3개는 Assets 외부 시안이며 미승인/게임 미적용이다. [자료](bgm_sketches_20261013.md). AudioProduction/와 관련 분석 폴더의 미커밋 작업을 임의 삭제·되돌리지 않는다.
-- 마지막 생성 실행 파일은 `Builds/Windows_20261015_OriginalMotion/CoreGuardian.exe`(게임3c5da7a)다. 이번 몬스터 원본 보행/플레이어 Idle(3de0c0e)은 **미포함**이다. WalkIdle 새 빌드는 현재 Play 종료 확인 대기이며 아직 생성/실행하지 않았다. 기존 빌드는 1~11·HUD·HP27·기본 방향 공격 동작1차를 포함한다. 조명/후처리 경고가 남아 있다. [기존 실행 기록](windows_build_20261015_original_motion/README.md), [최신 재개 상태](original_walk_idle_20261015/README.md). 10월13일 빌드/ZIP은 1~9라운드 이력으로 보존한다.
+- 최신 실행 파일은 **`Builds/Windows_20261015_WalkIdle/CoreGuardian.exe`**(게임`3de0c0e`)다. 1~11·보스·증강·HUD·HP27·원본 기반 공격1차·몬스터 관절 보행·플레이어 Idle을 포함한다. Windows64 빌드Succeeded(24.75초), 창1600×900 실행/응답 확인 후 열어두었다. 기존 조명/셰이더 경고가 남아 있고 사람 체감/아트 승인은 별도다. [빌드·실행/검증](original_walk_idle_20261015/README.md). 과거 OriginalMotion(3c5da7a)과 10월13일 빌드/ZIP은 보존했다.
 
 ## 코드·도구·보존
 

@@ -20,8 +20,10 @@
 - 실제 Unity PreviewRenderUtility로 [몬스터 보행 48프레임](walk_original.webp), [플레이어 Idle 70프레임](idle_original.webp)을 촬영했다. 몬스터 **행: 공격/수비/버프/보스, 열: 원본/우/좌/상/하**, 모두 원본3배 픽셀. 플레이어는 왼쪽 원본/오른쪽 Idle, 원본6배 픽셀.
 - [캡처 검사](capture_checks.json): 원본 비교 열은 모든 프레임 동일, Idle 발 영역은 모든 프레임 동일. 보행48개의 서로 다른 프레임, Idle은 Point 렌더링에서4개의 서로 다른 호흡 자세. 손실 없는 WebP로 인코딩했다. 캡처는 제자리 동작 비교이며 정상 전투 밸런스 실측이 아니다.
 - 원본 PNG/메타·프리팹·씬·CSV·보스 피벗 파일의 Git diff 없음. 사용자 작업/기존 결과 보존. 기능 통과와 사람의 자연스러움/아트 승인은 구분한다. 플레이어 이동/전 방향 공격 조준은 기존 미완료 범위로 남는다.
-- 게임 적용 로컬 커밋 `3de0c0e`. 커밋 직전/후 현재 Unity가 Play·3배속으로 확인돼 그대로 보존했다. [상태](editor_state.json), [읽기 전용 실행 확인](live_readonly.json): Ready=true, Enemy_Attack_99의 Sprite는 enemy_attack_v2, OriginalWalk 활성. 플레이어나 전투 상태를 조작하지 않았다.
-- `BuildWindowsWalkIdle.cs`로 별도 출력 `Builds/Windows_20261015_WalkIdle`을 준비했으나 Play 상태 검사에서 안전하게 중단돼 **새 빌드/실행은 아직 안 됐다**. 현재 Play 종료 가능 여부를 사용자에게 확인 중이다. 기존 OriginalMotion 실행 파일에는 이번 보행/Idle이 없으므로 최신 빌드라고 안내하지 않는다. 빌드할 때는 사용자 답변/실제 Play 상태를 먼저 확인한다.
+- 게임 적용 로컬 커밋 `3de0c0e`. 커밋 직전/후 Play·3배속을 확인해 보존했고, 이후 사용자가 “지금 다끝냈으니 하던 거 마저 해”라고 승인해 종료 후 빌드했다. 이전 [상태](editor_state.json)·[읽기 전용 실행 확인](live_readonly.json)은 당시 기록이다. Ready=true, enemy_attack_v2 원본/OriginalWalk 활성 확인.
+- 최신 출력 **`Builds/Windows_20261015_WalkIdle/CoreGuardian.exe`**. [BuildReport](build_report.json): Succeeded, 24.75초, 152,945,927바이트. 전투 씬만 포함, 기존 빌드/EditorBuildSettings 보존. errors2는 기존 중복 전역 조명, warnings497은 기존 셰이더/Pipeline 설정 관련이다. 신규 빌드에서는 CLI 시간초과 없음.
+- 1600×900 창 모드로 [실행](launch.json)했으며 [응답 확인](running.json): PID18680, 창CD, windowHandle 존재, Responding=true, 확인 시점 예외 로그0. 사용자가 확인하도록 새 게임을 열어두었다. 전체 라운드 사람 플레이나 자연스러움 승인으로 기록하지 않는다.
+- [최종 에디터](final_editor_state.json): Play stopped, compiling=false, 전투 씬dirty=false, TimeScale1. GitHub push·노션/밸런스 변경 없음. 과거 OriginalMotion 실행 파일에는 이번 보행/Idle이 없으므로 새 WalkIdle 경로를 사용한다.
 
 ## 재현
 
