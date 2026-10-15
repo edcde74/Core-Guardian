@@ -25,6 +25,8 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     public int ShotCount {get;private set;}
     public Vector3 MuzzleWorld {get;private set;}
     public bool Loaded => sprites.Count>=4;
+    // Rejected generated player/towers must not override the original scene/prefab artwork.
+    public bool UsesOriginalArtwork => role=="Player"||role=="Single"||role=="Multi"||role=="Support";
 
     public static CoreGuardianUnitAnimation Attach(GameObject root,string role)
     {
@@ -42,6 +44,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         if(body==null)throw new InvalidOperationException("Missing approved artwork child: "+name);
         artwork=body.GetComponent<SpriteRenderer>();
         restPosition=body.localPosition;
+        if(UsesOriginalArtwork){MuzzleWorld=body.position;return;}
         var atlas=Resources.Load<Texture2D>("CoreGuardian/Animation/"+role+"/atlas");
         var metadata=Resources.Load<TextAsset>("CoreGuardian/Animation/"+role+"/frames");
         if(metadata!=null&&atlas!=null)foreach(var frame in JsonUtility.FromJson<AtlasInfo>(metadata.text).frames)
@@ -114,7 +117,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     }
     void ApplyFrame()
     {
-        if(artwork==null)return;
+        if(artwork==null||UsesOriginalArtwork)return;
         int frame=0;
         bool shooting=shotAge<shotDuration;
         if(role=="Player")frame=shooting?1+Mathf.Min(2,Mathf.FloorToInt(shotAge/shotDuration*3)):0;

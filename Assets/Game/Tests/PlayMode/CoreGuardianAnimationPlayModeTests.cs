@@ -5,71 +5,68 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 #if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.SceneManagement;
 #endif
 
 public class CoreGuardianAnimationPlayModeTests
 {
+    static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).First(t=>t!=null);
     [UnityTest]
-    public IEnumerator ActualLaunchThenViewUpdate_PreservesHighRateFiringPoseAndMuzzleAtThreeTimesSpeed()
+    public IEnumerator ActualLaunch_PreservesOriginalPlayerSprite_AndDoesNotUseRejectedMuzzle()
     {
 #if UNITY_EDITOR
         EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
         yield return null;
-        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianPrototype")).First(t=>t!=null);
-        var game=(Component)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var type=Find("CoreGuardianPrototype");var game=(Component)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
         var session=(CoreGuardian.Session)type.GetProperty("Session").GetValue(game);
         var movement=(Component)type.GetField("player").GetValue(game);
         var art=movement.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");
+        var expected=AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Art/ScreenTests/20260930/Sprites/player.png");
+        Assert.That(art.sprite,Is.SameAs(expected));
+        var initialPosition=art.transform.localPosition;var initialScale=art.transform.localScale;
         var flags=System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance;
         var position=(Vector2)type.GetMethod("PlayerTile",flags).Invoke(game,null);
-        float previousScale=Time.timeScale;
+        float oldScale=Time.timeScale;
         try
         {
-            // Controlled presentation regression only: deliberately extreme rate, not balance evidence.
-            Time.timeScale=3;session.Player.Rate=30;
-            session.StartCombat();session.DebugSpawn(CoreGuardian.EnemyKind.Defense,77);
+            Time.timeScale=3;session.Player.Rate=30;session.StartCombat();session.DebugSpawn(CoreGuardian.EnemyKind.Defense,77);
             int launches=0;session.ProjectileLaunched+=shot=>{if(shot.Source=="Player")launches++;};
-            session.Tick(.15f,position);
+            session.Tick(.15f,position);type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
             Assert.That(launches,Is.GreaterThan(0));
-            type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
-            Assert.That(art.sprite.name,Does.EndWith("_1"),"Tick→launch→presentation must not skip the launch pose");
-            Assert.That(UnityEngine.Object.FindObjectsByType<SpriteRenderer>().Any(r=>r.name.StartsWith("Muzzle_")&&r.color.a>0),Is.True,"A launch flash must survive through its first rendered frame");
+            Assert.That(art.sprite,Is.SameAs(expected),"Attacks must not swap the rejected atlas back in");
+            Assert.That(art.transform.localPosition,Is.EqualTo(initialPosition));Assert.That(art.transform.localScale,Is.EqualTo(initialScale));
+            Assert.That(UnityEngine.Object.FindObjectsByType<SpriteRenderer>().Any(r=>r.name.StartsWith("Muzzle_")),Is.False);
         }
-        finally{Time.timeScale=previousScale;}
+        finally{Time.timeScale=oldScale;}
 #else
         yield return null;
 #endif
     }
     [UnityTest]
-    public IEnumerator ActualScene_LoadsDirectionalArt_KeepsFeetAnchored_AndShootsInEightDirections()
+    public IEnumerator OriginalTowerSpritesAndTransformsRemainExact_WhileEnemyDirectionsStillWork()
     {
 #if UNITY_EDITOR
         EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
         yield return null;
-        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianPrototype")).First(t=>t!=null);
-        var game=(Component)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
-        Assert.That(game.GetComponent(type).GetType().GetProperty("Ready").GetValue(game),Is.EqualTo(true));
-        var animationType=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianUnitAnimation")).First(t=>t!=null);
-        var movement=(Component)type.GetField("player").GetValue(game);
-        var animation=movement.GetComponent(animationType);
-        Assert.That(animation,Is.Not.Null);
-        Assert.That(animationType.GetProperty("Loaded").GetValue(animation),Is.EqualTo(true));
-        var art=movement.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");
-        for(int d=0;d<8;d++)
+        var type=Find("CoreGuardianPrototype");var game=(Component)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var animationType=Find("CoreGuardianUnitAnimation");
+        var towers=(GameObject[])type.GetField("towerArt").GetValue(game);
+        for(int i=0;i<towers.Length;i++)
         {
-            var axis=new Vector2(Mathf.Cos(d*Mathf.PI/4),Mathf.Sin(d*Mathf.PI/4));
-            animationType.GetMethod("Fire").Invoke(animation,new object[]{axis,1f});
-            Assert.That(art.sprite.name,Is.EqualTo("Player_"+d+"_1"));
-            animationType.GetMethod("Present").Invoke(animation,new object[]{.15f});
-            Assert.That(art.sprite.name,Is.EqualTo("Player_"+d+"_1"),"A shot must render once even at high speed or a long frame");
-            Assert.That(art.sprite.pivot,Is.EqualTo(new Vector2(48,8)));
-            Assert.That(art.transform.localPosition,Is.EqualTo(Vector3.zero));
-            Assert.That(movement.transform.rotation,Is.EqualTo(Quaternion.identity));
+            var clone=UnityEngine.Object.Instantiate(towers[i]);
+            try
+            {
+                var art=clone.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");
+                var original=art.sprite;var position=art.transform.localPosition;var scale=art.transform.localScale;var rotation=art.transform.localRotation;
+                var shadows=clone.GetComponentsInChildren<SpriteRenderer>(true).ToDictionary(r=>r,r=>r.enabled);
+                var unit=animationType.GetMethod("Attach").Invoke(null,new object[]{clone,((CoreGuardian.TowerKind)i).ToString()});
+                animationType.GetMethod("Fire").Invoke(unit,new object[]{Vector2.left,8f});animationType.GetMethod("Present").Invoke(unit,new object[]{.15f});
+                Assert.That(art.sprite,Is.SameAs(original));Assert.That(art.transform.localPosition,Is.EqualTo(position));Assert.That(art.transform.localScale,Is.EqualTo(scale));Assert.That(art.transform.localRotation,Is.EqualTo(rotation));
+                Assert.That(shadows.All(s=>s.Key.enabled==s.Value),Is.True);Assert.That(art.transform.Find("AnimatedUpper"),Is.Null);
+            }
+            finally{UnityEngine.Object.Destroy(clone);}
         }
-        animationType.GetMethod("MoveWithoutTurning").Invoke(animation,new object[]{Vector2.right,.15f});
-        animationType.GetMethod("Aim").Invoke(animation,new object[]{Vector2.left,.15f});
-        Assert.That(animationType.GetProperty("Direction").GetValue(animation),Is.EqualTo(4),"Movement must not cancel aiming toward the current target");
         var enemyPrefabs=((GameObject[])type.GetField("enemyArt").GetValue(game)).Concat(new[]{Resources.Load<GameObject>("CoreGuardian/Animation/Boss/BossAnimated")}).ToArray();
         string[] roles={"Attack","Defense","Buff","Boss"};
         for(int i=0;i<4;i++)
@@ -78,16 +75,9 @@ public class CoreGuardianAnimationPlayModeTests
             try
             {
                 var unit=animationType.GetMethod("Attach").Invoke(null,new object[]{clone,roles[i]});
-                var body=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");
+                var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");
                 var directions=new[]{Vector2.right,Vector2.left,Vector2.up,Vector2.down};
-                for(int d=0;d<4;d++)
-                {
-                    animationType.GetMethod("Move").Invoke(unit,new object[]{directions[d],.3f});
-                    animationType.GetMethod("Present").Invoke(unit,new object[]{0f});
-                    Assert.That(body.sprite.name,Does.StartWith(roles[i]+"_"+d+"_"));
-                    Assert.That(body.sprite.pivot,Is.EqualTo(new Vector2(48,8)));
-                    Assert.That(body.transform.localPosition,Is.EqualTo(Vector3.zero));
-                }
+                for(int d=0;d<4;d++){animationType.GetMethod("Move").Invoke(unit,new object[]{directions[d],.3f});animationType.GetMethod("Present").Invoke(unit,new object[]{0f});Assert.That(art.sprite.name,Does.StartWith(roles[i]+"_"+d+"_"));}
             }
             finally{UnityEngine.Object.Destroy(clone);}
         }

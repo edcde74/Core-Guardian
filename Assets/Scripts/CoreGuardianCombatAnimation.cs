@@ -77,7 +77,8 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
             towers.TryGetValue(id,out source);
             var tower=game.Session.Towers.FirstOrDefault(t=>t.Id==id);if(tower!=null)rate=tower.Stats.Rate;
         }
-        if(source==null)return;
+        // Rejected atlases must not contribute muzzle offsets or replacement effects.
+        if(source==null||source.UsesOriginalArtwork)return;
         var direction=game.World(shot.Target.Position)-game.World(shot.Position);
         if(!volleyFrames.TryGetValue(shot.Source,out int frame)||frame!=Time.frameCount)
         {source.Fire(direction,rate);volleyFrames[shot.Source]=Time.frameCount;}

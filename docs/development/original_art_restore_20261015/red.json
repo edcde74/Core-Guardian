@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/original_art_restore_20261015/CompareOriginalArt.cs",
+      "entry": "CompareOriginalArt.Verify"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 99,
+      "executeMs": 2,
+      "assemblyName": "PipelineRunScript_CompareOriginalArt_2806047024b6462d9abf4d12e87da5e4",
+      "success": false,
+      "error": "Runtime Error",
+      "errorDetails": "Exception: Player original replaced: Player_6_0\n  at CompareOriginalArt.Verify () [0x002da] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\docs\\development\\original_art_restore_20261015\\CompareOriginalArt.cs:65 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 "
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

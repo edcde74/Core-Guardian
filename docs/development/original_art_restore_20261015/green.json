@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/original_art_restore_20261015/CompareOriginalArt.cs",
+      "entry": "CompareOriginalArt.Showcase"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 1724,
+      "executeMs": 24,
+      "assemblyName": "PipelineRunScript_CompareOriginalArt_198e63a5be5f4402ae0afccec4a0a2e9",
+      "success": true,
+      "result": "{\"success\":true,\"player\":\"Assets/Art/ScreenTests/20260930/Sprites/player.png\",\"towers\":[{\"name\":\"tower_single(Clone)\",\"sprite\":\"tower_single\",\"originalPreserved\":true},{\"name\":\"tower_multi(Clone)\",\"sprite\":\"tower_multi\",\"originalPreserved\":true},{\"name\":\"tower_support(Clone)\",\"sprite\":\"tower_support\",\"originalPreserved\":true}]}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
