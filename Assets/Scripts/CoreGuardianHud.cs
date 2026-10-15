@@ -23,6 +23,13 @@ public sealed class CoreGuardianHud : MonoBehaviour
     UnityEngine.UI.Text augmentationTimer, bossStatus;
     readonly List<UnityEngine.UI.Button> augmentationButtons=new List<UnityEngine.UI.Button>();
     bool playerOpen, installOpen;
+    sealed class PlacementVisibility
+    {
+        public float Alpha;
+        public bool Interactable, Raycasts;
+    }
+    readonly Dictionary<CanvasGroup,PlacementVisibility> placementHidden=new Dictionary<CanvasGroup,PlacementVisibility>();
+    bool placementFocused;
     RectTransform cardsRoot;
     string choiceSignature;
     bool cardsFolded, towerFolded;
@@ -211,6 +218,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
     bool TowerCanUpgrade(string stat){var t=Selected();return t!=null&&Relevant(t,stat)&&game.Session.Phase==SessionPhase.Preparation&&game.Session.Crystals>=Price(stat);}
     void SetInstallPanelOpen(bool open)
     {
+        open=open&&game.Session.Phase==SessionPhase.Preparation;
         // Every new opening starts at categories; folding changes only panel visibility.
         if(open&&!installOpen)BuildInstallCategories();
         installOpen=open;installPanel.gameObject.SetActive(open);Refresh();
@@ -250,6 +258,29 @@ public sealed class CoreGuardianHud : MonoBehaviour
         game.CancelInstall();installOpen=false;installPanel.gameObject.SetActive(false);
         if(EventSystem.current!=null)EventSystem.current.SetSelectedGameObject(null);
         game.Notify("포탑 설치 취소");return true;
+    }
+    void RefreshPlacementVisibility()
+    {
+        bool focused=game.Installing.HasValue&&game.Session.Phase==SessionPhase.Preparation;
+        if(!focused)
+        {
+            foreach(var entry in placementHidden)
+            {
+                if(entry.Key==null)continue;
+                entry.Key.alpha=entry.Value.Alpha;entry.Key.interactable=entry.Value.Interactable;entry.Key.blocksRaycasts=entry.Value.Raycasts;
+            }
+            placementHidden.Clear();placementFocused=false;return;
+        }
+        foreach(Transform root in canvas)
+        {
+            if(root.name=="TopStatus"||root.name=="StagePlate"||root.name=="BossPlate"||root.name=="CancelPlacement")continue;
+            var group=root.GetComponent<CanvasGroup>();if(group==null)group=root.gameObject.AddComponent<CanvasGroup>();
+            if(!placementHidden.ContainsKey(group))placementHidden.Add(group,new PlacementVisibility{Alpha=group.alpha,Interactable=group.interactable,Raycasts=group.blocksRaycasts});
+            // Preserve activeSelf and every open/folded state while hiding and unblocking the field.
+            group.alpha=0;group.interactable=false;group.blocksRaycasts=false;
+        }
+        if(!placementFocused&&EventSystem.current!=null)EventSystem.current.SetSelectedGameObject(null);
+        placementFocused=true;
     }
     void ShowDamageNumber(EnemyState enemy,int amount)
     {
@@ -308,6 +339,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
     {
         if(game==null||!game.Ready||status==null)return;
         var s=game.Session;
+        if(s.Phase!=SessionPhase.Preparation){installOpen=false;installPanel.gameObject.SetActive(false);}
         status.text="코어 "+s.CoreEnergy+" / "+s.CoreMaximum+"  |  "+(s.Diagnostic?"역할 검증":"라운드 "+s.Wave+" / "+s.LastWave)+"  |  골드 "+s.Gold+"  |  수정 "+s.Crystals+"  |  증강 "+s.Augments.Selected.Count;
         bool selecting=s.Phase==SessionPhase.Augmentation;
         if(augmentationPanel!=null){augmentationPanel.gameObject.SetActive(selecting);if(selecting){RefreshCards();augmentationTimer.text="선택 "+Mathf.CeilToInt(s.AugmentationRemaining)+"초 · 클릭 공개 / 공개된 카드 다시 클릭 선택\n시간 초과 시 최고 등급 자동 선택 · 동률이면 왼쪽 우선";}else choiceSignature=null;}
@@ -318,6 +350,7 @@ public sealed class CoreGuardianHud : MonoBehaviour
         foreach(var action in refresh.ToArray())action();
         if(selecting){foreach(var button in canvas.GetComponentsInChildren<UnityEngine.UI.Button>(true))if(!augmentationButtons.Contains(button))button.interactable=false;if(EventSystem.current!=null&&!augmentationButtons.Any(b=>b.gameObject==EventSystem.current.currentSelectedGameObject))EventSystem.current.SetSelectedGameObject(augmentationButtons[0].gameObject);}
         var selected=Selected();if(selected!=null&&lastTower!=selected.Id){towerFolded=false;lastTower=selected.Id;}if(selected==null)lastTower=-1;towerPanel.gameObject.SetActive(selected!=null&&!towerFolded);canvas.Find("TowerFold").gameObject.SetActive(selected!=null);
+        RefreshPlacementVisibility();
         if(selected!=null){var st=selected.Stats;towerInfo.text=TowerName(selected.Kind)+" #"+selected.Id+"\n피해 "+StatDisplay(st.Damage,"damage")+" · 초당 "+st.Rate.ToString("0.##")+"\n사거리 "+st.Range.ToString("0.##")+" · 투사체 "+st.ProjectileSpeed.ToString("0.##")+(selected.Kind==TowerKind.Support?"\n지원 +"+st.BuffDamage.ToString("0.#")+"%":"");}
         var totals=s.DamageTotals.OrderByDescending(x=>x.Value).ThenBy(x=>x.Key).ToArray();
         var signature=string.Join("|",totals.Select(x=>x.Key+":"+x.Value));

@@ -4,6 +4,8 @@
 
 ## 다음 대화의 최우선
 
+**최신 UI 수정:** 라운드 시작 시 설치 패널/설치 모드를 정리한다. 설치 중에는 상단 중앙 상태/라운드 UI와 왼쪽 ESC 취소만 남기고, 설치 성공·취소 시 기존 HUD 표시/접힘 상태를 복원한다. PlayMode14/14·EditMode78/78 및 실제 화면 확인. [구현·검증·화면](placement_focus_20261015/README.md).
+
 **2026-10-15 최신: 몬스터3종·보스 보행을 승인 원본 도트의 관절 동작으로 교체하고 플레이어 Idle을 추가했다.** 과거 생성 4프레임의 외형/보폭 변화 대신 양발 동일 궤적·반 주기, 월드 이동 거리 기반 보행을 사용한다. 좌우는 원본 반전, 상하는 원본 사선 시점을 유지한 발 궤적이다. 새 뒷모습을 그린 것이 아니다. 플레이어 Idle은 발 고정/상체 호흡이며 공격·이동이 우선한다. 기존 원본 기반 공격 동작/보스 피벗 유지. **플레이어 전 방향 공격 조준·방향 전환/보행은 미완료, 자연스러움·아트 승인은 별도**다. [최신 구현·검증·움직이는 비교](original_walk_idle_20261015/README.md), [공격 동작 1차](original_animation_rework_20261015/README.md), [외형 복구](original_art_restore_20261015/README.md). 이후 밸런스 순서는 [next_work](next_work_20261013.md)·[resume](resume_20261013.md)에 보존한다.
 
 - AGENTS.md와 LOCAL_GIT.md를 읽고 Git 변경, Unity 연결·열린 씬·Play·컴파일·저장 상태를 확인한다. 과거 인수인계 상태를 현재 사실로 가정하지 않고, 다른 테스트나 사용자 Play를 임의 중단하지 않는다.
@@ -33,6 +35,7 @@
 ## 승인 적용한 UI·아트
 
 - HUD: 실제 투명 2D 프레임, 심볼+한글, hover/pressed/selected/강화 성공 반응, 강화 현재→다음/증가량/비용, 피해 스크롤/접기. 하단 ‘타워 설치’/‘플레이어 강화’가 해당 패널을 열고 닫는다. 외부 설치 접기·강화 접기·설치 분류 안 접기는 삭제했다. ‘설치 취소’와 ‘분류로 돌아가기’는 별도 기능이다.
+- 설치 중에는 상단 중앙 UI/왼쪽 ESC만 남기고 다른 HUD의 표시·입력을 임시로 숨긴다. 설치 성공 시 기존 HUD/선택 목록 복원, 취소 시 선택 목록을 닫고 HUD 복원, 실패 시 설치 모드 유지. 수동 시작/준비 만료에는 모드·선택 목록을 정리한다. [설치 표시 상태 책임/검증](placement_focus_20261015/README.md).
 - 갈무리 A안: 본문/버튼 Galmuri11, 패널/단계/증강 제목 Galmuri11 Bold. Dynamic/HintedRaster, TTF/OFL 번들. 피해/처치 골드 숫자는 승인 Pixelify Sans Bold/TMP 유지. [폰트 적용](hud_font_applied_20261013/report.md), [중복 버튼 제거](hud_toggle_cleanup_20261013/report.md), [상자 맞춤](hud_text_fit_20261013/report.md), [전체 HUD](hud_applied_20261013.md).
 - 증강 뒷면은 은색/금색/청백색 테두리·장식·광택으로 등급을 기대하게 한다. 등급 글자/배지는 없다. 첫 클릭 공개, 연출 중 선택 차단, 완료 후 재클릭 선택이며 다른 카드를 전부 공개하지 않아도 선택할 수 있다. 등급별 뒤집기·스파크·합성 사운드, 30초 최고 등급 자동 선택/동률 왼쪽 우선 유지. [기능](boss_augmentation_20261013.md), [시안 기준](hud_sprite_review_20261013/augmentation_flip_review.md).
 - 보스 안광V3 승인 외형과 BossAnimated 별도 프리팹, 발 피벗(42,6.5)px을 유지한다. 몬스터3종/보스는 생성 아틀라스 대신 원본 픽셀 관절 보행을 사용해 원본 피벗을 그대로 쓴다. 기술병·포탑 원본 PNG/프리팹을 보존했고 원본 공격 동작1차/플레이어 Idle 적용·자연스러움은 별도 검토다. [현재 보행/Idle](original_walk_idle_20261015/README.md), [공격](original_animation_rework_20261015/README.md), [복구](original_art_restore_20261015/README.md), [공통 화풍](../art/MONSTER_ART_STYLE.md).

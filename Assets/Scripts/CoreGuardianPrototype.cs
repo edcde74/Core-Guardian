@@ -78,6 +78,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         if(!Ready)return;
         var phase=Session.Phase;
         Session.Tick(Time.deltaTime,PlayerTile());
+        if(Installing.HasValue&&Session.Phase!=SessionPhase.Preparation)CancelInstall();
         player.enabled=Session.Phase!=SessionPhase.Augmentation;
         if(Session.Gold>previousGold){ Feedback="+"+(Session.Gold-previousGold)+" 골드 획득";notificationUntil=Time.unscaledTime+2; }
         previousGold=Session.Gold;
@@ -137,10 +138,12 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     }
     public void CancelInstall()
     {
+        bool wasInstalling=Installing.HasValue;
         Installing=null;if(ghost!=null)Destroy(ghost);
         foreach(var h in highlights)if(h!=null)Destroy(h);highlights.Clear();
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
         Cursor.visible=true;
+        if(wasInstalling)Changed?.Invoke();
     }
     public bool Place(TowerKind kind,Vector2Int cell)
     {
@@ -148,7 +151,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         string reason;var tower=Session.TryInstall(kind,cell,out reason);
         if(tower==null){Notify(reason);return false;}
         occupied.SetTile(new Vector3Int(cell.x,cell.y,0),occupiedTile);
-        SelectedTower=tower.Id;Notify("포탑 설치 완료");CancelInstall();SynchronizeViews();return true;
+        SelectedTower=tower.Id;CancelInstall();Notify("포탑 설치 완료");SynchronizeViews();return true;
     }
     public bool PlaceAtPlayerForTest(){var p=player.CurrentCell;return Place(TowerKind.Single,new Vector2Int(p.x,p.y));}
     public void DestroySelected()

@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var s=UnityEngine.SceneManagement.SceneManager.GetActiveScene();return Newtonsoft.Json.JsonConvert.SerializeObject(new{playing=UnityEditor.EditorApplication.isPlaying,compiling=UnityEditor.EditorApplication.isCompiling,s.path,s.isDirty,timeScale=UnityEngine.Time.timeScale});"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": "{\"playing\":false,\"compiling\":false,\"path\":\"Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity\",\"isDirty\":false,\"timeScale\":1.0}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
