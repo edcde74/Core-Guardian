@@ -1,0 +1,139 @@
+# 코어 가디언 Unity 작업 인수인계
+
+최종 갱신: 2026-10-13 (Asia/Seoul)
+
+이 파일은 Unity 작업의 재개 지점이다. 현재 상태를 갱신해 유지하며, 상세 기획과 과거 이력은 담당 문서에 연결한다. 사용자 지시와 최신 노션이 이 파일보다 우선한다.
+
+## 작업 시작·종료
+
+1. 이 파일을 읽고 요청에 필요한 상세 기록과 최신 노션을 확인한다.
+2. Unity 연결, 현재 열린 씬, Play·컴파일·저장 상태를 다시 확인한다. 아래 마지막 확인 상태를 현재 사실로 가정하지 않는다.
+3. 요청 범위의 작업과 검증을 수행한다. 씬 YAML·에셋 메타를 직접 수정하지 않고 에디터 API를 사용한다.
+4. 종료 전에 이 파일의 현재 상태·검증·남은 작업을 교체 갱신하고 날짜별 상세 기록을 연결한다. 미검증 항목과 승인 여부를 명확히 기록한다.
+
+## 프로젝트·현재 상태
+
+- 프로젝트: Unity 6000.6.2f1 타워디펜스 「코어 가디언」. 디멘션 디펜스와 별개.
+- 경로: `C:\Users\edcde\OneDrive\Desktop\CD`.
+- 전투 씬: `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity`.
+- 전체 프로토타입 목표와 현재 실제 진행 구현: **1~11라운드**. 11라운드 완료는 프로토타입 검증 종료다.
+- 종료→완료 수정 보상→다음 50초 준비→전투 연결. 10 보스 처치·라운드 종료 시 증강3장/30초 선택을 마친 뒤11 준비50초 진행. 보스 도착 시 코어가 살아 있으면 증강 없이 다음 준비.
+- 포탑·포탑 강화·기술병 강화·재화·코어·기술병 위치 유지. 처음부터 재시작하면 초기화.
+- 코어 파괴 시 패배하며 완료 보상·다음 준비로 진행하지 않음.
+- 2~9라운드의 고정 순서·시점은 사용자 승인 완료. `waves.csv`에 반영됨.
+- 실제 전투·적/포탑 3종·설치/강화/파괴/환급·피해 숫자·전투 효과 구현. 별도 역할 검증 모드 유지.
+- 보스 가속·도착/처치 보상,18종 증강 효과/선택,10~11 구현. 보스 전용 안광V3 정지 아트 사용자 선택·적용 완료. 미완성: 보행/공격 애니메이션·BGM 적용. 기존 Windows 빌드는1~9이며 이번 기능 미포함; 사용자 지시로 추가 빌드/실행하지 않음.
+- BGM 별도 제작: 2026-10-13 Assets 외부에 30~60초 루프 WAV 시안 3개와 제작/라이선스/검증 자료를 생성. Unity 적용은 미구현, 음악 방향·청취 품질은 사용자 미승인. [제작 기록](bgm_sketches_20261013.md).
+- 마지막 Unity 확인 (2026-10-13 갈무리 적용 종료): ready, 전투 씬active/loaded/dirty=false, Play stopped, compiling=false,domainReload=false. 최신PlayMode8/8·HUD18종글리프/영역검사 통과. 콘솔현재오류0/컴파일실패false·경고0. 기존EditMode73/73·BuildCombatPrototype.Verify 기록은 HUD 적용 기록 참조(이번에 반복하지 않음). 사용자 적용 HP27/간격 CSV 보존. 빌드/실행파일 실행 없음.
+- 2026-10-13 로컬 Git 구성. Unity 소스·에셋·메타·설정·문서를 초기 커밋에 보존하고 캐시·빌드는 제외. GitHub 연결 없음. 기능 수정 전후 복구 기준 커밋은 [LOCAL_GIT.md](LOCAL_GIT.md), 구성 기록은 [git_setup_20261013.md](git_setup_20261013.md) 참조.
+
+## 최근 검증과 다음 작업
+
+- A안 갈무리 적용(2026-10-13): 사용자 A선택/적용 승인에 따라 HUD 본문 Galmuri11·패널/단계/증강 제목 Galmuri11 Bold 연결. 공식TTF·OFL 번들, Dynamic/HintedRaster·리소스 자산 해제 수정, 기존 승인 피해 숫자/중복접기 제거 유지. 실제1920×1080 설치/강화/지원4줄/접힌 상태·18종 공개 카드에서 폰트·글리프·텍스트 영역 검사 위반0, 최신PlayMode8/8. 밸런스CSV/씬/아트 보존·빌드 미갱신. 다른 화면비/축소 판독 체감은 미검증. [적용·화면·검사·복구](hud_font_applied_20261013/report.md).
+
+- 중복 접기 제거(2026-10-13): InstallFold/PlayerFold와 설치 분류 안 `접기` 삭제. 기존 하단 타워 설치/플레이어 강화로 열기·닫기 유지, 분류 이동·설치 취소와 다른 고유 접기는 유지. 실제 클릭으로 두 패널 토글/설치 선택 유지/분류 복귀/취소·강조 상태 검사 통과,1920×1080 화면 확인. 종료ready/stopped/컴파일false·씬dirty=false·현재콘솔오류0/경고1. 폰트 시안 미적용·밸런스/씬/아트 보존, 전체 회귀/빌드 미실행. [변경·검사·화면·복구](hud_toggle_cleanup_20261013/report.md).
+
+- HUD 한글 폰트 시안(2026-10-13): 공식 갈무리/Neo둥근모/검은고딕 TTF·OFL을 Assets 외부에 보관, 실제 HUD 프레임으로 A/B/C 브라우저 비교판 제작. 사용자 A선택/적용 완료는 위 최신 기록 참조. 4폰트 로드·시안 영역 초과0·3안×18종 카드54조합 초과0, Neo화살표는 갈무리 fallback으로 보완. [원래 시안·출처·검사](hud_font_review_20261013/review.md).
+
+- HUD 글자/상자 맞춤(2026-10-13): 설치·플레이어/타워 강화 버튼과 패널 확대, 심볼 자리/라벨 여백16·9-slice 테두리 축소, 단계/안내를 상자 내부 줄로 배치. 증강350×460 카드의 제목/효과/선택 안내 여백 분리, 지원 정보4줄/접힘/눌림·18종 카드 문구와 긴 숫자13항목 검사 위반0. 피해 목록클립/휠 입력 확인, 최신PlayMode8/8·Verify saved/A길/3종/(15,10) 통과. 실제1920×1080 화면 확인, 다른 비율/사람 사용성은 미검증. 종료ready/stopped/컴파일false·씬dirty=false·현재콘솔오류0. 밸런스CSV/전투규칙/저장씬/원본아트 보존, 빌드 미갱신. [수정·검사·화면·복구](hud_text_fit_20261013/report.md).
+
+- 노션 동기화(2026-10-13): 담당20문서 대조, 본문13개·진행 상태8개 갱신(총16페이지). 1~11/보스/증강/HUD의 오래된 미구현 표시·최신 카드 UX·아트/배포/검증 범위를 정리하고 전 페이지 재조회 확인. 사용자 후속 지시로 밸런스 제외: 이번 체력/간격 문서 수정은 원문 복구, 실행CSV/게임 변경 없음. 기존 기획 수치와 실행 데이터 차이는 이번에 해소하지 않았으므로 별도 밸런스 작업에서 확인. 에디터ready/stopped/컴파일false·전투씬dirty=false, 새Play/테스트/빌드 없음. [최종 범위·원문 보존·검증](notion_sync_20261013/report.md).
+
+- 전체 HUD 스프라이트 적용(2026-10-13): 승인 외형의 공통 프레임/심볼+한글/오버·눌림·선택·강화 성공 반응, 강화 현재→다음·비용, 독립 접기와 피해 목록 심볼 연결. 증강 뒷면은 등급 글자/배지 없이 은색·금색·청백색 실제 아트3종. 첫 클릭 공개/완료 후 재클릭 선택/전체 공개 전 선택, .44/.66/.92초 뒤집기·스파크14/30/52+20·등급별 합성 사운드, 기존30초 자동 선택 유지. EditMode73/73·최종PlayMode8/8·실제1920×1080 출력 화면·Verify 통과. 다른 종횡비 실제 조작/사람 체감·직접 청취 남음. 밸런스 CSV·저장 씬 보존, 빌드 미갱신. [적용·화면·검증·복구](hud_applied_20261013.md), [승인 시안](hud_sprite_review_20261013/review.md).
+
+- 설치 버튼·테스트 배속·HUD 순서(2026-10-13): 수정 부족 시 개별 포탑 버튼 비활성/부족 문구, 비용 회복 시 재활성. 테스트1→2→3배(준비·전투·증강 시간 포함), 재시작1배. 전투 숫자는 HUD 아래 WorldFeedback에 생성. 노션 HUD 규칙 반영·재조회 확인. 실제 구매/보상/배속/계층 검사 및 EditMode73/73·PlayMode6/6 통과. [상세·검증·화면](hud_controls_20261013.md). 테스트 배속 정식 채택·사람 플레이/다른 해상도 검증은 남음. 수정전복구28320e1.
+
+- 보스 아트 최신(2026-10-13): 사용자가 오른쪽 안광V3를 선택해 일반/분노 공통 외형으로 적용 완료. 새 Resources BossEyePrefab, 실제64×80·PPU32·배율0.6·Point/무압축/mipmap없음. 기존 임시 수비형1.4배/전체틴트 제거, 발피벗·그림자·체력바 상단 검증. HP300/.6 및150/격노/.78에서 승인Sprite색/배율/루트 검사 통과. 최신EditMode73/73·PlayMode6/6, 실제화면 확인. [적용·검증·복구](boss_art_applied_20261013.md), [공통 화풍 기준](../art/MONSTER_ART_STYLE.md). 원본프리팹/씬/HUD/BGM 변경 없음. 수정전복구3394eb2. 애니메이션·사람플레이 밸런스 승인은 남음.
+- 분석 스킬 공통 규칙 보완: 두 스킬에 코어가디언 전용/AGENTS 준수·기존 Unity/Notion/테스트 재사용·중복 구현 방지·확인 데이터/추정/주관적 평가 구분 명시. 개인 설치본 동기화·SHA 일치, 원본/설치본 형식검사4회 통과. 예시 요청2개를 읽기 전용으로 재검증(밸런스1~3R 기존 정적 도구 실행, HUD 성장 표시/3배치안). 게임 변경/새 Play/회귀 재실행 없음. [예시·검증 기록](skill_rules_validation_20261013/validation.md).
+- HUD·UX 읽기 전용 분석: `core-guardian-hud-ux` 작성/개인 설치, 최신 노션8문서·HUD/세션·런타임 Canvas 계층·과거 화면2장/최신 증강 진단 화면을 확인. 형식/설치 검증·독립 스킬 사용 시험·6해상도 정적 계산4검사 통과. 게임/UI/노션 수정 없음. [보고서·배치안3개](hud_ux_analysis_20261013/report.md), [스킬 원본](../skills/core-guardian-hud-ux/SKILL.md), [검증](hud_ux_analysis_20261013/validation.md).
+- HUD 남은 검증: 현재→다음/증가량/비용·성공 피드백과 독립 접기·타워 접기·모서리 앵커는 승인 방향으로 적용 완료. 통합 전투력은 보류. 접기는 즉시 숨김/복원·상단 축소이며 기존 시안의 슬라이드/삼각형 탭은 미구현. 사람 플레이의 성장 판독/시야 놓침/다른 비율 창/직접 청취 검증은 남음. 최신 적용과 노션 기준은 hud_applied_20261013.md와 위 동기화 기록 참조.
+- 최신 보스/증강 구현: [기능·검증 기록](boss_augmentation_20261013.md), [계획](boss_augmentation_plan_20261013.md), [EditMode73](boss_editmode_20261013.json), [PlayMode6](boss_playmode_20261013.json).18종 실제 선택/효과/누적/재설정, 보스 처치/도착/패배, 자동 선택, 실제 카드 버튼과11 종료 확인. 흐름 진단에 강제 처치를 사용했고 새 난이도 실측·최종 아트/밸런스 승인은 아님.
+- BGM 파일 검사: 3개 모두 48kHz/16bit/스테레오 PCM, 43.636/36.923/34.286초, 클리핑0·샘플 루프 경계 검사 통과. 직접 청취·게임 효과음 혼합·Unity 재생 미검증. 이번 음악 제작에서 Unity 상태를 다시 조회하거나 게임을 변경하지 않음. 다음 음악 작업은 시안 청취·방향 선택. [상세 기록](bgm_sketches_20261013.md).
+- 2026-10-13 `core-guardian-balance` 스킬 작성·개인 스킬 폴더 설치. 최신 담당 노션10페이지·실행 CSV/코드·기존 자동 Play3정책으로1~10R 시험 분석. 현재 구현1~9R의 정적 수급/발수와 과거 실측을 분리하고10R/증강은 기획 가안·미구현으로 표시. 형식 검증·분석 도구9개 행동 검사·독립 분석/획득가능성 보완 재검증 통과. 게임/노션 변경 없음, 밸런스 승인 아님. [시험 보고서](balance_analysis_20261013/report.md), [스킬 원본](../skills/core-guardian-balance/SKILL.md), [검증·재실행](balance_analysis_20261013/validation.md).
+- 밸런스 후속(2026-10-13 사람 테스트 적용): 사용자 요청으로 CSV에 공격형HP25→27(+8%, 모든라운드공용), 1~2R간격10%단축(1.62/1.53초·2R슬롯start도단축)을 실제 적용. 편성·수급·3R이후일정 유지. 씬참조→CombatData.Load 값 확인·콘솔현재오류0. [적용·복구·재개](early_pressure_applied_20261013.md), [이전12회자동비교](early_pressure_test_20261013/report.md), [이전6R A안](tension_test_20261013/report.md). 다음 사람플레이·이후라운드HP27영향 검증. 사람테스트용수치이며 최종밸런스미승인.
+- 밸런스 분석 중 Unity 읽기 조회: CD ready, 전투 씬active/loaded/dirty=false, Play stopped, compiling=false, domainReload=false,timeScale1. CSV5종 씬참조·로더·계산 경로는 정적 확인. 새 Play/Verify/게임 회귀 검사를 실행하지 않음. 콘솔 조회에서 빌드의 중복 글로벌 조명2건·API 타임아웃1건을 읽었고 후속 응답 현재 groundTruth는 오류0/컴파일실패false. 빌드 상세는 아래 별도 작업 기록을 보존함.
+- 최신 배포: `Builds/CoreGuardian_Windows_20261013.zip` / `Builds/Windows_20261013/CoreGuardian.exe`. 최신 전투 씬만 포함, BuildReport Succeeded, 기본 로딩 검사 통과. 중복 전역 조명·패키지 셰이더 메시지는 남음. 그래픽/입력/전체 라운드 수동 플레이는 미검증. [빌드 상세 기록](windows_build_20261013.md).
+- 최신 표시 수정: 사용자 요청으로 투사체 3종 폭25% 증가(기술병0.20/포탑0.275). 처치 골드 심볼36×36과 숫자를 같은 HUD 그룹에 간격4로 붙여 동시 이동·페이드·삭제. 기존 피해·재화 판정은 유지. 실제 처치 +3, 여러 자리 +123, 만료·재설정·클릭 차단 없음 확인. [수정/검증 기록](feedback_polish_20261010.md).
+- 표시 수정의 이전 회귀는34개 통과. 2026-10-13 사용자가 실행 빌드에서 투사체/골드 표시를 “잘보이네”로 확인. 설치/강화 선택 체감과 새 보스/증강의 사람 플레이 검증은 남음. 최종 밸런스 승인으로 처리하지 않음.
+- 이전 연속 검증: 실제 Play Mode의 정상 이동·구매 API와 자동 공격으로 세 연속 실행 측정. 저장 선택 6R 패배, 포탑 강화 선택 7R 패배, 경로에 한 칸 더 가까운 기술병/포탑 배치에서 1~9R 완료·코어20 유지. 최종 골드80/수정105, 기술병 강화 4/6/9R에 100/140/190골드. 결과는 [자동 조작 연속 실행](natural_playtest_20261010.md).
+- 측정은 5배속·준비 시작 명령·고정 위치의 자동 조작이며 사람의 실제 입력/체감 난이도 검증과 구분. 수치·아트 변경 없음, 최종 밸런스 승인 아님. 첫 실행의 캡처 경로 도구 오류 1건과 기록 직렬화 복구는 상세 기록 참조. 이후 두 실행 runtimeErrors 없음.
+- 다음 우선 작업: 사람 플레이에서10 보스 처치/도착과11 증강 선택 결과·난이도 확인. 설치/강화 선택·사거리/배치 차이를 반복 비교한 뒤 필요 시 수치 조정.
+- 보스 안광V3 정지 아트 사용자 선택·적용 완료. 애니메이션 제작 전 방향 수·프레임 수·발사 시점은 사용자 확인 필요.
+
+## 사용자 승인·유지할 기준
+
+- 피해 숫자: 실제 감소 체력만 표시. 초과 피해 제외, 마지막 처치 피해 포함. 피해 0·죽은 대상·코어 도착에 적 피해 숫자 생성 안 함.
+- 전투 효과 B안, 스패너 기술병의 E2 금속 너트 투사체, 숫자 폰트 Pixelify Sans Bold 승인·적용. TMP 숫자용이며 한글 HUD 전체 교체 아님. OFL 자료 보관.
+- 2026-10-10 후속 사용자 요청: 공격 투사체를 조금 확대, 처치 골드 심볼 확대 및 바로 오른쪽 숫자 정렬. 적용값과 검증은 feedback_polish_20261010.md. 2026-10-13 표시 가독성 사용자 확인 완료, 선택 체감은 미확인.
+- 설치 시 타일 중앙 커서를 표시하고 보드 위 OS 포인터 숨김. UI 위 일반 포인터 유지. OS 포인터 자체를 강제 이동하는 구현으로 설명하지 않음.
+- Esc/설치 취소는 설치 선택 취소. 패널 접기는 선택 유지. 새로 열 때 공격/지원 초기 분류 화면 표시.
+- 기술병이 서 있는 칸에 포탑 설치 허용, 자동 이동 없음. 나간 뒤 점유 칸 재진입 차단.
+- 현재 대상이 사거리 안에서 살아 있으면 유지. 사망·사거리 이탈 시 해제·재선정.
+- 처치 골드 즉시 지급, 바닥 줍기 없음. 비행 중 대상 소멸 시 투사체 피해 없이 소멸, 대상 변경·스플래시 없음.
+- 준비 중만 포탑 설치/강화, 전투 중 파괴 허용. 플레이어 강화는 준비/전투 가능. 포탑 없이도 준비 만료 시 전투 시작.
+- 피해 float 계산→방어력 1당 1% 감소→0.5 이상 올림. 실제 체력 감소만 누적.
+- 현재 크기·그림자·발/받침대 앵커·A 길 유지. A 재질 색상 (2.15,2.18,2.22,1).
+- 세계관: 수리한 석조 요새, 새 금속 보강과 수정 장치. 회색 갑옷·차분한 붉은 천·짧고 단순한 병사형 적. 큰 픽셀·단순한 형태.
+- 45×25 논리 칸, 한 칸 0.6 Unity 단위. 연결 통로의 실제 폭 5칸을 검사해야 하며 ‘5×5가 포함됨’으로 대체하지 않음.
+- 최종 픽셀 규격·제한 팔레트·Pixel Perfect Camera·기준 해상도는 미확정. 외형을 이유로 새 수리 기능을 추가하지 않음.
+- 규칙과 수치는 최신 담당 노션에서 확인. 승인된 실행 순서와 최종 밸런스 확정을 구분.
+
+## 코드·데이터 위치
+
+- 모델: `Assets/Game/Scripts/CoreGuardian/CombatData.cs`, `Session.cs` (namespace CoreGuardian).
+- 연결/HUD/효과: `Assets/Scripts/CoreGuardianPrototype.cs`, `CoreGuardianHud.cs`, `CoreGuardianCombatArt.cs`.
+- 이동/깊이: `Assets/Scripts/PrototypeGridMovement.cs`, `ArtDepthSorting.cs`.
+- 실행 데이터: `Assets/Resources/CoreGuardian/{enemies,towers,stage,upgrades,waves}.csv`.
+- `stage.csv`: 기본 waveReward=20, waveReward5~9=25. 시작 코어20/골드0/수정100, 준비50초. 수치는 플레이테스트 가안.
+- `Session`: LastWave, CompletedWave, LastCompletionReward. 다음 전투 시작 시 일정·대상·공격 대기·라운드 누적 피해 초기화.
+- 효과: `Assets/Resources/CoreGuardian/Art/CombatB.png` (9개 Sprite, Point/무압축/mipmap 없음).
+- 폰트: `Assets/Art/Combat/20261010/Fonts/PixelifySans-Bold.ttf`, Resources의 `CoreGuardian/Fonts/PixelifySansBoldDamage` 및 `PixelifySansBoldDamageOutline`.
+- 승인 원본 프리팹: `Assets/Art/ScreenTests/20261008_Depth/Prefabs/`.
+- 기존 Assets/Game 기초 코드는 보존됐지만 현재 전투 규칙의 근거로 오인하지 않음.
+
+## 필요한 상세 기록만 읽기
+
+- 최신 라운드 구현/검증: [round_flow_20261010.md](round_flow_20261010.md).
+- 최신 투사체/골드 표시 수정: [feedback_polish_20261010.md](feedback_polish_20261010.md), [EditMode](feedback_polish_editmode_20261010.json), [PlayMode](feedback_polish_playmode_20261010.json).
+- 최신 자동 조작 연속 실행/재개: [natural_playtest_20261010.md](natural_playtest_20261010.md), [실행기](MeasureNaturalRounds.cs). 보상/피해 주입 없이 1~9R 성공 및 두 선택의 실패 지점 기록.
+- 결과: [EditMode](round_flow_editmode_20261010.json), [PlayMode](round_flow_playmode_20261010.json).
+- 확정 순서 전체: [wave_order_confirmed_20261010.json](wave_order_confirmed_20261010.json). proposal 파일은 승인 전 역사 기록.
+- 사용법: [combat_prototype_20261008.md](combat_prototype_20261008.md) (최신 범위 업데이트 확인).
+- 후속 작업: [next_work_20261010.md](next_work_20261010.md).
+- 아트/폰트 적용: [combat_art_applied_20261010.md](combat_art_applied_20261010.md), [톤 기준](../art/combat_art_style_20261010.md).
+- 설치 UI 수정: [install_menu_fix_20261010.md](install_menu_fix_20261010.md).
+- 추가 아트 목록: [art_requirements_20261008.md](art_requirements_20261008.md).
+- 이전 전투/레벨/그림자: [combat_progress_20261008.md](combat_progress_20261008.md), [A 길 비교](../art/path_contrast_20261008.md).
+
+## 담당 노션
+
+- [프로젝트 루트](https://www.notion.so/3df389dbfc6881bc858bce200d1bb742)
+- [게임 루프](https://www.notion.so/3e6389dbfc68819fbfe5ca17f14460d3), [편성표](https://www.notion.so/3e6389dbfc6881c5aa2bed3c32047474), [웨이브 시스템](https://www.notion.so/3e6389dbfc68815db2e7e95be4598092)
+- [재화](https://www.notion.so/3e3389dbfc688160a9b7efcc83505cb3), [타워](https://www.notion.so/3df389dbfc6881a2b037fbce63f2f534), [플레이어 전투/이동](https://www.notion.so/3df389dbfc6881f8be26ff810ba7c18e), [성장](https://www.notion.so/3e6389dbfc68811283ffe9b73d0f0da8), [피해 계산](https://www.notion.so/3ea389dbfc6881919546c09d4ae7ade6)
+- [적/보스](https://www.notion.so/3df389dbfc6881ea9f5ec4e0f7b8084c), [증강](https://www.notion.so/3e6389dbfc6881bf9600d5f42fb68a44), [HUD](https://www.notion.so/3df389dbfc68811f9a87e5a5ff05a571), [레벨](https://www.notion.so/3e9389dbfc688159ae8cec214b4e3e25)
+- [효과 아트/타이포그래피](https://www.notion.so/3f4389dbfc688118965ecb7a1ffaaf3c), [추가 아트](https://www.notion.so/3f3389dbfc6881d2a70be916ded8ddb7)
+- [후속 작업](https://www.notion.so/3f4389dbfc688171b84dc19b138925f4), [플레이테스트 이력](https://www.notion.so/3df389dbfc6881fc9f1bd004adfc5999)
+
+## Unity CLI 재개 명령
+
+- 2026-10-11 CLI 인증: `auth login` 성공 후 `license activate` 성공, Unity Personal·Asset Store 활성화 확인. 로그인/라이선스 상태 재조회 확인. 프로젝트 코드·씬 변경 및 Unity 씬 상태 재검사는 수행하지 않음.
+
+```powershell
+$cgUnity = 'C:\Users\edcde\AppData\Local\Unity\bin\unity.exe'
+$cgProject = 'C:\Users\edcde\OneDrive\Desktop\CD'
+& $cgUnity command editor_status --format json --project-path $cgProject
+& $cgUnity command run_script --file docs/development/BuildCombatPrototype.cs --entry BuildCombatPrototype.Verify --format json --project-path $cgProject
+& $cgUnity command editor_play --project-path $cgProject
+& $cgUnity command editor_stop --project-path $cgProject
+& $cgUnity command run_tests --mode editor --format json --project-path $cgProject
+& $cgUnity command run_tests --mode playmode --async_tests true --format json --project-path $cgProject
+& $cgUnity command test_status --format json --project-path $cgProject
+```
+
+- `BuildCombatPrototype.Main`은 기존 씬 생성용으로 재실행하지 않는다. 확인은 Verify.
+- 최상위 success만 보지 않고 내부 result.success·결과 문자열·errorDetails 확인. async 테스트는 completed 최종 결과 확인.
+- 새 테스트가 발견되지 않으면 `RefreshRoundFlow.Main`으로 에디터 가져오기/컴파일 요청 후 완료 확인.
+- 일반 sandbox 터미널 초기화 문제가 있었고 require_escalated 실행을 사용한 이력이 있음. 실패를 성공으로 간주하지 않음.
+- Application.runInBackground=true. 임시 timeScale 변경 시 복구 후 Play 종료.
+- HUD 포함 캡처는 Play 중 source=screen. 반환 savedPath 확인.
+- 최신 실행 파일: `Builds/Windows_20261013/CoreGuardian.exe`, 전달 ZIP: `Builds/CoreGuardian_Windows_20261013.zip`. 전체 폴더를 함께 유지. 포함 씬·폰트 라이선스·남은 빌드 메시지는 windows_build_20261013.md 참조. `Builds/Windows_20261002`는 이전 B 비교 씬 빌드로 보존.
