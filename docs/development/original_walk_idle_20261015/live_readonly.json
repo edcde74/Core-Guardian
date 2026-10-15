@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var game=UnityEngine.Object.FindAnyObjectByType<CoreGuardianPrototype>(); return Newtonsoft.Json.JsonConvert.SerializeObject(new{ready=game!=null&&game.Ready,playing=UnityEditor.EditorApplication.isPlaying,timeScale=UnityEngine.Time.timeScale,units=UnityEngine.Object.FindObjectsByType<CoreGuardianUnitAnimation>(UnityEngine.FindObjectsSortMode.None).Select(u=>{var art=u.GetComponentsInChildren<UnityEngine.SpriteRenderer>(true).First(r=>r.name==\"2D Sprite\");var walk=art.transform.Find(\"OriginalWalk\");var idle=art.transform.Find(\"OriginalIdle\");return new{u.name,source=art.sprite.name,originalWalk=walk!=null&&walk.gameObject.activeSelf,originalIdle=idle!=null&&idle.gameObject.activeSelf};})});"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": "{\"ready\":true,\"playing\":true,\"timeScale\":3.0,\"units\":[{\"name\":\"PlayerStart_Prototype\",\"source\":\"player\",\"originalWalk\":false,\"originalIdle\":false},{\"name\":\"Tower_Multi_1\",\"source\":\"tower_multi\",\"originalWalk\":false,\"originalIdle\":false},{\"name\":\"Enemy_Attack_99\",\"source\":\"enemy_attack_v2\",\"originalWalk\":true,\"originalIdle\":false}]}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
