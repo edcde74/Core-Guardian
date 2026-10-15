@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/original_animation_rework_20261015/VerifyOriginalMotion.cs",
+      "entry": "VerifyOriginalMotion.Main"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 3325,
+      "executeMs": 61,
+      "assemblyName": "PipelineRunScript_VerifyOriginalMotion_755194632e744baaa80d178409b995a5",
+      "success": true,
+      "result": "[{\"role\":\"Player\",\"source\":\"player\",\"attackMoves\":true,\"feetOrBaseFixed\":true,\"originalRestored\":true},{\"role\":\"Single\",\"source\":\"tower_single\",\"attackMoves\":true,\"feetOrBaseFixed\":true,\"originalRestored\":true},{\"role\":\"Multi\",\"source\":\"tower_multi\",\"attackMoves\":true,\"feetOrBaseFixed\":true,\"originalRestored\":true},{\"role\":\"Support\",\"source\":\"tower_support\",\"attackMoves\":true,\"feetOrBaseFixed\":true,\"originalRestored\":true}]"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -37,6 +37,12 @@ public class CoreGuardianAnimationPlayModeTests
             Assert.That(art.sprite,Is.SameAs(expected),"Attacks must not swap the rejected atlas back in");
             Assert.That(art.transform.localPosition,Is.EqualTo(initialPosition));Assert.That(art.transform.localScale,Is.EqualTo(initialScale));
             Assert.That(UnityEngine.Object.FindObjectsByType<SpriteRenderer>().Any(r=>r.name.StartsWith("Muzzle_")),Is.False);
+            var rig=art.transform.Find("OriginalMotion");
+            Assert.That(rig,Is.Not.Null);Assert.That(rig.gameObject.activeSelf,Is.True,"A real launch must start the original cutout animation");
+            var unit=movement.GetComponent(Find("CoreGuardianUnitAnimation"));
+            Assert.That((int)unit.GetType().GetProperty("ShotCount").GetValue(unit),Is.GreaterThan(0));
+            unit.GetType().GetMethod("Present").Invoke(unit,new object[]{1f});
+            Assert.That(art.enabled,Is.True);Assert.That(rig.gameObject.activeSelf,Is.False,"Recovery must restore the unmodified original sprite");
         }
         finally{Time.timeScale=oldScale;}
 #else
@@ -59,7 +65,7 @@ public class CoreGuardianAnimationPlayModeTests
             {
                 var art=clone.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");
                 var original=art.sprite;var position=art.transform.localPosition;var scale=art.transform.localScale;var rotation=art.transform.localRotation;
-                var shadows=clone.GetComponentsInChildren<SpriteRenderer>(true).ToDictionary(r=>r,r=>r.enabled);
+                var shadows=clone.GetComponentsInChildren<SpriteRenderer>(true).Where(r=>r!=art).ToDictionary(r=>r,r=>r.enabled);
                 var unit=animationType.GetMethod("Attach").Invoke(null,new object[]{clone,((CoreGuardian.TowerKind)i).ToString()});
                 animationType.GetMethod("Fire").Invoke(unit,new object[]{Vector2.left,8f});animationType.GetMethod("Present").Invoke(unit,new object[]{.15f});
                 Assert.That(art.sprite,Is.SameAs(original));Assert.That(art.transform.localPosition,Is.EqualTo(position));Assert.That(art.transform.localScale,Is.EqualTo(scale));Assert.That(art.transform.localRotation,Is.EqualTo(rotation));

@@ -12,6 +12,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     readonly Dictionary<string,FrameInfo> frames = new Dictionary<string,FrameInfo>();
     SpriteRenderer artwork;
     SpriteRenderer upper;
+    CoreGuardianOriginalMotion originalMotion;
     Vector3 restPosition;
     string role;
     float walkPhase, shotAge=100, shotDuration=.25f, facingAngle=-90;
@@ -24,7 +25,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     // Counts presented volleys (one per source/frame), never a combat/balance metric.
     public int ShotCount {get;private set;}
     public Vector3 MuzzleWorld {get;private set;}
-    public bool Loaded => sprites.Count>=4;
+    public bool Loaded => originalMotion!=null||sprites.Count>=4;
     // Rejected generated player/towers must not override the original scene/prefab artwork.
     public bool UsesOriginalArtwork => role=="Player"||role=="Single"||role=="Multi"||role=="Support";
 
@@ -44,7 +45,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         if(body==null)throw new InvalidOperationException("Missing approved artwork child: "+name);
         artwork=body.GetComponent<SpriteRenderer>();
         restPosition=body.localPosition;
-        if(UsesOriginalArtwork){MuzzleWorld=body.position;return;}
+        if(UsesOriginalArtwork){originalMotion=new CoreGuardianOriginalMotion(artwork,role);MuzzleWorld=body.position;return;}
         var atlas=Resources.Load<Texture2D>("CoreGuardian/Animation/"+role+"/atlas");
         var metadata=Resources.Load<TextAsset>("CoreGuardian/Animation/"+role+"/frames");
         if(metadata!=null&&atlas!=null)foreach(var frame in JsonUtility.FromJson<AtlasInfo>(metadata.text).frames)
@@ -117,7 +118,13 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     }
     void ApplyFrame()
     {
-        if(artwork==null||UsesOriginalArtwork)return;
+        if(artwork==null)return;
+        if(UsesOriginalArtwork)
+        {
+            originalMotion.Present(shotAge,shotDuration);
+            MuzzleWorld=originalMotion.MuzzleWorld(aim);
+            return;
+        }
         int frame=0;
         bool shooting=shotAge<shotDuration;
         if(role=="Player")frame=shooting?1+Mathf.Min(2,Mathf.FloorToInt(shotAge/shotDuration*3)):0;

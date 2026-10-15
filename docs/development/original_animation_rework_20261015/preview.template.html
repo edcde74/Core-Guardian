@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><title>원본 스프라이트 동작 비교</title>
+<style>
+body{margin:0;background:#20262c;color:#e5edf4;font:15px 'Malgun Gothic',sans-serif}main{max-width:1040px;margin:24px auto}h1{font-size:22px}p{color:#b9c8d4;line-height:1.7}button{padding:10px 18px;background:#344554;color:white;border:1px solid #718491;border-radius:4px;cursor:pointer}button.selected{background:#245d7c}canvas{width:100%;height:auto;image-rendering:pixelated;background:#252c33}header{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:16px 0}.pass{color:#86dbaf}label{margin-left:16px}small{color:#a1b5c3}
+</style><main><h1>원본 그대로 · 공격 동작 1차</h1>
+<p>각 칸 왼쪽은 원본, 오른쪽은 같은 PNG의 부위만 움직인 결과입니다. 모두 원본 1픽셀 = 화면 4픽셀입니다.<br>정지 상태에서는 원본을 그대로 표시합니다. 새 그림·색상·장비를 추가하지 않았습니다.</p>
+<header><button id="idle">정지 원본 비교</button><button id="fire">1회 공격</button><button id="loop" class="selected">반복 재생</button><label>속도 <input id="speed" type="range" min="0.25" max="2" step=".25" value="1"><span id="rate">1×</span></label></header>
+<canvas id="board" width="1040" height="720"></canvas>
+<p id="checks"></p><small>기본 방향의 공격 동작을 느리게 보여주는 비교입니다. Unity에서는 실제 발사 이벤트에 연결했습니다. 전 방향 조준·보행은 아직 완료하지 않았습니다.</small>
+</main><script>
+const sources=__SOURCES__;
+const board=document.getElementById('board'),ctx=board.getContext('2d');
+const specs=[
+ {key:'player',label:'플레이어 · 렌치 팔',pivot:[10,23],type:'arm'},
+ {key:'tower_single',label:'단일 포탑 · 포신 반동',type:'single'},
+ {key:'tower_multi',label:'다중 포탑 · 3포신 반동',type:'multi'},
+ {key:'tower_support',label:'지원 포탑 · 원본 수정',type:'support'}];
+let mode='loop',start=0,last=0,clock=0,rate=1,ready=false;
+// Source coordinates below use the original PNG top-left origin. No pixel is painted.
+function moving(s,x,y){
+ if(s.type==='arm')return (y>=21&&y<=31&&x<=10)||(y>=26&&y<=32&&x<=4);
+ if(s.type==='single')return y<31;
+ if(s.type==='multi')return y<31;
+ return x>=16&&x<=24&&y>=7&&y<=25;
+}
+function canvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}
+async function load(s){
+ const image=new Image();image.src=sources[s.key];await image.decode();s.image=image;s.w=image.width;s.h=image.height;
+ const c=canvas(s.w,s.h),g=c.getContext('2d',{willReadFrequently:true});g.drawImage(image,0,0);const src=g.getImageData(0,0,s.w,s.h);
+ s.base=canvas(s.w,s.h);s.part=canvas(s.w,s.h);const a=s.base.getContext('2d'),b=s.part.getContext('2d');
+ const ap=a.createImageData(s.w,s.h),bp=b.createImageData(s.w,s.h);
+ for(let y=0;y<s.h;y++)for(let x=0;x<s.w;x++){
+  const i=(y*s.w+x)*4,out=moving(s,x,y)?bp.data:ap.data;out.set(src.data.subarray(i,i+4),i);
+ }
+ a.putImageData(ap,0,0);b.putImageData(bp,0,0);
+ const re=canvas(s.w,s.h),rg=re.getContext('2d',{willReadFrequently:true});rg.drawImage(s.base,0,0);rg.drawImage(s.part,0,0);
+ const actual=rg.getImageData(0,0,s.w,s.h).data;s.differentPixels=0;s.movingPixels=0;
+ for(let i=0;i<src.data.length;i+=4){if(src.data[i+3]&&[0,1,2,3].some(k=>src.data[i+k]!==actual[i+k]))s.differentPixels++;if(bp.data[i+3])s.movingPixels++;}
+}
+function motion(s,age){
+ if(age<0||age>=.48)return {x:0,y:0,angle:0,active:false};
+ // At zero the release begins. There is no independent timer pretending to be a shot.
+ const kick=Math.sin(Math.min(1,age/.09)*Math.PI/2)*Math.exp(-Math.max(0,age-.09)*11);
+ if(s.type==='arm')return {x:0,y:0,angle:-.24*kick,active:true};
+ if(s.type==='single')return {x:1.4*kick,y:1*kick,angle:0,active:true};
+ if(s.type==='multi')return {x:0,y:1.4*kick,angle:0,active:true};
+ return {x:0,y:-1.4*Math.sin(age/.48*Math.PI),angle:0,active:true};
+}
+function drawSprite(s,x,floor,animated,age){
+ const scale=4,top=floor-s.h*scale,left=x-s.w*scale/2;
+ ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(left,top);ctx.scale(scale,scale);
+ const m=motion(s,age);
+ if(!animated||!m.active)ctx.drawImage(s.image,0,0);
+ else{
+  ctx.drawImage(s.base,0,0);ctx.save();
+  if(s.type==='arm'){ctx.translate(...s.pivot);ctx.rotate(m.angle);ctx.translate(-s.pivot[0],-s.pivot[1]);}
+  ctx.translate(m.x,m.y);ctx.drawImage(s.part,0,0);ctx.restore();
+ }
+ ctx.restore();
+}
+function draw(now){
+ if(last)clock+=(now-last)/1000*rate;last=now;
+ ctx.fillStyle='#252c33';ctx.fillRect(0,0,1040,720);ctx.textAlign='center';
+ const age=mode==='loop'?clock%1.45-.62:mode==='fire'?clock-start:-1;
+ for(let i=0;i<4;i++){
+  const s=specs[i],x=(i%2)*520,y=Math.floor(i/2)*360;
+  ctx.strokeStyle='#42515e';ctx.strokeRect(x+6,y+6,508,348);
+  ctx.font='17px Malgun Gothic';ctx.fillStyle='#e7edf2';ctx.fillText(s.label,x+260,y+31);
+  ctx.font='13px Malgun Gothic';ctx.fillStyle='#a8bbc9';ctx.fillText('원본',x+145,y+59);ctx.fillText('동작',x+375,y+59);
+  ctx.strokeStyle='#53616b';ctx.beginPath();ctx.moveTo(x+30,y+326);ctx.lineTo(x+490,y+326);ctx.stroke();
+  drawSprite(s,x+145,y+326,false,age);drawSprite(s,x+375,y+326,true,age);
+  ctx.fillStyle=age>=0&&age<.09?'#ffce70':'#91a4b0';ctx.font='12px Malgun Gothic';ctx.fillText(age>=0&&age<.09?'발사 동작 시작':age>=0&&age<.48?'복귀':'정지 · 원본 일치',x+375,y+345);
+ }
+ requestAnimationFrame(draw);
+}
+function select(next){mode=next;start=clock;for(const id of ['idle','fire','loop'])document.getElementById(id).classList.toggle('selected',id===mode);}
+for(const id of ['idle','fire','loop'])document.getElementById(id).onclick=()=>select(id);
+document.getElementById('speed').oninput=e=>{rate=Number(e.target.value);document.getElementById('rate').textContent=rate+'×';};
+Promise.all(specs.map(load)).then(()=>{
+ ready=true;document.getElementById('checks').className='pass';document.getElementById('checks').textContent='원본 재합성 검사: '+specs.map(s=>s.label.split(' · ')[0]+' '+s.differentPixels+'픽셀 차이').join(' / ');
+ window.preview={specs,select,draw,checks:specs.map(s=>({key:s.key,differentPixels:s.differentPixels,movingPixels:s.movingPixels,width:s.w,height:s.h}))};requestAnimationFrame(draw);
+}).catch(e=>document.getElementById('checks').textContent=e.stack);
+</script></html>

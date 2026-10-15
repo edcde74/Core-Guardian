@@ -77,14 +77,25 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
             towers.TryGetValue(id,out source);
             var tower=game.Session.Towers.FirstOrDefault(t=>t.Id==id);if(tower!=null)rate=tower.Stats.Rate;
         }
-        // Rejected atlases must not contribute muzzle offsets or replacement effects.
-        if(source==null||source.UsesOriginalArtwork)return;
+        if(source==null)return;
         var direction=game.World(shot.Target.Position)-game.World(shot.Position);
         if(!volleyFrames.TryGetValue(shot.Source,out int frame)||frame!=Time.frameCount)
         {source.Fire(direction,rate);volleyFrames[shot.Source]=Time.frameCount;}
+        if(shot.Source.StartsWith("Tower:"))
+        {
+            // A support crystal responds only when a tower inside its actual buff radius fires.
+            foreach(var support in game.Session.Towers.Where(t=>t.Kind==TowerKind.Support&&Vector2.Distance(t.Position,shot.Position)<=t.Stats.Range))
+            {
+                string key="Support:"+support.Id;
+                if(towers.TryGetValue(support.Id,out var aura)&&(!volleyFrames.TryGetValue(key,out int last)||last!=Time.frameCount))
+                {aura.Fire(direction,rate);volleyFrames[key]=Time.frameCount;}
+            }
+        }
         var muzzle=source.MuzzleWorld;
         launchOffsets[shot.Id]=muzzle-(game.World(shot.Position)+Vector3.up*.25f);
         launchOrigins[shot.Id]=shot.Position;
+        // Original cutouts keep the approved projectile effect; only its real launch origin moves.
+        if(source.UsesOriginalArtwork)return;
         var flash=new GameObject("Muzzle_"+shot.Id).AddComponent<SpriteRenderer>();
         flash.transform.SetParent(transform,false);flash.transform.position=muzzle;
         flash.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
