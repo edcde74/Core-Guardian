@@ -1,0 +1,44 @@
+<div id="cg-postprocess-study">
+  <div class="viz-controls">
+    <label class="form-label">비교할 후처리
+      <select id="cg-pp-mode" class="form-select">
+        <option value="color">색감·명암 정돈 · 추천</option>
+        <option value="gentle_glow">색감 정돈 + 미세 Bloom</option>
+      </select>
+    </label>
+  </div>
+  <div class="viz-row" style="justify-content:space-between"><span>원본 ←</span><span id="cg-pp-name" aria-live="polite">→ 색감·명암 정돈</span></div>
+  <div class="cg-pp-frame" role="img" aria-label="슬라이더 왼쪽 원본, 오른쪽 후처리 비교. Unity 임시 카메라 실제 렌더이며 게임 설정에는 미적용.">
+    <img id="cg-pp-after" alt="후처리 비교 렌더">
+    <img id="cg-pp-before" alt="현재 원본 렌더">
+    <div id="cg-pp-line" aria-hidden="true"></div>
+  </div>
+  <label class="form-label">원본 표시 범위 <span id="cg-pp-ratio">50%</span>
+    <input id="cg-pp-split" class="form-range" type="range" min="0" max="100" value="50" aria-label="원본과 후처리 비교 경계">
+  </label>
+  <div class="viz-grid">
+    <div><div>코어 확대 · 원본</div><canvas id="cg-pp-zoom-before" width="240" height="216" role="img" aria-label="코어 원본 확대"></canvas></div>
+    <div><div>코어 확대 · 후처리</div><canvas id="cg-pp-zoom-after" width="240" height="216" role="img" aria-label="선택한 후처리의 코어 확대"></canvas></div>
+  </div>
+  <div class="text-small">실제 URP 정지 씬 렌더 · 런타임 HUD/적/피해 숫자 제외 · 게임 설정 미적용</div>
+</div>
+<style>
+#cg-postprocess-study .cg-pp-frame{position:relative;width:100%;aspect-ratio:16/9;margin:8px 0}
+#cg-postprocess-study .cg-pp-frame img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated}
+#cg-postprocess-study #cg-pp-before{clip-path:inset(0 50% 0 0)}
+#cg-postprocess-study #cg-pp-line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--foreground)}
+#cg-postprocess-study canvas{display:block;max-width:100%;image-rendering:pixelated;margin-top:6px}
+</style>
+<script>
+(()=>{
+const root=document.getElementById('cg-postprocess-study'),assets=ASSET_DATA;
+const find=id=>root.querySelector('#'+id),before=find('cg-pp-before'),after=find('cg-pp-after');
+const names={color:'색감·명암 정돈',gentle_glow:'색감 정돈 + 미세 Bloom',strong:'강한 분위기 · 비교용'};
+function zoom(img,id){const c=find(id),ctx=c.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(img,640,325,120,108,0,0,240,216)}
+before.onload=()=>zoom(before,'cg-pp-zoom-before');after.onload=()=>zoom(after,'cg-pp-zoom-after');
+before.src=assets.original;
+function mode(){const key=find('cg-pp-mode').value;after.src=assets[key];find('cg-pp-name').textContent='→ '+names[key]}
+function split(){const value=+find('cg-pp-split').value;before.style.clipPath='inset(0 '+(100-value)+'% 0 0)';find('cg-pp-line').style.left=value+'%';find('cg-pp-ratio').textContent=value+'%'}
+find('cg-pp-mode').addEventListener('change',mode);find('cg-pp-split').addEventListener('input',split);mode();split();
+})();
+</script>

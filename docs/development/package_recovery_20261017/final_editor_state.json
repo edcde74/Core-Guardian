@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var s=UnityEngine.SceneManagement.SceneManager.GetActiveScene();var c=UnityEngine.Camera.main;var d=c.GetComponent<UnityEngine.Rendering.Universal.UniversalAdditionalCameraData>();return new {play=UnityEditor.EditorApplication.isPlaying,paused=UnityEditor.EditorApplication.isPaused,compiling=UnityEditor.EditorApplication.isCompiling,compilationFailed=UnityEditor.EditorUtility.scriptCompilationFailed,scene=s.path,dirty=s.isDirty,timeScale=UnityEngine.Time.timeScale,captureDelta=UnityEngine.Time.captureDeltaTime,cameraHDR=c.allowHDR,postProcessing=d.renderPostProcessing,volumes=UnityEngine.Object.FindObjectsByType<UnityEngine.Rendering.Volume>().Length};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "play": false,
+        "paused": false,
+        "compiling": false,
+        "compilationFailed": false,
+        "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+        "dirty": false,
+        "timeScale": 1,
+        "captureDelta": 0,
+        "cameraHDR": false,
+        "postProcessing": false,
+        "volumes": 0
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

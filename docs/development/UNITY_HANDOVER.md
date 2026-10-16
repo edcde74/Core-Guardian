@@ -1,12 +1,12 @@
 # 코어 가디언 Unity 인수인계
 
-최종 갱신: 2026-10-16 (Asia/Seoul). 현재 사용자 지시와 최신 담당 노션이 우선이다. 새 대화용 복사 텍스트: [resume_20261016.md](resume_20261016.md).
+최종 갱신: 2026-10-17 (Asia/Seoul). 현재 사용자 지시와 최신 담당 노션이 우선이다. 새 대화용 복사 텍스트: [resume_20261016.md](resume_20261016.md).
 
 ## 재개 시 먼저 확인
 
 - 최신 게임 변경 커밋: `edb7a28`. 문서 커밋이나 병행 작업이 추가될 수 있으므로 실제 HEAD/변경을 확인한다. 사용자·다른 채팅의 변경을 덮어쓰거나 되돌리지 않는다. [로컬 Git 규칙](LOCAL_GIT.md).
-- 최신 **재개 점검의 읽기 재조회**: CD/Unity6000.6.2f1 연결, 전투 씬 `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity` active·dirty=false, **Play=false/paused=false/TimeScale1**, compiling=false/captureDelta0. 이전 문서 정리 때의 사용자 Play=true와 구분한다. 이번에도 Play 시작/정지 명령은 보내지 않았다. [데이터/계측 전제 점검](balance_preflight_20261016_2203/README.md).
-- 마지막 게임 수정 검증은 **EditMode102/102·PlayMode19/19 completed**다. 당시 자체 검증 종료 후 Play=false/TimeScale1이었다. 현재 사용자가 다시 켠 Play와 구분한다. 이번 문서 정리에서는 새 테스트·Play 조작·코드 변경·빌드/실행·Notion 변경 없음.
+- 최신 **10월17일 패키지 복구 후 확인**: CD/Unity6000.6.2f1 연결ready(pid11208/port7800),전투 씬active·dirty=false,Play/paused/compiling/compilationFailed=false,TimeScale1/captureDelta0. 콘솔오류0/경고0. 빈 패키지 캐시68개를 동일 버전으로 복원하고 기존 Bee/ScriptAssemblies/ScriptMapper는 Library/Recovery_20261017_0034에 보존했다. 게임 코드/manifest/lockfile 변경 없음. [복구 근거·절차](package_recovery_20261017/README.md).
+- 마지막 게임 수정 검증과 별도로 **이번 복구 후 EditMode102/102·PlayMode19/19 completed**를 다시 확인했다. 최초 비동기 EditMode는 실행기 씬복구 예외로 중단돼 통과로 세지 않고 종료 확인 후 동기로 재실행했다. 사용자 Play 강제 중단/프로세스 강제 종료/게임 빌드/실행/Notion 변경 없음. 기존 [데이터·계측 전제 점검](balance_preflight_20261016_2203/README.md)은 보존한다.
 - 원본 기반 애니메이션의 외형/자연스러움 최종 사용자 검토가 남는다. 새 피드백을 먼저 반영하고, 확인 이후에는 기존 밸런스 실측 우선순위를 유지한다. 다음 제작 항목을 임의 확정하지 않는다.
 
 ## 현재 애니메이션·그림자·체력바
@@ -21,6 +21,8 @@
 - 포탑 원본 외형/공격과 승인 보스 안광V3 보존. 몬스터 검토 전 [MONSTER_ART_STYLE.md](../art/MONSTER_ART_STYLE.md)와 현재 병사3종 원본/동일 배율 비교판을 직접 확인한다. 단순 팔레트/반전 일치나 검사 수치만으로 자연스러움을 승인하지 않는다.
 
 ## 병행 VFX·기획 보존
+
+- **10월16~17일 카메라 후처리 비교 완료·게임 미적용:** 현재 URP/Linear/HDR지원,원래 카메라HDRfalse·후처리false·Volume0를 확인했다. 임시 씬·카메라·Volume으로 색감/명암 정돈(우선추천),약한Bloom,강한 분위기 비교를 실제 URP로 캡처하고 원래 상태를 보존했다. 최종sRGB 출력/인터랙티브2안/코어확대/브라우저오류0 확인. 저장씬 배치 아트 비교이며 전투HUD/실제 피해숫자/성능 검증은 남아 있다. 수정 부위 한정HDR발광은 별도 후보,흐림·색수차·그레인은 기본 제외 제안이다. 선택·영구 적용으로 간주하지 않는다. [비교·현재값·남은 검증](postprocess_study_20261016/README.md).
 
 - 몸 피격: 0.09초 복귀/최대22%/재점등 제한0.1초. 기존 파편/숫자 유지, 새 파편/숫자 반응 미채택. [담당 기록](body_hit_flash_20261016/duration_90ms.md).
 - 코어 피해 B안은 **이미 적용**됐다. 짧은 흰색→붉은색 본체·상단 코어 표시 반응·추가 플래시300ms 제한. 코어 감소 숫자는 사용자가 위치를 확정했다: 본체 bounds.max 기준(-0.3,-0.38), 빨간색/Pixelify Sans Bold. [적용](core_damage_feedback_20261016/applied_B.md), [사용자 확정 위치](core_damage_feedback_20261016/user_position.md). 과거 미구현 제안으로 되돌리지 않는다.
