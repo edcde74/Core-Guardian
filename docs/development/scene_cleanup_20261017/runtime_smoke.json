@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var g=UnityEngine.Object.FindAnyObjectByType<CoreGuardianPrototype>();return new {playing=UnityEditor.EditorApplication.isPlaying,ready=g!=null&&g.Ready,hud=g!=null&&g.transform.Find(\"CombatHUD\")!=null,scene=UnityEngine.SceneManagement.SceneManager.GetActiveScene().path,phase=g!=null&&g.Ready?g.Session.Phase.ToString():\"not ready\",wave=g!=null&&g.Ready?g.Session.Wave:0};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": true,
+        "ready": true,
+        "hud": true,
+        "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+        "phase": "Preparation",
+        "wave": 1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

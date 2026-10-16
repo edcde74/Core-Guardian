@@ -1,0 +1,29 @@
+{
+  "deleted": [
+    "Assets/_Recovery/0.unity",
+    "Assets/Scenes/ArtReview_20260930_B_Revision2.unity",
+    "Assets/Scenes/ArtReview_20261008_5x5.unity",
+    "Assets/Scenes/ArtReview_20261008_Depth.unity",
+    "Assets/Scenes/ArtReview_20261008_PathContrast_A.unity",
+    "Assets/Scenes/ArtReview_20261008_PathContrast_B.unity",
+    "Assets/Scenes/ArtScaleReview_20260930_Large.unity",
+    "Assets/Scenes/ArtScaleReview_20260930_Medium.unity",
+    "Assets/Scenes/ArtScaleReview_20260930_Small.unity",
+    "Assets/Scenes/SampleScene.unity",
+    "Assets/Settings/Scenes/URP2DSceneTemplate.unity"
+  ],
+  "deletedTemplates": [
+    "Assets/Settings/Lit2DSceneTemplate.scenetemplate"
+  ],
+  "remaining": [
+    "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity"
+  ],
+  "active": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+  "dirty": false,
+  "buildScenes": [
+    {
+      "path": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "enabled": true
+    }
+  ]
+}

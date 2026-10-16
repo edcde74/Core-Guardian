@@ -4,6 +4,8 @@
 
 ## 재개 시 먼저 확인
 
+- **10월17일 사용자 지시로 씬 정리 완료:** 삭제 전 로컬 복구 커밋 `a306a60`에 기존 씬/메타·종속템플릿26파일을 확인·보관하고,전투 씬 하나만 남겼다. 비교·샘플·복구·기본템플릿 씬11개와 종속 Lit2DSceneTemplate을 에디터API로 삭제하고 빌드목록도 전투 씬 하나로 정리했다. 원본 프리팹/아트 보존·남긴 씬SHA256동일·끊어진 씬GUID참조0. 실제 자체Play에서Ready/HUD/1R준비 확인 후 종료,최종dirtyfalse/컴파일false/콘솔오류0. 자동검사는0건반환이라 통과로 세지 않았다. [삭제목록·복구·검증](scene_cleanup_20261017/README.md). AGENTS.md의 과거 비교씬 보존 지침은 이 사용자 직접 지시로 갱신했다.
+
 - 최신 게임 변경 커밋: `edb7a28`. 문서 커밋이나 병행 작업이 추가될 수 있으므로 실제 HEAD/변경을 확인한다. 사용자·다른 채팅의 변경을 덮어쓰거나 되돌리지 않는다. [로컬 Git 규칙](LOCAL_GIT.md).
 - 최신 **10월17일 패키지 복구 후 확인**: CD/Unity6000.6.2f1 연결ready(pid11208/port7800),전투 씬active·dirty=false,Play/paused/compiling/compilationFailed=false,TimeScale1/captureDelta0. 콘솔오류0/경고0. 빈 패키지 캐시68개를 동일 버전으로 복원하고 기존 Bee/ScriptAssemblies/ScriptMapper는 Library/Recovery_20261017_0034에 보존했다. 게임 코드/manifest/lockfile 변경 없음. [복구 근거·절차](package_recovery_20261017/README.md).
 - 마지막 게임 수정 검증과 별도로 **이번 복구 후 EditMode102/102·PlayMode19/19 completed**를 다시 확인했다. 최초 비동기 EditMode는 실행기 씬복구 예외로 중단돼 통과로 세지 않고 종료 확인 후 동기로 재실행했다. 사용자 Play 강제 중단/프로세스 강제 종료/게임 빌드/실행/Notion 변경 없음. 기존 [데이터·계측 전제 점검](balance_preflight_20261016_2203/README.md)은 보존한다.

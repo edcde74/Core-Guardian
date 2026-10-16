@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var s=UnityEngine.SceneManagement.SceneManager.GetActiveScene();return new {playing=UnityEditor.EditorApplication.isPlaying,compiling=UnityEditor.EditorApplication.isCompiling,scene=s.path,dirty=s.isDirty,scenes=UnityEditor.AssetDatabase.FindAssets(\"t:Scene\",new[]{\"Assets\"}).Select(UnityEditor.AssetDatabase.GUIDToAssetPath).ToArray(),buildScenes=UnityEditor.EditorBuildSettings.scenes.Select(x=>x.path).ToArray(),timeScale=UnityEngine.Time.timeScale};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": false,
+        "compiling": false,
+        "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+        "dirty": false,
+        "scenes": [
+          "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity"
+        ],
+        "buildScenes": [
+          "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity"
+        ],
+        "timeScale": 1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
