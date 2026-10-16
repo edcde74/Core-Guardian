@@ -13,6 +13,8 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     readonly List<Effect> effects=new List<Effect>();
     CoreGuardianPrototype game;
     CoreGuardianHud hud;
+    CoreGuardianCoreFeedback coreFeedback;
+    SpriteRenderer coreBody;
     sealed class Effect { public SpriteRenderer Renderer; public float Started,Duration,Width,Rise; public Vector3 Origin; }
     public bool Loaded => sprites.Count==Names.Length;
 
@@ -22,6 +24,10 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
         foreach(var sprite in Resources.LoadAll<Sprite>(ResourcePath))sprites[sprite.name]=sprite;
         if(!Loaded||Names.Any(n=>!sprites.ContainsKey(n)))throw new InvalidOperationException("Approved combat sprites not installed");
         game.Session.DamageApplied+=OnDamage;
+        // Resolve the visible core in this scene, never its contact shadow or tilemap.
+        coreBody=UnityEngine.Object.FindObjectsByType<SpriteRenderer>(FindObjectsInactive.Include,FindObjectsSortMode.None)
+            .FirstOrDefault(r=>r.gameObject.scene==game.gameObject.scene&&r.name=="2D Sprite"&&r.sprite!=null&&r.sprite.name=="core");
+        coreFeedback=new CoreGuardianCoreFeedback(coreBody,hud.CoreDamageGraphics());
     }
     public Sprite Get(string name)=>sprites[name];
     public Sprite Projectile(ProjectileState projectile)
@@ -55,7 +61,10 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     {
         var position=game.World(new Vector2(29,9));
         Show("CoreHit",position+Vector3.up*.5f,.7f,.35f);
-        hud.ShowCoreNumber(position+Vector3.up*1.05f,amount);
+        // Anchor outside the actual artwork, not over its crystal or existing CoreHit.
+        var numberPosition=coreBody!=null?new Vector3(coreBody.bounds.max.x+.2f,coreBody.bounds.max.y+.12f,coreBody.transform.position.z):position+new Vector3(1.2f,1.6f,0);
+        hud.ShowCoreNumber(numberPosition,amount);
+        coreFeedback?.Trigger();
     }
     void Show(string name,Vector3 position,float width,float duration,float rise=0)
     {
@@ -64,6 +73,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     }
     void Update()
     {
+        coreFeedback?.Advance(Time.deltaTime);
         for(int i=effects.Count-1;i>=0;i--)
         {
             var effect=effects[i];float age=(Time.time-effect.Started)/effect.Duration;
@@ -72,6 +82,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
             effect.Renderer.color=new Color(1,1,1,1-Mathf.Clamp01((age-.3f)/.7f));
         }
     }
-    public void ClearEffects(){foreach(var e in effects)if(e.Renderer!=null)Destroy(e.Renderer.gameObject);effects.Clear();}
-    void OnDestroy(){if(game!=null&&game.Session!=null)game.Session.DamageApplied-=OnDamage;ClearEffects();}
+    public void ClearEffects(){foreach(var e in effects)if(e.Renderer!=null)Destroy(e.Renderer.gameObject);effects.Clear();coreFeedback?.Clear();}
+    void OnDisable(){coreFeedback?.Clear();}
+    void OnDestroy(){if(game!=null&&game.Session!=null)game.Session.DamageApplied-=OnDamage;ClearEffects();coreFeedback?.Dispose();}
 }

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"Summary\": {\n    \"Total\": 1,\n    \"Passed\": 1,\n    \"Failed\": 0,\n    \"Skipped\": 0,\n    \"Inconclusive\": 0\n  },\n  \"Results\": [\n    {\n      \"FullName\": \"CoreGuardianCoreFeedbackTests.CoreFeedbackTurnsWhiteThenRed_RejectsOverlaps_AndRestoresPresentation\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0592295,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ],\n  \"Duration\": 5.8,\n  \"StatusPath\": null,\n  \"Mode\": \"EditMode\",\n  \"FilterApplied\": \"testname: CoreGuardianCoreFeedbackTests\",\n  \"success\": true,\n  \"result\": null\n}"
+    }
+  ]
+}

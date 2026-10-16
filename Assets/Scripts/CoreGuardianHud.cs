@@ -301,7 +301,13 @@ public sealed class CoreGuardianHud : MonoBehaviour
         symbol.sprite=icon;symbol.preserveAspect=true;symbol.raycastTarget=false;
         number.Root=group;number.Icon=symbol;number.Offset=new Vector2(0,24);
     }
-    public void ShowCoreNumber(Vector3 position,int amount)=>FloatingNumber("CoreDamageNumber","-"+amount,position,new Color(1f,.36f,.32f),0);
+    public UnityEngine.UI.Graphic[] CoreDamageGraphics()=>new UnityEngine.UI.Graphic[]{topDetails.Find("Symbol_Core").GetComponent<UnityEngine.UI.Image>(),topDetails.Find("Status_Core").GetComponent<UnityEngine.UI.Text>()};
+    public void ShowCoreNumber(Vector3 position,int amount)
+    {
+        var number=FloatingNumber("CoreDamageNumber","-"+amount,position,new Color(1f,.36f,.32f),0);
+        number.Text.alignment=TextAlignmentOptions.Left;
+        number.Text.rectTransform.pivot=new Vector2(0,.5f);
+    }
     DamageNumber FloatingNumber(string name,string value,Vector3 position,Color color,int lane)
     {
         var rect=Box(name,worldFeedback,new Vector2(.5f,.5f),Vector2.zero,new Vector2(200,52),false);
