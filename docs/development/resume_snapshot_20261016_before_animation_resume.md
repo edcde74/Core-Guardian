@@ -1,0 +1,51 @@
+# 새 대화에 붙여넣을 인수인계
+
+2026-10-16 최신 표시 후속: 플레이어 고정 발 그림자만 껐고 중앙 그림자는 유지했다. 몬스터 체력바는 병종별 원본/상하 전체 높이+4px 여백으로 배치해 스프라이트/위로 솟는 장비와 겹침을 해소했다. 전체102/19 completed·실제 씬 검토 캡처, 최종Play/paused/컴파일false·전투 씬dirty=false. [상세](health_shadow_20261016/README.md). 원본/보행/VFX/밸런스 보존, 새 빌드 없음.
+
+2026-10-16 최신 플레이어 후속: 위 방향 상체에 옆모습 하체가 남는 문제를 원본 바지/부츠 픽셀로 수정했다. D2 다리/뒤꿈치를 나란히 정렬하고 D2 보행 피벗·회전만 조정했다. 다른7방향/상체/원본/몬스터/VFX/밸런스 보존. 전체102/18 completed·실제 W 전후 영상, 최종Play/paused/컴파일false·씬dirty=false. 모든 방향 재생성 시 전체 빌더→BuildRearPlayer→**BuildRearLowerBody.Main(true)** 순서 필수. [최신 상세](player_rear_lowerbody_20261016/README.md). 파생 아트 최종 판단 별도.
+
+2026-10-16 최신 애니메이션 후속: 사용자 승인으로 몬스터의 고정 발 그림자(`바닥 밀착선`)만 보행 연결 시 비활성화했다. 중앙 타원 그림자·원본/프리팹/씬·X/Y 보행·플레이어/포탑/VFX/밸런스 유지. 집중 EditMode15/15·실제 경로 포함 PlayMode3/3 completed, 최종Play/paused/컴파일false·전투 씬dirty=false·TimeScale1/captureDelta0. 전체 회귀 재실행은 아니며 자연스러움 최종 사용자 판단은 별도다. [전후 비교·상세](monster_single_shadow_20261016/README.md). 아래 VFX 재개 범위는 보존한다.
+
+2026-10-16 최신 VFX 대화 기준. 아래 내용을 새 대화에 붙여넣는다.
+
+```text
+코어 가디언 프로젝트를 이어서 진행해줘.
+경로: C:\Users\edcde\OneDrive\Desktop\CD
+먼저 AGENTS.md → docs/development/UNITY_HANDOVER.md → docs/development/LOCAL_GIT.md를 읽어줘.
+
+지금 이어갈 주제는 타격 VFX와 시각 피드백이다.
+- 평상시 효과는 작게 유지하고 보스 가속·코어 피해는 확실히 강조한다.
+- 사운드는 이번 범위에서 제외한다. 타워가 많아졌을 때 소리 중첩은 나중에 별도 사운드 파트에서 다룬다.
+- 기술병/단일 포탑/다중 포탑 시안 3종에서 몬스터 몸이 피격 순간 밝아지는 것만 채택했다. 새 파편·숫자 애니메이션은 채택하지 않았다. 기존 B 효과와 기존 숫자는 유지한다.
+- 몸 피격 적용 완료: 0.09초 동안 복귀, 최대 22% 밝기 혼합, 0.1초 재점등 제한. 내가 조금 늘려달라고 해서 0.065초에서 0.09초로 바꿨다. 그림자·체력바·버프 표시는 제외한다.
+- 구현: Assets/Scripts/CoreGuardianHitFlash.cs, CoreGuardianUnitAnimation.cs, CoreGuardianCombatAnimation.cs, Assets/Resources/CoreGuardian/BodyHitFlash.shader.
+- 완료 커밋 1c76a11(최초 적용), 2990bdd(90ms 조정). 이후 다른 작업도 있으니 현재 HEAD를 직접 확인한다.
+- 최초 전체 EditMode92/92·PlayMode16/16과 시간 조정 집중 검사5/5를 구분한다. 시간 조정 때 전체 회귀를 모두 다시 통과했다고 말하지 마. docs/development/body_hit_flash_20261016/README.md와 duration_90ms.md를 참고한다.
+
+내가 다음 제작 대상을 물었고 마지막 답변에서 다음을 제안한 상태다:
+1. 코어가 피해받을 때 붉은색·흰색 플래시 강조
+2. 같은 순간 상단 코어 체력 표시도 짧게 반응
+3. 연속 피해 시 효과가 과하게 겹치지 않도록 처리
+이 코어 피해 강화는 아직 미구현이다. 기존 CoreHit 효과/코어 감소 숫자는 있으니 실제 코드를 확인하고 연결을 재사용한다. 저체력 임계값·경고 반복 주기·화면 흔들림은 확정하지 않았다. 제안을 사용자 승인이나 구현 완료로 간주하지 말고 다음 사용자 지시에 맞춰 이어가.
+둔화는 기본 공격 기능이 아니라 골드 플레이어 전투 증강의 조건부 기능이다. 장화 아이콘 시안은 보류했으니 우선순위를 둔화로 되돌리지 마.
+
+노션 기획서 정리는 완료했다. 기존 기획서 관리 DB 양식/담당자를 유지하며 다음으로 나눴다:
+- 아트: 타격 VFX·피격 피드백 / 상태 효과·위험 알림 / 셰이더·화면 후처리 기준
+- 제작·검증: VFX 시안·선택·검증 기록
+- 별도 07. 사운드: 전투 사운드 설계 방향
+담당 문서 링크와 검증: docs/development/vfx_notion_20261016/report.md.
+같은 분류/페이지를 중복 생성하지 말고 담당 문서만 갱신한다. 타격 담당 문서 현재값도 0.09초로 반영돼 있다.
+
+다른 작업 보존:
+- X축 보행은 내가 잘된다고 확인했다. Y+ 뒷방향/Y- 앞방향 파생 프레임과 그림자 수정도 보존한다.
+- 공격형 발 접지 후속 커밋 a7ad256, 상하 양발 교대 후속 커밋 3ed4f1e. docs/development/foot_contact_20261016/README.md와 vertical_gait_fix_20261016/README.md를 참고한다. 후속 기록상 EditMode95/95·PlayMode16/16이며 이번 문서 정리에서 새로 실행한 검사가 아니다. 자연스러움/파생 아트 최종 승인은 별도다.
+- 몬스터 아트 작업 전 docs/art/MONSTER_ART_STYLE.md와 현재 병사3종 실제 스프라이트/동일 배율 비교판을 확인한다. 원본 외형·씬·프리팹을 임의 재디자인하지 않는다.
+- 플레이어 보행의 후속 실제 W 피드백으로 D2 상행을 재조립했다. 배낭에 잘못 들어간 맨팔·얼굴 잔여 조각을 제거하고 양팔/하체 반전·피벗을 맞췄다. 실제 씬 InputSystem W 키 입력의 한 타일 Y+0.6/X0 이동36프레임을 확인했다. 주 프로젝트 EditMode102/102·PlayMode18/18 completed. 원본 PNG/씬/프리팹·다른7방향·몬스터 상행 다리 폭 보존, 자연스러움 최종 사용자 검토 별도. 현재 `docs/development/player_up_repair_20261016/README.md` 우선. 전체8방향을 polish 빌더로 재생성하면 BuildRearPlayer.Main(true) 후처리를 반드시 적용한다. 이전 player_facing 빌더/영상은 이력이다. VFX와 검증 범위를 구분한다.
+- 기존 밸런스 테스트 요청과 수치 변경 제한은 유지한다. docs/development/next_work_20261013.md를 따른다. 실제 CSV/씬 로더·계측 전제를 확인하고 강제 처치/재화 주입 검사를 밸런스 실측으로 쓰지 않는다.
+
+전투 씬: Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity
+Unity 변경 전 연결·열린 씬·Play·컴파일·저장 상태를 확인한다. 사용자 Play/다른 테스트를 임의 중단하지 말고 씬 YAML을 직접 수정하지 마.
+빌드/실행파일 실행은 내가 명시적으로 요청할 때만 한다. 기존 실행파일을 최신 코드가 반영된 것으로 취급하지 마.
+다른 채팅의 변경과 AudioProduction/, balance_tension_20261013/, bgm_sketches_20261013.md 등 사용자 작업을 보존한다. Git 복구·완료 기록은 LOCAL_GIT.md를 따르고 GitHub push는 하지 않는다.
+작업 후 UNITY_HANDOVER.md에 실제 확인한 구현·검증·미확정 사항을 구분해 남겨줘.
+```
