@@ -22,7 +22,7 @@ public static class CaptureBodyHit
                 var clone=UnityEngine.Object.Instantiate(prefab);preview.AddSingleGO(clone);clone.transform.position=new Vector3(-1.8f+col*1.8f,2.1f-row*1.7f,0);
                 var unit=CoreGuardianUnitAnimation.Attach(clone,roles[row]);units[row,col]=unit;
                 unit.Move(row%2==0?Vector2.right:Vector2.up,.1f);unit.Present(.1f);
-                if(col>0){unit.ReceiveHit();unit.Present(0);if(col==2)unit.Present(.08f);}
+                if(col>0){unit.ReceiveHit();unit.Present(0);if(col==2)unit.Present(.12f);}
             }
             preview.BeginStaticPreview(new Rect(0,0,864,1088));preview.Render(true,true);var image=preview.EndStaticPreview();
             File.WriteAllBytes(Folder+"unity_body_flash.png",image.EncodeToPNG());UnityEngine.Object.DestroyImmediate(image);

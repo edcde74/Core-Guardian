@@ -34,6 +34,8 @@ public class CoreGuardianHitFlashTests
                 }
             }
             unitType.GetMethod("Present").Invoke(unit,new object[]{.08f});
+            Assert.That(art.sharedMaterial.shader.name,Is.EqualTo("CoreGuardian/BodyHitFlash"),"The slightly longer flash should still be visible at 80ms");
+            unitType.GetMethod("Present").Invoke(unit,new object[]{.02f});
             foreach(var renderer in body)Assert.That(renderer.sharedMaterial,Is.SameAs(materials[renderer]));
             foreach(var pair in shadows)Assert.That(pair.Key.sharedMaterial,Is.SameAs(pair.Value),"Shadow/health renderers must not flash");
             Assert.That(art.color,Is.EqualTo(originalColor));Assert.That(clone.transform.position,Is.EqualTo(position));Assert.That(clone.transform.localScale,Is.EqualTo(scale));
@@ -51,9 +53,12 @@ public class CoreGuardianHitFlashTests
             var flash=Activator.CreateInstance(type,new object[]{renderer});
             Assert.That(type.GetMethod("Trigger").Invoke(flash,null),Is.EqualTo(true));
             for(int i=0;i<8;i++){type.GetMethod("Advance").Invoke(flash,new object[]{.01f});Assert.That(type.GetMethod("Trigger").Invoke(flash,null),Is.EqualTo(false));}
-            Assert.That(renderer.sharedMaterial,Is.SameAs(original),"Frequent hits must not extend the 65ms flash");
+            Assert.That(renderer.sharedMaterial.shader.name,Is.EqualTo("CoreGuardian/BodyHitFlash"),"Flash stays visible at 80ms");
+            type.GetMethod("Advance").Invoke(flash,new object[]{.015f});
+            Assert.That(type.GetMethod("Trigger").Invoke(flash,null),Is.EqualTo(false));
+            Assert.That(renderer.sharedMaterial,Is.SameAs(original),"Frequent hits must not extend the 90ms flash");
             renderer.GetPropertyBlock(block);Assert.That(block.GetFloat("_UnrelatedDiagnostic"),Is.EqualTo(.37f));Assert.That(block.GetFloat("_HitFlashAmount"),Is.Zero);
-            type.GetMethod("Advance").Invoke(flash,new object[]{.03f});Assert.That(type.GetMethod("Trigger").Invoke(flash,null),Is.EqualTo(true));
+            type.GetMethod("Advance").Invoke(flash,new object[]{.015f});Assert.That(type.GetMethod("Trigger").Invoke(flash,null),Is.EqualTo(true));
             type.GetMethod("Clear").Invoke(flash,null);Assert.That(renderer.sharedMaterial,Is.SameAs(original));
         }
         finally{UnityEngine.Object.DestroyImmediate(go);}

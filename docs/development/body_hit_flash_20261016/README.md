@@ -4,8 +4,10 @@
 
 ## 현재 구현
 
+2026-10-16 후속 피드백으로 복귀 시간을65ms→90ms로 소폭 늘렸다. 최대 밝기22%·재점등 제한100ms는 유지한다. [조정·검증 기록](duration_90ms.md). 아래 최초 적용 당시 전체 검사92/16·정적 비교는 이 후속 조정의 재실행 결과와 구분한다.
+
 - `CoreGuardianCombatAnimation`이 실제 `Session.DamageApplied`를 구독한다. 양수 피해를 받고 살아 있는 몬스터의 `CoreGuardianUnitAnimation.ReceiveHit()`를 호출한다. 뷰 생성 전 명중은 해당 개체의 뷰 동기화 때 연결하며 이미 처치된 개체의 보류 기록은 제거한다.
-- 공통 `CoreGuardianHitFlash`와 `Resources/CoreGuardian/BodyHitFlash.shader`가 몸 RGB를 따뜻한 밝은 색으로 최대22% 혼합한 뒤65ms 동안 감소시킨다. 첫 프레임에 최고 반응을 표시한다. 100ms 이내 재명중은 반응 시간을 연장하지 않는다. 이는 화면 표시 제한이며 실제 피해·발사·이동·보상에는 관여하지 않는다.
+- 공통 `CoreGuardianHitFlash`와 `Resources/CoreGuardian/BodyHitFlash.shader`가 몸 RGB를 따뜻한 밝은 색으로 최대22% 혼합한 뒤90ms 동안 감소시킨다. 첫 프레임에 최고 반응을 표시한다. 100ms 이내 재명중은 반응 시간을 연장하지 않는다. 이는 화면 표시 제한이며 실제 피해·발사·이동·보상에는 관여하지 않는다.
 - 일반3종과 보스에 동일 반응. 본체 `2D Sprite` 하위의 관절 보행5레이어/원본/VerticalWalk 앞·뒤 방향 렌더러에 동일 셰이더 파라미터를 전달한다. 그림자와 체력바·버프 표식은 대상 밖이다. 원본 sprite/alpha/방향 반전/색/Transform은 보존한다.
 - 재질은 전체 개체가 하나를 공유하며 개체/레이어별 MaterialPropertyBlock을 사용한다. 종료/비활성화 때 원래 재질·기존 property block을 복원한다. 셰이더는 설치 URP17.6 기본 Sprite-Unlit의 Core2D/2DCommon 경로를 따르고 최종 RGB 혼합만 추가했다.
 - 기존 B 명중/처치 스프라이트, 피해/골드/코어 숫자, 투사체, 피격 판정은 유지했다. 앞서 만든3종 새 스파크와 숫자 묶음/등장 반응, 사운드는 미적용이다.

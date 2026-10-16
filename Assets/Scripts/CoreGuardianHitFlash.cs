@@ -5,7 +5,7 @@ using UnityEngine;
 // Presentation only. Shared shader, separate property blocks; no damage or movement changes.
 public sealed class CoreGuardianHitFlash
 {
-    public const float Duration=.065f,RetriggerDelay=.1f,Strength=.22f;
+    public const float Duration=.09f,RetriggerDelay=.1f,Strength=.22f;
     static readonly int AmountId=Shader.PropertyToID("_HitFlashAmount");
     static Material shared;
     readonly SpriteRenderer[] renderers;
