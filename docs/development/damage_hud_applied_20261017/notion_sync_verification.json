@@ -1,0 +1,56 @@
+[
+  {
+    "id": "3df389dbfc68811f9a87e5a5ff05a571",
+    "title": "HUD 화면 및 표시",
+    "protectedBlocksUnchanged": true,
+    "olderHistoryUnchanged": true,
+    "checks": [
+      {
+        "text": "게이지 안쪽 채움 영역의 100%",
+        "present": true
+      },
+      {
+        "text": "황동 포인트",
+        "present": true
+      },
+      {
+        "text": "여러 표적을 향해 퍼지는 화살표",
+        "present": true
+      },
+      {
+        "text": "전체 피해 합계 대비 비율로 계산 기준을 바꾸지",
+        "present": true
+      },
+      {
+        "text": "숨기고",
+        "present": true
+      }
+    ],
+    "lastEdited": "2026-10-16T23:30:47.869Z"
+  },
+  {
+    "id": "3df389dbfc6881fc9f1bd004adfc5999",
+    "title": "플레이테스트 및 변경 이력",
+    "protectedBlocksUnchanged": true,
+    "olderHistoryUnchanged": true,
+    "checks": [
+      {
+        "text": "8f46acb",
+        "present": true
+      },
+      {
+        "text": "표시 전용 주입 QA",
+        "present": true
+      },
+      {
+        "text": "전체 회귀",
+        "present": true
+      },
+      {
+        "text": "시간 초과",
+        "present": true
+      }
+    ],
+    "lastEdited": "2026-10-16T23:31:06.108Z"
+  }
+]

@@ -40,7 +40,7 @@
 - 몸 피격: 0.09초 복귀/최대22%/재점등 제한0.1초. 기존 파편/숫자 유지, 새 파편/숫자 반응 미채택. [담당 기록](body_hit_flash_20261016/duration_90ms.md).
 - 코어 피해 B안은 **이미 적용**됐다. 짧은 흰색→붉은색 본체·상단 코어 표시 반응·추가 플래시300ms 제한. 코어 감소 숫자는 사용자가 위치를 확정했다: 본체 bounds.max 기준(-0.3,-0.38), 빨간색/Pixelify Sans Bold. [적용](core_damage_feedback_20261016/applied_B.md), [사용자 확정 위치](core_damage_feedback_20261016/user_position.md). 과거 미구현 제안으로 되돌리지 않는다.
 - 평상시 효과는 작게, 보스 가속/코어 피해는 강조한다. 사운드는 별도 파트. 기본 공격에 둔화는 없으며 골드 플레이어 전투 증강의 조건부 기능이다. 둔화 시안은 보류다.
-- 기존 담당 Notion 문서/DB와 이미지·하위 링크 보존. [기획 동기화](notion_sync_20261016/report.md), [VFX/사운드 분류](vfx_notion_20261016/report.md). 이번 애니메이션/문서 작업은 Notion 변경을 수행하지 않았다. 노션의 세부 최신화 여부는 필요 시 실제 담당 문서와 대조한다.
+- 기존 담당 Notion 문서/DB와 이미지·하위 링크 보존. 10월17일 사용자 요청으로 피해 HUD 표시 규칙과 집중 검증 이력을 기존 두 담당 페이지에 갱신하고 재조회로 확인했다. AGENTS.md도 확정 HUD 보존과 검증 범위로 갱신했다. [이번 HUD 동기화·이미지 첨부 승인 대기](damage_hud_applied_20261017/notion_sync.md), [이전 기획 동기화](notion_sync_20261016/report.md), [VFX/사운드 분류](vfx_notion_20261016/report.md). 이번 문서 갱신에서 새 Unity 검사는 하지 않았다.
 - HUD/설치/폰트/증강의 기존 승인 범위는 [정리 전 전체 기록](unity_handover_snapshot_20261016_before_animation_resume.md)과 담당 링크에 보존했다. 이번 작업으로 UI 재디자인/전투 수치 변경을 승인받은 것이 아니다.
 
 ## 밸런스 다음 순서
