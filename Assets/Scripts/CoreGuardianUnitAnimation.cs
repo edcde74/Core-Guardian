@@ -13,7 +13,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     SpriteRenderer artwork;
     CoreGuardianOriginalMotion originalMotion;
     CoreGuardianOriginalWalk originalWalk;
-    CoreGuardianOriginalIdle originalIdle;
+    CoreGuardianPlayerMotion playerMotion;
     CoreGuardianHitFlash hitFlash;
     bool justHit;
     string role;
@@ -25,7 +25,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     // Presented volleys, never a combat or balance metric.
     public int ShotCount {get;private set;}
     public Vector3 MuzzleWorld {get;private set;}
-    public bool Loaded=>originalMotion!=null||originalWalk!=null;
+    public bool Loaded=>originalMotion!=null||originalWalk!=null||playerMotion!=null;
     public bool UsesOriginalArtwork=>role=="Player"||role=="Single"||role=="Multi"||role=="Support";
     public bool UsesOriginalWalking=>role=="Attack"||role=="Defense"||role=="Buff"||role=="Boss";
     public static CoreGuardianUnitAnimation Attach(GameObject root,string role)
@@ -35,13 +35,13 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     }
     void Configure(string value)
     {
-        role=value;if(role=="Player")direction=6;
+        role=value;if(role=="Player"){direction=5;facingAngle=-135;aim=new Vector2(-8,-6).normalized;}
         artwork=GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite");
         if(artwork==null)throw new InvalidOperationException("Missing approved artwork child: "+name);
-        if(UsesOriginalArtwork)
+        if(role=="Player")playerMotion=new CoreGuardianPlayerMotion(artwork);
+        else if(UsesOriginalArtwork)
         {
             originalMotion=new CoreGuardianOriginalMotion(artwork,role);
-            if(role=="Player")originalIdle=new CoreGuardianOriginalIdle(artwork);
         }
         else if(UsesOriginalWalking){originalWalk=new CoreGuardianOriginalWalk(artwork,role);hitFlash=new CoreGuardianHitFlash(artwork);}
         else throw new InvalidOperationException("Unsupported original animation role: "+role);
@@ -51,7 +51,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     public void MoveWithoutTurning(Vector2 worldVelocity,float delta)=>TrackMotion(worldVelocity,delta,false);
     void TrackMotion(Vector2 velocity,float delta,bool turn)
     {
-        originalWalk?.Move(velocity,delta);walking=velocity.sqrMagnitude>.000001f;
+        originalWalk?.Move(velocity,delta);playerMotion?.Move(velocity,delta);walking=velocity.sqrMagnitude>.000001f;
         if(walking&&turn)Face(velocity,false,delta);
     }
     public void Aim(Vector2 vector,float delta){if(vector.sqrMagnitude>.000001f)Face(vector,false,delta);}
@@ -82,9 +82,9 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     void ApplyFrame(float delta)
     {
         if(artwork==null)return;
+        if(playerMotion!=null){playerMotion.Present(direction,aim,shotAge,shotDuration,idleTime);MuzzleWorld=playerMotion.MuzzleWorld;return;}
         if(originalWalk!=null){originalWalk.Present(delta);return;}
         originalMotion.Present(shotAge,shotDuration);
-        originalIdle?.Present(shotAge>=shotDuration&&!walking,idleTime);
         MuzzleWorld=originalMotion.MuzzleWorld(aim);
     }
 }

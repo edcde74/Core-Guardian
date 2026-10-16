@@ -3,6 +3,8 @@
 최종 문서 갱신: **2026-10-16 (Asia/Seoul)**. 현재 사용자 지시와 최신 담당 노션이 우선이다. 상세 이력은 링크에서 필요한 것만 읽는다.
 
 ## 다음 대화의 최우선
+**2026-10-16 플레이어 애니메이션 1순위 구현:** 사용자 지시대로 기존 기술병 원본 도트만 분리·반전·재배치해8방향 외형/양발 보행/팔 조준을 연결했다. 실제 투사체 발사 이벤트에서 공격 자세·도구 끝 원점을 즉시 갱신한다. 원본 방향 보이는 픽셀 차이0·새 색0, PNG/원본 프리팹/씬·몬스터 X/Y 보행·포탑·밸런스·별도 코어 VFX 보존. 현재 주 프로젝트 전체 **EditMode98/98·PlayMode18/18 completed**, 정상 타일 이동/실제 발사 원점·목표 방향 및 기존 회귀 확인. 전투 씬active/dirty=false·Play=false·컴파일false·TimeScale1 재확인. 공유 검사/Play 충돌 중 CLI timeout을 겪었으나 사용자 Play 중지 후 Unity MCP로 주 프로젝트 검증을 완료했다. 임시 검증 사본 결과를 통과 수치에 포함하지 않았다. **정면·뒷면 파생 외형/자연스러움은 사용자 최종 검토 전**이다. [실제 Unity 동일 배율 움직임·원본 감사·검증](player_facing_20261016/README.md). 게임 빌드/게임 실행파일 실행/push 없음. 애니메이션 검토 후 기존 밸런스 실측 우선순위 유지.
+
 **2026-10-16 코어 피해 B안 적용:** 사용자 선택으로 짧은 흰색→붉은색 본체 플래시·상단 코어 아이콘/수치 반응·추가 플래시300ms 제한을 연결했다. 코어 감소 숫자는 실제 본체 경계 오른쪽 위로 옮기고 빨간색/몬스터 피해와 동일 Pixelify Sans Bold TMP 경로·외곽선을 유지했다. 새 집중 EditMode1/1·실제 도착 경로 PlayMode1/1,전체 PlayMode17/17통과. 전체 EditMode는98중96통과·병행 플레이어 방향 검사2실패이며 전체 통과가 아니다. 이후 수동 Play/캡처 단계에서 Unity 명령timeout으로 실제 화면 미확인. 사용자가 Play를 종료했다고 보고했으나 재조회도timeout으로 최종 Play/컴파일/저장/TimeScale은 API 미확인이다. 강제 종료/새 빌드/실행/Notion 변경 없음. 재개 시 연결과 실제 화면 확인부터 진행한다. [구현·검사 원본·연결 제한](core_damage_feedback_20261016/applied_B.md). 아래 시안/미구현 표기는 적용 전 이력이다.
 
 **2026-10-16 코어 피해 비교 시안 제작:** 사용자 요청으로 A 붉은색 중심/B 짧은 흰색 후 붉은색의 단발·연속 GIF와 인터랙티브 비교를 만들었다. 현재 씬의 코어 원본/기존 CoreHit·감소 숫자 경로를 사용한 브라우저 재현이며 **게임 미적용·최종 선택 전**이다. 본체240ms/상단300ms/추가 플래시 제한300ms는 후보값이다. 가상9회 피해를 유지하며 추가 플래시3회,브라우저 오류0·GIF각2.4초 검증/정적 화면 직접 확인. Unity 테스트/Play/빌드/실행 없음. 사운드·흔들림·저체력 경고 없음. [시안·검증·남은 범위](core_damage_feedback_20261016/README.md).
@@ -29,7 +31,7 @@
 
 **최신 UI 수정:** 라운드 시작 시 설치 패널/설치 모드를 정리한다. 설치 중에는 상단 중앙 상태/라운드 UI와 왼쪽 ESC 취소만 남기고, 설치 성공·취소 시 기존 HUD 표시/접힘 상태를 복원한다. PlayMode14/14·EditMode78/78 및 실제 화면 확인. [구현·검증·화면](placement_focus_20261015/README.md).
 
-**기존 원본 보행/Idle:** X축은 원본 픽셀 관절 보행·좌우 반전과 이동 거리 기반 주기를 유지한다. Y축은 위 최신 파생 앞/뒤 프레임으로 대체했다. 플레이어 Idle은 발 고정/상체 호흡이며 공격·이동이 우선한다. 기존 원본 기반 공격 동작/보스 피벗 유지. **플레이어 전 방향 공격 조준·방향 전환/보행은 미완료, 자연스러움·아트 승인은 별도**다. [기존 보행/Idle 기록](original_walk_idle_20261015/README.md), [공격 동작 1차](original_animation_rework_20261015/README.md), [외형 복구](original_art_restore_20261015/README.md). 이후 밸런스 순서는 [next_work](next_work_20261013.md)·[이전 resume](resume_20261013.md)에 보존한다.
+**기존 원본 보행/Idle:** 몬스터 X축은 원본 픽셀 관절 보행·좌우 반전과 이동 거리 기반 주기를 유지한다. Y축은 위 최신 파생 앞/뒤 프레임을 사용한다. 플레이어는 위 최신8방향 레이어로 갱신했으며 발 고정/상체 호흡·공격/이동 우선·원본 도트 기준을 유지한다. 보스 피벗 유지. 자연스러움·아트 승인은 별도다. [기존 보행/Idle 기록](original_walk_idle_20261015/README.md), [공격 동작 1차](original_animation_rework_20261015/README.md), [외형 복구](original_art_restore_20261015/README.md). 이후 밸런스 순서는 [next_work](next_work_20261013.md)·[이전 resume](resume_20261013.md)에 보존한다.
 
 - AGENTS.md와 LOCAL_GIT.md를 읽고 Git 변경, Unity 연결·열린 씬·Play·컴파일·저장 상태를 확인한다. 과거 인수인계 상태를 현재 사실로 가정하지 않고, 다른 테스트나 사용자 Play를 임의 중단하지 않는다.
 - 테스트 요청은 임의 수치 적용이나 노션 밸런스 확정 권한이 아니다. 기존 ‘밸런스 기획은 아직 건드리지 말라’는 제한을 유지한다. 현재 기준으로 측정한 뒤 변경 후보와 근거를 제시하고, 적용은 해당 사용자 지시에 따른다.
@@ -42,7 +44,7 @@
 - 실제 프로토타입은 **1~11라운드**다. 준비 50초→전투→완료 수정→다음 준비로 진행한다. 10라운드 보스 처치 후 증강 3장/30초 선택→11라운드 준비로 연결된다. 보스가 도착해도 코어가 살아 있으면 증강 없이 진행한다. 코어 파괴는 패배, 11라운드 완료는 프로토타입 검증 종료다.
 - 라운드 사이 포탑·강화·기술병 위치·재화·코어를 유지하며 처음부터 재시작하면 초기화한다. 적/포탑 3종, 설치/강화/파괴/환급, 피해/재화 숫자, 전투 효과, 역할 진단, 증강 18종의 선택/누적/재설정을 구현했다.
 - 애니메이션 수정 전 복구 기준은 `6a910bd`, 그 이전 게임 적용은 `dfa046b`(갈무리)다. `12ff270`의 플레이어/포탑 외형은 사용자 거부 후 원본 복구했다. 최신 복구 커밋은 로컬 git log로 확인한다. 전체 HUD `ba72484`, 사람 테스트용 초반 수치 `d5c45db` 유지. GitHub push 없음.
-- **마지막 Unity 실시간 확인은 2026-10-16 몸 피격 반응 적용 후**다. Play=false, compiling=false, TimeScale1, 기존 전투 씬dirty=false. 전체 EditMode92/92·PlayMode16/16과 실제 명중 연결·Unity 격리 렌더를 확인했다. [최신 상태](body_hit_flash_20261016/final_editor_state.json), [검증](body_hit_flash_20261016/README.md). 새 빌드/실행파일 실행 없음. 과거 콘솔 이력을 임의 삭제하지 않았다.
+- **마지막 Unity 실시간 확인은 2026-10-16 플레이어8방향 구현 후**다. Play=false, compiling=false, TimeScale1, 전투 씬dirty=false. 전체 EditMode98/98·PlayMode18/18과 정상 이동·실제 발사 도구 끝 원점 및 기존 몬스터/포탑/코어 VFX 회귀를 확인했다. [최신 상태](player_facing_20261016/final_editor_state.json), [검증·동일 배율 움직임](player_facing_20261016/README.md). 새 빌드/실행파일 실행 없음. 과거 콘솔 이력을 임의 삭제하지 않았다.
 - 최신 Y축 방향 외형 전환 후 전체 EditMode **87/87**, 전체 PlayMode **15/15 completed**. 이전83통과/방향 전환4실패를 재현한 뒤 실제 Up/Down 이미지 선택·각4프레임·X축 복귀·지면 피벗과 정상 경로 연결을 검증했다. [최신 결과](vertical_facing_20261016/README.md). [그림자 수정](monster_shadow_axes_fix_20261016/README.md), [설치 UI](placement_focus_20261015/README.md), [원본 보행/Idle](original_walk_idle_20261015/README.md)은 보존했다. 기능 통과는 사람 체감/아트 승인의 근거가 아니다.
 
 ## 밸런스 재개 기준
@@ -70,7 +72,7 @@
 
 둔화는 기본 공격에 없고 골드 플레이어 전투 증강 선택 후에만 활성화되는 코드이므로 첫 제작 순서에서 제외했다. [장화 V2](slow_vfx_20261016/BOOT_V2.md)와 [V1](slow_vfx_20261016/README.md)은 보존한다. [전체 필요 효과 보고서](vfx_shader_review_20261016.md)의 과거 둔화 우선순위는 위 최신 사용자 지시로 대체한다. 평상시 효과는 작게, 보스 가속·코어 피해는 강조하는 방향 유지. 기존 밸런스 실측 재개 기록은 보존한다.
 
-기존 플레이어·포탑 외형을 유지한 애니메이션 재작업이 먼저다. 얼굴/복장/무기·포신/받침대 비율까지 원본과 같은 방향·같은 픽셀 배율로 비교해야 한다. 새 도안이나 팔레트 일치만으로 완료 처리하지 않는다. 이후 밸런스 실측, BGM, 다른 화면비 HUD/사운드 검토가 남는다. 몬스터 코어 타격/사망 클립·최종 Pixel Perfect 규격은 미확정이다.
+플레이어 원본 변형8방향의 외형·보행·조준 자연스러움 사용자 검토가 남는다. 같은 픽셀 배율의 실제 Unity 비교를 확인하며 기능 통과나 팔레트 일치만으로 아트 승인 처리하지 않는다. 포탑 원본 외형/공격과 몬스터 승인 X축/최신 Y축은 보존한다. 애니메이션 확인 이후 기존 밸런스 실측 우선순위 유지. BGM, 다른 화면비 HUD/사운드 검토도 남는다. 몬스터 코어 타격/사망 클립·최종 Pixel Perfect 규격은 미확정이다.
 
 - BGM 루프 WAV 3개는 Assets 외부 시안이며 미승인/게임 미적용이다. [자료](bgm_sketches_20261013.md). AudioProduction/와 관련 분석 폴더의 미커밋 작업을 임의 삭제·되돌리지 않는다.
 - 최신 실행 파일은 **`Builds/Windows_20261015_PlacementFocus/CoreGuardian.exe`**(게임`cac61dd`)다. 기존 1~11·보스·증강·HUD·HP27·원본 공격/보행·Idle에 설치 UI 숨김/복원과 라운드 시작 정리를 포함한다. 빌드Succeeded(18.97초), 10월16일1600×900 창으로 실행/응답 확인 후 열어두었다. 기존 전역 조명 중복2건/Pipeline 설정 경고1건이 남아 있다. [빌드·실행/최신 검증](placement_focus_20261015/README.md). 과거 WalkIdle/OriginalMotion/10월13일 빌드와 ZIP은 보존했다.
@@ -78,7 +80,7 @@
 ## 코드·도구·보존
 
 - 모델/계산: `Assets/Game/Scripts/CoreGuardian/{CombatData,Session,Augmentations}.cs`. 연결/HUD: `Assets/Scripts/{CoreGuardianPrototype,CoreGuardianHud,CoreGuardianAugmentationView}.cs`.
-- 애니메이션: `Assets/Scripts/CoreGuardian{UnitAnimation,CombatAnimation,OriginalMotion,OriginalWalk,OriginalIdle}.cs`. 원본 공격 레이어 `Resources/CoreGuardian/OriginalMotion`, X축 보행 `OriginalWalk`, Y축 앞/뒤 `VerticalWalk`, 플레이어 호흡 `OriginalIdle`을 사용한다. 과거 생성 아틀라스 로드 경로와 최신 VerticalWalk를 혼동하지 않는다. 지원 수정은 실제 지원 범위 내 공격 포탑 발사에 반응한다. 플레이어 방향별 조준은 미완료. 전투 수치·원본 프리팹·씬 YAML 변경 없음.
+- 애니메이션: `Assets/Scripts/CoreGuardian{UnitAnimation,CombatAnimation,PlayerMotion,OriginalMotion,OriginalWalk,OriginalIdle}.cs`. 플레이어는 원본 도트 파생 `Resources/CoreGuardian/PlayerFacing`과 PlayerMotion, 포탑은 `OriginalMotion`, 몬스터 X축은 `OriginalWalk`, Y축 앞/뒤는 `VerticalWalk`를 사용한다. 과거 생성 아틀라스는 사용하지 않는다. 지원 수정은 실제 지원 범위 내 공격 포탑 발사에 반응한다. 전투 수치·원본 프리팹·씬 YAML 변경 없음.
 - CSV: `Assets/Resources/CoreGuardian/{enemies,towers,stage,upgrades,waves}.csv`. stage 기본 수치도 테스트 가안이다. 폰트: `Assets/Resources/CoreGuardian/Fonts/`.
 - [로컬 Git 지침](LOCAL_GIT.md)에 따라 주요 변경 전후 복구 기준/완료 커밋을 남긴다. 사용자 작업 보존, push는 별도 지시에 따른다.
 - Unity CLI에 현재 연결 프로젝트를 명시하고 에디터 API를 사용한다. `BuildCombatPrototype.Main`은 씬 생성기라 재실행하지 않는다. 확인은 Verify로 한다. 씬 YAML/메타 직접 편집 금지, SampleScene/비교 씬/원본 프리팹 보존. Save/Reimport 후 컴파일과 내부 success/errorDetails를 확인하고 async 테스트는 completed까지 확인한다.
