@@ -9,6 +9,32 @@ public class CoreGuardianOriginalGaitTests
 {
     static Type Walk=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianOriginalWalk")).First(t=>t!=null);
     static Vector2 Foot(float phase,Vector2 direction)=>(Vector2)Walk.GetMethod("FootOffset").Invoke(null,new object[]{phase,14f,1.8f,direction});
+    [Test]
+    public void RearAttackBootsKeepTheCompleteSourceWidth_WithoutFixedLegFragments()
+    {
+        var clone=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_attack.prefab"));
+        var texture=new Texture2D(2,2,TextureFormat.RGBA32,false);
+        try
+        {
+            var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");var walk=Activator.CreateInstance(Walk,new object[]{art,"Attack"});
+            Walk.GetMethod("Move").Invoke(walk,new object[]{Vector2.up,0f});Walk.GetMethod("Present").Invoke(walk,new object[]{.1f});
+            var vertical=art.transform.Find("VerticalWalk");
+            ImageConversion.LoadImage(texture,System.IO.File.ReadAllBytes(AssetDatabase.GetAssetPath(vertical.GetComponent<SpriteRenderer>().sprite.texture)));
+            foreach(var name in new[]{"LeftFoot","RightFoot"})
+            {
+                var boot=vertical.Find(name).GetComponent<SpriteRenderer>().sprite;var rect=boot.rect;
+                for(int y=5;y<=9;y++)
+                {
+                    int opaque=0;for(int x=0;x<rect.width;x++)if(texture.GetPixel((int)rect.x+x,(int)rect.y+y).a>.5f)opaque++;
+                    Assert.That(opaque,Is.GreaterThanOrEqualTo(6),name+" must retain the full source shin/boot, not a thin sliced edge");
+                }
+            }
+            var equipment=vertical.Find("LeftEquipment").GetComponent<SpriteRenderer>().sprite.rect;
+            for(int y=4;y<=10;y++)for(int x=0;x<equipment.width;x++)
+                Assert.That(texture.GetPixel((int)equipment.x+x,(int)equipment.y+y).a,Is.LessThan(.5f),"No fixed source-leg stripe may remain beside the animated pair");
+        }
+        finally{UnityEngine.Object.DestroyImmediate(texture);UnityEngine.Object.DestroyImmediate(clone);}
+    }
     [TestCase(1f)]
     [TestCase(-1f)]
     public void VerticalAttackWalkAlternatesBothVisibleBoots(float direction)

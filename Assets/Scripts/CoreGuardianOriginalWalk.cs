@@ -149,12 +149,12 @@ public sealed class CoreGuardianOriginalWalk
         static readonly System.Collections.Generic.Dictionary<Sprite,Sprite> boots=new System.Collections.Generic.Dictionary<Sprite,Sprite>();
         readonly SpriteRenderer body,leftFoot,rightFoot;
         readonly SpriteRenderer[] bodyParts;
-        readonly Rect[] bodyRects;
+        readonly Rect[][] bodyRects;
         readonly Sprite[] templates=new Sprite[2];
         public VerticalLegPair(SpriteRenderer renderer,Sprite[,] frames)
         {
             body=renderer;
-            bodyRects=BodyRects(frames[0,0]);
+            bodyRects=new[]{BodyRects(frames[0,0],true),BodyRects(frames[1,0],false)};
             bodyParts=new[]{FootRenderer("UpperBody"),FootRenderer("LeftEquipment"),FootRenderer("RightEquipment")};
             leftFoot=FootRenderer("LeftFoot");rightFoot=FootRenderer("RightFoot");rightFoot.flipX=true;
             for(int d=0;d<2;d++)
@@ -162,7 +162,9 @@ public sealed class CoreGuardianOriginalWalk
                 var source=frames[d,0];var key=source;
                 if(!boots.TryGetValue(key,out var boot)||boot==null)
                 {
-                    boot=Sprite.Create(source.texture,new Rect(source.rect.x+44,source.rect.y,7,23),new Vector2(.5f,3f/23),source.pixelsPerUnit);
+                    // Rear and front drawings have different leg columns. The rear leg is
+                    // x40..46; x44..50 retained only its thin edge plus part of the bent leg.
+                    boot=Sprite.Create(source.texture,new Rect(source.rect.x+(d==0?40:44),source.rect.y,7,23),new Vector2(.5f,3f/23),source.pixelsPerUnit);
                     boot.name=source.name+"_Boot";boot.hideFlags=HideFlags.HideAndDontSave;boots[key]=boot;
                 }
                 templates[d]=boot;
@@ -172,7 +174,7 @@ public sealed class CoreGuardianOriginalWalk
         {
             var renderer=new GameObject(name).AddComponent<SpriteRenderer>();renderer.transform.SetParent(body.transform,false);renderer.sharedMaterial=body.sharedMaterial;return renderer;
         }
-        static Rect[] BodyRects(Sprite source)=>new[]{new Rect(0,19,source.rect.width,source.rect.height-19),new Rect(0,0,42,19),new Rect(59,0,source.rect.width-59,19)};
+        static Rect[] BodyRects(Sprite source,bool rear)=>new[]{new Rect(0,19,source.rect.width,source.rect.height-19),new Rect(0,0,rear?39:42,19),new Rect(59,0,source.rect.width-59,19)};
         static Sprite[] BodyWithoutFixedLegs(Sprite source,Rect[] rects)
         {
             if(bodies.TryGetValue(source,out var found)&&found[0]!=null)return found;
@@ -188,7 +190,8 @@ public sealed class CoreGuardianOriginalWalk
         public void Present(Sprite source,int direction,float phase,bool walking)
         {
             body.enabled=false;
-            var sprites=BodyWithoutFixedLegs(source,bodyRects);var rects=bodyRects;
+            var rects=bodyRects[direction];
+            var sprites=BodyWithoutFixedLegs(source,rects);
             for(int i=0;i<bodyParts.Length;i++)
             {
                 var part=bodyParts[i];part.sprite=sprites[i];
