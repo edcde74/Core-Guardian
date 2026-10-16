@@ -15,6 +15,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     CoreGuardianOriginalWalk originalWalk;
     CoreGuardianPlayerMotion playerMotion;
     CoreGuardianHitFlash hitFlash;
+    CoreGuardianTowerGlow towerGlow;
     bool justHit;
     string role;
     float shotAge=100,shotDuration=.25f,idleTime,facingAngle=-90;
@@ -43,6 +44,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         else if(UsesOriginalArtwork)
         {
             originalMotion=new CoreGuardianOriginalMotion(artwork,role);
+            towerGlow=new CoreGuardianTowerGlow(artwork,role);
         }
         else if(UsesOriginalWalking){originalWalk=new CoreGuardianOriginalWalk(artwork,role);hitFlash=new CoreGuardianHitFlash(artwork);}
         else throw new InvalidOperationException("Unsupported original animation role: "+role);
@@ -80,13 +82,16 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         hitFlash?.Advance(justHit?0:delta);justHit=false;
     }
     public void ReceiveHit(){if(hitFlash!=null&&hitFlash.Trigger())justHit=true;}
-    void OnDisable(){hitFlash?.Clear();}
+    void OnEnable(){towerGlow?.Enable();}
+    void OnDisable(){hitFlash?.Clear();if(towerGlow!=null){shotAge=100;justFired=false;towerGlow.Clear();}}
+    void OnDestroy(){towerGlow?.Dispose();}
     void ApplyFrame(float delta)
     {
         if(artwork==null)return;
         if(playerMotion!=null){playerMotion.Present(direction,aim,shotAge,shotDuration,idleTime,aiming);MuzzleWorld=playerMotion.MuzzleWorld;return;}
         if(originalWalk!=null){originalWalk.Present(delta);return;}
         originalMotion.Present(shotAge,shotDuration);
+        towerGlow?.Present(shotAge,shotDuration,delta);
         MuzzleWorld=originalMotion.MuzzleWorld(aim);
     }
 }
