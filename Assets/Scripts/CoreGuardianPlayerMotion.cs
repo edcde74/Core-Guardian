@@ -78,7 +78,9 @@ public sealed class CoreGuardianPlayerMotion
             bool mirror=direction==0||direction==1||direction==2||direction==7;
             var leftHip=mirror?new Vector2(11,14):new Vector2(14,16);
             var rightHip=mirror?new Vector2(21,16):new Vector2(24,14);
-            Step(p.left.transform,leftHip,phase);Step(p.right.transform,rightHip,phase+.5f);
+            if(direction==2){leftHip=new Vector2(13,14);rightHip=new Vector2(23,14);}
+            float legSwing=direction==2?1.5f:6;
+            Step(p.left.transform,leftHip,phase,legSwing);Step(p.right.transform,rightHip,phase+.5f,legSwing);
         }
         Vector2 shoulder=NativePoint(direction,new Vector2(10,25));Vector2 tip=NativePoint(direction,new Vector2(2,19));
         var rest=tip-shoulder;
@@ -89,11 +91,11 @@ public sealed class CoreGuardianPlayerMotion
         p.arm.transform.localPosition=(Vector3)pivot-rotation*(Vector3)pivot+Vector3.up*(breath/ppu)-(Vector3)aim*(1.25f*kick/ppu);
         MuzzleWorld=p.arm.transform.TransformPoint((tip-original.sprite.pivot)/ppu);
     }
-    void Step(Transform leg,Vector2 hip,float p)
+    void Step(Transform leg,Vector2 hip,float p,float legSwing)
     {
         float angle=p*Mathf.PI*2,swing=Mathf.Sin(angle),stride=-Mathf.Cos(angle)*2.2f;
         var offset=new Vector2(travel.x*stride,travel.y*stride*.25f)+Vector2.up*(2.2f*Mathf.Max(0,swing));
-        var pivot=(hip-original.sprite.pivot)/ppu;var rotation=Quaternion.Euler(0,0,6*Mathf.Cos(angle)*gaitWeight);
+        var pivot=(hip-original.sprite.pivot)/ppu;var rotation=Quaternion.Euler(0,0,legSwing*Mathf.Cos(angle)*gaitWeight);
         leg.localRotation=rotation;leg.localPosition=(Vector3)pivot-rotation*(Vector3)pivot+(Vector3)offset*(gaitWeight/ppu);
     }
 }

@@ -11,7 +11,7 @@ public class CoreGuardianPlayerFacingTests
     static object Call(object unit,string method,params object[] args)=>Unit.GetMethod(method).Invoke(unit,args);
     static GameObject Player()=>UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/Player.prefab"));
     [Test]
-    public void RearPoseKeepsTheFarElbowOutsideThePack_AndMirrorsBothOriginalLegsTogether()
+    public void RearPoseKeepsTheFarElbowOutsideThePack_AndUsesParallelRearHeels()
     {
         var source=new Texture2D(2,2);var rear=new Texture2D(2,2);var normalLeg=new Texture2D(2,2);var rearLeg=new Texture2D(2,2);
         try
@@ -19,12 +19,18 @@ public class CoreGuardianPlayerFacingTests
             source.LoadImage(System.IO.File.ReadAllBytes("Assets/Art/ScreenTests/20260930/Sprites/player.png"));
             rear.LoadImage(System.IO.File.ReadAllBytes("Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_Body.png"));
             Assert.That(rear.GetPixel(9,22),Is.EqualTo(source.GetPixel(26,22)),"The original far elbow belongs outside the pack, not in the middle of the back");
-            foreach(var pair in new[]{("LeftLeg","RightLeg"),("RightLeg","LeftLeg")})
+            foreach(var leg in new[]{("LeftLeg",13),("RightLeg",23)})
             {
-                normalLeg.LoadImage(System.IO.File.ReadAllBytes("Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_"+pair.Item2+".png"));
-                rearLeg.LoadImage(System.IO.File.ReadAllBytes("Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_"+pair.Item1+".png"));
-                for(int y=0;y<48;y++)for(int x=0;x<36;x++)
-                    if(normalLeg.GetPixel(x,y).a>.5f)Assert.That(rearLeg.GetPixel(35-x,y),Is.EqualTo(normalLeg.GetPixel(x,y)),"A rear pose must not mix an unmirrored lower body with mirrored arms");
+                rearLeg.LoadImage(System.IO.File.ReadAllBytes("Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_"+leg.Item1+".png"));
+                for(int top=33;top<48;top++)
+                {
+                    var columns=Enumerable.Range(0,36).Where(x=>rearLeg.GetPixel(x,47-top).a>.5f).ToArray();
+                    Assert.That(columns.Length,Is.InRange(5,7),"Rear legs retain full shin width with no side-facing toe");
+                    Assert.That(columns.Min(),Is.GreaterThanOrEqualTo(leg.Item2-3));
+                    Assert.That(columns.Max(),Is.LessThanOrEqualTo(leg.Item2+3));
+                }
+                // Heel face is copied from the original dark boot, not the bright toe cap.
+                Assert.That(rearLeg.GetPixel(leg.Item2-2,3),Is.EqualTo(source.GetPixel(22,1)));
             }
         }
         finally{foreach(var t in new[]{source,rear,normalLeg,rearLeg})UnityEngine.Object.DestroyImmediate(t);}

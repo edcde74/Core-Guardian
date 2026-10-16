@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor;
 
 // Reassemble only the rear pose, from the original character pixels. No new colours or source edits.
+// After this builder, run player_rear_lowerbody_20261016/BuildRearLowerBody.Main(true).
 public static class BuildRearPlayer
 {
     const int W=36,H=48;

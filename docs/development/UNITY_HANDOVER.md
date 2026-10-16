@@ -3,6 +3,8 @@
 최종 문서 갱신: **2026-10-16 (Asia/Seoul)**. 현재 사용자 지시와 최신 담당 노션이 우선이다. 상세 이력은 링크에서 필요한 것만 읽는다.
 
 ## 다음 대화의 최우선
+**2026-10-16 플레이어 상행 하체:** 사용자 피드백으로 D2의 옆모습 다리 단순 반전을 폐기하고 원본 바지/부츠 조각으로 평행한 무릎·뒤꿈치/동일 밑창 높이를 재조립했다. D2만 고관절 기준과 옆 벌어짐 회전±1.5°를 적용했다. 상체/팔·다른7방향·몬스터 그림자/보행·원본 PNG/프리팹/씬·VFX/밸런스 보존. 전체 EditMode102/102·PlayMode18/18 completed, 실제 씬 W 입력 전후각36프레임/X0/Y+0.6 확인. 최종 전투 씬dirty=false·Play/paused/컴파일false·TimeScale1/captureDelta0. 재생성 순서는 전체 방향→기존 BuildRearPlayer→**BuildRearLowerBody.Main(true)**. [최신 하체 제작기·실제 전후·검증](player_rear_lowerbody_20261016/README.md). 자연스러움 최종 승인 별도, 빌드/실행/push 없음.
+
 **2026-10-16 몬스터 발 그림자 정리:** 사용자 승인으로 보행과 어긋나는 고정 발 모양 `바닥 밀착선`만 몬스터 애니메이션 연결 시 끈다. 중앙 타원 실루엣의 두 레이어는 위치·크기·색까지 유지하며 원본 PNG/프리팹/씬·X/Y 보행·플레이어/포탑/VFX/밸런스 보존. 재컴파일 성공, 집중 EditMode15/15·정상 경로 포함 PlayMode3/3 completed, 같은 프레임 Unity 전후 캡처 확인. 전체 회귀 재실행은 아님. 최종 전투 씬dirty=false·Play/paused/컴파일false·TimeScale1/captureDelta0. [원인·전후 영상·검증 범위](monster_single_shadow_20261016/README.md). 자연스러움 최종 판단 별도, 빌드/실행/push 없음.
 
 **2026-10-16 실제 W 상행 재수정:** 사용자 실제 W 화면에서 상행 외형이 계속 무너짐을 확인했다. 기존 D2 배낭 마스크가 맨팔까지 등 중앙으로 옮기고 몸/팔/하체 반전이 엇갈렸으며 앞 얼굴 조각도 남았다. 원본 픽셀만으로 **D2만 재조립**, 배낭을 등 중앙/팔을 양쪽 어깨 밖으로 연결하고 하체 반전·피벗을 맞췄다. 이전 검사/고정 렌더로 실제 W 외형 확인을 대신한 보고는 불충분했다. 이번에는 **실제 씬 InputSystem W 키 입력→한 타일 Y+0.6/X0 이동→정지36프레임**을 게임 카메라로 캡처해 직접 확인했다. [실제 W 영상·전후·현재 상행 제작기](player_up_repair_20261016/README.md). 전체 EditMode102/102·PlayMode18/18 completed, 최종 Play/paused/컴파일false·전투 씬dirty=false·TimeScale1/captureDelta0. 원본 PNG/씬/프리팹·다른7방향·몬스터 보행/상행 다리 폭·코어 VFX·밸런스 보존. 사용자 Play는 사용자가 중지한 뒤 진행했고 자체 캡처 세션만 종료했다. 전체 방향 재생성 후 **BuildRearPlayer.Main(true) 후처리 필수**. 자연스러움 최종 사용자 판단은 별도, 빌드/실행/push 없음.

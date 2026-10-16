@@ -1,0 +1,139 @@
+{
+  "status": "completed",
+  "duration": 9.13,
+  "summary": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.ActualLaunch_PreservesOriginalPlayerSprite_AndDoesNotUseRejectedMuzzle",
+      "Status": "Passed",
+      "Duration": 0.3135366,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.NormalEnemyRoute_AnimatesThroughCombatAdapter_OnEveryWorldAxis",
+      "Status": "Passed",
+      "Duration": 0.6315717,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.OriginalTowerSpritesAndTransformsRemainExact_WhileEnemyDirectionsStillWork",
+      "Status": "Passed",
+      "Duration": 0.2125469,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCoreFeedbackPlayModeTests.ActualCoreExitKeepsDamageAndExistingHit_AndShowsRedNumberAboveRightWithMonsterFont",
+      "Status": "Passed",
+      "Duration": 0.2887561,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHitFlashPlayModeTests.RealProjectileDamageFlashesTheSurvivingMonster_WithoutChangingExistingFeedback",
+      "Status": "Passed",
+      "Duration": 0.2102887,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHudInteractionTests.CardRevealIgnoresDoubleClickAndAllowsSelectionBeforeOtherCardsOpen",
+      "Status": "Passed",
+      "Duration": 1.0796701,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHudInteractionTests.ClosingDuringRevealCancelsSparksAndLeavesNoPendingSelection",
+      "Status": "Passed",
+      "Duration": 1.2212006,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlacementHudPlayModeTests.FailedPlacementStaysFocused_AndSuccessfulPlacementRestoresHud",
+      "Status": "Passed",
+      "Duration": 0.2340937,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlacementHudPlayModeTests.ManualRoundStartClosesOpenInstallationPanel",
+      "Status": "Passed",
+      "Duration": 0.2270023,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlacementHudPlayModeTests.PlacementHidesOtherHud_AndCancelRestoresPanelAndCanvasGroupStates",
+      "Status": "Passed",
+      "Duration": 0.2421985,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlacementHudPlayModeTests.PreparationTimeoutCancelsPlacementAndClosesChooser",
+      "Status": "Passed",
+      "Duration": 0.4680155,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlayerFacingPlayModeTests.NormalGridStepsDriveOriginalLegs_AndActualLaunchStartsAtTheAimedTool",
+      "Status": "Passed",
+      "Duration": 0.7222658,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_ElevenRoundsKeepTowerAndHud_ThenRestartResetsSession",
+      "Status": "Passed",
+      "Duration": 1.7822865,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_WaveOneCombatAwardsGoldAndKeepsPrefabFeetAnchored",
+      "Status": "Passed",
+      "Duration": 0.2454017,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.PlayerCellTower_ManualDeparture_AndReentryBlocked",
+      "Status": "Passed",
+      "Duration": 0.3718466,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.BeanProjectilePlayModeTests.BeanProjectile_HitsLiveTargetExactlyOnce",
+      "Status": "Passed",
+      "Duration": 0.2611669,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.EnemyMovementPlayModeTests.Enemy_VisitsWaypointsInOrder_ThenExitsOnce",
+      "Status": "Passed",
+      "Duration": 0.5129828,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.HealthPlayModeTests.Health_DiesOnce_WhenDamageReachesMaximum",
+      "Status": "Passed",
+      "Duration": 0.0112653,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}
