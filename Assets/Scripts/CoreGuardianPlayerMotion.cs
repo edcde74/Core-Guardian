@@ -75,7 +75,7 @@ public sealed class CoreGuardianPlayerMotion
         // Original trousers overlap under the shirt; only their own pixels move.
         if(gaitWeight>0)
         {
-            bool mirror=direction==0||direction==1||direction==7;
+            bool mirror=direction==0||direction==1||direction==2||direction==7;
             var leftHip=mirror?new Vector2(11,14):new Vector2(14,16);
             var rightHip=mirror?new Vector2(21,16):new Vector2(24,14);
             Step(p.left.transform,leftHip,phase);Step(p.right.transform,rightHip,phase+.5f);

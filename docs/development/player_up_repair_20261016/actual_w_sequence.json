@@ -1,0 +1,879 @@
+{
+  "input": "W KeyboardState",
+  "stepSeconds": 0.12,
+  "captureDelta": 0.0166666675,
+  "start": [
+    9.3,
+    6.3
+  ],
+  "end": [
+    9.3,
+    6.90000057
+  ],
+  "samples": [
+    {
+      "frame": 0,
+      "x": 9.3,
+      "y": 6.3,
+      "direction": 5,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D5_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D5_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D5_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D5_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "x": 9.3,
+      "y": 6.38333368,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "x": 9.3,
+      "y": 6.466667,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "x": 9.3,
+      "y": 6.55,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "x": 9.3,
+      "y": 6.63333368,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "x": 9.3,
+      "y": 6.716667,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "x": 9.3,
+      "y": 6.80000067,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "x": 9.3,
+      "y": 6.883334,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 9,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 10,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 11,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 13,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 14,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 15,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 16,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 17,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 18,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 19,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 20,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 21,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 22,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 23,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 24,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 25,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 26,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 27,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 28,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 29,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 30,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 31,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 32,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 33,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 34,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    },
+    {
+      "frame": 35,
+      "x": 9.3,
+      "y": 6.90000057,
+      "direction": 2,
+      "parts": [
+        {
+          "name": "Body",
+          "sprite": "D2_Body"
+        },
+        {
+          "name": "Arm",
+          "sprite": "D2_Arm"
+        },
+        {
+          "name": "LeftLeg",
+          "sprite": "D2_LeftLeg"
+        },
+        {
+          "name": "RightLeg",
+          "sprite": "D2_RightLeg"
+        }
+      ]
+    }
+  ]
+}

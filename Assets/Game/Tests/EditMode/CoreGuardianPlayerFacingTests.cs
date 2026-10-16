@@ -11,6 +11,25 @@ public class CoreGuardianPlayerFacingTests
     static object Call(object unit,string method,params object[] args)=>Unit.GetMethod(method).Invoke(unit,args);
     static GameObject Player()=>UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/Player.prefab"));
     [Test]
+    public void RearPoseKeepsTheFarElbowOutsideThePack_AndMirrorsBothOriginalLegsTogether()
+    {
+        var source=new Texture2D(2,2);var rear=new Texture2D(2,2);var normalLeg=new Texture2D(2,2);var rearLeg=new Texture2D(2,2);
+        try
+        {
+            source.LoadImage(System.IO.File.ReadAllBytes("Assets/Art/ScreenTests/20260930/Sprites/player.png"));
+            rear.LoadImage(System.IO.File.ReadAllBytes("Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_Body.png"));
+            Assert.That(rear.GetPixel(9,22),Is.EqualTo(source.GetPixel(26,22)),"The original far elbow belongs outside the pack, not in the middle of the back");
+            foreach(var pair in new[]{("LeftLeg","RightLeg"),("RightLeg","LeftLeg")})
+            {
+                normalLeg.LoadImage(System.IO.File.ReadAllBytes("Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_"+pair.Item2+".png"));
+                rearLeg.LoadImage(System.IO.File.ReadAllBytes("Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_"+pair.Item1+".png"));
+                for(int y=0;y<48;y++)for(int x=0;x<36;x++)
+                    if(normalLeg.GetPixel(x,y).a>.5f)Assert.That(rearLeg.GetPixel(35-x,y),Is.EqualTo(normalLeg.GetPixel(x,y)),"A rear pose must not mix an unmirrored lower body with mirrored arms");
+            }
+        }
+        finally{foreach(var t in new[]{source,rear,normalLeg,rearLeg})UnityEngine.Object.DestroyImmediate(t);}
+    }
+    [Test]
     public void WalkingWithoutATargetKeepsTheToolRelaxed_AndStopsWithoutSnappingTheFeet()
     {
         var player=Player();

@@ -1,0 +1,42 @@
+{
+  "input": "W through InputSystem.KeyboardState",
+  "start": [
+    9.3,
+    6.3
+  ],
+  "position": [
+    9.3,
+    6.36699343
+  ],
+  "direction": 2,
+  "parts": [
+    {
+      "name": "Body",
+      "sprite": "D2_Body"
+    },
+    {
+      "name": "Arm",
+      "sprite": "D2_Arm"
+    },
+    {
+      "name": "LeftLeg",
+      "sprite": "D2_LeftLeg"
+    },
+    {
+      "name": "RightLeg",
+      "sprite": "D2_RightLeg"
+    },
+    {
+      "name": "바깥 그림자",
+      "sprite": "ShadowEllipse_0"
+    },
+    {
+      "name": "접촉 그림자",
+      "sprite": "ShadowEllipse_0"
+    },
+    {
+      "name": "바닥 밀착선",
+      "sprite": "Player"
+    }
+  ]
+}
