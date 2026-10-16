@@ -20,7 +20,10 @@
 
 ## 다음 대화에서 재개할 우선순위
 
-- 최신 재개 텍스트는 `docs/development/resume_20261016.md`다. 최신 대화는 플레이어 방향별 하체·그림자와 몬스터 체력바 수정이다. 최신 게임 커밋은 `edb7a28`이며 재개 시 실제 HEAD를 확인한다. `player_rear_lowerbody_20261016/README.md`, `monster_single_shadow_20261016/README.md`, `health_shadow_20261016/README.md`는 모두 `docs/development/` 아래에 있다. 전체 EditMode102/102·PlayMode19/19는 마지막 게임 수정 시 검증이며 문서만 수정한 회차의 새 검사로 표현하지 않는다. 최종 자연스러움 승인은 별도다.
+- 최신 재개 텍스트는 `docs/development/resume_20261017.md`다. 최근에는 카메라 후처리 비교·Unity 패키지 캐시 복구 후 사용자가 지시한 씬 정리를 완료했다. 삭제 전 복구 기준은 `a306a60`, 씬 정리 커밋은 `7745119`다. 재개 시 실제 HEAD/변경을 확인한다. 상세는 `docs/development/scene_cleanup_20261017/README.md`를 따른다.
+- 카메라 후처리는 비교만 했으며 게임에 영구 적용하지 않았다. `docs/development/postprocess_study_20261016/README.md`의 색감/명암 정돈·약한 Bloom 비교는 저장 씬 배치 아트의 임시 URP 렌더다. 실제 전투 HUD/피해 숫자·성능 검증과 사용자 선택은 남아 있다. 비교 제안을 적용 승인으로 간주하지 않는다.
+- Unity 패키지 복구 후 전체 EditMode102/102·PlayMode19/19를 확인했지만 이는 씬 삭제 전 결과다. 씬 정리 후 자동검사는 0건 반환이므로 통과로 세지 않으며, 자체 Play의 Ready/HUD/1R 준비와 종료 후 콘솔 오류0만 확인했다. 문서 갱신을 새 검사로 표현하지 않는다. 복구는 `docs/development/package_recovery_20261017/README.md`를 따른다. Unity 재실행 전 기존 프로세스 종료를 확인해 중복 실행하지 않는다.
+- 플레이어 방향별 하체·그림자/몬스터 체력바 수정도 보존한다. 마지막 해당 게임 코드 커밋은 `edb7a28`이다. `player_rear_lowerbody_20261016/README.md`, `monster_single_shadow_20261016/README.md`, `health_shadow_20261016/README.md`는 모두 `docs/development/` 아래에 있다. 기능 통과와 최종 자연스러움 승인은 별도다.
 - 몸 피격은 **0.09초/최대 혼합22%/재점등 제한0.1초** 적용 상태다. `docs/development/body_hit_flash_20261016/duration_90ms.md` 참고. 코어 피해 B안도 이미 적용됐으며 코어 숫자 위치는 사용자가 확정했다. `docs/development/core_damage_feedback_20261016/applied_B.md`, `user_position.md`를 따른다. 과거 ‘코어 피해는 제안/미구현’ 기록으로 되돌리지 않는다. 평상시 효과는 작게, 보스 가속·코어 피해는 강조한다. 사운드는 별도이며 둔화 시안은 보류 상태다.
 - VFX 노션 분류는 타격 / 상태·위험 / 셰이더·후처리 / 시안·선택·검증과 별도 `07. 사운드`로 정리 완료했다. `docs/development/vfx_notion_20261016/report.md`의 기존 담당 문서를 갱신하고 중복 생성하지 않는다.
 - 병행 애니메이션 수정도 보존한다. 사용자 확인한 X축 보행과 최신 Y축 앞/뒤 프레임·그림자를 유지한다. 공격형 접지·상하 양발 교대 후속 기록은 `docs/development/foot_contact_20261016/README.md`, `docs/development/vertical_gait_fix_20261016/README.md`다. 원본 기준 상하 파생 제작 지시는 이미 받았으며 다시 묻지 않는다. 기능 통과와 파생 아트·자연스러움 승인은 구분한다. 이전 밸런스 재개 기록은 아래와 같이 보존한다.
