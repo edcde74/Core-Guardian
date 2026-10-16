@@ -1,0 +1,42 @@
+Shader "Hidden/CoreGuardian/PreviewCrystalEmission"
+{
+ Properties { [PerRendererData] _MainTex("Sprite Texture",2D)="white"{} _Color("Tint",Color)=(1,1,1,1) _Strength("Strength",Float)=3 }
+ SubShader
+ {
+  Tags {"Queue"="Transparent" "RenderType"="Transparent" "RenderPipeline"="UniversalPipeline"}
+  Blend SrcAlpha One
+  Cull Off
+  ZWrite Off
+  Pass
+  {
+   HLSLPROGRAM
+   #include "Packages/com.unity.render-pipelines.universal/Shaders/2D/Include/Core2D.hlsl"
+   #pragma vertex Vert
+   #pragma fragment Frag
+   #pragma multi_compile_instancing
+   struct Attributes {COMMON_2D_INPUTS half4 color:COLOR; UNITY_SKINNED_VERTEX_INPUTS};
+   struct Varyings {COMMON_2D_OUTPUTS half4 color:COLOR;};
+   #include "Packages/com.unity.render-pipelines.universal/Shaders/2D/Include/2DCommon.hlsl"
+   CBUFFER_START(UnityPerMaterial)
+   half4 _Color;
+   half _Strength;
+   CBUFFER_END
+   Varyings Vert(Attributes input)
+   {
+    UNITY_SKINNED_VERTEX_COMPUTE(input);
+    SetUpSpriteInstanceProperties();
+    input.positionOS=UnityFlipSprite(input.positionOS,unity_SpriteProps.xy);
+    Varyings output=CommonUnlitVertex(input);
+    output.color=input.color*_Color*unity_SpriteColor;
+    return output;
+   }
+   half4 Frag(Varyings input):SV_Target
+   {
+    half4 c=CommonUnlitFragment(input,input.color);
+    half mask=step(.18,c.g)*step(.25,c.b)*step(.12,c.g-c.r)*step(.18,c.b-c.r);
+    return half4(c.rgb*_Strength,c.a*mask);
+   }
+   ENDHLSL
+  }
+ }
+}
