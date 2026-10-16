@@ -28,13 +28,13 @@ public sealed class CoreGuardianOriginalWalk
         rig=new GameObject("OriginalWalk").transform;rig.SetParent(artwork.transform,false);
         body=Layer("Body",role);var lu=Layer("LeftUpper",role);var ll=Layer("LeftLower",role);var ru=Layer("RightUpper",role);var rl=Layer("RightLower",role);
         layers=new[]{body,lu,ll,ru,rl};
-        if(role=="Attack") {left=Bone(lu,ll,18,43,19,49,17,57);right=Bone(ru,rl,30,43,31,51,35,60);cyclePixels=14;lift=1.8f;}
+        if(role=="Attack") {left=Bone(lu,ll,18,43,19,49,17,61);right=Bone(ru,rl,30,43,31,51,35,60);cyclePixels=14;lift=1.8f;}
         else if(role=="Defense") {left=Bone(lu,ll,17,31,17,36,17,42);right=Bone(ru,rl,24,29,24,36,27,44);cyclePixels=10;lift=1.4f;}
         else if(role=="Buff") {left=Bone(lu,ll,13,61,12,67,9,74);right=Bone(ru,rl,22,60,24,69,24,77);cyclePixels=12;lift=1.6f;}
         else {left=Bone(lu,ll,32,51,32,59,28,67);right=Bone(ru,rl,47,51,49,60,53,70);cyclePixels=18;lift=2.2f;}
         // Midpoint of the two original boot soles, in source pixels relative to its pivot.
         // This is a ground anchor, not the center of the canvas/weapon/banner.
-        groundAnchor=role=="Attack"?new Vector2(4,2):role=="Defense"?new Vector2(5.5f,4):role=="Buff"?new Vector2(-1.75f,1.5f):new Vector2(-.75f,2);
+        groundAnchor=role=="Attack"?new Vector2(3.5f,0):role=="Defense"?new Vector2(5.5f,4):role=="Buff"?new Vector2(-1.75f,1.5f):new Vector2(-.75f,2);
         var parent=artwork.transform.parent;
         groundInParent=parent.InverseTransformPoint(artwork.transform.TransformPoint(groundAnchor/ppu));
         foreach(var renderer in parent.GetComponentsInChildren<SpriteRenderer>(true))

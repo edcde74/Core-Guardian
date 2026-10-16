@@ -47,7 +47,23 @@ public class CoreGuardianOriginalGaitTests
             Assert.That(images.Count,Is.EqualTo(4),role+"/"+direction+" actual image content");
         }
     }
-    [TestCase("Attack", "enemy_attack",4f,2f,14f)]
+    [Test]
+    public void AttackSourceBootsShareTheGroundLine()
+    {
+        var texture=new Texture2D(2,2,TextureFormat.RGBA32,false);
+        try
+        {
+            ImageConversion.LoadImage(texture,System.IO.File.ReadAllBytes("Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_attack_v2.png"));
+            int Bottom(int first,int last)
+            {
+                for(int y=0;y<12;y++)for(int x=first;x<=last;x++)if(texture.GetPixel(x,y).a>.5f)return y;
+                throw new Exception("Missing boot pixels");
+            }
+            Assert.That(Bottom(12,24),Is.EqualTo(Bottom(31,38)),"The mirrored screen-right boot must not hover above the other sole");
+        }
+        finally{UnityEngine.Object.DestroyImmediate(texture);}
+    }
+    [TestCase("Attack", "enemy_attack",3.5f,0f,14f)]
     [TestCase("Defense", "enemy_defense",5.5f,4f,10f)]
     [TestCase("Buff", "enemy_buff",-1.75f,1.5f,12f)]
     [TestCase("Boss", "",-.75f,2f,18f)]

@@ -1,0 +1,170 @@
+{
+  "success": true,
+  "command": "command list_tests",
+  "data": {
+    "command": "list_tests",
+    "parameters": {
+      "mode": "playmode"
+    },
+    "result": {
+      "Mode": "PlayMode",
+      "Count": 16,
+      "Tests": [
+        {
+          "FullName": "CoreGuardianAnimationPlayModeTests.ActualLaunch_PreservesOriginalPlayerSprite_AndDoesNotUseRejectedMuzzle",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianAnimationPlayModeTests.NormalEnemyRoute_AnimatesThroughCombatAdapter_OnEveryWorldAxis",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianAnimationPlayModeTests.OriginalTowerSpritesAndTransformsRemainExact_WhileEnemyDirectionsStillWork",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianHitFlashPlayModeTests.RealProjectileDamageFlashesTheSurvivingMonster_WithoutChangingExistingFeedback",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianHudInteractionTests.CardRevealIgnoresDoubleClickAndAllowsSelectionBeforeOtherCardsOpen",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianHudInteractionTests.ClosingDuringRevealCancelsSparksAndLeavesNoPendingSelection",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianPlacementHudPlayModeTests.FailedPlacementStaysFocused_AndSuccessfulPlacementRestoresHud",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianPlacementHudPlayModeTests.ManualRoundStartClosesOpenInstallationPanel",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianPlacementHudPlayModeTests.PlacementHidesOtherHud_AndCancelRestoresPanelAndCanvasGroupStates",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianPlacementHudPlayModeTests.PreparationTimeoutCancelsPlacementAndClosesChooser",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_ElevenRoundsKeepTowerAndHud_ThenRestartResetsSession",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_WaveOneCombatAwardsGoldAndKeepsPrefabFeetAnchored",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "CoreGuardianRuntimePlayModeTests.PlayerCellTower_ManualDeparture_AndReentryBlocked",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "Fortress.Game.Tests.BeanProjectilePlayModeTests.BeanProjectile_HitsLiveTargetExactlyOnce",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "Fortress.Game.Tests.EnemyMovementPlayModeTests.Enemy_VisitsWaypointsInOrder_ThenExitsOnce",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        },
+        {
+          "FullName": "Fortress.Game.Tests.HealthPlayModeTests.Health_DiesOnce_WhenDamageReachesMaximum",
+          "Mode": "PlayMode",
+          "Assembly": "Fortress.Game.PlayModeTests",
+          "Categories": [
+            "Uncategorized"
+          ],
+          "Explicit": false
+        }
+      ],
+      "success": true,
+      "result": null,
+      "message": "Found 16 test(s)."
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
