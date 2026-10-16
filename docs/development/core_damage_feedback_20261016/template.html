@@ -1,0 +1,32 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>코어 피해 피드백 비교 시안</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#141b20;color:#e8edef;font:16px 'Malgun Gothic',sans-serif}main{max-width:1220px;margin:auto;padding:28px}h1{font-size:27px;margin:6px 0 12px}p{color:#b6c5cb;line-height:1.7}.tag{font-size:12px;color:#79d2cf;letter-spacing:2px}.tools{display:flex;flex-wrap:wrap;gap:10px;padding:16px 0 24px}button,select{background:#2a3c45;color:#eef8fa;border:1px solid #526773;border-radius:6px;padding:10px 15px;font:inherit;cursor:pointer}button[aria-pressed=true]{background:#355c63;border-color:#8addd4}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}article{background:#1d282e;border:1px solid #3d515a;border-radius:12px;overflow:hidden}h2{font-size:20px;margin:18px 20px 8px}article p{margin:0 20px 16px;font-size:14px;min-height:48px}canvas{display:block;width:100%;height:auto;image-rendering:pixelated}footer{font-size:13px;line-height:1.8;color:#a5b7be;margin-top:18px}.timeline{width:100%;accent-color:#79d2cf}.note{padding:12px 16px;background:#25363e;border-radius:7px} @media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style><main><div class="tag">CORE GUARDIAN · VISUAL STUDY · 2026.10.16</div><h1>코어 피해가 발생한 순간을 또렷하게</h1><p>현재 코어 원본 + 기존 CoreHit / 감소 숫자 재현. 본체와 상단 코어 표시의 추가 반응을 비교하는 독립 시안입니다.</p>
+<div class="tools"><button id="single" aria-pressed="true">단발 피해</button><button id="dense" aria-pressed="false">연속 피해 · 80ms 간격</button><button id="pause">일시정지</button><button id="restart">처음부터</button><select id="speed" aria-label="재생 속도"><option value="1">정상 속도</option><option value="0.25">0.25배 · 자세히 보기</option></select><button id="base" aria-pressed="false">기존 효과만 보기</button></div>
+<div class="grid"><article><h2>A · 붉은색 중심</h2><p>붉은색 혼합 48% → 240ms 복귀.<br>상단 아이콘·수치도 함께 붉게 반응.</p><canvas id="a" width="560" height="470"></canvas></article><article><h2>B · 흰색 짧게 → 붉은색</h2><p>첫 45ms 흰색 혼합 55% → 붉은색 잔상 → 240ms 복귀.<br>상단 표시도 같은 순서로 반응.</p><canvas id="b" width="560" height="470"></canvas></article></div>
+<p class="note" id="state"></p><input class="timeline" id="timeline" aria-label="재생 시간" type="range" min="0" max="2400" step="10" value="0">
+<footer>시안 후보값: 본체 240ms / 상단 300ms / 재점등 제한 300ms. 제한 중 추가 피해는 실제 체력·숫자에 모두 반영하며 새 플래시는 시작하지 않습니다.<br>예시 체력 100, 피해 2는 시연용 가상 입력입니다. 상단 HUD는 코어 항목만 발췌·재배치했습니다. Unity 실전 캡처나 밸런스 검증이 아닙니다.<br>기존 효과만 보기로 추가 반응을 끄고 비교할 수 있습니다. 사운드·화면 흔들림·저체력 반복 경고·새 파편은 포함하지 않았습니다.</footer></main>
+<script>
+const sources=ASSET_DATA,images={};let mode='single',paused=false,baseline=false,time=0,last=0,ready=false;
+const $=s=>document.getElementById(s),duration=2400;
+const hits=()=>mode==='single'?[600]:Array.from({length:9},(_,i)=>600+i*80);
+function visible(list){let out=[];for(const t of list)if(!out.length||t-out.at(-1)>=300)out.push(t);return out}
+function flash(age,hud=false){if(baseline||age<0)return 0;return Math.max(0,1-age/(hud?300:240))}
+function art(ctx,img,x,y,w,h,color,mix){ctx.drawImage(img,x,y,w,h);if(mix>0){const off=document.createElement('canvas');off.width=w;off.height=h;let c=off.getContext('2d');c.imageSmoothingEnabled=false;c.drawImage(img,0,0,w,h);c.globalCompositeOperation='source-atop';c.globalAlpha=mix;c.fillStyle=color;c.fillRect(0,0,w,h);ctx.drawImage(off,x,y)}}
+function render(id,kind){let ctx=$(id).getContext('2d');ctx.imageSmoothingEnabled=false;ctx.fillStyle='#26343a';ctx.fillRect(0,0,560,470);let ts=hits(),actual=ts.filter(h=>h<=time),shown=visible(ts).filter(h=>h<=time),age=shown.length?time-shown.at(-1):-1;
+ctx.fillStyle='#162229';ctx.fillRect(18,16,524,59);ctx.strokeStyle='#58707a';ctx.strokeRect(18.5,16.5,523,58);let color=kind===1&&age>=0&&age<45?'#fff4e4':'#ff4848',power=flash(age),hudPower=flash(age,true);
+art(ctx,images.icon,34,31,30,30,color,hudPower*.75);ctx.font='bold 22px "Malgun Gothic"';ctx.fillStyle=hudPower>0?color:'#eef0e6';ctx.fillText('코어 '+(100-actual.length*2)+' / 100',80,54);
+ctx.fillStyle='#778d93';ctx.font='13px "Malgun Gothic"';ctx.fillText('상단 코어 표시 · 발췌',365,52);
+ctx.fillStyle='#31434a';for(let y=102;y<450;y+=24)for(let x=12;x<550;x+=24)ctx.strokeRect(x,y,24,24);
+ctx.fillStyle='#18242b';ctx.beginPath();ctx.ellipse(280,420,92,13,0,0,Math.PI*2);ctx.fill();
+const w=images.core.width*3,h=images.core.height*3,x=280-w/2,y=420-h;
+art(ctx,images.core,x,y,w,h,color,power*(kind===1&&age<45?.55:.48));
+// Original CoreHit atlas rectangle; same .35s alpha curve and each damage call retained.
+for(const hit of ts){let t=(time-hit)/1000;if(t<0)continue;if(t<.35){ctx.globalAlpha=1-Math.max(0,(t/.35-.3)/.7);ctx.drawImage(images.hit,514,images.hit.height-111-267,263,267,249,316,62,63);ctx.globalAlpha=1}if(t<.85){ctx.globalAlpha=1-Math.max(0,(t-.35)/.5);ctx.font='bold 26px monospace';ctx.textAlign='center';ctx.strokeStyle='#182027';ctx.lineWidth=3;ctx.strokeText('-2',280,285-t*42);ctx.fillStyle='#ff5c52';ctx.fillText('-2',280,285-t*42);ctx.textAlign='left';ctx.globalAlpha=1}}
+ctx.fillStyle='#b5c5ca';ctx.font='13px "Malgun Gothic"';ctx.fillText(baseline?'기존 CoreHit + 감소 숫자':age>=0&&age<240?'본체 반응 중':time<600?'피해 발생 전':'원래 색 복귀',20,453);
+return {actual:actual.length,shown:shown.length,age,w,h};}
+function draw(){if(!ready)return;let a=render('a',0);render('b',1);$('timeline').value=time;$('state').textContent=(time/1000).toFixed(2)+'초 · 실제 피해 '+a.actual+'회 / 추가 플래시 '+(baseline?0:a.shown)+'회 · '+(mode==='single'?'단발 비교':'80ms 연속 입력: 체력·기존 숫자는 모두 반영, 추가 플래시만 제한');window.previewState={time,mode,baseline,...a};}
+function reset(){time=0;draw()}
+for(const m of ['single','dense'])$(m).onclick=()=>{mode=m;$('single').setAttribute('aria-pressed',m==='single');$('dense').setAttribute('aria-pressed',m==='dense');reset()};$('pause').onclick=()=>{paused=!paused;$('pause').textContent=paused?'재생':'일시정지'};$('restart').onclick=reset;$('base').onclick=()=>{baseline=!baseline;$('base').setAttribute('aria-pressed',baseline);draw()};$('timeline').oninput=e=>{time=+e.target.value;paused=true;$('pause').textContent='재생';draw()};
+window.seekPreview=t=>{time=t;paused=true;draw()};window.setPreviewMode=m=>{mode=m;reset()};
+Promise.all(Object.entries(sources).map(([key,src])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[key]=im;resolve()};im.onerror=reject;im.src=src}))).then(()=>{ready=true;draw();requestAnimationFrame(function loop(now){if(last&&!paused)time=(time+Math.min(now-last,100)*+$('speed').value)%duration;last=now;draw();requestAnimationFrame(loop)})});
+</script></html>
