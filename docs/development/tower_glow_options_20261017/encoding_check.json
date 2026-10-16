@@ -1,0 +1,79 @@
+{
+  "nearestMagnification": 2,
+  "roleRows": [
+    {
+      "role": "Single",
+      "variants": 3,
+      "frames": 48,
+      "fps": 20,
+      "changingTransitions": 30,
+      "pairDifferences": [
+        {
+          "a": 1,
+          "b": 2,
+          "differentFrames": 48
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "differentFrames": 48
+        },
+        {
+          "a": 1,
+          "b": 3,
+          "differentFrames": 48
+        }
+      ]
+    },
+    {
+      "role": "Multi",
+      "variants": 3,
+      "frames": 48,
+      "fps": 20,
+      "changingTransitions": 33,
+      "pairDifferences": [
+        {
+          "a": 1,
+          "b": 2,
+          "differentFrames": 48
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "differentFrames": 48
+        },
+        {
+          "a": 1,
+          "b": 3,
+          "differentFrames": 48
+        }
+      ]
+    },
+    {
+      "role": "Support",
+      "variants": 3,
+      "frames": 48,
+      "fps": 20,
+      "changingTransitions": 47,
+      "pairDifferences": [
+        {
+          "a": 1,
+          "b": 2,
+          "differentFrames": 48
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "differentFrames": 48
+        },
+        {
+          "a": 1,
+          "b": 3,
+          "differentFrames": 48
+        }
+      ]
+    }
+  ],
+  "individualGifs": 9,
+  "pairDifferenceScope": "Blue/cyan foreground pixels only; excludes gray floor differences"
+}

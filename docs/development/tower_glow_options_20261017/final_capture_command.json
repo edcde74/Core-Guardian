@@ -1,0 +1,84 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/tower_glow_options_20261017/CaptureTowerOptions.cs",
+      "entry": "CaptureTowerOptions.Main"
+    },
+    "result": {
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "message": "'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'",
+          "line": 33,
+          "column": 11,
+          "id": "CS0618",
+          "source": "var game=UnityEngine.Object.FindFirstObjectByType<CoreGuardianPrototype>();var originalScene=game.gameObject.scene;"
+        }
+      ],
+      "compileMs": 61,
+      "executeMs": 1433,
+      "assemblyName": "PipelineRunScript_CaptureTowerOptions_86961c18eb304950bd1ae56fc9196dde",
+      "success": true,
+      "result": {
+        "source": "Original prefabs on current scene background, manual original recoil and diagnostic firing clock; not actual normal combat",
+        "sourceScene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+        "dirty": false,
+        "play": false,
+        "sourceCameraHDR": false,
+        "sourceCameraPost": false,
+        "sceneCount": 1,
+        "report": [
+          {
+            "role": "Single",
+            "prefab": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_single.prefab",
+            "sourceSprite": "Assets/Art/ScreenTests/20260930/Sprites/tower_single.png",
+            "filter": "Point",
+            "variants": 3,
+            "frames": 48,
+            "fps": 20,
+            "sourceBodyPixelsPerUnit": 32,
+            "pixelScale": 63.52941,
+            "projectile": "SingleBolt",
+            "bodyWorldBounds": "Center: (12.60, 12.63, 0.00), Extents: (0.49, 0.60, 0.06)"
+          },
+          {
+            "role": "Multi",
+            "prefab": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_multi.prefab",
+            "sourceSprite": "Assets/Art/ScreenTests/20260930/Sprites/tower_multi.png",
+            "filter": "Point",
+            "variants": 3,
+            "frames": 48,
+            "fps": 20,
+            "sourceBodyPixelsPerUnit": 32,
+            "pixelScale": 63.52941,
+            "projectile": "MultiBolt (three distinct directions)",
+            "bodyWorldBounds": "Center: (12.71, 12.56, 0.00), Extents: (0.48, 0.53, 0.06)"
+          },
+          {
+            "role": "Support",
+            "prefab": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_support.prefab",
+            "sourceSprite": "Assets/Art/ScreenTests/20260930/Sprites/tower_support.png",
+            "filter": "Point",
+            "variants": 3,
+            "frames": 48,
+            "fps": 20,
+            "sourceBodyPixelsPerUnit": 32,
+            "pixelScale": 63.52941,
+            "projectile": "None: reacts to allied firing",
+            "bodyWorldBounds": "Center: (12.72, 12.65, 0.00), Extents: (0.38, 0.60, 0.06)"
+          }
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
