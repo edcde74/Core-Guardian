@@ -54,4 +54,3 @@ public static class CaptureShadowAxes
   return "Actual Unity captures: walk rows Attack/Defense/Buff/Boss, columns source/right/left/up/down at native3x; player source/Idle at native6x";
  }
 }
-
