@@ -25,6 +25,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     // Presented volleys, never a combat or balance metric.
     public int ShotCount {get;private set;}
     public Vector3 MuzzleWorld {get;private set;}
+    public Vector3 HealthBarWorld => originalWalk!=null?originalWalk.HealthBarWorld:transform.position;
     public bool Loaded=>originalMotion!=null||originalWalk!=null||playerMotion!=null;
     public bool UsesOriginalArtwork=>role=="Player"||role=="Single"||role=="Multi"||role=="Support";
     public bool UsesOriginalWalking=>role=="Attack"||role=="Defense"||role=="Buff"||role=="Boss";

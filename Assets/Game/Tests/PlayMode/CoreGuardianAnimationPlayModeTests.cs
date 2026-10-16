@@ -13,6 +13,35 @@ public class CoreGuardianAnimationPlayModeTests
 {
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).First(t=>t!=null);
     [UnityTest]
+    public IEnumerator EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var type=Find("CoreGuardianPrototype");var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var session=(CoreGuardian.Session)type.GetProperty("Session").GetValue(game);
+        var flags=System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance;
+        var views=(System.Collections.IDictionary)type.GetField("enemyViews",flags).GetValue(game);
+        game.enabled=false;session.StartCombat();
+        foreach(var kind in new[]{CoreGuardian.EnemyKind.Attack,CoreGuardian.EnemyKind.Defense,CoreGuardian.EnemyKind.Buff,CoreGuardian.EnemyKind.Boss})session.DebugSpawn(kind,77);
+        type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
+        foreach(var enemy in session.Enemies)
+        {
+            var view=(GameObject)views[enemy.Id];var bar=view.transform.Find("Health");
+            var art=view.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");
+            Assert.That(bar.GetComponent<SpriteRenderer>().bounds.min.y,Is.GreaterThan(art.bounds.max.y+.025f),enemy.Kind+" health must clear the source sprite");
+            var unit=view.GetComponent(Find("CoreGuardianUnitAnimation"));
+            Assert.That(bar.position,Is.EqualTo((Vector3)unit.GetType().GetProperty("HealthBarWorld").GetValue(unit)));
+            Assert.That(bar.localScale.x,Is.EqualTo(.35f).Within(.001f));
+        }
+        var player=(Component)type.GetField("player").GetValue(game);
+        Assert.That(player.GetComponentsInChildren<SpriteRenderer>(true).Single(r=>r.name=="바닥 밀착선").enabled,Is.False);
+        Assert.That(player.GetComponentsInChildren<SpriteRenderer>(true).Where(r=>r.sprite!=null&&r.sprite.name.Contains("Shadow")).All(r=>r.enabled),Is.True);
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator NormalEnemyRoute_AnimatesThroughCombatAdapter_OnEveryWorldAxis()
     {
 #if UNITY_EDITOR

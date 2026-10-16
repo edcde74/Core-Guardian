@@ -20,6 +20,9 @@ public sealed class CoreGuardianPlayerMotion
     public CoreGuardianPlayerMotion(SpriteRenderer artwork)
     {
         original=artwork;ppu=original.sprite.pixelsPerUnit;
+        // A flattened copy of the idle soles cannot follow animated feet.
+        foreach(var renderer in artwork.transform.parent.GetComponentsInChildren<SpriteRenderer>(true))
+            if(renderer.name=="바닥 밀착선")renderer.enabled=false;
         string[] names={"Body","Arm","LeftLeg","RightLeg"};
         for(int d=0;d<8;d++)for(int p=0;p<4;p++)
         {

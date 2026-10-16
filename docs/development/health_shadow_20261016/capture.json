@@ -1,0 +1,30 @@
+{
+  "source": "Actual combat scene camera, paused QA spawns and zoom, not balance data",
+  "playerStaticSoles": false,
+  "report": [
+    {
+      "kind": "Attack",
+      "localY": 1.29375029,
+      "sourceTop": 8.700001,
+      "barBottom": 8.776251
+    },
+    {
+      "kind": "Defense",
+      "localY": 0.9375005,
+      "sourceTop": 8.325001,
+      "barBottom": 8.420001
+    },
+    {
+      "kind": "Buff",
+      "localY": 1.6500001,
+      "sourceTop": 8.971876,
+      "barBottom": 9.132501
+    },
+    {
+      "kind": "Boss",
+      "localY": 1.4156251,
+      "sourceTop": 8.840626,
+      "barBottom": 8.898126
+    }
+  ]
+}

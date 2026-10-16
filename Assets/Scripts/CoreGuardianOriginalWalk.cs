@@ -9,6 +9,7 @@ public sealed class CoreGuardianOriginalWalk
     readonly float ppu, cyclePixels, lift;
     readonly Vector2 groundAnchor;
     readonly Vector3 groundInParent;
+    readonly float healthTopPixels;
     readonly SpriteRenderer vertical;
     readonly Sprite[,] verticalFrames=new Sprite[2,4];
     readonly VerticalLegPair verticalLegs;
@@ -23,9 +24,14 @@ public sealed class CoreGuardianOriginalWalk
         public Transform upper,lower;
     }
     public float Phase => phase;
+    public Vector3 HealthBarWorld => original.transform.parent.TransformPoint(
+        groundInParent+Vector3.up*((healthTopPixels+4)*original.transform.localScale.y/ppu));
     public CoreGuardianOriginalWalk(SpriteRenderer artwork,string role)
     {
         original=artwork;ppu=original.sprite.pixelsPerUnit;
+        // Maximum opaque height above the foot anchor across source and all Y frames.
+        // Include raised equipment, so the bar never cuts across a spear or banner.
+        // Stable per role: walking frames must not make the health bar bob.
         rig=new GameObject("OriginalWalk").transform;rig.SetParent(artwork.transform,false);
         body=Layer("Body",role);var lu=Layer("LeftUpper",role);var ll=Layer("LeftLower",role);var ru=Layer("RightUpper",role);var rl=Layer("RightLower",role);
         layers=new[]{body,lu,ll,ru,rl};
@@ -36,6 +42,8 @@ public sealed class CoreGuardianOriginalWalk
         // Midpoint of the two original boot soles, in source pixels relative to its pivot.
         // This is a ground anchor, not the center of the canvas/weapon/banner.
         groundAnchor=role=="Attack"?new Vector2(3.5f,0):role=="Defense"?new Vector2(5.5f,4):role=="Buff"?new Vector2(-1.75f,1.5f):new Vector2(-.75f,2);
+        float directionalTop=role=="Attack"?65:role=="Defense"?46:role=="Buff"?84:65;
+        healthTopPixels=Mathf.Max(directionalTop,original.sprite.rect.height-original.sprite.pivot.y-groundAnchor.y);
         var parent=artwork.transform.parent;
         groundInParent=parent.InverseTransformPoint(artwork.transform.TransformPoint(groundAnchor/ppu));
         foreach(var renderer in parent.GetComponentsInChildren<SpriteRenderer>(true))

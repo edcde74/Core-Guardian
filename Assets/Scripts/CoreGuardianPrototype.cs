@@ -192,10 +192,11 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             {
                 view=Instantiate(e.Kind==EnemyKind.Boss?bossArt:enemyArt[(int)e.Kind]);view.name="Enemy_"+e.Kind+"_"+e.Id;enemyViews.Add(e.Id,view);
                 var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
-                bar.transform.SetParent(view.transform,false);bar.transform.localPosition=new Vector3(0,e.Kind==EnemyKind.Boss?1.4f:.8f,0);healthViews[e.Id]=bar.transform;
+                bar.transform.SetParent(view.transform,false);healthViews[e.Id]=bar.transform;
             }
             view.transform.position=World(e.Position);
             combatAnimation.Enemy(e,view);
+            healthViews[e.Id].position=view.GetComponent<CoreGuardianUnitAnimation>().HealthBarWorld;
             healthViews[e.Id].localScale=new Vector3(.35f*e.Health/e.Spec.Health,.035f,1);
             if(e.Buffed&&!auraViews.ContainsKey(e.Id))auraViews[e.Id]=combatArt.Marker("EnemySpeedBuff",World(e.Position),.17f);
             if(auraViews.TryGetValue(e.Id,out var aura)){aura.SetActive(e.Buffed);aura.transform.position=World(e.Position)+Vector3.up*1.02f;}

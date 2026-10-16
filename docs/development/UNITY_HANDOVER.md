@@ -3,6 +3,8 @@
 최종 문서 갱신: **2026-10-16 (Asia/Seoul)**. 현재 사용자 지시와 최신 담당 노션이 우선이다. 상세 이력은 링크에서 필요한 것만 읽는다.
 
 ## 다음 대화의 최우선
+**2026-10-16 플레이어 그림자/몬스터 체력바:** 사용자 지시로 플레이어도 고정 발 복제 `바닥 밀착선`만 끄고 중앙 타원을 보존했다. 몬스터 체력바는 공통0.8 높이를 병종별 원본/상하 프레임 최대 상단+4px 기준으로 교체해 본체·창·깃발과 겹치지 않게 했다. 실제 생성 경로 새 검사 포함 전체 EditMode102/102·PlayMode19/19 completed, 검토용 실제 씬 전후 캡처 확인. 원본/프리팹/씬·보행·체력바 색/폭/HP비율·VFX/밸런스 보존. 최종Play/paused/컴파일false·전투 씬dirty=false·TimeScale1/captureDelta0. [높이·전후·검증](health_shadow_20261016/README.md). 사용자 자연스러움 판단 별도, 빌드/실행/push 없음.
+
 **2026-10-16 플레이어 상행 하체:** 사용자 피드백으로 D2의 옆모습 다리 단순 반전을 폐기하고 원본 바지/부츠 조각으로 평행한 무릎·뒤꿈치/동일 밑창 높이를 재조립했다. D2만 고관절 기준과 옆 벌어짐 회전±1.5°를 적용했다. 상체/팔·다른7방향·몬스터 그림자/보행·원본 PNG/프리팹/씬·VFX/밸런스 보존. 전체 EditMode102/102·PlayMode18/18 completed, 실제 씬 W 입력 전후각36프레임/X0/Y+0.6 확인. 최종 전투 씬dirty=false·Play/paused/컴파일false·TimeScale1/captureDelta0. 재생성 순서는 전체 방향→기존 BuildRearPlayer→**BuildRearLowerBody.Main(true)**. [최신 하체 제작기·실제 전후·검증](player_rear_lowerbody_20261016/README.md). 자연스러움 최종 승인 별도, 빌드/실행/push 없음.
 
 **2026-10-16 몬스터 발 그림자 정리:** 사용자 승인으로 보행과 어긋나는 고정 발 모양 `바닥 밀착선`만 몬스터 애니메이션 연결 시 끈다. 중앙 타원 실루엣의 두 레이어는 위치·크기·색까지 유지하며 원본 PNG/프리팹/씬·X/Y 보행·플레이어/포탑/VFX/밸런스 보존. 재컴파일 성공, 집중 EditMode15/15·정상 경로 포함 PlayMode3/3 completed, 같은 프레임 Unity 전후 캡처 확인. 전체 회귀 재실행은 아님. 최종 전투 씬dirty=false·Play/paused/컴파일false·TimeScale1/captureDelta0. [원인·전후 영상·검증 범위](monster_single_shadow_20261016/README.md). 자연스러움 최종 판단 별도, 빌드/실행/push 없음.
