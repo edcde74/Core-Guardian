@@ -19,4 +19,10 @@
 - 실제 Play/source=screen, 1600×900: [선택 전](before.png) → [설치 중](focus.png) → [취소](cancel.png), [설치 완료](install.png) → [라운드 시작](combat.png). 상태 JSON도 같은 폴더에 보존했다. UI 확인용 자체 Play/정상 구매를 사용했으며 밸런스 실측·사람 체감 승인으로 쓰지 않는다.
 - 직접 시작한 검증 Play만 종료/TimeScale1 복구. 캡처 도구가 Assets/docs에 생성한 이번 임시 이미지는 문서로 복사 후 Unity AssetDatabase로 제거했다. 씬/원본 프리팹/아트/CSV/노션 밸런스 변경 없음. GitHub push 없음.
 
-최신 빌드 결과와 종료 상태는 후속 기록을 확인한다.
+## 한도 중단 후 재개 — 2026-10-16
+
+- 사용 한도 중단 지점 확인: 코드/검증/화면은 `cac61dd`로 저장됐고 Windows 빌드도 이미 성공했다. 미완료는 실행 확인과 빌드 결과/인수인계 저장이었다. 같은 빌드를 다시 만들거나 기존 결과를 덮어쓰지 않았다.
+- 최신 실행 파일 **`Builds/Windows_20261015_PlacementFocus/CoreGuardian.exe`**, 게임 커밋 `cac61dd`. [BuildReport](build_report.json): Succeeded, 18.97초. errors2는 기존 전역 조명 중복, warning1은 Pipeline 런타임 설정 누락. 빌드 성공을 경고/오류 없음으로 해석하지 않는다.
+- 2026-10-16 새 실행: [실행 기록](launch_20261016.json), [응답 확인](running_20261016.json). 1600×900 창, PID26364, 창 제목CD, windowHandle 존재, Responding=true. 확인 시점 예외 로그0이며 사용자 확인용으로 열어두었다.
+- [재개 시 Unity 상태](resume_editor_state_20261016.json): Play stopped, compiling=false, 전투 씬dirty=false, TimeScale1. 게임 코드 추가 변경 없이 기존 completed 결과(PlayMode14/14, EditMode78/78)를 재확인했다. 새로 검사한 것으로 중복 기록하지 않는다.
+- 사용자 BGM/밸런스 미커밋 자료 보존, GitHub push 없음. 현재 실행 확인은 기능/프로세스 확인이며 사람 체감·밸런스 승인이 아니다.

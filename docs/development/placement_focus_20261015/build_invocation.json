@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/placement_focus_20261015/BuildWindowsPlacementFocus.cs",
+      "entry": "BuildWindowsPlacementFocus.Build"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 232,
+      "executeMs": 19020,
+      "assemblyName": "PipelineRunScript_BuildWindowsPlacementFocus_b6d28c5e64f942de913e412b50c6f2e3",
+      "success": true,
+      "result": "{\r\n  \"success\": true,\r\n  \"result\": \"Succeeded\",\r\n  \"output\": \"C:/Users/edcde/OneDrive/Desktop/CD/Builds/Windows_20261015_PlacementFocus/CoreGuardian.exe\",\r\n  \"scenes\": [\r\n    \"Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity\"\r\n  ],\r\n  \"errors\": 2,\r\n  \"warnings\": 1,\r\n  \"bytes\": 152947463,\r\n  \"seconds\": 18.966306499999998,\r\n  \"messages\": [\r\n    {\r\n      \"type\": \"Error\",\r\n      \"content\": \"More than one global light on layer Default for light blend style index 0\"\r\n    },\r\n    {\r\n      \"type\": \"Error\",\r\n      \"content\": \"More than one global light on layer Default for light blend style index 0\"\r\n    },\r\n    {\r\n      \"type\": \"Warning\",\r\n      \"content\": \"Pipeline: No RuntimePipelineConfig asset found (Project Settings > Pipeline > Runtime). Pipeline will be disabled in Player builds.\"\r\n    }\r\n  ]\r\n}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
