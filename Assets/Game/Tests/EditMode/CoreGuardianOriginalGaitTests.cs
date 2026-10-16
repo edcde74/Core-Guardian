@@ -9,6 +9,38 @@ public class CoreGuardianOriginalGaitTests
 {
     static Type Walk=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianOriginalWalk")).First(t=>t!=null);
     static Vector2 Foot(float phase,Vector2 direction)=>(Vector2)Walk.GetMethod("FootOffset").Invoke(null,new object[]{phase,14f,1.8f,direction});
+    [TestCase(1f)]
+    [TestCase(-1f)]
+    public void VerticalAttackWalkAlternatesBothVisibleBoots(float direction)
+    {
+        var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_attack.prefab");
+        var clone=UnityEngine.Object.Instantiate(prefab);
+        try
+        {
+            var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");
+            var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianUnitAnimation")).First(t=>t!=null);
+            var unit=type.GetMethod("Attach").Invoke(null,new object[]{clone,"Attack"});
+            var left=new System.Collections.Generic.List<float>();var right=new System.Collections.Generic.List<float>();
+            var velocity=Vector2.up*(direction*14*art.transform.lossyScale.x/32);
+            for(int frame=0;frame<48;frame++)
+            {
+                type.GetMethod("Move").Invoke(unit,new object[]{velocity,1/48f});type.GetMethod("Present").Invoke(unit,new object[]{1/48f});
+                var vertical=art.transform.Find("VerticalWalk");
+                var l=vertical.Find("LeftFoot");var r=vertical.Find("RightFoot");
+                Assert.That(l,Is.Not.Null,"Y gait must move both visible boots, not only cycle different full-body images");Assert.That(r,Is.Not.Null);
+                var lr=l.GetComponent<SpriteRenderer>();var rr=r.GetComponent<SpriteRenderer>();
+                Assert.That(lr.enabled&&rr.enabled,Is.True);Assert.That(lr.sprite,Is.Not.Null);Assert.That(rr.sprite,Is.Not.Null);
+                left.Add(lr.bounds.min.y);right.Add(rr.bounds.min.y);
+            }
+            float pixel=art.transform.lossyScale.x/32;
+            float leftRange=left.Max()-left.Min(),rightRange=right.Max()-right.Min();
+            Assert.That(leftRange/pixel,Is.GreaterThan(2),"Left visible sole must lift and return");
+            Assert.That(rightRange/pixel,Is.GreaterThan(2),"Right visible sole must lift and return");
+            Assert.That(Mathf.Abs(leftRange-rightRange)/pixel,Is.LessThan(.1f),"Both legs need equal swing amplitude");
+            for(int i=0;i<24;i++)Assert.That(Mathf.Abs(left[i]-right[(i+24)%48])/pixel,Is.LessThan(.1f),"Boots must alternate half a cycle apart");
+        }
+        finally{UnityEngine.Object.DestroyImmediate(clone);}
+    }
     [TestCase("Attack","enemy_attack")]
     [TestCase("Defense","enemy_defense")]
     [TestCase("Buff","enemy_buff")]

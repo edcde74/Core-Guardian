@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "command": "command run_tests",
+  "data": {
+    "command": "run_tests",
+    "parameters": {
+      "mode": "editor",
+      "filter": "VerticalAttackWalkAlternatesBothVisibleBoots",
+      "async_tests": "false"
+    },
+    "result": {
+      "Summary": {
+        "Total": 2,
+        "Passed": 0,
+        "Failed": 2,
+        "Skipped": 0,
+        "Inconclusive": 0
+      },
+      "Results": [
+        {
+          "FullName": "CoreGuardianOriginalGaitTests.VerticalAttackWalkAlternatesBothVisibleBoots(1.0f)",
+          "Status": "Failed",
+          "Duration": 0.0280627,
+          "Message": "  Y gait must move both visible boots, not only cycle different full-body images\r\n  Expected: not null\r\n  But was:  null\r\n",
+          "StackTrace": "at CoreGuardianOriginalGaitTests.VerticalAttackWalkAlternatesBothVisibleBoots (System.Single direction) [0x0016d] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianOriginalGaitTests.cs:30\r\n"
+        },
+        {
+          "FullName": "CoreGuardianOriginalGaitTests.VerticalAttackWalkAlternatesBothVisibleBoots(-1.0f)",
+          "Status": "Failed",
+          "Duration": 0.0014475,
+          "Message": "  Y gait must move both visible boots, not only cycle different full-body images\r\n  Expected: not null\r\n  But was:  null\r\n",
+          "StackTrace": "at CoreGuardianOriginalGaitTests.VerticalAttackWalkAlternatesBothVisibleBoots (System.Single direction) [0x0016d] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianOriginalGaitTests.cs:30\r\n"
+        }
+      ],
+      "Duration": 3.96,
+      "StatusPath": null,
+      "Mode": "EditMode",
+      "FilterApplied": "testname: VerticalAttackWalkAlternatesBothVisibleBoots",
+      "success": true,
+      "result": null
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

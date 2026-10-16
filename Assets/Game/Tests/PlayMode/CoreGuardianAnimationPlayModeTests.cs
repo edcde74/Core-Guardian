@@ -23,6 +23,7 @@ public class CoreGuardianAnimationPlayModeTests
         var flags=System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance;
         var views=(System.Collections.IDictionary)type.GetField("enemyViews",flags).GetValue(game);
         var samples=new int[4];var poses=new System.Collections.Generic.HashSet<string>[4];for(int d=0;d<4;d++)poses[d]=new System.Collections.Generic.HashSet<string>();
+        var bootHeights=new System.Collections.Generic.List<float>[2,2];for(int d=0;d<2;d++)for(int b=0;b<2;b++)bootHeights[d,b]=new System.Collections.Generic.List<float>();
         game.enabled=false;session.StartCombat();int id=-1;Vector3 previous=Vector3.zero;
         for(int step=0;step<10000;step++)
         {
@@ -40,6 +41,12 @@ public class CoreGuardianAnimationPlayModeTests
                     {
                         var vertical=art.transform.Find("VerticalWalk");Assert.That(vertical.gameObject.activeSelf,Is.True,"Actual Y waypoint must switch artwork");
                         var sprite=vertical.GetComponent<SpriteRenderer>().sprite;Assert.That(sprite.name,Does.StartWith(d==2?"Up_":"Down_"));Assert.That(rig.gameObject.activeSelf,Is.False);poses[d].Add(sprite.name);
+                        for(int boot=0;boot<2;boot++)
+                        {
+                            var foot=vertical.Find(boot==0?"LeftFoot":"RightFoot");Assert.That(foot,Is.Not.Null,"Normal route must show two independently moving boots");
+                            Assert.That(foot.gameObject.activeInHierarchy&&foot.GetComponent<SpriteRenderer>().enabled,Is.True);
+                            bootHeights[d-2,boot].Add(foot.localPosition.y*32);
+                        }
                     }
                     else {Assert.That(rig.gameObject.activeSelf,Is.True,"Actual route axis "+d);poses[d].Add(rig.Find("LeftLower").localRotation.ToString("F5"));}
                     samples[d]++;
@@ -50,6 +57,7 @@ public class CoreGuardianAnimationPlayModeTests
             if(step%50==0)yield return null;
         }
         for(int d=0;d<4;d++){Assert.That(samples[d],Is.GreaterThanOrEqualTo(12),"Route axis "+d);Assert.That(poses[d].Count,Is.GreaterThanOrEqualTo(d<2?8:4),"Actual displayed poses axis "+d);}
+        for(int d=0;d<2;d++)for(int boot=0;boot<2;boot++)Assert.That(bootHeights[d,boot].Max()-bootHeights[d,boot].Min(),Is.GreaterThan(2),"Both visible boots must lift on actual vertical waypoint segments");
 #else
         yield return null;
 #endif

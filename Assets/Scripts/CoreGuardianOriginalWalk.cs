@@ -11,6 +11,7 @@ public sealed class CoreGuardianOriginalWalk
     readonly Vector3 groundInParent;
     readonly SpriteRenderer vertical;
     readonly Sprite[,] verticalFrames=new Sprite[2,4];
+    readonly VerticalLegPair verticalLegs;
     readonly Leg left,right;
     float phase,weight;
     bool walking,mirror;
@@ -51,6 +52,7 @@ public sealed class CoreGuardianOriginalWalk
             if(verticalFrames[d,f]==null)throw new System.InvalidOperationException("Missing directional walk frame "+path);
         }
         vertical.gameObject.SetActive(false);
+        if(role=="Attack")verticalLegs=new VerticalLegPair(vertical,verticalFrames);
     }
     SpriteRenderer Layer(string name,string role)
     {
@@ -93,6 +95,7 @@ public sealed class CoreGuardianOriginalWalk
             rig.gameObject.SetActive(false);original.enabled=false;
             vertical.sprite=verticalFrames[verticalFacing>0?0:1,walking?Mathf.Min(3,(int)(phase*4)):0];
             vertical.color=original.color;vertical.sortingLayerID=original.sortingLayerID;vertical.sortingOrder=original.sortingOrder;
+            verticalLegs?.Present(vertical.sprite,verticalFacing>0?0:1,phase,walking);
             return;
         }
         bool active=weight>.0001f;rig.gameObject.SetActive(active);original.enabled=!active;
@@ -136,5 +139,68 @@ public sealed class CoreGuardianOriginalWalk
     {
         var rotation=Quaternion.Euler(0,0,angle);part.localRotation=rotation;
         part.localPosition=((Vector3)destination-rotation*(Vector3)sourceJoint)/ppu;
+    }
+
+    // The directional drawings held one knee up in every frame. Reuse their existing
+    // boot pixels as two independent legs; the upper body and equipment keep their art.
+    sealed class VerticalLegPair
+    {
+        static readonly System.Collections.Generic.Dictionary<Sprite,Sprite[]> bodies=new System.Collections.Generic.Dictionary<Sprite,Sprite[]>();
+        static readonly System.Collections.Generic.Dictionary<Sprite,Sprite> boots=new System.Collections.Generic.Dictionary<Sprite,Sprite>();
+        readonly SpriteRenderer body,leftFoot,rightFoot;
+        readonly SpriteRenderer[] bodyParts;
+        readonly Rect[] bodyRects;
+        readonly Sprite[] templates=new Sprite[2];
+        public VerticalLegPair(SpriteRenderer renderer,Sprite[,] frames)
+        {
+            body=renderer;
+            bodyRects=BodyRects(frames[0,0]);
+            bodyParts=new[]{FootRenderer("UpperBody"),FootRenderer("LeftEquipment"),FootRenderer("RightEquipment")};
+            leftFoot=FootRenderer("LeftFoot");rightFoot=FootRenderer("RightFoot");rightFoot.flipX=true;
+            for(int d=0;d<2;d++)
+            {
+                var source=frames[d,0];var key=source;
+                if(!boots.TryGetValue(key,out var boot)||boot==null)
+                {
+                    boot=Sprite.Create(source.texture,new Rect(source.rect.x+44,source.rect.y,7,23),new Vector2(.5f,3f/23),source.pixelsPerUnit);
+                    boot.name=source.name+"_Boot";boot.hideFlags=HideFlags.HideAndDontSave;boots[key]=boot;
+                }
+                templates[d]=boot;
+            }
+        }
+        SpriteRenderer FootRenderer(string name)
+        {
+            var renderer=new GameObject(name).AddComponent<SpriteRenderer>();renderer.transform.SetParent(body.transform,false);renderer.sharedMaterial=body.sharedMaterial;return renderer;
+        }
+        static Rect[] BodyRects(Sprite source)=>new[]{new Rect(0,19,source.rect.width,source.rect.height-19),new Rect(0,0,42,19),new Rect(59,0,source.rect.width-59,19)};
+        static Sprite[] BodyWithoutFixedLegs(Sprite source,Rect[] rects)
+        {
+            if(bodies.TryGetValue(source,out var found)&&found[0]!=null)return found;
+            var sprites=new Sprite[rects.Length];
+            for(int i=0;i<rects.Length;i++)
+            {
+                var rect=rects[i];rect.position+=source.rect.position;
+                sprites[i]=Sprite.Create(source.texture,rect,new Vector2(.5f,0),source.pixelsPerUnit);
+                sprites[i].name=source.name+"_Body"+i;sprites[i].hideFlags=HideFlags.HideAndDontSave;
+            }
+            bodies[source]=sprites;return sprites;
+        }
+        public void Present(Sprite source,int direction,float phase,bool walking)
+        {
+            body.enabled=false;
+            var sprites=BodyWithoutFixedLegs(source,bodyRects);var rects=bodyRects;
+            for(int i=0;i<bodyParts.Length;i++)
+            {
+                var part=bodyParts[i];part.sprite=sprites[i];
+                part.transform.localPosition=(new Vector3(rects[i].center.x,rects[i].y,0)-(Vector3)source.pivot)/source.pixelsPerUnit;
+                part.color=body.color;part.sortingLayerID=body.sortingLayerID;part.sortingOrder=body.sortingOrder+1;
+            }
+            leftFoot.sprite=rightFoot.sprite=templates[direction];
+            float Lift(float p)=>walking?Mathf.Max(0,Mathf.Sin(p*Mathf.PI*2))*3.5f:0;
+            leftFoot.transform.localPosition=new Vector3(-3,Lift(phase),0)/source.pixelsPerUnit;
+            rightFoot.transform.localPosition=new Vector3(5,Lift(phase+.5f),0)/source.pixelsPerUnit;
+            CopyPresentation(leftFoot);CopyPresentation(rightFoot);
+        }
+        void CopyPresentation(SpriteRenderer foot){foot.color=body.color;foot.sortingLayerID=body.sortingLayerID;foot.sortingOrder=body.sortingOrder;}
     }
 }
