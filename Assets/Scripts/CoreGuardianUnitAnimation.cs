@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-// Presentation only. All roles use approved source pixels; Session owns combat and movement.
+// Presentation only. Keeps source artwork and its directional extensions; Session owns combat and movement.
 public sealed class CoreGuardianUnitAnimation : MonoBehaviour
 {
     // Retained for reading archived animation metadata in diagnostic tools.

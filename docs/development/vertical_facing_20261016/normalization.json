@@ -1,0 +1,386 @@
+[
+  {
+    "role": "Attack",
+    "name": "Up_0",
+    "scale": 0.13636364,
+    "bounds": [
+      74,
+      573,
+      241,
+      469
+    ],
+    "paletteColors": 680
+  },
+  {
+    "role": "Attack",
+    "name": "Up_1",
+    "scale": 0.13636364,
+    "bounds": [
+      435,
+      565,
+      242,
+      477
+    ],
+    "paletteColors": 680
+  },
+  {
+    "role": "Attack",
+    "name": "Up_2",
+    "scale": 0.13636364,
+    "bounds": [
+      799,
+      565,
+      240,
+      477
+    ],
+    "paletteColors": 680
+  },
+  {
+    "role": "Attack",
+    "name": "Up_3",
+    "scale": 0.13636364,
+    "bounds": [
+      1161,
+      565,
+      239,
+      477
+    ],
+    "paletteColors": 680
+  },
+  {
+    "role": "Attack",
+    "name": "Down_0",
+    "scale": 0.13636364,
+    "bounds": [
+      81,
+      70,
+      235,
+      460
+    ],
+    "paletteColors": 680
+  },
+  {
+    "role": "Attack",
+    "name": "Down_1",
+    "scale": 0.13636364,
+    "bounds": [
+      441,
+      73,
+      236,
+      457
+    ],
+    "paletteColors": 680
+  },
+  {
+    "role": "Attack",
+    "name": "Down_2",
+    "scale": 0.13636364,
+    "bounds": [
+      802,
+      70,
+      238,
+      460
+    ],
+    "paletteColors": 680
+  },
+  {
+    "role": "Attack",
+    "name": "Down_3",
+    "scale": 0.13636364,
+    "bounds": [
+      1165,
+      60,
+      238,
+      471
+    ],
+    "paletteColors": 680
+  },
+  {
+    "role": "Defense",
+    "name": "Up_0",
+    "scale": 0.114503816,
+    "bounds": [
+      82,
+      581,
+      232,
+      396
+    ],
+    "paletteColors": 674
+  },
+  {
+    "role": "Defense",
+    "name": "Up_1",
+    "scale": 0.114503816,
+    "bounds": [
+      440,
+      581,
+      238,
+      401
+    ],
+    "paletteColors": 674
+  },
+  {
+    "role": "Defense",
+    "name": "Up_2",
+    "scale": 0.114503816,
+    "bounds": [
+      785,
+      581,
+      241,
+      401
+    ],
+    "paletteColors": 674
+  },
+  {
+    "role": "Defense",
+    "name": "Up_3",
+    "scale": 0.114503816,
+    "bounds": [
+      1141,
+      581,
+      229,
+      389
+    ],
+    "paletteColors": 674
+  },
+  {
+    "role": "Defense",
+    "name": "Down_0",
+    "scale": 0.114503816,
+    "bounds": [
+      61,
+      88,
+      245,
+      387
+    ],
+    "paletteColors": 674
+  },
+  {
+    "role": "Defense",
+    "name": "Down_1",
+    "scale": 0.114503816,
+    "bounds": [
+      417,
+      90,
+      251,
+      387
+    ],
+    "paletteColors": 674
+  },
+  {
+    "role": "Defense",
+    "name": "Down_2",
+    "scale": 0.114503816,
+    "bounds": [
+      785,
+      90,
+      248,
+      387
+    ],
+    "paletteColors": 674
+  },
+  {
+    "role": "Defense",
+    "name": "Down_3",
+    "scale": 0.114503816,
+    "bounds": [
+      1149,
+      82,
+      238,
+      383
+    ],
+    "paletteColors": 674
+  },
+  {
+    "role": "Buff",
+    "name": "Up_0",
+    "scale": 0.183417082,
+    "bounds": [
+      80,
+      484,
+      227,
+      457
+    ],
+    "paletteColors": 880
+  },
+  {
+    "role": "Buff",
+    "name": "Up_1",
+    "scale": 0.183417082,
+    "bounds": [
+      497,
+      481,
+      225,
+      460
+    ],
+    "paletteColors": 880
+  },
+  {
+    "role": "Buff",
+    "name": "Up_2",
+    "scale": 0.183417082,
+    "bounds": [
+      908,
+      483,
+      229,
+      458
+    ],
+    "paletteColors": 880
+  },
+  {
+    "role": "Buff",
+    "name": "Up_3",
+    "scale": 0.183417082,
+    "bounds": [
+      1322,
+      480,
+      229,
+      461
+    ],
+    "paletteColors": 880
+  },
+  {
+    "role": "Buff",
+    "name": "Down_0",
+    "scale": 0.183417082,
+    "bounds": [
+      101,
+      33,
+      228,
+      441
+    ],
+    "paletteColors": 880
+  },
+  {
+    "role": "Buff",
+    "name": "Down_1",
+    "scale": 0.183417082,
+    "bounds": [
+      516,
+      28,
+      232,
+      446
+    ],
+    "paletteColors": 880
+  },
+  {
+    "role": "Buff",
+    "name": "Down_2",
+    "scale": 0.183417082,
+    "bounds": [
+      928,
+      28,
+      221,
+      446
+    ],
+    "paletteColors": 880
+  },
+  {
+    "role": "Buff",
+    "name": "Down_3",
+    "scale": 0.183417082,
+    "bounds": [
+      1319,
+      39,
+      238,
+      435
+    ],
+    "paletteColors": 880
+  },
+  {
+    "role": "Boss",
+    "name": "Up_0",
+    "scale": 0.1884058,
+    "bounds": [
+      123,
+      470,
+      311,
+      337
+    ],
+    "paletteColors": 23
+  },
+  {
+    "role": "Boss",
+    "name": "Up_1",
+    "scale": 0.1884058,
+    "bounds": [
+      531,
+      467,
+      327,
+      342
+    ],
+    "paletteColors": 23
+  },
+  {
+    "role": "Boss",
+    "name": "Up_2",
+    "scale": 0.1884058,
+    "bounds": [
+      976,
+      464,
+      297,
+      345
+    ],
+    "paletteColors": 23
+  },
+  {
+    "role": "Boss",
+    "name": "Up_3",
+    "scale": 0.1884058,
+    "bounds": [
+      1390,
+      460,
+      335,
+      347
+    ],
+    "paletteColors": 23
+  },
+  {
+    "role": "Boss",
+    "name": "Down_0",
+    "scale": 0.1884058,
+    "bounds": [
+      71,
+      58,
+      332,
+      339
+    ],
+    "paletteColors": 23
+  },
+  {
+    "role": "Boss",
+    "name": "Down_1",
+    "scale": 0.1884058,
+    "bounds": [
+      483,
+      62,
+      325,
+      334
+    ],
+    "paletteColors": 23
+  },
+  {
+    "role": "Boss",
+    "name": "Down_2",
+    "scale": 0.1884058,
+    "bounds": [
+      905,
+      50,
+      341,
+      353
+    ],
+    "paletteColors": 23
+  },
+  {
+    "role": "Boss",
+    "name": "Down_3",
+    "scale": 0.1884058,
+    "bounds": [
+      1347,
+      64,
+      331,
+      332
+    ],
+    "paletteColors": 23
+  }
+]

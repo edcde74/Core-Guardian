@@ -22,7 +22,7 @@ public class CoreGuardianAnimationPlayModeTests
         var session=(CoreGuardian.Session)type.GetProperty("Session").GetValue(game);
         var flags=System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance;
         var views=(System.Collections.IDictionary)type.GetField("enemyViews",flags).GetValue(game);
-        var samples=new int[4];var poses=new System.Collections.Generic.HashSet<Quaternion>[4];for(int d=0;d<4;d++)poses[d]=new System.Collections.Generic.HashSet<Quaternion>();
+        var samples=new int[4];var poses=new System.Collections.Generic.HashSet<string>[4];for(int d=0;d<4;d++)poses[d]=new System.Collections.Generic.HashSet<string>();
         game.enabled=false;session.StartCombat();int id=-1;Vector3 previous=Vector3.zero;
         for(int step=0;step<10000;step++)
         {
@@ -36,14 +36,20 @@ public class CoreGuardianAnimationPlayModeTests
                 {
                     int d=Mathf.Abs(delta.x)>Mathf.Abs(delta.y)?(delta.x>0?0:1):(delta.y>0?2:3);
                     var art=view.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");var rig=art.transform.Find("OriginalWalk");
-                    Assert.That(rig.gameObject.activeSelf,Is.True,"Actual route axis "+d);samples[d]++;poses[d].Add(rig.Find("LeftLower").localRotation);
+                    if(d>=2)
+                    {
+                        var vertical=art.transform.Find("VerticalWalk");Assert.That(vertical.gameObject.activeSelf,Is.True,"Actual Y waypoint must switch artwork");
+                        var sprite=vertical.GetComponent<SpriteRenderer>().sprite;Assert.That(sprite.name,Does.StartWith(d==2?"Up_":"Down_"));Assert.That(rig.gameObject.activeSelf,Is.False);poses[d].Add(sprite.name);
+                    }
+                    else {Assert.That(rig.gameObject.activeSelf,Is.True,"Actual route axis "+d);poses[d].Add(rig.Find("LeftLower").localRotation.ToString("F5"));}
+                    samples[d]++;
                 }
                 previous=position;
             }
-            if(samples.All(n=>n>=12)&&poses.All(p=>p.Count>=8))break;
+            if(samples.All(n=>n>=12)&&poses[0].Count>=8&&poses[1].Count>=8&&poses[2].Count==4&&poses[3].Count==4)break;
             if(step%50==0)yield return null;
         }
-        for(int d=0;d<4;d++){Assert.That(samples[d],Is.GreaterThanOrEqualTo(12),"Route axis "+d);Assert.That(poses[d].Count,Is.GreaterThanOrEqualTo(8),"Visible leg poses axis "+d);}
+        for(int d=0;d<4;d++){Assert.That(samples[d],Is.GreaterThanOrEqualTo(12),"Route axis "+d);Assert.That(poses[d].Count,Is.GreaterThanOrEqualTo(d<2?8:4),"Actual displayed poses axis "+d);}
 #else
         yield return null;
 #endif
@@ -130,10 +136,10 @@ public class CoreGuardianAnimationPlayModeTests
                     Assert.That(clone.transform.position,Is.EqualTo(rootPosition));
                     Assert.That(clone.transform.localScale,Is.EqualTo(rootScale));
                     Assert.That((int)animationType.GetProperty("Direction").GetValue(unit),Is.EqualTo(d));
-                    Assert.That(art.transform.Find("OriginalWalk").gameObject.activeSelf,Is.True);
+                    Assert.That(art.transform.Find(d<2?"OriginalWalk":"VerticalWalk").gameObject.activeSelf,Is.True);
                 }
                 animationType.GetMethod("Move").Invoke(unit,new object[]{Vector2.zero,.3f});animationType.GetMethod("Present").Invoke(unit,new object[]{.3f});
-                Assert.That(art.enabled,Is.True);Assert.That(art.transform.Find("OriginalWalk").gameObject.activeSelf,Is.False);
+                Assert.That(art.enabled,Is.False);Assert.That(art.transform.Find("OriginalWalk").gameObject.activeSelf,Is.False);Assert.That(art.transform.Find("VerticalWalk").GetComponent<SpriteRenderer>().sprite.name,Is.EqualTo("Down_0"));
             }
             finally{UnityEngine.Object.Destroy(clone);}
         }

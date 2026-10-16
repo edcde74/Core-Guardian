@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Two legs cut from the approved source PNG; never loads a generated directional atlas.
+// Original cutout legs on X; separate source-based rear/front frames on Y.
 public sealed class CoreGuardianOriginalWalk
 {
     readonly SpriteRenderer original, body;
@@ -9,9 +9,12 @@ public sealed class CoreGuardianOriginalWalk
     readonly float ppu, cyclePixels, lift;
     readonly Vector2 groundAnchor;
     readonly Vector3 groundInParent;
+    readonly SpriteRenderer vertical;
+    readonly Sprite[,] verticalFrames=new Sprite[2,4];
     readonly Leg left,right;
     float phase,weight;
     bool walking,mirror;
+    int verticalFacing;
     Vector2 groundDirection=Vector2.left;
     sealed class Leg
     {
@@ -39,6 +42,15 @@ public sealed class CoreGuardianOriginalWalk
             {groundInParent=parent.InverseTransformPoint(renderer.bounds.center);break;}
         AlignGround();
         rig.gameObject.SetActive(false);
+        vertical=new GameObject("VerticalWalk").AddComponent<SpriteRenderer>();vertical.transform.SetParent(artwork.transform,false);
+        vertical.sharedMaterial=artwork.sharedMaterial;vertical.transform.localPosition=groundAnchor/ppu;
+        for(int d=0;d<2;d++)for(int f=0;f<4;f++)
+        {
+            string path="CoreGuardian/VerticalWalk/"+role+"/"+(d==0?"Up_":"Down_")+f;
+            verticalFrames[d,f]=Resources.Load<Sprite>(path);
+            if(verticalFrames[d,f]==null)throw new System.InvalidOperationException("Missing directional walk frame "+path);
+        }
+        vertical.gameObject.SetActive(false);
     }
     SpriteRenderer Layer(string name,string role)
     {
@@ -53,7 +65,11 @@ public sealed class CoreGuardianOriginalWalk
         walking=worldVelocity.sqrMagnitude>.000001f;
         if(!walking)return;
         Vector2 local=original.transform.InverseTransformVector(worldVelocity);
-        if(local.x>.0001f)mirror=true;else if(local.x<-.0001f)mirror=false;
+        // Select the presented direction from the actual waypoint displacement, on this turn.
+        // A vertical turn must replace the side artwork, not just its leg trajectory.
+        verticalFacing=Mathf.Abs(local.y)>Mathf.Abs(local.x)?(local.y>0?1:-1):0;
+        if(verticalFacing!=0)mirror=false;
+        else if(local.x>.0001f)mirror=true;else if(local.x<-.0001f)mirror=false;
         phase=Mathf.Repeat(phase+local.magnitude*Mathf.Max(0,delta)*ppu/cyclePixels,1);
         if(mirror)local.x=-local.x;
         groundDirection=local.normalized;
@@ -71,6 +87,14 @@ public sealed class CoreGuardianOriginalWalk
         weight=Mathf.MoveTowards(weight,walking?1:0,Mathf.Max(0,delta)*8);
         original.flipX=mirror;
         AlignGround();
+        vertical.gameObject.SetActive(verticalFacing!=0);
+        if(verticalFacing!=0)
+        {
+            rig.gameObject.SetActive(false);original.enabled=false;
+            vertical.sprite=verticalFrames[verticalFacing>0?0:1,walking?Mathf.Min(3,(int)(phase*4)):0];
+            vertical.color=original.color;vertical.sortingLayerID=original.sortingLayerID;vertical.sortingOrder=original.sortingOrder;
+            return;
+        }
         bool active=weight>.0001f;rig.gameObject.SetActive(active);original.enabled=!active;
         if(!active)return;
         rig.localScale=new Vector3(mirror?-1:1,1,1);
