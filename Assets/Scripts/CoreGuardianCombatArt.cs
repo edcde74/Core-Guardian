@@ -61,8 +61,8 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     {
         var position=game.World(new Vector2(29,9));
         Show("CoreHit",position+Vector3.up*.5f,.7f,.35f);
-        // Anchor outside the actual artwork, not over its crystal or existing CoreHit.
-        var numberPosition=coreBody!=null?new Vector3(coreBody.bounds.max.x+.2f,coreBody.bounds.max.y+.12f,coreBody.transform.position.z):position+new Vector3(1.2f,1.6f,0);
+        // User positioned the preview in Inspector; preserve its offset from the artwork.
+        var numberPosition=coreBody!=null?new Vector3(coreBody.bounds.max.x-.3f,coreBody.bounds.max.y-.38f,coreBody.transform.position.z):position+new Vector3(.7f,1.1f,0);
         hud.ShowCoreNumber(numberPosition,amount);
         coreFeedback?.Trigger();
     }

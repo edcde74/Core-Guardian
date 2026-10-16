@@ -42,10 +42,10 @@ public class CoreGuardianCoreFeedbackPlayModeTests
             var rt=number.GetComponent<RectTransform>();Assert.That(rt.pivot.x,Is.Zero);
             var canvas=number.GetComponentInParent<Canvas>();Canvas.ForceUpdateCanvases();
             var corners=new Vector3[4];rt.GetWorldCorners(corners);
-            var screenCore=Camera.main.WorldToScreenPoint(core.bounds.max);
+            var screenCore=Camera.main.WorldToScreenPoint(core.bounds.center);
             var screenLeft=RectTransformUtility.WorldToScreenPoint(null,corners[0]);
-            Assert.That(screenLeft.x,Is.GreaterThan(screenCore.x),"Number left edge must clear core right edge");
-            Assert.That(RectTransformUtility.WorldToScreenPoint(null,rt.position).y,Is.GreaterThan(screenCore.y),"Number anchor must be above core top");
+            Assert.That(screenLeft.x,Is.GreaterThan(screenCore.x),"User-selected number stays on the core right side");
+            Assert.That(RectTransformUtility.WorldToScreenPoint(null,rt.position).y,Is.GreaterThan(screenCore.y),"User-selected number stays in the upper half");
             var coreLabel=game.transform.Find("CombatHUD/TopStatus/Status_Core").GetComponent<UnityEngine.UI.Text>();
             Assert.That(coreLabel.color.b,Is.LessThan(1),"Upper core label reacts alongside core");
         }
