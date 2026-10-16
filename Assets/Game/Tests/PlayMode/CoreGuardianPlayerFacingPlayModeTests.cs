@@ -32,7 +32,13 @@ public class CoreGuardianPlayerFacingPlayModeTests
             {
                 yield return null;combat.GetType().GetMethod("Player").Invoke(combat,null);
                 var walk=art.transform.Find("PlayerWalk");
-                if(walk.gameObject.activeSelf){left.Add(walk.Find("LeftLeg").localPosition.y);right.Add(walk.Find("RightLeg").localPosition.y);}
+                if(walk.gameObject.activeSelf)
+                {
+                    left.Add(walk.Find("LeftLeg").localPosition.y);right.Add(walk.Find("RightLeg").localPosition.y);
+                    int direction=d.x>0?0:d.y>0?2:d.x<0?4:6;
+                    Assert.That((int)unitType.GetProperty("Direction").GetValue(unit),Is.EqualTo(direction),"Actual grid displacement must immediately choose the matching body facing");
+                    Assert.That(Mathf.Abs(Mathf.DeltaAngle(0,walk.Find("Arm").localEulerAngles.z)),Is.LessThanOrEqualTo(10),"With no enemy target, normal movement must keep the tool relaxed");
+                }
             }
             while((bool)movementType.GetField("isMoving",flags).GetValue(movement)){yield return null;combat.GetType().GetMethod("Player").Invoke(combat,null);}
         }

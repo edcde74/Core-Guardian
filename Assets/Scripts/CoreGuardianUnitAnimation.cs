@@ -20,7 +20,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     float shotAge=100,shotDuration=.25f,idleTime,facingAngle=-90;
     Vector2 aim=Vector2.down;
     int direction=3,lastShotFrame=-1;
-    bool walking,justFired;
+    bool walking,justFired,aiming;
     public int Direction=>direction;
     // Presented volleys, never a combat or balance metric.
     public int ShotCount {get;private set;}
@@ -52,9 +52,10 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     void TrackMotion(Vector2 velocity,float delta,bool turn)
     {
         originalWalk?.Move(velocity,delta);playerMotion?.Move(velocity,delta);walking=velocity.sqrMagnitude>.000001f;
-        if(walking&&turn)Face(velocity,false,delta);
+        if(role=="Player")aiming=!turn;
+        if(walking&&turn)Face(velocity,role=="Player",delta);
     }
-    public void Aim(Vector2 vector,float delta){if(vector.sqrMagnitude>.000001f)Face(vector,false,delta);}
+    public void Aim(Vector2 vector,float delta){if(vector.sqrMagnitude>.000001f){aiming=true;Face(vector,false,delta);}}
     void Face(Vector2 vector,bool snap,float delta)
     {
         aim=vector.normalized;
@@ -82,7 +83,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     void ApplyFrame(float delta)
     {
         if(artwork==null)return;
-        if(playerMotion!=null){playerMotion.Present(direction,aim,shotAge,shotDuration,idleTime);MuzzleWorld=playerMotion.MuzzleWorld;return;}
+        if(playerMotion!=null){playerMotion.Present(direction,aim,shotAge,shotDuration,idleTime,aiming);MuzzleWorld=playerMotion.MuzzleWorld;return;}
         if(originalWalk!=null){originalWalk.Present(delta);return;}
         originalMotion.Present(shotAge,shotDuration);
         MuzzleWorld=originalMotion.MuzzleWorld(aim);

@@ -13,8 +13,9 @@ public sealed class CoreGuardianPlayerMotion
     readonly Sprite[,] sprites=new Sprite[8,4];
     readonly Pose idle,walk,attack;
     readonly float ppu;
-    float phase;
+    float phase,gaitWeight;
     bool moving;
+    Vector2 travel=Vector2.left;
     public Vector3 MuzzleWorld {get;private set;}
     public CoreGuardianPlayerMotion(SpriteRenderer artwork)
     {
@@ -26,7 +27,7 @@ public sealed class CoreGuardianPlayerMotion
             if(sprites[d,p]==null)throw new InvalidOperationException("Missing original player cutout: "+d+"/"+names[p]);
         }
         idle=Create("OriginalIdle",false);walk=Create("PlayerWalk",false);attack=Create("OriginalMotion",true);
-        Present(5,new Vector2(-8,-6).normalized,100,.25f,0);
+        Present(5,new Vector2(-8,-6).normalized,100,.25f,0,false);
     }
     Pose Create(string name,bool firing)
     {
@@ -41,19 +42,27 @@ public sealed class CoreGuardianPlayerMotion
     public void Move(Vector2 velocity,float delta)
     {
         moving=velocity.sqrMagnitude>.000001f;
-        // One tile (32 source pixels) is half a gait cycle: one alternating footstep per keypress.
-        if(moving&&delta>0)phase=Mathf.Repeat(phase+velocity.magnitude*delta*ppu/Mathf.Max(.001f,Mathf.Abs(original.transform.lossyScale.x))/64,1);
+        delta=Mathf.Max(0,delta);gaitWeight=Mathf.MoveTowards(gaitWeight,moving?1:0,delta*10);
+        if(moving&&delta>0)
+        {
+            travel=velocity.normalized;
+            float cycles=velocity.magnitude*ppu/Mathf.Max(.001f,Mathf.Abs(original.transform.lossyScale.x))/64;
+            phase=Mathf.Repeat(phase+Mathf.Min(3,cycles)*delta,1);
+        }
+        else if(gaitWeight>0)
+        {
+            // Finish the current half-step while blending out instead of teleporting a lifted boot.
+            float plant=Mathf.Ceil(phase*2)/2;phase=Mathf.MoveTowards(phase,plant,delta*3);
+        }
     }
     static Vector2 NativePoint(int direction,Vector2 source)
     {
-        float squeeze=direction==0||direction==4?.76f:direction==1||direction==3?.9f:1;
-        source.x=Mathf.Round(18+(source.x-18)*squeeze);
         if(direction==0||direction==1||direction==2||direction==7)source.x=35-source.x;
         return source;
     }
-    public void Present(int direction,Vector2 aim,float age,float duration,float idleTime)
+    public void Present(int direction,Vector2 aim,float age,float duration,float idleTime,bool aiming)
     {
-        bool firing=age<duration;var p=firing?attack:moving?walk:idle;
+        bool firing=age<duration;var p=firing?attack:gaitWeight>0?walk:idle;
         idle.root.gameObject.SetActive(p==idle);walk.root.gameObject.SetActive(p==walk);attack.root.gameObject.SetActive(p==attack);original.enabled=false;
         var parts=new[]{p.body,p.arm,p.left,p.right};
         for(int i=0;i<4;i++)
@@ -61,20 +70,30 @@ public sealed class CoreGuardianPlayerMotion
             var r=parts[i];r.sprite=sprites[direction,i];r.color=original.color;r.sortingLayerID=original.sortingLayerID;
             r.sortingOrder=original.sortingOrder+(i==1?2:i==0?1:0);r.transform.localPosition=Vector3.zero;r.transform.localRotation=Quaternion.identity;
         }
-        float breath=!moving&&!firing?.55f*(1-Mathf.Cos(idleTime*Mathf.PI*2/2.8f))*.5f:0;
+        float breath=p==idle?.55f*(1-Mathf.Cos(idleTime*Mathf.PI*2/2.8f))*.5f:0;
         p.body.transform.localPosition=Vector3.up*(breath/ppu);
         // Original trousers overlap under the shirt; only their own pixels move.
-        if(moving)
+        if(gaitWeight>0)
         {
-            p.left.transform.localPosition=Vector3.up*(3*Mathf.Max(0,Mathf.Sin(phase*Mathf.PI*2))/ppu);
-            p.right.transform.localPosition=Vector3.up*(3*Mathf.Max(0,Mathf.Sin((phase+.5f)*Mathf.PI*2))/ppu);
+            bool mirror=direction==0||direction==1||direction==7;
+            var leftHip=mirror?new Vector2(11,14):new Vector2(14,16);
+            var rightHip=mirror?new Vector2(21,16):new Vector2(24,14);
+            Step(p.left.transform,leftHip,phase);Step(p.right.transform,rightHip,phase+.5f);
         }
         Vector2 shoulder=NativePoint(direction,new Vector2(10,25));Vector2 tip=NativePoint(direction,new Vector2(2,19));
-        var rest=tip-shoulder;float angle=Vector2.SignedAngle(rest,aim);
+        var rest=tip-shoulder;
+        float angle=aiming||firing?Vector2.SignedAngle(rest,aim):5*Mathf.Sin(phase*Mathf.PI*2)*gaitWeight;
         float kick=firing?Mathf.Exp(-5*Mathf.Clamp01(age/duration)):0;
         var rotation=Quaternion.Euler(0,0,angle);var pivot=(shoulder-original.sprite.pivot)/ppu;
         p.arm.transform.localRotation=rotation;
         p.arm.transform.localPosition=(Vector3)pivot-rotation*(Vector3)pivot+Vector3.up*(breath/ppu)-(Vector3)aim*(1.25f*kick/ppu);
         MuzzleWorld=p.arm.transform.TransformPoint((tip-original.sprite.pivot)/ppu);
+    }
+    void Step(Transform leg,Vector2 hip,float p)
+    {
+        float angle=p*Mathf.PI*2,swing=Mathf.Sin(angle),stride=-Mathf.Cos(angle)*2.2f;
+        var offset=new Vector2(travel.x*stride,travel.y*stride*.25f)+Vector2.up*(2.2f*Mathf.Max(0,swing));
+        var pivot=(hip-original.sprite.pivot)/ppu;var rotation=Quaternion.Euler(0,0,6*Mathf.Cos(angle)*gaitWeight);
+        leg.localRotation=rotation;leg.localPosition=(Vector3)pivot-rotation*(Vector3)pivot+(Vector3)offset*(gaitWeight/ppu);
     }
 }

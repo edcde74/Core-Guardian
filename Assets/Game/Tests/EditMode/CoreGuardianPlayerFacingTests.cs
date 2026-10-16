@@ -11,6 +11,41 @@ public class CoreGuardianPlayerFacingTests
     static object Call(object unit,string method,params object[] args)=>Unit.GetMethod(method).Invoke(unit,args);
     static GameObject Player()=>UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/Player.prefab"));
     [Test]
+    public void WalkingWithoutATargetKeepsTheToolRelaxed_AndStopsWithoutSnappingTheFeet()
+    {
+        var player=Player();
+        try
+        {
+            var art=player.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");var unit=Unit.GetMethod("Attach").Invoke(null,new object[]{player,"Player"});
+            foreach(var step in new[]{(Vector2.right,0),(Vector2.up,2),(Vector2.left,4),(Vector2.down,6)})
+            {
+                Call(unit,"Move",step.Item1,1/60f);Call(unit,"Present",1/60f);
+                Assert.That((int)Unit.GetProperty("Direction").GetValue(unit),Is.EqualTo(step.Item2),"A .12-second grid step must face its actual displacement on the first frame");
+                var arm=art.transform.Find("PlayerWalk/Arm");
+                Assert.That(Mathf.Abs(Mathf.DeltaAngle(0,arm.localEulerAngles.z)),Is.LessThanOrEqualTo(10),"Walking alone must not point the wrench across the face or torso");
+            }
+            Call(unit,"Move",Vector2.right*(64*.6f/32),.25f);Call(unit,"Present",.01f);
+            var walk=art.transform.Find("PlayerWalk");var leg=walk.Find("LeftLeg");var toe=new Vector3(-5,4,0)/32;var before=leg.TransformPoint(toe);
+            Call(unit,"Move",Vector2.zero,1/60f);Call(unit,"Present",1/60f);
+            Assert.That(walk.gameObject.activeSelf,Is.True,"A short step must settle rather than instantly swap to a different Idle pose");
+            Assert.That(Vector3.Distance(before,leg.TransformPoint(toe))/(art.transform.lossyScale.x/32),Is.LessThan(1),"Stopping must not teleport the lifted foot");
+        }
+        finally{UnityEngine.Object.DestroyImmediate(player);}
+    }
+    [Test]
+    public void FrontHeadReusesOneCompleteOriginalFace_WithoutDuplicatingGoggles()
+    {
+        var source=new Texture2D(2,2);var front=new Texture2D(2,2);
+        try
+        {
+            source.LoadImage(System.IO.File.ReadAllBytes("Assets/Art/ScreenTests/20260930/Sprites/player.png"));
+            front.LoadImage(System.IO.File.ReadAllBytes("Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_Body.png"));
+            for(int top=0;top<15;top++)for(int x=6;x<23;x++)
+                if(source.GetPixel(x,47-top).a>.5f)Assert.That(front.GetPixel(x+2,47-top),Is.EqualTo(source.GetPixel(x,47-top)),"The whole source head must move together, not duplicate half of its face");
+        }
+        finally{UnityEngine.Object.DestroyImmediate(source);UnityEngine.Object.DestroyImmediate(front);}
+    }
+    [Test]
     public void EightDirectionsChangeVisibleArtwork_WithoutRotatingTheSourceOrShadow()
     {
         var player=Player();
