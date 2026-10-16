@@ -4,11 +4,13 @@
 
 ## 다음 대화의 최우선
 
+새 대화에 붙여넣을 최신 텍스트: [resume_20261016.md](resume_20261016.md). 우선 최신 Y축 앞/뒤 방향 전환에 대한 사용자 검토를 이어받고, 잘된다고 확인한 X축 보행을 보존한다. 애니메이션 적용 커밋은 `49dc331`, 그 뒤 별도 VFX 시안 체크포인트 `ed71e07`도 있으므로 저장소 HEAD를 애니메이션 커밋으로 가정하지 않는다. 다른 작업이 추가될 수 있어 재개 시 실제 Git/Unity 상태를 다시 확인한다.
+
 **2026-10-16 최신 수정:** 사용자 확인으로 Y축 요구가 발 움직임이 아닌 위/아래 방향 외형 전환임을 바로잡았다. 이전 다리 궤적 검증만으로 방향 전환이 완료됐다고 한 설명은 불충분했다. 별도 원본 없음/현재 원본 기준 제작 지시에 따라 몬스터3종+보스의 상행(뒷모습)/하행(앞모습) 각4프레임을 별도 제작·연결했다. 실제 웨이포인트 변위가 Y+이면 Up, Y-이면 Down, X축이면 기존 관절 보행으로 복귀한다. 원본 PNG/프리팹/씬·기존 X축 동작·그림자 보정을 보존했다. EditMode87/87·PlayMode15/15 및 실제 경로 앞/뒤4프레임 선택 확인. **파생 아트 최종 승인은 별도**다. [최신 제작·같은 픽셀 배율 비교·검증](vertical_facing_20261016/README.md), [그림자 수정/이전 검증 한계](monster_shadow_axes_fix_20261016/README.md). **빌드/실행파일 실행은 사용자 명시 요청 때만 한다. 이번 새 빌드/실행/Push는 없고 기존 실행파일에는 미반영이다.**
 
 **최신 UI 수정:** 라운드 시작 시 설치 패널/설치 모드를 정리한다. 설치 중에는 상단 중앙 상태/라운드 UI와 왼쪽 ESC 취소만 남기고, 설치 성공·취소 시 기존 HUD 표시/접힘 상태를 복원한다. PlayMode14/14·EditMode78/78 및 실제 화면 확인. [구현·검증·화면](placement_focus_20261015/README.md).
 
-**2026-10-15 최신: 몬스터3종·보스 보행을 승인 원본 도트의 관절 동작으로 교체하고 플레이어 Idle을 추가했다.** 과거 생성 4프레임의 외형/보폭 변화 대신 양발 동일 궤적·반 주기, 월드 이동 거리 기반 보행을 사용한다. 좌우는 원본 반전, 상하는 원본 사선 시점을 유지한 발 궤적이다. 새 뒷모습을 그린 것이 아니다. 플레이어 Idle은 발 고정/상체 호흡이며 공격·이동이 우선한다. 기존 원본 기반 공격 동작/보스 피벗 유지. **플레이어 전 방향 공격 조준·방향 전환/보행은 미완료, 자연스러움·아트 승인은 별도**다. [최신 구현·검증·움직이는 비교](original_walk_idle_20261015/README.md), [공격 동작 1차](original_animation_rework_20261015/README.md), [외형 복구](original_art_restore_20261015/README.md). 이후 밸런스 순서는 [next_work](next_work_20261013.md)·[resume](resume_20261013.md)에 보존한다.
+**기존 원본 보행/Idle:** X축은 원본 픽셀 관절 보행·좌우 반전과 이동 거리 기반 주기를 유지한다. Y축은 위 최신 파생 앞/뒤 프레임으로 대체했다. 플레이어 Idle은 발 고정/상체 호흡이며 공격·이동이 우선한다. 기존 원본 기반 공격 동작/보스 피벗 유지. **플레이어 전 방향 공격 조준·방향 전환/보행은 미완료, 자연스러움·아트 승인은 별도**다. [기존 보행/Idle 기록](original_walk_idle_20261015/README.md), [공격 동작 1차](original_animation_rework_20261015/README.md), [외형 복구](original_art_restore_20261015/README.md). 이후 밸런스 순서는 [next_work](next_work_20261013.md)·[이전 resume](resume_20261013.md)에 보존한다.
 
 - AGENTS.md와 LOCAL_GIT.md를 읽고 Git 변경, Unity 연결·열린 씬·Play·컴파일·저장 상태를 확인한다. 과거 인수인계 상태를 현재 사실로 가정하지 않고, 다른 테스트나 사용자 Play를 임의 중단하지 않는다.
 - 테스트 요청은 임의 수치 적용이나 노션 밸런스 확정 권한이 아니다. 기존 ‘밸런스 기획은 아직 건드리지 말라’는 제한을 유지한다. 현재 기준으로 측정한 뒤 변경 후보와 근거를 제시하고, 적용은 해당 사용자 지시에 따른다.
@@ -40,7 +42,7 @@
 - 설치 중에는 상단 중앙 UI/왼쪽 ESC만 남기고 다른 HUD의 표시·입력을 임시로 숨긴다. 설치 성공 시 기존 HUD/선택 목록 복원, 취소 시 선택 목록을 닫고 HUD 복원, 실패 시 설치 모드 유지. 수동 시작/준비 만료에는 모드·선택 목록을 정리한다. [설치 표시 상태 책임/검증](placement_focus_20261015/README.md).
 - 갈무리 A안: 본문/버튼 Galmuri11, 패널/단계/증강 제목 Galmuri11 Bold. Dynamic/HintedRaster, TTF/OFL 번들. 피해/처치 골드 숫자는 승인 Pixelify Sans Bold/TMP 유지. [폰트 적용](hud_font_applied_20261013/report.md), [중복 버튼 제거](hud_toggle_cleanup_20261013/report.md), [상자 맞춤](hud_text_fit_20261013/report.md), [전체 HUD](hud_applied_20261013.md).
 - 증강 뒷면은 은색/금색/청백색 테두리·장식·광택으로 등급을 기대하게 한다. 등급 글자/배지는 없다. 첫 클릭 공개, 연출 중 선택 차단, 완료 후 재클릭 선택이며 다른 카드를 전부 공개하지 않아도 선택할 수 있다. 등급별 뒤집기·스파크·합성 사운드, 30초 최고 등급 자동 선택/동률 왼쪽 우선 유지. [기능](boss_augmentation_20261013.md), [시안 기준](hud_sprite_review_20261013/augmentation_flip_review.md).
-- 보스 안광V3 승인 외형과 BossAnimated 별도 프리팹, 발 피벗(42,6.5)px을 유지한다. 몬스터3종/보스는 생성 아틀라스 대신 원본 픽셀 관절 보행을 사용해 원본 피벗을 그대로 쓴다. 기술병·포탑 원본 PNG/프리팹을 보존했고 원본 공격 동작1차/플레이어 Idle 적용·자연스러움은 별도 검토다. [현재 보행/Idle](original_walk_idle_20261015/README.md), [공격](original_animation_rework_20261015/README.md), [복구](original_art_restore_20261015/README.md), [공통 화풍](../art/MONSTER_ART_STYLE.md).
+- 보스 안광V3 승인 외형과 BossAnimated 별도 프리팹, 발 피벗(42,6.5)px을 유지한다. 몬스터3종/보스의 X축은 원본 픽셀 관절 보행이며, Y축은 별도 앞/뒤 파생 프레임을 사용한다(파생 아트 최종 미승인). 원본 PNG/프리팹은 보존했다. 기술병·포탑 원본 공격 동작1차/플레이어 Idle 적용·자연스러움은 별도 검토다. [최신 방향 전환](vertical_facing_20261016/README.md), [보행/Idle](original_walk_idle_20261015/README.md), [공격](original_animation_rework_20261015/README.md), [복구](original_art_restore_20261015/README.md), [공통 화풍](../art/MONSTER_ART_STYLE.md).
 - 승인 전투 효과 B, E2 금속 너트, 확대 투사체/골드 심볼 유지. [효과/숫자](combat_art_applied_20261010.md), [표시 수정](feedback_polish_20261010.md). 이미 승인한 아트/UI를 다시 컨펌받거나 재제작하지 않는다.
 
 ## 남은 작업·배포 주의
@@ -57,7 +59,7 @@
 ## 코드·도구·보존
 
 - 모델/계산: `Assets/Game/Scripts/CoreGuardian/{CombatData,Session,Augmentations}.cs`. 연결/HUD: `Assets/Scripts/{CoreGuardianPrototype,CoreGuardianHud,CoreGuardianAugmentationView}.cs`.
-- 애니메이션: `Assets/Scripts/CoreGuardian{UnitAnimation,CombatAnimation,OriginalMotion,OriginalWalk,OriginalIdle}.cs`. 원본 공격 레이어 `Resources/CoreGuardian/OriginalMotion`, 보행 `OriginalWalk`, 플레이어 호흡 `OriginalIdle`을 사용한다. 과거 생성 프레임 로드 경로를 제거했다. 지원 수정은 실제 지원 범위 내 공격 포탑 발사에 반응한다. 플레이어 방향별 조준은 미완료. 전투 수치·원본 프리팹·씬 YAML 변경 없음.
+- 애니메이션: `Assets/Scripts/CoreGuardian{UnitAnimation,CombatAnimation,OriginalMotion,OriginalWalk,OriginalIdle}.cs`. 원본 공격 레이어 `Resources/CoreGuardian/OriginalMotion`, X축 보행 `OriginalWalk`, Y축 앞/뒤 `VerticalWalk`, 플레이어 호흡 `OriginalIdle`을 사용한다. 과거 생성 아틀라스 로드 경로와 최신 VerticalWalk를 혼동하지 않는다. 지원 수정은 실제 지원 범위 내 공격 포탑 발사에 반응한다. 플레이어 방향별 조준은 미완료. 전투 수치·원본 프리팹·씬 YAML 변경 없음.
 - CSV: `Assets/Resources/CoreGuardian/{enemies,towers,stage,upgrades,waves}.csv`. stage 기본 수치도 테스트 가안이다. 폰트: `Assets/Resources/CoreGuardian/Fonts/`.
 - [로컬 Git 지침](LOCAL_GIT.md)에 따라 주요 변경 전후 복구 기준/완료 커밋을 남긴다. 사용자 작업 보존, push는 별도 지시에 따른다.
 - Unity CLI에 현재 연결 프로젝트를 명시하고 에디터 API를 사용한다. `BuildCombatPrototype.Main`은 씬 생성기라 재실행하지 않는다. 확인은 Verify로 한다. 씬 YAML/메타 직접 편집 금지, SampleScene/비교 씬/원본 프리팹 보존. Save/Reimport 후 컴파일과 내부 success/errorDetails를 확인하고 async 테스트는 completed까지 확인한다.
