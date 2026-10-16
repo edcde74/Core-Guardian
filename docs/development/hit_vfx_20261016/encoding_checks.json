@@ -1,0 +1,41 @@
+{
+  "transparentSheets": 3,
+  "checks": [
+    {
+      "file": "01_engineer.gif",
+      "frames": 26,
+      "durationMs": 1840,
+      "positiveDelays": true
+    },
+    {
+      "file": "01_engineer_dense.gif",
+      "frames": 42,
+      "durationMs": 2200,
+      "positiveDelays": true
+    },
+    {
+      "file": "02_single.gif",
+      "frames": 26,
+      "durationMs": 1840,
+      "positiveDelays": true
+    },
+    {
+      "file": "02_single_dense.gif",
+      "frames": 42,
+      "durationMs": 2200,
+      "positiveDelays": true
+    },
+    {
+      "file": "03_multi.gif",
+      "frames": 21,
+      "durationMs": 1840,
+      "positiveDelays": true
+    },
+    {
+      "file": "03_multi_dense.gif",
+      "frames": 42,
+      "durationMs": 2200,
+      "positiveDelays": true
+    }
+  ]
+}

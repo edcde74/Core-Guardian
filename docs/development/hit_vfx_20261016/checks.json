@@ -1,0 +1,81 @@
+{
+  "scope": "Offline pixel VFX studies, no Unity execution or real damage samples",
+  "audio": false,
+  "sourceSpriteSizes": [
+    [
+      42,
+      64
+    ],
+    [
+      33,
+      48
+    ],
+    [
+      35,
+      80
+    ]
+  ],
+  "integerPreviewScale": 3,
+  "perTargetVisualCooldownMs": 100,
+  "sourceFilesChanged": false,
+  "animations": [
+    {
+      "file": "01_engineer.gif",
+      "frames": 26,
+      "width": 864,
+      "height": 336,
+      "inputHitsPerTarget": 1,
+      "visibleImpactsPerTarget": 1
+    },
+    {
+      "file": "01_engineer_dense.gif",
+      "frames": 42,
+      "width": 864,
+      "height": 336,
+      "inputHitsPerTarget": 20,
+      "visibleImpactsPerTarget": 7
+    },
+    {
+      "file": "02_single.gif",
+      "frames": 26,
+      "width": 864,
+      "height": 336,
+      "inputHitsPerTarget": 1,
+      "visibleImpactsPerTarget": 1
+    },
+    {
+      "file": "02_single_dense.gif",
+      "frames": 42,
+      "width": 864,
+      "height": 336,
+      "inputHitsPerTarget": 20,
+      "visibleImpactsPerTarget": 7
+    },
+    {
+      "file": "03_multi.gif",
+      "frames": 21,
+      "width": 864,
+      "height": 336,
+      "inputHitsPerTarget": 1,
+      "visibleImpactsPerTarget": 1
+    },
+    {
+      "file": "03_multi_dense.gif",
+      "frames": 42,
+      "width": 864,
+      "height": 336,
+      "inputHitsPerTarget": 20,
+      "visibleImpactsPerTarget": 7
+    }
+  ],
+  "fullyRecoveredPixelsIdentical": true,
+  "attackResponsesDistinct": true,
+  "denseNumberGroups": [
+    60,
+    48,
+    60,
+    48,
+    24
+  ],
+  "groupedNumberSumPreserved": true
+}
