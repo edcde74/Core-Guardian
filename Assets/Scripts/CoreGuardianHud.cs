@@ -19,6 +19,8 @@ public sealed class CoreGuardianHud : MonoBehaviour
     readonly List<Action> refresh = new List<Action>();
     float nextRefresh;
     string damageSignature;
+    RectTransform damageFold;
+    static readonly Dictionary<string,Sprite> damageSprites=new Dictionary<string,Sprite>();
     RectTransform augmentationPanel;
     UnityEngine.UI.Text augmentationTimer, bossStatus;
     readonly List<UnityEngine.UI.Button> augmentationButtons=new List<UnityEngine.UI.Button>();
@@ -182,15 +184,44 @@ public sealed class CoreGuardianHud : MonoBehaviour
         var layout=damageContent.gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();layout.spacing=8;layout.childControlHeight=true;layout.childForceExpandHeight=false;layout.childControlWidth=true;
         damageContent.gameObject.AddComponent<UnityEngine.UI.ContentSizeFitter>().verticalFit=UnityEngine.UI.ContentSizeFitter.FitMode.PreferredSize;
         var sr=scroll.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();sr.viewport=viewport;sr.content=damageContent;sr.horizontal=false;sr.movementType=UnityEngine.UI.ScrollRect.MovementType.Clamped;
-        Button("DamageFold",canvas,new Vector2(1730,-532),new Vector2(174,48),()=>damagePanel.gameObject.activeSelf?"피해 접기":"피해 펼치기",()=>damagePanel.gameObject.SetActive(!damagePanel.gameObject.activeSelf));
+        BuildDamageFold();
         // Top compact display retains all four critical values when collapsed.
         Button("TopFold",canvas,new Vector2(1432,-24),new Vector2(170,48),()=>topDetails.sizeDelta.y>52?"상태 접기":"상태 펼치기",()=>{bool compact=topDetails.sizeDelta.y>52;topDetails.sizeDelta=new Vector2(920,compact?52:72);foreach(Transform child in topDetails){var rt=child as RectTransform;if(rt==null||child.name=="Status")continue;bool symbol=child.name.StartsWith("Symbol");rt.anchoredPosition=new Vector2(rt.anchoredPosition.x,compact?-12:(symbol?-21:-16));if(!symbol)rt.sizeDelta=new Vector2(rt.sizeDelta.x,compact?28:40);}});
         Refresh();
         Pin("Reload",new Vector2(1,1),new Vector2(-30,-16));Pin("TestSpeed",new Vector2(1,1),new Vector2(-30,-80));
-        Pin("DamageFold",new Vector2(1,1),new Vector2(-16,-532));
         Pin("CancelPlacement",new Vector2(0,0),new Vector2(18,32));
     }
     void Pin(string name,Vector2 anchor,Vector2 position){var r=canvas.Find(name) as RectTransform;if(r==null)return;r.anchorMin=r.anchorMax=r.pivot=anchor;r.anchoredPosition=position;}
+    static Sprite DamageSprite(string name)
+    {
+        if(damageSprites.Count==0)foreach(var sprite in Resources.LoadAll<Sprite>("CoreGuardian/Hud/DamageRoles"))damageSprites[sprite.name]=sprite;
+        return damageSprites.TryGetValue(name,out var result)?result:null;
+    }
+    void BuildDamageFold()
+    {
+        damageFold=Box("DamageFold",canvas,Vector2.one,Vector2.zero,new Vector2(28,108),false);
+        var image=damageFold.gameObject.AddComponent<UnityEngine.UI.Image>();image.sprite=DamageSprite("DamageHandle");image.preserveAspect=true;
+        var button=damageFold.gameObject.AddComponent<UnityEngine.UI.Button>();button.targetGraphic=image;
+        var colors=button.colors;colors.highlightedColor=new Color(1,.93f,.77f);colors.pressedColor=new Color(.7f,.65f,.55f);button.colors=colors;
+        button.onClick.AddListener(()=>{damagePanel.gameObject.SetActive(!damagePanel.gameObject.activeSelf);PositionDamageFold();});
+        PositionDamageFold();
+    }
+    void PositionDamageFold()
+    {
+        bool open=damagePanel.gameObject.activeSelf;
+        damageFold.anchoredPosition=new Vector2(open?damagePanel.anchoredPosition.x-damagePanel.sizeDelta.x:-16,damagePanel.anchoredPosition.y-damagePanel.sizeDelta.y*.5f);
+        // Mirror only the symmetric handle artwork; keep its clickable edge anchor unchanged.
+        damageFold.GetComponent<UnityEngine.UI.Image>().rectTransform.localScale=Vector3.one;
+        damageFold.pivot=new Vector2(open?1:0,.5f);
+        damageFold.localScale=new Vector3(open?1:-1,1,1);
+    }
+    string DamageRole(string source)
+    {
+        if(source=="Player")return "DamageEngineer";
+        int id;if(source.StartsWith("Tower:")&&int.TryParse(source.Substring(6),out id))
+        {var tower=game.Session.Towers.FirstOrDefault(t=>t.Id==id);if(tower!=null&&tower.Kind==TowerKind.Multi)return "DamageRange";}
+        return "DamageSingle";
+    }
     string StatName(string stat){switch(stat){case "damage":return "공격력";case "rate":return "공격속도";case "range":return "사거리";case "buffDamage":return "지원 공격력 효과";default:return "투사체 속도";}}
     float StatValue(CombatStats stats,string stat)=>stat=="damage"?stats.Damage:stat=="rate"?stats.Rate:stat=="range"?stats.Range:stat=="buffDamage"?stats.BuffDamage:stats.ProjectileSpeed;
     string StatDisplay(float value,string stat)=>stat=="damage"?Mathf.FloorToInt(value+.5f).ToString():value.ToString("0.##");
@@ -367,9 +398,15 @@ public sealed class CoreGuardianHud : MonoBehaviour
         {
             var row=Box(pair.Key,damageContent,new Vector2(0,1),Vector2.zero,new Vector2(288,60),false);
             row.gameObject.AddComponent<UnityEngine.UI.LayoutElement>().preferredHeight=60;
-            CoreGuardianHudSkin.Icon(row,pair.Key=="Player"?"Upgrade":"Install",new Vector2(4,-2),new Vector2(25,25));
-            Text("Value",row,new Vector2(34,-2),new Vector2(250,28),17).text=SourceName(pair.Key)+"  "+pair.Value;
-            var bar=Box("Bar",row,new Vector2(0,1),new Vector2(4,-34),new Vector2(max==0?0:280f*pair.Value/max,16));bar.GetComponent<UnityEngine.UI.Image>().color=new Color(.22f,.78f,.8f);
+            var icon=Box("RoleIcon",row,new Vector2(0,1),new Vector2(4,-2),new Vector2(25,25),false).gameObject.AddComponent<UnityEngine.UI.Image>();
+            icon.sprite=DamageSprite(DamageRole(pair.Key));icon.preserveAspect=true;icon.raycastTarget=false;
+            Text("Value",row,new Vector2(34,-2),new Vector2(182,28),17).text=SourceName(pair.Key);
+            var total=Text("Total",row,new Vector2(216,-2),new Vector2(68,28),17);total.text=pair.Value.ToString();total.alignment=TextAnchor.MiddleRight;
+            total.resizeTextForBestFit=true;total.resizeTextMinSize=11;total.resizeTextMaxSize=17;total.horizontalOverflow=HorizontalWrapMode.Overflow;
+            var track=Box("BarTrack",row,new Vector2(0,1),new Vector2(4,-34),new Vector2(280,18));
+            track.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+            var bar=Box("Bar",track,new Vector2(0,1),new Vector2(4,-4),new Vector2(max==0?0:272f*pair.Value/max,10),false);
+            var fill=bar.gameObject.AddComponent<UnityEngine.UI.Image>();fill.color=new Color(.1f,.73f,.77f);fill.raycastTarget=false;
         }
     }
     void OnDestroy(){if(game!=null){game.Changed-=Refresh;if(game.Session!=null)game.Session.DamageApplied-=ShowDamageNumber;}ClearDamageNumbers();}

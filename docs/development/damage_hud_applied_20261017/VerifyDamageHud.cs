@@ -4,11 +4,20 @@ using System.Reflection;
 using CoreGuardian;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 // Focused UI QA in an owned fresh Play. Injected display totals are NOT balance measurements.
 public static class VerifyDamageHud
 {
     static void Need(bool condition,string message){if(!condition)throw new Exception(message);}
+    static void NeedClickable(RectTransform toggle)
+    {
+        Canvas.ForceUpdateCanvases();var hits=new List<RaycastResult>();
+        var pointer=new PointerEventData(EventSystem.current){position=RectTransformUtility.WorldToScreenPoint(null,toggle.TransformPoint(toggle.rect.center))};
+        EventSystem.current.RaycastAll(pointer,hits);
+        Need(hits.Count>0&&hits[0].gameObject==toggle.gameObject,"Handle center must be actual topmost UI pointer target");
+    }
     public static object Main()
     {
         var p=UnityEngine.Object.FindAnyObjectByType<CoreGuardianPrototype>();
@@ -36,10 +45,13 @@ public static class VerifyDamageHud
         Need(toggle.sizeDelta.x<=32&&toggle.sizeDelta.y>=80,"Thin handle geometry");
         Need(Mathf.Abs(toggle.anchoredPosition.y-(panel.anchoredPosition.y-panel.sizeDelta.y*.5f))<.01f,"Handle must align with left edge midpoint");
         Need(Mathf.Abs(toggle.anchoredPosition.x-(panel.anchoredPosition.x-panel.sizeDelta.x))<.01f,"Expanded handle must touch panel left edge");
+        Need(Mathf.Abs(toggle.TransformPoint(toggle.rect.center).y-panel.TransformPoint(panel.rect.center).y)<.01f,"Handle visual center must match panel center");
+        NeedClickable(toggle);
         var beforeGold=s.Gold;var beforeCore=s.CoreEnergy;var beforeWave=s.Wave;
         toggle.GetComponent<Button>().onClick.Invoke();
         Need(!panel.gameObject.activeSelf&&toggle.gameObject.activeInHierarchy,"Fold must leave usable handle");
         Need(toggle.anchoredPosition.x>=-32,"Folded handle must stay at screen right edge");
+        NeedClickable(toggle);
         s.DamageTotals["Player"]=70;
         typeof(CoreGuardianHud).GetMethod("Refresh",BindingFlags.NonPublic|BindingFlags.Instance).Invoke(hud,null);
         toggle.GetComponent<Button>().onClick.Invoke();

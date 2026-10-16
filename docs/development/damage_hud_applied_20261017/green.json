@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/damage_hud_applied_20261017/VerifyDamageHud.cs",
+      "entry": "VerifyDamageHud.Main"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 420,
+      "executeMs": 21,
+      "assemblyName": "PipelineRunScript_VerifyDamageHud_10e1c2b33faf49589c57d08aa99b59e9",
+      "success": true,
+      "result": {
+        "passed": true,
+        "checks": "framed inset fill,3 distinct roles,thin brass handle,no detached label,edge anchors,fold/reopen,preserved totals",
+        "method": "Injected display-only UI QA, not balance or human play"
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: 490c83575495f6d4c99d7d25c7af44f5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5260136152908749818
+    second: DamageRoles_0
+  - first:
+      213: 6781029956690509815
+    second: DamageRoles_1
+  - first:
+      213: 1074386704655620500
+    second: DamageRoles_2
+  - first:
+      213: -2796486626326466885
+    second: DamageRoles_3
+  - first:
+      213: 7621584395457140219
+    second: DamageRoles_4
+  - first:
+      213: 7771529407825530412
+    second: DamageRoles_5
+  - first:
+      213: 3376104240014123614
+    second: DamageRoles_6
+  - first:
+      213: 1889995461365114640
+    second: DamageRoles_7
+  - first:
+      213: 27159394296019940
+    second: DamageRoles_8
+  - first:
+      213: 404478151539722423
+    second: DamageRoles_9
+  - first:
+      213: 7285935750176683965
+    second: DamageRoles_10
+  - first:
+      213: 4863442770539956296
+    second: DamageRoles_11
+  - first:
+      213: 653421433276377803
+    second: DamageRoles_12
+  - first:
+      213: 4879263733519257304
+    second: DamageRoles_13
+  - first:
+      213: -2173057629634201567
+    second: DamageRoles_14
+  - first:
+      213: -7091984997492238482
+    second: DamageRoles_15
+  - first:
+      213: 503893763036715024
+    second: DamageRoles_16
+  - first:
+      213: 7404985949728526361
+    second: DamageRoles_17
+  - first:
+      213: -7814579396626050058
+    second: DamageRoles_18
+  - first:
+      213: -5427419470775630383
+    second: DamageRoles_19
+  - first:
+      213: 7389448257834901693
+    second: DamageRoles_20
+  - first:
+      213: -6532931532871326693
+    second: DamageRoles_21
+  - first:
+      213: 6924827582874892366
+    second: DamageRoles_22
+  - first:
+      213: -3815991041290730101
+    second: DamageRoles_23
+  - first:
+      213: 6872030550889147443
+    second: DamageRoles_24
+  - first:
+      213: 4829522570138399269
+    second: DamageRoles_25
+  - first:
+      213: -5593454051657299144
+    second: DamageRoles_26
+  - first:
+      213: 7446572884242309425
+    second: DamageRoles_27
+  - first:
+      213: 4542834973047525835
+    second: DamageRoles_28
+  - first:
+      213: -6740396081556114922
+    second: DamageRoles_29
+  - first:
+      213: 132501374985841769
+    second: DamageRoles_30
+  - first:
+      213: -3894024936490622150
+    second: DamageRoles_31
+  - first:
+      213: -4735856356945900668
+    second: DamageRoles_32
+  - first:
+      213: -4400320228596632575
+    second: DamageRoles_33
+  - first:
+      213: -7749658292433301690
+    second: DamageRoles_34
+  - first:
+      213: 6085127299298314929
+    second: DamageRoles_35
+  - first:
+      213: 1558248480928860941
+    second: DamageRoles_36
+  - first:
+      213: 2885673780906007538
+    second: DamageRoles_37
+  - first:
+      213: -3371842789148388133
+    second: DamageRoles_38
+  - first:
+      213: 2154397131973976316
+    second: DamageRoles_39
+  - first:
+      213: 1620162444726082204
+    second: DamageRoles_40
+  - first:
+      213: -4318259649285410078
+    second: DamageRoles_41
+  - first:
+      213: -3224517238869161191
+    second: DamageRoles_42
+  - first:
+      213: -695551011621843646
+    second: DamageRoles_43
+  - first:
+      213: 6345527604386930568
+    second: DamageRoles_44
+  - first:
+      213: -4028214593067885932
+    second: DamageRoles_45
+  - first:
+      213: -8917861072656646390
+    second: DamageRoles_46
+  - first:
+      213: -4519723243737882996
+    second: DamageRoles_47
+  - first:
+      213: 6816295164195968367
+    second: DamageRoles_48
+  - first:
+      213: 236245534317554990
+    second: DamageRoles_49
+  - first:
+      213: -607752248272538889
+    second: DamageRoles_50
+  - first:
+      213: 5020771486313930209
+    second: DamageRoles_51
+  - first:
+      213: -2949160017390741426
+    second: DamageRoles_52
+  - first:
+      213: -6864174846102587471
+    second: DamageRoles_53
+  - first:
+      213: -8704407543761166870
+    second: DamageRoles_54
+  - first:
+      213: -9070410564172501200
+    second: DamageRoles_55
+  - first:
+      213: 7394913598252295149
+    second: DamageRoles_56
+  - first:
+      213: 3345503090633525666
+    second: DamageRoles_57
+  - first:
+      213: -2598661883984866916
+    second: DamageRoles_58
+  - first:
+      213: 3286288757690767195
+    second: DamageRoles_59
+  - first:
+      213: 9161421582075660396
+    second: DamageRoles_60
+  - first:
+      213: 1502329042134550471
+    second: DamageRoles_61
+  - first:
+      213: -8263362303002535220
+    second: DamageRoles_62
+  - first:
+      213: -6219255546685873589
+    second: DamageRoles_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DamageRange
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 710
+        width: 473
+        height: 419
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d64d267ae87aeb4687336df9758d9f7
+      internalID: -19383076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageSingle
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 714
+        width: 411
+        height: 419
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f0e81f4736bc344ac48b2655b2b3c6
+      internalID: 740692141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageEngineer
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 166
+        width: 403
+        height: 338
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37afefb8c05bf5b4da67dfcbb6c02515
+      internalID: -512996255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageHandle
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 83
+        width: 134
+        height: 504
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c425b55c612de48a0a6cd06a1b7812
+      internalID: 538125531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7738e28449a414c4594e3a5b477937e2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DamageEngineer: -512996255
+      DamageHandle: 538125531
+      DamageRange: -19383076
+      DamageSingle: 740692141
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
