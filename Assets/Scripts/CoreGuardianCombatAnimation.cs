@@ -9,6 +9,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
     CoreGuardianPrototype game;
     CoreGuardianUnitAnimation player;
     readonly Dictionary<int,CoreGuardianUnitAnimation> enemies=new Dictionary<int,CoreGuardianUnitAnimation>();
+    readonly HashSet<int> pendingHits=new HashSet<int>();
     readonly Dictionary<int,CoreGuardianUnitAnimation> towers=new Dictionary<int,CoreGuardianUnitAnimation>();
     readonly Dictionary<int,Vector2> previousEnemies=new Dictionary<int,Vector2>();
     readonly Dictionary<int,Vector3> launchOffsets=new Dictionary<int,Vector3>();
@@ -26,6 +27,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         previousPlayer=game.player.transform.position;
         flashSprite=Resources.LoadAll<Sprite>(CoreGuardianCombatArt.ResourcePath).First(s=>s.name=="SingleBolt");
         game.Session.ProjectileLaunched+=Launched;
+        game.Session.DamageApplied+=Damaged;
     }
     public void Enemy(EnemyState enemy,GameObject view)
     {
@@ -34,6 +36,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
             animation=CoreGuardianUnitAnimation.Attach(view,enemy.Kind.ToString());enemies.Add(enemy.Id,animation);
             previousEnemies[enemy.Id]=enemy.Position;
         }
+        if(pendingHits.Remove(enemy.Id))animation.ReceiveHit();
         float dt=Time.deltaTime;
         var previous=previousEnemies[enemy.Id];
         animation.Move(dt>0?(Vector2)(game.World(enemy.Position)-game.World(previous))/dt:Vector2.zero,dt);
@@ -48,6 +51,12 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         if(target!=null&&target.Alive)animation.Aim(target.Position-tower.Position,Time.deltaTime);
         animation.Present(Time.deltaTime);
     }
+    void Damaged(EnemyState enemy,int amount)
+    {
+        if(amount<=0||!enemy.Alive)return;
+        if(enemies.TryGetValue(enemy.Id,out var animation)&&animation!=null)animation.ReceiveHit();
+        else pendingHits.Add(enemy.Id);
+    }
     public void Player()
     {
         float dt=Time.deltaTime;
@@ -58,6 +67,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         if(target!=null&&target.Alive)player.Aim((Vector2)(game.World(target.Position)-game.player.transform.position),dt);
         player.Present(dt);
         foreach(int id in enemies.Where(x=>x.Value==null).Select(x=>x.Key).ToArray()){enemies.Remove(id);previousEnemies.Remove(id);}
+        if(pendingHits.Count>0)pendingHits.RemoveWhere(id=>!game.Session.Enemies.Any(e=>e.Id==id&&e.Alive));
         foreach(int id in towers.Where(x=>x.Value==null).Select(x=>x.Key).ToArray())towers.Remove(id);
         var active=new HashSet<int>(game.Session.Projectiles.Select(p=>p.Id));
         foreach(int id in launchOffsets.Keys.Where(id=>!active.Contains(id)).ToArray()){launchOffsets.Remove(id);launchOrigins.Remove(id);}
@@ -112,6 +122,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
     void OnDestroy()
     {
         if(game!=null&&game.Session!=null)game.Session.ProjectileLaunched-=Launched;
+        if(game!=null&&game.Session!=null)game.Session.DamageApplied-=Damaged;
         foreach(var flash in flashes)if(flash.renderer!=null)Destroy(flash.renderer.gameObject);
     }
 }

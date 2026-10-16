@@ -14,6 +14,8 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     CoreGuardianOriginalMotion originalMotion;
     CoreGuardianOriginalWalk originalWalk;
     CoreGuardianOriginalIdle originalIdle;
+    CoreGuardianHitFlash hitFlash;
+    bool justHit;
     string role;
     float shotAge=100,shotDuration=.25f,idleTime,facingAngle=-90;
     Vector2 aim=Vector2.down;
@@ -41,7 +43,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
             originalMotion=new CoreGuardianOriginalMotion(artwork,role);
             if(role=="Player")originalIdle=new CoreGuardianOriginalIdle(artwork);
         }
-        else if(UsesOriginalWalking)originalWalk=new CoreGuardianOriginalWalk(artwork,role);
+        else if(UsesOriginalWalking){originalWalk=new CoreGuardianOriginalWalk(artwork,role);hitFlash=new CoreGuardianHitFlash(artwork);}
         else throw new InvalidOperationException("Unsupported original animation role: "+role);
         MuzzleWorld=artwork.transform.position;
     }
@@ -73,7 +75,10 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     {
         if(!walking&&shotAge>=shotDuration)idleTime+=delta;else idleTime=0;
         if(!justFired)shotAge+=delta;justFired=false;ApplyFrame(delta);
+        hitFlash?.Advance(justHit?0:delta);justHit=false;
     }
+    public void ReceiveHit(){if(hitFlash!=null&&hitFlash.Trigger())justHit=true;}
+    void OnDisable(){hitFlash?.Clear();}
     void ApplyFrame(float delta)
     {
         if(artwork==null)return;
