@@ -5,7 +5,7 @@
 ## 재개 시 먼저 확인
 
 - 최신 게임 변경 커밋: `edb7a28`. 문서 커밋이나 병행 작업이 추가될 수 있으므로 실제 HEAD/변경을 확인한다. 사용자·다른 채팅의 변경을 덮어쓰거나 되돌리지 않는다. [로컬 Git 규칙](LOCAL_GIT.md).
-- 이번 **문서 정리 중 읽기 재조회**: CD/Unity6000.6.2f1 연결, 전투 씬 `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity` active·dirty=false, **Play=true/paused=false/TimeScale3**, compiling=false/captureDelta0. 사용자 Play는 건드리지 않았다. 이 상태도 재개 시 다시 확인한다.
+- 최신 **재개 점검의 읽기 재조회**: CD/Unity6000.6.2f1 연결, 전투 씬 `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity` active·dirty=false, **Play=false/paused=false/TimeScale1**, compiling=false/captureDelta0. 이전 문서 정리 때의 사용자 Play=true와 구분한다. 이번에도 Play 시작/정지 명령은 보내지 않았다. [데이터/계측 전제 점검](balance_preflight_20261016_2203/README.md).
 - 마지막 게임 수정 검증은 **EditMode102/102·PlayMode19/19 completed**다. 당시 자체 검증 종료 후 Play=false/TimeScale1이었다. 현재 사용자가 다시 켠 Play와 구분한다. 이번 문서 정리에서는 새 테스트·Play 조작·코드 변경·빌드/실행·Notion 변경 없음.
 - 원본 기반 애니메이션의 외형/자연스러움 최종 사용자 검토가 남는다. 새 피드백을 먼저 반영하고, 확인 이후에는 기존 밸런스 실측 우선순위를 유지한다. 다음 제작 항목을 임의 확정하지 않는다.
 
@@ -31,9 +31,9 @@
 ## 밸런스 다음 순서
 
 - 사람 직접 테스트용 현재 후보: 공격형 HP27 전 라운드 공용, 1R15마리/간격1.62초, 2R16개 개별 슬롯/간격1.53초·마지막22.95초. 최종 확정이 아니다. 재개 시 CSV→씬 참조→CombatData.Load를 확인한다.
-- 마지막 확인 때 새 사람 직접 테스트 결과는 없었다. 이번 애니메이션 QA도 사람/밸런스 실측이 아니다. **새 결과부터 확인**한다.
+- 이번 재개에서 Notion 플레이테스트와 로컬 기존 자료를 조회했으나 새 사람 직접 테스트 기록은 없었다. 사용자는 추가 애니메이션 피드백/직접 결과를 나중에 전달하겠다고 했다. 피드백 대기 중이며 새 Play/실측은 실행하지 않았다. **새 결과부터 확인**한다.
 - `core-guardian-balance` 스킬과 [next_work_20261013.md](next_work_20261013.md)를 따른다. 1~2R 압박→3~9R 성장/실패→10R 보스 처치/도착→11R 증강 후 성능. 시간·코어 손실·피해 기여·재화 수지/배치·구매·증강·배속을 보존한다.
-- `MeasureNaturalRounds.cs`의 과거 HP25/6R총HP555/간격0.9배 변형/출력 경로를 먼저 점검한다. 현재6R총HP는 이전 로더 점검상581이다. 재실행 전에 현재 값으로 확인하고 단축을 중복 적용하거나 기존 결과를 덮어쓰지 않는다.
+- `MeasureNaturalRounds.cs`의 과거 HP25/6R총HP555/간격0.9배 변형/과거 출력 경로와 증강 기록 누락을 확인했다. 이번 실제 씬 참조→CombatData.Load에서6R총HP581,1~11R수·HP의 독립CSV대조11/11일치. 아직 계측기를 수정/실행하지 않았으며 다음에는 무변형·새 출력·보스/증강 기록을 먼저 갖춘다. [확인 수치·주의점·검증 후보](balance_preflight_20261016_2203/README.md).
 - 정상 구매·이동·공격 계측, 정적 계산, 사람 직접 플레이, 강제 처치/재화 주입 QA를 구분한다. 강한 증강 빌드 자체를 결함으로 보지 않는다. 밸런스/Notion 수치는 임의 변경하지 말고 측정 결과와 변경 후보/근거부터 제시한다.
 
 ## 작업·배포 규칙
