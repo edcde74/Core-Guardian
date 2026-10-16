@@ -1,6 +1,8 @@
 # 코어 가디언 Unity 인수인계
 
-최종 갱신: 2026-10-17 (Asia/Seoul). 현재 사용자 지시와 최신 담당 노션이 우선이다. 새 대화용 복사 텍스트: [resume_20261017.md](resume_20261017.md). 이번 재개 문서 갱신에서는 Unity 조작·새 테스트를 하지 않았다.
+최종 갱신: 2026-10-17 (Asia/Seoul). 현재 사용자 지시와 최신 담당 노션이 우선이다. 새 대화용 복사 텍스트: [resume_20261017.md](resume_20261017.md). 이번 재개에서는 읽기 전용 상태 조회만 했으며 Unity 상태 변경·새 테스트를 하지 않았다.
+
+재개 실조회: 시작 HEAD `0b8847c`, 씬 정리/복구 커밋 이력 확인. Assets의 씬은 전투 씬 하나다. CD/Unity6000.6.2f1의 전투 씬이 **Play 중·배속3·paused=false·dirty=false**였고 compiling/updating/compilationFailed=false, captureDelta0였다. 현재 콘솔 오류/경고0이며 도구의 과거 테스트 오류 이력과 구분했다. test_status의 completed/total0은 새 실행도 통과도 아니다. 기존 Play/배속은 변경하지 않았다. 미추적 `AudioProduction/`, `docs/development/balance_tension_20261013/`, `docs/development/bgm_sketches_20261013.md`는 보존했다. `font_tools_vendor` 접근 오류에 따른 삭제 표시는 실제 삭제로 확정하지 않았다. 후처리 비교 기록을 읽었으며 적용 선택·게임 변경은 하지 않았다.
 
 ## 재개 시 먼저 확인
 
