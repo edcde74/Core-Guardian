@@ -41,6 +41,10 @@ public sealed class CoreGuardianOriginalWalk
         foreach(var renderer in parent.GetComponentsInChildren<SpriteRenderer>(true))
             if(renderer.sprite!=null&&renderer.sprite.name.Contains("Shadow"))
             {groundInParent=parent.InverseTransformPoint(renderer.bounds.center);break;}
+        // The prefab's flattened original soles are static. They look like extra feet
+        // when the walking rig lifts or turns; retain the central ellipse instead.
+        foreach(var renderer in parent.GetComponentsInChildren<SpriteRenderer>(true))
+            if(renderer.name=="바닥 밀착선")renderer.enabled=false;
         AlignGround();
         rig.gameObject.SetActive(false);
         vertical=new GameObject("VerticalWalk").AddComponent<SpriteRenderer>();vertical.transform.SetParent(artwork.transform,false);

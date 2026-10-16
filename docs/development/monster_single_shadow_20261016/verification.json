@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-16",
+  "recompile": {"status": "completed", "failed": false, "errors": []},
+  "editmode": {"filter": "CoreGuardianOriginalGaitTests", "status": "completed", "total": 15, "passed": 15, "failed": 0},
+  "playmode": {"filter": "CoreGuardianAnimationPlayModeTests", "status": "completed", "total": 3, "passed": 3, "failed": 0},
+  "captures": {"beforeFrames": 24, "afterFrames": 24, "roles": 4, "directions": 4, "centralShadowsPreserved": true, "staticFootMarksDisabledAfter": true, "source": "Unity PreviewRenderUtility"},
+  "finalEditor": {"scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity", "dirty": false, "play": false, "paused": false, "compiling": false, "timeScale": 1, "captureDelta": 0}
+}
