@@ -13,6 +13,42 @@ public class CoreGuardianAnimationPlayModeTests
 {
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).First(t=>t!=null);
     [UnityTest]
+    public IEnumerator NormalEnemyRoute_AnimatesThroughCombatAdapter_OnEveryWorldAxis()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var type=Find("CoreGuardianPrototype");var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var session=(CoreGuardian.Session)type.GetProperty("Session").GetValue(game);
+        var flags=System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance;
+        var views=(System.Collections.IDictionary)type.GetField("enemyViews",flags).GetValue(game);
+        var samples=new int[4];var poses=new System.Collections.Generic.HashSet<Quaternion>[4];for(int d=0;d<4;d++)poses[d]=new System.Collections.Generic.HashSet<Quaternion>();
+        game.enabled=false;session.StartCombat();int id=-1;Vector3 previous=Vector3.zero;
+        for(int step=0;step<10000;step++)
+        {
+            // Normal wave/movement only. This isolated accelerated test is functional QA.
+            session.Tick(.05f,new Vector2(-100,-100));type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
+            if(id<0&&session.Enemies.Count>0)id=session.Enemies[0].Id;
+            if(id>=0&&views.Contains(id))
+            {
+                var view=(GameObject)views[id];var position=view.transform.position;var delta=position-previous;
+                if(step>1&&delta.sqrMagnitude>.000001f)
+                {
+                    int d=Mathf.Abs(delta.x)>Mathf.Abs(delta.y)?(delta.x>0?0:1):(delta.y>0?2:3);
+                    var art=view.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");var rig=art.transform.Find("OriginalWalk");
+                    Assert.That(rig.gameObject.activeSelf,Is.True,"Actual route axis "+d);samples[d]++;poses[d].Add(rig.Find("LeftLower").localRotation);
+                }
+                previous=position;
+            }
+            if(samples.All(n=>n>=12)&&poses.All(p=>p.Count>=8))break;
+            if(step%50==0)yield return null;
+        }
+        for(int d=0;d<4;d++){Assert.That(samples[d],Is.GreaterThanOrEqualTo(12),"Route axis "+d);Assert.That(poses[d].Count,Is.GreaterThanOrEqualTo(8),"Visible leg poses axis "+d);}
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator ActualLaunch_PreservesOriginalPlayerSprite_AndDoesNotUseRejectedMuzzle()
     {
 #if UNITY_EDITOR
@@ -84,12 +120,15 @@ public class CoreGuardianAnimationPlayModeTests
                 var unit=animationType.GetMethod("Attach").Invoke(null,new object[]{clone,roles[i]});
                 var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");
                 var directions=new[]{Vector2.right,Vector2.left,Vector2.up,Vector2.down};
-                var source=art.sprite;var root=art.transform.localPosition;
+                var source=art.sprite;var rootPosition=clone.transform.position;var rootScale=clone.transform.localScale;
                 for(int d=0;d<4;d++)
                 {
                     animationType.GetMethod("Move").Invoke(unit,new object[]{directions[d],.3f});animationType.GetMethod("Present").Invoke(unit,new object[]{.3f});
                     Assert.That(art.sprite,Is.SameAs(source),"Movement must keep approved source, never generated frame art");
-                    Assert.That(art.transform.localPosition,Is.EqualTo(root));
+                    // The visual pivot compensates mirroring around the boot center.
+                    // The logical unit root and original sprite/scale remain unchanged.
+                    Assert.That(clone.transform.position,Is.EqualTo(rootPosition));
+                    Assert.That(clone.transform.localScale,Is.EqualTo(rootScale));
                     Assert.That((int)animationType.GetProperty("Direction").GetValue(unit),Is.EqualTo(d));
                     Assert.That(art.transform.Find("OriginalWalk").gameObject.activeSelf,Is.True);
                 }

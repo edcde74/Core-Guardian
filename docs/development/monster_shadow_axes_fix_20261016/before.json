@@ -1,0 +1,315 @@
+{
+  "label": "before",
+  "passed": false,
+  "failures": [
+    "Attack/0 stopped ground center (-9.00, -0.50, 0.00)",
+    "Attack/0 mean horizontal offset -9.128377",
+    "Attack/1 stopped ground center (-1.00, -0.50, 0.00)",
+    "Attack/2 stopped ground center (-1.00, -0.50, 0.00)",
+    "Attack/3 stopped ground center (-1.00, -0.50, 0.00)",
+    "Defense/0 stopped ground center (-10.50, 1.50, 0.00)",
+    "Defense/0 mean horizontal offset -11.24313",
+    "Defense/1 stopped ground center (0.50, 1.50, 0.00)",
+    "Defense/2 stopped ground center (0.50, 1.50, 0.00)",
+    "Defense/3 stopped ground center (0.50, 1.50, 0.00)",
+    "Buff/0 stopped ground center (3.75, -1.00, 0.00)",
+    "Buff/0 mean horizontal offset 4.391361",
+    "Buff/1 stopped ground center (0.25, -1.00, 0.00)",
+    "Buff/2 stopped ground center (0.25, -1.00, 0.00)",
+    "Buff/3 stopped ground center (0.25, -1.00, 0.00)",
+    "Boss/0 stopped ground center (0.75, 2.00, 0.00)",
+    "Boss/1 stopped ground center (-0.75, 2.00, 0.00)",
+    "Boss/2 stopped ground center (-0.75, 2.00, 0.00)",
+    "Boss/3 stopped ground center (-0.75, 2.00, 0.00)"
+  ],
+  "results": [
+    {
+      "role": "Attack",
+      "direction": 0,
+      "solePixels": [
+        -5.5,
+        4.0,
+        13.5,
+        0.0
+      ],
+      "stopped": [
+        -9.0,
+        -0.4999999
+      ],
+      "meanX": -9.128377,
+      "leftRangeY": 2.94169235,
+      "rightRangeY": 1.98203754,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Attack",
+      "direction": 1,
+      "solePixels": [
+        -5.5,
+        4.0,
+        13.5,
+        0.0
+      ],
+      "stopped": [
+        -0.9999998,
+        -0.4999999
+      ],
+      "meanX": -0.8716224,
+      "leftRangeY": 2.94169235,
+      "rightRangeY": 1.98203754,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Attack",
+      "direction": 2,
+      "solePixels": [
+        -5.5,
+        4.0,
+        13.5,
+        0.0
+      ],
+      "stopped": [
+        -0.9999998,
+        -0.4999999
+      ],
+      "meanX": -0.843002856,
+      "leftRangeY": 6.36081362,
+      "rightRangeY": 5.18967342,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Attack",
+      "direction": 3,
+      "solePixels": [
+        -5.5,
+        4.0,
+        13.5,
+        0.0
+      ],
+      "stopped": [
+        -0.9999998,
+        -0.4999999
+      ],
+      "meanX": -0.843003035,
+      "leftRangeY": 6.36081553,
+      "rightRangeY": 5.18967342,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Defense",
+      "direction": 0,
+      "solePixels": [
+        -0.5,
+        8.0,
+        11.5,
+        0.0
+      ],
+      "stopped": [
+        -10.499999,
+        1.50000012
+      ],
+      "meanX": -11.24313,
+      "leftRangeY": 1.76864433,
+      "rightRangeY": 2.12348485,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Defense",
+      "direction": 1,
+      "solePixels": [
+        -0.5,
+        8.0,
+        11.5,
+        0.0
+      ],
+      "stopped": [
+        0.5000001,
+        1.50000012
+      ],
+      "meanX": 1.24312973,
+      "leftRangeY": 1.76864433,
+      "rightRangeY": 2.12348485,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Defense",
+      "direction": 2,
+      "solePixels": [
+        -0.5,
+        8.0,
+        11.5,
+        0.0
+      ],
+      "stopped": [
+        0.5000001,
+        1.50000012
+      ],
+      "meanX": 1.23614287,
+      "leftRangeY": 3.785304,
+      "rightRangeY": 4.88371754,
+      "uniqueLeftPoses": 42
+    },
+    {
+      "role": "Defense",
+      "direction": 3,
+      "solePixels": [
+        -0.5,
+        8.0,
+        11.5,
+        0.0
+      ],
+      "stopped": [
+        0.5000001,
+        1.50000012
+      ],
+      "meanX": 1.23614478,
+      "leftRangeY": 3.785306,
+      "rightRangeY": 4.88371658,
+      "uniqueLeftPoses": 46
+    },
+    {
+      "role": "Buff",
+      "direction": 0,
+      "solePixels": [
+        -9.0,
+        3.0,
+        5.5,
+        0.0
+      ],
+      "stopped": [
+        3.75002,
+        -0.9999999
+      ],
+      "meanX": 4.39136076,
+      "leftRangeY": 2.20900154,
+      "rightRangeY": 2.5838294,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Buff",
+      "direction": 1,
+      "solePixels": [
+        -9.0,
+        3.0,
+        5.5,
+        0.0
+      ],
+      "stopped": [
+        0.2500204,
+        -0.9999999
+      ],
+      "meanX": -0.3913202,
+      "leftRangeY": 2.20900154,
+      "rightRangeY": 2.5838294,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Buff",
+      "direction": 2,
+      "solePixels": [
+        -9.0,
+        3.0,
+        5.5,
+        0.0
+      ],
+      "stopped": [
+        0.2500204,
+        -0.9999999
+      ],
+      "meanX": -0.426838577,
+      "leftRangeY": 5.24003267,
+      "rightRangeY": 5.43058538,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Buff",
+      "direction": 3,
+      "solePixels": [
+        -9.0,
+        3.0,
+        5.5,
+        0.0
+      ],
+      "stopped": [
+        0.2500204,
+        -0.9999999
+      ],
+      "meanX": -0.426839,
+      "leftRangeY": 5.24003363,
+      "rightRangeY": 5.43058348,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Boss",
+      "direction": 0,
+      "solePixels": [
+        -13.0,
+        4.5,
+        11.5,
+        -0.5
+      ],
+      "stopped": [
+        0.75000006,
+        2.0
+      ],
+      "meanX": 0.509199262,
+      "leftRangeY": 2.11507559,
+      "rightRangeY": 2.90081382,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Boss",
+      "direction": 1,
+      "solePixels": [
+        -13.0,
+        4.5,
+        11.5,
+        -0.5
+      ],
+      "stopped": [
+        -0.75000006,
+        2.0
+      ],
+      "meanX": -0.509199262,
+      "leftRangeY": 2.11507559,
+      "rightRangeY": 2.90081382,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Boss",
+      "direction": 2,
+      "solePixels": [
+        -13.0,
+        4.5,
+        11.5,
+        -0.5
+      ],
+      "stopped": [
+        -0.75000006,
+        2.0
+      ],
+      "meanX": -0.5158514,
+      "leftRangeY": 5.809329,
+      "rightRangeY": 7.18789,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Boss",
+      "direction": 3,
+      "solePixels": [
+        -13.0,
+        4.5,
+        11.5,
+        -0.5
+      ],
+      "stopped": [
+        -0.75000006,
+        2.0
+      ],
+      "meanX": -0.515853167,
+      "leftRangeY": 5.809329,
+      "rightRangeY": 7.187888,
+      "uniqueLeftPoses": 48
+    }
+  ]
+}

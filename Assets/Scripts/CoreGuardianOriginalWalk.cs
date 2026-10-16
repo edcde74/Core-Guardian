@@ -7,6 +7,8 @@ public sealed class CoreGuardianOriginalWalk
     readonly Transform rig;
     readonly SpriteRenderer[] layers;
     readonly float ppu, cyclePixels, lift;
+    readonly Vector2 groundAnchor;
+    readonly Vector3 groundInParent;
     readonly Leg left,right;
     float phase,weight;
     bool walking,mirror;
@@ -27,6 +29,15 @@ public sealed class CoreGuardianOriginalWalk
         else if(role=="Defense") {left=Bone(lu,ll,17,31,17,36,17,42);right=Bone(ru,rl,24,29,24,36,27,44);cyclePixels=10;lift=1.4f;}
         else if(role=="Buff") {left=Bone(lu,ll,13,61,12,67,9,74);right=Bone(ru,rl,22,60,24,69,24,77);cyclePixels=12;lift=1.6f;}
         else {left=Bone(lu,ll,32,51,32,59,28,67);right=Bone(ru,rl,47,51,49,60,53,70);cyclePixels=18;lift=2.2f;}
+        // Midpoint of the two original boot soles, in source pixels relative to its pivot.
+        // This is a ground anchor, not the center of the canvas/weapon/banner.
+        groundAnchor=role=="Attack"?new Vector2(4,2):role=="Defense"?new Vector2(5.5f,4):role=="Buff"?new Vector2(-1.75f,1.5f):new Vector2(-.75f,2);
+        var parent=artwork.transform.parent;
+        groundInParent=parent.InverseTransformPoint(artwork.transform.TransformPoint(groundAnchor/ppu));
+        foreach(var renderer in parent.GetComponentsInChildren<SpriteRenderer>(true))
+            if(renderer.sprite!=null&&renderer.sprite.name.Contains("Shadow"))
+            {groundInParent=parent.InverseTransformPoint(renderer.bounds.center);break;}
+        AlignGround();
         rig.gameObject.SetActive(false);
     }
     SpriteRenderer Layer(string name,string role)
@@ -59,6 +70,7 @@ public sealed class CoreGuardianOriginalWalk
     {
         weight=Mathf.MoveTowards(weight,walking?1:0,Mathf.Max(0,delta)*8);
         original.flipX=mirror;
+        AlignGround();
         bool active=weight>.0001f;rig.gameObject.SetActive(active);original.enabled=!active;
         if(!active)return;
         rig.localScale=new Vector3(mirror?-1:1,1,1);
@@ -67,8 +79,22 @@ public sealed class CoreGuardianOriginalWalk
         // Two equal weight transfers per cycle, rather than one deep dip on a single leg.
         Vector2 pelvis=Vector2.up*((-.65f+.3f*Mathf.Cos(phase*Mathf.PI*4))*weight);
         body.transform.localPosition=pelvis/ppu;
-        Pose(left,FootOffset(phase,cyclePixels,lift,groundDirection)*weight,pelvis);
-        Pose(right,FootOffset(phase+.5f,cyclePixels,lift,groundDirection)*weight,pelvis);
+        Pose(left,WalkingFootOffset(phase,cyclePixels,lift,groundDirection)*weight,pelvis);
+        Pose(right,WalkingFootOffset(phase+.5f,cyclePixels,lift,groundDirection)*weight,pelvis);
+    }
+    void AlignGround()
+    {
+        Vector3 anchor=new Vector3((mirror?-1:1)*groundAnchor.x,groundAnchor.y,0)/ppu;
+        var transform=original.transform;
+        transform.localPosition=groundInParent-transform.localRotation*Vector3.Scale(transform.localScale,anchor);
+    }
+    public static Vector2 WalkingFootOffset(float phase,float cyclePixels,float lift,Vector2 direction)
+    {
+        // On the ground plane, depth travel is foreshortened; boot lift remains screen-up.
+        // Using full vertical stride stretched a nearly straight leg against the IK limit,
+        // concealing the return step, particularly when travelling toward +Y.
+        float depth=Mathf.Abs(direction.y);
+        return FootOffset(phase,cyclePixels,lift*(1+depth),new Vector2(direction.x,direction.y*.3f));
     }
     void Pose(Leg leg,Vector2 offset,Vector2 pelvis)
     {

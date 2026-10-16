@@ -1,0 +1,295 @@
+{
+  "label": "after_first",
+  "passed": true,
+  "failures": [],
+  "results": [
+    {
+      "role": "Attack",
+      "direction": 0,
+      "solePixels": [
+        -5.5,
+        4.0,
+        13.5,
+        0.0
+      ],
+      "stopped": [
+        0.0,
+        0.0
+      ],
+      "meanX": -0.128377452,
+      "leftRangeY": 2.94169188,
+      "rightRangeY": 1.98203743,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Attack",
+      "direction": 1,
+      "solePixels": [
+        -5.5,
+        4.0,
+        13.5,
+        0.0
+      ],
+      "stopped": [
+        0.0,
+        0.0
+      ],
+      "meanX": 0.128377452,
+      "leftRangeY": 2.94169188,
+      "rightRangeY": 1.98203743,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Attack",
+      "direction": 2,
+      "solePixels": [
+        -5.5,
+        4.0,
+        13.5,
+        0.0
+      ],
+      "stopped": [
+        0.0,
+        0.0
+      ],
+      "meanX": 0.215959385,
+      "leftRangeY": 5.910151,
+      "rightRangeY": 4.781746,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Attack",
+      "direction": 3,
+      "solePixels": [
+        -5.5,
+        4.0,
+        13.5,
+        0.0
+      ],
+      "stopped": [
+        0.0,
+        0.0
+      ],
+      "meanX": 0.21595946,
+      "leftRangeY": 5.910151,
+      "rightRangeY": 4.781746,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Defense",
+      "direction": 0,
+      "solePixels": [
+        -0.5,
+        8.0,
+        11.5,
+        0.0
+      ],
+      "stopped": [
+        1.98682145E-07,
+        0.0
+      ],
+      "meanX": -0.743129432,
+      "leftRangeY": 1.76864457,
+      "rightRangeY": 2.123485,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Defense",
+      "direction": 1,
+      "solePixels": [
+        -0.5,
+        8.0,
+        11.5,
+        0.0
+      ],
+      "stopped": [
+        -1.98682145E-07,
+        0.0
+      ],
+      "meanX": 0.743129432,
+      "leftRangeY": 1.76864457,
+      "rightRangeY": 2.123485,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Defense",
+      "direction": 2,
+      "solePixels": [
+        -0.5,
+        8.0,
+        11.5,
+        0.0
+      ],
+      "stopped": [
+        -1.98682145E-07,
+        0.0
+      ],
+      "meanX": 0.938433945,
+      "leftRangeY": 3.518113,
+      "rightRangeY": 4.71446848,
+      "uniqueLeftPoses": 47
+    },
+    {
+      "role": "Defense",
+      "direction": 3,
+      "solePixels": [
+        -0.5,
+        8.0,
+        11.5,
+        0.0
+      ],
+      "stopped": [
+        -1.98682145E-07,
+        0.0
+      ],
+      "meanX": 0.938430846,
+      "leftRangeY": 3.518113,
+      "rightRangeY": 4.71446848,
+      "uniqueLeftPoses": 47
+    },
+    {
+      "role": "Buff",
+      "direction": 0,
+      "solePixels": [
+        -9.0,
+        3.0,
+        5.5,
+        0.0
+      ],
+      "stopped": [
+        -3.973643E-07,
+        0.0
+      ],
+      "meanX": 0.6413403,
+      "leftRangeY": 2.20900154,
+      "rightRangeY": 2.5838294,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Buff",
+      "direction": 1,
+      "solePixels": [
+        -9.0,
+        3.0,
+        5.5,
+        0.0
+      ],
+      "stopped": [
+        3.973643E-07,
+        0.0
+      ],
+      "meanX": -0.6413403,
+      "leftRangeY": 2.20900154,
+      "rightRangeY": 2.5838294,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Buff",
+      "direction": 2,
+      "solePixels": [
+        -9.0,
+        3.0,
+        5.5,
+        0.0
+      ],
+      "stopped": [
+        3.973643E-07,
+        0.0
+      ],
+      "meanX": -0.863901436,
+      "leftRangeY": 4.987041,
+      "rightRangeY": 5.16288757,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Buff",
+      "direction": 3,
+      "solePixels": [
+        -9.0,
+        3.0,
+        5.5,
+        0.0
+      ],
+      "stopped": [
+        3.973643E-07,
+        0.0
+      ],
+      "meanX": -0.8639011,
+      "leftRangeY": 4.987041,
+      "rightRangeY": 5.1629,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Boss",
+      "direction": 0,
+      "solePixels": [
+        -13.0,
+        4.5,
+        11.5,
+        -0.5
+      ],
+      "stopped": [
+        3.973643E-07,
+        0.0
+      ],
+      "meanX": -0.2408004,
+      "leftRangeY": 2.11507559,
+      "rightRangeY": 2.90081382,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Boss",
+      "direction": 1,
+      "solePixels": [
+        -13.0,
+        4.5,
+        11.5,
+        -0.5
+      ],
+      "stopped": [
+        -3.973643E-07,
+        0.0
+      ],
+      "meanX": 0.2408004,
+      "leftRangeY": 2.11507559,
+      "rightRangeY": 2.90081382,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Boss",
+      "direction": 2,
+      "solePixels": [
+        -13.0,
+        4.5,
+        11.5,
+        -0.5
+      ],
+      "stopped": [
+        -3.973643E-07,
+        0.0
+      ],
+      "meanX": 0.293441683,
+      "leftRangeY": 5.14029026,
+      "rightRangeY": 6.55369568,
+      "uniqueLeftPoses": 48
+    },
+    {
+      "role": "Boss",
+      "direction": 3,
+      "solePixels": [
+        -13.0,
+        4.5,
+        11.5,
+        -0.5
+      ],
+      "stopped": [
+        -3.973643E-07,
+        0.0
+      ],
+      "meanX": 0.293440163,
+      "leftRangeY": 5.14029026,
+      "rightRangeY": 6.553707,
+      "uniqueLeftPoses": 48
+    }
+  ]
+}
