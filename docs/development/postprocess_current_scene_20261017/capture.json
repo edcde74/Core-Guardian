@@ -1,0 +1,48 @@
+{
+  "source": "Actual stopped scene via temporary camera and URP Volume, no runtime HUD or enemies",
+  "sourceCameraPost": false,
+  "sourceCameraHDR": false,
+  "sourceSceneDirty": false,
+  "report": [
+    {
+      "name": "original",
+      "hdr": false,
+      "post": false,
+      "contrast": 10.0,
+      "saturation": 6.0,
+      "bloom": 0.0,
+      "threshold": 0.9,
+      "vignette": 0.0
+    },
+    {
+      "name": "color",
+      "hdr": true,
+      "post": true,
+      "contrast": 10.0,
+      "saturation": 6.0,
+      "bloom": 0.0,
+      "threshold": 0.9,
+      "vignette": 0.0
+    },
+    {
+      "name": "gentle_glow",
+      "hdr": true,
+      "post": true,
+      "contrast": 10.0,
+      "saturation": 6.0,
+      "bloom": 0.12,
+      "threshold": 0.9,
+      "vignette": 0.0
+    },
+    {
+      "name": "strong",
+      "hdr": true,
+      "post": true,
+      "contrast": 18.0,
+      "saturation": 10.0,
+      "bloom": 0.5,
+      "threshold": 0.9,
+      "vignette": 0.22
+    }
+  ]
+}
