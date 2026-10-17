@@ -1,0 +1,39 @@
+{
+  "points": [
+    {
+      "role": "Single",
+      "x": 689.2456,
+      "y": 666.0265
+    },
+    {
+      "role": "Multi",
+      "x": 871.733765,
+      "y": 670.7912
+    },
+    {
+      "role": "Support",
+      "x": 1047.67041,
+      "y": 664.8353
+    }
+  ],
+  "samples": [
+    {
+      "role": 0,
+      "bodyBottom": 4.91625,
+      "contactBottom": 4.89750051
+    },
+    {
+      "role": 1,
+      "bodyBottom": 4.91625,
+      "contactBottom": 4.89750051
+    },
+    {
+      "role": 2,
+      "bodyBottom": 4.93500042,
+      "contactBottom": 4.91625071
+    }
+  ],
+  "cameraZoomChanged": false,
+  "density": 63.52941,
+  "note": "Temporary instantiated original prefabs in actual scene, manually presented idle pose; camera capture, no HUD; source camera and scene untouched"
+}

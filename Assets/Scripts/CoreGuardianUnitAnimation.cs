@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 // Presentation only. Keeps source artwork and its directional extensions; Session owns combat and movement.
+[DefaultExecutionOrder(100)]
 public sealed class CoreGuardianUnitAnimation : MonoBehaviour
 {
     // Retained for reading archived animation metadata in diagnostic tools.
@@ -16,6 +17,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     CoreGuardianPlayerMotion playerMotion;
     CoreGuardianHitFlash hitFlash;
     CoreGuardianTowerGlow towerGlow;
+    CoreGuardianTowerGrounding towerGrounding;
     bool justHit;
     string role;
     float shotAge=100,shotDuration=.25f,idleTime,facingAngle=-90;
@@ -47,6 +49,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         {
             originalMotion=new CoreGuardianOriginalMotion(artwork,role);
             towerGlow=new CoreGuardianTowerGlow(artwork,role);
+            towerGrounding=new CoreGuardianTowerGrounding(artwork,role);
         }
         else if(UsesOriginalWalking){originalWalk=new CoreGuardianOriginalWalk(artwork,role);hitFlash=new CoreGuardianHitFlash(artwork);}
         else throw new InvalidOperationException("Unsupported original animation role: "+role);
@@ -86,7 +89,9 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     public void ReceiveHit(){if(hitFlash!=null&&hitFlash.Trigger())justHit=true;}
     void OnEnable(){towerGlow?.Enable();}
     void OnDisable(){hitFlash?.Clear();if(towerGlow!=null){shotAge=100;justFired=false;towerGlow.Clear();}}
-    void OnDestroy(){towerGlow?.Dispose();originalMotion?.Dispose();}
+    void OnDestroy(){towerGrounding?.Dispose();towerGlow?.Dispose();originalMotion?.Dispose();}
+    // Depth sorting can run after Present; keep the stationary shade above the final base order.
+    void LateUpdate(){towerGrounding?.Present();}
     void ApplyFrame(float delta)
     {
         if(artwork==null)return;
@@ -94,6 +99,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         if(originalWalk!=null){originalWalk.Present(delta);return;}
         originalMotion.Present(shotAge,shotDuration,(Vector2)(Quaternion.Euler(0,0,facingAngle)*Vector3.right));
         towerGlow?.Present(shotAge,shotDuration,delta);
+        towerGrounding?.Present();
         MuzzleWorld=originalMotion.MuzzleWorld(aim);
     }
 }
