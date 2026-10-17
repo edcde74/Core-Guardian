@@ -41,6 +41,13 @@ public sealed class CoreGuardianHudReaction : MonoBehaviour, IPointerEnterHandle
     public Func<bool> Selected;
     void Awake(){button=GetComponent<Button>();image=GetComponent<Image>();button.transition=Selectable.Transition.None;}
     void Start(){var text=GetComponentInChildren<Text>();if(text!=null){label=text.rectTransform;origin=label.anchoredPosition;}}
+    // Layout changes must also move the resting point used by the press animation.
+    public void SetLabelLayout(Vector2 position,Vector2 size)
+    {
+        if(label==null){var text=GetComponentInChildren<Text>();if(text!=null)label=text.rectTransform;}
+        origin=position;
+        if(label!=null){label.sizeDelta=size;label.anchoredPosition=origin+(pressed&&button!=null&&button.interactable?new Vector2(0,-3):Vector2.zero);}
+    }
     public void Confirm(){flash=Time.unscaledTime+.18f;}
     void Update()
     {

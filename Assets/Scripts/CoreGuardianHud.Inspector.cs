@@ -143,7 +143,7 @@ public sealed partial class CoreGuardianHud
             {
                 var tab=(RectTransform)panel.Find(name);tab.anchoredPosition=purchaseOpen?new Vector2(16+index*442,-52):new Vector2(16,-56-index*64);
                 tab.sizeDelta=purchaseOpen?new Vector2(426,44):new Vector2(220,56);
-                var label=(RectTransform)tab.Find("Label");label.anchoredPosition=new Vector2(54,purchaseOpen?-8:-16);label.sizeDelta=tab.sizeDelta-new Vector2(70,purchaseOpen?16:32);
+                tab.GetComponent<CoreGuardianHudReaction>().SetLabelLayout(new Vector2(54,purchaseOpen?-8:-16),tab.sizeDelta-new Vector2(70,purchaseOpen?16:32));
                 index++;
             }
         }

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 1708,\n  \"executeMs\": 535,\n  \"assemblyName\": \"PipelineRunScript_VerifyTabText_e3ee1be1e9ea4d54b6215ba1ba809c08\",\n  \"success\": true,\n  \"result\": {\n    \"passed\": true,\n    \"checks\": \"Player/tower current/upgrade tabs retain inner padding after layout switches and reaction updates\",\n    \"kind\": \"Actual HUD callbacks and diagnostic install; not human play\"\n  }\n}"
+    }
+  ]
+}
