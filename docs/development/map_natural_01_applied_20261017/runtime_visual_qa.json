@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "method": "Own actual-scene Play; Reload/Start HUD callbacks, public TryStep, normal crystal purchase and natural damage. Not direct human input or balance measurement.",
+  "logicalSteps": 4,
+  "start": "(15, 10, 0)",
+  "returned": "(15, 10, 0)",
+  "installationTiles": 1125,
+  "green": 1032,
+  "red": 93,
+  "pathPlacementRejected": true,
+  "purchaseCost": 100,
+  "naturalHit": true,
+  "diagnostic": false,
+  "damage": [
+    {
+      "Key": "Tower:1",
+      "Value": 13
+    }
+  ],
+  "compositedOverlayHUD": true,
+  "cameraUnchanged": true,
+  "temporaryTimeScaleZeroForScreenshots": true,
+  "screen": {
+    "width": 1920,
+    "height": 1080
+  }
+}
