@@ -34,7 +34,7 @@ public class CoreGuardianSelectionOutlinePlayModeTests
             Time.timeScale=0;Call(g,"Place",TowerKind.Single,new Vector2Int(14,15));Call(g,"HandleWorldClick",new Vector2Int(14,15));
             Assert.That(Selected(g),Is.GreaterThanOrEqualTo(0));Click(g,"InspectorFold");
             Assert.That(Selected(g),Is.EqualTo(-1),"Folding must release the selected tower");
-            Assert.That(g.transform.Find("CombatHUD/InspectorSummary").gameObject.activeSelf,Is.False);
+            Assert.That(g.transform.Find("CombatHUD/InspectorSummary"),Is.Null,"The obsolete folded tower summary must not be created");
             Call(g,"HandleWorldClick",new Vector2Int(14,15));Call(g,"HandleWorldClick",new Vector2Int(13,14));
             Assert.That(Selected(g),Is.EqualTo(-1),"One empty floor click folds and deselects");
         }

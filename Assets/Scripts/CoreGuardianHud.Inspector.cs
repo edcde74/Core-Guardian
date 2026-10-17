@@ -10,8 +10,8 @@ public sealed partial class CoreGuardianHud
     InspectorSubject inspectorSubject;
     bool inspectorOpen, purchaseOpen, developerOpen, stageFolded;
     SessionPhase? displayedPhase;
-    RectTransform inspectorFold, inspectorSummary;
-    UnityEngine.UI.Text playerInfo, playerTitle, towerTitle, summaryLabel;
+    RectTransform inspectorFold;
+    UnityEngine.UI.Text playerInfo, playerTitle, towerTitle;
     bool CanBuyPlayer=>game.Session.Phase==SessionPhase.Preparation||game.Session.Phase==SessionPhase.Combat;
     public Transform InspectionTarget
     {
@@ -102,10 +102,6 @@ public sealed partial class CoreGuardianHud
         }
         Button("Destroy",towerPanel,new Vector2(264,-188),new Vector2(612,44),()=>"포탑 철거 · 사용한 수정 50% 반환",()=>game.DestroySelected(),()=>CanBuyPlayer&&Selected()!=null);
         inspectorFold=SmallHandle("InspectorFold",canvas,()=>TryFoldDetails(),true);
-        inspectorSummary=Box("InspectorSummary",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(340,42));
-        summaryLabel=Text("Target",inspectorSummary,new Vector2(12,-6),new Vector2(250,30),18);
-        var reopen=SmallHandle("InspectorReopen",inspectorSummary,()=>{if(inspectorSubject==InspectorSubject.None&&Selected()!=null)inspectorSubject=InspectorSubject.Tower;inspectorOpen=inspectorSubject!=InspectorSubject.None;purchaseOpen=false;},true);
-        reopen.anchorMin=reopen.anchorMax=reopen.pivot=new Vector2(1,.5f);reopen.anchoredPosition=new Vector2(-4,0);reopen.sizeDelta=new Vector2(64,28);
         playerPanel.gameObject.SetActive(false);towerPanel.gameObject.SetActive(false);
     }
     void OpenPlayer(bool buy)
@@ -194,9 +190,6 @@ public sealed partial class CoreGuardianHud
         bool details=playerOpen||towerOpen||installOpen;
         inspectorFold.gameObject.SetActive(details&&s.Phase!=SessionPhase.Augmentation);
         inspectorFold.anchoredPosition=new Vector2(0,112+(installOpen?installPanel.sizeDelta.y:playerOpen?playerPanel.sizeDelta.y:towerPanel.sizeDelta.y));
-        bool hasTarget=inspectorSubject==InspectorSubject.Tower&&selected!=null;
-        inspectorSummary.gameObject.SetActive(!details&&hasTarget&&s.Phase!=SessionPhase.Augmentation);
-        summaryLabel.text=selected==null?"":"포탑 #"+selected.Id+" · 능력치";
         foreach(var name in new[]{"PrototypeActions","Reload","TestSpeed"}){var node=canvas.Find(name);if(node!=null)node.gameObject.SetActive(developerOpen);}
         var cancel=canvas.Find("CancelPlacement");if(cancel!=null)cancel.gameObject.SetActive(game.Installing.HasValue);
     }
