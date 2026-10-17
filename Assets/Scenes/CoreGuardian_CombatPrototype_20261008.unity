@@ -2424,7 +2424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoreGuardianCoreParticleSettings
   sizeMin: 0.025
-  sizeMax: 0.045
+  sizeMax: 0.1
   emissionPerSecond: 4
   maxParticles: 12
 --- !u!1 &1624664518
