@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "duration": 1.04,
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianSelectionOutlinePlayModeTests.FoldingOrFloorClickClearsSelection_WithoutASecondClick",
+      "Status": "Passed",
+      "Duration": 0.3362095,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlinePlayModeTests.PlayerPanelReplacesTowerTarget_AndInstallationRemovesOutline",
+      "Status": "Passed",
+      "Duration": 0.2971822,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlinePlayModeTests.SceneHasPersistentTunableOutline_OnlyForOpenInspection",
+      "Status": "Passed",
+      "Duration": 0.2023322,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlinePlayModeTests.WorldPlayerClickOpensCurrentAbilities_AndRepeatedClickKeepsItOpen",
+      "Status": "Passed",
+      "Duration": 0.1757496,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

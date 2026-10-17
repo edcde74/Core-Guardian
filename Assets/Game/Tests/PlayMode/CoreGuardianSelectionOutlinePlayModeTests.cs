@@ -58,6 +58,29 @@ public class CoreGuardianSelectionOutlinePlayModeTests
         finally{Time.timeScale=previous;}
     }
     [UnityTest]
+    public IEnumerator WorldPlayerClickOpensCurrentAbilities_AndRepeatedClickKeepsItOpen()
+    {
+        yield return Load();var g=Game();float previous=Time.timeScale;
+        try
+        {
+            Time.timeScale=0;var move=(Component)g.GetType().GetField("player").GetValue(g);
+            var cell=(Vector3Int)move.GetType().GetProperty("CurrentCell").GetValue(move);var xy=new Vector2Int(cell.x,cell.y);
+            Call(g,"Place",TowerKind.Single,new Vector2Int(14,15));Call(g,"HandleWorldClick",new Vector2Int(14,15));
+            Call(g,"HandleWorldClick",xy);
+            var root=g.transform.Find("CombatHUD");
+            Assert.That(root.Find("PlayerGrowthPanel").gameObject.activeSelf,Is.True,"World player click opens current abilities");
+            Assert.That(root.Find("TowerInformation").gameObject.activeSelf,Is.False);Assert.That(Selected(g),Is.EqualTo(-1));
+            Assert.That(root.Find("PlayerGrowthPanel/damage").gameObject.activeSelf,Is.False,"Opening abilities does not open purchase controls");
+            Call(g,"HandleWorldClick",xy);Assert.That(root.Find("PlayerGrowthPanel").gameObject.activeSelf,Is.True,"Repeated world selection must not toggle closed");
+            Click(g,"PlayerBuyTab");Call(g,"HandleWorldClick",xy);
+            Assert.That(root.Find("PlayerGrowthPanel/damage").gameObject.activeSelf,Is.False,"World click returns to the current ability tab");
+            yield return null;
+            var outline=g.GetComponent(Find("CoreGuardianSelectionOutline"));Assert.That(outline.GetType().GetProperty("CurrentTarget").GetValue(outline),Is.EqualTo(move.transform));
+            Click(g,"InspectorFold");yield return null;Assert.That(outline.GetType().GetProperty("IsVisible").GetValue(outline),Is.EqualTo(false));
+        }
+        finally{Time.timeScale=previous;}
+    }
+    [UnityTest]
     public IEnumerator SceneHasPersistentTunableOutline_OnlyForOpenInspection()
     {
         yield return Load();var g=Game();var type=Find("CoreGuardianSelectionOutline");

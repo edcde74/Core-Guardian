@@ -110,8 +110,13 @@ public sealed partial class CoreGuardianHud
     }
     void OpenPlayer(bool buy)
     {
+        SetPlayerInspection(buy,true);
+    }
+    public void OpenPlayerSpecs()=>SetPlayerInspection(false,false);
+    void SetPlayerInspection(bool buy,bool toggle)
+    {
         if(game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation||buy&&!CanBuyPlayer)return;
-        bool same=inspectorSubject==InspectorSubject.Player&&inspectorOpen&&purchaseOpen==buy;
+        bool same=toggle&&inspectorSubject==InspectorSubject.Player&&inspectorOpen&&purchaseOpen==buy;
         ReleaseInspection();
         installOpen=false;installPanel.gameObject.SetActive(false);
         if(!same){inspectorSubject=InspectorSubject.Player;inspectorOpen=true;purchaseOpen=buy;}

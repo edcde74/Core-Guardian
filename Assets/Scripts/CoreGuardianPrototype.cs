@@ -36,7 +36,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     int previousGold;
     int previousCore;
     float notificationUntil;
-    bool pointerGesture, pointerBlocked;
+    bool pointerGesture, pointerBlocked, pointerPlayer;
     Vector2Int pointerCell;
     public bool HasFeedback=>Time.unscaledTime<notificationUntil;
     Vector3[] route;
@@ -113,11 +113,31 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         {
             pointerGesture=true;pointerCell=xy;
             pointerBlocked=OverUI(mouse)||Session.Phase==SessionPhase.Augmentation||phase!=Session.Phase;
+            pointerPlayer=!Installing.HasValue&&PlayerHit(mouse);
         }
         if(!Mouse.current.leftButton.wasReleasedThisFrame)return;
-        bool worldClick=pointerGesture&&!pointerBlocked&&pointerCell==xy&&!OverUI(mouse);
+        bool playerClick=pointerPlayer&&!Installing.HasValue&&PlayerHit(mouse);
+        bool worldClick=pointerGesture&&!pointerBlocked&&(pointerCell==xy||playerClick)&&!OverUI(mouse);
         pointerGesture=false;pointerBlocked=false;
+        if(worldClick&&playerClick){hud.OpenPlayerSpecs();return;}
         if(worldClick)HandleWorldClick(xy);
+    }
+    // Hit the visible artwork, including the torso above the ground cell, never its shadow.
+    bool PlayerHit(Vector2 screen)
+    {
+        if(player==null||Camera.main==null)return false;
+        var artwork=player.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite");
+        if(artwork==null)return false;
+        var ray=Camera.main.ScreenPointToRay(screen);
+        foreach(var r in artwork.GetComponentsInChildren<SpriteRenderer>())
+        {
+            if(!r.enabled||r.sprite==null||r.color.a<=0)continue;
+            if(!new Plane(r.transform.forward,r.transform.position).Raycast(ray,out float distance))continue;
+            var point=r.transform.InverseTransformPoint(ray.GetPoint(distance));point.z=0;
+            if(r.flipX)point.x=-point.x;if(r.flipY)point.y=-point.y;
+            if(r.sprite.bounds.Contains(point))return true;
+        }
+        return false;
     }
     public void HandleWorldClick(Vector2Int xy)
     {
@@ -125,6 +145,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         if(Installing.HasValue){Place(Installing.Value,xy);return;}
         var tower=Session.Towers.FirstOrDefault(t=>t.Position==xy);
         if(tower!=null){SelectedTower=tower.Id;hud.OpenSelectedTowerSpecs();Changed?.Invoke();return;}
+        if(Vector2Int.RoundToInt(PlayerTile())==xy){hud.OpenPlayerSpecs();return;}
         var cell=new Vector3Int(xy.x,xy.y,0);
         bool empty=ground.HasTile(cell)&&!enemyPath.HasTile(cell)&&!coreMap.HasTile(cell)&&!occupied.HasTile(cell)
             &&!Session.Enemies.Any(e=>e.Alive&&Vector2Int.RoundToInt(e.Position)==xy)&&Vector2Int.RoundToInt(PlayerTile())!=xy;
