@@ -6,6 +6,8 @@
 
 ## 재개 시 먼저 확인
 
+- **이번 채팅 HUD 담당 범위 확인(2026-10-17):** 사용자가 이미 작업한 아웃라인·선택 해제 정책은 무시하고 HUD 관련 작업만 담당하라고 정정했다. 기존 능력치 A안·손잡이/설치 심볼 B안·피해 HUD를 유지한다. 시작 HEAD `de15d74`, Unity ready/Play stopped·전투 씬1/dirtyfalse·compilingfalse/실패false·현재 콘솔 오류0/경고0·HDRfalse/posttrue를 읽기 조회했다. 새 Play/기능 QA/사람 플레이/밸런스 측정은 하지 않았다. 구체적인 새 HUD 수정 항목은 후속 지시에서 정한다. [재개 상태·보존 범위](hud_resume_check_20261017/README.md).
+
 - **코어 입자 조절·강화3안(2026-10-17 최신):** 사용자 최신 지시에 따라 코어를 자동 확대하지 않고 `CoreGuardian_Gameplay/CoreGuardianCoreParticleSettings`에서 최소/최대 크기·초당 생성 수·최대 동시 수를 직접 조절하도록 적용했다. 기본0.025/0.045/4/12 유지. Play 중 기존 입자 크기도 즉시 반영·색/남은수명/피해억제/코어발광 보존. 전체Edit118/118·코어집중Play1/1·실제Inspector8입자 QA통과, 전체Play재호출0건은통과아님. 종료Playfalse/씬1·dirtyfalse/실패false/시간복원/현재오류0·경고0. [Inspector 사용·구현·검사](core_particle_controls_20261017/README.md). 강화 성공 A상승링/B청록본체스캔/C상승조각은 실제 원본4종/같은픽셀배율의 수동시안GIF만 제작했다. 미선택·구매이벤트 미연결·Assets 미설치. [움직이는3안·조건·원본](upgrade_feedback_options_20261017/README.md). 다음은 사용자 선택/입자 직접 조절 피드백을 따른다.
 
 - **월드 플레이어 클릭(2026-10-17 최신):** 실제 플레이어 본체 조각/발밑을 클릭하면 현재 능력치 UI와 아웃라인을 연다. 반복 클릭은 창을 닫지 않으며 포탑 선택을 해제한다. 하단 버튼 토글·접기 해제·UI 제스처 차단·설치 우선 유지. 사용자 인스펙터 초록색2px를 `e704aad`에 먼저 보존했다. 집중Play4/4·임시마우스 실제상체클릭/UI차단/설치 우선 및 전체Edit117/117 확인. 이후Play재실행0건은통과아님. 자체Play종료·씬1/dirtyfalse/컴파일실패false·시간/임시입력복원·현재오류0/경고0. [구현·화면·검증 한계](player_click_20261017/README.md).
