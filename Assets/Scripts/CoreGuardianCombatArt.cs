@@ -29,7 +29,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
         coreBody=UnityEngine.Object.FindObjectsByType<SpriteRenderer>(FindObjectsInactive.Include,FindObjectsSortMode.None)
             .FirstOrDefault(r=>r.gameObject.scene==game.gameObject.scene&&r.name=="2D Sprite"&&r.sprite!=null&&r.sprite.name=="core");
         coreFeedback=new CoreGuardianCoreFeedback(coreBody,hud.CoreDamageGraphics());
-        if(coreBody!=null)coreAmbient=new CoreGuardianCoreAmbient(coreBody);
+        if(coreBody!=null)coreAmbient=new CoreGuardianCoreAmbient(coreBody,game.GetComponent<CoreGuardianCoreParticleSettings>());
     }
     public Sprite Get(string name)=>sprites[name];
     public Sprite Projectile(ProjectileState projectile)

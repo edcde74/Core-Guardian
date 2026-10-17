@@ -11,11 +11,14 @@ public sealed class CoreGuardianCoreAmbient : IDisposable
     readonly Material glowMaterial,particleMaterial;
     readonly ParticleSystem particles;
     readonly ParticleSystemRenderer particleRenderer;
+    readonly CoreGuardianCoreParticleSettings particleSettings;
     float phase,suppression;
     bool enabled=true,disposed;
 
-    public CoreGuardianCoreAmbient(SpriteRenderer artwork)
+    public CoreGuardianCoreAmbient(SpriteRenderer artwork):this(artwork,null){}
+    public CoreGuardianCoreAmbient(SpriteRenderer artwork,CoreGuardianCoreParticleSettings settings)
     {
+        particleSettings=settings;
         if(artwork==null||artwork.sprite==null)throw new ArgumentException("Visible core artwork required",nameof(artwork));
         var shader=Resources.Load<Shader>("CoreGuardian/CoreAmbient");
         if(shader==null)throw new InvalidOperationException("Missing core ambient shader");
@@ -55,10 +58,12 @@ public sealed class CoreGuardianCoreAmbient : IDisposable
     public void Advance(float delta)
     {
         if(disposed||root==null||source==null||particles==null)return;
+        if(particleSettings!=null)particleSettings.ApplyTo(particles);
         delta=Mathf.Max(0,delta);phase+=delta;suppression=Mathf.Max(0,suppression-delta);
         bool visible=enabled&&suppression<=0&&source!=null&&source.enabled;
-        glow.enabled=visible;particleRenderer.enabled=visible;
-        var emission=particles.emission;emission.enabled=visible;
+        bool showParticles=visible&&(particleSettings==null||particleSettings.isActiveAndEnabled);
+        glow.enabled=visible;particleRenderer.enabled=showParticles;
+        var emission=particles.emission;emission.enabled=showParticles;
         glowMaterial.SetFloat("_Strength",.34f+.06f*Mathf.Sin(phase*Mathf.PI*2/3));
         if(source!=null)
         {

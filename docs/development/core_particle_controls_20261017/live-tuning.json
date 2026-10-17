@@ -1,0 +1,17 @@
+{
+  "diagnostics": [],
+  "compileMs": 134,
+  "executeMs": 1551,
+  "assemblyName": "PipelineRunScript_VerifyTuning_fa44adc8a55e45a7a9d44a73dfc13faf",
+  "success": true,
+  "result": {
+    "passed": true,
+    "liveParticles": 8,
+    "previewMin": 0.055,
+    "previewMax": 0.085,
+    "previewRate": 8,
+    "previewCap": 24,
+    "defaultsRestored": true,
+    "conditions": "SerializedObject Inspector path,actual live particles;TimeScale0 for same lifetime before/after;temporary larger values restored;actual Overlay screenshots,no camera changes"
+  }
+}

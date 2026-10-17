@@ -2343,6 +2343,7 @@ GameObject:
   - component: {fileID: 1617141373}
   - component: {fileID: 1617141372}
   - component: {fileID: 1617141374}
+  - component: {fileID: 1617141375}
   m_Layer: 0
   m_Name: CoreGuardian_Gameplay
   m_TagString: Untagged
@@ -2410,6 +2411,22 @@ MonoBehaviour:
   color: {r: 0.08435953, g: 1, b: 0, a: 1}
   widthPixels: 2
   alphaThreshold: 0.1
+--- !u!114 &1617141375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617141371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74ed5606784f824ba3e2bab1eb6f11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoreGuardianCoreParticleSettings
+  sizeMin: 0.025
+  sizeMax: 0.045
+  emissionPerSecond: 4
+  maxParticles: 12
 --- !u!1 &1624664518
 GameObject:
   m_ObjectHideFlags: 0
