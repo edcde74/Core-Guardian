@@ -1,0 +1,155 @@
+{
+  "play": false,
+  "paused": false,
+  "compiling": false,
+  "failed": false,
+  "scenes": 1,
+  "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+  "dirty": false,
+  "timeScale": 1.0,
+  "captureDelta": 0.0,
+  "pipeline": "UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset",
+  "camera": "(13.50, 7.50, -10.00)",
+  "cameraSize": 8.5,
+  "renderGroups": [
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 0
+      },
+      "count": 2,
+      "examples": [
+        "Ground_Prototype",
+        "TowerOccupiedCells_Prototype"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 1
+      },
+      "count": 82,
+      "examples": [
+        "EnemyPath_Prototype",
+        "PathArt_WideStraight",
+        "Road stone (0, 10)",
+        "Road stone (1, 10)",
+        "Road stone (2, 10)"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 2
+      },
+      "count": 164,
+      "examples": [
+        "Core_Prototype",
+        "PathArt_ConnectedCorners",
+        "Low curb (0, 10) (0, 1)",
+        "Low curb (0, 10) (0, -1)",
+        "Low curb (0, 10) (-1, 0)"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 70
+      },
+      "count": 1,
+      "examples": [
+        "PlayerStart_Prototype"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 871
+      },
+      "count": 1,
+      "examples": [
+        "2D Sprite"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 42
+      },
+      "count": 2,
+      "examples": [
+        "바깥 그림자",
+        "바깥 그림자"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 43
+      },
+      "count": 2,
+      "examples": [
+        "접촉 그림자",
+        "접촉 그림자"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 44
+      },
+      "count": 2,
+      "examples": [
+        "바닥 밀착선",
+        "바닥 밀착선"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 885
+      },
+      "count": 1,
+      "examples": [
+        "2D Sprite"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 41
+      },
+      "count": 1,
+      "examples": [
+        "바닥 수정빛"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": -20
+      },
+      "count": 1,
+      "examples": [
+        "Background_Ruins_VisualOnly"
+      ]
+    },
+    {
+      "Key": {
+        "sortingLayerName": "Default",
+        "sortingOrder": 4
+      },
+      "count": 1,
+      "examples": [
+        "SpawnTunnel02_Selected"
+      ]
+    }
+  ],
+  "background": [
+    {
+      "bounds": "Center: (13.50, 7.50, 1.00), Extents: (15.11, 8.50, 0.10)",
+      "json": "{\"SpriteRenderer\":{\"serializedVersion\":\"3\",\"m_Enabled\":true,\"m_CastShadows\":0,\"m_ReceiveShadows\":false,\"m_DynamicOccludee\":true,\"m_StaticShadowCaster\":false,\"m_MotionVectors\":1,\"m_LightProbeUsage\":1,\"m_ReflectionProbeUsage\":1,\"m_RayTracingMode\":0,\"m_RayTraceProcedural\":false,\"m_RayTracingAccelStructBuildFlagsOverride\":false,\"m_RayTracingAccelStructBuildFlags\":1,\"m_SmallMeshCulling\":true,\"m_ForceMeshLod\":-1,\"m_MeshLodSelectionBias\":0.0,\"m_RenderingLayerMask\":1,\"m_RendererPriority\":0,\"m_Materials\":[{\"fileID\":2100000,\"guid\":\"889af44c3e579d14cbc5dff8ca3ec14f\",\"type\":2}],\"m_StaticBatchInfo\":{\"firstSubMesh\":0,\"subMeshCount\":0},\"m_StaticBatchRoot\":{\"instanceID\":0},\"m_ProbeAnchor\":{\"instanceID\":0},\"m_LightProbeVolumeOverride\":{\"instanceID\":0},\"m_ScaleInLightmap\":1.0,\"m_ReceiveGI\":1,\"m_PreserveUVs\":false,\"m_IgnoreNormalsForChartDetection\":false,\"m_ImportantGI\":false,\"m_StitchLightmapSeams\":true,\"m_SelectedEditorRenderState\":0,\"m_MinimumChartSize\":4,\"m_AutoUVMaxDistance\":0.5,\"m_AutoUVMaxAngle\":89.0,\"m_LightmapParameters\":{\"instanceID\":0},\"m_GlobalIlluminationMeshLod\":0,\"m_SortingLayerID\":0,\"m_SortingLayer\":0,\"m_SortingOrder\":-20,\"m_MaskInteraction\":0,\"m_Sprite\":{\"fileID\":21300000,\"guid\":\"73133471def78714fab975213be73303\",\"type\":3},\"m_Color\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0},\"m_FlipX\":false,\"m_FlipY\":false,\"m_DrawMode\":0,\"m_Size\":{\"x\":16.719999313354492,\"y\":9.40999984741211},\"m_AdaptiveModeThreshold\":0.5,\"m_SpriteTileMode\":0,\"m_WasSpriteAssigned\":true,\"m_SpriteSortPoint\":0,\"m_BlendShapeWeights\":[]}}",
+      "transform": "{\"Transform\":{\"serializedVersion\":\"2\",\"m_LocalRotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"m_LocalPosition\":{\"x\":13.500000953674316,\"y\":7.500000476837158,\"z\":1.0},\"m_LocalScale\":{\"x\":1.807549238204956,\"y\":1.8065887689590454,\"z\":1.0},\"m_ConstrainProportionsScale\":false,\"m_LocalEulerAnglesHint\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}}"
+    }
+  ]
+}

@@ -4,6 +4,7 @@
 먼저 AGENTS.md → docs/development/UNITY_HANDOVER.md → docs/development/LOCAL_GIT.md → 이 파일을 읽고 실제 Git HEAD와 변경 상태를 확인해. 현재 사용자 지시와 최신 담당 Notion을 우선해.
 
 ■ 현재 작업 단계
+- 최신 환경 장식: 사용자 승인 A내부+B외곽일부를 별도 투명 정적 장식으로 적용했다. 외곽-10/낮은프랍-5, 기존배경-20·길1/경계석2·땅굴4·본체높이정렬 유지. 원본564컴포넌트/6맵939타일/61리소스해시 동일·새충돌/동작0. 자체API이동/설치858/정상구매/자연4몹 집중QA, 종료Playfalse/씬1dirtyfalse·시간복원·현재오류0경고0. docs/development/environment_decoration_applied_20261018/README.md 참고. 시안 미적용/후속작업 미정은 이전 이력이며 다음은 실제 적용 화면 피드백이다.
 - 최신피격후속: B②와피격종료시빈속성블록이남는충돌을수정했다. 원래블록존재여부를저장/복구하며B②Inspector값과90ms/22%/100ms피격유지. 직접표현진단의같은자세피격전/종료후0픽셀차·Edit6/6확인. docs/development/hit_brightness_check_20261018/README.md참고. 전체회귀/사람플레이검사는아니다.
 - 최신 후속: 사용자 B② 선택으로 `CoreGuardian_Gameplay/CoreGuardianObjectEmphasis`를 저장했다. Inspector에서 상시윤곽두께/색/본체밝기 조절(현재1px/RGBA.06,.065,.075,.90/1.15),원본본체합집합만 처리. A원복배경/③색보정/초록선택선/강화/기존게임규칙 유지. 새Edit3/3·GPU2/2·정상API전투Inspector QA확인,기존CGPlay21/27의6실패는꺼짐수동진단에서도재현해전체통과로표현하지않는다. 최신기록은 docs/development/object_emphasis_B2_applied_20261018/README.md. 아래 B미선택 문구는 과거다.
 - 가장 최신: 사용자 A거부로 배경/길을 원래대로 복원하고 A 전용 게임 재질/셰이더를 정리했다. Assets는 `cec69ae`와동일(③색보정 유지)이다. B 개체강조3안은 임시 실제전투 비교만 했고 미선택/미적용이며 C도 미적용이다. 다음은 B후보피드백. docs/development/readability_B_preview_20261018/README.md를 따른다. 아래 A적용/피드백대기 문구는 원복 전 이력이다.
