@@ -6,6 +6,8 @@
 
 ## 재개 시 먼저 확인
 
+- **강화 성공 B 적용(2026-10-17 최신):** 사용자 선택 B 청록 본체 스캔을 실제 플레이어/단일/멀티/지원의 구매 성공 bool에만 연결했다. 본체 합집합 안쪽을0.55초 아래→위로 통과하며 실패에는 무반응, 연속구매는 같은 스캔 재시작·만료정리한다. 원본/선택아웃라인/코어입자/발광/피격/후처리/전투수치 보존·씬변경없음. 전체Edit118/118·Play27/27, 대칭/비대칭GPU·실제HUD4구매/재생GIF·별도Overlay확인. 진단재화/임시배치 QA이며 사람플레이/밸런스/성능승인 아님. 종료Playfalse/씬1·dirtyfalse/컴파일실패false/시간·카메라복원/현재오류0·경고0. [적용·실제GIF·검사](upgrade_feedback_B_20261017/README.md). 아래3안 미선택 상태는 이전 이력이다.
+
 - **이번 채팅 HUD 담당 범위 확인(2026-10-17):** 사용자가 이미 작업한 아웃라인·선택 해제 정책은 무시하고 HUD 관련 작업만 담당하라고 정정했다. 기존 능력치 A안·손잡이/설치 심볼 B안·피해 HUD를 유지한다. 시작 HEAD `de15d74`, Unity ready/Play stopped·전투 씬1/dirtyfalse·compilingfalse/실패false·현재 콘솔 오류0/경고0·HDRfalse/posttrue를 읽기 조회했다. 새 Play/기능 QA/사람 플레이/밸런스 측정은 하지 않았다. 구체적인 새 HUD 수정 항목은 후속 지시에서 정한다. [재개 상태·보존 범위](hud_resume_check_20261017/README.md).
 
 - **코어 입자 조절·강화3안(2026-10-17 최신):** 사용자 최신 지시에 따라 코어를 자동 확대하지 않고 `CoreGuardian_Gameplay/CoreGuardianCoreParticleSettings`에서 최소/최대 크기·초당 생성 수·최대 동시 수를 직접 조절하도록 적용했다. 기본0.025/0.045/4/12 유지. Play 중 기존 입자 크기도 즉시 반영·색/남은수명/피해억제/코어발광 보존. 전체Edit118/118·코어집중Play1/1·실제Inspector8입자 QA통과, 전체Play재호출0건은통과아님. 종료Playfalse/씬1·dirtyfalse/실패false/시간복원/현재오류0·경고0. [Inspector 사용·구현·검사](core_particle_controls_20261017/README.md). 강화 성공 A상승링/B청록본체스캔/C상승조각은 실제 원본4종/같은픽셀배율의 수동시안GIF만 제작했다. 미선택·구매이벤트 미연결·Assets 미설치. [움직이는3안·조건·원본](upgrade_feedback_options_20261017/README.md). 다음은 사용자 선택/입자 직접 조절 피드백을 따른다.

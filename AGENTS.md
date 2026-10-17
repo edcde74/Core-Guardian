@@ -24,7 +24,9 @@
 
 ## 다음 대화에서 재개할 우선순위
 
-- 코어 입자는 `CoreGuardian_Gameplay`의 `CoreGuardianCoreParticleSettings`에서 크기 최소/최대·초당 생성 수·최대 동시 수를 조절한다. 사용자 최신 지시는 직접 조절이므로 기본0.025/0.045/초당4/최대12를 임의 확대하지 않았다. Play 중 이미 떠 있는 입자에도 크기를 반영하며 코어 발광/피해억제/색/수명을 보존한다. `docs/development/core_particle_controls_20261017/README.md` 참고. 강화 성공 피드백3안은 `docs/development/upgrade_feedback_options_20261017/README.md`의 미선택 시안이며 실제 구매와 연결하지 않았다.
+- 강화 성공은 사용자 선택 B 청록빛 본체 스캔 적용 상태다. 실제 Session 구매 성공에만 플레이어/해당 포탑 본체의 합집합 안쪽을0.55초 아래→위로 훑고 실패에는 표시하지 않는다. 반복 구매는 기존 스캔을 재시작하며 선택 아웃라인·코어입자·원본/전투수치를 보존한다. `docs/development/upgrade_feedback_B_20261017/README.md`를 따른다. 과거3안 미선택 기록으로 되돌리지 않는다.
+
+- 코어 입자는 `CoreGuardian_Gameplay`의 `CoreGuardianCoreParticleSettings`에서 크기 최소/최대·초당 생성 수·최대 동시 수를 조절한다. 사용자 최신 지시는 직접 조절이므로 기본0.025/0.045/초당4/최대12를 임의 확대하지 않았다. Play 중 이미 떠 있는 입자에도 크기를 반영하며 코어 발광/피해억제/색/수명을 보존한다. `docs/development/core_particle_controls_20261017/README.md` 참고. 강화 성공 선택 전3안은 `docs/development/upgrade_feedback_options_20261017/README.md`에 보존하며 이후 사용자 선택으로 B만 실제 구매 성공에 연결했다.
 
 - 월드 플레이어 본체 조각/발밑 클릭은 현재 능력치 UI를 열고 해당 플레이어만 아웃라인으로 표시한다. 반복 월드 클릭은 닫기 토글이 아니다. 포탑 선택을 해제하며 UI 제스처 차단·설치 모드 우선을 유지한다. 사용자 인스펙터 초록색2px는 복구 커밋 `e704aad`에 보존했다. 최신 구현·검증은 `docs/development/player_click_20261017/README.md`를 따른다.
 

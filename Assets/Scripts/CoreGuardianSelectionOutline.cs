@@ -17,6 +17,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     public float alphaThreshold=.1f;
     public bool IsVisible=>output!=null&&output.enabled;
     public Transform CurrentTarget {get;private set;}
+    public Bounds TargetBounds {get;private set;}
 
     CoreGuardianHud hud;
     Material maskMaterial,outlineMaterial;
@@ -34,6 +35,15 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         if(hud==null)hud=GetComponent<CoreGuardianHud>();
         Present(hud!=null?hud.InspectionTarget:null,Camera.main);
     }
+    // Reuse the same animated-body union for a transient overlay without changing the sources.
+    // A dedicated disabled instance is owned by the upgrade effect; the HUD outline stays separate.
+    public bool PresentOverlay(Transform target,Camera camera,Material material)
+    {
+        Present(target,camera);
+        if(!IsVisible||material==null)return false;
+        material.mainTexture=mask;output.sharedMaterial=material;output.sortingOrder++;
+        return true;
+    }
     public void Present(Transform target,Camera camera)
     {
         CurrentTarget=target;
@@ -50,6 +60,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         if(sources.Count==0)return;
         EnsureResources();
         var bounds=sources[0].bounds;foreach(var r in sources)bounds.Encapsulate(r.bounds);
+        TargetBounds=bounds;
         var lo=new Vector2(float.PositiveInfinity,float.PositiveInfinity);var hi=new Vector2(float.NegativeInfinity,float.NegativeInfinity);
         for(int i=0;i<8;i++)
         {
@@ -82,6 +93,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         var front=sources.OrderBy(r=>SortingLayer.GetLayerValueFromID(r.sortingLayerID)).ThenBy(r=>r.sortingOrder).Last();
         output.sortingLayerID=front.sortingLayerID;output.sortingOrder=front.sortingOrder+4;
         outlineMaterial.mainTexture=mask;outlineMaterial.SetColor("_Color",color);outlineMaterial.SetInt("_Width",radius);
+        output.sharedMaterial=outlineMaterial;
         output.enabled=true;
     }
     Mesh SpriteMesh(Sprite sprite)

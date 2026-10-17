@@ -32,6 +32,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     CoreGuardianHud hud;
     CoreGuardianCombatArt combatArt;
     CoreGuardianCombatAnimation combatAnimation;
+    CoreGuardianUpgradeFeedback upgradeFeedback;
     GameObject bossArt;
     int previousGold;
     int previousCore;
@@ -62,6 +63,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             hud=gameObject.AddComponent<CoreGuardianHud>();hud.Configure(this);
             combatArt=gameObject.AddComponent<CoreGuardianCombatArt>();combatArt.Configure(this,hud);
             combatAnimation=gameObject.AddComponent<CoreGuardianCombatAnimation>();combatAnimation.Configure(this);
+            upgradeFeedback=gameObject.AddComponent<CoreGuardianUpgradeFeedback>();
             previousGold=Session.Gold;
             previousCore=Session.CoreEnergy;
             Feedback="공격 포탑을 선택하고 바닥 칸을 클릭하세요. WASD: 한 칸 이동";
@@ -208,12 +210,22 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         var pos=t.Position;Session.DestroyTower(t.Id);occupied.SetTile(new Vector3Int(pos.x,pos.y,0),null);
         SelectedTower=-1;SynchronizeViews();Notify(Session.LastMessage);
     }
-    public void UpgradePlayer(string stat){string reason;Session.UpgradePlayer(stat,out reason);Notify(reason);}
-    public void UpgradeTower(string stat){string reason;Session.UpgradeTower(SelectedTower,stat,out reason);Notify(reason);}
+    public void UpgradePlayer(string stat)
+    {
+        string reason;if(Session.UpgradePlayer(stat,out reason))upgradeFeedback.Trigger(player.transform);
+        Notify(reason);
+    }
+    public void UpgradeTower(string stat)
+    {
+        int id=SelectedTower;string reason;
+        if(Session.UpgradeTower(id,stat,out reason))upgradeFeedback.Trigger(TowerView(id));
+        Notify(reason);
+    }
     public void StartCombat(){CancelInstall();Session.StartCombat();Notify(Session.LastMessage);}
     public void Diagnostic()
     {
         hud.ClearDamageNumbers();
+        upgradeFeedback.Clear();
         combatArt.ClearEffects();
         CancelInstall();Session.StartDiagnosticEncounter();SelectedTower=-1;previousGold=Session.Gold;previousCore=Session.CoreEnergy;
         occupied.ClearAllTiles();foreach(var t in Session.Towers)occupied.SetTile(new Vector3Int(t.Position.x,t.Position.y,0),occupiedTile);

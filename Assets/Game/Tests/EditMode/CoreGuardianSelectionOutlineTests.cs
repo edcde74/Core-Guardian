@@ -23,7 +23,7 @@ public class CoreGuardianSelectionOutlineTests
         camera.transform.position=target.transform.position+Vector3.back*10;camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=Color.clear;
         camera.cullingMask=1<<31;
         var image=new RenderTexture(128,128,24,RenderTextureFormat.ARGB32);image.Create();camera.targetTexture=image;
-        Texture2D read=null,maskRead=null;var old=RenderTexture.active;
+        Texture2D read=null,maskRead=null;Material scan=null;var old=RenderTexture.active;
         try
         {
             var component=root.AddComponent(type);type.GetField("color").SetValue(component,Color.magenta);type.GetField("widthPixels").SetValue(component,2);
@@ -46,6 +46,16 @@ public class CoreGuardianSelectionOutlineTests
                 Assert.That(read.GetPixel(x,y).a>.5f,Is.EqualTo(edge),"Screen ring must match the exact union at "+x+","+y+"; no inversion or interior joins");
             }
             Assert.That(first.enabled,Is.False);Assert.That(first.sprite,Is.SameAs(sprite));
+            scan=new Material(Resources.Load<Shader>("CoreGuardian/UpgradeScan"));scan.SetFloat("_BandY",target.transform.position.y);scan.SetFloat("_Opacity",1);
+            Assert.That(type.GetMethod("PresentOverlay").Invoke(component,new object[]{target.transform,camera,scan}),Is.EqualTo(true));
+            camera.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,128,128),0,0);read.Apply();
+            int cyan=0;
+            for(int y=0;y<128;y++)for(int x=0;x<128;x++)if(read.GetPixel(x,y).a>.01f)
+            {
+                Assert.That(Inside(x,y),Is.True,"Upgrade scan cannot illuminate shadows, transparent margins, or outside the union");
+                Assert.That(y,Is.InRange(59,68),"Scan is a short band, not a full-body flash");cyan++;
+            }
+            Assert.That(cyan,Is.GreaterThan(150),"The chosen B shader must actually render a band inside the body");
             type.GetField("widthPixels").SetValue(component,0);type.GetMethod("Present").Invoke(component,new object[]{target.transform,camera});
             Assert.That(type.GetProperty("IsVisible").GetValue(component),Is.EqualTo(false));
         }
@@ -54,6 +64,7 @@ public class CoreGuardianSelectionOutlineTests
             RenderTexture.active=old;camera.targetTexture=null;UnityEngine.Object.DestroyImmediate(root);UnityEngine.Object.DestroyImmediate(cameraRoot);
             image.Release();UnityEngine.Object.DestroyImmediate(image);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);
             if(read!=null)UnityEngine.Object.DestroyImmediate(read);if(maskRead!=null)UnityEngine.Object.DestroyImmediate(maskRead);
+            if(scan!=null)UnityEngine.Object.DestroyImmediate(scan);
         }
     }
 }
