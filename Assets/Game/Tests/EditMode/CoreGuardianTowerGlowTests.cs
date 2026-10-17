@@ -24,7 +24,7 @@ public class CoreGuardianTowerGlowTests
             var material=body.sharedMaterial;var sprite=body.sprite;var color=body.color;
             var animation=(Component)type.GetMethod("Attach").Invoke(null,new object[]{root,role});
             var glows=root.GetComponentsInChildren<MeshRenderer>(true).Where(r=>r.name=="TowerGlow").ToArray();
-            Assert.That(glows.Length,Is.EqualTo(3),"Selected glow must follow the original body and both recoil cutouts");
+            Assert.That(glows.Length,Is.EqualTo(role=="Single"?5:3),"Selected glow follows barrel/housing partitions and original cutouts");
             type.GetMethod("Fire").Invoke(animation,new object[]{Vector2.up,1f});
             foreach(var glow in glows)
             {
@@ -34,7 +34,7 @@ public class CoreGuardianTowerGlowTests
             }
             type.GetMethod("Present").Invoke(animation,new object[]{0f});
             type.GetMethod("Present").Invoke(animation,new object[]{.5f});
-            Assert.That(body.enabled,Is.True,"Original artwork returns after recoil");
+            Assert.That(body.enabled,Is.EqualTo(role!="Single"),"Single retains its aimed barrel after recoil; other roles return to original artwork");
             Assert.That(glows.Single(r=>r.transform.parent==body.transform).sharedMaterial.GetFloat("_Age"),Is.GreaterThan(.3f),"Shot highlight must recover instead of staying lit");
             type.GetMethod("Fire").Invoke(animation,new object[]{Vector2.up,20f});
             Assert.That(glows[0].sharedMaterial.GetFloat("_PulseScale"),Is.LessThan(.5f),"Fast attacks need a shorter pulse, not permanent brightness");

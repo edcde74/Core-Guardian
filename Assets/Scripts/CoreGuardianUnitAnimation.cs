@@ -26,6 +26,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     // Presented volleys, never a combat or balance metric.
     public int ShotCount {get;private set;}
     public Vector3 MuzzleWorld {get;private set;}
+    public Vector3 AimOriginWorld=>originalMotion!=null?originalMotion.AimOriginWorld:transform.position;
     public Vector3 HealthBarWorld => originalWalk!=null?originalWalk.HealthBarWorld:transform.position;
     public bool Loaded=>originalMotion!=null||originalWalk!=null||playerMotion!=null;
     public bool UsesOriginalArtwork=>role=="Player"||role=="Single"||role=="Multi"||role=="Support";
@@ -38,6 +39,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     void Configure(string value)
     {
         role=value;if(role=="Player"){direction=5;facingAngle=-135;aim=new Vector2(-8,-6).normalized;}
+        if(role=="Single"){aim=new Vector2(-23,13).normalized;facingAngle=Mathf.Atan2(aim.y,aim.x)*Mathf.Rad2Deg;}
         artwork=GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite");
         if(artwork==null)throw new InvalidOperationException("Missing approved artwork child: "+name);
         if(role=="Player")playerMotion=new CoreGuardianPlayerMotion(artwork);
@@ -84,13 +86,13 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     public void ReceiveHit(){if(hitFlash!=null&&hitFlash.Trigger())justHit=true;}
     void OnEnable(){towerGlow?.Enable();}
     void OnDisable(){hitFlash?.Clear();if(towerGlow!=null){shotAge=100;justFired=false;towerGlow.Clear();}}
-    void OnDestroy(){towerGlow?.Dispose();}
+    void OnDestroy(){towerGlow?.Dispose();originalMotion?.Dispose();}
     void ApplyFrame(float delta)
     {
         if(artwork==null)return;
         if(playerMotion!=null){playerMotion.Present(direction,aim,shotAge,shotDuration,idleTime,aiming);MuzzleWorld=playerMotion.MuzzleWorld;return;}
         if(originalWalk!=null){originalWalk.Present(delta);return;}
-        originalMotion.Present(shotAge,shotDuration);
+        originalMotion.Present(shotAge,shotDuration,(Vector2)(Quaternion.Euler(0,0,facingAngle)*Vector3.right));
         towerGlow?.Present(shotAge,shotDuration,delta);
         MuzzleWorld=originalMotion.MuzzleWorld(aim);
     }

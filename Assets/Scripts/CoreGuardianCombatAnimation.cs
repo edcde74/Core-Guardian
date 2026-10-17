@@ -48,7 +48,8 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         if(!towers.TryGetValue(tower.Id,out var animation))
         {animation=CoreGuardianUnitAnimation.Attach(view,tower.Kind.ToString());towers.Add(tower.Id,animation);}
         var target=game.Session.TowerTarget(tower.Id);
-        if(target!=null&&target.Alive)animation.Aim(target.Position-tower.Position,Time.deltaTime);
+        if(target!=null&&target.Alive)
+            animation.Aim(tower.Kind==TowerKind.Single?(Vector2)(game.World(target.Position)+Vector3.up*.25f-animation.AimOriginWorld):target.Position-tower.Position,Time.deltaTime);
         animation.Present(Time.deltaTime);
     }
     void Damaged(EnemyState enemy,int amount)
@@ -80,15 +81,16 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
     }
     void Launched(ProjectileState shot)
     {
-        CoreGuardianUnitAnimation source=null;float rate=1;
+        CoreGuardianUnitAnimation source=null;float rate=1;bool single=false;
         if(shot.Source=="Player"){source=player;rate=game.Session.Player.Rate;}
         else if(shot.Source.StartsWith("Tower:")&&int.TryParse(shot.Source.Substring(6),out int id))
         {
             towers.TryGetValue(id,out source);
-            var tower=game.Session.Towers.FirstOrDefault(t=>t.Id==id);if(tower!=null)rate=tower.Stats.Rate;
+            var tower=game.Session.Towers.FirstOrDefault(t=>t.Id==id);if(tower!=null){rate=tower.Stats.Rate;single=tower.Kind==TowerKind.Single;}
         }
         if(source==null)return;
         var direction=game.World(shot.Target.Position)-game.World(shot.Position);
+        if(single)direction=game.World(shot.Target.Position)+Vector3.up*.25f-source.AimOriginWorld;
         if(!volleyFrames.TryGetValue(shot.Source,out int frame)||frame!=Time.frameCount)
         {source.Fire(direction,rate);volleyFrames[shot.Source]=Time.frameCount;}
         if(shot.Source.StartsWith("Tower:"))

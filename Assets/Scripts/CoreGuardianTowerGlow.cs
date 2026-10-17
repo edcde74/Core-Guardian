@@ -25,7 +25,7 @@ public sealed class CoreGuardianTowerGlow : IDisposable
         if(shader==null)throw new InvalidOperationException("Missing selected tower glow shader");
         foreach(var source in artwork.GetComponentsInChildren<SpriteRenderer>(true))
         {
-            if(source!=artwork&&source.name!="Fixed"&&source.name!="Moving")continue;
+            if(source!=artwork&&source.name!="Fixed"&&source.name!="Moving"&&!source.name.StartsWith("Housing"))continue;
             var sprite=source.sprite;var rect=sprite.textureRect;var bounds=sprite.bounds;float pad=3/sprite.pixelsPerUnit;
             var root=new GameObject("TowerGlow");root.transform.SetParent(source.transform,false);
             var mesh=new Mesh{name="Tower original blue-mask glow"};
