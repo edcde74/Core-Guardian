@@ -1,0 +1,11 @@
+{
+  "sample_rate": 48000,
+  "channels": 1,
+  "bit_depth": 16,
+  "shot_seconds": 0.42,
+  "shot_rms_dbfs": -23,
+  "preview_seconds": 9,
+  "repetition_rate_per_second": 1.2,
+  "note": "Synthetic audition only, no Unity playback or human listening verification.",
+  "sources": "Original oscillators and seeded noise; no samples, soundfonts, AI audio model, or store media."
+}
