@@ -1,0 +1,22 @@
+{
+  "backgroundSprite": "Assets/Art/Environment/AbandonedFortressB/CourtyardBackground_B.png",
+  "backgroundPosition": "(13.50, 7.50, 1.00)",
+  "backgroundScale": "(1.95, 1.95, 1.00)",
+  "backgroundBounds": "Center: (13.50, 7.50, 1.00), Extents: (16.32, 9.18, 0.10)",
+  "sortingOrder": -20,
+  "material": "Assets/Art/Environment/AbandonedFortressB/StoneFloor_B.mat",
+  "floorTint": [
+    1.05,
+    1.045,
+    1.035
+  ],
+  "floorTexture": 64,
+  "play": false,
+  "paused": false,
+  "compiling": false,
+  "failed": false,
+  "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+  "dirty": false,
+  "timeScale": 1.0,
+  "captureDelta": 0.0
+}

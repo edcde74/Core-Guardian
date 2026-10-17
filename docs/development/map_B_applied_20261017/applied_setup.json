@@ -1,0 +1,55 @@
+{
+  "sourceAtlas": [
+    1254,
+    1254
+  ],
+  "importedAtlas": [
+    64,
+    64
+  ],
+  "tiles": 1125,
+  "variants": [
+    {
+      "Key": "Stone_B_0",
+      "count": 26
+    },
+    {
+      "Key": "Stone_B_3",
+      "count": 250
+    },
+    {
+      "Key": "Stone_B_2",
+      "count": 787
+    },
+    {
+      "Key": "Stone_B_1",
+      "count": 62
+    }
+  ],
+  "spriteBounds": [
+    {
+      "name": "Stone_B_0",
+      "size": "(0.60, 0.60, 0.20)",
+      "pixelsPerUnit": 53.3333321
+    },
+    {
+      "name": "Stone_B_1",
+      "size": "(0.60, 0.60, 0.20)",
+      "pixelsPerUnit": 53.3333321
+    },
+    {
+      "name": "Stone_B_2",
+      "size": "(0.60, 0.60, 0.20)",
+      "pixelsPerUnit": 53.3333321
+    },
+    {
+      "name": "Stone_B_3",
+      "size": "(0.60, 0.60, 0.20)",
+      "pixelsPerUnit": 53.3333321
+    }
+  ],
+  "background": "Center: (13.50, 7.50, 1.00), Extents: (15.11, 8.50, 0.10)",
+  "colliders": 0,
+  "sceneSaved": false,
+  "gameplayCodeChanged": false
+}
