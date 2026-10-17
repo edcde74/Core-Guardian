@@ -1,0 +1,10 @@
+{
+  "mode": "EditMode",
+  "total": 115,
+  "passed": 115,
+  "failed": 0,
+  "skipped": 0,
+  "source": "Direct synchronous mcp__unity__run_tests response in this session (2.42 seconds); manually preserved summary, not a raw response export",
+  "scope": "Working tree included parallel single tower aim changes. Prior to final core notification visibility fix, which has separate red-green focused verification.",
+  "note": "test_status later returned zero and is not used as the evidence for this 115-case result. Full PlayMode zero is not a pass."
+}

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 88,\n  \"executeMs\": 3268,\n  \"assemblyName\": \"PipelineRunScript_VerifyFeedback_21365a62ffb04fa3a997f261c750d9d4\",\n  \"success\": false,\n  \"error\": \"Runtime Error\",\n  \"errorDetails\": \"Exception: Nonfatal core damage must renew the visible HUD notice\\n  at VerifyCoreHudFeedback.Main () [0x0014d] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\docs\\\\development\\\\hud_usability_applied_20261017\\\\VerifyFeedback.cs:17 \\r\\n  at Unity.Pipeline.Editor.Commands.Scripts.RunScriptCommand.RunEphemeral (System.String file, System.String entry, Newtonsoft.Json.Linq.JArray args, System.String[] references, System.String[] defines, System.Boolean pdb, System.Boolean dryRun, System.Int32 timeoutMs, System.Diagnostics.Stopwatch total) [0x00492] in .\\\\Library\\\\PackageCache\\\\com.unity.pipeline@ab05e9cd7f74\\\\Editor\\\\Commands\\\\Scripts\\\\RunScriptCommand.cs:252 \"\n}"
+    }
+  ]
+}

@@ -36,6 +36,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     int previousGold;
     int previousCore;
     float notificationUntil;
+    bool pointerGesture, pointerBlocked;
+    Vector2Int pointerCell;
+    public bool HasFeedback=>Time.unscaledTime<notificationUntil;
     Vector3[] route;
     public bool Ready => Session != null;
 
@@ -82,11 +85,11 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         player.enabled=Session.Phase!=SessionPhase.Augmentation;
         if(Session.Gold>previousGold){ Feedback="+"+(Session.Gold-previousGold)+" 골드 획득";notificationUntil=Time.unscaledTime+2; }
         previousGold=Session.Gold;
-        if(Session.CoreEnergy<previousCore){combatArt.CoreDamaged(previousCore-Session.CoreEnergy);Feedback="코어 에너지 -"+(previousCore-Session.CoreEnergy);Changed?.Invoke();}
+        if(Session.CoreEnergy<previousCore){combatArt.CoreDamaged(previousCore-Session.CoreEnergy);Notify("코어 에너지 -"+(previousCore-Session.CoreEnergy));}
         previousCore=Session.CoreEnergy;
-        if(phase!=Session.Phase){CancelInstall();Notify(Session.LastMessage);}
+        if(phase!=Session.Phase){pointerBlocked=true;CancelInstall();Notify(Session.LastMessage);}
         SynchronizeViews();
-        if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame&&hud.CancelInstallation())return;
+        if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame&&hud.CancelInstallation()){pointerBlocked=true;return;}
         if(Mouse.current==null||Camera.main==null)return;
         var mouse=Mouse.current.position.ReadValue();
         var world=Camera.main.ScreenToWorldPoint(new Vector3(mouse.x,mouse.y,-Camera.main.transform.position.z));
@@ -101,9 +104,30 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             bool valid=CanInstall(xy);
             foreach(var sr in ghost.GetComponentsInChildren<SpriteRenderer>())sr.color=new Color(valid?.55f:1f,valid?1f:.35f,valid?.65f:.35f,.6f);
         }
-        if(!Mouse.current.leftButton.wasPressedThisFrame||OverUI(mouse))return;
-        if(Installing.HasValue)Place(Installing.Value,xy);
-        else {var tower=Session.Towers.FirstOrDefault(t=>t.Position==xy);SelectedTower=tower==null?-1:tower.Id;Changed?.Invoke();}
+        // A UI press owns the entire gesture, including a release after its panel disappears.
+        // Commit world clicks on release so the UI Button release cannot also place/select.
+        if(Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            pointerGesture=true;pointerCell=xy;
+            pointerBlocked=OverUI(mouse)||Session.Phase==SessionPhase.Augmentation||phase!=Session.Phase;
+        }
+        if(!Mouse.current.leftButton.wasReleasedThisFrame)return;
+        bool worldClick=pointerGesture&&!pointerBlocked&&pointerCell==xy&&!OverUI(mouse);
+        pointerGesture=false;pointerBlocked=false;
+        if(worldClick)HandleWorldClick(xy);
+    }
+    public void HandleWorldClick(Vector2Int xy)
+    {
+        if(Session.Phase==SessionPhase.Augmentation)return;
+        if(Installing.HasValue){Place(Installing.Value,xy);return;}
+        var tower=Session.Towers.FirstOrDefault(t=>t.Position==xy);
+        if(tower!=null){SelectedTower=tower.Id;hud.OpenSelectedTowerSpecs();Changed?.Invoke();return;}
+        var cell=new Vector3Int(xy.x,xy.y,0);
+        bool empty=ground.HasTile(cell)&&!enemyPath.HasTile(cell)&&!coreMap.HasTile(cell)&&!occupied.HasTile(cell)
+            &&!Session.Enemies.Any(e=>e.Alive&&Vector2Int.RoundToInt(e.Position)==xy)&&Vector2Int.RoundToInt(PlayerTile())!=xy;
+        if(!empty)return;
+        if(hud.TryFoldDetails())return;
+        SelectedTower=-1;Changed?.Invoke();
     }
     bool OverUI(Vector2 position)
     {

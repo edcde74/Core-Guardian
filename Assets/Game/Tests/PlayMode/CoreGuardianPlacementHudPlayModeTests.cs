@@ -50,6 +50,7 @@ public class CoreGuardianPlacementHudPlayModeTests
         try
         {
             Time.timeScale=0;Click(hud,"PlayerGrowth");Click(hud,"DamageFold");Click(hud,"TopFold");
+            float topHeight=hud.Find("TopStatus").GetComponent<RectTransform>().sizeDelta.y;
             var speed=hud.Find("TestSpeed").gameObject.AddComponent<CanvasGroup>();speed.alpha=.6f;speed.blocksRaycasts=false;
             Begin(hud);Assert.That(Installing(game),Is.True);
             foreach(Transform root in hud)
@@ -64,9 +65,9 @@ public class CoreGuardianPlacementHudPlayModeTests
             game.GetComponent(TypeOf("CoreGuardianHud")).GetType().GetMethod("Refresh",Private).Invoke(game.GetComponent(TypeOf("CoreGuardianHud")),null);
             Assert.That(Visible(hud.Find("PlayerGrowthPanel")),Is.False,"Periodic refresh must not unhide focused HUD");
             Click(hud,"CancelPlacement");
-            Assert.That(Installing(game),Is.False);Assert.That(Visible(hud.Find("PlayerGrowthPanel")),Is.True);
+            Assert.That(Installing(game),Is.False);Assert.That(Visible(hud.Find("PlayerGrowthPanel")),Is.False,"The chooser replaced the player inspector before entering placement");
             Assert.That(hud.Find("DamagePanel").gameObject.activeSelf,Is.False,"Previously folded damage panel must stay folded");
-            Assert.That(hud.Find("TopStatus").GetComponent<RectTransform>().sizeDelta.y,Is.EqualTo(52));
+            Assert.That(hud.Find("TopStatus").GetComponent<RectTransform>().sizeDelta.y,Is.EqualTo(topHeight));
             Assert.That(Visible(hud.Find("BottomControls")),Is.True);Assert.That(hud.Find("TowerInstallPanel").gameObject.activeSelf,Is.False);
             Assert.That(speed.alpha,Is.EqualTo(.6f));Assert.That(speed.blocksRaycasts,Is.False);Assert.That(speed.interactable,Is.True);
             Assert.That(Cursor.visible,Is.True);
@@ -84,7 +85,8 @@ public class CoreGuardianPlacementHudPlayModeTests
             Assert.That(Installing(game),Is.True);Assert.That(Visible(hud.Find("BottomControls")),Is.False);
             Assert.That(game.GetType().GetMethod("Place").Invoke(game,new object[]{TowerKind.Single,new Vector2Int(14,15)}),Is.EqualTo(true));
             Assert.That(Installing(game),Is.False);Assert.That(Visible(hud.Find("BottomControls")),Is.True);
-            Assert.That(Visible(hud.Find("PlayerGrowthPanel")),Is.True);Assert.That(Visible(hud.Find("TowerInstallPanel")),Is.True,"The pre-placement chooser returns after a successful placement");
+            Assert.That(Visible(hud.Find("PlayerGrowthPanel")),Is.False);Assert.That(Visible(hud.Find("TowerInstallPanel")),Is.True,"The pre-placement chooser returns after a successful placement");
+            Assert.That(Visible(hud.Find("TowerInformation")),Is.False,"Successful placement must not auto expand specs");
             Call(game,"StartCombat");Assert.That(hud.Find("TowerInstallPanel").gameObject.activeSelf,Is.False);
         }
         finally{Time.timeScale=old;}

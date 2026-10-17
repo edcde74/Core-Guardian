@@ -29,7 +29,7 @@ public static class CoreGuardianHudSkin
         if(name.Contains("Speed")||name=="rate"||name=="Tower_rate"||name.Contains("projectileSpeed"))return "Speed";
         if(name.Contains("Cancel")||name=="Destroy")return "Cancel";
         if(name=="Start")return "Play";
-        if(name.Contains("Growth")||name.Contains("range")||name.Contains("buffDamage"))return "Upgrade";
+        if(name=="PlayerSpecs"||name.Contains("Growth")||name.Contains("range")||name.Contains("buffDamage"))return "Upgrade";
         if(name.Contains("damage")||name.Contains("Diagnostic")||name.Contains("공격"))return "Damage";
         return "Install";
     }

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"diagnostics\": [\n    {\n      \"severity\": \"warning\",\n      \"message\": \"'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'\",\n      \"line\": 13,\n      \"column\": 14,\n      \"id\": \"CS0618\",\n      \"source\": \"var p=UnityEngine.Object.FindFirstObjectByType<CoreGuardianPrototype>();\"\n    }\n  ],\n  \"compileMs\": 1809,\n  \"executeMs\": 2,\n  \"assemblyName\": \"PipelineRunScript_VerifyHud_5b0eed3b2c59496499faf71c2a7d3c7c\",\n  \"success\": true,\n  \"result\": {\n    \"passed\": true,\n    \"checks\": \"Separate spec entry,shared dock,exclusive inspector,read-only default,fold consumption\",\n    \"kind\": \"Focused actual HUD functional QA; not human play/balance\"\n  }\n}"
+    }
+  ]
+}
