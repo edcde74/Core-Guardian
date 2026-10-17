@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 334,\n  \"executeMs\": 3,\n  \"assemblyName\": \"PipelineRunScript_VerifyB_5875c28c427545f5b84f5e047b49ab8f\",\n  \"success\": false,\n  \"error\": \"Runtime Error\",\n  \"errorDetails\": \"Exception: B cyan hover edge required: TopFold\\n  at VerifyHudB.Main () [0x00146] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\docs\\\\development\\\\hud_handles_tower_B_20261017\\\\VerifyB.cs:16 \\r\\n  at Unity.Pipeline.Editor.Commands.Scripts.RunScriptCommand.RunEphemeral (System.String file, System.String entry, Newtonsoft.Json.Linq.JArray args, System.String[] references, System.String[] defines, System.Boolean pdb, System.Boolean dryRun, System.Int32 timeoutMs, System.Diagnostics.Stopwatch total) [0x00492] in .\\\\Library\\\\PackageCache\\\\com.unity.pipeline@ab05e9cd7f74\\\\Editor\\\\Commands\\\\Scripts\\\\RunScriptCommand.cs:252 \"\n}"
+    }
+  ]
+}

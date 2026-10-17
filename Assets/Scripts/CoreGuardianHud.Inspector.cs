@@ -22,6 +22,7 @@ public sealed partial class CoreGuardianHud
         var image=art.gameObject.AddComponent<UnityEngine.UI.Image>();image.sprite=DamageSprite("DamageHandle");image.preserveAspect=true;image.raycastTarget=false;
         if(horizontal)art.localRotation=Quaternion.Euler(0,0,90);
         var b=r.gameObject.AddComponent<UnityEngine.UI.Button>();b.targetGraphic=image;
+        r.gameObject.AddComponent<CoreGuardianHudHandleReaction>().Configure(image,horizontal);
         // Augmentation disables ordinary buttons, including inactive handles. Restore on the
         // next refresh before modal gating is applied again, just like the normal Button helper.
         refresh.Add(()=>b.interactable=true);
@@ -158,6 +159,7 @@ public sealed partial class CoreGuardianHud
         if(selected!=null)
         {
             st=selected.Stats;towerTitle.text=TowerName(selected.Kind)+" #"+selected.Id+" · "+(purchaseOpen?"능력치 강화":"능력치");
+            towerPanel.Find("Symbol_TowerIdentity").GetComponent<UnityEngine.UI.Image>().sprite=CoreGuardianHudSkin.Sprite(CoreGuardianHudSkin.Symbol("Install_"+selected.Kind));
             RefreshAbilityPlate(towerAbilities,st,selected.Kind==TowerKind.Support);
             float support=s.Towers.Where(t=>t.Kind==TowerKind.Support&&Vector2.Distance(t.Position,selected.Position)<=t.Stats.Range).Sum(t=>t.Stats.BuffDamage);
             float buff=support+s.Augments.TowerBuffPercent;

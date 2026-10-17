@@ -122,9 +122,11 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     {
         var r=Box(name,parent,new Vector2(0,1),position,size);CoreGuardianHudSkin.Frame(r.GetComponent<UnityEngine.UI.Image>(),"Button");
         var b=r.gameObject.AddComponent<UnityEngine.UI.Button>();b.onClick.AddListener(()=>action());
-        float iconSize=Mathf.Min(30,size.y-24);CoreGuardianHudSkin.Icon(r,CoreGuardianHudSkin.Symbol(name),new Vector2(16,-(size.y-iconSize)/2),new Vector2(iconSize,iconSize));
+        bool towerChoice=name.StartsWith("Install_")||name=="공격 포탑"||name=="지원 포탑";
+        float iconSize=Mathf.Min(towerChoice?40:30,size.y-24);CoreGuardianHudSkin.Icon(r,CoreGuardianHudSkin.Symbol(name),new Vector2(16,-(size.y-iconSize)/2),new Vector2(iconSize,iconSize));
         float verticalInset=size.y<=48?8:16;
-        var t=Text("Label",r,new Vector2(54,-verticalInset),size-new Vector2(70,verticalInset*2),size.y<=48?14:18);
+        float labelX=towerChoice?66:54;
+        var t=Text("Label",r,new Vector2(labelX,-verticalInset),size-new Vector2(labelX+16,verticalInset*2),size.y<=48?14:18);
         var reaction=r.gameObject.AddComponent<CoreGuardianHudReaction>();
         reaction.Selected=()=>name=="Installation"?installOpen:name=="PlayerGrowth"?playerOpen&&purchaseOpen:name=="PlayerSpecs"?playerOpen&&!purchaseOpen:name.EndsWith("SpecTab")?!purchaseOpen:name.EndsWith("BuyTab")?purchaseOpen:name.StartsWith("Install_")&&game.Installing.HasValue&&name=="Install_"+game.Installing.Value;
         refresh.Add(()=>{t.text=label();b.interactable=enabled==null||enabled();t.color=b.interactable?new Color(1,.95f,.84f):new Color(.78f,.8f,.82f);});return b;
@@ -182,10 +184,12 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     void BuildDamageFold()
     {
         damageFold=Box("DamageFold",canvas,Vector2.one,Vector2.zero,new Vector2(28,108),false);
-        var image=damageFold.gameObject.AddComponent<UnityEngine.UI.Image>();image.sprite=DamageSprite("DamageHandle");image.preserveAspect=true;
+        var hit=damageFold.gameObject.AddComponent<UnityEngine.UI.Image>();hit.color=Color.clear;
+        var art=Box("HandleArt",damageFold,new Vector2(.5f,.5f),Vector2.zero,new Vector2(28,108),false);
+        var image=art.gameObject.AddComponent<UnityEngine.UI.Image>();image.sprite=DamageSprite("DamageHandle");image.preserveAspect=true;image.raycastTarget=false;
         var button=damageFold.gameObject.AddComponent<UnityEngine.UI.Button>();button.targetGraphic=image;
         refresh.Add(()=>button.interactable=true);
-        var colors=button.colors;colors.highlightedColor=new Color(1,.93f,.77f);colors.pressedColor=new Color(.7f,.65f,.55f);button.colors=colors;
+        damageFold.gameObject.AddComponent<CoreGuardianHudHandleReaction>().Configure(image,false);
         button.onClick.AddListener(()=>{damagePanel.gameObject.SetActive(!damagePanel.gameObject.activeSelf);PositionDamageFold();});
         PositionDamageFold();
     }

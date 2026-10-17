@@ -24,6 +24,10 @@ public static class CoreGuardianHudSkin
     }
     public static string Symbol(string name)
     {
+        if(name=="Installation"||name=="공격 포탑")return "TowerAttackCategory";
+        if(name=="지원 포탑"||name=="Install_Support")return "TowerSupport";
+        if(name=="Install_Single")return "TowerSingle";
+        if(name=="Install_Multi")return "TowerMulti";
         if(name=="PlayerSpecs"||name.EndsWith("SpecTab"))return "AbilityList";
         if(name=="PlayerGrowth"||name.EndsWith("BuyTab"))return "AbilityUpgrade";
         if(name=="damage"||name=="Tower_damage")return "StatDamage";
