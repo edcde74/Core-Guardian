@@ -1,73 +1,83 @@
 코어 가디언 프로젝트를 이어서 진행해줘.
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 
-먼저 AGENTS.md → docs/development/UNITY_HANDOVER.md → docs/development/LOCAL_GIT.md → 이 파일을 읽고 실제 Git HEAD와 변경 상태를 확인해. 현재 사용자 지시와 최신 담당 Notion을 우선해.
+먼저 다음 순서로 읽고 실제 Git HEAD와 변경 상태를 확인해.
+1. AGENTS.md
+2. docs/development/UNITY_HANDOVER.md
+3. docs/development/LOCAL_GIT.md
+4. docs/development/resume_map_latest_20261018.md
+현재 사용자 지시와 최신 담당 Notion이 우선이며 과거 인수인계를 현재 상태로 가정하지 마.
 
-■ 현재 작업 단계
-- 최신 환경 장식: 사용자 승인 A내부+B외곽일부를 별도 투명 정적 장식으로 적용했다. 외곽-10/낮은프랍-5, 기존배경-20·길1/경계석2·땅굴4·본체높이정렬 유지. 원본564컴포넌트/6맵939타일/61리소스해시 동일·새충돌/동작0. 자체API이동/설치858/정상구매/자연4몹 집중QA, 종료Playfalse/씬1dirtyfalse·시간복원·현재오류0경고0. docs/development/environment_decoration_applied_20261018/README.md 참고. 시안 미적용/후속작업 미정은 이전 이력이며 다음은 실제 적용 화면 피드백이다.
-- 최신피격후속: B②와피격종료시빈속성블록이남는충돌을수정했다. 원래블록존재여부를저장/복구하며B②Inspector값과90ms/22%/100ms피격유지. 직접표현진단의같은자세피격전/종료후0픽셀차·Edit6/6확인. docs/development/hit_brightness_check_20261018/README.md참고. 전체회귀/사람플레이검사는아니다.
-- 최신 후속: 사용자 B② 선택으로 `CoreGuardian_Gameplay/CoreGuardianObjectEmphasis`를 저장했다. Inspector에서 상시윤곽두께/색/본체밝기 조절(현재1px/RGBA.06,.065,.075,.90/1.15),원본본체합집합만 처리. A원복배경/③색보정/초록선택선/강화/기존게임규칙 유지. 새Edit3/3·GPU2/2·정상API전투Inspector QA확인,기존CGPlay21/27의6실패는꺼짐수동진단에서도재현해전체통과로표현하지않는다. 최신기록은 docs/development/object_emphasis_B2_applied_20261018/README.md. 아래 B미선택 문구는 과거다.
-- 가장 최신: 사용자 A거부로 배경/길을 원래대로 복원하고 A 전용 게임 재질/셰이더를 정리했다. Assets는 `cec69ae`와동일(③색보정 유지)이다. B 개체강조3안은 임시 실제전투 비교만 했고 미선택/미적용이며 C도 미적용이다. 다음은 B후보피드백. docs/development/readability_B_preview_20261018/README.md를 따른다. 아래 A적용/피드백대기 문구는 원복 전 이력이다.
-- 후속: 사용자가③ 따뜻한 색보정 선택 후 가독성 A를 요청해 배경1/길242에만 질감 대비 완화 재질을 적용했다. ③색보정26/7/-.20·원본/땅굴/유닛/HUD·게임 규칙 유지. 자체 새 세션 정상100멀티구매/자연4몹·같은시점Overlay 전후 촬영 후 종료했다. 상세/비교는 docs/development/readability_A_20261018/README.md. 다음은 A 피드백이며 B/C 미적용, 밸런스 보류 유지. 아래 ‘다음 구체 시각 작업 미정’은 이 A요청 전 재개 단계다.
-- 맵 배경·메인 바닥·길목·몬스터 출현 입구까지 적용했다. 다음 구체 시각 작업은 아직 정하지 않았다. 실제 화면과 사용자 피드백을 먼저 확인하고 미선택 장식을 임의 적용하지 마.
-- 밸런스는 시각 작업 이후 사용자가 별도 시간을 정한다. 지금 밸런스 측정이나 수치 변경으로 넘어가지 마.
+■ 최신 적용·사용자 피드백
+- 마지막 게임 커밋 1f224d8: A의 깔끔한 내부+B의 외곽 일부 혼합 환경 장식 실제 적용.
+- 사용자는 적용 화면에 “굿 좋은데 이제 좀 게임이 풍부해졌네”라고 만족을 확인했다.
+- 다음 구체 작업은 아직 정하지 않았다. 승인된 장식을 다시 미선택/미적용으로 취급하지 마.
+- 이번 후속은 문서·Notion 최신화이며 새 Unity 조회/Play/검사·게임 변경은 없었다.
+- 밸런스는 사용자가 별도 시간을 정한다. 지금 측정하거나 수치를 바꾸지 마.
 
-■ 마지막 게임 커밋
-- 3fce0be: 선택한 원본② 땅굴 입구·판석 연결부·그림자 적용.
-- dd0b027: 배치①/실제 칸15% 확대·회색 판석 길목1안 적용.
-- 문서·Notion 동기화 후속 커밋이 있을 수 있으니 실제 HEAD를 다시 확인해.
+■ 현재 맵과 장식
+- 자연석1안 NaturalCourtyard_01_ClearBorder.png의 불규칙한 돌판과 메인/외곽 연결 유지.
+- 39×22칸, 실제 한 칸0.69, 카메라 위치(13.5,7.5,-10)/orthographic8.5 유지.
+- 경로9점/80칸, 코어(25,8), 플레이어 시작(13,9). 회색 판석·낮은 경계석 길목1안.
+- 입구는 출력 순서②의 무너진 땅굴. 사용자가 지정한 원본 형태·판석 접합부·깊은 그림자를 유지한다. 성문/다른 땅굴로 재생성하지 마.
+- 입구와 새 장식은 정적 시각 요소다. 출현/경로/충돌/이동/설치 규칙이나 몬스터 페이드·가림 마스크를 변경한 것이 아니다.
+- 새 장식: 내부는 희소 잡초·자갈·납작한 파편, 외곽은 성벽/모서리에 풀·석재 잔해 일부. C안의 새 황동·수정 장식은 미적용.
+- 시안 전체로 배경을 덮지 않고 별도 투명 파생 리소스/정적 렌더러5개를 추가했다. 개별 풀/돌별 GameObject는 아니며 외곽4영역/내부1영역으로 나뉜다.
+- 계층: CoreGuardian_MapArt_B/EnvironmentDecoration_Hybrid_Selected.
+- 같은 Sorting Layer Default의 뒤→앞 순서:
+  기존 자연석 바닥+외곽 배경 -20 → 추가 외곽 -10 → 낮은 프랍 -5
+  → 길 판석1/경계석2 → 땅굴4 → 기존 그림자·주요 본체 높이 정렬.
+- 과거45×25/0.6·초기 반복 바닥·구형 황동 길로 되돌리지 마.
+- 실제 적용·구조·검증: docs/development/environment_decoration_applied_20261018/README.md
+- 실제 화면: 위 폴더의 applied_edit.png / applied_combat.png / applied_installation.png.
+  생성 시안 자체와 실제 Unity 화면을 구분하고 승인 원본 픽셀 동일성을 과장하지 마.
 
-■ 보존할 현재 맵
-1. 배경·바닥
-- 자연석1안. 크고 불규칙한 돌판이며 논리 격자처럼 균등 반복시킬 필요가 없다.
-- NaturalCourtyard_01_ClearBorder.png 한 장2D 스프라이트로 메인 바닥과 외곽 폐허를 연결한다. 초기B 반복32px 바닥으로 되돌리지 마.
-- 바닥 TilemapRenderer만 숨겼고 논리 타일은 유지한다.
-- 담당: docs/development/map_natural_01_applied_20261017/README.md
+■ 보존할 시각 설정
+- 카메라 색보정③ 따뜻한 고대 설비: 대비26/채도7/노출-0.20EV.
+  SplitToning 그림자RGB(.46,.49,.54)/밝은색RGB(.54,.515,.48)/balance5.
+  ColorAdjustments+SplitToning만, post=true/HDR=false. Bloom/블러/비네트 추가 없음.
+- 배경 대비 완화 가독성 A는 사용자 거부로 원복했다. 재적용 금지. 환경 장식 A안과 혼동하지 마.
+- 상시 개체 강조 B② 적용: CoreGuardian_Gameplay/CoreGuardianObjectEmphasis.
+  화면 두께1px, RGBA(.06,.065,.075,.90), 본체 밝기1.15, alpha threshold.1.
+  두께·색·밝기는 Inspector에서 조절. 그림자/체력바/별도 발광 제외.
+- 기존 초록2px 선택선과 별도이며 본체 합집합만 강조한다.
+- 피격 종료 밝기 변동은 cb60b4d에서 수정했다.
+  원래 속성블록이 없으면 null, 있었으면 저장 블록으로 복구한다.
+  피격0.09초/최대22%/재점등 제한0.1초 유지.
+- HUD 능력치A·손잡이/포탑심볼B, 강화 스캔0.8초,
+  코어 입자 사용자 저장값0.025/0.1/초당4/최대12,
+  포탑 발광 단일1/멀티3/지원1·조준/반동,
+  보행·그림자·체력바·피해 숫자와 원본 아트를 보존한다.
+- 상세: object_emphasis_B2_applied_20261018/README.md,
+  hit_brightness_check_20261018/README.md,
+  postprocess_map_options_20261018/applied_warm.md (모두 docs/development 아래).
 
-2. 실제 그리드·길목
-- 사용자 선택 배치①: 화면 범위 유지, 39×22칸, 실제 한 칸0.69(기존0.6의115%). 과거45×25/0.6은 현재가 아니다.
-- 경로9점/80칸, 코어(25,8), 플레이어 시작(13,9). 상세 좌표와 현재 씬 저장값은 담당 기록을 따른다.
-- 길은 회색 판석·낮은 석재 경계석1안. 구형 연속 황동 길로 되돌리지 마.
-- 설치 표시도15% 확대했다. 현재 총858개/초록778·빨강80이며 규칙 자체는 보존했다.
-- 런타임 보드/경로/코어는 씬 설정과 연결했다. PlayerTile()의 InverseTransformVector 보정을 유지해 이동 원점이 전투 좌표에 두 번 차감되지 않게 한다.
-- 담당: docs/development/grid15_route01_applied_20261017/README.md
-
-3. 몬스터 출현 입구
-- 실제 이미지 출력 순서의② ‘무너진 땅굴’이다. 성문이나 계단 입구가 아니다.
-- 사용자가 확대 캡처로 지정한 원본의 땅굴 형태·판석 접합부·깊은 그림자를 그대로 적용했다. 다른 모양으로 다시 생성하지 마.
-- 선택 원본: exec-484411e7-16c7-46ac-8279-f1a52e448ff9.png
-- 씬: CoreGuardian_MapArt_B / SpawnTunnel02_Selected
-- 참조: Assets/Art/Environment/AbandonedFortressB/SpawnTunnel02_Approved.png
-- 입구의 지역 원본 픽셀과 가장자리 알파를 사용하는 정적 시각 장식이다. 출현 위치/웨이브/경로/충돌/설치 규칙을 변경하지 않았고, 몬스터 페이드/실시간 가림 마스크를 구현한 것도 아니다.
-- 담당: docs/development/spawn_tunnel02_applied_20261018/README.md
-- 번호/원본 대응: docs/development/spawn_entrance_options_20261018/README.md
-
-■ Notion 최신화 — 2026-10-18
-- 사용자 요청으로 기획서1개를 기존 ‘기획서 관리’의 아트 분류에 새로 만들고, 명시 승인받은 실제 전장 PNG1장을 첨부했다.
-- 레벨디자인·환경 아트 — 안뜰·길목·출현 입구:
-  https://www.notion.so/3fc389dbfc6881e5abb7c9686d1cd893
-- 기존 ‘프로토타입 레벨 디자인’은 실제39×22/0.69·경로/코어/시작점으로 정정했다. 기존45×25/0.6·5×5 비교 자료는 과거 이력으로 구분했다.
+■ Notion 최신화 완료
+- 환경 아트: https://www.notion.so/3fc389dbfc6881e5abb7c9686d1cd893
+  혼합 장식 적용·레이어·사용자 만족·집중 QA 범위 반영.
+- 셰이더/후처리: https://www.notion.so/3fb389dbfc68813ab657f4600eeae76f
+  현재 색보정③·상시 B②·피격 복원 후속 반영.
+- 기존 전투 화면 아트 방향과 VFX 시안·선택·검증 기록도 갱신하고4문서 재조회.
+- 실제 보드/경로 수치는 기존 프로토타입 레벨 디자인 담당:
   https://www.notion.so/3e9389dbfc688159ae8cec214b4e3e25
-- 기존 ‘전투 화면 아트 방향’과 ‘06. 아트’ 목차도 새 담당 문서로 연결하고 재조회했다. 새 DB는 만들지 않았다.
-- 상세: docs/development/notion_level_art_sync_20261018/README.md
-- 환경 표현은 새 아트 문서, 실제 배치 수치는 기존 레벨 문서가 담당한다. HUD/전투/후처리 상세 규칙을 중복하지 말고 담당 문서로 연결해.
+- 문서 역할을 지키고 상세 규칙은 담당 문서로 연결한다. 같은 기획서/DB를 중복 생성하지 마.
+- 새 이미지 업로드는 없으며 기존 Notion 그림은 장식 적용 전 이력으로 표시했다.
 
-■ 검증 범위
-- 배치 작업 당시 좌표 회귀 Edit3/3, 실제 Play의26회 API 이동0.69·984좌표 설치 마스크 대조·길/점유 차단·정상100구매·자연피해13/Overlay 화면 확인.
-- 입구 작업 당시 정상 새 세션의 첫 자연 몬스터가(0.02,10)→(1.12,10)으로 기존 길을 따라 나오는 장면/뷰 좌표 확인. 원본 Transform282개·Tilemap6개·게임/피드백/카메라 직렬화 동일.
-- 위 검사는 집중 기능 QA다. 사람 직접 플레이·전체 회귀·밸런스·성능·최종 자연스러움 승인으로 표현하지 마.
-- 마지막 입구 작업 종료는 Play=false, 전투 씬1/dirty=false, 컴파일 실패false, 콘솔 오류0/경고0, TimeScale1/captureDelta0이었다. 이후 문서·Notion 정리에서는 새 Unity 조회/Play/검사·게임 변경을 하지 않았다. 재개 때 현재 상태를 다시 조회해.
-
-■ 기존 구현 보존
-- 능력치 HUD A안·손잡이/설치 포탑 심볼 B안·피해 HUD 유지. 제거한 ‘포탑 #번호 · 능력치’ 작은 요약 바/재개방 손잡이 재생성 금지.
-- 능력치창이 열릴 때만 실제 선택 대상 하나에 초록2px 아웃라인. 접기/유효 빈 바닥 첫 클릭에 선택 해제. 플레이어 본체/발밑 반복 클릭은 열기이며 닫기 토글이 아니다.
-- 강화 성공 B 청록 본체 스캔0.8초, 실제 구매 성공에만 표시. 코어 입자 현재 저장값0.025/0.1/초당4/최대12, 코드 기본max0.045로 초기화하지 마.
-- 카메라는 10월18일 사용자 선택③ 따뜻한 고대 설비: 대비+26/채도+7/노출-0.20EV, 그림자RGB(.46,.49,.54)/밝은색RGB(.54,.515,.48)/balance5. ColorAdjustments+SplitToning, post=true/HDR=false. 기존35/12/-0.45는 이전 값이다. Bloom/톤매핑/블러/비네트는 추가하지 않았다. docs/development/postprocess_map_options_20261018/applied_warm.md 참고. 새 전투/HUD 검증·Notion 동기화는 하지 않았다.
-- 포탑 발광 단일1/멀티3/지원1·단일 원본 포신 조준/반동, 플레이어/몬스터 보행·그림자·체력바·피해 숫자와 원본 아트/전투 수치 보존. 몬스터 보행 최신54f58ff 및 담당 기록 유지.
-- 상세 담당 링크는 AGENTS.md/UNITY_HANDOVER.md와 이전 HUD 인수인계 docs/development/resume_hud_latest_20261017.md를 따른다. 이전 인수인계의 맵 미적용/45×25 문구는 현재 상태가 아니다.
+■ 확인 범위와 제한
+- 장식 적용 당시 원본564컴포넌트·6맵939타일·원본61리소스해시 동일, 새Collider/Behaviour0.
+- 자체 Play 정상API4방향 이동/설치858(778초록·80빨강)/길 설치 거부/정상 멀티 구매/자연 몬스터4·Overlay 확인.
+- 종료 당시 Playfalse/pausedfalse·전투씬1/dirtyfalse·컴파일실패false·현재오류0/경고0·TimeScale1/captureDelta0.
+  이는 적용 종료 당시 상태이며 다음 변경 전 다시 조회해야 한다.
+- 집중 기능 QA다. 사람 직접 플레이·전체 회귀·밸런스·다수 전투 성능 통과가 아니다.
+- B② 당시 기존 CGPlay21/27의6실패는 꺼짐 수동 진단에서도 재현했다. 전체 통과로 쓰지 마.
+- 새 문서/Notion 정리를 새 Unity 검사로 표현하지 마.
 
 ■ Unity·Git 보호
-- Unity 변경 전 연결·열린 씬·Play·컴파일·저장 상태 재조회. 사용자 Play/다른 채팅 검사를 중단하거나 같은 에디터에서 검사 겹치지 마.
-- 전투 씬은 Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity 하나만 유지. 삭제 씬 복원/장식용 새 씬 생성 금지. 씬 YAML 직접 수정 금지, Unity CLI/에디터 API 사용.
-- 빌드·실행파일 실행·GitHub push 금지. 관련 파일만 로컬 커밋하고 실제 확인 결과만 기록해.
-- AudioProduction/·밸런스/BGM·다른 채팅 변경/미추적 자료 보존. font_tools_vendor 접근 오류의 삭제 표시를 실제 삭제로 단정하거나 커밋하지 마. raw 캡처/폐기 probe 폴더를 통째로 stage하지 마.
+- Unity 변경 전 연결·열린 씬·Play·컴파일·저장 상태 재조회.
+- 사용자 Play/다른 채팅 검사를 중단하거나 겹쳐 실행하지 마.
+- 전투 씬 Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity 하나만 유지.
+  씬 YAML 직접 수정 금지, Unity CLI/Editor API 사용. 비교/복구 씬 재생성 금지.
+- 빌드·실행파일 실행·GitHub push 금지.
+- AudioProduction/밸런스/BGM·다른 채팅 변경/미추적 자료 보존.
+- font_tools_vendor 접근 오류의 삭제 표시를 커밋하지 마.
+- 다음 작업 전 현재 HEAD·변경을 확인하고 관련 파일만 로컬 커밋한다.
