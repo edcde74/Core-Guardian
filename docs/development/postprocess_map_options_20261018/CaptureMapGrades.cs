@@ -9,6 +9,27 @@ using UnityEngine.Rendering.Universal;
 public static class CaptureMapGrades
 {
     const string Dir="docs/development/postprocess_map_options_20261018/";
+    public static object ApplySelectedWarm()
+    {
+        var scene=UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        if(EditorApplication.isPlayingOrWillChangePlaymode||EditorApplication.isCompiling||EditorUtility.scriptCompilationFailed||scene.isDirty||scene.path!="Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity")
+            throw new Exception("Stopped, compiled, saved combat scene required");
+        var camera=Camera.main;
+        var volume=UnityEngine.Object.FindObjectsByType<Volume>().Single(v=>v.isGlobal&&v.sharedProfile!=null);
+        var profile=volume.sharedProfile;
+        if(volume.HasInstantiatedProfile()||AssetDatabase.GetAssetPath(profile)!="Assets/Settings/CoreGuardianColorGrading.asset")throw new Exception("Unexpected profile; abort");
+        if(profile.components.Count!=2||!profile.TryGet<ColorAdjustments>(out var old)||!profile.Has<SplitToning>()||Mathf.Abs(old.contrast.value-35)>.001f||Mathf.Abs(old.saturation.value-12)>.001f||Mathf.Abs(old.postExposure.value+.45f)>.001f)throw new Exception("Current grade changed since comparison; abort");
+        Undo.RecordObjects(profile.components.ToArray(),"Apply selected warm machinery color grade");
+        Set(profile,26,7,-.20f,new Color(.46f,.49f,.54f),new Color(.54f,.515f,.48f),5);
+        foreach(var component in profile.components)EditorUtility.SetDirty(component);
+        EditorUtility.SetDirty(profile);AssetDatabase.SaveAssetIfDirty(profile);
+        Capture(camera,"04_applied_warm");
+        var saved=AssetDatabase.LoadAssetAtPath<VolumeProfile>(AssetDatabase.GetAssetPath(profile));
+        saved.TryGet<ColorAdjustments>(out var c);saved.TryGet<SplitToning>(out var s);
+        var report=new {selected=3,contrast=c.contrast.value,saturation=c.saturation.value,exposure=c.postExposure.value,shadows=new[]{s.shadows.value.r,s.shadows.value.g,s.shadows.value.b},highlights=new[]{s.highlights.value.r,s.highlights.value.g,s.highlights.value.b},balance=s.balance.value,hdr=camera.allowHDR,post=camera.GetComponent<UniversalAdditionalCameraData>().renderPostProcessing,components=saved.components.Select(x=>x.GetType().Name).ToArray(),sceneDirty=scene.isDirty,playing=EditorApplication.isPlaying};
+        File.WriteAllText(Dir+"applied_warm.json",Newtonsoft.Json.JsonConvert.SerializeObject(report,Newtonsoft.Json.Formatting.Indented));
+        return report;
+    }
     static void Capture(Camera camera,string name)
     {
         var previous=camera.targetTexture; var active=RenderTexture.active;
