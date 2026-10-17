@@ -7,6 +7,16 @@ using UnityEngine;
 public class CoreGuardianHitFlashTests
 {
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).FirstOrDefault(t=>t!=null);
+    [Test]
+    public void EmptyPropertyBlockReturnsToNoOverrideAfterFlash()
+    {
+        var type=Find("CoreGuardianHitFlash");var go=new GameObject("Empty flash block");var renderer=go.AddComponent<SpriteRenderer>();
+        try {
+            var block=new MaterialPropertyBlock();renderer.GetPropertyBlock(block);Assert.That(block.isEmpty,Is.True);
+            var flash=Activator.CreateInstance(type,new object[]{renderer});type.GetMethod("Trigger").Invoke(flash,null);type.GetMethod("Advance").Invoke(flash,new object[]{.12f});
+            Assert.That(renderer.HasPropertyBlock(),Is.False,"A renderer with no original overrides must not retain an empty override block that changes its sprite rendering path");
+        } finally {UnityEngine.Object.DestroyImmediate(go);}
+    }
     [TestCase("Attack","enemy_attack")]
     [TestCase("Defense","enemy_defense")]
     [TestCase("Buff","enemy_buff")]

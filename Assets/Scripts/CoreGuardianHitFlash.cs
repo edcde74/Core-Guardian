@@ -11,6 +11,7 @@ public sealed class CoreGuardianHitFlash
     readonly SpriteRenderer[] renderers;
     readonly Material[] originals;
     readonly MaterialPropertyBlock[] saved,working;
+    readonly bool[] hadPropertyBlocks;
     float age=Duration,cooldown;
     bool active;
     public CoreGuardianHitFlash(SpriteRenderer artwork)
@@ -23,6 +24,7 @@ public sealed class CoreGuardianHitFlash
         }
         renderers=artwork.GetComponentsInChildren<SpriteRenderer>(true).Where(r=>r.sprite==null||!r.sprite.name.Contains("Shadow")).ToArray();
         originals=new Material[renderers.Length];saved=new MaterialPropertyBlock[renderers.Length];working=new MaterialPropertyBlock[renderers.Length];
+        hadPropertyBlocks=new bool[renderers.Length];
         for(int i=0;i<renderers.Length;i++){saved[i]=new MaterialPropertyBlock();working[i]=new MaterialPropertyBlock();}
     }
     public bool Trigger()
@@ -30,7 +32,7 @@ public sealed class CoreGuardianHitFlash
         if(cooldown>0)return false;
         for(int i=0;i<renderers.Length;i++)if(renderers[i]!=null)
         {
-            originals[i]=renderers[i].sharedMaterial;renderers[i].GetPropertyBlock(saved[i]);renderers[i].GetPropertyBlock(working[i]);
+            originals[i]=renderers[i].sharedMaterial;hadPropertyBlocks[i]=renderers[i].HasPropertyBlock();renderers[i].GetPropertyBlock(saved[i]);renderers[i].GetPropertyBlock(working[i]);
             renderers[i].sharedMaterial=shared;
         }
         age=0;cooldown=RetriggerDelay;active=true;Apply(Strength);return true;
@@ -51,7 +53,11 @@ public sealed class CoreGuardianHitFlash
     {
         if(!active)return;
         for(int i=0;i<renderers.Length;i++)if(renderers[i]!=null)
-        {renderers[i].sharedMaterial=originals[i];renderers[i].SetPropertyBlock(saved[i]);}
+        {
+            renderers[i].sharedMaterial=originals[i];
+            // An empty override still changes sprite batching; restore absence as null, not an empty block.
+            renderers[i].SetPropertyBlock(hadPropertyBlocks[i]?saved[i]:null);
+        }
         active=false;
     }
 }

@@ -1,0 +1,1796 @@
+{
+  "diagnosticOnly": true,
+  "actualNaturalEnemy": 1,
+  "healthUnchanged": 27,
+  "poseFrozen": true,
+  "before": [
+    {
+      "name": "2D Sprite",
+      "enabled": false,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "Body",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftUpper",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftLower",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightUpper",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightLower",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "VerticalWalk",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "UpperBody",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftEquipment",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightEquipment",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftFoot",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightFoot",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    }
+  ],
+  "during": [
+    {
+      "name": "2D Sprite",
+      "enabled": false,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "Body",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": true,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftUpper",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": true,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftLower",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": true,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightUpper",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": true,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightLower",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": true,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "VerticalWalk",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "UpperBody",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftEquipment",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightEquipment",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftFoot",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightFoot",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "CoreGuardian/BodyHitFlash",
+      "hasOverride": true,
+      "empty": false,
+      "hit": 0.22,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    }
+  ],
+  "after": [
+    {
+      "name": "2D Sprite",
+      "enabled": false,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "Body",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftUpper",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftLower",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightUpper",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightLower",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "VerticalWalk",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "UpperBody",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftEquipment",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightEquipment",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftFoot",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightFoot",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    }
+  ],
+  "cleared": [
+    {
+      "name": "2D Sprite",
+      "enabled": false,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "Body",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftUpper",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftLower",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightUpper",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightLower",
+      "enabled": true,
+      "active": true,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "VerticalWalk",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "UpperBody",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftEquipment",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightEquipment",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "LeftFoot",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "RightFoot",
+      "enabled": true,
+      "active": false,
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "hasOverride": false,
+      "empty": true,
+      "hit": 0.0,
+      "props": [
+        {
+          "n": "unity_SpriteColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "unity_SpriteRendererColorArray",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_RendererColor",
+          "exists": false,
+          "value": "(0.00, 0.00, 0.00, 0.00)"
+        },
+        {
+          "n": "_MainTex",
+          "exists": false,
+          "value": null
+        }
+      ]
+    }
+  ],
+  "crop": [
+    97,
+    476,
+    181,
+    576
+  ]
+}

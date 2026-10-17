@@ -1,0 +1,55 @@
+{
+  "status": "completed",
+  "duration": 0.3,
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianHitFlashTests.BodyFlashFollowsAllWalkingDirections_AndRestoresMaterialsWithoutLightingShadow(\"Attack\",\"enemy_attack\")",
+      "Status": "Passed",
+      "Duration": 0.061904,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHitFlashTests.BodyFlashFollowsAllWalkingDirections_AndRestoresMaterialsWithoutLightingShadow(\"Defense\",\"enemy_defense\")",
+      "Status": "Passed",
+      "Duration": 0.0056176,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHitFlashTests.BodyFlashFollowsAllWalkingDirections_AndRestoresMaterialsWithoutLightingShadow(\"Buff\",\"enemy_buff\")",
+      "Status": "Passed",
+      "Duration": 0.0051515,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHitFlashTests.BodyFlashFollowsAllWalkingDirections_AndRestoresMaterialsWithoutLightingShadow(\"Boss\",\"\")",
+      "Status": "Passed",
+      "Duration": 0.0053916,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHitFlashTests.EmptyPropertyBlockReturnsToNoOverrideAfterFlash",
+      "Status": "Passed",
+      "Duration": 0.0014608,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHitFlashTests.RepeatedHitsCannotKeepTheBodyLit_AndOriginalPropertyBlockReturns",
+      "Status": "Passed",
+      "Duration": 0.0020463,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

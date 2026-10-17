@@ -4,6 +4,7 @@
 먼저 AGENTS.md → docs/development/UNITY_HANDOVER.md → docs/development/LOCAL_GIT.md → 이 파일을 읽고 실제 Git HEAD와 변경 상태를 확인해. 현재 사용자 지시와 최신 담당 Notion을 우선해.
 
 ■ 현재 작업 단계
+- 최신피격후속: B②와피격종료시빈속성블록이남는충돌을수정했다. 원래블록존재여부를저장/복구하며B②Inspector값과90ms/22%/100ms피격유지. 직접표현진단의같은자세피격전/종료후0픽셀차·Edit6/6확인. docs/development/hit_brightness_check_20261018/README.md참고. 전체회귀/사람플레이검사는아니다.
 - 최신 후속: 사용자 B② 선택으로 `CoreGuardian_Gameplay/CoreGuardianObjectEmphasis`를 저장했다. Inspector에서 상시윤곽두께/색/본체밝기 조절(현재1px/RGBA.06,.065,.075,.90/1.15),원본본체합집합만 처리. A원복배경/③색보정/초록선택선/강화/기존게임규칙 유지. 새Edit3/3·GPU2/2·정상API전투Inspector QA확인,기존CGPlay21/27의6실패는꺼짐수동진단에서도재현해전체통과로표현하지않는다. 최신기록은 docs/development/object_emphasis_B2_applied_20261018/README.md. 아래 B미선택 문구는 과거다.
 - 가장 최신: 사용자 A거부로 배경/길을 원래대로 복원하고 A 전용 게임 재질/셰이더를 정리했다. Assets는 `cec69ae`와동일(③색보정 유지)이다. B 개체강조3안은 임시 실제전투 비교만 했고 미선택/미적용이며 C도 미적용이다. 다음은 B후보피드백. docs/development/readability_B_preview_20261018/README.md를 따른다. 아래 A적용/피드백대기 문구는 원복 전 이력이다.
 - 후속: 사용자가③ 따뜻한 색보정 선택 후 가독성 A를 요청해 배경1/길242에만 질감 대비 완화 재질을 적용했다. ③색보정26/7/-.20·원본/땅굴/유닛/HUD·게임 규칙 유지. 자체 새 세션 정상100멀티구매/자연4몹·같은시점Overlay 전후 촬영 후 종료했다. 상세/비교는 docs/development/readability_A_20261018/README.md. 다음은 A 피드백이며 B/C 미적용, 밸런스 보류 유지. 아래 ‘다음 구체 시각 작업 미정’은 이 A요청 전 재개 단계다.
