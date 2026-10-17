@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 104,\n  \"executeMs\": 2904,\n  \"assemblyName\": \"PipelineRunScript_VerifyPointer_04ce4ab8838a4c7caed54461dec8559e\",\n  \"success\": true,\n  \"result\": {\n    \"passed\": true,\n    \"checks\": \"Actual InputSystem mouse UI open,UI down-hide-release,chooser click no placement,one install,floor fold/deselect,same-tower reopen,handle hit\",\n    \"kind\": \"Temporary mouse,diagnostic currency,TimeScale0,IgnoreFocus during QA; all restored; not human play/balance\"\n  }\n}"
+    }
+  ]
+}

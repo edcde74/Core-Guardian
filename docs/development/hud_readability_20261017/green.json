@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 1706,\n  \"executeMs\": 4,\n  \"assemblyName\": \"PipelineRunScript_VerifyReadability_aa8b0f15fe454e939a96a17936fc1028\",\n  \"success\": true,\n  \"result\": {\n    \"passed\": true,\n    \"checks\": \"right-side ability text,game terminology,no redundant player strip,actual combat details fold,resources retained,moving reopen handle,preserved collapse\",\n    \"kind\": \"Actual HUD callback QA, not human play or balance\"\n  }\n}"
+    }
+  ]
+}

@@ -8,10 +8,10 @@ public sealed partial class CoreGuardianHud
 {
     enum InspectorSubject { None, Player, Tower }
     InspectorSubject inspectorSubject;
-    bool inspectorOpen, purchaseOpen, developerOpen;
+    bool inspectorOpen, purchaseOpen, developerOpen, stageFolded;
     SessionPhase? displayedPhase;
     RectTransform inspectorFold, inspectorSummary;
-    UnityEngine.UI.Text playerInfo, towerTitle, summaryLabel;
+    UnityEngine.UI.Text playerInfo, playerTitle, towerTitle, summaryLabel;
     bool CanBuyPlayer=>game.Session.Phase==SessionPhase.Preparation||game.Session.Phase==SessionPhase.Combat;
 
     RectTransform SmallHandle(string name,Transform parent,Action action,bool horizontal)
@@ -32,9 +32,19 @@ public sealed partial class CoreGuardianHud
     {
         topDetails.sizeDelta=new Vector2(920,compact?52:72);
         foreach(Transform child in topDetails){var r=child as RectTransform;if(r==null||child.name=="Status")continue;bool icon=child.name.StartsWith("Symbol");r.anchoredPosition=new Vector2(r.anchoredPosition.x,compact?-12:(icon?-21:-16));if(!icon)r.sizeDelta=new Vector2(r.sizeDelta.x,compact?28:40);}
-        var fold=canvas.Find("TopFold") as RectTransform;
-        if(fold!=null){fold.anchoredPosition=new Vector2(0,compact?-64:-84);fold.Find("HandleArt").localScale=new Vector3(compact?-1:1,1,1);}
-        var stage=canvas.Find("StagePlate") as RectTransform;if(stage!=null)stage.anchoredPosition=new Vector2(0,compact?-100:-120);
+        var stage=canvas.Find("StagePlate") as RectTransform;if(stage!=null)stage.anchoredPosition=new Vector2(0,compact?-74:-94);
+    }
+    void RefreshStageFold()
+    {
+        var phase=game.Session.Phase;
+        var stage=(RectTransform)canvas.Find("StagePlate");var handle=(RectTransform)canvas.Find("TopFold");
+        // The user's collapse choice hides combat details, while preparation/augmentation timers
+        // retain their existing phase-specific presentation and the resource row stays visible.
+        bool hidden=phase==SessionPhase.Combat&&stageFolded;
+        stage.gameObject.SetActive(!hidden);
+        handle.gameObject.SetActive(phase==SessionPhase.Combat);
+        handle.anchoredPosition=new Vector2(0,hidden?topDetails.anchoredPosition.y-topDetails.sizeDelta.y:stage.anchoredPosition.y-stage.sizeDelta.y);
+        handle.Find("HandleArt").localScale=new Vector3(hidden?-1:1,1,1);
     }
     void BuildDeveloperMenu()
     {
@@ -50,17 +60,17 @@ public sealed partial class CoreGuardianHud
         playerPanel=Box("PlayerGrowthPanel",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,220));
         towerPanel=Box("TowerInformation",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,270));
         CoreGuardianHudSkin.Icon(playerPanel,"Upgrade",new Vector2(16,-16),new Vector2(28,28));
-        Text("Title",playerPanel,new Vector2(54,-12),new Vector2(820,32),22).text="기술병 · 현재 스펙 / 강화";
+        playerTitle=Text("Title",playerPanel,new Vector2(54,-12),new Vector2(820,32),22);
         CoreGuardianHudSkin.Icon(towerPanel,"Install",new Vector2(16,-16),new Vector2(28,28));
         towerTitle=Text("Title",towerPanel,new Vector2(54,-12),new Vector2(820,32),22);
         foreach(var panel in new[]{playerPanel,towerPanel})
         {
             bool isPlayer=panel==playerPanel;
-            Button(isPlayer?"PlayerSpecTab":"TowerSpecTab",panel,new Vector2(16,-52),new Vector2(190,44),()=>"현재 스펙",()=>{purchaseOpen=false;Refresh();});
-            Button(isPlayer?"PlayerBuyTab":"TowerBuyTab",panel,new Vector2(218,-52),new Vector2(190,44),()=>"강화 구매",()=>{purchaseOpen=true;Refresh();},()=>isPlayer?CanBuyPlayer:game.Session.Phase==SessionPhase.Preparation);
+            Button(isPlayer?"PlayerSpecTab":"TowerSpecTab",panel,new Vector2(16,-56),new Vector2(220,56),()=>"현재 능력치",()=>{purchaseOpen=false;Refresh();});
+            Button(isPlayer?"PlayerBuyTab":"TowerBuyTab",panel,new Vector2(16,-120),new Vector2(220,56),()=>"능력치 강화",()=>{purchaseOpen=true;Refresh();},()=>isPlayer?CanBuyPlayer:game.Session.Phase==SessionPhase.Preparation);
         }
-        playerInfo=Text("Stats",playerPanel,new Vector2(20,-108),new Vector2(860,100),20);
-        towerInfo=Text("Stats",towerPanel,new Vector2(20,-108),new Vector2(860,100),20);
+        playerInfo=Text("Stats",playerPanel,new Vector2(264,-56),new Vector2(612,150),22);playerInfo.alignment=TextAnchor.UpperLeft;
+        towerInfo=Text("Stats",towerPanel,new Vector2(264,-56),new Vector2(612,128),20);towerInfo.alignment=TextAnchor.UpperLeft;
         var stats=new[]{"damage","rate","projectileSpeed","range"};
         for(int i=0;i<stats.Length;i++)
         {
@@ -74,7 +84,7 @@ public sealed partial class CoreGuardianHud
             var b=Button("Tower_"+stat,towerPanel,Vector2.zero,new Vector2(426,80),()=>Selected()==null?"":UpgradeLabel(Selected().Stats,Selected().Kind.ToString(),captured,Price(captured),"수정"),()=>PurchaseTower(captured),()=>TowerCanUpgrade(captured));
             refresh.Add(()=>{var t=Selected();bool relevant=t!=null&&Relevant(t,captured);b.gameObject.SetActive(purchaseOpen&&relevant);if(relevant){int row=t.Kind==TowerKind.Support?(captured=="range"?0:1):index;((RectTransform)b.transform).anchoredPosition=new Vector2(16+row%2*442,-108-row/2*88);}});
         }
-        Button("Destroy",towerPanel,new Vector2(16,-216),new Vector2(426,44),()=>"파괴 · 실제 지출 50% 환급",()=>game.DestroySelected(),()=>CanBuyPlayer&&Selected()!=null);
+        Button("Destroy",towerPanel,new Vector2(264,-188),new Vector2(612,44),()=>"포탑 철거 · 사용한 수정 50% 반환",()=>game.DestroySelected(),()=>CanBuyPlayer&&Selected()!=null);
         inspectorFold=SmallHandle("InspectorFold",canvas,()=>TryFoldDetails(),true);
         inspectorSummary=Box("InspectorSummary",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(340,42));
         summaryLabel=Text("Target",inspectorSummary,new Vector2(12,-6),new Vector2(250,30),18);
@@ -125,25 +135,38 @@ public sealed partial class CoreGuardianHud
         bool towerOpen=inspectorOpen&&inspectorSubject==InspectorSubject.Tower&&selected!=null&&!installOpen;
         towerFolded=!towerOpen;
         playerPanel.gameObject.SetActive(playerOpen);towerPanel.gameObject.SetActive(towerOpen);
-        playerPanel.sizeDelta=new Vector2(900,purchaseOpen?300:220);towerPanel.sizeDelta=new Vector2(900,purchaseOpen?354:270);
+        playerPanel.sizeDelta=new Vector2(900,purchaseOpen?300:220);towerPanel.sizeDelta=new Vector2(900,purchaseOpen?354:250);
+        foreach(var panel in new[]{playerPanel,towerPanel})
+        {
+            bool isPlayer=panel==playerPanel;int index=0;
+            foreach(var name in new[]{isPlayer?"PlayerSpecTab":"TowerSpecTab",isPlayer?"PlayerBuyTab":"TowerBuyTab"})
+            {
+                var tab=(RectTransform)panel.Find(name);tab.anchoredPosition=purchaseOpen?new Vector2(16+index*442,-52):new Vector2(16,-56-index*64);
+                tab.sizeDelta=purchaseOpen?new Vector2(426,44):new Vector2(220,56);
+                var label=(RectTransform)tab.Find("Label");label.anchoredPosition=new Vector2(54,purchaseOpen?-8:-16);label.sizeDelta=tab.sizeDelta-new Vector2(70,purchaseOpen?16:32);
+                index++;
+            }
+        }
         playerInfo.gameObject.SetActive(!purchaseOpen);towerInfo.gameObject.SetActive(!purchaseOpen);
         var st=s.Player;
-        playerInfo.text="공격력 "+StatDisplay(st.Damage,"damage")+"       공격속도 "+st.Rate.ToString("0.##")+"발/초\n사거리 "+st.Range.ToString("0.##")+"타일       투사체 "+st.ProjectileSpeed.ToString("0.##")+"타일/초\n추가 투사체 "+s.Augments.ExtraPlayerProjectiles+"발 · 명중 둔화 "+(s.Augments.PlayerSlow?"적용":"없음");
+        playerTitle.text=purchaseOpen?"플레이어 강화":"플레이어 능력치";
+        playerInfo.text="공격력 "+StatDisplay(st.Damage,"damage")+" · 공격속도 "+st.Rate.ToString("0.##")+"발/초\n사거리 "+st.Range.ToString("0.##")+"타일 · 탄환 속도 "+st.ProjectileSpeed.ToString("0.##")+"타일/초\n추가 발사 "+s.Augments.ExtraPlayerProjectiles+"발 · 둔화 효과 "+(s.Augments.PlayerSlow?"있음":"없음");
         if(selected!=null)
         {
-            st=selected.Stats;towerTitle.text=TowerName(selected.Kind)+" #"+selected.Id+" · "+(purchaseOpen?"강화 구매":"현재 스펙");
+            st=selected.Stats;towerTitle.text=TowerName(selected.Kind)+" #"+selected.Id+" · "+(purchaseOpen?"능력치 강화":"능력치");
             float support=s.Towers.Where(t=>t.Kind==TowerKind.Support&&Vector2.Distance(t.Position,selected.Position)<=t.Stats.Range).Sum(t=>t.Stats.BuffDamage);
             float buff=support+s.Augments.TowerBuffPercent;
-            towerInfo.text=selected.Kind==TowerKind.Support?"지원 공격력 +"+st.BuffDamage.ToString("0.##")+"% · 반경 "+st.Range.ToString("0.##")+"타일\n범위 안 공격 포탑에 적용 · 직접 공격 없음":
-                "공격력 "+StatDisplay(st.Damage,"damage")+" · 보정 반영 "+StatDisplay(st.Damage*(1+buff/100f),"damage")+"       공격속도 "+st.Rate.ToString("0.##")+"발/초\n사거리 "+st.Range.ToString("0.##")+"타일       투사체 "+st.ProjectileSpeed.ToString("0.##")+"타일/초\n공격력 보정: 지원 +"+support.ToString("0.##")+"% / 증강 +"+s.Augments.TowerBuffPercent+"% · 적 방어 적용 전";
-            ((RectTransform)towerPanel.Find("Destroy")).anchoredPosition=new Vector2(16,purchaseOpen?-300:-216);
+            towerInfo.text=selected.Kind==TowerKind.Support?"공격력 증가 +"+st.BuffDamage.ToString("0.##")+"%\n지원 범위 "+st.Range.ToString("0.##")+"타일\n범위 안 공격 포탑의 공격력을 높입니다.\n직접 공격하지 않습니다.":
+                "공격력 "+StatDisplay(st.Damage,"damage")+" · 공격속도 "+st.Rate.ToString("0.##")+"발/초\n사거리 "+st.Range.ToString("0.##")+"타일 · 탄환 속도 "+st.ProjectileSpeed.ToString("0.##")+"타일/초\n지원 포탑 +"+support.ToString("0.##")+"% · 증강 +"+s.Augments.TowerBuffPercent+"%\n버프 적용 공격력 "+StatDisplay(st.Damage*(1+buff/100f),"damage")+" (적 방어력 적용 전)";
+            var destroy=(RectTransform)towerPanel.Find("Destroy");destroy.anchoredPosition=purchaseOpen?new Vector2(16,-300):new Vector2(264,-188);destroy.sizeDelta=new Vector2(purchaseOpen?868:612,44);
+            ((RectTransform)destroy.Find("Label")).sizeDelta=new Vector2(destroy.sizeDelta.x-70,28);
         }
         bool details=playerOpen||towerOpen||installOpen;
         inspectorFold.gameObject.SetActive(details&&s.Phase!=SessionPhase.Augmentation);
         inspectorFold.anchoredPosition=new Vector2(0,112+(installOpen?installPanel.sizeDelta.y:playerOpen?playerPanel.sizeDelta.y:towerPanel.sizeDelta.y));
-        bool hasTarget=inspectorSubject==InspectorSubject.Player||selected!=null;
+        bool hasTarget=inspectorSubject==InspectorSubject.Tower&&selected!=null;
         inspectorSummary.gameObject.SetActive(!details&&hasTarget&&s.Phase!=SessionPhase.Augmentation);
-        summaryLabel.text=inspectorSubject==InspectorSubject.Player?"기술병 · 스펙":selected==null?"":"포탑 #"+selected.Id+" · 스펙";
+        summaryLabel.text=selected==null?"":"포탑 #"+selected.Id+" · 능력치";
         foreach(var name in new[]{"PrototypeActions","Reload","TestSpeed"}){var node=canvas.Find(name);if(node!=null)node.gameObject.SetActive(developerOpen);}
         var cancel=canvas.Find("CancelPlacement");if(cancel!=null)cancel.gameObject.SetActive(game.Installing.HasValue);
     }
