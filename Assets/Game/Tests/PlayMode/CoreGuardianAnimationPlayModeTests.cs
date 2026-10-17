@@ -13,6 +13,57 @@ public class CoreGuardianAnimationPlayModeTests
 {
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).First(t=>t!=null);
     [UnityTest]
+    public IEnumerator FrontGait_AllOtherEnemiesAlternateOnActualDownwardWaypoints()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var type=Find("CoreGuardianPrototype");var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var session=(CoreGuardian.Session)type.GetProperty("Session").GetValue(game);
+        var flags=System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance;
+        var path=(System.Collections.Generic.List<Vector2>)typeof(CoreGuardian.Session).GetField("path",flags).GetValue(session);
+        float distance=0;int segment=-1;
+        for(int i=0;i<path.Count-1;i++){var step=path[i+1]-path[i];if(step.y<-.5f&&Mathf.Abs(step.y)>Mathf.Abs(step.x)){segment=i;break;}distance+=step.magnitude;}
+        Assert.That(segment,Is.GreaterThanOrEqualTo(0),"Use the actual scene's downward route, not a replacement board");
+        var views=(System.Collections.IDictionary)type.GetField("enemyViews",flags).GetValue(game);
+        game.enabled=false;session.StartCombat();
+        var kinds=new[]{CoreGuardian.EnemyKind.Defense,CoreGuardian.EnemyKind.Buff,CoreGuardian.EnemyKind.Boss};
+        var enemies=kinds.Select((k,i)=>session.DebugSpawn(k,distance+.1f+i*.7f)).ToArray();
+        var heights=new System.Collections.Generic.List<float>[3,2];var poses=new System.Collections.Generic.HashSet<string>[3];
+        for(int i=0;i<3;i++){poses[i]=new System.Collections.Generic.HashSet<string>();for(int b=0;b<2;b++)heights[i,b]=new System.Collections.Generic.List<float>();}
+        type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
+        var previous=enemies.Select(e=>e.Position).ToArray();
+        for(int step=0;step<100;step++)
+        {
+            session.Tick(.025f,new Vector2(-100,-100));type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
+            for(int i=0;i<3;i++)
+            {
+                var delta=enemies[i].Position-previous[i];previous[i]=enemies[i].Position;
+                if(delta.y>=-.00001f||Mathf.Abs(delta.x)>Mathf.Abs(delta.y))continue;
+                var view=(GameObject)views[enemies[i].Id];var art=view.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");
+                var vertical=art.transform.Find("VerticalWalk");
+                Assert.That(vertical.gameObject.activeInHierarchy,Is.True);Assert.That(vertical.GetComponent<SpriteRenderer>().enabled,Is.False,"Fixed front legs must not be drawn behind the moving pair");
+                var sprite=vertical.GetComponent<SpriteRenderer>().sprite;Assert.That(sprite.name,Does.StartWith("Down_"));poses[i].Add(sprite.name);
+                for(int b=0;b<2;b++){var foot=vertical.Find(b==0?"LeftFoot":"RightFoot");Assert.That(foot.gameObject.activeInHierarchy&&foot.GetComponent<SpriteRenderer>().enabled,Is.True);heights[i,b].Add(foot.localPosition.y*32);}
+            }
+            if(step%20==0)yield return null;
+        }
+        for(int i=0;i<3;i++)
+        {
+            Assert.That(poses[i].Count,Is.EqualTo(4),kinds[i]+" must present all four source upper-body frames on the route");
+            for(int b=0;b<2;b++)Assert.That(heights[i,b].Max()-heights[i,b].Min(),Is.GreaterThan(3),kinds[i]+" both boots must lift and return on the real down segment");
+            var unit=((GameObject)views[enemies[i].Id]).GetComponent(Find("CoreGuardianUnitAnimation"));
+            unit.GetType().GetMethod("Move").Invoke(unit,new object[]{Vector2.zero,.1f});unit.GetType().GetMethod("Present").Invoke(unit,new object[]{.1f});
+            var vertical=unit.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="VerticalWalk").transform;
+            Assert.That(vertical.Find("LeftFoot").localPosition.y,Is.Zero);Assert.That(vertical.Find("RightFoot").localPosition.y,Is.Zero);
+            unit.GetType().GetMethod("Move").Invoke(unit,new object[]{Vector2.up,.1f});unit.GetType().GetMethod("Present").Invoke(unit,new object[]{.1f});
+            Assert.That(vertical.GetComponent<SpriteRenderer>().enabled,Is.True,"Unchanged rear frames must replace the front cutouts");Assert.That(vertical.Find("LeftFoot").gameObject.activeSelf,Is.False);
+        }
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks()
     {
 #if UNITY_EDITOR

@@ -35,19 +35,22 @@ public class CoreGuardianOriginalGaitTests
         }
         finally{UnityEngine.Object.DestroyImmediate(texture);UnityEngine.Object.DestroyImmediate(clone);}
     }
-    [TestCase(1f)]
-    [TestCase(-1f)]
-    public void VerticalAttackWalkAlternatesBothVisibleBoots(float direction)
+    [TestCase("Attack","enemy_attack",14f,1f)]
+    [TestCase("Attack","enemy_attack",14f,-1f)]
+    [TestCase("Defense","enemy_defense",10f,-1f)]
+    [TestCase("Buff","enemy_buff",12f,-1f)]
+    [TestCase("Boss","",18f,-1f)]
+    public void VerticalWalkAlternatesBothVisibleBoots(string role,string name,float cycle,float direction)
     {
-        var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_attack.prefab");
+        var prefab=role=="Boss"?Resources.Load<GameObject>("CoreGuardian/Animation/Boss/BossAnimated"):AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/"+name+".prefab");
         var clone=UnityEngine.Object.Instantiate(prefab);
         try
         {
             var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");
             var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianUnitAnimation")).First(t=>t!=null);
-            var unit=type.GetMethod("Attach").Invoke(null,new object[]{clone,"Attack"});
+            var unit=type.GetMethod("Attach").Invoke(null,new object[]{clone,role});
             var left=new System.Collections.Generic.List<float>();var right=new System.Collections.Generic.List<float>();
-            var velocity=Vector2.up*(direction*14*art.transform.lossyScale.x/32);
+            var velocity=Vector2.up*(direction*cycle*art.transform.lossyScale.x/32);
             for(int frame=0;frame<48;frame++)
             {
                 type.GetMethod("Move").Invoke(unit,new object[]{velocity,1/48f});type.GetMethod("Present").Invoke(unit,new object[]{1/48f});

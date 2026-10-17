@@ -64,7 +64,7 @@ public sealed class CoreGuardianOriginalWalk
             if(verticalFrames[d,f]==null)throw new System.InvalidOperationException("Missing directional walk frame "+path);
         }
         vertical.gameObject.SetActive(false);
-        if(role=="Attack")verticalLegs=new VerticalLegPair(vertical,verticalFrames);
+        verticalLegs=new VerticalLegPair(vertical,verticalFrames,role);
     }
     SpriteRenderer Layer(string name,string role)
     {
@@ -163,20 +163,34 @@ public sealed class CoreGuardianOriginalWalk
         readonly SpriteRenderer[] bodyParts;
         readonly Rect[][] bodyRects;
         readonly Sprite[] templates=new Sprite[2];
-        public VerticalLegPair(SpriteRenderer renderer,Sprite[,] frames)
+        readonly bool frontOnly;
+        readonly float leftX,rightX;
+        readonly Sprite frontRest;
+        public VerticalLegPair(SpriteRenderer renderer,Sprite[,] frames,string role)
         {
             body=renderer;
-            bodyRects=new[]{BodyRects(frames[0,0],true),BodyRects(frames[1,0],false)};
-            bodyParts=new[]{FootRenderer("UpperBody"),FootRenderer("LeftEquipment"),FootRenderer("RightEquipment")};
+            frontOnly=role!="Attack";
+            frontRest=frames[1,0];
+            // Cut only the fixed front legs. Keep shield/banner/hammer columns and
+            // every upper-body frame in place; rear artwork remains unchanged.
+            int top=19,cutLeft=42,cutRight=59,bootX=44,bootWidth=7,bootHeight=23;
+            leftX=-3;rightX=5;
+            if(role=="Defense"){top=22;cutLeft=43;cutRight=55;bootX=48;bootWidth=6;bootHeight=22;leftX=-4;rightX=3;}
+            else if(role=="Buff"){top=22;cutLeft=43;cutRight=58;bootX=44;bootWidth=8;bootHeight=22;leftX=-1.5f;rightX=6.5f;}
+            else if(role=="Boss"){top=25;cutLeft=40;cutRight=67;bootX=45;bootWidth=12;bootHeight=25;leftX=-1;rightX=12;}
+            bodyRects=new[]{frontOnly?null:BodyRects(frames[0,0],19,39,59),frontOnly?FrontBodyRects(frontRest,top,cutLeft,cutRight):BodyRects(frontRest,top,cutLeft,cutRight)};
+            bodyParts=frontOnly?new[]{FootRenderer("UpperBody"),FootRenderer("LeftEquipment"),FootRenderer("RightEquipment"),FootRenderer("HipCloth")}:new[]{FootRenderer("UpperBody"),FootRenderer("LeftEquipment"),FootRenderer("RightEquipment")};
             leftFoot=FootRenderer("LeftFoot");rightFoot=FootRenderer("RightFoot");rightFoot.flipX=true;
             for(int d=0;d<2;d++)
             {
+                if(frontOnly&&d==0)continue;
                 var source=frames[d,0];var key=source;
                 if(!boots.TryGetValue(key,out var boot)||boot==null)
                 {
                     // Rear and front drawings have different leg columns. The rear leg is
                     // x40..46; x44..50 retained only its thin edge plus part of the bent leg.
-                    boot=Sprite.Create(source.texture,new Rect(source.rect.x+(d==0?40:44),source.rect.y,7,23),new Vector2(.5f,3f/23),source.pixelsPerUnit);
+                    int height=d==0?23:bootHeight;
+                    boot=Sprite.Create(source.texture,new Rect(source.rect.x+(d==0?40:bootX),source.rect.y,d==0?7:bootWidth,height),new Vector2(.5f,3f/height),source.pixelsPerUnit);
                     boot.name=source.name+"_Boot";boot.hideFlags=HideFlags.HideAndDontSave;boots[key]=boot;
                 }
                 templates[d]=boot;
@@ -186,24 +200,32 @@ public sealed class CoreGuardianOriginalWalk
         {
             var renderer=new GameObject(name).AddComponent<SpriteRenderer>();renderer.transform.SetParent(body.transform,false);renderer.sharedMaterial=body.sharedMaterial;return renderer;
         }
-        static Rect[] BodyRects(Sprite source,bool rear)=>new[]{new Rect(0,19,source.rect.width,source.rect.height-19),new Rect(0,0,rear?39:42,19),new Rect(59,0,source.rect.width-59,19)};
-        static Sprite[] BodyWithoutFixedLegs(Sprite source,Rect[] rects)
+        static Rect[] BodyRects(Sprite source,int top,int left,int right)=>new[]{new Rect(0,top,source.rect.width,source.rect.height-top),new Rect(0,0,left,top),new Rect(right,0,source.rect.width-right,top)};
+        static Rect[] FrontBodyRects(Sprite source,int top,int left,int right)=>new[]{new Rect(0,top+10,source.rect.width,source.rect.height-top-10),new Rect(0,0,left,top+10),new Rect(right,0,source.rect.width-right,top+10),new Rect(left,top,right-left,10)};
+        static Sprite[] BodyWithoutFixedLegs(Sprite source,Rect[] rects,Sprite rest)
         {
             if(bodies.TryGetValue(source,out var found)&&found[0]!=null)return found;
             var sprites=new Sprite[rects.Length];
             for(int i=0;i<rects.Length;i++)
             {
-                var rect=rects[i];rect.position+=source.rect.position;
-                sprites[i]=Sprite.Create(source.texture,rect,new Vector2(.5f,0),source.pixelsPerUnit);
+                // A few source frames raise a fixed knee into the hem. Keep the
+                // resting hip/cloth strip so it cannot appear as a third knee.
+                var art=i==3?rest:source;
+                var rect=rects[i];rect.position+=art.rect.position;
+                sprites[i]=Sprite.Create(art.texture,rect,new Vector2(.5f,0),art.pixelsPerUnit);
                 sprites[i].name=source.name+"_Body"+i;sprites[i].hideFlags=HideFlags.HideAndDontSave;
             }
             bodies[source]=sprites;return sprites;
         }
         public void Present(Sprite source,int direction,float phase,bool walking)
         {
+            bool split=!frontOnly||direction==1;
+            foreach(var part in bodyParts)part.gameObject.SetActive(split);
+            leftFoot.gameObject.SetActive(split);rightFoot.gameObject.SetActive(split);
+            if(!split){body.enabled=true;return;}
             body.enabled=false;
             var rects=bodyRects[direction];
-            var sprites=BodyWithoutFixedLegs(source,rects);
+            var sprites=BodyWithoutFixedLegs(source,rects,frontRest);
             for(int i=0;i<bodyParts.Length;i++)
             {
                 var part=bodyParts[i];part.sprite=sprites[i];
@@ -212,8 +234,8 @@ public sealed class CoreGuardianOriginalWalk
             }
             leftFoot.sprite=rightFoot.sprite=templates[direction];
             float Lift(float p)=>walking?Mathf.Max(0,Mathf.Sin(p*Mathf.PI*2))*3.5f:0;
-            leftFoot.transform.localPosition=new Vector3(-3,Lift(phase),0)/source.pixelsPerUnit;
-            rightFoot.transform.localPosition=new Vector3(5,Lift(phase+.5f),0)/source.pixelsPerUnit;
+            leftFoot.transform.localPosition=new Vector3(leftX,Lift(phase),0)/source.pixelsPerUnit;
+            rightFoot.transform.localPosition=new Vector3(rightX,Lift(phase+.5f),0)/source.pixelsPerUnit;
             CopyPresentation(leftFoot);CopyPresentation(rightFoot);
         }
         void CopyPresentation(SpriteRenderer foot){foot.color=body.color;foot.sortingLayerID=body.sortingLayerID;foot.sortingOrder=body.sortingOrder;}
