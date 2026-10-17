@@ -1,0 +1,25 @@
+{
+  "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+  "dirty": false,
+  "profile": "Assets/Settings/CoreGuardianColorGrading.asset",
+  "components": [
+    "ColorAdjustments",
+    "SplitToning"
+  ],
+  "contrast": 10.0,
+  "saturation": 6.0,
+  "shadows": [
+    0.47,
+    0.49,
+    0.53
+  ],
+  "highlights": [
+    0.53,
+    0.51,
+    0.47
+  ],
+  "hdr": false,
+  "post": true,
+  "volumeMask": 1,
+  "note": "Only ColorAdjustments and SplitToning. No Bloom, HDR change, tonemapping, blur, vignette or antialiasing change."
+}

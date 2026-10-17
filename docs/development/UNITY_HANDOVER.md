@@ -1,14 +1,14 @@
 # 코어 가디언 Unity 인수인계
 
-최종 갱신: 2026-10-17 (Asia/Seoul). 현재 사용자 지시와 최신 담당 노션이 우선이다. 새 대화용 복사 텍스트: [resume_20261017.md](resume_20261017.md). 최신 작업은 사용자 선택 포탑 국소 발광 단일1/멀티3/지원1 적용이다. 피해 게이지/역할 심볼/황동 손잡이와 코어 전용 발광/움직이는 입자를 보존했다.
+최종 갱신: 2026-10-17 (Asia/Seoul). 현재 사용자 지시와 최신 담당 노션이 우선이다. 새 대화용 복사 텍스트: [resume_20261017.md](resume_20261017.md). 최신 시각 작업은 사용자 승인 약한 카메라 색보정 적용이다. 만족 확인한 포탑 발광 단일1/멀티3/지원1·피해 게이지/역할 심볼/황동 손잡이·코어 국소 효과를 보존했다.
 
-초기 재개의 HEAD `0b8847c`·Play3배속은 과거 조회다. 최신 HUD자체Play는화면의Stop으로종료했으며미저장별표없음을확인했다. 이후CLI상태재조회는시간초과여서콘솔오류0/최종API상태정상을주장하지않는다. 아래HUD기록의확인범위와남은회귀를따른다. 미추적 `AudioProduction/`·밸런스/BGM 자료와 `font_tools_vendor` 접근 오류에 따른 삭제 표시는 보존하며 실제 삭제로 확정하지 않는다.
+최신 색보정 작업 종료 조회는 Play=false/dirty=false·컴파일 실패 없음·현재 콘솔 오류0/경고0·TimeScale1/captureDelta0·HDR=false/post=true/Volume1이다. 이전 HUD/API 시간초과와 HEAD `0b8847c`·Play3배속은 과거 확인값이다. 미추적 `AudioProduction/`·밸런스/BGM 자료와 `font_tools_vendor` 접근 오류에 따른 삭제 표시는 보존하며 실제 삭제로 확정하지 않는다.
 
 ## 재개 시 먼저 확인
 
 - **최신 시각 작업 우선순위(2026-10-17):** 셰이더·카메라 후처리·VFX를 마무리한다. 밸런스는 시각 작업 완료 뒤 사용자가 별도 시간을 정해 진행하며 지금은 테스트·수치 변경으로 전환하지 않는다. 다음 시각 작업은 아래 담당 기록의 구현/남은 항목을 확인한 뒤 사용자와 결정한다. 미선택 조명·Bloom·HDR·전체 후처리를 임의 적용하지 않는다.
-- **이번 재개에서 실제 조회:** 시작 HEAD `102942a`(HUD 재개 문서 추가), 포탑 적용 `37652cf`와 동기화 `9d076c7` 포함. 게임 코드/Assets/Packages/ProjectSettings의 추적 변경과 스테이징은 없었다. 미추적 AudioProduction/·balance_tension_20261013/·bgm_sketches_20261013.md와 font_tools_vendor 접근 오류/삭제 표시는 보존했다. Unity6000.6.2f1/CD 응답 확인, 전투 씬1 active/dirty=false, Play/paused/compiling/compilationFailed=false, TimeScale1/captureDelta0, Main Camera HDR=false/post=false, Volume0, 현재 콘솔 오류0/경고0. 실행기 조회는 completed 0건으로 새 통과가 아니다. 새 Play·자동검사·효과 적용 없이 읽기 조회와 문서 정리만 했다.
-- **남은 시각 판단:** 적용 포탑/코어 효과의 정상 다수 전투 HUD·피해 숫자 판독/중첩/성능 확인은 각 [포탑](tower_glow_applied_20261017/README.md)·[코어](core_ambient_20261017/README.md) 기록을 따른다. 카메라 후처리는 [현재 씬 비교](postprocess_current_scene_20261017/README.md)·[조합 시안](visual_options_20261017/README.md)까지이며 영구 미적용이다. 다음 작업 선택 전에는 이 미검증 범위를 완료로 처리하지 않는다.
+- **최신 색보정 적용·조회:** 복구 기준 `c7e9b31`, 병행 HUD 문서 커밋 `57a115e` 보존. 대비+10/채도+6·약한 SplitToning만 프로필과 전투 씬에 저장했다. HDR=false·Bloom/톤매핑/흐림/비네트 미추가. 자체 Play에서 실제 Volume stack과 정상 구매 포탑의 자연 피해13·Overlay HUD를 확인하고 같은 시점 OFF/ON 화면을 확보했다. HUD 콜백 호출이며 사람 직접 입력/밸런스 측정이 아니다. 임시 TimeScale/weight 복원·자체 Play 종료 후 위 최종 상태와 콘솔 오류0/경고0을 조회했다. 새 자동 테스트 스위트/전체 회귀/성능 검사는 하지 않았다. [설정·캡처·검증 범위·관련 파일](postprocess_current_scene_20261017/README.md).
+- **남은 시각 판단:** 약한 색보정은 적용됐으며 실제 화면의 최종 색감 선호를 사용자와 확인한다. 미선택 [조합 시안](visual_options_20261017/README.md)·Bloom은 적용하지 않았다. 포탑 셰이더는 이미 만족 확인을 받았으므로 추가 검증을 다음 작업의 선행 조건으로 요구하지 않는다. 미실시 다수 전투/성능 검토는 각 [포탑](tower_glow_applied_20261017/README.md)·[코어](core_ambient_20261017/README.md) 기록에 보존한다.
 - **이 채팅의 HUD 사용성 검토(2026-10-17):** 사용자 직접 지시에 따라 HUD를 우선 조사했다. 최신 담당Notion7문서·현재3소스·실제Overlay준비화면을 대조하고 [단계별 흐름표·배치3안·입력 충돌 계약](hud_ux_analysis_20261017/README.md)을 작성했다. 추천은 하단 정보창이며 **사용자 검토 대기/게임 미적용**이다. 기존 픽셀 아트·피해 HUD·병행VFX 보존, 스펙 조회/구매 분리·전투 진입 접기·빈 바닥 클릭 소비를 제안했다. 초기Play정지/씬dirtyfalse였으나09:04~09:05재조회에서는외부Play중/씬dirtyfalse·준비1R·TimeScale1/captureDelta0·Overlay1920×1080을확인하고입력없이캡처했다. 시작/정지/테스트/빌드/Notion수정없음. HTML시안표시검사는Unity기능검증이아니다. 병행HEAD `c7e9b31`과씬후처리/Volume변경은보존하고이번HUD기록커밋에포함하지않는다. 다른시각작업의우선순위/결정과이채팅요청을구분한다. [요청전문](resume_hud_ux_20261017.md).
 
 - **10월17일 사용자 지시로 씬 정리 완료:** 삭제 전 로컬 복구 커밋 `a306a60`에 기존 씬/메타·종속템플릿26파일을 확인·보관하고,전투 씬 하나만 남겼다. 비교·샘플·복구·기본템플릿 씬11개와 종속 Lit2DSceneTemplate을 에디터API로 삭제하고 빌드목록도 전투 씬 하나로 정리했다. 원본 프리팹/아트 보존·남긴 씬SHA256동일·끊어진 씬GUID참조0. 실제 자체Play에서Ready/HUD/1R준비 확인 후 종료,최종dirtyfalse/컴파일false/콘솔오류0. 자동검사는0건반환이라 통과로 세지 않았다. [삭제목록·복구·검증](scene_cleanup_20261017/README.md). AGENTS.md의 과거 비교씬 보존 지침은 이 사용자 직접 지시로 갱신했다.
@@ -41,7 +41,7 @@
 - **현재 씬 시각 조합4안:** 사용자 요청으로 회색 격자·밝은 석재 경로의 실제 전투 씬에서 환경/국소 Light2D·코어 국소 발광 셰이더·정지 시점의 실제 사각 파티클·후처리 조합을 비교했다. 밝은/차가운/수정에너지/따뜻한4안과 원래 Game view를 보존했다. 게임 영구 적용은 하지 않았다. 공유 Play 중에는 대기하고 사용자가 종료한 뒤 재캡처했다. 종료 dirty=false/원래 재질·Global Light·카메라 복원/Volume0·ParticleSystem0/콘솔오류0, 저장 씬 해시 전후 동일. [최신4안·세부 조건·복원·한계](visual_options_20261017/README.md). [후처리 단독 비교](postprocess_current_scene_20261017/README.md)도 보존하며 이전 배치 비교를 현재 테스트 화면으로 제시하지 않는다. 실제 전투/HUD·자연스러운 움직임·성능·사용자 선택은 별도다.
 
 
-- **10월16~17일 카메라 후처리 비교 완료·게임 미적용:** 현재 URP/Linear/HDR지원,원래 카메라HDRfalse·후처리false·Volume0를 확인했다. 임시 씬·카메라·Volume으로 색감/명암 정돈(우선추천),약한Bloom,강한 분위기 비교를 실제 URP로 캡처하고 원래 상태를 보존했다. 최종sRGB 출력/인터랙티브2안/코어확대/브라우저오류0 확인. 저장씬 배치 아트 비교이며 전투HUD/실제 피해숫자/성능 검증은 남아 있다. 수정 부위 한정HDR발광은 별도 후보,흐림·색수차·그레인은 기본 제외 제안이다. 선택·영구 적용으로 간주하지 않는다. [비교·현재값·남은 검증](postprocess_study_20261016/README.md).
+- **10월16~17일 초기 후처리 비교 이력:** 원래 카메라HDRfalse·후처리false·Volume0에서 임시 색감/명암·Bloom·강한 분위기를 비교했다. [초기 정지 씬 비교](postprocess_study_20261016/README.md)는 이력이다. 이후 사용자 승인으로 약한 색보정만 [현재 전투 씬에 적용](postprocess_current_scene_20261017/README.md)하고 실제 Overlay HUD/자연 피해 숫자를 확인했다. Bloom/강한 분위기는 미적용, 성능 검토는 미실시다.
 
 - 몸 피격: 0.09초 복귀/최대22%/재점등 제한0.1초. 기존 파편/숫자 유지, 새 파편/숫자 반응 미채택. [담당 기록](body_hit_flash_20261016/duration_90ms.md).
 - 코어 피해 B안은 **이미 적용**됐다. 짧은 흰색→붉은색 본체·상단 코어 표시 반응·추가 플래시300ms 제한. 코어 감소 숫자는 사용자가 위치를 확정했다: 본체 bounds.max 기준(-0.3,-0.38), 빨간색/Pixelify Sans Bold. [적용](core_damage_feedback_20261016/applied_B.md), [사용자 확정 위치](core_damage_feedback_20261016/user_position.md). 과거 미구현 제안으로 되돌리지 않는다.

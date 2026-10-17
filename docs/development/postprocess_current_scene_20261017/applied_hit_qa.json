@@ -1,0 +1,14 @@
+{
+  "source": "Composited GameView including ScreenSpaceOverlay HUD",
+  "size": "1920x1080",
+  "method": "Existing HUD callbacks and normal crystal purchase, natural round 1 hit; timeScale temporarily 0 for matching OFF/ON frames; no damage/economy injection",
+  "diagnostic": false,
+  "damage": [
+    {
+      "Key": "Tower:1",
+      "Value": 13
+    }
+  ],
+  "restoredTimeScale": 1.0,
+  "restoredWeight": 1.0
+}
