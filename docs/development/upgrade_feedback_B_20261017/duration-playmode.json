@@ -1,0 +1,209 @@
+{
+  "status": "completed",
+  "duration": 14.46,
+  "summary": {
+    "total": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.ActualLaunch_PreservesOriginalPlayerSprite_AndDoesNotUseRejectedMuzzle",
+      "Status": "Passed",
+      "Duration": 0.2884146,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks",
+      "Status": "Passed",
+      "Duration": 0.3211621,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.NormalEnemyRoute_AnimatesThroughCombatAdapter_OnEveryWorldAxis",
+      "Status": "Passed",
+      "Duration": 0.511358,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.OriginalTowerSpritesAndTransformsRemainExact_WhileEnemyDirectionsStillWork",
+      "Status": "Passed",
+      "Duration": 0.1961617,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCoreAmbientPlayModeTests.CoreParticlesRiseAndExpire_WhileDamageTemporarilyHidesAmbient_WithoutCameraPostProcessing",
+      "Status": "Passed",
+      "Duration": 1.6394477,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCoreFeedbackPlayModeTests.ActualCoreExitKeepsDamageAndExistingHit_AndShowsRedNumberAboveRightWithMonsterFont",
+      "Status": "Passed",
+      "Duration": 0.1763995,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHitFlashPlayModeTests.RealProjectileDamageFlashesTheSurvivingMonster_WithoutChangingExistingFeedback",
+      "Status": "Passed",
+      "Duration": 0.1812982,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHudInteractionTests.CardRevealIgnoresDoubleClickAndAllowsSelectionBeforeOtherCardsOpen",
+      "Status": "Passed",
+      "Duration": 1.0776146,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianHudInteractionTests.ClosingDuringRevealCancelsSparksAndLeavesNoPendingSelection",
+      "Status": "Passed",
+      "Duration": 1.2213806,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlacementHudPlayModeTests.FailedPlacementStaysFocused_AndSuccessfulPlacementRestoresHud",
+      "Status": "Passed",
+      "Duration": 0.200184,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlacementHudPlayModeTests.ManualRoundStartClosesOpenInstallationPanel",
+      "Status": "Passed",
+      "Duration": 0.2021674,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlacementHudPlayModeTests.PlacementHidesOtherHud_AndCancelRestoresPanelAndCanvasGroupStates",
+      "Status": "Passed",
+      "Duration": 0.209864,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlacementHudPlayModeTests.PreparationTimeoutCancelsPlacementAndClosesChooser",
+      "Status": "Passed",
+      "Duration": 0.4160173,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPlayerFacingPlayModeTests.NormalGridStepsDriveOriginalLegs_AndActualLaunchStartsAtTheAimedTool",
+      "Status": "Passed",
+      "Duration": 0.6579594,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_ElevenRoundsKeepTowerAndHud_ThenRestartResetsSession",
+      "Status": "Passed",
+      "Duration": 1.6286766,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_WaveOneCombatAwardsGoldAndKeepsPrefabFeetAnchored",
+      "Status": "Passed",
+      "Duration": 0.2203872,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.PlayerCellTower_ManualDeparture_AndReentryBlocked",
+      "Status": "Passed",
+      "Duration": 0.3465474,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlinePlayModeTests.FoldingOrFloorClickClearsSelection_WithoutASecondClick",
+      "Status": "Passed",
+      "Duration": 0.1700974,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlinePlayModeTests.PlayerPanelReplacesTowerTarget_AndInstallationRemovesOutline",
+      "Status": "Passed",
+      "Duration": 0.1930775,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlinePlayModeTests.SceneHasPersistentTunableOutline_OnlyForOpenInspection",
+      "Status": "Passed",
+      "Duration": 0.266881,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlinePlayModeTests.WorldPlayerClickOpensCurrentAbilities_AndRepeatedClickKeepsItOpen",
+      "Status": "Passed",
+      "Duration": 0.202445,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSingleTowerAimPlayModeTests.ActualLaunchUsesMountToTargetRay_AndMuzzleOrigin",
+      "Status": "Passed",
+      "Duration": 0.1702937,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianTowerGlowPlayModeTests.ActualLaunchesLightBothTowers_AndOnlySupportInRange",
+      "Status": "Passed",
+      "Duration": 0.1927799,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianUpgradeFeedbackPlayModeTests.InspectorDurationDefaultsToPointEight_AndControlsTheActualLifetime",
+      "Status": "Passed",
+      "Duration": 1.6292667,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianUpgradeFeedbackPlayModeTests.RealSuccessfulPlayerAndAllTowerPurchasesScan_WhileRejectedPurchasesDoNot",
+      "Status": "Passed",
+      "Duration": 1.1518632,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.BeanProjectilePlayModeTests.BeanProjectile_HitsLiveTargetExactlyOnce",
+      "Status": "Passed",
+      "Duration": 0.2889007,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.EnemyMovementPlayModeTests.Enemy_VisitsWaypointsInOrder_ThenExitsOnce",
+      "Status": "Passed",
+      "Duration": 0.5222015,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Fortress.Game.Tests.HealthPlayModeTests.Health_DiesOnce_WhenDamageReachesMaximum",
+      "Status": "Passed",
+      "Duration": 0.0181872,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

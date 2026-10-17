@@ -2344,6 +2344,7 @@ GameObject:
   - component: {fileID: 1617141372}
   - component: {fileID: 1617141374}
   - component: {fileID: 1617141375}
+  - component: {fileID: 1617141376}
   m_Layer: 0
   m_Name: CoreGuardian_Gameplay
   m_TagString: Untagged
@@ -2427,6 +2428,19 @@ MonoBehaviour:
   sizeMax: 0.1
   emissionPerSecond: 4
   maxParticles: 12
+--- !u!114 &1617141376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617141371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b1697ebf177694d95c7f02df3f0718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoreGuardianUpgradeFeedback
+  duration: 0.8
 --- !u!1 &1624664518
 GameObject:
   m_ObjectHideFlags: 0

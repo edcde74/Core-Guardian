@@ -63,7 +63,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             hud=gameObject.AddComponent<CoreGuardianHud>();hud.Configure(this);
             combatArt=gameObject.AddComponent<CoreGuardianCombatArt>();combatArt.Configure(this,hud);
             combatAnimation=gameObject.AddComponent<CoreGuardianCombatAnimation>();combatAnimation.Configure(this);
-            upgradeFeedback=gameObject.AddComponent<CoreGuardianUpgradeFeedback>();
+            upgradeFeedback=GetComponent<CoreGuardianUpgradeFeedback>();
+            if(upgradeFeedback==null)upgradeFeedback=gameObject.AddComponent<CoreGuardianUpgradeFeedback>();
             previousGold=Session.Gold;
             previousCore=Session.CoreEnergy;
             Feedback="공격 포탑을 선택하고 바닥 칸을 클릭하세요. WASD: 한 칸 이동";
