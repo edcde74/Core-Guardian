@@ -1,0 +1,13 @@
+{
+  "phase": "red",
+  "passed": false,
+  "failures": [
+    "Actual cell must be 0.69",
+    "Board must contain 39x22 cells",
+    "Approved route must contain 80 logical cells",
+    "Core must occupy approved new cell"
+  ],
+  "floor": 1125,
+  "path": 93,
+  "size": "(0.60, 0.60, 1.00)"
+}

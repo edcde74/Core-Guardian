@@ -61,7 +61,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     }
     public void CoreDamaged(int amount)
     {
-        var position=game.World(new Vector2(29,9));
+        var position=game.World(game.CoreCell);
         Show("CoreHit",position+Vector3.up*.5f,.7f,.35f);
         // User positioned the preview in Inspector; preserve its offset from the artwork.
         var numberPosition=coreBody!=null?new Vector3(coreBody.bounds.max.x-.3f,coreBody.bounds.max.y-.38f,coreBody.transform.position.z):position+new Vector3(.7f,1.1f,0);

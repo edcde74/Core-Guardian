@@ -1,0 +1,18 @@
+{
+  "board": "39x22",
+  "cell": 0.69,
+  "origin": "(0.05, -0.09, 0.00)",
+  "floor": 858,
+  "road": 80,
+  "coreCell": "25,8",
+  "playerCell": "13,9",
+  "sprites": [
+    "Route01_Curb",
+    "Route01_Stone0",
+    "Route01_Stone1",
+    "Route01_Stone2"
+  ],
+  "roadRenderers": 242,
+  "cameraChanged": false,
+  "sceneSaved": false
+}

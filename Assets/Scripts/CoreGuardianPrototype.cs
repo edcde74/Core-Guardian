@@ -14,6 +14,12 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public PrototypeGridMovement player;
     public GameObject[] enemyArt, towerArt;
     public TextAsset enemiesCsv, towersCsv, stageCsv, upgradesCsv, wavesCsv;
+    [SerializeField] Vector2Int boardSize = new Vector2Int(45,25);
+    [SerializeField] Vector2Int coreCell = new Vector2Int(29,9);
+    [SerializeField] Vector2Int[] routeCells = {new Vector2Int(0,12),new Vector2Int(11,12),new Vector2Int(11,18),new Vector2Int(35,18),new Vector2Int(35,6),new Vector2Int(17,6),new Vector2Int(17,12),new Vector2Int(29,12),new Vector2Int(29,9)};
+    public Vector2Int BoardSize => boardSize;
+    public Vector2Int CoreCell => coreCell;
+    public IReadOnlyList<Vector2Int> RouteCells => Array.AsReadOnly(routeCells);
     public Session Session { get; private set; }
     public string Feedback { get; private set; }
     public int SelectedTower { get; private set; } = -1;
@@ -55,9 +61,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             bossArt=Resources.Load<GameObject>("CoreGuardian/Animation/Boss/BossAnimated");
             if(bossArt==null)throw new InvalidOperationException("Missing approved boss art prefab");
             Session=new Session(CombatData.Load(enemiesCsv.text,towersCsv.text,stageCsv.text,upgradesCsv.text,wavesCsv.text));
-            var cells=new[]{new Vector2Int(0,12),new Vector2Int(11,12),new Vector2Int(11,18),new Vector2Int(35,18),new Vector2Int(35,6),new Vector2Int(17,6),new Vector2Int(17,12),new Vector2Int(29,12),new Vector2Int(29,9)};
-            route=cells.Select(c=>World(c)).ToArray();
-            Session.SetBoard(45,25,new Vector2Int(29,9),cells);
+            route=routeCells.Select(c=>World(c)).ToArray();
+            Session.SetBoard(boardSize.x,boardSize.y,coreCell,routeCells);
             occupiedTile=ScriptableObject.CreateInstance<Tile>(); // Hidden occupancy map, independent of visible art.
             square=MakeSprite(false);dot=MakeSprite(true);
             hud=gameObject.AddComponent<CoreGuardianHud>();hud.Configure(this);
@@ -79,7 +84,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     Vector2 PlayerTile()
     {
         // Grid root position includes the approved sprite offset. Reference foot center via tile grid.
-        var p=ground.transform.InverseTransformPoint(player.transform.position-ground.GetCellCenterWorld(Vector3Int.zero));
+        var p=ground.transform.InverseTransformVector(player.transform.position-ground.GetCellCenterWorld(Vector3Int.zero));
         return new Vector2(p.x/ground.layoutGrid.cellSize.x,p.y/ground.layoutGrid.cellSize.y);
     }
     void Update()
@@ -183,7 +188,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         {
             if(!ground.HasTile(p))continue;
             var h=CreateSprite("InstallationTile",square,ground.GetCellCenterWorld(p),CanInstall(new Vector2Int(p.x,p.y))?new Color(.1f,1f,.35f,.13f):new Color(1f,.15f,.1f,.2f),3);
-            h.transform.localScale=new Vector3(.55f,.55f,1);highlights.Add(h);
+            var cellSize=ground.layoutGrid.cellSize;
+            h.transform.localScale=new Vector3(cellSize.x*(.55f/.6f),cellSize.y*(.55f/.6f),1);highlights.Add(h);
         }
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);Changed?.Invoke();
     }
