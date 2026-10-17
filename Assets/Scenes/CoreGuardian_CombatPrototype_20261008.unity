@@ -2342,6 +2342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1617141373}
   - component: {fileID: 1617141372}
+  - component: {fileID: 1617141374}
   m_Layer: 0
   m_Name: CoreGuardian_Gameplay
   m_TagString: Untagged
@@ -2394,6 +2395,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1617141374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617141371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9269443d13cdce84e9f9d1858c5344e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoreGuardianSelectionOutline
+  color: {r: 0.8, g: 0.67, b: 0.39, a: 1}
+  widthPixels: 2
+  alphaThreshold: 0.1
 --- !u!1 &1624664518
 GameObject:
   m_ObjectHideFlags: 0

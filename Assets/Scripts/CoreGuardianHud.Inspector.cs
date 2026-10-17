@@ -13,6 +13,20 @@ public sealed partial class CoreGuardianHud
     RectTransform inspectorFold, inspectorSummary;
     UnityEngine.UI.Text playerInfo, playerTitle, towerTitle, summaryLabel;
     bool CanBuyPlayer=>game.Session.Phase==SessionPhase.Preparation||game.Session.Phase==SessionPhase.Combat;
+    public Transform InspectionTarget
+    {
+        get
+        {
+            if(game==null||!game.Ready||!inspectorOpen||installOpen||game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return null;
+            if(inspectorSubject==InspectorSubject.Player)return game.player.transform;
+            return inspectorSubject==InspectorSubject.Tower?game.TowerView(game.SelectedTower):null;
+        }
+    }
+    void ReleaseInspection()
+    {
+        inspectorOpen=false;purchaseOpen=false;inspectorSubject=InspectorSubject.None;lastTower=-1;
+        game.ClearInspectionSelection();
+    }
 
     RectTransform SmallHandle(string name,Transform parent,Action action,bool horizontal)
     {
@@ -98,7 +112,10 @@ public sealed partial class CoreGuardianHud
     {
         if(game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation||buy&&!CanBuyPlayer)return;
         bool same=inspectorSubject==InspectorSubject.Player&&inspectorOpen&&purchaseOpen==buy;
-        installOpen=false;installPanel.gameObject.SetActive(false);inspectorSubject=InspectorSubject.Player;inspectorOpen=!same;purchaseOpen=buy;Refresh();
+        ReleaseInspection();
+        installOpen=false;installPanel.gameObject.SetActive(false);
+        if(!same){inspectorSubject=InspectorSubject.Player;inspectorOpen=true;purchaseOpen=buy;}
+        Refresh();
     }
     public void OpenSelectedTowerSpecs()
     {
@@ -106,12 +123,12 @@ public sealed partial class CoreGuardianHud
         installOpen=false;installPanel.gameObject.SetActive(false);lastTower=game.SelectedTower;
         inspectorSubject=InspectorSubject.Tower;inspectorOpen=true;purchaseOpen=false;Refresh();
     }
-    // True consumes a floor click; never changes selection, currency, or placement state.
+    // One floor click folds the panel AND releases inspection. Never places or spends currency.
     public bool TryFoldDetails()
     {
         if(game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return false;
         if(!installOpen&&!inspectorOpen)return false;
-        installOpen=false;installPanel.gameObject.SetActive(false);inspectorOpen=false;purchaseOpen=false;
+        installOpen=false;installPanel.gameObject.SetActive(false);ReleaseInspection();
         if(UnityEngine.EventSystems.EventSystem.current!=null)UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
         Refresh();return true;
     }
@@ -126,7 +143,7 @@ public sealed partial class CoreGuardianHud
         var s=game.Session;
         if(displayedPhase!=s.Phase)
         {
-            if(displayedPhase.HasValue){inspectorOpen=false;purchaseOpen=false;developerOpen=false;}
+            if(displayedPhase.HasValue){ReleaseInspection();developerOpen=false;}
             displayedPhase=s.Phase;
             if(s.Phase==SessionPhase.Combat)SetTopCompact(true);
         }

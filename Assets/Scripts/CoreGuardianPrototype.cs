@@ -41,6 +41,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public bool HasFeedback=>Time.unscaledTime<notificationUntil;
     Vector3[] route;
     public bool Ready => Session != null;
+    // HUD owns inspection visibility; changing its subject must not leave a competing tower ID.
+    public void ClearInspectionSelection(){SelectedTower=-1;}
+    public Transform TowerView(int id)=>towerViews.TryGetValue(id,out var view)&&view!=null?view.transform:null;
 
     void Start()
     {

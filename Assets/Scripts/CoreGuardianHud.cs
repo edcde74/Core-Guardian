@@ -237,7 +237,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     void SetInstallPanelOpen(bool open)
     {
         open=open&&game.Session.Phase==SessionPhase.Preparation;
-        if(open){inspectorOpen=false;purchaseOpen=false;}
+        if(open)ReleaseInspection();
         // Every new opening starts at categories; folding changes only panel visibility.
         if(open&&!installOpen)BuildInstallCategories();
         installOpen=open;installPanel.gameObject.SetActive(open);Refresh();

@@ -1,10 +1,12 @@
 # 코어 가디언 Unity 인수인계
 
-최종 갱신: 2026-10-17 (Asia/Seoul). 현재 사용자 지시와 최신 담당 노션이 우선이다. 새 대화용 복사 텍스트: [최신 HUD A/B 적용 후 인수인계](resume_hud_latest_20261017.md). 현재는 능력치 HUD A안·손잡이/설치 심볼 B안과 단일 포탑 포신 조준이 적용됐다. 사용자 긍정 피드백을 받은 색보정2차·포탑 발광 단일1/멀티3/지원1·피해 HUD·코어 국소 효과를 보존했다. 선택 대상 아웃라인은 요청/미구현 상태다.
+최종 갱신: 2026-10-17 (Asia/Seoul). 현재 사용자 지시와 최신 담당 노션이 우선이다. 새 대화용 복사 텍스트: [최신 HUD 인수인계](resume_hud_latest_20261017.md). 능력치 HUD A안·손잡이/설치 심볼 B안·단일 포신 조준·색보정2차와 기존 효과를 보존했다. 선택 대상 아웃라인도 적용됐다. 조회/강화 패널이 열릴 때만 표시하며 접으면 선택을 해제한다. 초기 황동2px는 Inspector에서 조절할 수 있다.
 
-색보정 작업 당시 종료 조회는 Play=false/dirty=false·컴파일 실패 없음·당시 콘솔 오류0/경고0·TimeScale1/captureDelta0·HDR=false/post=true/Volume1이다. 이후 HUD B안 종료 조회와 경고1은 아래 담당 기록을 따른다. 이번 인수인계 정리에서는 새 Unity 상태 조회/검사를 하지 않았다. 이전 HUD/API 시간초과와 HEAD `0b8847c`·Play3배속은 과거 확인값이다. 미추적 `AudioProduction/`·밸런스/BGM 자료와 `font_tools_vendor` 접근 오류에 따른 삭제 표시는 보존하며 실제 삭제로 확정하지 않는다.
+최신 아웃라인 작업 종료 조회는 Play=false/paused=false·전투 씬1/dirty=false·컴파일 실패 없음·현재 콘솔 오류0/경고1(Account API 지연)·TimeScale1/captureDelta0·HDR=false/post=true다. 아래 색보정/HUD/포신 당시 검사는 각 작업 시점의 이력이다. 미추적 `AudioProduction/`·밸런스/BGM 자료와 `font_tools_vendor` 접근 오류에 따른 삭제 표시는 보존하며 실제 삭제로 확정하지 않는다.
 
 ## 재개 시 먼저 확인
+
+- **선택 대상 아웃라인 적용(2026-10-17 최신):** 사용자 지시로 능력치/강화 UI 대상만 하나의 SpriteRenderer 합집합 마스크로 표시하고 접기/유효 빈 바닥 첫 클릭에 선택도 해제한다. 과거 빈 바닥2단계/선택 유지 및 아래 아웃라인 미구현 기록을 대체한다. `CoreGuardian_Gameplay`의 `CoreGuardianSelectionOutline`에서 색·화면 픽셀 두께·알파 기준을 Edit/Play 중 조절한다. 초기 황동2px는 최종 선호 확정이 아니다. 전체EditMode117/117·PlayMode25/25, GPU 비대칭/대칭2건과 실제Overlay8화면 확인. 자체Play종료·씬1/dirtyfalse/컴파일실패false/시간복원/HDRfalse/posttrue·현재오류0/경고1(Account API 지연). 기능QA이며 사람플레이/밸런스/성능 승인은 아니다. Notion은 이번에 갱신하지 않았으므로 과거 미구현 표기보다 최신 사용자 지시를 우선한다. [구현·Inspector·검사·화면](selection_outline_20261017/README.md). 복구 기준 `740be94`.
 
 - **최신 문서 정리(2026-10-17):** 기존 Notion HUD/테스트 페이지에서 A/B 규칙·실제 첨부·검사 범위 반영을 재조회하고 남은 ‘플레이어 스펙/큰 스펙창’ 표기와 B안 커밋 식별을 정리했다. AGENTS의 최신 재개 링크/밸런스 보류 우선순위를 맞추고 과거 resume에 최신 파일 안내를 추가했다. 선택 아웃라인은 미구현·미확정 상태로 유지한다. 문서 작업이며 새 Unity 검사/게임 변경은 아니다.
 
