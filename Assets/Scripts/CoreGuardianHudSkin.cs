@@ -24,6 +24,13 @@ public static class CoreGuardianHudSkin
     }
     public static string Symbol(string name)
     {
+        if(name=="PlayerSpecs"||name.EndsWith("SpecTab"))return "AbilityList";
+        if(name=="PlayerGrowth"||name.EndsWith("BuyTab"))return "AbilityUpgrade";
+        if(name=="damage"||name=="Tower_damage")return "StatDamage";
+        if(name=="rate"||name=="Tower_rate")return "StatRate";
+        if(name=="range"||name=="Tower_range")return "StatRange";
+        if(name=="projectileSpeed"||name=="Tower_projectileSpeed")return "StatProjectile";
+        if(name=="Tower_buffDamage")return "Augment";
         if(name.Contains("Fold")||name=="接기"||name=="접기"||name.Contains("돌아가기"))return "Play";
         if(name.Contains("Reload"))return "Restart";
         if(name.Contains("Speed")||name=="rate"||name=="Tower_rate"||name.Contains("projectileSpeed"))return "Speed";

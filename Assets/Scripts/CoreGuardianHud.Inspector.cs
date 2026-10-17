@@ -59,9 +59,9 @@ public sealed partial class CoreGuardianHud
     {
         playerPanel=Box("PlayerGrowthPanel",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,220));
         towerPanel=Box("TowerInformation",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,270));
-        CoreGuardianHudSkin.Icon(playerPanel,"Upgrade",new Vector2(16,-16),new Vector2(28,28));
+        CoreGuardianHudSkin.Icon(playerPanel,"PlayerIdentity",new Vector2(16,-16),new Vector2(28,28));
         playerTitle=Text("Title",playerPanel,new Vector2(54,-12),new Vector2(820,32),22);
-        CoreGuardianHudSkin.Icon(towerPanel,"Install",new Vector2(16,-16),new Vector2(28,28));
+        CoreGuardianHudSkin.Icon(towerPanel,"TowerIdentity",new Vector2(16,-16),new Vector2(28,28));
         towerTitle=Text("Title",towerPanel,new Vector2(54,-12),new Vector2(820,32),22);
         foreach(var panel in new[]{playerPanel,towerPanel})
         {
@@ -69,9 +69,10 @@ public sealed partial class CoreGuardianHud
             Button(isPlayer?"PlayerSpecTab":"TowerSpecTab",panel,new Vector2(16,-56),new Vector2(220,56),()=>"현재 능력치",()=>{purchaseOpen=false;Refresh();});
             Button(isPlayer?"PlayerBuyTab":"TowerBuyTab",panel,new Vector2(16,-120),new Vector2(220,56),()=>"능력치 강화",()=>{purchaseOpen=true;Refresh();},()=>isPlayer?CanBuyPlayer:game.Session.Phase==SessionPhase.Preparation);
         }
-        playerInfo=Text("Stats",playerPanel,new Vector2(264,-56),new Vector2(612,150),22);playerInfo.alignment=TextAnchor.UpperLeft;
-        towerInfo=Text("Stats",towerPanel,new Vector2(264,-56),new Vector2(612,128),20);towerInfo.alignment=TextAnchor.UpperLeft;
-        var stats=new[]{"damage","rate","projectileSpeed","range"};
+        playerAbilities=BuildAbilityPlate(playerPanel);towerAbilities=BuildAbilityPlate(towerPanel);
+        playerInfo=Text("Stats",playerPanel,new Vector2(280,-186),new Vector2(580,24),16);playerInfo.alignment=TextAnchor.UpperLeft;
+        towerInfo=Text("Stats",towerPanel,new Vector2(280,-186),new Vector2(580,36),14);towerInfo.alignment=TextAnchor.UpperLeft;
+        var stats=new[]{"damage","rate","range","projectileSpeed"};
         for(int i=0;i<stats.Length;i++)
         {
             string stat=stats[i];
@@ -135,7 +136,7 @@ public sealed partial class CoreGuardianHud
         bool towerOpen=inspectorOpen&&inspectorSubject==InspectorSubject.Tower&&selected!=null&&!installOpen;
         towerFolded=!towerOpen;
         playerPanel.gameObject.SetActive(playerOpen);towerPanel.gameObject.SetActive(towerOpen);
-        playerPanel.sizeDelta=new Vector2(900,purchaseOpen?300:220);towerPanel.sizeDelta=new Vector2(900,purchaseOpen?354:250);
+        playerPanel.sizeDelta=new Vector2(900,purchaseOpen?300:220);towerPanel.sizeDelta=new Vector2(900,purchaseOpen?354:280);
         foreach(var panel in new[]{playerPanel,towerPanel})
         {
             bool isPlayer=panel==playerPanel;int index=0;
@@ -144,21 +145,26 @@ public sealed partial class CoreGuardianHud
                 var tab=(RectTransform)panel.Find(name);tab.anchoredPosition=purchaseOpen?new Vector2(16+index*442,-52):new Vector2(16,-56-index*64);
                 tab.sizeDelta=purchaseOpen?new Vector2(426,44):new Vector2(220,56);
                 tab.GetComponent<CoreGuardianHudReaction>().SetLabelLayout(new Vector2(54,purchaseOpen?-8:-16),tab.sizeDelta-new Vector2(70,purchaseOpen?16:32));
+                var icon=tab.GetComponentsInChildren<UnityEngine.UI.Image>().First(i=>i.transform!=tab).rectTransform;
+                icon.anchoredPosition=new Vector2(16,-(tab.sizeDelta.y-icon.sizeDelta.y)/2);
                 index++;
             }
         }
         playerInfo.gameObject.SetActive(!purchaseOpen);towerInfo.gameObject.SetActive(!purchaseOpen);
         var st=s.Player;
-        playerTitle.text=purchaseOpen?"플레이어 강화":"플레이어 능력치";
-        playerInfo.text="공격력 "+StatDisplay(st.Damage,"damage")+" · 공격속도 "+st.Rate.ToString("0.##")+"발/초\n사거리 "+st.Range.ToString("0.##")+"타일 · 탄환 속도 "+st.ProjectileSpeed.ToString("0.##")+"타일/초\n추가 발사 "+s.Augments.ExtraPlayerProjectiles+"발 · 둔화 효과 "+(s.Augments.PlayerSlow?"있음":"없음");
+        RefreshAbilityPlate(playerAbilities,st,false);
+        playerTitle.text=purchaseOpen?"플레이어 능력치 강화":"플레이어 능력치";
+        playerInfo.text="추가 발사 "+s.Augments.ExtraPlayerProjectiles+"발 · 둔화 효과 "+(s.Augments.PlayerSlow?"있음":"없음");
         if(selected!=null)
         {
             st=selected.Stats;towerTitle.text=TowerName(selected.Kind)+" #"+selected.Id+" · "+(purchaseOpen?"능력치 강화":"능력치");
+            RefreshAbilityPlate(towerAbilities,st,selected.Kind==TowerKind.Support);
             float support=s.Towers.Where(t=>t.Kind==TowerKind.Support&&Vector2.Distance(t.Position,selected.Position)<=t.Stats.Range).Sum(t=>t.Stats.BuffDamage);
             float buff=support+s.Augments.TowerBuffPercent;
-            towerInfo.text=selected.Kind==TowerKind.Support?"공격력 증가 +"+st.BuffDamage.ToString("0.##")+"%\n지원 범위 "+st.Range.ToString("0.##")+"타일\n범위 안 공격 포탑의 공격력을 높입니다.\n직접 공격하지 않습니다.":
-                "공격력 "+StatDisplay(st.Damage,"damage")+" · 공격속도 "+st.Rate.ToString("0.##")+"발/초\n사거리 "+st.Range.ToString("0.##")+"타일 · 탄환 속도 "+st.ProjectileSpeed.ToString("0.##")+"타일/초\n지원 포탑 +"+support.ToString("0.##")+"% · 증강 +"+s.Augments.TowerBuffPercent+"%\n버프 적용 공격력 "+StatDisplay(st.Damage*(1+buff/100f),"damage")+" (적 방어력 적용 전)";
-            var destroy=(RectTransform)towerPanel.Find("Destroy");destroy.anchoredPosition=purchaseOpen?new Vector2(16,-300):new Vector2(264,-188);destroy.sizeDelta=new Vector2(purchaseOpen?868:612,44);
+            towerInfo.rectTransform.anchoredPosition=new Vector2(280,selected.Kind==TowerKind.Support?-138:-186);
+            towerInfo.text=selected.Kind==TowerKind.Support?"범위 안 공격 포탑의 공격력을 높입니다.\n직접 공격하지 않습니다.":
+                "지원 포탑 +"+support.ToString("0.##")+"% · 증강 +"+s.Augments.TowerBuffPercent+"%\n버프 적용 공격력 "+StatDisplay(st.Damage*(1+buff/100f),"damage")+" (적 방어력 적용 전)";
+            var destroy=(RectTransform)towerPanel.Find("Destroy");destroy.anchoredPosition=purchaseOpen?new Vector2(16,-300):new Vector2(264,-220);destroy.sizeDelta=new Vector2(purchaseOpen?868:612,44);
             ((RectTransform)destroy.Find("Label")).sizeDelta=new Vector2(destroy.sizeDelta.x-70,28);
         }
         bool details=playerOpen||towerOpen||installOpen;
