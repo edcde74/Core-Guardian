@@ -17524,6 +17524,7 @@ GameObject:
   - component: {fileID: 1617141374}
   - component: {fileID: 1617141375}
   - component: {fileID: 1617141376}
+  - component: {fileID: 1617141377}
   m_Layer: 0
   m_Name: CoreGuardian_Gameplay
   m_TagString: Untagged
@@ -17632,6 +17633,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoreGuardianUpgradeFeedback
   duration: 0.8
+--- !u!114 &1617141377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617141371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9421c8bf00181a743af87722e4ef86b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoreGuardianObjectEmphasis
+  outlineColor: {r: 0.06, g: 0.065, b: 0.075, a: 0.9}
+  outlineWidthPixels: 1
+  bodyBrightness: 1.15
+  alphaThreshold: 0.1
 --- !u!1 &1624664518
 GameObject:
   m_ObjectHideFlags: 0

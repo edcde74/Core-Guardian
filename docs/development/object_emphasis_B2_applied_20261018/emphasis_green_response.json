@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "duration": 0.28,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianObjectEmphasisTests.BodyBoostDoesNotAccumulate_RespectsNewTint_AndRestoresOnRemoval",
+      "Status": "Passed",
+      "Duration": 0.0510037,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianObjectEmphasisTests.InspectorOutlineChangesApplyLive_ZeroHidesOnlyEmphasis_SelectionRendersAboveIt",
+      "Status": "Passed",
+      "Duration": 0.0089837,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

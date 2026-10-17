@@ -51,6 +51,12 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     // HUD owns inspection visibility; changing its subject must not leave a competing tower ID.
     public void ClearInspectionSelection(){SelectedTower=-1;}
     public Transform TowerView(int id)=>towerViews.TryGetValue(id,out var view)&&view!=null?view.transform:null;
+    public void GetCombatBodyTargets(List<Transform> targets)
+    {
+        if(player!=null&&player.gameObject.activeInHierarchy)targets.Add(player.transform);
+        foreach(var view in towerViews.Values)if(view!=null&&view.activeInHierarchy)targets.Add(view.transform);
+        foreach(var view in enemyViews.Values)if(view!=null&&view.activeInHierarchy)targets.Add(view.transform);
+    }
 
     void Start()
     {

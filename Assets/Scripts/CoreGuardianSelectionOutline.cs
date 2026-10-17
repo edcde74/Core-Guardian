@@ -96,6 +96,12 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         output.sharedMaterial=outlineMaterial;
         output.enabled=true;
     }
+    // Always-on readability sits below inspection (+4) and the success scan (+5).
+    public void PresentAtOrder(Transform target,Camera camera,int offset)
+    {
+        Present(target,camera);
+        if(output!=null&&output.enabled)output.sortingOrder+=offset-4;
+    }
     Mesh SpriteMesh(Sprite sprite)
     {
         if(meshes.TryGetValue(sprite,out var value))return value;
