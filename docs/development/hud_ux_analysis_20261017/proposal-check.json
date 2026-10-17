@@ -1,0 +1,78 @@
+{
+  "kind": "HTML proposal verification only; not Unity QA",
+  "results": [
+    {
+      "width": 1024,
+      "layout": "minimal",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    },
+    {
+      "width": 1024,
+      "layout": "bottom",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    },
+    {
+      "width": 1024,
+      "layout": "drawer",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    },
+    {
+      "width": 736,
+      "layout": "minimal",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    },
+    {
+      "width": 736,
+      "layout": "bottom",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    },
+    {
+      "width": 736,
+      "layout": "drawer",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    },
+    {
+      "width": 320,
+      "layout": "minimal",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    },
+    {
+      "width": 320,
+      "layout": "bottom",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    },
+    {
+      "width": 320,
+      "layout": "drawer",
+      "states": 6,
+      "floorFold": true,
+      "reopenSpec": true,
+      "augmentationTimerVisible": true
+    }
+  ],
+  "errors": []
+}

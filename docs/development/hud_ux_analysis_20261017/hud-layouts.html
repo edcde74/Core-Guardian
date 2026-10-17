@@ -1,0 +1,143 @@
+<div id="cg-hud-proposals">
+  <div class="viz-carousel" aria-label="코어 가디언 HUD 미적용 배치 3안" data-previous-label="이전 안" data-next-label="다음 안">
+    <section data-variant="기존 배치 정돈" data-layout="minimal" aria-label="기존 배치 정돈 시안"><div class="cg-mock"></div></section>
+    <section data-variant="하단 정보창" data-layout="bottom" aria-label="하단 정보창 시안" hidden><div class="cg-mock"></div></section>
+    <section data-variant="측면 서랍" data-layout="drawer" aria-label="측면 서랍 시안" hidden><div class="cg-mock"></div></section>
+  </div>
+</div>
+<style>
+#cg-hud-proposals .cg-mock{--cg-bg:#151b22;--cg-panel:#202730;--cg-line:#69717b;--cg-brass:#cba45c;--cg-text:#f1e7d4;--cg-muted:#c2c6c9;--cg-energy:#65cbd2;color:var(--cg-text);font:13px/1.5 'Malgun Gothic',sans-serif;background:var(--cg-bg)}
+#cg-hud-proposals .cg-review{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--cg-line)}
+#cg-hud-proposals .cg-review strong{flex:1;min-width:180px;font-size:14px}
+#cg-hud-proposals select{font:inherit;background:var(--cg-panel);color:var(--cg-text);padding:5px;border:1px solid var(--cg-line)}
+#cg-hud-proposals .cg-screen{height:536px;position:relative;overflow:hidden;background-color:#414442;background-image:linear-gradient(#62655f 1px,transparent 1px),linear-gradient(90deg,#62655f 1px,transparent 1px);background-size:24px 24px}
+#cg-hud-proposals .cg-road{position:absolute;pointer-events:none;inset:25% 22% 29% 12%;border:13px solid #85877f;outline:1px solid var(--cg-brass)}
+#cg-hud-proposals .cg-road:after{content:'';position:absolute;left:-25%;top:43%;width:40%;height:13px;background:#85877f}
+#cg-hud-proposals .cg-core{position:absolute;top:53%;left:65%;color:var(--cg-energy);font-size:23px}
+#cg-hud-proposals button{font:inherit;color:var(--cg-text);background:var(--cg-panel);border:1px solid var(--cg-line);padding:7px 10px;max-width:100%;vertical-align:middle}
+#cg-hud-proposals button:disabled{color:var(--cg-muted);opacity:.55}
+#cg-hud-proposals button[aria-pressed="true"]{border-color:var(--cg-brass);color:var(--cg-energy)}
+#cg-hud-proposals button.cg-handle{padding:5px 9px;border-color:var(--cg-brass);border-width:1px 3px;font-size:14px}
+#cg-hud-proposals .cg-top{position:absolute;left:16%;right:16%;top:10px;padding:7px 12px;background:var(--cg-panel);border:1px solid var(--cg-line);text-align:center;display:flex;flex-wrap:wrap;justify-content:center;gap:5px 18px}
+#cg-hud-proposals .cg-stage{position:absolute;left:25%;right:25%;top:73px;text-align:center;background:var(--cg-panel);padding:4px 8px}
+#cg-hud-proposals .cg-damage{position:absolute;right:10px;top:128px;width:160px;background:var(--cg-panel);border:1px solid var(--cg-line);padding:10px;min-height:92px}
+#cg-hud-proposals .cg-damage .cg-handle{position:absolute;left:-26px;top:35%;padding:5px}
+#cg-hud-proposals .cg-damage.closed{width:auto;padding:0;border:0;min-height:0;background:none}
+#cg-hud-proposals .cg-damage.closed .cg-handle{position:static}
+#cg-hud-proposals .cg-track{height:7px;background:#11171d;border:1px solid #707881;margin:10px 0;padding:2px}
+#cg-hud-proposals .cg-track span{display:block;width:65%;height:100%;background:var(--cg-energy)}
+#cg-hud-proposals .cg-damage small{color:var(--cg-muted);display:block}
+#cg-hud-proposals .cg-controls{position:absolute;bottom:10px;left:16%;right:16%;display:flex;gap:8px;justify-content:space-between;background:var(--cg-panel);padding:6px;border:1px solid var(--cg-line)}
+#cg-hud-proposals .cg-unit{position:absolute;left:43%;top:48%;border-color:var(--cg-brass)}
+#cg-hud-proposals .cg-inspector{position:absolute;background:var(--cg-panel);border:1px solid var(--cg-line);padding:10px;box-sizing:border-box}
+#cg-hud-proposals .cg-inspector h4{margin:0 0 8px;font-size:14px;color:var(--cg-text)}
+#cg-hud-proposals .cg-inspector .cg-handle{position:absolute;bottom:-26px;left:calc(50% - 18px)}
+#cg-hud-proposals .cg-tabs{display:flex;gap:8px;margin-bottom:8px;align-items:center}
+#cg-hud-proposals .cg-stats{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;color:var(--cg-muted)}
+#cg-hud-proposals .cg-buy{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+#cg-hud-proposals .cg-buy button{text-align:left;font-size:12px}
+#cg-hud-proposals .cg-minimal .cg-inspector{left:10px;top:128px;width:236px}
+#cg-hud-proposals .cg-minimal .cg-inspector.player{left:auto;right:10px;top:auto;bottom:84px}
+#cg-hud-proposals .cg-bottom .cg-inspector{left:21%;right:21%;bottom:76px}
+#cg-hud-proposals .cg-bottom .cg-inspector .cg-handle{bottom:auto;top:-28px}
+#cg-hud-proposals .cg-drawer .cg-controls{left:34%;right:34%;justify-content:center}
+#cg-hud-proposals .cg-drawer .cg-inspector{left:56px;top:128px;bottom:92px;width:240px}
+#cg-hud-proposals .cg-drawer .cg-inspector .cg-handle{left:auto;right:-27px;bottom:45%}
+#cg-hud-proposals .cg-drawer .cg-stats{grid-template-columns:1fr}
+#cg-hud-proposals .cg-rail{position:absolute;left:8px;top:128px;display:grid;gap:8px;width:43px}
+#cg-hud-proposals .cg-rail button{padding:6px 3px}
+#cg-hud-proposals .cg-reopen{position:absolute;bottom:76px;left:calc(50% - 80px)}
+#cg-hud-proposals .cg-message{padding:7px 12px;min-height:23px;color:var(--cg-muted);font-size:12px}
+#cg-hud-proposals .cg-shade{position:absolute;inset:111px 0 0;background:#101620d9;display:grid;align-content:center;justify-items:center;gap:16px}
+#cg-hud-proposals .cg-augment{background:var(--cg-panel);padding:14px;width:70%;border:1px solid var(--cg-brass)}
+#cg-hud-proposals .cg-augment-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+#cg-hud-proposals .cg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+#cg-hud-proposals .cg-card{height:128px;display:grid;place-items:center;border:2px solid var(--cg-brass);background:#17202a;font-size:22px}
+#cg-hud-proposals .cg-cancel{position:absolute;bottom:16px;left:12px}
+#cg-hud-proposals .cg-ghost{position:absolute;top:43%;left:48%;padding:15px;border:2px dashed var(--cg-energy);color:var(--cg-energy)}
+#cg-hud-proposals .cg-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#cg-hud-proposals .cg-caption{font-size:12px;color:var(--cg-muted);padding:6px 12px}
+#cg-hud-proposals [hidden]{display:none!important}
+@media(max-width:600px){
+ #cg-hud-proposals .cg-screen{height:610px}
+ #cg-hud-proposals .cg-top{left:6px;right:6px;gap:3px 10px;font-size:12px}
+ #cg-hud-proposals .cg-stage{left:10%;right:10%;top:86px}
+ #cg-hud-proposals .cg-damage{top:126px;width:112px;font-size:11px;padding:7px}
+ #cg-hud-proposals .cg-unit{left:25%;top:43%}
+ #cg-hud-proposals .cg-controls{left:5px;right:5px;gap:3px;flex-wrap:wrap}
+ #cg-hud-proposals .cg-controls button{padding:6px;font-size:12px}
+ #cg-hud-proposals .cg-inspector,#cg-hud-proposals .cg-minimal .cg-inspector.player{top:auto;bottom:112px;left:10px;right:10px;width:auto}
+ #cg-hud-proposals .cg-bottom .cg-inspector{bottom:112px;left:10px;right:10px}
+ #cg-hud-proposals .cg-drawer .cg-inspector{left:58px;right:30px;width:auto;top:auto;bottom:112px}
+ #cg-hud-proposals .cg-drawer .cg-controls{left:10%;right:10%}
+ #cg-hud-proposals .cg-drawer .cg-stats{grid-template-columns:1fr 1fr}
+ #cg-hud-proposals .cg-augment{width:82%;padding:10px}
+ #cg-hud-proposals .cg-cards{gap:6px}
+ #cg-hud-proposals .cg-card{height:100px}
+ #cg-hud-proposals .cg-buy{grid-template-columns:1fr}
+ #cg-hud-proposals .cg-reopen{bottom:110px}
+}
+</style>
+<script>
+(()=>{
+const root=document.getElementById('cg-hud-proposals');
+const phaseOptions=['준비','설치 목록','설치 모드','전투','플레이어 강화','증강'];
+root.querySelectorAll('[data-layout]').forEach(section=>{
+ const mock=section.querySelector('.cg-mock'),layout=section.dataset.layout;
+ const state={phase:'준비',target:'tower',open:true,buy:false,damage:true,cards:true};
+ mock.classList.add('cg-'+layout);
+ mock.innerHTML=`<div class="cg-review"><strong>${section.dataset.variant} · 미적용</strong><label>시안 상태 <select aria-label="시안 단계">${phaseOptions.map(p=>`<option>${p}</option>`).join('')}</select></label></div><div class="cg-screen" aria-label="HUD 구조 와이어프레임"><div class="cg-road"></div><div class="cg-core">◆ 코어</div><div class="cg-top"><span>코어 — / —</span><span>라운드 —</span><span>골드 —</span><span>수정 —</span><span>증강 —</span></div><div class="cg-stage"></div><button type="button" class="cg-unit cursor-interaction" data-action="tower">포탑 선택</button><div class="cg-damage"></div><div class="cg-controls"></div><div class="cg-rail" hidden></div><div class="cg-inspector" hidden></div><button type="button" class="cg-handle cg-reopen cursor-interaction" data-action="reopen" hidden></button><div class="cg-shade" hidden><div class="cg-augment"><div class="cg-augment-head"><span>증강 선택 · 남은 30초 (예시)</span><button type="button" class="cg-handle cursor-interaction" data-action="cards" aria-label="증강 카드 접기 펼치기"></button></div><div class="cg-cards"><div class="cg-card">◇</div><div class="cg-card">◇</div><div class="cg-card">◇</div></div></div></div><button type="button" class="cg-cancel cursor-interaction" data-action="cancel" hidden>설치 취소 · Esc</button><div class="cg-ghost" hidden>포탑 미리보기</div></div><div class="cg-message" aria-live="polite"></div><div class="cg-caption">구조 와이어프레임 · 실제 화면/픽셀 아트 아님 · 수치 미표시 · 빈 바닥 클릭으로 상세창 접기</div>`;
+ const q=s=>mock.querySelector(s),screen=q('.cg-screen');
+ const say=t=>{q('.cg-message').textContent=t;};
+ function render(){
+  const placing=state.phase==='설치 모드',augment=state.phase==='증강',listing=state.phase==='설치 목록';
+  q('select').value=state.phase;
+  q('.cg-stage').textContent=augment?'증강 선택 중':placing?'준비 · 설치 위치 선택':state.phase==='전투'?'전투 · 남은 적 —':'준비 · 남은 시간 —';
+  q('.cg-damage').hidden=placing||augment;
+  q('.cg-damage').classList.toggle('closed',!state.damage);
+  q('.cg-damage').innerHTML=`<button type="button" class="cg-handle cursor-interaction" data-action="damage" aria-label="피해 목록 접기 펼치기">${state.damage?'›':'‹'}</button>${state.damage?'<strong>기존 누적 피해</strong><div class="cg-track"><span></span></div><small>심볼·빈 트랙·비율·손잡이 보존</small>':''}`;
+  q('.cg-unit').hidden=placing||augment;
+  q('.cg-controls').hidden=placing||augment;
+  q('.cg-controls').innerHTML=layout==='drawer'?`<button type="button" data-action="combat" ${state.phase==='전투'?'disabled':''}>${state.phase==='전투'?'전투 진행':'라운드 시작'}</button>`:`<button type="button" data-action="install" ${state.phase==='전투'?'disabled':''}>타워 설치</button><button type="button" data-action="combat" ${state.phase==='전투'?'disabled':''}>${state.phase==='전투'?'전투 진행':'라운드 시작'}</button><button type="button" data-action="player">플레이어 스펙</button>${layout==='minimal'?'<button type="button" data-action="growth">플레이어 강화</button>':''}`;
+  q('.cg-rail').hidden=layout!=='drawer'||placing||augment;
+  q('.cg-rail').innerHTML=`<button type="button" data-action="install" ${state.phase==='전투'?'disabled':''} aria-label="타워 설치">설치</button><button type="button" data-action="player" aria-label="플레이어 스펙">기술병</button><button type="button" data-action="tower" aria-label="선택 포탑 스펙">포탑</button>`;
+  const inspector=q('.cg-inspector');inspector.hidden=!state.open||placing||augment;
+  inspector.classList.toggle('player',state.target==='player');
+  const title=listing?'포탑 선택':state.target==='player'?'기술병 현재 스펙':'선택 포탑 #ID · 현재 스펙';
+  inspector.innerHTML=`<h4>${title}</h4>${listing?'<div class="cg-list"><button type="button" data-action="place">공격 포탑</button><button type="button" data-action="place">지원 포탑</button></div>':`<div class="cg-tabs"><button type="button" data-action="spec" aria-pressed="${!state.buy}">현재 스펙</button><button type="button" data-action="buy" aria-pressed="${state.buy}" ${state.target==='tower'&&state.phase==='전투'?'disabled':''}>강화 구매</button></div>${state.buy?'<div class="cg-buy"><button type="button" disabled>공격력 현재 → 다음<br>증가량 · 비용</button><button type="button" disabled>공격속도 현재 → 다음<br>증가량 · 비용</button><button type="button" disabled>투사체 속도 현재 → 다음<br>증가량 · 비용</button><button type="button" disabled>사거리 현재 → 다음<br>증가량 · 비용</button></div>':'<div class="cg-stats"><span>공격력 —</span><span>공격속도 — 발/초</span><span>사거리 — 타일</span><span>투사체 — 타일/초</span></div>'}${state.target==='tower'?'<button type="button" disabled style="margin-top:8px">파괴 · 별도 동작</button>':''}`}<button type="button" class="cg-handle cursor-interaction" data-action="fold" aria-label="상세창 접기">⌄</button>`;
+  q('.cg-reopen').hidden=state.open||placing||augment;
+  q('.cg-reopen').textContent=state.target==='tower'?'⌃ 포탑 #ID':'⌃ 기술병';
+  q('.cg-shade').hidden=!augment;q('.cg-cards').hidden=!state.cards;q('[data-action="cards"]').textContent=state.cards?'⌃':'⌄';
+  q('.cg-cancel').hidden=!placing;q('.cg-ghost').hidden=!placing;
+ }
+ function changePhase(p){state.phase=p;state.buy=p==='플레이어 강화';state.target=state.buy?'player':'tower';state.open=!['전투','설치 모드','증강'].includes(p);state.cards=true;render();say('미적용 배치 · '+p);}
+ q('select').addEventListener('change',e=>changePhase(e.target.value));
+ mock.addEventListener('click',e=>{
+  const b=e.target.closest('button[data-action]');
+  if(b){
+   if(b.disabled)return;const a=b.dataset.action;
+   if(a==='damage')state.damage=!state.damage;
+   else if(a==='cards')state.cards=!state.cards;
+   else if(a==='combat'){changePhase('전투');say('전투 진입 · 구매/스펙은 접기, 피해 표시 선택 유지');return;}
+   else if(a==='install'){changePhase('설치 목록');return;}
+   else if(a==='place'){changePhase('설치 모드');return;}
+   else if(a==='cancel'){changePhase('준비');state.open=false;}
+   else if(a==='fold')state.open=false;
+   else if(a==='reopen'){state.open=true;state.buy=false;}
+   else if(a==='buy')state.buy=true;
+   else if(a==='spec')state.buy=false;
+   else if(a==='tower'||a==='player'||a==='growth'){state.target=a==='tower'?'tower':'player';state.open=true;state.buy=a==='growth';}
+   render();say(state.phase==='증강'?'접혀도 제한 시간·배경 입력 차단 유지':'접기는 선택·설치 취소와 별개');return;
+  }
+  if(!e.target.closest('.cg-top,.cg-stage,.cg-inspector,.cg-damage,.cg-controls,.cg-rail,.cg-review,.cg-message,.cg-caption')&&screen.contains(e.target)){
+   if(state.phase==='증강'){say('증강 단계 · 빈 바닥은 카드/제한 시간을 닫지 않음');return;}
+   if(state.phase==='설치 모드'){say('설치 모드 · 이 클릭은 설치 입력 전용 (시안에서는 배치하지 않음)');return;}
+   if(state.open){state.open=false;render();say('상세창만 접기 · 대상 유지 · 이 클릭에서 설치/선택/구매 없음');}
+   else say('열린 상세창 없음 · 다음 빈 바닥 클릭은 선택 해제만 제안');
+  }
+ });
+ render();say('미적용 배치 · 포탑 선택 시 현재 스펙 먼저 표시');
+ if(globalThis.Tweak){const tw=new Tweak({container:mock,onChange:()=>changePhase(state.phase)});tw.addSelect(state,'phase',{label:'검토 단계',options:phaseOptions});}
+});
+})();
+</script>
