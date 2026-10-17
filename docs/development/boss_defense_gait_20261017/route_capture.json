@@ -1,0 +1,69 @@
+{
+  "kind": "Actual scene camera, diagnostic spawn on unchanged waypoint path; manually ticked 0.025s/frame; no Overlay HUD",
+  "segment": 3,
+  "startDistance": 41.0,
+  "path": [
+    {
+      "x": 0.0,
+      "y": 12.0
+    },
+    {
+      "x": 11.0,
+      "y": 12.0
+    },
+    {
+      "x": 11.0,
+      "y": 18.0
+    },
+    {
+      "x": 35.0,
+      "y": 18.0
+    },
+    {
+      "x": 35.0,
+      "y": 6.0
+    },
+    {
+      "x": 17.0,
+      "y": 6.0
+    },
+    {
+      "x": 17.0,
+      "y": 12.0
+    },
+    {
+      "x": 29.0,
+      "y": 12.0
+    },
+    {
+      "x": 29.0,
+      "y": 9.0
+    }
+  ],
+  "units": [
+    {
+      "kind": "Boss",
+      "screen": {
+        "x": 1455.52917,
+        "y": 722.2034,
+        "z": 10.0
+      }
+    },
+    {
+      "kind": "Defense",
+      "screen": {
+        "x": 540.7059,
+        "y": 595.6526,
+        "z": 10.0
+      }
+    }
+  ],
+  "orthographicSize": 8.5,
+  "cameraPosition": {
+    "x": 13.500001,
+    "y": 7.50000048,
+    "z": -10.0
+  },
+  "timeScale": 1.0,
+  "captureDelta": 0.0
+}

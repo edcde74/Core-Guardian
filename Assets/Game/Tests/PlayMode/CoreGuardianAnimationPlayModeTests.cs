@@ -57,8 +57,40 @@ public class CoreGuardianAnimationPlayModeTests
             var vertical=unit.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="VerticalWalk").transform;
             Assert.That(vertical.Find("LeftFoot").localPosition.y,Is.Zero);Assert.That(vertical.Find("RightFoot").localPosition.y,Is.Zero);
             unit.GetType().GetMethod("Move").Invoke(unit,new object[]{Vector2.up,.1f});unit.GetType().GetMethod("Present").Invoke(unit,new object[]{.1f});
-            Assert.That(vertical.GetComponent<SpriteRenderer>().enabled,Is.True,"Unchanged rear frames must replace the front cutouts");Assert.That(vertical.Find("LeftFoot").gameObject.activeSelf,Is.False);
+            bool rearDefense=kinds[i]==CoreGuardian.EnemyKind.Defense;
+            Assert.That(vertical.GetComponent<SpriteRenderer>().enabled,Is.EqualTo(!rearDefense));Assert.That(vertical.Find("LeftFoot").gameObject.activeSelf,Is.EqualTo(rearDefense));
         }
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
+    public IEnumerator DefenseRearWiderStanceIsVisibleOnActualUpwardWaypoint()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var type=Find("CoreGuardianPrototype");var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+        var session=(CoreGuardian.Session)type.GetProperty("Session").GetValue(game);
+        var path=(System.Collections.Generic.List<Vector2>)typeof(CoreGuardian.Session).GetField("path",flags).GetValue(session);
+        float distance=0;bool found=false;
+        for(int i=0;i<path.Count-1;i++){var step=path[i+1]-path[i];if(step.y>.5f&&Mathf.Abs(step.y)>Mathf.Abs(step.x)){found=true;break;}distance+=step.magnitude;}
+        Assert.That(found,Is.True);game.enabled=false;session.StartCombat();var enemy=session.DebugSpawn(CoreGuardian.EnemyKind.Defense,distance+.5f);
+        var views=(System.Collections.IDictionary)type.GetField("enemyViews",flags).GetValue(game);type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
+        var heights=new[]{new System.Collections.Generic.List<float>(),new System.Collections.Generic.List<float>()};
+        for(int i=0;i<100;i++)
+        {
+            session.Tick(.025f,new Vector2(-100,-100));type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
+            var art=((GameObject)views[enemy.Id]).GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");var v=art.transform.Find("VerticalWalk");
+            Assert.That(v.gameObject.activeInHierarchy,Is.True);Assert.That(v.GetComponent<SpriteRenderer>().sprite.name,Does.StartWith("Up_"));
+            var left=v.Find("LeftFoot");var right=v.Find("RightFoot");
+            Assert.That(left.gameObject.activeInHierarchy&&right.gameObject.activeInHierarchy,Is.True);
+            Assert.That((right.localPosition.x-left.localPosition.x)*32,Is.EqualTo(9).Within(.01f));
+            heights[0].Add(left.localPosition.y*32);heights[1].Add(right.localPosition.y*32);
+            if(i%20==0)yield return null;
+        }
+        foreach(var h in heights)Assert.That(h.Max()-h.Min(),Is.GreaterThan(3));
 #else
         yield return null;
 #endif

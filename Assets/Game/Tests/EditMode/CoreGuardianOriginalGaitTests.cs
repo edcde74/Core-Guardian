@@ -7,6 +7,43 @@ using UnityEditor;
 
 public class CoreGuardianOriginalGaitTests
 {
+    [Test]
+    public void BossFrontTorsoAndHipsUseOneCoherentPose_WithoutAWaistFrameSeam()
+    {
+        var clone=UnityEngine.Object.Instantiate(Resources.Load<GameObject>("CoreGuardian/Animation/Boss/BossAnimated"));
+        try
+        {
+            var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");var walk=Activator.CreateInstance(Walk,new object[]{art,"Boss"});
+            var rest=Resources.Load<Sprite>("CoreGuardian/VerticalWalk/Boss/Down_0");
+            for(int f=0;f<16;f++)
+            {
+                Walk.GetMethod("Move").Invoke(walk,new object[]{Vector2.down*(18*art.transform.lossyScale.x/32),1/16f});Walk.GetMethod("Present").Invoke(walk,new object[]{1/16f});
+                var vertical=art.transform.Find("VerticalWalk");
+                foreach(var name in new[]{"UpperBody","LeftEquipment","RightEquipment","HipCloth"})
+                    Assert.That(vertical.Find(name).GetComponent<SpriteRenderer>().sprite.texture,Is.SameAs(rest.texture),"Torso, equipment and hip cloth must share the same source pose, not stitch unrelated waist frames");
+                float width=(vertical.Find("RightFoot").localPosition.x-vertical.Find("LeftFoot").localPosition.x)*32;
+                Assert.That(width,Is.InRange(9.5f,10.5f),"Boots must sit under this pelvis rather than outside its hip sockets");
+            }
+        }
+        finally{UnityEngine.Object.DestroyImmediate(clone);}
+    }
+    [Test]
+    public void RearDefenseHasSeparatedRearBoots_AndKeepsItsShield()
+    {
+        var clone=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_defense.prefab"));
+        try
+        {
+            var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");var walk=Activator.CreateInstance(Walk,new object[]{art,"Defense"});
+            Walk.GetMethod("Move").Invoke(walk,new object[]{Vector2.up,.1f});Walk.GetMethod("Present").Invoke(walk,new object[]{.1f});
+            var vertical=art.transform.Find("VerticalWalk");
+            var left=vertical.Find("LeftFoot");var right=vertical.Find("RightFoot");
+            Assert.That(left.gameObject.activeInHierarchy&&right.gameObject.activeInHierarchy,Is.True,"Rear boots must be independently visible");
+            Assert.That((right.localPosition.x-left.localPosition.x)*32,Is.InRange(8.5f,9.5f),"Widen the rear stance without moving the foot centre or root");
+            Assert.That(left.GetComponent<SpriteRenderer>().sprite.texture,Is.SameAs(Resources.Load<Sprite>("CoreGuardian/VerticalWalk/Defense/Up_0").texture),"Use rear boot artwork, not mirrored front/side legs");
+            Assert.That(vertical.Find("RightEquipment").GetComponent<SpriteRenderer>().sprite,Is.Not.Null,"Keep the original shield region");
+        }
+        finally{UnityEngine.Object.DestroyImmediate(clone);}
+    }
     static Type Walk=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianOriginalWalk")).First(t=>t!=null);
     static Vector2 Foot(float phase,Vector2 direction)=>(Vector2)Walk.GetMethod("FootOffset").Invoke(null,new object[]{phase,14f,1.8f,direction});
     [Test]
@@ -38,6 +75,7 @@ public class CoreGuardianOriginalGaitTests
     [TestCase("Attack","enemy_attack",14f,1f)]
     [TestCase("Attack","enemy_attack",14f,-1f)]
     [TestCase("Defense","enemy_defense",10f,-1f)]
+    [TestCase("Defense","enemy_defense",10f,1f)]
     [TestCase("Buff","enemy_buff",12f,-1f)]
     [TestCase("Boss","",18f,-1f)]
     public void VerticalWalkAlternatesBothVisibleBoots(string role,string name,float cycle,float direction)
