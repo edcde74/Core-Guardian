@@ -1,0 +1,22 @@
+{
+  "play": false,
+  "dirty": false,
+  "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+  "sceneCount": 1,
+  "compiling": false,
+  "failed": false,
+  "timeScale": 1.0,
+  "captureDelta": 0.0,
+  "hdr": false,
+  "post": true,
+  "targetRestored": true,
+  "weight": 1.0,
+  "profile": "Assets/Settings/CoreGuardianColorGrading.asset",
+  "components": [
+    "ColorAdjustments",
+    "SplitToning"
+  ],
+  "contrast": 35.0,
+  "saturation": 12.0,
+  "exposure": -0.45
+}
