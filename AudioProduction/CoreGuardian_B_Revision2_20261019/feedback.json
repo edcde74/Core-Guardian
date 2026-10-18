@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-19",
+  "direction": "B · 단단하고 빠른 전술",
+  "game_application_authorized": false,
+  "retained_preferences": {"single":2,"player":1,"hit":2,"death":2,"core":1,"boss_spawn":2,"boss_accel":1,"install":3,"install_fail":3,"upgrade_ok":1,"upgrade_fail":2,"bgm":1},
+  "single_note": "셋 중 ② 선호. ① 끝의 챡챡 상승과 ③ 삑삑 질감은 거부. 완성도 최종 승인과 구분한다.",
+  "multi": {"timbre_preference":2,"policy":"실제 발사 수에 맞춰 1·2·3발로 구분","policy_approved_by_user":true,"game_connection_authorized":false},
+  "rebuild": {
+    "demolish":"철거는 Esc 설치 취소와 분리. 이전 remove ①은 선택하지 않았음.",
+    "cancel_install":"Esc 설치 취소를 별도 제작. 철거와 같은 기능으로 묶지 않음.",
+    "round_start":"기존 3안 모두 거부. ① 선택으로 처리하지 않음.",
+    "round_complete":"기존 3안/컨셉 거부. ① 선택으로 처리하지 않음. 승리/패배와 공통 컨셉 필요.",
+    "victory":"③이 상대적으로 나음. 힘들게 이긴 성취감·해방감, 너무 무겁지 않게. 최종 채택 아님.",
+    "defeat":"③이 상대적으로 나음. 일반 완료/최종 승리와 같은 결과음 계열로 재제작.",
+    "ui_click":"②가 상대적으로 낫지만 UI 공통 앞쪽 띵띵 제거. ② 최종 승인 아님.",
+    "ui_open":"② 참고. UI 공통 음색 재제작.",
+    "ui_close":"② 참고. UI가 난잡하고 앞의 띵띵 때문에 전부 별로라는 피드백 반영.",
+    "aug_silver":"② 출발점. 더 묵직한 카드/패 공개 느낌. 증강 선택 시 BGM 변경 필요.",
+    "aug_gold":"② 출발점. 더 묵직하게. TFT 증강 선택 사운드 참고 요청.",
+    "aug_platinum":"② 출발점. 더 묵직하게.",
+    "aug_bgm":"증강 공개/선택 전용 BGM 새 청취안. 전투 BGM ① 선호는 유지."
+  }
+}

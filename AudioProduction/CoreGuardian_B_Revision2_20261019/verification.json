@@ -1,0 +1,168 @@
+{
+  "groups": 13,
+  "candidates": 39,
+  "unique_hashes": 39,
+  "retained": 12,
+  "http_media_checks": 93,
+  "protected_hashes": 218,
+  "sources": 11,
+  "metrics": {
+    "demolish_1.wav": {
+      "duration": 0.3333560090702948,
+      "estimated_dbtp": -3.8079481478341455
+    },
+    "demolish_2.wav": {
+      "duration": 0.3333560090702948,
+      "estimated_dbtp": -3.8071258150867315
+    },
+    "demolish_3.wav": {
+      "duration": 0.3333560090702948,
+      "estimated_dbtp": -3.8067146779064283
+    },
+    "cancel_install_1.wav": {
+      "duration": 0.09,
+      "estimated_dbtp": -6.128233602458655
+    },
+    "cancel_install_2.wav": {
+      "duration": 0.09997732426303856,
+      "estimated_dbtp": -5.796310945287491
+    },
+    "cancel_install_3.wav": {
+      "duration": 0.11997732426303855,
+      "estimated_dbtp": -6.925971104327608
+    },
+    "round_start_1.wav": {
+      "duration": 0.34,
+      "estimated_dbtp": -3.1634615153448413
+    },
+    "round_start_2.wav": {
+      "duration": 0.3450113378684807,
+      "estimated_dbtp": -3.112832542290681
+    },
+    "round_start_3.wav": {
+      "duration": 0.34,
+      "estimated_dbtp": -3.1440124974261203
+    },
+    "round_complete_1.wav": {
+      "duration": 0.7226077097505669,
+      "estimated_dbtp": -10.276586715931264
+    },
+    "round_complete_2.wav": {
+      "duration": 0.7926077097505669,
+      "estimated_dbtp": -9.339297983680376
+    },
+    "round_complete_3.wav": {
+      "duration": 0.97437641723356,
+      "estimated_dbtp": -9.322714347630656
+    },
+    "victory_1.wav": {
+      "duration": 2.377437641723356,
+      "estimated_dbtp": -9.85727596082999
+    },
+    "victory_2.wav": {
+      "duration": 2.397437641723356,
+      "estimated_dbtp": -9.393812168186814
+    },
+    "victory_3.wav": {
+      "duration": 2.577437641723356,
+      "estimated_dbtp": -8.679042578374915
+    },
+    "defeat_1.wav": {
+      "duration": 1.787437641723356,
+      "estimated_dbtp": -10.719790650674918
+    },
+    "defeat_2.wav": {
+      "duration": 1.8604308390022675,
+      "estimated_dbtp": -10.762724619669662
+    },
+    "defeat_3.wav": {
+      "duration": 2.137437641723356,
+      "estimated_dbtp": -9.745115682001755
+    },
+    "ui_click_1.wav": {
+      "duration": 0.06,
+      "estimated_dbtp": -5.151819572535688
+    },
+    "ui_click_2.wav": {
+      "duration": 0.06,
+      "estimated_dbtp": -4.735156757795636
+    },
+    "ui_click_3.wav": {
+      "duration": 0.06,
+      "estimated_dbtp": -4.749082770878673
+    },
+    "ui_open_1.wav": {
+      "duration": 0.09501133786848072,
+      "estimated_dbtp": -9.624690103232004
+    },
+    "ui_open_2.wav": {
+      "duration": 0.09501133786848072,
+      "estimated_dbtp": -10.55735270033908
+    },
+    "ui_open_3.wav": {
+      "duration": 0.09501133786848072,
+      "estimated_dbtp": -9.390014651237843
+    },
+    "ui_close_1.wav": {
+      "duration": 0.08498866213151927,
+      "estimated_dbtp": -7.84480920895456
+    },
+    "ui_close_2.wav": {
+      "duration": 0.08498866213151927,
+      "estimated_dbtp": -6.8168867018465455
+    },
+    "ui_close_3.wav": {
+      "duration": 0.08498866213151927,
+      "estimated_dbtp": -8.071425167166755
+    },
+    "aug_silver_1.wav": {
+      "duration": 0.31501133786848073,
+      "estimated_dbtp": -3.604349001426252
+    },
+    "aug_silver_2.wav": {
+      "duration": 0.31501133786848073,
+      "estimated_dbtp": -3.254087135792889
+    },
+    "aug_silver_3.wav": {
+      "duration": 0.31501133786848073,
+      "estimated_dbtp": -3.181285017695177
+    },
+    "aug_gold_1.wav": {
+      "duration": 0.4828571428571429,
+      "estimated_dbtp": -3.7755250572210377
+    },
+    "aug_gold_2.wav": {
+      "duration": 0.4828571428571429,
+      "estimated_dbtp": -3.3915447266545002
+    },
+    "aug_gold_3.wav": {
+      "duration": 0.4828571428571429,
+      "estimated_dbtp": -3.3328637767403313
+    },
+    "aug_platinum_1.wav": {
+      "duration": 0.4965986394557823,
+      "estimated_dbtp": -4.033297843241822
+    },
+    "aug_platinum_2.wav": {
+      "duration": 0.4965986394557823,
+      "estimated_dbtp": -3.6038499651161398
+    },
+    "aug_platinum_3.wav": {
+      "duration": 0.4965986394557823,
+      "estimated_dbtp": -3.5421274251421266
+    },
+    "aug_bgm_1.wav": {
+      "duration": 12.0,
+      "estimated_dbtp": -12.823117246919564
+    },
+    "aug_bgm_2.wav": {
+      "duration": 10.909092970521542,
+      "estimated_dbtp": -12.19727008184158
+    },
+    "aug_bgm_3.wav": {
+      "duration": 10.434784580498865,
+      "estimated_dbtp": -11.10547956684442
+    }
+  },
+  "note": "File/HTTP checks only. No subjective direct listening or Unity tests."
+}
