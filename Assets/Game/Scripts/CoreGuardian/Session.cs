@@ -16,6 +16,7 @@ namespace CoreGuardian
         public event Action<ProjectileState> ProjectileLaunched;
         public event Action CombatStarted;
         public event Action RoundCompleted;
+        public event Action VictoryReached;
         public EnemyState PlayerTarget => playerTarget;
         public EnemyState TowerTarget(int id)
         {
@@ -112,7 +113,7 @@ namespace CoreGuardian
             CompletedWave=Wave;LastCompletionReward=Data.RewardForWave(Wave);Crystals+=LastCompletionReward;
             if(!coreDamagedThisRound){Gold+=Augments.FlawlessGold;Crystals+=Augments.FlawlessCrystals;}
             LastMessage=CompletedWave+"라운드 완료 +"+LastCompletionReward+" 수정";
-            if(Wave>=LastWave){Phase=SessionPhase.Victory;LastMessage+=" · 1~"+LastWave+"라운드 검증 완료";return;}
+            if(Wave>=LastWave){Phase=SessionPhase.Victory;LastMessage+=" · 1~"+LastWave+"라운드 검증 완료";VictoryReached?.Invoke();return;}
             if(!Data.Waves.Any(row=>row.Wave==Wave+1))throw new InvalidOperationException("Next wave is missing");
             Wave++;PreparationRemaining=Data.PreparationSeconds;
             if(CompletedWave%10==0&&CompletedWave<100&&BossKilled){choices=AugmentationDeck.Draw(augmentationRandom,Augments.Selected);AugmentationRemaining=30;Phase=SessionPhase.Augmentation;LastMessage+=" · 증강 선택";RoundCompleted?.Invoke();return;}
