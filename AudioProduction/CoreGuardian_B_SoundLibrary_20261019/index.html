@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101c24"><title>코어 가디언 · B 사운드 라이브러리</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<aside class="sidebar">
+ <a class="brand" href="#top"><span class="monogram">CG</span><span>CORE GUARDIAN<small>SOUND LIBRARY</small></span></a>
+ <div class="direction"><span class="eyebrow">선택한 사운드 방향</span><strong>B · 단단하고 빠른 전술</strong><p>금속 말렛 · 장치 체결<br>짧은 타격 · 절제된 마력 공명</p></div>
+ <nav id="categories" aria-label="사운드 분류"></nav>
+ <div class="side-note"><span class="dot"></span> 지원 포탑 전투는 무음 유지</div>
+ <div class="progress"><div><span>선택 진행</span><strong id="progress-label">0 / 24</strong></div><progress id="progress" value="0" max="24" aria-label="선택 진행률"></progress><small>항목마다 하나씩 고르거나 보류할 수 있습니다.</small></div>
+ <a class="side-link" href="#export">선택 결과 내보내기 ↓</a>
+</aside>
+<main id="top">
+ <header><span class="eyebrow">AUDIO DIRECTION B / CANDIDATE COLLECTION</span><span class="pill">로컬 청취실 · 2026.10.19</span></header>
+ <section class="hero"><h1>우리 게임의 소리를<br><em>하나씩 완성하기.</em></h1><p>B의 공통 질감 안에서 각 소리를 세 가지로 만들었습니다.<br>재생해서 비교하고, 마음에 드는 번호와 의견을 남겨 주세요.</p><div class="stats"><div><b>6</b><span>분류</span></div><div><b>24</b><span>항목</span></div><div><b>72</b><span>청취 시안</span></div></div></section>
+ <section class="control" aria-label="청취 제어"><div class="control-top"><button id="stop" class="secondary">■ 모두 정지</button><button id="play-category">현재 분류의 3안씩 이어 듣기</button><button id="play-chosen" class="secondary" disabled>고른 소리 이어 듣기</button><label class="volume">청취 음량 <input id="volume" type="range" min="0" max="100" value="30"><output id="volume-label">30%</output></label></div><div class="now"><span class="dot"></span><span id="now" role="status" aria-live="polite">원하는 항목의 재생 버튼을 눌러 주세요.</span></div></section>
+ <div class="tools"><div><h2 id="section-title">전체 사운드</h2><span id="count">24개 항목</span><span id="selected-counter" style="font-size:11px;color:var(--teal)">선택 0/24</span></div><div class="search-wrap"><input id="search" type="search" placeholder="소리·항목 검색" aria-label="소리 또는 항목 검색"><label><input id="unselected" type="checkbox"> 미선택만</label></div></div>
+ <p class="comparison-note">①②③은 모두 B 방향의 청취 후보입니다. 기존 게임의 ‘현재 적용음 ①’ 번호와 별개이며, 선택해도 게임에는 자동 적용되지 않습니다.</p>
+ <div id="groups"></div><div id="empty" hidden>조건에 맞는 항목이 없습니다.</div>
+ <section id="export" class="export"><span class="eyebrow">YOUR SOUND PALETTE</span><h2>고른 소리를 한 번에 전달하기</h2><p>선택과 메모는 이 브라우저에 저장됩니다. 결과를 복사해 채팅에 붙이거나 JSON으로 보관할 수 있습니다.</p><div class="export-actions"><button id="copy">선택 결과 복사</button><button id="download" class="secondary">JSON 저장</button></div><p id="save-status" role="status"></p><textarea id="copy-fallback" hidden readonly aria-label="복사용 선택 결과"></textarea></section>
+ <footer><p>이 페이지의 청취 음량은 게임의 저장 음량과 연결되지 않습니다. 현재 게임의 확정음·지원 전투 무음·기존 BGM 원본은 그대로 유지됩니다.</p><p>증강은 실버·골드·플래티넘 각각의 후보입니다. BGM은 샘플 악기로 새로 편곡한 청취 스케치입니다. 이 페이지는 실제 게임 녹음이 아닙니다.</p><details><summary>제작 재료와 출처</summary><p><a href="https://kenney.nl/assets/interface-sounds">Kenney Interface</a> · <a href="https://kenney.nl/assets/music-jingles">Kenney Jingles</a> (CC0), 기존 취득 Magic Aura/RPG 음원의 로컬 파생. 원본 보존·이 PC에서만 청취. <a href="https://assetstore.unity.com/browse/eula-faq">Unity 이용 조건</a>.</p></details></footer>
+</main><script src="catalog.js"></script><script src="app.js"></script>
+</body></html>

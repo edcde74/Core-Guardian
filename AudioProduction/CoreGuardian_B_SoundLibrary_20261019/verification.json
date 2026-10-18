@@ -1,0 +1,27 @@
+{
+  "groups": 24,
+  "candidates": 72,
+  "unique_candidate_hashes": 72,
+  "http_range_verified": 141,
+  "blocked_unlisted_urls": 3,
+  "source_hashes_unchanged": 14,
+  "protected_hashes_unchanged": 69,
+  "bgm_preview": {
+    "1": {
+      "seconds": 16.0,
+      "lufs": -23.021168510434645,
+      "peak_dbtp": -6.199019165287898
+    },
+    "2": {
+      "seconds": 17.77777777777778,
+      "lufs": -22.970081679042824,
+      "peak_dbtp": -6.470504980699828
+    },
+    "3": {
+      "seconds": 15.0,
+      "lufs": -22.97250788197385,
+      "peak_dbtp": -7.078016456489581
+    }
+  },
+  "note": "Offline files and HTTP checks only. No subjective listening or Unity verification."
+}

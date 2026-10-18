@@ -11,7 +11,7 @@
 
 ## 지금 이어갈 작업
 
-**최신은 A/B v2 청취 피드백이다.** 사용자 요청으로 설치한 스킬/도구를 사용해 [v2](../../AudioProduction/CoreGuardian_ConceptAB_v2_20261019/README.md)를 만들었다. 각BGM포함32초·효과음만32초·새BGM스케치16초·개별11개, 실제게임녹음/게임적용아님. 기존v1/22·66페이지와원본은 보존했다. ElevenLabs API미호출·새Unity조회/검사없음. 아래v1제작/전체청취선택은 이전단계이며 v2사용자피드백을 우선한다.
+**최신은 B방향24항목/72시안 청취선택확인이다.** 사용자가v2에긍정피드백을주고B·단단하고빠른전술을선택한뒤분류별각3안페이지를요청했다. [B청취실](../../AudioProduction/CoreGuardian_B_SoundLibrary_20261019/README.md), http://127.0.0.1:8882/ . 6분류/24항목/72시안으로증강은등급별각3안이다. 모두후보·게임미적용, B선택은전체방향선택이며개별음/음악최종승인아님. 기존14개/지원전투무음/게임음량/v1/v2/기존22·66페이지/BGM원본보존·Unity조회/검사/ElevenLabs호출없음. 아래A/B피드백대기와전체22·66선택대기는이전단계다.
 
 사운드 제작 스킬/로컬 도구는 후속 사용자 요청으로 [AudioTools](../../AudioProduction/AudioTools_20261019/README.md)에 설치/확인했다. audio-design·ElevenLabs sound-effects/music 스킬3개, 로컬DSP/변환/LUFS/MIDI. API 생성은 SDK/키/계정 미연결·미실행이다. Unity/음원/저장음량 변경 없이 준비한 도구이며 A/B 방향 선택을 대신하지 않는다.
 
