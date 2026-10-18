@@ -113,5 +113,5 @@ for direction in range(8):
         im=im.resize((im.width*2,im.height*2),Image.Resampling.NEAREST)
         sheet.paste(im,(cellx,celly+50),im)
 sheet.save(HERE/'player_facing_resources_2x.png')
-(HERE/'registration.json').write_text(json.dumps(dict(method='Existing visible-photo masks; right exposed contour to actual opaque body contact; translation only, original scale and alpha retained',objects=out,body_checks=checks),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(HERE/'registration.json').write_text(json.dumps(dict(method='Existing visible-photo masks; right exposed contour to actual opaque body contact; translation only, original scale and alpha retained',objects=out,body_checks=checks),ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
 print(json.dumps(dict(translations=[(r['role'],r['translation']) for r in out],body_checks=checks),ensure_ascii=False))
