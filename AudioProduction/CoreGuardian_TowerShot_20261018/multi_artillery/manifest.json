@@ -1,0 +1,40 @@
+{
+  "sources": {
+    "magic": {
+      "path": "Assets/Resources/CoreGuardian/Audio/TowerShot/03_Aura.wav",
+      "sha256": "98bb3cbe9999bf05ecf74c4664407a50ebaf41f02ed34c197b768640b474f644"
+    },
+    "mechanism": {
+      "path": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav",
+      "sha256": "4763da64e8420a3ec66391b2ca7e9d5ac25be2b483422397e2b5814641a5c8c9"
+    }
+  },
+  "variants": [
+    {
+      "name": "01_HeavyDischarge",
+      "seconds": 0.72,
+      "peak": 0.3706887228480562,
+      "rms": 0.11999999076791991,
+      "clipped": 0,
+      "last_sample": 0
+    },
+    {
+      "name": "02_ThreeBarrel",
+      "seconds": 0.64,
+      "peak": 0.4642424647485313,
+      "rms": 0.11999998388028862,
+      "clipped": 0,
+      "last_sample": 0
+    },
+    {
+      "name": "03_MechanicalRecoil",
+      "seconds": 0.72,
+      "peak": 0.435821873602072,
+      "rms": 0.11999999715079321,
+      "clipped": 0,
+      "last_sample": 0
+    }
+  ],
+  "ordering": "1 twice, 2 twice, 3 twice; silence separates groups",
+  "listening_approved": false
+}
