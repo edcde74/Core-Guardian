@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 here=Path(__file__).parent
-source_path=Path('C:/Users/edcde/.codex/generated_images/01a14c3e-6f40-7cb0-a137-905a4e6a0ae7/exec-64c1db7a-4fd7-4356-86cf-e32b0ba049b7.png')
+source_path=here/'reference_user_selected.png'
 source=Image.open(source_path).convert('RGB')
 rgb=np.asarray(source).astype(float)
 specs=[
