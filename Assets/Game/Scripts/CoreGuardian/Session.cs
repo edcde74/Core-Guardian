@@ -14,6 +14,7 @@ namespace CoreGuardian
         public event Action<EnemyState,int> DamageApplied;
         // Raised at creation, before movement/hits can remove a projectile in the same Tick.
         public event Action<ProjectileState> ProjectileLaunched;
+        public event Action CombatStarted;
         public EnemyState PlayerTarget => playerTarget;
         public EnemyState TowerTarget(int id)
         {
@@ -71,7 +72,7 @@ namespace CoreGuardian
             BossKilled=false;coreDamagedThisRound=false;
             playerTarget=null;playerAcquired=false;playerCooldown=0;
             foreach(var tower in Towers){tower.Target=null;tower.AcquiredOnce=false;tower.Cooldown=0;}
-            LastMessage=Diagnostic?"역할 검증 전투 시작":Wave+"라운드 전투 시작";return true;
+            LastMessage=Diagnostic?"역할 검증 전투 시작":Wave+"라운드 전투 시작";CombatStarted?.Invoke();return true;
         }
         public void StartDiagnosticEncounter()
         {

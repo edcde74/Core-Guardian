@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 라운드 전투 시작음③ 적용 완료(2026-10-18)
+- 사용자③Kenney confirmation_004(CC0)선택. 원본Ogg 동일바이트0.490408초를 Resources/CoreGuardian/Audio/RoundStart/03_Confirmation004로 연결했다.
+- Session.StartCombat 성공이벤트로 수동/자동시작공통1회,준비/중복시작/같은세션재연결/음소거해제지연재생없음. 기존4음성/gain0.55/공통음량·코어음보호·기존모든사운드/지원무음/게임규칙유지.
+- 새Edit3/3·Play10/10은진단Session/수동Tick·실제시작API 기능QA와기존사운드검사다. 사람버튼입력/실시간준비대기/정상다수전투믹스/전체회귀/성능·밸런스검증아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/round_start_audio_applied_20261018/README.md.
+- 다음구체사운드미정. 과거시작음선택대기는현재가아니다. BGM/병행변경보존.
+
 ■ 최신 추가: 강화 실패음③ 적용 완료(2026-10-18)
 - 사용자③Kenney error_006 선택. CC0 원본Ogg 동일바이트0.500045초를 Resources/CoreGuardian/Audio/UpgradeFailure/03_Error006으로 연결했다.
 - 플레이어/포탑 실제강화구매실패에만재생·전체실패0.2초묶음. 기존4음성/gain0.55/공통음량·코어음보호·성공음/스캔B0.8초/가격/조건유지. 설치실패나비활성UI입력등다른동작으로확대하지않았다.

@@ -13,6 +13,42 @@ using UnityEditor.SceneManagement;
 public class CoreGuardianCombatAudioPlayModeTests
 {
     [UnityTest]
+    public IEnumerator CombatStartUsesConfirmationForManualAndTimeoutWithoutReplaying()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
+        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
+        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
+        Assert.That(type.GetField("RoundStartResourcePath"),Is.Not.Null,"Selected round start audio is missing");
+        var audio=(MonoBehaviour)game.GetComponent(type);
+        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
+        try
+        {
+            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
+            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
+            var count=type.GetProperty("RoundStartPlayedCount");var configure=type.GetMethod("Configure");configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});
+            Assert.That(count.GetValue(audio),Is.EqualTo(0),"Preparation is silent");
+            var voices=audio.GetComponentsInChildren<AudioSource>();type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
+            gameType.GetMethod("StartCombat").Invoke(game,null);Assert.That(session.Phase,Is.EqualTo(SessionPhase.Combat));Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            var clip=Resources.Load<AudioClip>((string)type.GetField("RoundStartResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);Assert.That(voices.Count(v=>v.isPlaying&&v.clip==clip),Is.EqualTo(1));Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="06_Aura_Glyph_2"),Is.True);
+            gameType.GetMethod("StartCombat").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            audio.enabled=false;audio.enabled=true;configure.Invoke(audio,new object[]{session});Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            foreach(var voice in voices)voice.Stop();session.StartDiagnosticEncounter();Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            session.Tick(session.PreparationRemaining+.01f,new Vector2(-100,-100));Assert.That(session.Phase,Is.EqualTo(SessionPhase.Combat));Assert.That(count.GetValue(audio),Is.EqualTo(2),"Real preparation timeout must play once");
+            session.Tick(.01f,new Vector2(-100,-100));Assert.That(count.GetValue(audio),Is.EqualTo(2));
+            session.StartDiagnosticEncounter();PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);gameType.GetMethod("StartCombat").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(2));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);configure.Invoke(audio,new object[]{session});Assert.That(count.GetValue(audio),Is.EqualTo(2),"No delayed start on unmute");
+            session.StartDiagnosticEncounter();foreach(var voice in voices)voice.Stop();gameType.GetMethod("StartCombat").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(3));
+            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
+        }
+        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator UpgradeFailureUsesError006WithoutSpendingCurrencyOrShowingSuccessScan()
     {
 #if UNITY_EDITOR
@@ -415,10 +451,11 @@ public class CoreGuardianCombatAudioPlayModeTests
             int singleShots=0,multiShots=0,multiTwoShots=0;
             session.ProjectileLaunched+=p=>{if(p.Source=="Tower:"+tower.Id)singleShots++;if(p.Source=="Tower:"+multi.Id)multiShots++;if(p.Source=="Tower:"+multiTwo.Id)multiTwoShots++;};
             session.StartCombat();
+            int beforeLaunches=(int)played.GetValue(audio); // The approved round-start cue is separate from shots.
             foreach(float distance in new[]{0f,1f,2f})session.DebugSpawn(EnemyKind.Defense,distance).Health=10000;
             session.Tick(.05f,new Vector2(-100,-100));
             Assert.That(singleShots,Is.EqualTo(1));Assert.That(multiShots,Is.EqualTo(3));Assert.That(multiTwoShots,Is.GreaterThan(0));
-            Assert.That((int)played.GetValue(audio),Is.EqualTo(3),"Single plus one audio volley per multi tower, with support silent");
+            Assert.That((int)played.GetValue(audio)-beforeLaunches,Is.EqualTo(3),"Single plus one audio volley per multi tower, with support silent");
             var voices=audio.GetComponentsInChildren<AudioSource>();Assert.That(voices.Length,Is.EqualTo(4));
             Assert.That(voices.Count(v=>v.isPlaying&&v.clip.name=="B_BrighterAttack"),Is.EqualTo(2));
             foreach(var source in voices){Assert.That(source.loop,Is.False);Assert.That(source.spatialBlend,Is.Zero);}
