@@ -65,9 +65,10 @@ public sealed class CoreGuardianAugmentationView : MonoBehaviour, IPointerEnterH
         int grade=(int)card.Grade;if(sounds[grade]==null){int rate=44100;float duration=.35f+grade*.2f;var samples=new float[(int)(rate*duration)];
             for(int i=0;i<samples.Length;i++){float t=(float)i/rate;float amp=Mathf.Exp(-t*(8-grade*2));float f=440*(1+grade*.5f);samples[i]=.16f*amp*(Mathf.Sin(t*f*2*Mathf.PI)+.4f*Mathf.Sin(t*f*3*Mathf.PI));}
             sounds[grade]=AudioClip.Create("AugmentReveal_"+card.Grade,samples.Length,1,rate,false);sounds[grade].SetData(samples,0);}
+        audioSource.volume=CoreGuardianSoundSettings.Volume;
         audioSource.PlayOneShot(sounds[grade],.65f);
     }
-    void Update(){if(body!=null&&!Busy){body.localScale=Vector3.Lerp(body.localScale,hover?new Vector3(1.025f,1.025f,1):Vector3.one,Time.unscaledDeltaTime*18);rim.color=colors[(int)card.Grade]*(hover?1.18f:1);}}
+    void Update(){if(audioSource!=null)audioSource.volume=CoreGuardianSoundSettings.Volume;if(body!=null&&!Busy){body.localScale=Vector3.Lerp(body.localScale,hover?new Vector3(1.025f,1.025f,1):Vector3.one,Time.unscaledDeltaTime*18);rim.color=colors[(int)card.Grade]*(hover?1.18f:1);}}
     void OnDisable(){StopAllCoroutines();Busy=false;if(body!=null){body.localScale=Vector3.one;foreach(Transform child in transform)if(child.name=="RevealSpark")Destroy(child.gameObject);}if(audioSource!=null)audioSource.Stop();hover=false;}
     public void OnPointerEnter(PointerEventData e){hover=true;}public void OnPointerExit(PointerEventData e){hover=false;}public void OnSelect(BaseEventData e){hover=true;}public void OnDeselect(BaseEventData e){hover=false;}
     public static string FamilyIcon(AugmentationFamily f)=>f==AugmentationFamily.Gold?"Gold":f==AugmentationFamily.Crystals?"Crystal":f==AugmentationFamily.Core||f==AugmentationFamily.Flawless?"Core":f==AugmentationFamily.Player?"Upgrade":"Install";

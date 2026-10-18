@@ -69,6 +69,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             Session=new Session(CombatData.Load(enemiesCsv.text,towersCsv.text,stageCsv.text,upgradesCsv.text,wavesCsv.text));
             route=routeCells.Select(c=>World(c)).ToArray();
             Session.SetBoard(boardSize.x,boardSize.y,coreCell,routeCells);
+            var combatAudio=GetComponent<CoreGuardianCombatAudio>();
+            if(combatAudio==null)combatAudio=gameObject.AddComponent<CoreGuardianCombatAudio>();
+            combatAudio.Configure(Session);
             occupiedTile=ScriptableObject.CreateInstance<Tile>(); // Hidden occupancy map, independent of visible art.
             square=MakeSprite(false);dot=MakeSprite(true);
             hud=gameObject.AddComponent<CoreGuardianHud>();hud.Configure(this);

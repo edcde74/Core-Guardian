@@ -1,0 +1,43 @@
+using System;
+using NUnit.Framework;
+using UnityEngine;
+
+public class CoreGuardianSoundTests
+{
+    [Test]
+    public void VolumeIsPersistedClampedAndRejectsNonFiniteInput()
+    {
+        const string key="CoreGuardian.SoundVolume";
+        bool existed=PlayerPrefs.HasKey(key);float previous=PlayerPrefs.GetFloat(key);
+        try
+        {
+            var type=Type.GetType("CoreGuardianSoundSettings, Assembly-CSharp");
+            Assert.That(type,Is.Not.Null,"Sound volume controls are missing");
+            var volume=type.GetProperty("Volume");
+            volume.SetValue(null,.37f);
+            Assert.That(PlayerPrefs.GetFloat(key),Is.EqualTo(.37f).Within(.00001f));
+            volume.SetValue(null,-1f);Assert.That(volume.GetValue(null),Is.EqualTo(0f));
+            volume.SetValue(null,2f);Assert.That(volume.GetValue(null),Is.EqualTo(1f));
+            volume.SetValue(null,float.NaN);Assert.That(float.IsNaN((float)volume.GetValue(null)),Is.False);
+            PlayerPrefs.SetFloat(key,float.PositiveInfinity);
+            Assert.That(volume.GetValue(null),Is.EqualTo(.65f));
+        }
+        finally{if(existed)PlayerPrefs.SetFloat(key,previous);else PlayerPrefs.DeleteKey(key);}
+    }
+
+    [Test]
+    public void MagicCannonCandidatesHaveAudibleSamplesAndShortNonLoopingTails()
+    {
+        var clips=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/TowerShot");
+        Assert.That(clips.Length,Is.EqualTo(3),"Three real-pack auditions must be available in the game");
+        foreach(var clip in clips)
+        {
+            Assert.That(clip.length,Is.InRange(.3f,.85f),clip.name);
+            var data=new float[clip.samples*clip.channels];
+            Assert.That(clip.GetData(data,0),Is.True);
+            float peak=0;foreach(float value in data)peak=Mathf.Max(peak,Mathf.Abs(value));
+            Assert.That(peak,Is.InRange(.1f,.9f),clip.name);
+            Assert.That(Mathf.Abs(data[data.Length-1]),Is.LessThan(.001f),"Fade must avoid a cutoff click");
+        }
+    }
+}

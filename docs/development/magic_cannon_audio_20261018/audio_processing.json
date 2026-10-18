@@ -1,0 +1,32 @@
+[
+  {
+    "name": "01_Earth",
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/30_Earth_02.wav",
+    "source_sha256": "096ed69309b460103fc1149919674cc6af2b29af0b715fe8b0275205a2471d98",
+    "onset_seconds": 0.03378684807256236,
+    "duration_seconds": 0.7,
+    "peak": 0.7,
+    "clipped_samples": 0,
+    "output": "Assets\\Resources\\CoreGuardian\\Audio\\TowerShot\\01_Earth.wav"
+  },
+  {
+    "name": "02_Fire",
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/04_Fire_explosion_04_medium.wav",
+    "source_sha256": "b4c425e04c1562cf83d3193fe40462d7014b7b1a1e3387017db247d1901833fd",
+    "onset_seconds": 0.0,
+    "duration_seconds": 0.6,
+    "peak": 0.7,
+    "clipped_samples": 0,
+    "output": "Assets\\Resources\\CoreGuardian\\Audio\\TowerShot\\02_Fire.wav"
+  },
+  {
+    "name": "03_Aura",
+    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_1.wav",
+    "source_sha256": "b9470f0bfac63feb2ce402167a2b465d73ee35b9d02f132ecbc79ade62967442",
+    "onset_seconds": 0.012063492063492064,
+    "duration_seconds": 0.75,
+    "peak": 0.7,
+    "clipped_samples": 0,
+    "output": "Assets\\Resources\\CoreGuardian\\Audio\\TowerShot\\03_Aura.wav"
+  }
+]

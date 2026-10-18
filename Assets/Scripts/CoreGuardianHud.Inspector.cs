@@ -68,6 +68,7 @@ public sealed partial class CoreGuardianHud
         var debug=canvas.Find("PrototypeActions") as RectTransform;debug.anchoredPosition=new Vector2(16,-72);
         var reload=canvas.Find("Reload") as RectTransform;reload.anchorMin=reload.anchorMax=reload.pivot=new Vector2(0,1);reload.anchoredPosition=new Vector2(32,-168);
         var speed=canvas.Find("TestSpeed") as RectTransform;speed.anchorMin=speed.anchorMax=speed.pivot=new Vector2(0,1);speed.anchoredPosition=new Vector2(32,-232);
+        BuildSoundControls();
         SetTopCompact(true);
     }
     void BuildInspectors()
@@ -190,7 +191,7 @@ public sealed partial class CoreGuardianHud
         bool details=playerOpen||towerOpen||installOpen;
         inspectorFold.gameObject.SetActive(details&&s.Phase!=SessionPhase.Augmentation);
         inspectorFold.anchoredPosition=new Vector2(0,112+(installOpen?installPanel.sizeDelta.y:playerOpen?playerPanel.sizeDelta.y:towerPanel.sizeDelta.y));
-        foreach(var name in new[]{"PrototypeActions","Reload","TestSpeed"}){var node=canvas.Find(name);if(node!=null)node.gameObject.SetActive(developerOpen);}
+        foreach(var name in new[]{"PrototypeActions","Reload","TestSpeed","SoundControls"}){var node=canvas.Find(name);if(node!=null)node.gameObject.SetActive(developerOpen);}
         var cancel=canvas.Find("CancelPlacement");if(cancel!=null)cancel.gameObject.SetActive(game.Installing.HasValue);
     }
 }
