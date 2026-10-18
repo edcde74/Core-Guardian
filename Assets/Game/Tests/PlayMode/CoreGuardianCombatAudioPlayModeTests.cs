@@ -13,6 +13,55 @@ using UnityEditor.SceneManagement;
 public class CoreGuardianCombatAudioPlayModeTests
 {
     [UnityTest]
+    public IEnumerator MonsterHitsUseSelectedClipAndBoundOverlapWithoutChangingDamage()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
+        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
+        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
+        Assert.That(type.GetField("MonsterHitResourcePath"),Is.Not.Null,"Selected monster hit audio is missing");
+        var audio=(MonoBehaviour)game.GetComponent(type);
+        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
+        try
+        {
+            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
+            var session=(Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            var configure=type.GetMethod("Configure");configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});
+            var count=type.GetProperty("MonsterHitPlayedCount");
+            var enemy=session.DebugSpawn(EnemyKind.Attack);float hp=enemy.Health;
+            session.ApplyDamage(enemy,0,"Player");session.ApplyDamage(null,10,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(0));
+            session.ApplyDamage(enemy,1,"Player");Assert.That(enemy.Health,Is.EqualTo(hp-1));
+            Assert.That(count.GetValue(audio),Is.EqualTo(1),"Configure twice must not double-subscribe");
+            var clip=Resources.Load<AudioClip>((string)type.GetField("MonsterHitResourcePath").GetRawConstantValue());
+            var voices=audio.GetComponentsInChildren<AudioSource>();
+            Assert.That(voices.Any(v=>v.isPlaying&&v.clip==clip),Is.True);
+            session.ApplyDamage(enemy,1,"Tower:1");Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            yield return new WaitForSecondsRealtime(.12f);
+            session.ApplyDamage(enemy,10000,"Tower:1");Assert.That(enemy.Alive,Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(2),"Lethal hit should still play");
+            yield return new WaitForSecondsRealtime(.12f);
+            session.ApplyDamage(enemy,10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2),"Dead targets must not play again");
+            foreach(var voice in voices)voice.Stop();
+            for(int i=0;i<4;i++)type.GetMethod("Preview").Invoke(audio,null);
+            var other=session.DebugSpawn(EnemyKind.Attack);session.ApplyDamage(other,1,"Player");
+            Assert.That(count.GetValue(audio),Is.EqualTo(2),"Full pool drops ordinary hit audio");
+            Assert.That(voices.All(v=>v.clip.name=="03_Aura"),Is.True,"Hit must not replace attacks");
+            foreach(var voice in voices)voice.Stop();
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
+            audio.enabled=false;session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
+            audio.enabled=true;session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(3));
+            yield return null;
+            Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
+        }
+        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator CoreArrivalPlaysSelectedGlyphAndHonorsMuteCooldownAndFullPool()
     {
 #if UNITY_EDITOR

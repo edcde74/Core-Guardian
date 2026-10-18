@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 몬스터 피격음③ 적용 완료(2026-10-18)
+- 사용자③Hit 선택. 원본61_Hit_03.wav 동일바이트0.666667초를 Resources/CoreGuardian/Audio/MonsterHit/03_Hit로 연결했다.
+- DamageApplied 양수피해/치명타격에 재생,전체피격0.1초 묶음/기존4음성 포화면피격음생략/gain0.55/공통음량. 공격3종/지원무음/코어⑥우선/멀티묶음 유지.
+- 새Edit3/3·Play3/3은 진단Session.ApplyDamage 직접호출 기능QA와 기존발사/코어검사다. 정상다수전투믹스/성능/전체회귀/사람플레이·밸런스 검증 아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/monster_hit_audio_applied_20261018/README.md.
+- 다음 구체 사운드는 미정. 과거③선택대기/새검사없음 문구를 현재로 읽지 않는다.
+
 ■ 최신 추가: 코어 피해음⑥ 적용 완료(2026-10-18)
 - 사용자 ‘6번으로 진행해’로 Aura_Glyph_2 원본을 코어 에너지 감소에 연결했다. 공격음3종/지원무음 유지.
 - Assets/Resources/CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2.wav. 원본 동일바이트1.981초,0.3초 연속 묶음/4음성 내 코어 알림 우선/gain0.55/공통음량.

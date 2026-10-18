@@ -11,11 +11,13 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public const string PlayerShotResourcePath="CoreGuardian/Audio/PlayerShot/03_Glyph";
     public const string MultiShotResourcePath="CoreGuardian/Audio/MultiShot/B_BrighterAttack";
     public const string CoreDamageResourcePath="CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2";
-    AudioClip singleClip,playerClip,multiClip,coreDamageClip;
+    public const string MonsterHitResourcePath="CoreGuardian/Audio/MonsterHit/03_Hit";
+    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip;
     readonly System.Collections.Generic.Dictionary<int,float> nextMultiShots=new System.Collections.Generic.Dictionary<int,float>();
     readonly AudioSource[] voices=new AudioSource[VoiceLimit];
     Session session;
-    float nextShot,nextPlayerShot,nextCoreDamage;
+    float nextShot,nextPlayerShot,nextCoreDamage,nextMonsterHit;
+    public int MonsterHitPlayedCount {get;private set;}
     public int CoreDamagePlayedCount {get;private set;}
     public int PlayedCount {get;private set;}
     public int DroppedCount {get;private set;}
@@ -27,6 +29,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         playerClip=Resources.Load<AudioClip>(PlayerShotResourcePath);
         multiClip=Resources.Load<AudioClip>(MultiShotResourcePath);
         coreDamageClip=Resources.Load<AudioClip>(CoreDamageResourcePath);
+        monsterHitClip=Resources.Load<AudioClip>(MonsterHitResourcePath);
         for(int i=0;i<voices.Length;i++)
         {
             var child=new GameObject("MagicCannonVoice_"+i);child.transform.SetParent(transform,false);
@@ -37,12 +40,13 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     public void Configure(Session value)
     {
-        Unsubscribe();session=value;nextShot=nextPlayerShot=nextCoreDamage=0;
+        Unsubscribe();session=value;nextShot=nextPlayerShot=nextCoreDamage=nextMonsterHit=0;
         nextMultiShots.Clear();
-        if(isActiveAndEnabled&&session!=null)session.ProjectileLaunched+=OnLaunch;
+        if(isActiveAndEnabled)Subscribe();
     }
-    void OnEnable(){if(session!=null)session.ProjectileLaunched+=OnLaunch;}
-    void Unsubscribe(){if(session!=null)session.ProjectileLaunched-=OnLaunch;}
+    void Subscribe(){if(session!=null){session.ProjectileLaunched+=OnLaunch;session.DamageApplied+=OnMonsterHit;}}
+    void OnEnable(){Subscribe();}
+    void Unsubscribe(){if(session!=null){session.ProjectileLaunched-=OnLaunch;session.DamageApplied-=OnMonsterHit;}}
     void OnDisable(){Unsubscribe();foreach(var voice in voices)if(voice!=null)voice.Stop();}
     void OnDestroy(){PlayerPrefs.Save();}
     void OnApplicationPause(bool paused){if(paused)PlayerPrefs.Save();}
@@ -78,6 +82,13 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public bool PreviewPlayer()=>PlayClip(playerClip);
     public bool PreviewMulti()=>PlayClip(multiClip);
     public bool PreviewCoreDamage()=>PlayClip(coreDamageClip,true);
+    void OnMonsterHit(EnemyState target,int amount)
+    {
+        // DamageApplied includes lethal hits. Bound the whole hit bus, not each enemy.
+        if(target==null||amount<=0||Time.unscaledTime<nextMonsterHit)return;
+        if(!PlayClip(monsterHitClip))return;
+        nextMonsterHit=Time.unscaledTime+.1f;MonsterHitPlayedCount++;
+    }
     public bool NotifyCoreDamage(int amount)
     {
         if(amount<=0||Time.unscaledTime<nextCoreDamage)return false;
