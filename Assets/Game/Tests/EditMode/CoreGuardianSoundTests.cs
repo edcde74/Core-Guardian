@@ -5,7 +5,7 @@ using UnityEngine;
 public class CoreGuardianSoundTests
 {
     [Test]
-    public void SingleAndPlayerUseApprovedThirdClipsWithOnlyMultiAuditions()
+    public void AllAttackRolesUseApprovedClipsAndNoAuditionsRemain()
     {
         var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
         var field=type.GetField("SingleShotResourcePath");
@@ -15,13 +15,12 @@ public class CoreGuardianSoundTests
         Assert.That(player,Is.Not.Null,"Approved player attack must be connected");
         Assert.That((string)player.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/PlayerShot/03_Glyph"));
         Assert.That(Resources.Load<AudioClip>((string)player.GetRawConstantValue()),Is.Not.Null);
-        foreach(string role in new[]{"Player","Support"})Assert.That(Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role),Is.Empty);
-        foreach(string role in new[]{"Multi"})
-        {
-            var clips=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role);
-            Assert.That(clips.Length,Is.EqualTo(3),role);
-            foreach(var clip in clips){Assert.That(clip.length,Is.InRange(.2f,.85f));Assert.That(clip.loadState,Is.EqualTo(AudioDataLoadState.Loaded));}
-        }
+        var multi=type.GetField("MultiShotResourcePath");
+        Assert.That(multi,Is.Not.Null,"Selected B must be connected to multi-tower attacks");
+        Assert.That((string)multi.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/MultiShot/B_BrighterAttack"));
+        var multiClip=Resources.Load<AudioClip>((string)multi.GetRawConstantValue());
+        Assert.That(multiClip,Is.Not.Null);Assert.That(multiClip.length,Is.EqualTo(.64f).Within(.001f));
+        foreach(string role in new[]{"Multi","Player","Support"})Assert.That(Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role),Is.Empty);
     }
     [Test]
     public void VolumeIsPersistedClampedAndRejectsNonFiniteInput()

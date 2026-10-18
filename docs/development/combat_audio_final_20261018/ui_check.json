@@ -1,0 +1,17 @@
+{
+  "volume": 0.126900658,
+  "labels": [
+    "효과음 음량  13%",
+    "단일 · ③ 확정",
+    "듣기",
+    "멀티 · B 확정",
+    "듣기",
+    "플레이어 · ③ 확정",
+    "듣기",
+    "지원 · 소리 사용 안 함",
+    "공격음 모두 적용 · 지원 무음"
+  ],
+  "single": "CoreGuardian/Audio/TowerShot/03_Aura",
+  "multi": "CoreGuardian/Audio/MultiShot/B_BrighterAttack",
+  "player": "CoreGuardian/Audio/PlayerShot/03_Glyph"
+}

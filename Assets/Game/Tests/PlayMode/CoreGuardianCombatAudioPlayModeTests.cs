@@ -38,21 +38,23 @@ public class CoreGuardianCombatAudioPlayModeTests
             string reason;var tower=session.TryInstall(TowerKind.Single,new Vector2Int(1,1),out reason);
             Assert.That(tower,Is.Not.Null,reason);
             var multi=session.TryInstall(TowerKind.Multi,new Vector2Int(2,1),out reason);Assert.That(multi,Is.Not.Null,reason);
+            var multiTwo=session.TryInstall(TowerKind.Multi,new Vector2Int(2,2),out reason);Assert.That(multiTwo,Is.Not.Null,reason);
             var support=session.TryInstall(TowerKind.Support,new Vector2Int(1,2),out reason);Assert.That(support,Is.Not.Null,reason);
             var played=audioType.GetProperty("PlayedCount");
             audioType.GetMethod("Configure").Invoke(audio,new object[]{session});
             audioType.GetMethod("Configure").Invoke(audio,new object[]{session});
-            int singleShots=0,multiShots=0;
-            session.ProjectileLaunched+=p=>{if(p.Source=="Tower:"+tower.Id)singleShots++;if(p.Source=="Tower:"+multi.Id)multiShots++;};
+            int singleShots=0,multiShots=0,multiTwoShots=0;
+            session.ProjectileLaunched+=p=>{if(p.Source=="Tower:"+tower.Id)singleShots++;if(p.Source=="Tower:"+multi.Id)multiShots++;if(p.Source=="Tower:"+multiTwo.Id)multiTwoShots++;};
             session.StartCombat();
             foreach(float distance in new[]{0f,1f,2f})session.DebugSpawn(EnemyKind.Defense,distance).Health=10000;
             session.Tick(.05f,new Vector2(-100,-100));
-            Assert.That(singleShots,Is.EqualTo(1));Assert.That(multiShots,Is.GreaterThan(0));
-            Assert.That((int)played.GetValue(audio),Is.EqualTo(1),"Only the real single shot should play, with no duplicate subscription");
+            Assert.That(singleShots,Is.EqualTo(1));Assert.That(multiShots,Is.EqualTo(3));Assert.That(multiTwoShots,Is.GreaterThan(0));
+            Assert.That((int)played.GetValue(audio),Is.EqualTo(3),"Single plus one audio volley per multi tower, with support silent");
             var voices=audio.GetComponentsInChildren<AudioSource>();Assert.That(voices.Length,Is.EqualTo(4));
+            Assert.That(voices.Count(v=>v.isPlaying&&v.clip.name=="B_BrighterAttack"),Is.EqualTo(2));
             foreach(var source in voices){Assert.That(source.loop,Is.False);Assert.That(source.spatialBlend,Is.Zero);}
             yield return new WaitForSecondsRealtime(.85f);
-            // A real player launch uses approved candidate3; support/multi remain silent.
+            // Before tower cooldowns expire, a real player launch uses approved candidate3.
             int beforePlayer=(int)played.GetValue(audio);
             session.Tick(.01f,new Vector2(1,1));
             Assert.That((int)played.GetValue(audio),Is.EqualTo(beforePlayer+1));
@@ -67,16 +69,8 @@ public class CoreGuardianCombatAudioPlayModeTests
             preview.Invoke(audio,null);
             Assert.That(preview.Invoke(audio,null),Is.EqualTo(false),"Pool must reject a fifth overlapping sound");
             audio.enabled=false;Assert.That(voices.All(v=>!v.isPlaying),Is.True);audio.enabled=true;
-            var audition=audioType.GetMethod("PreviewAudition");
-            foreach(var role in new[]{"Multi"})for(int index=0;index<3;index++)
-            {
-                foreach(var voice in voices)voice.Stop();
-                Assert.That(audition.Invoke(audio,new object[]{role,index}),Is.EqualTo(true),role+index);
-                Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name.StartsWith("0"+(index+1))),Is.True);
-            }
-            Assert.That(audition.Invoke(audio,new object[]{"Invalid",0}),Is.EqualTo(false));
-            Assert.That(audition.Invoke(audio,new object[]{"Support",0}),Is.EqualTo(false));
-            Assert.That(audition.Invoke(audio,new object[]{"Player",0}),Is.EqualTo(false));
+            Assert.That(audioType.GetMethod("PreviewMulti").Invoke(audio,null),Is.EqualTo(true));
+            Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="B_BrighterAttack"),Is.True);
             foreach(var voice in voices)voice.Stop();
             var canvas=game.transform.Find("CombatHUD");
             var buttonType=Type.GetType("UnityEngine.UI.Button, UnityEngine.UI");
@@ -88,6 +82,8 @@ public class CoreGuardianCombatAudioPlayModeTests
             var panel=canvas.Find("SoundControls");Assert.That(panel.gameObject.activeInHierarchy,Is.True);
             Assert.That(panel.Find("Listen_Support"),Is.Null);
             Assert.That(panel.Find("PreviewPlayer"),Is.Not.Null);
+            Assert.That(panel.Find("PreviewMulti"),Is.Not.Null);
+            Assert.That(panel.Find("Audition_Multi"),Is.Null);
             var slider=panel.Find("SoundVolume").GetComponent(sliderType);
             var fill=(RectTransform)sliderType.GetProperty("fillRect").GetValue(slider);
             var handle=(RectTransform)sliderType.GetProperty("handleRect").GetValue(slider);
