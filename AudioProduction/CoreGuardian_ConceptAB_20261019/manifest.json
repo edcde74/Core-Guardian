@@ -1,0 +1,226 @@
+{
+  "purpose": "청취용 컨셉 스케치 · 게임 녹음/적용 아님",
+  "rate": 44100,
+  "sources": {
+    "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/pluck_001.ogg": "be97ec4893a02d6eccfb678daa76c83e34cb2583b834ec2593d2641def739fa4",
+    "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/pluck_002.ogg": "c977fe249ff42d1c93a552b33abc13a8399df3879fa510475426e5c4bbac1da9",
+    "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/bong_001.ogg": "d21d0f0b782445db579d11e2506b24cd1ac9d664ee33aeaf807761aa7b6fd710",
+    "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/glass_001.ogg": "183eebee20eb0a532b0b85104d139cbf2673eb66d95c3cc733ac9ea98362e7e8",
+    "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/click_001.ogg": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
+    "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/click_003.ogg": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292",
+    "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/switch_004.ogg": "541c19cc1ab712a9efc5765df602e7d0da09d9cafdd297ce1e19b092289fd62f",
+    "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/drop_002.ogg": "4ac4d1cef7e936965cbf795852ca2020300b9e2ba7daa59f2bf4f1f7bf416218",
+    "Assets/Resources/CoreGuardian/Audio/TowerShot/03_Aura.wav": "98bb3cbe9999bf05ecf74c4664407a50ebaf41f02ed34c197b768640b474f644",
+    "Assets/Resources/CoreGuardian/Audio/PlayerShot/03_Glyph.wav": "826226e9d7126c2c48fa0455154377bb38e8f7fdfb548a4f5d6814448a3f435e",
+    "Assets/Resources/CoreGuardian/Audio/MonsterHit/03_Hit.wav": "3e2ee7d0e9733404e10ae4cf9dc89aee36ab3b4946e02f1a7fd5697c774cc08e"
+  },
+  "scene_stats": {
+    "A": {
+      "seconds": 24,
+      "peak": 0.76,
+      "rms_dbfs": -24.807613581853257
+    },
+    "B": {
+      "seconds": 24,
+      "peak": 0.5781373410402653,
+      "rms_dbfs": -24.807613581853257
+    }
+  },
+  "timeline": [
+    {
+      "seconds": 0,
+      "event": "click",
+      "gain": 0.7
+    },
+    {
+      "seconds": 0.45,
+      "event": "install",
+      "gain": 0.9
+    },
+    {
+      "seconds": 1.25,
+      "event": "start",
+      "gain": 0.9
+    },
+    {
+      "seconds": 2.2,
+      "event": "player",
+      "gain": 0.85
+    },
+    {
+      "seconds": 2.38,
+      "event": "hit",
+      "gain": 0.6
+    },
+    {
+      "seconds": 2.85,
+      "event": "single",
+      "gain": 0.8
+    },
+    {
+      "seconds": 3.04,
+      "event": "hit",
+      "gain": 0.6
+    },
+    {
+      "seconds": 3.55,
+      "event": "single",
+      "gain": 0.8
+    },
+    {
+      "seconds": 3.74,
+      "event": "hit",
+      "gain": 0.6
+    },
+    {
+      "seconds": 4.25,
+      "event": "multi",
+      "gain": 0.8
+    },
+    {
+      "seconds": 4.64,
+      "event": "hit",
+      "gain": 0.65
+    },
+    {
+      "seconds": 5.35,
+      "event": "upgrade",
+      "gain": 1
+    },
+    {
+      "seconds": 6.5,
+      "event": "single",
+      "gain": 0.8
+    },
+    {
+      "seconds": 6.67,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 6.95,
+      "event": "player",
+      "gain": 0.85
+    },
+    {
+      "seconds": 7.13,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 7.4,
+      "event": "multi",
+      "gain": 0.75
+    },
+    {
+      "seconds": 7.75,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 8.1,
+      "event": "single",
+      "gain": 0.8
+    },
+    {
+      "seconds": 8.27,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 8.6,
+      "event": "player",
+      "gain": 0.85
+    },
+    {
+      "seconds": 8.78,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 9.05,
+      "event": "multi",
+      "gain": 0.75
+    },
+    {
+      "seconds": 9.4,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 9.7,
+      "event": "single",
+      "gain": 0.8
+    },
+    {
+      "seconds": 9.87,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 10.25,
+      "event": "player",
+      "gain": 0.85
+    },
+    {
+      "seconds": 10.43,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 10.8,
+      "event": "multi",
+      "gain": 0.75
+    },
+    {
+      "seconds": 11.15,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 12.2,
+      "event": "complete",
+      "gain": 1
+    },
+    {
+      "seconds": 14.3,
+      "event": "install",
+      "gain": 0.9
+    },
+    {
+      "seconds": 15.1,
+      "event": "upgrade",
+      "gain": 1
+    },
+    {
+      "seconds": 16.5,
+      "event": "single",
+      "gain": 0.8
+    },
+    {
+      "seconds": 16.68,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 17.2,
+      "event": "multi",
+      "gain": 0.8
+    },
+    {
+      "seconds": 17.55,
+      "event": "hit",
+      "gain": 0.55
+    },
+    {
+      "seconds": 18.5,
+      "event": "victory",
+      "gain": 1
+    },
+    {
+      "seconds": 22,
+      "event": "defeat",
+      "gain": 0.85
+    }
+  ]
+}
