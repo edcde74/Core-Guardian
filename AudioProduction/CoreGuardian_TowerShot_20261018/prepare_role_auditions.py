@@ -6,7 +6,7 @@ import wave
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[2]
-OUT=ROOT/'Assets/Resources/CoreGuardian/Audio/Auditions'
+OUT=ROOT/'AudioProduction/CoreGuardian_TowerShot_20261018/archived_role_auditions'
 DEMO=ROOT/'AudioProduction/CoreGuardian_TowerShot_20261018/role_auditions'
 DEMO.mkdir(parents=True,exist_ok=True)
 AURA='Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/'

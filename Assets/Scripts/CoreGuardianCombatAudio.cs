@@ -8,11 +8,12 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public const int VoiceLimit=4;
     const float ShotGain=.55f;
     public const string SingleShotResourcePath="CoreGuardian/Audio/TowerShot/03_Aura";
-    AudioClip singleClip;
+    public const string PlayerShotResourcePath="CoreGuardian/Audio/PlayerShot/03_Glyph";
+    AudioClip singleClip,playerClip;
     readonly System.Collections.Generic.Dictionary<string,AudioClip[]> auditions=new System.Collections.Generic.Dictionary<string,AudioClip[]>();
     readonly AudioSource[] voices=new AudioSource[VoiceLimit];
     Session session;
-    float nextShot;
+    float nextShot,nextPlayerShot;
     public int PlayedCount {get;private set;}
     public int DroppedCount {get;private set;}
     public int ActiveVoices=>voices.Count(v=>v!=null&&v.isPlaying);
@@ -20,7 +21,8 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     void Awake()
     {
         singleClip=Resources.Load<AudioClip>(SingleShotResourcePath);
-        foreach(var role in new[]{"Multi","Player","Support"})
+        playerClip=Resources.Load<AudioClip>(PlayerShotResourcePath);
+        foreach(var role in new[]{"Multi"})
             auditions[role]=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role).OrderBy(c=>c.name).ToArray();
         for(int i=0;i<voices.Length;i++)
         {
@@ -32,7 +34,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     public void Configure(Session value)
     {
-        Unsubscribe();session=value;nextShot=0;
+        Unsubscribe();session=value;nextShot=nextPlayerShot=0;
         if(isActiveAndEnabled&&session!=null)session.ProjectileLaunched+=OnLaunch;
     }
     void OnEnable(){if(session!=null)session.ProjectileLaunched+=OnLaunch;}
@@ -43,7 +45,14 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     void Update(){foreach(var voice in voices)if(voice!=null)voice.volume=CoreGuardianSoundSettings.Volume*ShotGain;}
     void OnLaunch(ProjectileState projectile)
     {
-        if(projectile==null||session==null||projectile.Source==null||!projectile.Source.StartsWith("Tower:"))return;
+        if(projectile==null||session==null||projectile.Source==null)return;
+        if(projectile.Source=="Player")
+        {
+            if(Time.unscaledTime<nextPlayerShot){DroppedCount++;return;}
+            if(PreviewPlayer())nextPlayerShot=Time.unscaledTime+.035f;
+            return;
+        }
+        if(!projectile.Source.StartsWith("Tower:"))return;
         if(!int.TryParse(projectile.Source.Substring(6),out int id))return;
         var tower=session.Towers.FirstOrDefault(t=>t.Id==id);
         if(tower==null||tower.Kind!=TowerKind.Single)return;
@@ -54,6 +63,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     {
         return PlayClip(singleClip);
     }
+    public bool PreviewPlayer()=>PlayClip(playerClip);
     public bool PreviewAudition(string role,int index)
     {
         if(role==null||!auditions.TryGetValue(role,out var choices)||index<0||index>=choices.Length)return false;

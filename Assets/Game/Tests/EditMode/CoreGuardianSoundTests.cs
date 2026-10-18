@@ -5,13 +5,18 @@ using UnityEngine;
 public class CoreGuardianSoundTests
 {
     [Test]
-    public void SingleTowerUsesApprovedThirdClipAndAllOtherRolesHaveThreeAuditions()
+    public void SingleAndPlayerUseApprovedThirdClipsWithOnlyMultiAuditions()
     {
         var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
         var field=type.GetField("SingleShotResourcePath");
         Assert.That(field,Is.Not.Null,"Approved single shot must be independent from old candidate preferences");
         Assert.That((string)field.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/TowerShot/03_Aura"));
-        foreach(string role in new[]{"Multi","Player","Support"})
+        var player=type.GetField("PlayerShotResourcePath");
+        Assert.That(player,Is.Not.Null,"Approved player attack must be connected");
+        Assert.That((string)player.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/PlayerShot/03_Glyph"));
+        Assert.That(Resources.Load<AudioClip>((string)player.GetRawConstantValue()),Is.Not.Null);
+        foreach(string role in new[]{"Player","Support"})Assert.That(Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role),Is.Empty);
+        foreach(string role in new[]{"Multi"})
         {
             var clips=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role);
             Assert.That(clips.Length,Is.EqualTo(3),role);

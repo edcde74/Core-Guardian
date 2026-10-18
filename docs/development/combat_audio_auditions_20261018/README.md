@@ -1,5 +1,7 @@
 # 단일③ 확정 · 멀티/플레이어/지원 청취 후보
 
+**최신 선택:** 플레이어도③ 확정 적용, 지원은 무음, 멀티는 다른3안으로 교체했다. 아래9종은 이전 청취 이력이다. 현재 사용법/후보/적용은 [최신 사운드 후속](../combat_audio_followup_20261018/README.md)을 따른다.
+
 2026-10-18 사용자 지시로 **단일 포탑은 이전③ Aura_Spawn_1의 기존0.75초 파생**을 실제 발사에 고정했다. `CoreGuardianCombatAudio.SingleShotResourcePath`가 `CoreGuardian/Audio/TowerShot/03_Aura`를 직접 가리키며 과거 후보 저장값으로 바뀌지 않는다. 승인 WAV는 이전 커밋과 바이트 동일하다. 사용자 탈락② Aura_Spawn_3 및 남은① 비교본은 단일 Resources에서 제거했다. 팩 원본은 보존한다.
 
 ## 들어보는 방법

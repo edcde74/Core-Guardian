@@ -24,10 +24,11 @@ public sealed partial class CoreGuardianHud
         slider.onValueChanged.AddListener(value=>{CoreGuardianSoundSettings.Volume=value;label.text="효과음 음량  "+Mathf.RoundToInt(value*100)+"%";});
         Text("ApprovedSingle",panel,new Vector2(16,-100),new Vector2(174,36),18).text="단일 · ③ 확정";
         CompactSoundButton("PreviewShot",panel,new Vector2(194,-94),new Vector2(92,48),()=>"듣기",()=>{var audio=game.GetComponent<CoreGuardianCombatAudio>();if(audio!=null)audio.Preview();});
-        BuildAuditionRow(panel,"Multi",152,"멀티",new[]{"① 오라","② 바람","③ 물결"});
-        BuildAuditionRow(panel,"Player",210,"플레이어",new[]{"① 바람","② 독","③ 문양"});
-        BuildAuditionRow(panel,"Support",268,"지원",new[]{"① 공격강화","② 방어강화","③ 문양"});
-        Text("Scope",panel,new Vector2(16,-326),new Vector2(270,24),15).text="나머지 3종은 후보 듣기 전용";
+        BuildAuditionRow(panel,"Multi",152,"멀티",new[]{"① 얼음","② 독분출","③ 문양2"});
+        Text("ApprovedPlayer",panel,new Vector2(16,-216),new Vector2(174,36),18).text="플레이어 · ③ 확정";
+        CompactSoundButton("PreviewPlayer",panel,new Vector2(194,-210),new Vector2(92,48),()=>"듣기",()=>{var audio=game.GetComponent<CoreGuardianCombatAudio>();if(audio!=null)audio.PreviewPlayer();});
+        Text("SupportSilent",panel,new Vector2(16,-274),new Vector2(270,36),18).text="지원 · 소리 사용 안 함";
+        Text("Scope",panel,new Vector2(16,-326),new Vector2(270,24),15).text="멀티는 새 후보 듣기 전용";
         refresh.Add(()=>
         {
             slider.SetValueWithoutNotify(CoreGuardianSoundSettings.Volume);
