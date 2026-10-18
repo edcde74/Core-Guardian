@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 강화 실패음③ 적용 완료(2026-10-18)
+- 사용자③Kenney error_006 선택. CC0 원본Ogg 동일바이트0.500045초를 Resources/CoreGuardian/Audio/UpgradeFailure/03_Error006으로 연결했다.
+- 플레이어/포탑 실제강화구매실패에만재생·전체실패0.2초묶음. 기존4음성/gain0.55/공통음량·코어음보호·성공음/스캔B0.8초/가격/조건유지. 설치실패나비활성UI입력등다른동작으로확대하지않았다.
+- 새Edit3/3·Play9/9은진단Gold/Crystals주입·실제구매API 기능QA와기존사운드검사다. 실제마우스/비활성버튼피드백/정상다수전투믹스/전체회귀/성능·밸런스검증아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/upgrade_failure_audio_applied_20261018/README.md.
+- 다음 구체 사운드는 미정이다. 과거 실패음 선택 대기/강화 실패 무음은 현재가 아니다. BGM/병행 변경 보존.
+
 ■ 최신 추가: 강화 성공음2차① 적용 완료(2026-10-18)
 - 사용자①Kenney confirmation_001 선택. 최초Attack buff/Defense buff/Revive는모두거부유지. CC0/상업사용허용 확인 원본Ogg 동일바이트0.289841초를 Resources/CoreGuardian/Audio/UpgradeSuccess/01_Confirmation으로 연결했다.
 - 플레이어/단일/멀티/지원 실제강화구매성공당1회·실패무음·기존성공스캔B0.8초/가격/구매조건/지원전투무음보존. 기존4음성/gain0.55/공통음량·코어음보호·기존사운드유지.
