@@ -1,0 +1,50 @@
+{
+  "groups": 3,
+  "candidates": 9,
+  "unique_hashes": 9,
+  "retained": 21,
+  "tentative": 2,
+  "current_game_reference": 1,
+  "http_media_checks": 42,
+  "protected_hashes": 309,
+  "sources": 4,
+  "metrics": {
+    "demolish_1.wav": {
+      "seconds": 0.37,
+      "estimated_dbtp": -4.928168775206063
+    },
+    "demolish_2.wav": {
+      "seconds": 0.43,
+      "estimated_dbtp": -5.875135778571112
+    },
+    "demolish_3.wav": {
+      "seconds": 0.56,
+      "estimated_dbtp": -8.686982731426934
+    },
+    "aug_gold_1.wav": {
+      "seconds": 0.31501133786848073,
+      "estimated_dbtp": -3.6542981403792343
+    },
+    "aug_gold_2.wav": {
+      "seconds": 0.53,
+      "estimated_dbtp": -8.86823703958726
+    },
+    "aug_gold_3.wav": {
+      "seconds": 0.66,
+      "estimated_dbtp": -4.567159055431562
+    },
+    "aug_platinum_1.wav": {
+      "seconds": 0.4150113378684807,
+      "estimated_dbtp": -6.721708019355698
+    },
+    "aug_platinum_2.wav": {
+      "seconds": 0.71,
+      "estimated_dbtp": -8.950284128313973
+    },
+    "aug_platinum_3.wav": {
+      "seconds": 0.91,
+      "estimated_dbtp": -6.913071036527363
+    }
+  },
+  "note": "File and HTTP checks, not subjective audition or Unity QA."
+}

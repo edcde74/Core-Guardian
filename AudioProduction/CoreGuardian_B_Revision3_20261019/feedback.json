@@ -1,0 +1,24 @@
+{
+  "game_application_authorized": false,
+  "new_preferences": {
+    "cancel_install": 3,
+    "round_complete": 2,
+    "victory": 3,
+    "defeat": 2,
+    "ui_click": 2,
+    "ui_open": 3,
+    "ui_close": 2,
+    "aug_silver": 3,
+    "aug_bgm": 3
+  },
+  "tentative": {
+    "demolish": 1,
+    "round_start": 3
+  },
+  "rejected": {
+    "aug_gold": "③ 출력 번호와 무관하게 불만족. 통통 튀는 소리 거부.",
+    "aug_platinum": "③ 출력 번호와 무관하게 불만족. 통통 튀는 소리 거부."
+  },
+  "request": "같은 컨셉의 강도/길이 버전이 아닌 서로 다른 컨셉 비교",
+  "round_start": "준비에서 전투 단계 전환. 자동 타이머 종료/StartCombat 정상 호출. 이번 후보③ 게임 미적용."
+}
