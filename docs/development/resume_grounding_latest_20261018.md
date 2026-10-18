@@ -34,6 +34,7 @@
 - 몬스터 관련 검토 전 docs/art/MONSTER_ART_STYLE.md와 현행 병사3종 실제 스프라이트/비교판을 연다. 원본 체형·팔레트·방향별 파생/기존 애니메이션은 보존한다.
 
 ■ 다음 진행
+- 사용자 빨간 원4곳 후속 최신 시안은 `shadow_reference_refine_20261018/marked_fix/README.md`와 `four_marked_before_after_4x.png`다. 방패병 연결/코어 별도청색바닥빛 중첩/멀티·지원 그림자 등록을 수정했다. 실제씬 임시복제의 그림자·코어바닥빛만 분리촬영한 뒤 사진추출마스크를 합성, 본체8종 비영점마스크0px차·미지적4종 전체0px차. 게임미적용/사용자피드백대기이며 원래씬 코어바닥빛을 끈 것이 아니다. 시작HEADc78eaa7·종료Playfalse/씬1dirtyfalse/시간1·0/임시루트0. 현재HEAD는재조회한다.
 - 사용자 후속 “접점만 보완”에 따른 최신 검토본은 `shadow_reference_refine_20261018/contact_polish/README.md`와 해당 폴더의 `player_before_after_4x.png`/`all_before_after_2x.png`다. 직전 위치 보정은 유지하고 접점2px 안 작은틈 최대1px 연결·약한농도전이만 보완, 반투명 포함 본체8종0px차/접점범위밖0px차. 정지 시안만·게임미적용/보행미검증, 다음은 외형피드백이다.
 - 2026-10-18 후속 접점 보정 시안: `docs/development/shadow_reference_refine_20261018/README.md`와 `player_before_after_4x.png`/`all_before_after_2x.png`를 먼저 확인한다. 지정 사진 추출 경계·폭·축척·알파는 유지하고 위치만8종 조정했다. 실제 불투명 발/받침의 뒤쪽 오른 경계에 맞춰 플레이어(-5,-4)px, 포탑 위7~8px 등 이동했다. 본체 마스크8종0px차, 시안만·미승인/미적용이다. 시작HEAD8825248/Unity읽기조회ready·stopped·compilingfalse·전투씬1dirtyfalse/PlayerFacing32개 직접열람, 새Play/렌더/자동검사 없음. 현재 HEAD는 다시 확인한다.
 - 기준 사진과 최신 추출/합성 이미지를 직접 비교하고, 현재 원본 발/받침에 대한 위치·폭·크기·본체 뒤로 붙는 범위를 다듬는 시안을 이어간다.
