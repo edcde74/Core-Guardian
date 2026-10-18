@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 라운드 완료음① 적용·다음 최종 승리음 후보(2026-10-19)
+- 사용자 ‘1 다음거’ 지시로 Kenney confirmation_002(CC0)원본동일바이트0.539002초를 Resources/CoreGuardian/Audio/RoundComplete/01_Confirmation002로 연결했다.
+- 일반완료/보스처치후증강진입1회,최종승리/패배/진단종료는별도. 기존완료조건/보상/4음성/gain0.55/공통음량/코어음보호·모든기존사운드/지원전투무음유지.
+- 새Edit3/3·Play11/11은메모리편성/강제피해·수동Tick 기능QA와기존사운드검사다. 정상진행/사람플레이/다수전투믹스/전체회귀/성능·밸런스검증아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/round_complete_audio_applied_20261019/README.md.
+- 다음은최종승리음①confirmation003②maximize009③open004 후보선택이다. docs/development/victory_audio_auditions_20261019.md. 최종승리음은미적용이며과거라운드완료음선택대기는현재가아니다.
+
 ■ 최신 추가: 라운드 전투 시작음③ 적용 완료(2026-10-18)
 - 사용자③Kenney confirmation_004(CC0)선택. 원본Ogg 동일바이트0.490408초를 Resources/CoreGuardian/Audio/RoundStart/03_Confirmation004로 연결했다.
 - Session.StartCombat 성공이벤트로 수동/자동시작공통1회,준비/중복시작/같은세션재연결/음소거해제지연재생없음. 기존4음성/gain0.55/공통음량·코어음보호·기존모든사운드/지원무음/게임규칙유지.

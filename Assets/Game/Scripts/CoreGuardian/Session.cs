@@ -15,6 +15,7 @@ namespace CoreGuardian
         // Raised at creation, before movement/hits can remove a projectile in the same Tick.
         public event Action<ProjectileState> ProjectileLaunched;
         public event Action CombatStarted;
+        public event Action RoundCompleted;
         public EnemyState PlayerTarget => playerTarget;
         public EnemyState TowerTarget(int id)
         {
@@ -114,9 +115,10 @@ namespace CoreGuardian
             if(Wave>=LastWave){Phase=SessionPhase.Victory;LastMessage+=" · 1~"+LastWave+"라운드 검증 완료";return;}
             if(!Data.Waves.Any(row=>row.Wave==Wave+1))throw new InvalidOperationException("Next wave is missing");
             Wave++;PreparationRemaining=Data.PreparationSeconds;
-            if(CompletedWave%10==0&&CompletedWave<100&&BossKilled){choices=AugmentationDeck.Draw(augmentationRandom,Augments.Selected);AugmentationRemaining=30;Phase=SessionPhase.Augmentation;LastMessage+=" · 증강 선택";return;}
+            if(CompletedWave%10==0&&CompletedWave<100&&BossKilled){choices=AugmentationDeck.Draw(augmentationRandom,Augments.Selected);AugmentationRemaining=30;Phase=SessionPhase.Augmentation;LastMessage+=" · 증강 선택";RoundCompleted?.Invoke();return;}
             Phase=SessionPhase.Preparation;
             LastMessage+=" · "+Wave+"라운드 준비";
+            RoundCompleted?.Invoke();
         }
         public bool ChooseAugmentation(int index)
         {

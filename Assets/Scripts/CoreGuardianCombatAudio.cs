@@ -19,7 +19,8 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public const string UpgradeSuccessResourcePath="CoreGuardian/Audio/UpgradeSuccess/01_Confirmation";
     public const string UpgradeFailureResourcePath="CoreGuardian/Audio/UpgradeFailure/03_Error006";
     public const string RoundStartResourcePath="CoreGuardian/Audio/RoundStart/03_Confirmation004";
-    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip,monsterDeathClip,bossSpawnClip,bossAccelerationClip,towerInstallClip,upgradeSuccessClip,upgradeFailureClip,roundStartClip;
+    public const string RoundCompleteResourcePath="CoreGuardian/Audio/RoundComplete/01_Confirmation002";
+    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip,monsterDeathClip,bossSpawnClip,bossAccelerationClip,towerInstallClip,upgradeSuccessClip,upgradeFailureClip,roundStartClip,roundCompleteClip;
     readonly System.Collections.Generic.HashSet<int> announcedBosses=new System.Collections.Generic.HashSet<int>();
     readonly System.Collections.Generic.HashSet<int> acceleratedBosses=new System.Collections.Generic.HashSet<int>();
     readonly System.Collections.Generic.Dictionary<int,float> nextMultiShots=new System.Collections.Generic.Dictionary<int,float>();
@@ -33,6 +34,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public int UpgradeSuccessPlayedCount {get;private set;}
     public int UpgradeFailurePlayedCount {get;private set;}
     public int RoundStartPlayedCount {get;private set;}
+    public int RoundCompletePlayedCount {get;private set;}
     public int MonsterHitPlayedCount {get;private set;}
     public int CoreDamagePlayedCount {get;private set;}
     public int PlayedCount {get;private set;}
@@ -53,6 +55,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         upgradeSuccessClip=Resources.Load<AudioClip>(UpgradeSuccessResourcePath);
         upgradeFailureClip=Resources.Load<AudioClip>(UpgradeFailureResourcePath);
         roundStartClip=Resources.Load<AudioClip>(RoundStartResourcePath);
+        roundCompleteClip=Resources.Load<AudioClip>(RoundCompleteResourcePath);
         for(int i=0;i<voices.Length;i++)
         {
             var child=new GameObject("MagicCannonVoice_"+i);child.transform.SetParent(transform,false);
@@ -68,9 +71,9 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         nextMultiShots.Clear();
         if(isActiveAndEnabled)Subscribe();
     }
-    void Subscribe(){if(session!=null){session.ProjectileLaunched+=OnLaunch;session.DamageApplied+=OnMonsterHit;session.CombatStarted+=OnCombatStarted;}}
+    void Subscribe(){if(session!=null){session.ProjectileLaunched+=OnLaunch;session.DamageApplied+=OnMonsterHit;session.CombatStarted+=OnCombatStarted;session.RoundCompleted+=OnRoundCompleted;}}
     void OnEnable(){Subscribe();}
-    void Unsubscribe(){if(session!=null){session.ProjectileLaunched-=OnLaunch;session.DamageApplied-=OnMonsterHit;session.CombatStarted-=OnCombatStarted;}}
+    void Unsubscribe(){if(session!=null){session.ProjectileLaunched-=OnLaunch;session.DamageApplied-=OnMonsterHit;session.CombatStarted-=OnCombatStarted;session.RoundCompleted-=OnRoundCompleted;}}
     void OnDisable(){Unsubscribe();foreach(var voice in voices)if(voice!=null)voice.Stop();}
     void OnDestroy(){PlayerPrefs.Save();}
     void OnApplicationPause(bool paused){if(paused)PlayerPrefs.Save();}
@@ -109,6 +112,10 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     void OnCombatStarted()
     {
         if(PlayClip(roundStartClip,true,true))RoundStartPlayedCount++;
+    }
+    void OnRoundCompleted()
+    {
+        if(PlayClip(roundCompleteClip,true,true))RoundCompletePlayedCount++;
     }
     public bool NotifyTowerInstalled()
     {
