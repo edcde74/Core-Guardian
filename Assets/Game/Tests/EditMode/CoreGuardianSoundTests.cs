@@ -5,6 +5,20 @@ using UnityEngine;
 public class CoreGuardianSoundTests
 {
     [Test]
+    public void SingleTowerUsesApprovedThirdClipAndAllOtherRolesHaveThreeAuditions()
+    {
+        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
+        var field=type.GetField("SingleShotResourcePath");
+        Assert.That(field,Is.Not.Null,"Approved single shot must be independent from old candidate preferences");
+        Assert.That((string)field.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/TowerShot/03_Aura"));
+        foreach(string role in new[]{"Multi","Player","Support"})
+        {
+            var clips=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role);
+            Assert.That(clips.Length,Is.EqualTo(3),role);
+            foreach(var clip in clips){Assert.That(clip.length,Is.InRange(.2f,.85f));Assert.That(clip.loadState,Is.EqualTo(AudioDataLoadState.Loaded));}
+        }
+    }
+    [Test]
     public void VolumeIsPersistedClampedAndRejectsNonFiniteInput()
     {
         const string key="CoreGuardian.SoundVolume";
@@ -29,7 +43,7 @@ public class CoreGuardianSoundTests
     public void MagicCannonCandidatesHaveAudibleSamplesAndShortNonLoopingTails()
     {
         var clips=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/TowerShot");
-        Assert.That(clips.Length,Is.EqualTo(3),"Three real-pack auditions must be available in the game");
+        Assert.That(clips.Length,Is.EqualTo(1),"Only the approved single-tower clip remains in its runtime folder");
         foreach(var clip in clips)
         {
             Assert.That(clip.length,Is.InRange(.3f,.85f),clip.name);

@@ -6,7 +6,7 @@ import wave
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'Assets/Resources/CoreGuardian/Audio/TowerShot'
+OUT = ROOT / 'AudioProduction/CoreGuardian_TowerShot_20261018/archived_v2_trial'
 OUT.mkdir(parents=True, exist_ok=True)
 SOURCES = [
     ('01_Aura2', 'Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_2.wav', .75),

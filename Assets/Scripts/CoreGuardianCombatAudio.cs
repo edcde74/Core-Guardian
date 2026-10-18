@@ -7,8 +7,9 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
 {
     public const int VoiceLimit=4;
     const float ShotGain=.55f;
-    public static readonly string[] CandidateNames={"① 오라2","② 오라3","③ 오라1"};
-    AudioClip[] clips;
+    public const string SingleShotResourcePath="CoreGuardian/Audio/TowerShot/03_Aura";
+    AudioClip singleClip;
+    readonly System.Collections.Generic.Dictionary<string,AudioClip[]> auditions=new System.Collections.Generic.Dictionary<string,AudioClip[]>();
     readonly AudioSource[] voices=new AudioSource[VoiceLimit];
     Session session;
     float nextShot;
@@ -18,7 +19,9 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
 
     void Awake()
     {
-        clips=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/TowerShot").OrderBy(c=>c.name).ToArray();
+        singleClip=Resources.Load<AudioClip>(SingleShotResourcePath);
+        foreach(var role in new[]{"Multi","Player","Support"})
+            auditions[role]=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role).OrderBy(c=>c.name).ToArray();
         for(int i=0;i<voices.Length;i++)
         {
             var child=new GameObject("MagicCannonVoice_"+i);child.transform.SetParent(transform,false);
@@ -49,10 +52,19 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     public bool Preview()
     {
-        if(!isActiveAndEnabled||CoreGuardianSoundSettings.Volume<=0||clips==null||clips.Length!=3)return false;
+        return PlayClip(singleClip);
+    }
+    public bool PreviewAudition(string role,int index)
+    {
+        if(role==null||!auditions.TryGetValue(role,out var choices)||index<0||index>=choices.Length)return false;
+        return PlayClip(choices[index]);
+    }
+    bool PlayClip(AudioClip clip)
+    {
+        if(!isActiveAndEnabled||CoreGuardianSoundSettings.Volume<=0||clip==null)return false;
         var voice=voices.FirstOrDefault(v=>v!=null&&!v.isPlaying);
         if(voice==null){DroppedCount++;return false;}
-        voice.clip=clips[CoreGuardianSoundSettings.Candidate];
+        voice.clip=clip;
         voice.volume=CoreGuardianSoundSettings.Volume*ShotGain;
         voice.Play();PlayedCount++;return true;
     }

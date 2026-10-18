@@ -10,6 +10,7 @@ public static class CoreGuardianSoundSettings
         get=>SafeVolume(PlayerPrefs.GetFloat(VolumeKey,.65f));
         set=>PlayerPrefs.SetFloat(VolumeKey,SafeVolume(value));
     }
+    // Legacy audition preference retained for compatibility; approved single audio ignores it.
     public static int Candidate
     {
         get=>Mathf.Clamp(PlayerPrefs.GetInt(CandidateKey,0),0,2);

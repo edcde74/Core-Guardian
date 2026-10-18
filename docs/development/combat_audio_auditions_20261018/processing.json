@@ -1,0 +1,92 @@
+[
+  {
+    "role": "Multi",
+    "name": "01_Aura2",
+    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_2.wav",
+    "sha256": "d18605036b4d87b022526defbe03b6ced0249af04421b93d51c21424f019a1a7",
+    "onset": 0.027505668934240363,
+    "duration": 0.55,
+    "peak": 0.7,
+    "clipped": 0
+  },
+  {
+    "role": "Multi",
+    "name": "02_Wind",
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/25_Wind_01.wav",
+    "sha256": "78fbb9ac12dc03788e4b50638c15496472324e3944d71290fe878ce842534ed7",
+    "onset": 0.0006349206349206349,
+    "duration": 0.5,
+    "peak": 0.7,
+    "clipped": 0
+  },
+  {
+    "role": "Multi",
+    "name": "03_Water",
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/22_Water_02.wav",
+    "sha256": "5b512129aa26aef53df6f2776d3fac3326e8457a5cdbec7556986eaae78d799d",
+    "onset": 0.007755102040816327,
+    "duration": 0.55,
+    "peak": 0.7,
+    "clipped": 0
+  },
+  {
+    "role": "Player",
+    "name": "01_Wind",
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/25_Wind_01.wav",
+    "sha256": "78fbb9ac12dc03788e4b50638c15496472324e3944d71290fe878ce842534ed7",
+    "onset": 0.0006349206349206349,
+    "duration": 0.32,
+    "peak": 0.7,
+    "clipped": 0
+  },
+  {
+    "role": "Player",
+    "name": "02_Poison",
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/46_Poison_01.wav",
+    "sha256": "07de4efd8bb5d36ce4419f7d5f48f640b4007ecdc9b8ca66184480a7090ffc2e",
+    "onset": 0.0020861678004535146,
+    "duration": 0.35,
+    "peak": 0.7,
+    "clipped": 0
+  },
+  {
+    "role": "Player",
+    "name": "03_Glyph",
+    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Glyph_1.wav",
+    "sha256": "0992e0d889279e542a6cd8a2711d6fd137fc471b4cf5a206b2993e4857617ea1",
+    "onset": 0.05585034013605442,
+    "duration": 0.4,
+    "peak": 0.7,
+    "clipped": 0
+  },
+  {
+    "role": "Support",
+    "name": "01_AttackBuff",
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/16_Atk_buff_04.wav",
+    "sha256": "3a941dcf075bb07f7202c2d7cb4a377fa9d3a51ee32f3417f8f5aba109401040",
+    "onset": 0.026054421768707484,
+    "duration": 0.75,
+    "peak": 0.7,
+    "clipped": 0
+  },
+  {
+    "role": "Support",
+    "name": "02_DefenceBuff",
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/17_Def_buff_01.wav",
+    "sha256": "ae2cc71181c7c827d73ffdfe448a728323e199440ab3e2b484abb7c799ee6bd0",
+    "onset": 0.0,
+    "duration": 0.75,
+    "peak": 0.7,
+    "clipped": 0
+  },
+  {
+    "role": "Support",
+    "name": "03_Glyph",
+    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Glyph_2.wav",
+    "sha256": "f280ae85a7a4f8bd0846b8dd08dc9d015a69a2ba75e8dd9e3142b98497a59a07",
+    "onset": 0.03217687074829932,
+    "duration": 0.65,
+    "peak": 0.7,
+    "clipped": 0
+  }
+]

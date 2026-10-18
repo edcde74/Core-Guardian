@@ -55,11 +55,20 @@ public class CoreGuardianCombatAudioPlayModeTests
             for(int i=0;i<3;i++)
             {
                 candidate.SetValue(null,i);Assert.That(preview.Invoke(audio,null),Is.EqualTo(true));
-                Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name.StartsWith("0"+(i+1))),Is.True);
+                Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="03_Aura"),Is.True,"Old candidate preferences must not change approved single audio");
             }
             preview.Invoke(audio,null);
             Assert.That(preview.Invoke(audio,null),Is.EqualTo(false),"Pool must reject a fifth overlapping sound");
             audio.enabled=false;Assert.That(voices.All(v=>!v.isPlaying),Is.True);audio.enabled=true;
+            var audition=audioType.GetMethod("PreviewAudition");
+            foreach(var role in new[]{"Multi","Player","Support"})for(int index=0;index<3;index++)
+            {
+                foreach(var voice in voices)voice.Stop();
+                Assert.That(audition.Invoke(audio,new object[]{role,index}),Is.EqualTo(true),role+index);
+                Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name.StartsWith("0"+(index+1))),Is.True);
+            }
+            Assert.That(audition.Invoke(audio,new object[]{"Invalid",0}),Is.EqualTo(false));
+            foreach(var voice in voices)voice.Stop();
             var canvas=game.transform.Find("CombatHUD");
             var buttonType=Type.GetType("UnityEngine.UI.Button, UnityEngine.UI");
             var sliderType=Type.GetType("UnityEngine.UI.Slider, UnityEngine.UI");
