@@ -1,0 +1,372 @@
+{
+  "purpose": "v2 local concept audition; not gameplay recording or approved game audio",
+  "sources": {
+    "AudioProduction\\CoreGuardian_Upgrade_20261018\\Kenney_Interface\\Originals\\Audio\\pluck_001.ogg": "be97ec4893a02d6eccfb678daa76c83e34cb2583b834ec2593d2641def739fa4",
+    "AudioProduction\\CoreGuardian_Upgrade_20261018\\Kenney_Interface\\Originals\\Audio\\pluck_002.ogg": "c977fe249ff42d1c93a552b33abc13a8399df3879fa510475426e5c4bbac1da9",
+    "AudioProduction\\CoreGuardian_Upgrade_20261018\\Kenney_Interface\\Originals\\Audio\\bong_001.ogg": "d21d0f0b782445db579d11e2506b24cd1ac9d664ee33aeaf807761aa7b6fd710",
+    "AudioProduction\\CoreGuardian_Upgrade_20261018\\Kenney_Interface\\Originals\\Audio\\click_001.ogg": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
+    "AudioProduction\\CoreGuardian_Upgrade_20261018\\Kenney_Interface\\Originals\\Audio\\switch_004.ogg": "541c19cc1ab712a9efc5765df602e7d0da09d9cafdd297ce1e19b092289fd62f",
+    "AudioProduction\\CoreGuardian_Upgrade_20261018\\Kenney_Interface\\Originals\\Audio\\drop_002.ogg": "4ac4d1cef7e936965cbf795852ca2020300b9e2ba7daa59f2bf4f1f7bf416218",
+    "AudioProduction\\CoreGuardian_Upgrade_20261018\\Kenney_Interface\\Originals\\Audio\\glass_001.ogg": "183eebee20eb0a532b0b85104d139cbf2673eb66d95c3cc733ac9ea98362e7e8",
+    "Assets\\Resources\\CoreGuardian\\Audio\\TowerShot\\03_Aura.wav": "98bb3cbe9999bf05ecf74c4664407a50ebaf41f02ed34c197b768640b474f644",
+    "Assets\\Resources\\CoreGuardian\\Audio\\PlayerShot\\03_Glyph.wav": "826226e9d7126c2c48fa0455154377bb38e8f7fdfb548a4f5d6814448a3f435e",
+    "Assets\\Resources\\CoreGuardian\\Audio\\MonsterHit\\03_Hit.wav": "3e2ee7d0e9733404e10ae4cf9dc89aee36ab3b4946e02f1a7fd5697c774cc08e",
+    "AudioProduction\\CoreGuardian_Victory_20261019\\Kenney_MusicJingles\\Originals\\Audio\\Pizzicato jingles\\jingles_PIZZI00.ogg": "b442ade3308a2bbda4b8c572c86f9f1071c7bdbcfb1e6f915d35c605b61bd475",
+    "AudioProduction\\CoreGuardian_Victory_20261019\\Kenney_MusicJingles\\Originals\\Audio\\Steel jingles\\jingles_STEEL00.ogg": "8799eb726d784ae0aa1a9df80648a873ac60015bc00aea12c8e2dd1431a2bd7d"
+  },
+  "protected_originals_and_v1": {
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_click.wav": "ad754a9d18d40d3038aaacde3b01729b2df9804b2c832f15cf326dd12875b367",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_complete.wav": "d54cbf35700aff22ef0a810d8e84f22ba9daf6460154a0f9f6535cc38fbd360a",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_defeat.wav": "ef479960b33640c32dc2c15e8223ce7a1458c9b742bd1fbcd02d3c74c23ef91d",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_hit.wav": "287f14abbe716640a7831040aeb99d4ce96ef04adf6831efb398e6988fe7fc27",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_install.wav": "3530928939525b640fe0ca00633bb31cf23e7b12878abb8a017f9071842808a3",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_multi.wav": "cf08c63b2b35fff65555f9210d8318b057c3deda3a0efa45ae9f86b8df7e4712",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_player.wav": "f91443e4d56ee3479656ba274517701ecf6b728498a60dce207d4a5e16a848cd",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_scene.wav": "f38cddf1ad168930708960f21b481497efe04996895a1b7ccc81bb8b914f2d54",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_single.wav": "c2135907854a4f2e66462eafcf0ea7bf58c376ed3a94a5667e44682d8ea9fe1c",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_start.wav": "405b21d206008b02272918f713fe96b221eba57bd957b120f4964577b1713ab9",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_upgrade.wav": "f2dbadaca18ee919d4125e32433caa0422d16e1f714f56f24268457e3a762fad",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\A_victory.wav": "d3cae517a2e1e6f7b32ba808d73360f1a4c806efef6a4d02656d80601482c033",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_click.wav": "a751940cf65908b1973df3dfda52a602ef792a7150481210a5c5cde83544cc1a",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_complete.wav": "c18e77a3ab0c1d6ed9a5b6ac8b76064ffffb563023683e639b3147580118bcfa",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_defeat.wav": "d4c30ef6fe3e9f228bf0a54b99803cb5fae0a3bd6a5b7d178bddfcf77b76f4ab",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_hit.wav": "fb822c41b3107a94ad0443bbe26120cf85a10b2390ef4c4b26a4da57227fd2f2",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_install.wav": "4b6e95d7b5db621d9fa13d3c6a8dcf4bdc214496662f9d0d677437c97c9d3eeb",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_multi.wav": "68ffdee6a0ae4da8e59977dc1f70cfc95afebce07c6abbf0b69b724f01990061",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_player.wav": "fc98cf5f919ba3846e8a7b3b071b34e8cc09ffe8009892a60a603583c0d8ebb8",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_scene.wav": "a09dd4a4ddd36aafd294e385a09e970a39cd443a6f94cec155d36565a14908b7",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_single.wav": "5488e44a31ef601daaac69d5da4ff5a803b27cd2cc7bc93e245c53300cf87a1c",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_start.wav": "28fb9c1f76972bff342091500b92dd787a10151647b01bb2ad38743a597a83bb",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_upgrade.wav": "8e73329b210bee90a965331e06a014752b9a20885c9de70233964482feac549e",
+    "AudioProduction\\CoreGuardian_ConceptAB_20261019\\audio\\B_victory.wav": "bf16ab75e39f00ee023ebf2df6b5654777199a652d3c5f3e769a48bca3497d15",
+    "AudioProduction\\CoreGuardian_BGM_20261013\\01_Fortress_March.wav": "1e3047234c8ce13ff888b4bc2ed6e4308430807d3bec718a6b6ec5a6fca2e87b",
+    "AudioProduction\\CoreGuardian_BGM_20261013\\02_Crystal_Engine.wav": "24c0f19267d16858edf5359b235dece9f3fa904c997a345b067834043a19629a",
+    "AudioProduction\\CoreGuardian_BGM_20261013\\03_Watchline_Embers.wav": "c0b6ec082f16c2223f8adef6ec4512a153c21898da81be2955565f17382291cf"
+  },
+  "measurements": {
+    "A_scene": {
+      "duration": 32.0,
+      "lufs": -24.06557821394551,
+      "sample_peak_dbfs": -1.7207365533446906,
+      "true_peak_dbtp": -1.6997645361942728,
+      "sha256": "d3f7122cfdb1cc88a4ef57edc1c1abfca5c25b221e1dfd3d6a960bfa7f8924f5"
+    },
+    "B_scene": {
+      "duration": 32.0,
+      "lufs": -24.065575486919574,
+      "sample_peak_dbfs": -3.180449865347263,
+      "true_peak_dbtp": -3.174130674259705,
+      "sha256": "8c465b3a331b53126bcb948605515a242249793d840231c3e0541f8165d27da1"
+    },
+    "A_fx_scene": {
+      "duration": 32.0,
+      "lufs": -22.31971962513444,
+      "sample_peak_dbfs": -1.7284955649639875,
+      "true_peak_dbtp": -1.6997883991901124,
+      "sha256": "2feaeb0f70a19f0c8a1aded53bab2ff0fc071a4551571eeb7bece755a97ab68d"
+    },
+    "B_fx_scene": {
+      "duration": 32.0,
+      "lufs": -22.31971749252298,
+      "sample_peak_dbfs": -3.950655627859234,
+      "true_peak_dbtp": -3.9164043973197673,
+      "sha256": "fc85f917cc1e36c1d02a11d86b54ef734b5d69271440f0488a3f943249634c7b"
+    },
+    "A_music_loop": {
+      "duration": 16.0,
+      "lufs": -23.00000230580369,
+      "sample_peak_dbfs": -6.101558018688568,
+      "true_peak_dbtp": -6.0862011081982805,
+      "sha256": "8896308d3672e43a3c40b05503c06624926736e6565b7e1bc33295ee824e06e9"
+    },
+    "B_music_loop": {
+      "duration": 16.0,
+      "lufs": -23.0000011395766,
+      "sample_peak_dbfs": -5.256791887846899,
+      "true_peak_dbtp": -5.245468472107922,
+      "sha256": "4256299ecda9ef094e426bee3773f491fa2cabd64a58e58455d94f3c81b0a5f1"
+    }
+  },
+  "timeline": [
+    {
+      "t": 4.0,
+      "event": "click",
+      "gain": 0.8
+    },
+    {
+      "t": 4.4,
+      "event": "install",
+      "gain": 1
+    },
+    {
+      "t": 5.2,
+      "event": "start",
+      "gain": 1
+    },
+    {
+      "t": 6.1,
+      "event": "player",
+      "gain": 1
+    },
+    {
+      "t": 6.27,
+      "event": "hit",
+      "gain": 0.8
+    },
+    {
+      "t": 6.85,
+      "event": "single",
+      "gain": 0.95
+    },
+    {
+      "t": 7.02,
+      "event": "hit",
+      "gain": 0.8
+    },
+    {
+      "t": 7.6,
+      "event": "multi",
+      "gain": 0.85
+    },
+    {
+      "t": 7.98,
+      "event": "hit",
+      "gain": 0.8
+    },
+    {
+      "t": 8.8,
+      "event": "upgrade",
+      "gain": 1
+    },
+    {
+      "t": 10.0,
+      "event": "single",
+      "gain": 0.92
+    },
+    {
+      "t": 10.19,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 10.6,
+      "event": "player",
+      "gain": 0.92
+    },
+    {
+      "t": 10.79,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 11.2,
+      "event": "multi",
+      "gain": 0.92
+    },
+    {
+      "t": 11.559999999999999,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 11.799999999999999,
+      "event": "single",
+      "gain": 0.92
+    },
+    {
+      "t": 11.989999999999998,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 12.399999999999999,
+      "event": "player",
+      "gain": 0.92
+    },
+    {
+      "t": 12.589999999999998,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 12.999999999999998,
+      "event": "multi",
+      "gain": 0.92
+    },
+    {
+      "t": 13.359999999999998,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 13.599999999999998,
+      "event": "single",
+      "gain": 0.92
+    },
+    {
+      "t": 13.789999999999997,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 14.199999999999998,
+      "event": "player",
+      "gain": 0.92
+    },
+    {
+      "t": 14.389999999999997,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 14.799999999999997,
+      "event": "multi",
+      "gain": 0.92
+    },
+    {
+      "t": 15.159999999999997,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 15.399999999999997,
+      "event": "single",
+      "gain": 0.92
+    },
+    {
+      "t": 15.589999999999996,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 15.999999999999996,
+      "event": "player",
+      "gain": 0.92
+    },
+    {
+      "t": 16.189999999999998,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 16.599999999999994,
+      "event": "multi",
+      "gain": 0.92
+    },
+    {
+      "t": 16.959999999999994,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 17.199999999999996,
+      "event": "single",
+      "gain": 0.92
+    },
+    {
+      "t": 17.389999999999997,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 17.799999999999997,
+      "event": "player",
+      "gain": 0.92
+    },
+    {
+      "t": 17.99,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 18.399999999999995,
+      "event": "multi",
+      "gain": 0.92
+    },
+    {
+      "t": 18.759999999999994,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 18.999999999999993,
+      "event": "single",
+      "gain": 0.92
+    },
+    {
+      "t": 19.189999999999994,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 19.599999999999994,
+      "event": "player",
+      "gain": 0.92
+    },
+    {
+      "t": 19.789999999999996,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 20.199999999999996,
+      "event": "multi",
+      "gain": 0.92
+    },
+    {
+      "t": 20.559999999999995,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 20.799999999999994,
+      "event": "single",
+      "gain": 0.92
+    },
+    {
+      "t": 20.989999999999995,
+      "event": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 22.2,
+      "event": "complete",
+      "gain": 1
+    },
+    {
+      "t": 24.0,
+      "event": "install",
+      "gain": 1
+    },
+    {
+      "t": 24.8,
+      "event": "upgrade",
+      "gain": 1
+    },
+    {
+      "t": 26.4,
+      "event": "victory",
+      "gain": 1
+    },
+    {
+      "t": 30.0,
+      "event": "defeat",
+      "gain": 0.85
+    }
+  ],
+  "music": {
+    "bpm": 120,
+    "bars": 8,
+    "seconds": 16,
+    "instrument": "first-attack sample from CC0 jingle; new written notes; not AI generation"
+  },
+  "tools": [
+    "audio-design skill",
+    "Pedalboard EQ/compression/reverb",
+    "SciPy polyphase resampling/4x true-peak estimate",
+    "pyloudnorm integrated LUFS",
+    "Mido MIDI score",
+    "FFmpeg Vorbis preview encoding"
+  ],
+  "no_api_calls": true
+}
