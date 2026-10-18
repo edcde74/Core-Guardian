@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 포탑 설치 완료음2차② 적용 완료(2026-10-18)
+- 사용자②Unequip 선택. 최초 후보②Buy/Sell이 아니다. 원본071_Unequip_01.wav 동일바이트1.333333초를 Resources/CoreGuardian/Audio/TowerInstall/02_Unequip으로 연결했다.
+- 단일/멀티/지원 실제Place 성공에만1회,실패/취소/철거에는무음. 지원전투무음은유지한다. 기존4음성/gain0.55/공통음량·코어음보호·기존모든사운드유지.
+- 새Edit3/3·Play7/7은진단재화/실제Place등API 기능QA와기존사운드검사이며사람입력/정상다수전투믹스/전체회귀/성능·밸런스검증아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/tower_install_audio_applied_20261018/README.md.
+- 다음구체사운드미정. 과거설치음선택대기는현재가아니다. BGM/병행변경을보존한다.
+
 ■ 최신 추가: 보스 가속 전환음① 적용 완료(2026-10-18)
 - 사용자①Speed up 선택. 원본48_Speed_up_02.wav 동일바이트4초를 Resources/CoreGuardian/Audio/BossAcceleration/01_SpeedUp으로 연결했다.
 - 실제 DamageApplied 후 살아 있는 보스의 기존Enraged(체력50%이하) 판정을 보스ID별1회 알린다. 전환타격 피격음을 대체하고 치명타격은 처치음만 재생한다. 같은Session재연결/추가피해 반복방지·음소거중전환 지연재생없음·코어음보호·기존4음성/gain0.55/공통음량 유지.

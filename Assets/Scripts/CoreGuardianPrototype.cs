@@ -217,6 +217,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         string reason;var tower=Session.TryInstall(kind,cell,out reason);
         if(tower==null){Notify(reason);return false;}
         occupied.SetTile(new Vector3Int(cell.x,cell.y,0),occupiedTile);
+        GetComponent<CoreGuardianCombatAudio>()?.NotifyTowerInstalled();
         SelectedTower=tower.Id;CancelInstall();Notify("포탑 설치 완료");SynchronizeViews();return true;
     }
     public bool PlaceAtPlayerForTest(){var p=player.CurrentCell;return Place(TowerKind.Single,new Vector2Int(p.x,p.y));}

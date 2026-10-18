@@ -13,6 +13,49 @@ using UnityEditor.SceneManagement;
 public class CoreGuardianCombatAudioPlayModeTests
 {
     [UnityTest]
+    public IEnumerator TowerInstallationUsesUnequipOnlyOnSuccessfulPlacement()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
+        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
+        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
+        Assert.That(type.GetField("TowerInstallResourcePath"),Is.Not.Null,"Selected tower installation audio is missing");
+        var audio=(MonoBehaviour)game.GetComponent(type);
+        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
+        try
+        {
+            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
+            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
+            var place=gameType.GetMethod("Place");var can=gameType.GetMethod("CanInstall",BindingFlags.Instance|BindingFlags.NonPublic);
+            var count=type.GetProperty("TowerInstallPlayedCount");
+            var cells=(from y in Enumerable.Range(0,22) from x in Enumerable.Range(0,39) let cell=new Vector2Int(x,y) where session.IsBuildable(cell)&&(bool)can.Invoke(game,new object[]{cell}) select cell).Take(6).ToArray();
+            Assert.That(cells.Length,Is.EqualTo(6));
+            Assert.That(place.Invoke(game,new object[]{TowerKind.Support,cells[0]}),Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(0));
+            foreach(var kind in new[]{TowerKind.Single,TowerKind.Multi,TowerKind.Support})
+            {
+                int index=session.Towers.Count;Assert.That(place.Invoke(game,new object[]{kind,cells[index]}),Is.True);Assert.That(count.GetValue(audio),Is.EqualTo(index+1));
+            }
+            var clip=Resources.Load<AudioClip>((string)type.GetField("TowerInstallResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);
+            var voices=audio.GetComponentsInChildren<AudioSource>();Assert.That(voices.Count(v=>v.isPlaying&&v.clip==clip),Is.EqualTo(3));
+            Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[0]}),Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(3));
+            gameType.GetMethod("ChooseTower").Invoke(game,new object[]{TowerKind.Single});gameType.GetMethod("CancelInstall").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(3));
+            gameType.GetMethod("DestroySelected").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(3));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[3]}),Is.True);Assert.That(count.GetValue(audio),Is.EqualTo(3));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);foreach(var voice in voices)voice.Stop();
+            type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
+            Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[4]}),Is.True);Assert.That(count.GetValue(audio),Is.EqualTo(4));
+            Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="06_Aura_Glyph_2"),Is.True);
+            session.StartCombat();Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[5]}),Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(4));
+            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
+        }
+        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator BossHalfHealthPlaysSpeedUpOnceAndNeverOnLethalDamage()
     {
 #if UNITY_EDITOR
