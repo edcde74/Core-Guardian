@@ -36,7 +36,8 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     public static CoreGuardianUnitAnimation Attach(GameObject root,string role)
     {
         var animation=root.GetComponent<CoreGuardianUnitAnimation>();if(animation!=null)return animation;
-        animation=root.AddComponent<CoreGuardianUnitAnimation>();animation.Configure(role);return animation;
+        animation=root.AddComponent<CoreGuardianUnitAnimation>();animation.Configure(role);
+        CoreGuardianPhotoShadow.Attach(root,role);return animation;
     }
     void Configure(string value)
     {

@@ -102,6 +102,13 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         Present(target,camera);
         if(output!=null&&output.enabled)output.sortingOrder+=offset-4;
     }
+    // A separate owner uses the current body mask for floor contact, below all bodies.
+    public void PresentGroundContact(Transform target,Camera camera,Material material)
+    {
+        Present(target,camera);
+        if(output==null||!output.enabled||material==null)return;
+        material.mainTexture=mask;output.sharedMaterial=material;output.sortingOrder=43;
+    }
     Mesh SpriteMesh(Sprite sprite)
     {
         if(meshes.TryGetValue(sprite,out var value))return value;

@@ -24,6 +24,9 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
     {
         game=prototype;
         player=CoreGuardianUnitAnimation.Attach(game.player.gameObject,"Player");
+        var core=FindObjectsByType<SpriteRenderer>(FindObjectsInactive.Include)
+            .FirstOrDefault(r=>r.gameObject.scene==game.gameObject.scene&&r.name=="2D Sprite"&&r.sprite!=null&&r.sprite.name=="core");
+        if(core!=null)CoreGuardianPhotoShadow.Attach(core.transform.parent.gameObject,"Core");
         previousPlayer=game.player.transform.position;
         flashSprite=Resources.LoadAll<Sprite>(CoreGuardianCombatArt.ResourcePath).First(s=>s.name=="SingleBolt");
         game.Session.ProjectileLaunched+=Launched;
