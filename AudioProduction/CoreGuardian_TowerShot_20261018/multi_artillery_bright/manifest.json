@@ -1,0 +1,43 @@
+{
+  "source_hashes": {
+    "magic": "98bb3cbe9999bf05ecf74c4664407a50ebaf41f02ed34c197b768640b474f644",
+    "mechanism": "4763da64e8420a3ec66391b2ca7e9d5ac25be2b483422397e2b5814641a5c8c9",
+    "reference": "3e79bff885563a0520770d34425800883d471e0bd040d1c0f3338b12b59e6d55"
+  },
+  "variants": [
+    {
+      "name": "Reference_02",
+      "seconds": 0.64,
+      "rms": 0.11999635254155307,
+      "peak": 0.4642333984375,
+      "clipped": 0,
+      "high_mid_ratio": 0.021252275504741774,
+      "last_sample": 0.0
+    },
+    {
+      "name": "A_WarmClear",
+      "seconds": 0.64,
+      "rms": 0.11999998869361495,
+      "peak": 0.48002826301335016,
+      "clipped": 0,
+      "high_mid_ratio": 0.1281556993683677,
+      "last_sample": 0.0
+    },
+    {
+      "name": "B_BrighterAttack",
+      "seconds": 0.64,
+      "rms": 0.11999998420606357,
+      "peak": 0.5417626885587709,
+      "clipped": 0,
+      "high_mid_ratio": 0.5451629103247805,
+      "last_sample": 0.0
+    }
+  ],
+  "timing_seconds": [
+    0,
+    0.085,
+    0.17
+  ],
+  "order": "reference02 twice, A twice, B twice",
+  "listening_approved": false
+}
