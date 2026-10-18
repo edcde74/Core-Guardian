@@ -1,0 +1,144 @@
+{
+  "skills": [
+    {
+      "repo": "elevenlabs/skills",
+      "ref": "32f48f6ebf4a97e963a824ade7d5cb14beacf774",
+      "paths": [
+        "music/SKILL.md",
+        "sound-effects/SKILL.md",
+        "LICENSE"
+      ]
+    },
+    {
+      "repo": "gamedev-skills/awesome-gamedev-agent-skills",
+      "ref": "0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd",
+      "paths": [
+        "skills/disciplines/audio-design/SKILL.md",
+        "LICENSE"
+      ]
+    }
+  ],
+  "skill_verification": [
+    {
+      "name": "music",
+      "path": "C:\\Users\\edcde\\.codex\\skills\\music\\SKILL.md",
+      "sha256": "f2e204571b391ea76817203809d0cd313e7737b2061cfe52339dc9ee3738c13c",
+      "files": [
+        "LICENSE",
+        "SKILL.md",
+        "references\\api_reference.md",
+        "references\\installation.md"
+      ]
+    },
+    {
+      "name": "sound-effects",
+      "path": "C:\\Users\\edcde\\.codex\\skills\\sound-effects\\SKILL.md",
+      "sha256": "e4b87f43220ef2992cc30a16b8f12500e2dbc613a0de814ca58dff946c25e966",
+      "files": [
+        "LICENSE",
+        "SKILL.md",
+        "references\\installation.md"
+      ]
+    },
+    {
+      "name": "audio-design",
+      "path": "C:\\Users\\edcde\\.codex\\skills\\audio-design\\SKILL.md",
+      "sha256": "4d8418660c0423164a0319d4429a196ee0ec86b4f05f764bae1a212f73e287e1",
+      "files": [
+        "LICENSE",
+        "SKILL.md",
+        "references\\adaptive-music.md"
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "name": "numpy",
+      "version": "2.5.4",
+      "url": "https://files.pythonhosted.org/packages/12/33/fefe62073dc8acfd0f2b9ed7c003af2f50aa61555e113e6db02b8f79f145/numpy-2.5.4-cp312-cp312-win_amd64.whl",
+      "hashes": {
+        "sha256": "a7b1b6353e36a7e50de2973a38d705c88ee93adcf120673cee7f45a4a3fa223a"
+      }
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.1",
+      "url": "https://files.pythonhosted.org/packages/39/e7/979fd14e75008623df31ba70d6bb144700f68feadcea042021c06a05bf82/scipy-1.18.1-cp312-cp312-win_amd64.whl",
+      "hashes": {
+        "sha256": "5e4d44984abc0020154ea81b247adeddcc3ac5527b975ff798bd1ba0adc513c2"
+      }
+    },
+    {
+      "name": "soundfile",
+      "version": "0.14.0",
+      "url": "https://files.pythonhosted.org/packages/ed/97/b39c18ac1df45e755ca22b8b00e872929da5d107998a207a5e4ac831bfda/soundfile-0.14.0-py2.py3-none-win_amd64.whl",
+      "hashes": {
+        "sha256": "299491d3499460fb1b74bb4bd78b57ffc2d243a5fafa7b6ec1b264875c78453e"
+      }
+    },
+    {
+      "name": "pedalboard",
+      "version": "0.9.26",
+      "url": "https://files.pythonhosted.org/packages/dd/55/eb95ca568bec01ae73a16fe47c56369f3b84a0d94778981bb7efd1c5e440/pedalboard-0.9.26-cp312-cp312-win_amd64.whl",
+      "hashes": {
+        "sha256": "816b7063d3befb00263bfee7656932ee5f51788c586d5184d4d61f7a85f61aea"
+      }
+    },
+    {
+      "name": "pyloudnorm",
+      "version": "0.2.0",
+      "url": "https://files.pythonhosted.org/packages/aa/b6/65a49a05614b2548edbba3aab118f2ebe7441dfd778accdcdce9f6567f20/pyloudnorm-0.2.0-py3-none-any.whl",
+      "hashes": {
+        "sha256": "9bb69afb904f59d007a7f9ba3d75d16fb8aeef35c44d6df822a9f192d69cf13f"
+      }
+    },
+    {
+      "name": "mido",
+      "version": "1.3.3",
+      "url": "https://files.pythonhosted.org/packages/fd/28/45deb15c11859d2f10702b32e71de9328a9fa494f989626916db39a9617f/mido-1.3.3-py3-none-any.whl",
+      "hashes": {
+        "sha256": "01033c9b10b049e4436fca2762194ca839b09a4334091dd3c34e7f4ae674fd8a"
+      }
+    },
+    {
+      "name": "imageio-ffmpeg",
+      "version": "0.6.0",
+      "url": "https://files.pythonhosted.org/packages/2c/c6/fa760e12a2483469e2bf5058c5faff664acf66cadb4df2ad6205b016a73d/imageio_ffmpeg-0.6.0-py3-none-win_amd64.whl",
+      "hashes": {
+        "sha256": "02fa47c83703c37df6bfe4896aab339013f62bf02c5ebf2dce6da56af04ffc0a"
+      }
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "url": "https://files.pythonhosted.org/packages/d9/79/615cc094e2fb508cade7de88d3b4f6c4ec2bab695c97bce9153dc65aadf5/cffi-2.1.1-cp312-cp312-win_amd64.whl",
+      "hashes": {
+        "sha256": "f53e442b08449d42821fa4a4fba000095af9f62742a500f978a9f557ec44339a"
+      }
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+      "hashes": {
+        "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+      }
+    },
+    {
+      "name": "pycparser",
+      "version": "3.11",
+      "url": "https://files.pythonhosted.org/packages/90/11/0e6f11117525ff0eec40ebac3d313376f102df93ca44ad9e893ee85e4f89/pycparser-3.11-py3-none-any.whl",
+      "hashes": {
+        "sha256": "51d5a8ba2be0bbe440b99d2112604c95bbbc3c2748a64260186c541e1729cd80"
+      }
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "hashes": {
+        "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+      }
+    }
+  ]
+}

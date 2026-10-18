@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "dsp_render": true,
+    "wav_ogg_wav": true,
+    "midi_roundtrip": true,
+    "loudness_analysis": true,
+    "source_unchanged": true
+  },
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "soundfile": "0.14.0",
+    "pedalboard": "0.9.26",
+    "pyloudnorm": "0.2.0",
+    "mido": "1.3.3",
+    "imageio-ffmpeg": "0.6.0"
+  },
+  "ffmpeg": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+  "ffmpeg_path": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\AudioProduction\\AudioTools_20261019\\.local\\packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+  "concept_measurements": {
+    "A": {
+      "lufs": -22.103783283030268,
+      "peak_dbfs": -2.3836165457051814
+    },
+    "B": {
+      "lufs": -22.55228678225996,
+      "peak_dbfs": -4.759564998337844
+    }
+  },
+  "note": "Tool function checks only. No direct listening, Unity changes or API calls."
+}
