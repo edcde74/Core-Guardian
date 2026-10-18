@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 강화 성공음2차① 적용 완료(2026-10-18)
+- 사용자①Kenney confirmation_001 선택. 최초Attack buff/Defense buff/Revive는모두거부유지. CC0/상업사용허용 확인 원본Ogg 동일바이트0.289841초를 Resources/CoreGuardian/Audio/UpgradeSuccess/01_Confirmation으로 연결했다.
+- 플레이어/단일/멀티/지원 실제강화구매성공당1회·실패무음·기존성공스캔B0.8초/가격/구매조건/지원전투무음보존. 기존4음성/gain0.55/공통음량·코어음보호·기존사운드유지.
+- 새Edit3/3·Play8/8은진단재화/Gold주입·실제구매API 기능QA와기존사운드검사다. 사람입력/정상다수전투믹스/전체회귀/성능·밸런스검증아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/upgrade_success_audio_applied_20261018/README.md.
+- 다음구체사운드미정. 과거강화음선택대기는현재가아니다. BGM/병행변경보존.
+
 ■ 최신 추가: 포탑 설치 완료음2차② 적용 완료(2026-10-18)
 - 사용자②Unequip 선택. 최초 후보②Buy/Sell이 아니다. 원본071_Unequip_01.wav 동일바이트1.333333초를 Resources/CoreGuardian/Audio/TowerInstall/02_Unequip으로 연결했다.
 - 단일/멀티/지원 실제Place 성공에만1회,실패/취소/철거에는무음. 지원전투무음은유지한다. 기존4음성/gain0.55/공통음량·코어음보호·기존모든사운드유지.

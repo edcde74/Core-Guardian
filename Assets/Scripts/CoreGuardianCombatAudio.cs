@@ -16,7 +16,8 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public const string BossSpawnResourcePath="CoreGuardian/Audio/BossSpawn/01_Encounter";
     public const string BossAccelerationResourcePath="CoreGuardian/Audio/BossAcceleration/01_SpeedUp";
     public const string TowerInstallResourcePath="CoreGuardian/Audio/TowerInstall/02_Unequip";
-    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip,monsterDeathClip,bossSpawnClip,bossAccelerationClip,towerInstallClip;
+    public const string UpgradeSuccessResourcePath="CoreGuardian/Audio/UpgradeSuccess/01_Confirmation";
+    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip,monsterDeathClip,bossSpawnClip,bossAccelerationClip,towerInstallClip,upgradeSuccessClip;
     readonly System.Collections.Generic.HashSet<int> announcedBosses=new System.Collections.Generic.HashSet<int>();
     readonly System.Collections.Generic.HashSet<int> acceleratedBosses=new System.Collections.Generic.HashSet<int>();
     readonly System.Collections.Generic.Dictionary<int,float> nextMultiShots=new System.Collections.Generic.Dictionary<int,float>();
@@ -27,6 +28,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public int BossSpawnPlayedCount {get;private set;}
     public int BossAccelerationPlayedCount {get;private set;}
     public int TowerInstallPlayedCount {get;private set;}
+    public int UpgradeSuccessPlayedCount {get;private set;}
     public int MonsterHitPlayedCount {get;private set;}
     public int CoreDamagePlayedCount {get;private set;}
     public int PlayedCount {get;private set;}
@@ -44,6 +46,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         bossSpawnClip=Resources.Load<AudioClip>(BossSpawnResourcePath);
         bossAccelerationClip=Resources.Load<AudioClip>(BossAccelerationResourcePath);
         towerInstallClip=Resources.Load<AudioClip>(TowerInstallResourcePath);
+        upgradeSuccessClip=Resources.Load<AudioClip>(UpgradeSuccessResourcePath);
         for(int i=0;i<voices.Length;i++)
         {
             var child=new GameObject("MagicCannonVoice_"+i);child.transform.SetParent(transform,false);
@@ -101,6 +104,11 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     {
         if(!PlayClip(towerInstallClip,true,true))return false;
         TowerInstallPlayedCount++;return true;
+    }
+    public bool NotifyUpgradeSucceeded()
+    {
+        if(!PlayClip(upgradeSuccessClip,true,true))return false;
+        UpgradeSuccessPlayedCount++;return true;
     }
     public bool NotifyBossSpawn(int enemyId)
     {

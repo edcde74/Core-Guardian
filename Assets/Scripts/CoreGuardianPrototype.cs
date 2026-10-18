@@ -229,13 +229,13 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     }
     public void UpgradePlayer(string stat)
     {
-        string reason;if(Session.UpgradePlayer(stat,out reason))upgradeFeedback.Trigger(player.transform);
+        string reason;if(Session.UpgradePlayer(stat,out reason)){upgradeFeedback.Trigger(player.transform);GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeSucceeded();}
         Notify(reason);
     }
     public void UpgradeTower(string stat)
     {
         int id=SelectedTower;string reason;
-        if(Session.UpgradeTower(id,stat,out reason))upgradeFeedback.Trigger(TowerView(id));
+        if(Session.UpgradeTower(id,stat,out reason)){upgradeFeedback.Trigger(TowerView(id));GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeSucceeded();}
         Notify(reason);
     }
     public void StartCombat(){CancelInstall();Session.StartCombat();Notify(Session.LastMessage);}

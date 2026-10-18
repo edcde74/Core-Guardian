@@ -13,6 +13,54 @@ using UnityEditor.SceneManagement;
 public class CoreGuardianCombatAudioPlayModeTests
 {
     [UnityTest]
+    public IEnumerator UpgradeSuccessUsesConfirmationOnlyAfterSuccessfulPurchaseAndKeepsScan()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
+        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
+        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
+        Assert.That(type.GetField("UpgradeSuccessResourcePath"),Is.Not.Null,"Selected upgrade success audio is missing");
+        var audio=(MonoBehaviour)game.GetComponent(type);
+        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
+        try
+        {
+            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
+            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
+            var count=type.GetProperty("UpgradeSuccessPlayedCount");var upgrade=gameType.GetMethod("UpgradePlayer");
+            var feedbackType=Type.GetType("CoreGuardianUpgradeFeedback, Assembly-CSharp");var feedback=game.GetComponent(feedbackType);
+            var scans=feedbackType.GetProperty("TriggerCount");
+            upgrade.Invoke(game,new object[]{"invalid"});Assert.That(count.GetValue(audio),Is.EqualTo(0));Assert.That(scans.GetValue(feedback),Is.EqualTo(0));
+            int gold=session.Gold;int price=session.PlayerUpgradePrice("damage");float damage=session.Player.Damage;
+            upgrade.Invoke(game,new object[]{"damage"});Assert.That(session.Gold,Is.EqualTo(gold-price));Assert.That(session.Player.Damage,Is.GreaterThan(damage));
+            Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(scans.GetValue(feedback),Is.EqualTo(1));Assert.That(feedbackType.GetProperty("Duration").GetValue(feedback),Is.EqualTo(.8f));
+            var clip=Resources.Load<AudioClip>((string)type.GetField("UpgradeSuccessResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);Assert.That(clip.length,Is.InRange(.28f,.30f));
+            var voices=audio.GetComponentsInChildren<AudioSource>();Assert.That(voices.Any(v=>v.isPlaying&&v.clip==clip),Is.True);
+            var can=gameType.GetMethod("CanInstall",BindingFlags.Instance|BindingFlags.NonPublic);
+            var cells=(from y in Enumerable.Range(0,22) from x in Enumerable.Range(0,39) let cell=new Vector2Int(x,y) where session.IsBuildable(cell)&&(bool)can.Invoke(game,new object[]{cell}) select cell).Take(3).ToArray();
+            int expected=1;
+            foreach(var kind in new[]{TowerKind.Single,TowerKind.Multi,TowerKind.Support})
+            {
+                Assert.That(gameType.GetMethod("Place").Invoke(game,new object[]{kind,cells[expected-1]}),Is.True);
+                foreach(var voice in voices)voice.Stop();
+                gameType.GetMethod("UpgradeTower").Invoke(game,new object[]{kind==TowerKind.Support?"buffDamage":"damage"});
+                expected++;Assert.That(count.GetValue(audio),Is.EqualTo(expected));Assert.That(scans.GetValue(feedback),Is.EqualTo(expected));
+            }
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);upgrade.Invoke(game,new object[]{"rate"});Assert.That(count.GetValue(audio),Is.EqualTo(4));Assert.That(scans.GetValue(feedback),Is.EqualTo(5));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);foreach(var voice in voices)voice.Stop();
+            type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
+            upgrade.Invoke(game,new object[]{"range"});Assert.That(count.GetValue(audio),Is.EqualTo(5));Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="06_Aura_Glyph_2"),Is.True);
+            session.StartCombat();gameType.GetMethod("UpgradeTower").Invoke(game,new object[]{"buffDamage"});Assert.That(count.GetValue(audio),Is.EqualTo(5));
+            typeof(Session).GetProperty("Gold").SetValue(session,0);upgrade.Invoke(game,new object[]{"damage"});Assert.That(count.GetValue(audio),Is.EqualTo(5));Assert.That(scans.GetValue(feedback),Is.EqualTo(6));
+            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
+        }
+        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator TowerInstallationUsesUnequipOnlyOnSuccessfulPlacement()
     {
 #if UNITY_EDITOR
