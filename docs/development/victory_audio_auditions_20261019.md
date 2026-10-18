@@ -1,5 +1,11 @@
 # 최종 승리음 후보
 
+## 최신: 차분한 악기 멜로디 2차 후보
+
+사용자가 더 차분하고 듣기 좋은 소리를 요청해 아래 UI효과음3종은 제외했다. [현재①피아노계열②Steel③Pizzicato 후보](../../AudioProduction/CoreGuardian_Victory_20261019/README.md)를 새 번호로 제시한다. 파일명/제작자분류 기준이며 직접청취 평가는 아니다. 사용자미선택·게임미적용·기존BGM자료 보존.
+
+## 최초 후보 — 차분한 방향 요청으로 제외
+
 2026-10-19. 사용자 ‘1 다음거’에 라운드 완료음① 적용 후 다음 최종 승리음 후보3개를 채팅 청취용으로 준비했다. 이번 번호는 최종 승리음 전용이다.
 
 원본 루트 `AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio`:
