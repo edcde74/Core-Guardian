@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-19",
+  "game_application_authorized": false,
+  "demolish": {
+    "review_version": "B-feedback-r3-20261019",
+    "number": 2,
+    "name": "마력 회수",
+    "source_wav": "AudioProduction/CoreGuardian_B_Revision3_20261019/audio/demolish_2.wav",
+    "sha256": "366a6f7b7c8457eb38e49f7923c0e016dcdcaa70feeefa4160903cf89b91e7f7",
+    "status": "provisional_preference",
+    "condition": "일단②. 이후 실제 철거/해제 연출에 따라 재검토. 2차① 잠정 선호를 대체한다."
+  },
+  "aug_gold": {
+    "exported_number": 1,
+    "accepted": false,
+    "feedback": "실버와 다르게 더 특별해야 하나 특별하지 않고 모든 소리가 가볍다."
+  },
+  "aug_platinum": {
+    "exported_number": 1,
+    "accepted": false,
+    "feedback": "실버와 다르게 더 특별해야 하나 특별하지 않고 모든 소리가 가볍다."
+  },
+  "preserve": {
+    "retained_preferences": 21,
+    "round_start": "2차③ 잠정 선호 유지",
+    "multi": "실제 발사 수1·2·3발 구분 방향 유지·게임 미연결",
+    "support_combat": "silent"
+  },
+  "next": "골드/플래티넘의 등급별 보상감과 중량을 다시 설계. 실버③을 기준으로 위계 비교. 이 기록에서 새 음원 제작/Unity 조회/검사는 하지 않았다."
+}
