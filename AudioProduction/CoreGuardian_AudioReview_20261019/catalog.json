@@ -1,0 +1,822 @@
+{
+  "title": "코어 가디언 · 사운드 데스크",
+  "version": "2026-10-19",
+  "groups": [
+    {
+      "id": "single",
+      "title": "단일 포탑 발사",
+      "category": "전투",
+      "clips": [
+        {
+          "title": "현재 적용음",
+          "path": "Assets/Resources/CoreGuardian/Audio/TowerShot/03_Aura.wav",
+          "note": "승인된 원본 그대로",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.75,
+          "sha256": "98bb3cbe9999bf05ecf74c4664407a50ebaf41f02ed34c197b768640b474f644",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/TowerShot/03_Aura.wav"
+        },
+        {
+          "title": "짧게 정리한 비교본",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/single_short.wav",
+          "note": "현재 승인음 파생 · 게임 미적용",
+          "source": "승인 원본 파생 · 청취 페이지 전용",
+          "duration": 0.615,
+          "sha256": "4bdbbd8bb576a11230617946c89b62d590d3281769a966b7398607f862a38667",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/single_short.wav"
+        },
+        {
+          "title": "고역을 줄인 비교본",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/single_soft.wav",
+          "note": "현재 승인음 파생 · 게임 미적용",
+          "source": "승인 원본 파생 · 청취 페이지 전용",
+          "duration": 0.75,
+          "sha256": "b300324cbc5e762dcd277de73d1af3fc2fe2cf705e302e4892003122597a1f0f",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/single_soft.wav"
+        }
+      ],
+      "current": 0,
+      "note": "현재 적용음은 보존됩니다. ②③은 이 페이지에서만 듣는 비교용 파생본입니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "multi",
+      "title": "멀티 포탑 발사",
+      "category": "전투",
+      "clips": [
+        {
+          "title": "현재 적용음",
+          "path": "Assets/Resources/CoreGuardian/Audio/MultiShot/B_BrighterAttack.wav",
+          "note": "승인된 원본 그대로",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.64,
+          "sha256": "d64a45e025903e8e5c07f6937032c84e0cf86f3524587ee5c1fc8f1b37667ecc",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/MultiShot/B_BrighterAttack.wav"
+        },
+        {
+          "title": "짧게 정리한 비교본",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/multi_short.wav",
+          "note": "현재 승인음 파생 · 게임 미적용",
+          "source": "승인 원본 파생 · 청취 페이지 전용",
+          "duration": 0.525,
+          "sha256": "82293846bbf111a3f1538c24bd3d0583b77f0d0acb6b5e6cac718e0e4343894d",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/multi_short.wav"
+        },
+        {
+          "title": "고역을 줄인 비교본",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/multi_soft.wav",
+          "note": "현재 승인음 파생 · 게임 미적용",
+          "source": "승인 원본 파생 · 청취 페이지 전용",
+          "duration": 0.64,
+          "sha256": "d289e9526041e87d5a6c463b35349d3bff914c0c604506be48302a36b49c0fb6",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/multi_soft.wav"
+        }
+      ],
+      "current": 0,
+      "note": "②③은 비교용 파생본입니다. 멀티의 세 포신 리듬과 기존 게임 발사 규칙은 바꾸지 않았습니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "player",
+      "title": "플레이어 공격",
+      "category": "전투",
+      "clips": [
+        {
+          "title": "현재 적용음",
+          "path": "Assets/Resources/CoreGuardian/Audio/PlayerShot/03_Glyph.wav",
+          "note": "승인된 원본 그대로",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.4,
+          "sha256": "826226e9d7126c2c48fa0455154377bb38e8f7fdfb548a4f5d6814448a3f435e",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/PlayerShot/03_Glyph.wav"
+        },
+        {
+          "title": "짧게 정리한 비교본",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/player_short.wav",
+          "note": "현재 승인음 파생 · 게임 미적용",
+          "source": "승인 원본 파생 · 청취 페이지 전용",
+          "duration": 0.328,
+          "sha256": "fc4b3646f02cc253707f5e17f33cf43d3dd654c3cff5cece04475ec532c06c74",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/player_short.wav"
+        },
+        {
+          "title": "고역을 줄인 비교본",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/player_soft.wav",
+          "note": "현재 승인음 파생 · 게임 미적용",
+          "source": "승인 원본 파생 · 청취 페이지 전용",
+          "duration": 0.4,
+          "sha256": "9eae5ed116338171dd08ca8e5fbadd3d594e945f36971d84dd86a092a2408a62",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/player_soft.wav"
+        }
+      ],
+      "current": 0,
+      "note": "현재 적용음은 보존됩니다. ②③은 이 페이지에서만 듣는 비교용 파생본입니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "hit",
+      "title": "몬스터 피격",
+      "category": "전투",
+      "clips": [
+        {
+          "title": "현재 · Hit",
+          "path": "Assets/Resources/CoreGuardian/Audio/MonsterHit/03_Hit.wav",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.667,
+          "sha256": "3e2ee7d0e9733404e10ae4cf9dc89aee36ab3b4946e02f1a7fd5697c774cc08e",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/MonsterHit/03_Hit.wav"
+        },
+        {
+          "title": "Impact flesh",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 0.667,
+          "sha256": "f4a092dbb8f9a9ce71c7b2aed4e44a0c243590c4a71cf0b435a17abe5aa5a6b3",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav"
+        },
+        {
+          "title": "Claw",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/03_Claw_03.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 0.667,
+          "sha256": "1158dda43fe614eef3018dcf25dcdde3d10368a621c89035a9fd03b0247806ce",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/03_Claw_03.wav"
+        }
+      ],
+      "current": 0,
+      "note": "현재는 살아남는 타격에 적용됩니다. 원본 이름은 제작자 분류입니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "death",
+      "title": "몬스터 처치",
+      "category": "전투",
+      "clips": [
+        {
+          "title": "현재 · Flesh",
+          "path": "Assets/Resources/CoreGuardian/Audio/MonsterDeath/02_Flesh.wav",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.667,
+          "sha256": "a1611b80c5091d97079f361b3fe198ae4c1220e30fe057c8d01334aeddfef4d1",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/MonsterDeath/02_Flesh.wav"
+        },
+        {
+          "title": "Enemy death",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/69_Enemy_death_01.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 2.667,
+          "sha256": "679882a81a208b5aa2644c3183ca532911e8d0a8092b38ceea099cde2775b54c",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/69_Enemy_death_01.wav"
+        },
+        {
+          "title": "Flee",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/51_Flee_02.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 1.333,
+          "sha256": "2701a87f986a81f4afa63ad20de0e2a5e8e7e56e14a4623dadb97986322a9a9e",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/51_Flee_02.wav"
+        }
+      ],
+      "current": 0,
+      "note": "치명 타격은 현재 처치음만 재생합니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "core",
+      "title": "코어 피해",
+      "category": "전투",
+      "clips": [
+        {
+          "title": "현재 · Aura Glyph 2",
+          "path": "Assets/Resources/CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2.wav",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 1.981,
+          "sha256": "f280ae85a7a4f8bd0846b8dd08dc9d015a69a2ba75e8dd9e3142b98497a59a07",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2.wav"
+        },
+        {
+          "title": "Block",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 1.333,
+          "sha256": "4763da64e8420a3ec66391b2ca7e9d5ac25be2b483422397e2b5814641a5c8c9",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav"
+        },
+        {
+          "title": "Absorb",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/39_Absorb_04.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 4.0,
+          "sha256": "92dd6c9f24ed76c48338c32fb69adc6bf59ac9631e18ed1e3fa60542b9f503b5",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/39_Absorb_04.wav"
+        }
+      ],
+      "current": 0,
+      "note": "현재 연속 피해 묶음과 코어음 우선권은 게임에 그대로 남습니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "boss_spawn",
+      "title": "보스 등장",
+      "category": "전투",
+      "clips": [
+        {
+          "title": "현재 · Encounter",
+          "path": "Assets/Resources/CoreGuardian/Audio/BossSpawn/01_Encounter.wav",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 5.333,
+          "sha256": "1d20c58985ff62a7441fe6f4600410180ba0ed2582f73e93c0e54f957060a7a9",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/BossSpawn/01_Encounter.wav"
+        },
+        {
+          "title": "Charge",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/45_Charge_05.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 5.333,
+          "sha256": "b3cbf3109a3bd08f979ab12920e62fed8dbafdcdc6175fee2804089d070e3e16",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/45_Charge_05.wav"
+        },
+        {
+          "title": "Hit jingle",
+          "path": "AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Hit jingles/jingles_HIT00.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.284,
+          "sha256": "e23d8c9e971a4e34484bc834a3ec1d560811ec6f5edd5efa2c61e583c18c504a",
+          "url": "../../AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Hit jingles/jingles_HIT00.ogg"
+        }
+      ],
+      "current": 0,
+      "note": "현재는 보스가 처음 표시될 때 한 번 재생합니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "boss_accel",
+      "title": "보스 가속 전환",
+      "category": "전투",
+      "clips": [
+        {
+          "title": "현재 · Speed up",
+          "path": "Assets/Resources/CoreGuardian/Audio/BossAcceleration/01_SpeedUp.wav",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 4.0,
+          "sha256": "dec16cc731a187c2a183ea771589fb551ecfb5c8d006e593add5813ca1686efb",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/BossAcceleration/01_SpeedUp.wav"
+        },
+        {
+          "title": "Maximize 05",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/maximize_005.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.526,
+          "sha256": "0ee06fc3ee494723fc95b2224f9dc0af857f2903e7f94d5d33d8e67f454b3cf7",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/maximize_005.ogg"
+        },
+        {
+          "title": "Hit jingle 01",
+          "path": "AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Hit jingles/jingles_HIT01.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.506,
+          "sha256": "ddca9df332d7cdab525bbbe62ca26e9d61aa64bfa626d9516d5c53eb91c45322",
+          "url": "../../AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Hit jingles/jingles_HIT01.ogg"
+        }
+      ],
+      "current": 0,
+      "note": "현재 체력 50% 이하 전환 알림입니다. 가속 규칙은 변경하지 않습니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "install",
+      "title": "포탑 설치 완료",
+      "category": "성장·설치",
+      "clips": [
+        {
+          "title": "현재 · Unequip",
+          "path": "Assets/Resources/CoreGuardian/Audio/TowerInstall/02_Unequip.wav",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 1.333,
+          "sha256": "8c01e051fa47d23c5deeabd7a52f83e172595bc422109a6776be662f0b596454",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/TowerInstall/02_Unequip.wav"
+        },
+        {
+          "title": "Use item",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/051_use_item_01.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 1.333,
+          "sha256": "c890b19c0eb57370f248ae10732e8bd2f9656797aae0900e7a0101b3e5df1893",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/051_use_item_01.wav"
+        },
+        {
+          "title": "Unpause",
+          "path": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/098_Unpause_04.wav",
+          "note": "",
+          "source": "기존 취득 팩 · Asset Store EULA",
+          "duration": 1.333,
+          "sha256": "92806b965209ac3f21518dc900d9ae0b58e12ed9fecc3415ca6614b692730f6b",
+          "url": "../../Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/098_Unpause_04.wav"
+        }
+      ],
+      "current": 0,
+      "note": "지원 포탑도 설치 성공 알림은 공통이며, 전투 효과음은 무음입니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "upgrade_ok",
+      "title": "강화 성공",
+      "category": "성장·설치",
+      "clips": [
+        {
+          "title": "현재 · Confirmation 01",
+          "path": "Assets/Resources/CoreGuardian/Audio/UpgradeSuccess/01_Confirmation.ogg",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.29,
+          "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/UpgradeSuccess/01_Confirmation.ogg"
+        },
+        {
+          "title": "Confirmation 02",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/confirmation_002.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.539,
+          "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/confirmation_002.ogg"
+        },
+        {
+          "title": "Glass 03",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/glass_003.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.124,
+          "sha256": "9a6f16e3c2eff6fe5d017a4755a28306b14555728831cd00d70308e8f9689566",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/glass_003.ogg"
+        }
+      ],
+      "current": 0,
+      "note": "이미 거부한 Attack buff / Defense buff / Revive는 제외했습니다. 성공 스캔 B 0.8초 유지.",
+      "kind": "compare"
+    },
+    {
+      "id": "upgrade_fail",
+      "title": "강화 실패·재화 부족",
+      "category": "성장·설치",
+      "clips": [
+        {
+          "title": "현재 · Error 06",
+          "path": "Assets/Resources/CoreGuardian/Audio/UpgradeFailure/03_Error006.ogg",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.5,
+          "sha256": "a97513d7fd2b12b1210c423be943b4c1ab0e899b11db95855e9b74836e646ae0",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/UpgradeFailure/03_Error006.ogg"
+        },
+        {
+          "title": "Error 01",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_001.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.165,
+          "sha256": "46e67425d16339772e8d328fb36a49426c9467418686e11beeb71ff84b0f6433",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_001.ogg"
+        },
+        {
+          "title": "Error 03",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_003.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.533,
+          "sha256": "885b28175c7b511118bcffab95675b48bbac9005cf6514656ebdad979276b3ab",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_003.ogg"
+        }
+      ],
+      "current": 0,
+      "note": "현재는 강화 시도 실패에만 연결되어 있습니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "install_fail",
+      "title": "설치 실패 알림",
+      "category": "성장·설치",
+      "clips": [
+        {
+          "title": "Error 02",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_002.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.165,
+          "sha256": "76810ec365f41078fd0507101da5bb7b8730fe011dde43908329fdabd8575e79",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_002.ogg"
+        },
+        {
+          "title": "Error 04",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_004.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.103,
+          "sha256": "0b574cea597d96507e782ae9764f88482ce49f46e931e57054bf7150047f2d69",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_004.ogg"
+        },
+        {
+          "title": "Error 05",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_005.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.5,
+          "sha256": "3f75b11df5b06d68d2c25fbf0e9c9d9e7dd9250562a4007ee34856b8a309a2ae",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/error_005.ogg"
+        }
+      ],
+      "current": null,
+      "note": "추가 검토 항목입니다. 현재 게임에는 별도 설치 실패음이 없습니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "remove",
+      "title": "포탑 철거 알림",
+      "category": "성장·설치",
+      "clips": [
+        {
+          "title": "Back 01",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/back_001.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.064,
+          "sha256": "07db973f79f6ae0f2edc34561e7592e24d0577455919fb602cb8ecc0da991dcf",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/back_001.ogg"
+        },
+        {
+          "title": "Drop 01",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/drop_001.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.11,
+          "sha256": "692ee3a6f1821402ca649ff735bee9591dc4846c8098fc7d6a90fd15fa57c1af",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/drop_001.ogg"
+        },
+        {
+          "title": "Scratch 02",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/scratch_002.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.139,
+          "sha256": "2b07edafc1f3f49c4813f2b0ae9481c566c1f9962a22d5f5b79da7111e058e56",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/scratch_002.ogg"
+        }
+      ],
+      "current": null,
+      "note": "추가 검토 항목입니다. 철거 규칙이나 환불은 변경하지 않습니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "round_start",
+      "title": "라운드 전투 시작",
+      "category": "라운드·결과",
+      "clips": [
+        {
+          "title": "현재 · Confirmation 04",
+          "path": "Assets/Resources/CoreGuardian/Audio/RoundStart/03_Confirmation004.ogg",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.49,
+          "sha256": "568967a3d9f8a8f6af54ea01729c4882284308f2a27d78c07ffd7ee0d6951661",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/RoundStart/03_Confirmation004.ogg"
+        },
+        {
+          "title": "Open 01",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/open_001.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.148,
+          "sha256": "a27c6bb0df7da1e6af5dd5937593c98bc58b6e513f42fe6a3254cd6a6949c648",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/open_001.ogg"
+        },
+        {
+          "title": "Maximize 01",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/maximize_001.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.258,
+          "sha256": "fd3e75e1de2f2fda90aceeacaeb0427ac8bddd3b07a6ce2a8f9ba923df3771f9",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/maximize_001.ogg"
+        }
+      ],
+      "current": 0,
+      "note": "현재 자동·수동 전투 시작에 한 번 재생합니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "round_complete",
+      "title": "라운드 완료",
+      "category": "라운드·결과",
+      "clips": [
+        {
+          "title": "현재 · Confirmation 02",
+          "path": "Assets/Resources/CoreGuardian/Audio/RoundComplete/01_Confirmation002.ogg",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.539,
+          "sha256": "33b17a9a9a2397c62b285c52c33a907fdffb476909c99e42dde603f6a7a8b12c",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/RoundComplete/01_Confirmation002.ogg"
+        },
+        {
+          "title": "Confirmation 03",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/confirmation_003.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.322,
+          "sha256": "3091bf0be0497f825769ee0733ca7bdc3bcd59bd6c6e8f2ba8f93d580ff38022",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/confirmation_003.ogg"
+        },
+        {
+          "title": "Maximize 07",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/maximize_007.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.186,
+          "sha256": "3400931f3f3a1e9cf253efef9069bcdf053edd2234e4ee9bf88977c389943484",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/maximize_007.ogg"
+        }
+      ],
+      "current": 0,
+      "note": "현재 일반 완료·증강 선택 진입용이며 최종 승리와 구분됩니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "victory",
+      "title": "최종 승리",
+      "category": "라운드·결과",
+      "clips": [
+        {
+          "title": "현재 · Steel 00",
+          "path": "Assets/Resources/CoreGuardian/Audio/Victory/02_Steel00.ogg",
+          "note": "",
+          "source": "현재 프로젝트 리소스",
+          "duration": 0.933,
+          "sha256": "8799eb726d784ae0aa1a9df80648a873ac60015bc00aea12c8e2dd1431a2bd7d",
+          "url": "../../Assets/Resources/CoreGuardian/Audio/Victory/02_Steel00.ogg"
+        },
+        {
+          "title": "Steel 02",
+          "path": "AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Steel jingles/jingles_STEEL02.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 1.387,
+          "sha256": "891c2b48d3586744b38be18b8c5a35f46ac30fe06efb48f70f3f5528a0cec0c3",
+          "url": "../../AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Steel jingles/jingles_STEEL02.ogg"
+        },
+        {
+          "title": "Pizzicato 02",
+          "path": "AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Pizzicato jingles/jingles_PIZZI02.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.956,
+          "sha256": "4967dc3cd31257716f455ef50f8980378726ce086954c7a5563c0c57ee129e3e",
+          "url": "../../AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Pizzicato jingles/jingles_PIZZI02.ogg"
+        }
+      ],
+      "current": 0,
+      "note": "차분한 악기 멜로디 방향을 유지합니다. 최초 거부된 UI 승리음은 제외했습니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "defeat",
+      "title": "패배 알림",
+      "category": "라운드·결과",
+      "clips": [
+        {
+          "title": "Steel 01",
+          "path": "AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Steel jingles/jingles_STEEL01.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 1.375,
+          "sha256": "099b192f120f7eb7c24613be277428628b9ec9c81e1f8420254abce336fbe7e5",
+          "url": "../../AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Steel jingles/jingles_STEEL01.ogg"
+        },
+        {
+          "title": "Steel 04",
+          "path": "AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Steel jingles/jingles_STEEL04.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.909,
+          "sha256": "65be5fe4af66574f4725602e454b7ea8d2613ab536a4a719fcb3810a240fdecf",
+          "url": "../../AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Steel jingles/jingles_STEEL04.ogg"
+        },
+        {
+          "title": "Pizzicato 01",
+          "path": "AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Pizzicato jingles/jingles_PIZZI01.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 1.002,
+          "sha256": "3f8f2534a297d19386c233a7ee4fa8737cc40870dd206010263760e1983dde46",
+          "url": "../../AudioProduction/CoreGuardian_Victory_20261019/Kenney_MusicJingles/Originals/Audio/Pizzicato jingles/jingles_PIZZI01.ogg"
+        }
+      ],
+      "current": null,
+      "note": "아직 미선택·미적용입니다. 앞서 제시한 패배 후보 3개입니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "ui_click",
+      "title": "UI 클릭·선택",
+      "category": "UI",
+      "clips": [
+        {
+          "title": "Click 01",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/click_001.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.1,
+          "sha256": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/click_001.ogg"
+        },
+        {
+          "title": "Click 02",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/click_002.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.01,
+          "sha256": "adcd1f4adc35f1b41bc1b5bbefeff7aa44f2f3f0d96d3199b544140c7c1e761c",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/click_002.ogg"
+        },
+        {
+          "title": "Select 02",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/select_002.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.043,
+          "sha256": "4cc6ac5341b9b2c86fef80c347de028e9ab9f2e037586ac7d9fa59a403a1c012",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/select_002.ogg"
+        }
+      ],
+      "current": null,
+      "note": "추가 검토 항목입니다. 모든 클릭에 적용할지는 별도 판단합니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "ui_open",
+      "title": "패널 열기",
+      "category": "UI",
+      "clips": [
+        {
+          "title": "Open 02",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/open_002.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.314,
+          "sha256": "24ff224fe2c09c6aed1b41249825382dc74cf324b887ff279d8494912ce2beee",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/open_002.ogg"
+        },
+        {
+          "title": "Open 03",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/open_003.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.314,
+          "sha256": "bcdca6b5c9c33aa15ca3fb18a1fa8d98a01b528b85be08c5a610e57c75fc022d",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/open_003.ogg"
+        },
+        {
+          "title": "Switch 03",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/switch_003.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.5,
+          "sha256": "ca12dd32103f401481d5aff56d5e9831174e99bb577139c09b07d046eb8b837e",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/switch_003.ogg"
+        }
+      ],
+      "current": null,
+      "note": "추가 검토 항목입니다. 자동 갱신마다 재생하는 정책이 아닙니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "ui_close",
+      "title": "패널 닫기·접기",
+      "category": "UI",
+      "clips": [
+        {
+          "title": "Close 01",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/close_001.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.148,
+          "sha256": "44af8249b933e0fd35ec957a638bb1a0b01f85b53fbe9674bf77bd3ca3168ef4",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/close_001.ogg"
+        },
+        {
+          "title": "Close 02",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/close_002.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.314,
+          "sha256": "bc4279d2bb2bf86592473eab6a8eab55e51b54a8619315000dbd780a83b102d8",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/close_002.ogg"
+        },
+        {
+          "title": "Back 02",
+          "path": "AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/back_002.ogg",
+          "note": "",
+          "source": "Kenney · CC0",
+          "duration": 0.07,
+          "sha256": "61581c58194e3f19f531072edabbc344204c7e0a2887b8ededce4357bcf09195",
+          "url": "../../AudioProduction/CoreGuardian_Upgrade_20261018/Kenney_Interface/Originals/Audio/back_002.ogg"
+        }
+      ],
+      "current": null,
+      "note": "추가 검토 항목입니다. 현재 손잡이 외형·조작 규칙은 그대로입니다.",
+      "kind": "compare"
+    },
+    {
+      "id": "augmentation",
+      "title": "증강 카드 공개 · 현재 3등급",
+      "category": "증강",
+      "clips": [
+        {
+          "title": "실버 · 현재 공식 재현",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/augmentation_0.wav",
+          "note": "코드 공식으로 만든 참고 청취본 · 게임 녹음 아님",
+          "source": "프로젝트 기존 합성 공식",
+          "duration": 0.35,
+          "sha256": "32da62790433c5e5985c6a3cf6ee31661ae0c033c95f96f58fb42e51e7f84f17",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/augmentation_0.wav"
+        },
+        {
+          "title": "골드 · 현재 공식 재현",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/augmentation_1.wav",
+          "note": "코드 공식으로 만든 참고 청취본 · 게임 녹음 아님",
+          "source": "프로젝트 기존 합성 공식",
+          "duration": 0.55,
+          "sha256": "ba84fc858e67215a85161d46c50db1c479a00df8fca53b1957ec21cc177946e2",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/augmentation_1.wav"
+        },
+        {
+          "title": "플래티넘 · 현재 공식 재현",
+          "path": "AudioProduction/CoreGuardian_AudioReview_20261019/derived/augmentation_2.wav",
+          "note": "코드 공식으로 만든 참고 청취본 · 게임 녹음 아님",
+          "source": "프로젝트 기존 합성 공식",
+          "duration": 0.75,
+          "sha256": "6cb8380cafd33d3fd55e6c0f73cc24abff30440b20dc446db6b398e593dbd51a",
+          "url": "../../AudioProduction/CoreGuardian_AudioReview_20261019/derived/augmentation_2.wav"
+        }
+      ],
+      "current": null,
+      "note": "기존 코드의 등급별 3음을 참고용으로 재현했습니다. 세 등급 중 하나를 고르는 비교 항목이 아닙니다.",
+      "kind": "reference"
+    },
+    {
+      "id": "bgm",
+      "title": "BGM · 기존 제작 시안 3개",
+      "category": "BGM",
+      "clips": [
+        {
+          "title": "Fortress March",
+          "path": "AudioProduction/CoreGuardian_BGM_20261013/01_Fortress_March.wav",
+          "note": "2026-10-13 기존 초안 · 미적용",
+          "source": "프로젝트 기존 직접 제작",
+          "duration": 43.636,
+          "sha256": "1e3047234c8ce13ff888b4bc2ed6e4308430807d3bec718a6b6ec5a6fca2e87b",
+          "url": "../../AudioProduction/CoreGuardian_BGM_20261013/01_Fortress_March.wav"
+        },
+        {
+          "title": "Crystal Engine",
+          "path": "AudioProduction/CoreGuardian_BGM_20261013/02_Crystal_Engine.wav",
+          "note": "2026-10-13 기존 초안 · 미적용",
+          "source": "프로젝트 기존 직접 제작",
+          "duration": 36.923,
+          "sha256": "24c0f19267d16858edf5359b235dece9f3fa904c997a345b067834043a19629a",
+          "url": "../../AudioProduction/CoreGuardian_BGM_20261013/02_Crystal_Engine.wav"
+        },
+        {
+          "title": "Watchline Embers",
+          "path": "AudioProduction/CoreGuardian_BGM_20261013/03_Watchline_Embers.wav",
+          "note": "2026-10-13 기존 초안 · 미적용",
+          "source": "프로젝트 기존 직접 제작",
+          "duration": 34.286,
+          "sha256": "c0b6ec082f16c2223f8adef6ec4512a153c21898da81be2955565f17382291cf",
+          "url": "../../AudioProduction/CoreGuardian_BGM_20261013/03_Watchline_Embers.wav"
+        }
+      ],
+      "current": null,
+      "note": "기존 BGM 파일을 읽기 참조만 합니다. 편곡·원본·게임 적용을 변경하지 않았습니다.",
+      "kind": "compare"
+    }
+  ],
+  "support": "지원 포탑 전투 효과음은 사용자 지시로 무음입니다. 이 페이지에서 새 후보를 만들거나 적용하지 않습니다.",
+  "notes": "현재 적용음 + 비교 후보 2개. 선택은 이 브라우저의 비교 메모이며 게임에 자동 적용되지 않습니다."
+}

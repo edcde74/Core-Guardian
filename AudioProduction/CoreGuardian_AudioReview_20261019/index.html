@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>코어 가디언 · 사운드 데스크</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="brand">CG <span>CORE GUARDIAN / AUDIO DESK</span></div><span class="private">LOCAL LISTENING ROOM · 2026.10.19</span></header>
+<main>
+<section class="hero"><div class="eyebrow">소리로 살펴보는 고대의 안뜰</div><h1>사운드 전체 비교</h1><p>항목마다 세 가지를 듣고, 마음에 드는 소리를 메모하세요.<br>현재 적용음은 표시 그대로 유지되며, 선택 메모는 이 브라우저에 저장됩니다.</p><div class="stats"><span><b>22</b> 항목</span><span><b>66</b> 청취본</span><span><b>14</b> 현재 적용음</span><span class="muted">지원 포탑 전투 · 무음 유지</span></div></section>
+<section class="desk" aria-label="청취 제어"><div class="actions"><button id="play-current" class="primary">▶ 현재 적용음 이어 듣기</button><button id="stop">■ 모두 정지</button><label class="volume">청취 음량 <input id="volume" type="range" min="0" max="100" value="15"><output id="volume-label">15%</output></label></div><div class="now"><span class="pulse"></span><span id="now" role="status" aria-live="polite">듣고 싶은 항목의 재생 버튼을 누르세요.</span></div><small>청취 페이지 전용 음량입니다. 게임의 저장 음량과 연결되지 않습니다.</small></section>
+<section class="browse"><nav id="filters" aria-label="항목 필터"></nav><input id="search" type="search" placeholder="소리·항목 검색" aria-label="소리 또는 항목 검색"></section>
+<div class="results"><span id="count"></span><span>① 현재 적용음 + ②③ 비교 후보 · 미적용 항목은 후보 3개</span></div>
+<div id="groups"></div><p id="empty" hidden>일치하는 항목이 없습니다.</p>
+<section class="finish"><div><h2>고른 소리를 한 번에 전달하기</h2><p>선택 결과와 메모를 복사해 채팅에 붙여 주세요. 선택만으로 게임에 적용되지는 않습니다.</p></div><div class="actions"><button id="copy" class="primary">선택 결과 복사</button><button id="download">JSON 저장</button></div><p id="save-status" role="status"></p><textarea id="copy-fallback" hidden readonly aria-label="복사용 선택 결과"></textarea></section>
+<footer><p>무료 재료의 상업 사용 조건을 확인한 로컬 청취 자료입니다. 음색 평가는 사용자가 직접 듣고 결정합니다.</p><p>Kenney: <a href="https://kenney.nl/assets/interface-sounds" target="_blank" rel="noopener">Interface Sounds</a> / <a href="https://kenney.nl/assets/music-jingles" target="_blank" rel="noopener">Music Jingles</a> · CC0. <a href="https://assetstore-fallback.unity.com/packages/audio/sound-fx/rpg-essentials-sound-effects-free-227708" target="_blank" rel="noopener">RPG Essentials</a> / <a href="https://assetstore.unity.com/packages/vfx/particles/spells/free-magic-aura-construction-kit-154136" target="_blank" rel="noopener">Magic Aura</a>: 기존 취득한 <a href="https://assetstore.unity.com/browse/eula-faq" target="_blank" rel="noopener">Unity Asset Store 라이선스</a> 범위. 원본 재배포 없이 이 PC에서만 참조합니다.</p><p>공격음 ②③은 승인 원본의 길이·고역 비교본입니다. 증강음은 기존 코드 공식 재현이며 게임 녹음이 아닙니다. BGM은 기존 제작 초안으로, 이 페이지에서 수정하지 않았습니다.</p></footer>
+</main><script src="catalog.js"></script><script src="app.js"></script></body></html>
