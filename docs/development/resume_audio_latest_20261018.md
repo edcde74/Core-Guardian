@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 보스 등장음① 적용 완료(2026-10-18)
+- 사용자①Encounter 선택. 원본55_Encounter_02.wav 동일바이트5.333333초를 Resources/CoreGuardian/Audio/BossSpawn/01_Encounter로 연결했다.
+- 보스월드표시첫생성에ID별1회/반복화면갱신·같은Session재연결재생방지/음소거등장지연재생없음. 기존4음성/gain0.55/공통음량·풀포화시코어음보호. 가속음과별도,공격3종/지원무음/코어⑥/피격③/처치②/멀티묶음유지.
+- 새Edit3/3·Play5/5는진단DebugSpawn/실제SynchronizeViews집중기능QA와기존사운드검사다. 정상10R/다수전투믹스/전체회귀/성능/사람플레이·밸런스검증아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/boss_spawn_audio_applied_20261018/README.md.
+- 다음구체사운드는미정. 기존보스등장음선택대기문구는과거다. 병행그림자/애니메이션변경을보존한다.
+
 ■ 최신 추가: 몬스터 처치음② 적용 완료(2026-10-18)
 - 사용자②Flesh 선택. 원본77_flesh_02.wav 동일바이트0.666667초를 Resources/CoreGuardian/Audio/MonsterDeath/02_Flesh로 연결했다.
 - 실제Health0 타격에는처치②만,살아남는타격에는피격③. 코어도착/죽은적재피해는처치음없음. 처치전체0.1초묶음/풀포화시처치음생략·기존4음성/gain0.55/공통음량. 공격3종/지원무음/코어⑥우선/멀티묶음유지.

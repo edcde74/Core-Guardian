@@ -267,6 +267,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             if(!enemyViews.TryGetValue(e.Id,out view))
             {
                 view=Instantiate(e.Kind==EnemyKind.Boss?bossArt:enemyArt[(int)e.Kind]);view.name="Enemy_"+e.Kind+"_"+e.Id;enemyViews.Add(e.Id,view);
+                if(e.Kind==EnemyKind.Boss)GetComponent<CoreGuardianCombatAudio>()?.NotifyBossSpawn(e.Id);
                 var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
                 bar.transform.SetParent(view.transform,false);healthViews[e.Id]=bar.transform;
             }
