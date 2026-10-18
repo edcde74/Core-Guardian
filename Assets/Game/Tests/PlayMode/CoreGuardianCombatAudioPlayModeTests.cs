@@ -13,6 +13,55 @@ using UnityEditor.SceneManagement;
 public class CoreGuardianCombatAudioPlayModeTests
 {
     [UnityTest]
+    public IEnumerator MonsterDeathsReplaceLethalHitAndIgnoreCoreExitsMuteAndRepeatedDamage()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
+        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
+        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
+        Assert.That(type.GetField("MonsterDeathResourcePath"),Is.Not.Null,"Selected monster death audio is missing");
+        var audio=(MonoBehaviour)game.GetComponent(type);
+        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
+        try
+        {
+            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
+            var session=(Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();session.SetBoard(20,20,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});
+            var configure=type.GetMethod("Configure");configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});
+            var count=type.GetProperty("MonsterDeathPlayedCount");var hits=type.GetProperty("MonsterHitPlayedCount");
+            var enemy=session.DebugSpawn(EnemyKind.Attack);session.ApplyDamage(enemy,1,"Player");
+            Assert.That(hits.GetValue(audio),Is.EqualTo(1));
+            var voices=audio.GetComponentsInChildren<AudioSource>();foreach(var voice in voices)voice.Stop();
+            int gold=session.Gold;int reward=enemy.Spec.Gold;
+            session.ApplyDamage(enemy,10000,"Tower:1");
+            Assert.That(enemy.Health,Is.Zero);Assert.That(session.Gold,Is.EqualTo(gold+reward));
+            Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(hits.GetValue(audio),Is.EqualTo(1),"Lethal damage must not add the hit clip");
+            var clip=Resources.Load<AudioClip>((string)type.GetField("MonsterDeathResourcePath").GetRawConstantValue());
+            Assert.That(voices.Count(v=>v.isPlaying&&v.clip==clip),Is.EqualTo(1));
+            session.ApplyDamage(enemy,10000,"Player");
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");
+            Assert.That(count.GetValue(audio),Is.EqualTo(1),"Same-time kills are coalesced; dead targets cannot replay");
+            yield return new WaitForSecondsRealtime(.12f);
+            session.StartCombat();session.DebugSpawn(EnemyKind.Attack,9.99f);session.Tick(.1f,new Vector2(-100,-100));
+            Assert.That(session.CoreEnergy,Is.LessThan(session.CoreMaximum));Assert.That(count.GetValue(audio),Is.EqualTo(1),"Core exit is not a kill");
+            foreach(var voice in voices)voice.Stop();
+            for(int i=0;i<4;i++)type.GetMethod("Preview").Invoke(audio,null);
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1),"Full pool drops ordinary death audio");
+            foreach(var voice in voices)voice.Stop();
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);audio.enabled=false;
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            audio.enabled=true;session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
+            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
+        }
+        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator MonsterHitsUseSelectedClipAndBoundOverlapWithoutChangingDamage()
     {
 #if UNITY_EDITOR
@@ -40,19 +89,19 @@ public class CoreGuardianCombatAudioPlayModeTests
             Assert.That(voices.Any(v=>v.isPlaying&&v.clip==clip),Is.True);
             session.ApplyDamage(enemy,1,"Tower:1");Assert.That(count.GetValue(audio),Is.EqualTo(1));
             yield return new WaitForSecondsRealtime(.12f);
-            session.ApplyDamage(enemy,10000,"Tower:1");Assert.That(enemy.Alive,Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(2),"Lethal hit should still play");
+            session.ApplyDamage(enemy,10000,"Tower:1");Assert.That(enemy.Alive,Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(1),"Lethal hit uses the separate death clip");
             yield return new WaitForSecondsRealtime(.12f);
-            session.ApplyDamage(enemy,10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2),"Dead targets must not play again");
+            session.ApplyDamage(enemy,10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1),"Dead targets must not play again");
             foreach(var voice in voices)voice.Stop();
             for(int i=0;i<4;i++)type.GetMethod("Preview").Invoke(audio,null);
             var other=session.DebugSpawn(EnemyKind.Attack);session.ApplyDamage(other,1,"Player");
-            Assert.That(count.GetValue(audio),Is.EqualTo(2),"Full pool drops ordinary hit audio");
+            Assert.That(count.GetValue(audio),Is.EqualTo(1),"Full pool drops ordinary hit audio");
             Assert.That(voices.All(v=>v.clip.name=="03_Aura"),Is.True,"Hit must not replace attacks");
             foreach(var voice in voices)voice.Stop();
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
             PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            audio.enabled=false;session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            audio.enabled=true;session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(3));
+            audio.enabled=false;session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            audio.enabled=true;session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
             yield return null;
             Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
         }

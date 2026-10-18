@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 몬스터 처치음② 적용 완료(2026-10-18)
+- 사용자②Flesh 선택. 원본77_flesh_02.wav 동일바이트0.666667초를 Resources/CoreGuardian/Audio/MonsterDeath/02_Flesh로 연결했다.
+- 실제Health0 타격에는처치②만,살아남는타격에는피격③. 코어도착/죽은적재피해는처치음없음. 처치전체0.1초묶음/풀포화시처치음생략·기존4음성/gain0.55/공통음량. 공격3종/지원무음/코어⑥우선/멀티묶음유지.
+- 새Edit3/3·Play4/4는진단Session.ApplyDamage/수동Tick기능QA와기존발사/피격/코어검사이며정상다수전투믹스/성능/전체회귀/사람플레이·밸런스검증아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/monster_death_audio_applied_20261018/README.md.
+- 아래피격③치명타격재생/처치후보선택대기는과거. 다음구체사운드는미정.
+
 ■ 최신 추가: 몬스터 피격음③ 적용 완료(2026-10-18)
 - 사용자③Hit 선택. 원본61_Hit_03.wav 동일바이트0.666667초를 Resources/CoreGuardian/Audio/MonsterHit/03_Hit로 연결했다.
 - DamageApplied 양수피해/치명타격에 재생,전체피격0.1초 묶음/기존4음성 포화면피격음생략/gain0.55/공통음량. 공격3종/지원무음/코어⑥우선/멀티묶음 유지.

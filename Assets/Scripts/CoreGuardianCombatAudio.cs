@@ -12,11 +12,13 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public const string MultiShotResourcePath="CoreGuardian/Audio/MultiShot/B_BrighterAttack";
     public const string CoreDamageResourcePath="CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2";
     public const string MonsterHitResourcePath="CoreGuardian/Audio/MonsterHit/03_Hit";
-    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip;
+    public const string MonsterDeathResourcePath="CoreGuardian/Audio/MonsterDeath/02_Flesh";
+    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip,monsterDeathClip;
     readonly System.Collections.Generic.Dictionary<int,float> nextMultiShots=new System.Collections.Generic.Dictionary<int,float>();
     readonly AudioSource[] voices=new AudioSource[VoiceLimit];
     Session session;
-    float nextShot,nextPlayerShot,nextCoreDamage,nextMonsterHit;
+    float nextShot,nextPlayerShot,nextCoreDamage,nextMonsterHit,nextMonsterDeath;
+    public int MonsterDeathPlayedCount {get;private set;}
     public int MonsterHitPlayedCount {get;private set;}
     public int CoreDamagePlayedCount {get;private set;}
     public int PlayedCount {get;private set;}
@@ -30,6 +32,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         multiClip=Resources.Load<AudioClip>(MultiShotResourcePath);
         coreDamageClip=Resources.Load<AudioClip>(CoreDamageResourcePath);
         monsterHitClip=Resources.Load<AudioClip>(MonsterHitResourcePath);
+        monsterDeathClip=Resources.Load<AudioClip>(MonsterDeathResourcePath);
         for(int i=0;i<voices.Length;i++)
         {
             var child=new GameObject("MagicCannonVoice_"+i);child.transform.SetParent(transform,false);
@@ -40,7 +43,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     public void Configure(Session value)
     {
-        Unsubscribe();session=value;nextShot=nextPlayerShot=nextCoreDamage=nextMonsterHit=0;
+        Unsubscribe();session=value;nextShot=nextPlayerShot=nextCoreDamage=nextMonsterHit=nextMonsterDeath=0;
         nextMultiShots.Clear();
         if(isActiveAndEnabled)Subscribe();
     }
@@ -84,8 +87,15 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public bool PreviewCoreDamage()=>PlayClip(coreDamageClip,true);
     void OnMonsterHit(EnemyState target,int amount)
     {
-        // DamageApplied includes lethal hits. Bound the whole hit bus, not each enemy.
-        if(target==null||amount<=0||Time.unscaledTime<nextMonsterHit)return;
+        // A lethal hit gets only the selected death clip, even during the hit cooldown.
+        if(target==null||amount<=0||target.Exited)return;
+        if(target.Health<=0)
+        {
+            if(Time.unscaledTime<nextMonsterDeath||!PlayClip(monsterDeathClip))return;
+            nextMonsterDeath=Time.unscaledTime+.1f;MonsterDeathPlayedCount++;return;
+        }
+        // Bound the whole hit bus, not each enemy.
+        if(Time.unscaledTime<nextMonsterHit)return;
         if(!PlayClip(monsterHitClip))return;
         nextMonsterHit=Time.unscaledTime+.1f;MonsterHitPlayedCount++;
     }
