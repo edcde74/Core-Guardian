@@ -1,0 +1,279 @@
+{
+  "method": "Existing visible-photo masks; right exposed contour to actual opaque body contact; translation only, original scale and alpha retained",
+  "objects": [
+    {
+      "role": "Attack",
+      "source_contact": [
+        256,
+        767
+      ],
+      "target_contact": [
+        273,
+        421
+      ],
+      "opaque_bottom": 429,
+      "scale": 0.41081081081081083,
+      "size": [
+        40,
+        19
+      ],
+      "previous_position": [
+        252,
+        418
+      ],
+      "position": [
+        251,
+        415
+      ],
+      "translation": [
+        -1,
+        -3
+      ],
+      "source_sha256": "cebfb7a2a8e139c99d444214559a4b33766c92ac4e02092df4fd52493b4841d6"
+    },
+    {
+      "role": "Defense",
+      "source_contact": [
+        447,
+        770
+      ],
+      "target_contact": [
+        442,
+        426
+      ],
+      "opaque_bottom": 434,
+      "scale": 0.3931034482758621,
+      "size": [
+        54,
+        24
+      ],
+      "previous_position": [
+        415,
+        419
+      ],
+      "position": [
+        406,
+        415
+      ],
+      "translation": [
+        -9,
+        -4
+      ],
+      "source_sha256": "82528f04a74b13bd77a8f1d3f73c6711ea7b11f323d64bfc0fe56f069978ebc9"
+    },
+    {
+      "role": "Buff",
+      "source_contact": [
+        628,
+        768
+      ],
+      "target_contact": [
+        620,
+        423
+      ],
+      "opaque_bottom": 431,
+      "scale": 0.33807829181494664,
+      "size": [
+        42,
+        20
+      ],
+      "previous_position": [
+        603,
+        418
+      ],
+      "position": [
+        599,
+        413
+      ],
+      "translation": [
+        -4,
+        -5
+      ],
+      "source_sha256": "70b2e50446bb9c774e4f7558589918d4bd2170404cbb78ec9d20a133c20bd32b"
+    },
+    {
+      "role": "Player",
+      "source_contact": [
+        819,
+        767
+      ],
+      "target_contact": [
+        794,
+        424
+      ],
+      "opaque_bottom": 432,
+      "scale": 0.4253731343283582,
+      "size": [
+        40,
+        20
+      ],
+      "previous_position": [
+        778,
+        418
+      ],
+      "position": [
+        773,
+        414
+      ],
+      "translation": [
+        -5,
+        -4
+      ],
+      "source_sha256": "83271f19fb7e240d23880e68a859d3b17ee7ee284818822eb800efaedbc1793f"
+    },
+    {
+      "role": "Core",
+      "source_contact": [
+        1079,
+        765
+      ],
+      "target_contact": [
+        995,
+        432
+      ],
+      "opaque_bottom": 446,
+      "scale": 0.49137931034482757,
+      "size": [
+        71,
+        37
+      ],
+      "previous_position": [
+        951,
+        418
+      ],
+      "position": [
+        949,
+        413
+      ],
+      "translation": [
+        -2,
+        -5
+      ],
+      "source_sha256": "799433ad2654bb8f57a1dd465d33b0f607ec0563f2c2bdb7a11816c94b256439"
+    },
+    {
+      "role": "Single",
+      "source_contact": [
+        1299,
+        762
+      ],
+      "target_contact": [
+        1157,
+        426
+      ],
+      "opaque_bottom": 440,
+      "scale": 0.38219895287958117,
+      "size": [
+        29,
+        18
+      ],
+      "previous_position": [
+        1144,
+        427
+      ],
+      "position": [
+        1142,
+        420
+      ],
+      "translation": [
+        -2,
+        -7
+      ],
+      "source_sha256": "f85c790d53f7a46bd1110babc0ce04a27c9f01e7911c3186c135343c9bf1d049"
+    },
+    {
+      "role": "Multi",
+      "source_contact": [
+        1511,
+        765
+      ],
+      "target_contact": [
+        1331,
+        426
+      ],
+      "opaque_bottom": 440,
+      "scale": 0.3489583333333333,
+      "size": [
+        38,
+        27
+      ],
+      "previous_position": [
+        1316,
+        419
+      ],
+      "position": [
+        1311,
+        411
+      ],
+      "translation": [
+        -5,
+        -8
+      ],
+      "source_sha256": "ebe7e11b2d7e5612a055809b6e647b5e2546904f3807f0d51fe3f980fac2c00d"
+    },
+    {
+      "role": "Support",
+      "source_contact": [
+        1720,
+        763
+      ],
+      "target_contact": [
+        1508,
+        425
+      ],
+      "opaque_bottom": 439,
+      "scale": 0.3568075117370892,
+      "size": [
+        28,
+        22
+      ],
+      "previous_position": [
+        1498,
+        424
+      ],
+      "position": [
+        1496,
+        417
+      ],
+      "translation": [
+        -2,
+        -7
+      ],
+      "source_sha256": "8cc5af49af65d02c6cbeb4d62550b65f43ea2d8814e8580eb0076c4757d9f985"
+    }
+  ],
+  "body_checks": [
+    {
+      "role": "Attack",
+      "opaque_body_changed_pixels": 0
+    },
+    {
+      "role": "Defense",
+      "opaque_body_changed_pixels": 0
+    },
+    {
+      "role": "Buff",
+      "opaque_body_changed_pixels": 0
+    },
+    {
+      "role": "Player",
+      "opaque_body_changed_pixels": 0
+    },
+    {
+      "role": "Core",
+      "opaque_body_changed_pixels": 0
+    },
+    {
+      "role": "Single",
+      "opaque_body_changed_pixels": 0
+    },
+    {
+      "role": "Multi",
+      "opaque_body_changed_pixels": 0
+    },
+    {
+      "role": "Support",
+      "opaque_body_changed_pixels": 0
+    }
+  ]
+}
