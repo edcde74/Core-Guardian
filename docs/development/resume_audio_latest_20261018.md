@@ -2,6 +2,14 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 코어 피해음⑥ 적용 완료(2026-10-18)
+- 사용자 ‘6번으로 진행해’로 Aura_Glyph_2 원본을 코어 에너지 감소에 연결했다. 공격음3종/지원무음 유지.
+- Assets/Resources/CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2.wav. 원본 동일바이트1.981초,0.3초 연속 묶음/4음성 내 코어 알림 우선/gain0.55/공통음량.
+- 현재 사용자 저장값0.0681817755(약6.8%) 시작/종료 동일. 아래13%는 이전 이력이며 기본65%/과거13%로 되돌리지 않는다.
+- 새Edit3/3·Play2/2는 진단경로·적위치/수동Tick·실제Prototype.Update 집중QA다. 정상다수전투믹스/성능/전체회귀/사람플레이·밸런스 검증 아님.
+- 종료Playfalse/pausedfalse/compilingfalse·전투씬1dirtyfalse·TimeScale1/captureDelta0·컴파일실패false. 상세 docs/development/core_damage_audio_applied_20261018/README.md.
+- 다음 구체 사운드는 미정. 아래 ‘코어 피해음 선택대기’와 ‘이번 새 검사 없음’은 이 추가 적용 이전 기록이다.
+
 먼저 다음 순서로 읽고 실제 Git HEAD와 변경 상태를 확인해.
 1. AGENTS.md
 2. docs/development/UNITY_HANDOVER.md

@@ -105,7 +105,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         player.enabled=Session.Phase!=SessionPhase.Augmentation;
         if(Session.Gold>previousGold){ Feedback="+"+(Session.Gold-previousGold)+" 골드 획득";notificationUntil=Time.unscaledTime+2; }
         previousGold=Session.Gold;
-        if(Session.CoreEnergy<previousCore){combatArt.CoreDamaged(previousCore-Session.CoreEnergy);Notify("코어 에너지 -"+(previousCore-Session.CoreEnergy));}
+        if(Session.CoreEnergy<previousCore){combatArt.CoreDamaged(previousCore-Session.CoreEnergy);GetComponent<CoreGuardianCombatAudio>()?.NotifyCoreDamage(previousCore-Session.CoreEnergy);Notify("코어 에너지 -"+(previousCore-Session.CoreEnergy));}
         previousCore=Session.CoreEnergy;
         if(phase!=Session.Phase){pointerBlocked=true;CancelInstall();Notify(Session.LastMessage);}
         SynchronizeViews();

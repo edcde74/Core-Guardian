@@ -13,6 +13,60 @@ using UnityEditor.SceneManagement;
 public class CoreGuardianCombatAudioPlayModeTests
 {
     [UnityTest]
+    public IEnumerator CoreArrivalPlaysSelectedGlyphAndHonorsMuteCooldownAndFullPool()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
+        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
+        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
+        Assert.That(type.GetField("CoreDamageResourcePath"),Is.Not.Null,"Selected core damage audio is missing");
+        var audio=game.GetComponent(type);
+        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time=Time.timeScale;
+        try
+        {
+            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
+            var session=(Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            session.SetBoard(20,20,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});
+            gameType.GetField("previousCore",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(game,session.CoreEnergy);
+            var sources=audio.GetComponentsInChildren<AudioSource>();
+            for(int i=0;i<4;i++)Assert.That(type.GetMethod("Preview").Invoke(audio,null),Is.True);
+            session.StartCombat();session.DebugSpawn(EnemyKind.Attack,9.99f);
+            session.Tick(.1f,new Vector2(-100,-100));
+            gameType.GetMethod("Update",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(game,null);
+            var clip=Resources.Load<AudioClip>((string)type.GetField("CoreDamageResourcePath").GetRawConstantValue());
+            Assert.That(clip,Is.Not.Null);
+            Assert.That(sources.Any(s=>s.isPlaying&&s.clip==clip),Is.True,"Actual core arrival must be audible with a full attack pool");
+            var count=type.GetProperty("CoreDamagePlayedCount");Assert.That(count.GetValue(audio),Is.EqualTo(1));
+            var notify=type.GetMethod("NotifyCoreDamage");
+            Assert.That(notify.Invoke(audio,new object[]{2}),Is.False,"Rapid arrivals are coalesced");
+            yield return new WaitForSecondsRealtime(.35f);
+            Assert.That(notify.Invoke(audio,new object[]{0}),Is.False);
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);
+            yield return null;
+            Assert.That(notify.Invoke(audio,new object[]{2}),Is.False);
+            Assert.That(sources.All(s=>s.volume==0),Is.True);
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
+            Assert.That(notify.Invoke(audio,new object[]{2}),Is.True);
+            yield return null; // Existing active voices receive slider changes in Update.
+            Assert.That(sources.Where(s=>s.isPlaying).All(s=>Mathf.Abs(s.volume-.37f*.55f)<.00001f),Is.True);
+            ((MonoBehaviour)audio).enabled=false;
+            Assert.That(sources.All(s=>!s.isPlaying),Is.True);
+        }
+        finally
+        {
+            Time.timeScale=time;
+            if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator RealSingleTowerLaunchesAndDeveloperControlsRespectMuteAndVoiceLimit()
     {
 #if UNITY_EDITOR

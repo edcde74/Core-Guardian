@@ -10,11 +10,13 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public const string SingleShotResourcePath="CoreGuardian/Audio/TowerShot/03_Aura";
     public const string PlayerShotResourcePath="CoreGuardian/Audio/PlayerShot/03_Glyph";
     public const string MultiShotResourcePath="CoreGuardian/Audio/MultiShot/B_BrighterAttack";
-    AudioClip singleClip,playerClip,multiClip;
+    public const string CoreDamageResourcePath="CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2";
+    AudioClip singleClip,playerClip,multiClip,coreDamageClip;
     readonly System.Collections.Generic.Dictionary<int,float> nextMultiShots=new System.Collections.Generic.Dictionary<int,float>();
     readonly AudioSource[] voices=new AudioSource[VoiceLimit];
     Session session;
-    float nextShot,nextPlayerShot;
+    float nextShot,nextPlayerShot,nextCoreDamage;
+    public int CoreDamagePlayedCount {get;private set;}
     public int PlayedCount {get;private set;}
     public int DroppedCount {get;private set;}
     public int ActiveVoices=>voices.Count(v=>v!=null&&v.isPlaying);
@@ -24,6 +26,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         singleClip=Resources.Load<AudioClip>(SingleShotResourcePath);
         playerClip=Resources.Load<AudioClip>(PlayerShotResourcePath);
         multiClip=Resources.Load<AudioClip>(MultiShotResourcePath);
+        coreDamageClip=Resources.Load<AudioClip>(CoreDamageResourcePath);
         for(int i=0;i<voices.Length;i++)
         {
             var child=new GameObject("MagicCannonVoice_"+i);child.transform.SetParent(transform,false);
@@ -34,7 +37,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     public void Configure(Session value)
     {
-        Unsubscribe();session=value;nextShot=nextPlayerShot=0;
+        Unsubscribe();session=value;nextShot=nextPlayerShot=nextCoreDamage=0;
         nextMultiShots.Clear();
         if(isActiveAndEnabled&&session!=null)session.ProjectileLaunched+=OnLaunch;
     }
@@ -74,10 +77,19 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     public bool PreviewPlayer()=>PlayClip(playerClip);
     public bool PreviewMulti()=>PlayClip(multiClip);
-    bool PlayClip(AudioClip clip)
+    public bool PreviewCoreDamage()=>PlayClip(coreDamageClip,true);
+    public bool NotifyCoreDamage(int amount)
+    {
+        if(amount<=0||Time.unscaledTime<nextCoreDamage)return false;
+        if(!PreviewCoreDamage())return false;
+        nextCoreDamage=Time.unscaledTime+.3f;CoreDamagePlayedCount++;return true;
+    }
+    bool PlayClip(AudioClip clip,bool important=false)
     {
         if(!isActiveAndEnabled||CoreGuardianSoundSettings.Volume<=0||clip==null)return false;
         var voice=voices.FirstOrDefault(v=>v!=null&&!v.isPlaying);
+        // Core danger remains audible when attacks occupy the bounded pool.
+        if(voice==null&&important){voice=voices[0];if(voice!=null)voice.Stop();}
         if(voice==null){DroppedCount++;return false;}
         voice.clip=clip;
         voice.volume=CoreGuardianSoundSettings.Volume*ShotGain;
