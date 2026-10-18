@@ -14,14 +14,17 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public const string MonsterHitResourcePath="CoreGuardian/Audio/MonsterHit/03_Hit";
     public const string MonsterDeathResourcePath="CoreGuardian/Audio/MonsterDeath/02_Flesh";
     public const string BossSpawnResourcePath="CoreGuardian/Audio/BossSpawn/01_Encounter";
-    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip,monsterDeathClip,bossSpawnClip;
+    public const string BossAccelerationResourcePath="CoreGuardian/Audio/BossAcceleration/01_SpeedUp";
+    AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip,monsterDeathClip,bossSpawnClip,bossAccelerationClip;
     readonly System.Collections.Generic.HashSet<int> announcedBosses=new System.Collections.Generic.HashSet<int>();
+    readonly System.Collections.Generic.HashSet<int> acceleratedBosses=new System.Collections.Generic.HashSet<int>();
     readonly System.Collections.Generic.Dictionary<int,float> nextMultiShots=new System.Collections.Generic.Dictionary<int,float>();
     readonly AudioSource[] voices=new AudioSource[VoiceLimit];
     Session session;
     float nextShot,nextPlayerShot,nextCoreDamage,nextMonsterHit,nextMonsterDeath;
     public int MonsterDeathPlayedCount {get;private set;}
     public int BossSpawnPlayedCount {get;private set;}
+    public int BossAccelerationPlayedCount {get;private set;}
     public int MonsterHitPlayedCount {get;private set;}
     public int CoreDamagePlayedCount {get;private set;}
     public int PlayedCount {get;private set;}
@@ -37,6 +40,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         monsterHitClip=Resources.Load<AudioClip>(MonsterHitResourcePath);
         monsterDeathClip=Resources.Load<AudioClip>(MonsterDeathResourcePath);
         bossSpawnClip=Resources.Load<AudioClip>(BossSpawnResourcePath);
+        bossAccelerationClip=Resources.Load<AudioClip>(BossAccelerationResourcePath);
         for(int i=0;i<voices.Length;i++)
         {
             var child=new GameObject("MagicCannonVoice_"+i);child.transform.SetParent(transform,false);
@@ -47,7 +51,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     public void Configure(Session value)
     {
-        if(!ReferenceEquals(session,value))announcedBosses.Clear();
+        if(!ReferenceEquals(session,value)){announcedBosses.Clear();acceleratedBosses.Clear();}
         Unsubscribe();session=value;nextShot=nextPlayerShot=nextCoreDamage=nextMonsterHit=nextMonsterDeath=0;
         nextMultiShots.Clear();
         if(isActiveAndEnabled)Subscribe();
@@ -105,6 +109,12 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         {
             if(Time.unscaledTime<nextMonsterDeath||!PlayClip(monsterDeathClip))return;
             nextMonsterDeath=Time.unscaledTime+.1f;MonsterDeathPlayedCount++;return;
+        }
+        if(target.Enraged&&acceleratedBosses.Add(target.Id))
+        {
+            // The transition replaces this ordinary hit. Muted transitions are consumed too.
+            if(PlayClip(bossAccelerationClip,true,true))BossAccelerationPlayedCount++;
+            return;
         }
         // Bound the whole hit bus, not each enemy.
         if(Time.unscaledTime<nextMonsterHit)return;

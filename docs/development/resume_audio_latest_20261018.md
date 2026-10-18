@@ -2,6 +2,13 @@
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 다음 작업은 계속 사운드다. 병행 접지감 대화의 후속과 혼동하지 마.
 
+■ 최신 추가: 보스 가속 전환음① 적용 완료(2026-10-18)
+- 사용자①Speed up 선택. 원본48_Speed_up_02.wav 동일바이트4초를 Resources/CoreGuardian/Audio/BossAcceleration/01_SpeedUp으로 연결했다.
+- 실제 DamageApplied 후 살아 있는 보스의 기존Enraged(체력50%이하) 판정을 보스ID별1회 알린다. 전환타격 피격음을 대체하고 치명타격은 처치음만 재생한다. 같은Session재연결/추가피해 반복방지·음소거중전환 지연재생없음·코어음보호·기존4음성/gain0.55/공통음량 유지.
+- 새Edit3/3·Play6/6은 진단Health주입/ApplyDamage 집중기능QA와 기존사운드검사다. 정상10R/다수전투믹스/전체회귀/성능/사람플레이·밸런스검증아님.
+- 종료Playfalse/씬1dirtyfalse·컴파일실패false/시간복원·현재오류0경고0·저장음량0.0681817755(약6.8%)동일. 상세 docs/development/boss_acceleration_audio_applied_20261018/README.md.
+- 기존 등장①/공격3종/피격③/처치②/코어⑥/지원무음과 병행작업을 보존한다. 다음구체사운드는미정. 과거가속음선택대기문구는현재가아니다.
+
 ■ 최신 추가: 보스 등장음① 적용 완료(2026-10-18)
 - 사용자①Encounter 선택. 원본55_Encounter_02.wav 동일바이트5.333333초를 Resources/CoreGuardian/Audio/BossSpawn/01_Encounter로 연결했다.
 - 보스월드표시첫생성에ID별1회/반복화면갱신·같은Session재연결재생방지/음소거등장지연재생없음. 기존4음성/gain0.55/공통음량·풀포화시코어음보호. 가속음과별도,공격3종/지원무음/코어⑥/피격③/처치②/멀티묶음유지.
