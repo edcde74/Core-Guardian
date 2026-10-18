@@ -1,0 +1,32 @@
+[
+  {
+    "name": "01_Aura2",
+    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_2.wav",
+    "source_sha256": "d18605036b4d87b022526defbe03b6ced0249af04421b93d51c21424f019a1a7",
+    "onset_seconds": 0.027505668934240363,
+    "duration_seconds": 0.75,
+    "peak": 0.7,
+    "clipped_samples": 0,
+    "output": "Assets\\Resources\\CoreGuardian\\Audio\\TowerShot\\01_Aura2.wav"
+  },
+  {
+    "name": "02_Aura3",
+    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_3.wav",
+    "source_sha256": "724eeb1ae70c839fdac1d6033c0a852683f24c39714869e1bcc1675fc5ff074c",
+    "onset_seconds": 0.007029478458049887,
+    "duration_seconds": 0.75,
+    "peak": 0.7,
+    "clipped_samples": 0,
+    "output": "Assets\\Resources\\CoreGuardian\\Audio\\TowerShot\\02_Aura3.wav"
+  },
+  {
+    "name": "03_Aura",
+    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_1.wav",
+    "source_sha256": "b9470f0bfac63feb2ce402167a2b465d73ee35b9d02f132ecbc79ade62967442",
+    "onset_seconds": 0.012063492063492064,
+    "duration_seconds": 0.75,
+    "peak": 0.7,
+    "clipped_samples": 0,
+    "output": "Assets\\Resources\\CoreGuardian\\Audio\\TowerShot\\03_Aura.wav"
+  }
+]

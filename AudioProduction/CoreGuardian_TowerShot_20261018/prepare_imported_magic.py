@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'Assets/Resources/CoreGuardian/Audio/TowerShot'
 OUT.mkdir(parents=True, exist_ok=True)
 SOURCES = [
-    ('01_Earth', 'Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/30_Earth_02.wav', .70),
-    ('02_Fire', 'Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/04_Fire_explosion_04_medium.wav', .60),
+    ('01_Aura2', 'Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_2.wav', .75),
+    ('02_Aura3', 'Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_3.wav', .75),
     ('03_Aura', 'Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_1.wav', .75),
 ]
 report = []
@@ -43,5 +43,5 @@ for name, source, seconds in SOURCES:
     report.append(dict(name=name, source=source, source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
                        onset_seconds=onset/rate, duration_seconds=len(y)/rate, peak=float(np.max(np.abs(y))),
                        clipped_samples=int(np.count_nonzero(np.abs(y) >= 1)), output=str(output.relative_to(ROOT))))
-(ROOT / 'docs/development/magic_cannon_audio_20261018/audio_processing.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+(ROOT / 'docs/development/magic_cannon_audio_20261018/audio_processing_v2.json').write_text(json.dumps(report, indent=2), encoding='utf-8', newline='\n')
 print(json.dumps(report, indent=2))

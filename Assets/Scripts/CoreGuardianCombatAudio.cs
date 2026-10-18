@@ -7,7 +7,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
 {
     public const int VoiceLimit=4;
     const float ShotGain=.55f;
-    public static readonly string[] CandidateNames={"① 대지","② 화염","③ 오라"};
+    public static readonly string[] CandidateNames={"① 오라2","② 오라3","③ 오라1"};
     AudioClip[] clips;
     readonly AudioSource[] voices=new AudioSource[VoiceLimit];
     Session session;
