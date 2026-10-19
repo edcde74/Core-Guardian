@@ -1,3 +1,5 @@
+현재 다음 우선순위는 사용자2026-10-19 명시 지시의 밸런싱 테스트다. 새 대화는 resume_balance_latest_20261019.md를 사용하고, 아래는 사운드 보존/후속 전용 정보다.
+
 코어 가디언 사운드 작업을 이어서 진행해줘.
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 
@@ -18,7 +20,7 @@
 종료Playfalse/pausedfalse/컴파일실패false·전투씬1dirtyfalse·TimeScale1/captureDelta0·현재오류0/경고1.
 
 기존14개 리소스·BGM 제작자료·브라우저 선택/메모·아트/그림자/HUD·PackageManagerSettings 변경·미추적자료/font_tools_vendor 접근오류 삭제표시 보존.
-이번 연결에서는 Notion을 수정하지 않았다. audio_handover_sync_20261019.md/기존사운드2페이지 동기화는 청취선택 단계 이력이다.
+연결 후 사용자 요청으로 기존Notion사운드2페이지/플레이테스트를 실제연결·분류·다음밸런싱으로 갱신·재조회했다. audio_notion_balance_handover_20261019/README.md를 따라. 이번 문서 정리에서는 새Unity조회/검사·게임/음량 변경은 없어.
 Unity 변경 전 연결·씬·Play·컴파일·저장 상태를 재조회하고 사용자 Play/다른 채팅 검사를 중단하거나 겹치지 마. 전투씬 하나 유지·씬 YAML 직접수정 금지.
-밸런스측정/수치변경·빌드·실행파일실행·GitHub push 금지.
-다음은 사용자 정상 전투 청취 피드백과 향후 설정 UI 연결이며 구체 후속 지시에 따라 진행해.
+이번 사운드 정리에서는 밸런스측정/수치변경이 없어. 다음 대화의 밸런싱 테스트는 next_work_20261019.md 범위로 진행하고 수치는 임의 적용하지 마. 빌드·실행파일실행·GitHub push 금지.
+다음은 사용자 명시 지시의 밸런싱 테스트이며 사운드 새시안/설정UI로 자동 전환하지 마.
