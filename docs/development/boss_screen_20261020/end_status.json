@@ -1,0 +1,35 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"status\": \"ready\",\n  \"compiling\": false,\n  \"domainReloadInProgress\": false,\n  \"playMode\": \"stopped\",\n  \"lastHeartbeat\": \"2026-10-19T16:22:31.4932221Z\",\n  \"projectPath\": \"C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\",\n  \"unityVersion\": \"6000.6.2f1\"\n}"
+        }
+      ]
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"count\": 1,\n  \"scenes\": [\n    {\n      \"name\": \"CoreGuardian_CombatPrototype_20261008\",\n      \"path\": \"Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity\",\n      \"isLoaded\": true,\n      \"isDirty\": false,\n      \"isActive\": true,\n      \"rootCount\": 7\n    }\n  ]\n}"
+        }
+      ]
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"entries\": [],\n  \"cursor\": 1120,\n  \"session\": \"aee3bc4b6c1642c69184ce655436a4ca\",\n  \"returned\": 0,\n  \"dropped\": false,\n  \"reset\": false,\n  \"counts\": {\n    \"error\": 1,\n    \"warn\": 794,\n    \"log\": 323\n  },\n  \"groundTruth\": {\n    \"sampledUtc\": \"2026-10-19T16:22:38.1841956Z\",\n    \"ageMs\": 26,\n    \"compilationFailed\": false,\n    \"compiling\": false,\n    \"consoleErrors\": 0,\n    \"consoleWarnings\": 15,\n    \"consoleLogs\": 120,\n    \"seeded\": true\n  }\n}"
+        }
+      ]
+    }
+  }
+]

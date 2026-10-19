@@ -76,6 +76,7 @@ namespace CoreGuardian
     {
         public static int Damage(float damage,float defense) { return Mathf.FloorToInt(Mathf.Max(0,damage*(1-defense/100f))+.5f); }
         public static EnemyState Priority(IEnumerable<EnemyState> enemies) { return enemies.Where(e=>e.Alive).OrderBy(e=>e.Kind==EnemyKind.Defense?0:e.Kind==EnemyKind.Buff?1:2).ThenBy(e=>e.Health).ThenBy(e=>e.PathRemaining).ThenBy(e=>e.Id).FirstOrDefault(); }
+        public static IOrderedEnumerable<EnemyState> TowerPriorityOrder(IEnumerable<EnemyState> enemies) { return enemies.Where(e=>e.Alive).OrderBy(e=>e.Kind==EnemyKind.Defense?0:e.Kind==EnemyKind.Buff?1:e.Kind==EnemyKind.Boss?3:2).ThenBy(e=>e.Health).ThenBy(e=>e.PathRemaining).ThenBy(e=>e.Id); }
     }
     public sealed class EnemyState { public int Id,Health;public EnemyKind Kind;public Vector2 Position;public float PathTravelled,PathRemaining,SlowRemaining;public bool Buffed,Exited;public EnemySpec Spec;public bool Enraged => Kind==EnemyKind.Boss&&Health<=Spec.Health/2f;public float MovementSpeed => Spec.Speed*(Enraged?1.3f:1)*(SlowRemaining>0?.8f:1);public bool Alive {get{return Health>0&&!Exited;}} }
     public sealed class TowerState { public int Id,Spent;public TowerKind Kind;public Vector2Int Position;public CombatStats Stats;internal float Cooldown;internal EnemyState Target;internal bool AcquiredOnce; }

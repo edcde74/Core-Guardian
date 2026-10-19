@@ -141,9 +141,9 @@ wave9_slot17_attack,9,Attack,1,1.2,19.2
 wave9_slot18_defense,9,Defense,1,1.2,20.4
 wave9_slot19_attack,9,Attack,1,1.2,21.6
 wave9_slot20_attack,9,Attack,1,1.2,22.8
-wave10_boss,10,Boss,1,1,0
+wave10_boss,10,Boss,1,1,0.75
 wave10_attack,10,Attack,10,1.5,3
-wave10_defense,10,Defense,3,5,6
+wave10_defense,10,Defense,3,0.25,0
 wave10_buff,10,Buff,1,1,9
 wave11_attack,11,Attack,14,1.1,0
 wave11_defense,11,Defense,5,3.3,3.3

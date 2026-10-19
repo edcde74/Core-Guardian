@@ -102,6 +102,42 @@ public class CoreGuardianSessionTests
     {
         var s=Game();s.StartCombat();s.DebugSpawn(EnemyKind.Attack,9.99f);s.Tick(.1f,Away);Assert.That(s.CoreEnergy,Is.EqualTo(18));Assert.That(s.Gold,Is.Zero);s.Tick(1,Away);Assert.That(s.CoreEnergy,Is.EqualTo(18));
     }
+    [Test] public void BossScreenWaveTenSpawnsThreeQuickShieldsBeforeBoss()
+    {
+        var d=Data();var schedule=d.Waves.Where(w=>w.Wave==10).ToArray();
+        Assert.That(schedule.Sum(w=>w.Count),Is.EqualTo(15));
+        d.Waves.Clear();foreach(var w in schedule)d.Waves.Add(new WaveSpec{Wave=1,Kind=w.Kind,Count=w.Count,Interval=w.Interval,Start=w.Start});
+        var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});s.StartCombat();
+        s.Tick(.01f,Away);Assert.That(s.Enemies.Select(e=>e.Kind),Is.EqualTo(new[]{EnemyKind.Defense}));
+        s.Tick(.25f,Away);Assert.That(s.Enemies.Count,Is.EqualTo(2));Assert.That(s.Enemies.All(e=>e.Kind==EnemyKind.Defense),Is.True);
+        s.Tick(.25f,Away);Assert.That(s.Enemies.Count,Is.EqualTo(3));Assert.That(s.Enemies.All(e=>e.Kind==EnemyKind.Defense),Is.True);
+        s.Tick(.25f,Away);Assert.That(s.Enemies.Select(e=>e.Kind),Is.EqualTo(new[]{EnemyKind.Defense,EnemyKind.Defense,EnemyKind.Defense,EnemyKind.Boss}));
+    }
+    [TestCase(TowerKind.Single)][TestCase(TowerKind.Multi)]
+    public void BossScreenTowersPutEvenLowHealthFirstArrivalBossLast(TowerKind kind)
+    {
+        var s=Game();string reason;var t=s.TryInstall(kind,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
+        var boss=s.DebugSpawn(EnemyKind.Boss,0);boss.Health=1;
+        s.DebugSpawn(EnemyKind.Attack,.2f);s.DebugSpawn(EnemyKind.Buff,.4f);s.DebugSpawn(EnemyKind.Defense,.6f);
+        s.Tick(.01f,Away);var shots=s.Projectiles.Where(p=>p.Source=="Tower:"+t.Id).ToArray();
+        Assert.That(shots,Is.Not.Empty);Assert.That(shots.All(p=>p.Target!=boss),Is.True);
+        Assert.That(s.TowerTarget(t.Id),Is.Not.SameAs(boss));
+    }
+    [TestCase(TowerKind.Single)][TestCase(TowerKind.Multi)]
+    public void BossScreenTowersYieldBossLockWhenOrdinaryEnemyEntersRange(TowerKind kind)
+    {
+        var s=Game();string reason;var t=s.TryInstall(kind,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
+        var boss=s.DebugSpawn(EnemyKind.Boss,0);s.Tick(.01f,Away);Assert.That(s.TowerTarget(t.Id),Is.SameAs(boss));
+        s.Projectiles.Clear();var attack=s.DebugSpawn(EnemyKind.Attack,0);s.Tick(2f,Away);
+        Assert.That(s.TowerTarget(t.Id),Is.SameAs(attack));
+        Assert.That(s.Projectiles.First(p=>p.Source=="Tower:"+t.Id).Target,Is.SameAs(attack));
+    }
+    [Test] public void BossScreenDoesNotChangePlayerExistingBossLock()
+    {
+        var s=Game();s.Player.ProjectileSpeed=.001f;s.StartCombat();var boss=s.DebugSpawn(EnemyKind.Boss,0);
+        s.Tick(.01f,new Vector2(0,1));Assert.That(s.PlayerTarget,Is.SameAs(boss));
+        s.DebugSpawn(EnemyKind.Attack,0);s.Tick(1.05f,new Vector2(0,1));Assert.That(s.PlayerTarget,Is.SameAs(boss));
+    }
     [Test] public void PriorityUsesRoleThenHealthThenRemainingPathDistance()
     {
         var s=Game();var a=s.DebugSpawn(EnemyKind.Attack,9);var b=s.DebugSpawn(EnemyKind.Buff,9);var d=s.DebugSpawn(EnemyKind.Defense,1);var d2=s.DebugSpawn(EnemyKind.Defense,2);Assert.That(CombatRules.Priority(s.Enemies),Is.SameAs(d2));d.Health=1;Assert.That(CombatRules.Priority(s.Enemies),Is.SameAs(d));

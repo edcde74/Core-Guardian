@@ -26,7 +26,7 @@ namespace CoreGuardian
             var tower=Towers.FirstOrDefault(t=>t.Id==id);
             if(tower==null)return null;
             // Multi fires at its role-priority list, not the single-target acquisition cache.
-            return tower.Kind==TowerKind.Multi?CombatRules.Priority(Enemies.Where(e=>e.Alive&&Vector2.Distance(e.Position,tower.Position)<=tower.Stats.Range)):tower.Target;
+            return tower.Kind==TowerKind.Multi?CombatRules.TowerPriorityOrder(Enemies.Where(e=>e.Alive&&Vector2.Distance(e.Position,tower.Position)<=tower.Stats.Range)).FirstOrDefault():tower.Target;
         }
         public CombatStats Player {get;private set;}
         public int Gold {get;private set;} public int Crystals {get;private set;} public int CoreEnergy {get;private set;}
@@ -135,10 +135,12 @@ namespace CoreGuardian
         void Shoot(Vector2 position,CombatStats stats,string source,float buff,ref float cooldown,ref EnemyState target,ref bool acquired,float dt,bool multi)
         {
             var available=Enemies.Where(e=>e.Alive&&Vector2.Distance(e.Position,position)<=stats.Range).ToArray();
+            bool isTower=source!="Player";
             if(target!=null&&(!target.Alive||Vector2.Distance(target.Position,position)>stats.Range))target=null;
-            if(target==null&&available.Length>0) {target=acquired?CombatRules.Priority(available):available.OrderBy(e=>e.Id).First();acquired=true;}
+            if(isTower&&target!=null&&target.Kind==EnemyKind.Boss&&available.Any(e=>e.Kind!=EnemyKind.Boss))target=null;
+            if(target==null&&available.Length>0) {target=isTower?(acquired?CombatRules.TowerPriorityOrder(available).First():available.OrderBy(e=>e.Kind==EnemyKind.Boss?1:0).ThenBy(e=>e.Id).First()):(acquired?CombatRules.Priority(available):available.OrderBy(e=>e.Id).First());acquired=true;}
             cooldown-=dt;if(available.Length==0||stats.Rate<=0){cooldown=Mathf.Max(0,cooldown);return;}if(cooldown>0)return;
-            var targets=multi?available.OrderBy(e=>e.Kind==EnemyKind.Defense?0:e.Kind==EnemyKind.Buff?1:2).ThenBy(e=>e.Health).ThenBy(e=>e.PathRemaining).ThenBy(e=>e.Id).Take(3).ToArray():new[]{target};
+            var targets=multi?CombatRules.TowerPriorityOrder(available).Take(3).ToArray():new[]{target};
             while(cooldown<=.00001f) {int launched=0;foreach(var e in targets) {if(e==null)continue;int shots=source=="Player"?1+Augments.ExtraPlayerProjectiles:1;for(int shot=0;shot<shots;shot++) {var projectile=new ProjectileState{Id=nextProjectile++,Position=position,Target=e,Source=source,Damage=stats.Damage*(1+buff/100f),Speed=stats.ProjectileSpeed};Projectiles.Add(projectile);launched++;ProjectileLaunched?.Invoke(projectile);}}if(launched>0)AttackLaunched?.Invoke(source,launched);float nextCooldown=cooldown+1/stats.Rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;}
         }
         public int ApplyDamage(EnemyState target,float damage,string source)
