@@ -1,0 +1,137 @@
+[
+  {
+    "repo": "Yuki001/game-dev-skills",
+    "sha": "f0885d41a2db45e2a97eede248f6e94a0f786a8b",
+    "branch": "main",
+    "license": null,
+    "skills": [
+      "gat/.agents/skills/gat-brainstorm/SKILL.md",
+      "gat/.agents/skills/gat-design/SKILL.md",
+      "gat/.agents/skills/gat-milestone/SKILL.md",
+      "gat/.agents/skills/gat-story/SKILL.md",
+      "gat/.agents/skills/gat-workflow-start/SKILL.md",
+      "gat/.claude/skills/gat-brainstorm/SKILL.md",
+      "gat/.claude/skills/gat-design/SKILL.md",
+      "gat/.claude/skills/gat-milestone/SKILL.md",
+      "gat/.claude/skills/gat-story/SKILL.md",
+      "gat/.claude/skills/gat-workflow-start/SKILL.md",
+      "skills/3d-model-generator-by-threejs/SKILL.md",
+      "skills/animation-shader/SKILL.md",
+      "skills/game-architect/SKILL.md",
+      "skills/game-balance-analysis/SKILL.md",
+      "skills/game-design-review/SKILL.md",
+      "skills/game-image-generation-rules/SKILL.md",
+      "skills/gpt-image/SKILL.md",
+      "skills/imagemagick-cli/SKILL.md",
+      "skills/lucida-remove-background/SKILL.md",
+      "skills/openrouter-image-generate/SKILL.md",
+      "skills/openrouter-video-generate/SKILL.md",
+      "skills/slice-video-frames/SKILL.md"
+    ],
+    "files": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "nitzangames/headless-game-balance",
+    "sha": "0b0a759c5ad446d5d677da52721d2ce6203b503d",
+    "branch": "main",
+    "license": "MIT",
+    "skills": [
+      "SKILL.md"
+    ],
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repo": "Unity-Technologies/unity-agent-plugin",
+    "sha": "cf6b2da24e424b0a60d560a57f39f676cb6f79f3",
+    "branch": "main",
+    "license": "NOASSERTION",
+    "skills": [
+      "skills/2d-pixel-perfect/SKILL.md",
+      "skills/asset-transformer-toolkit/SKILL.md",
+      "skills/audio-setup-mixers/SKILL.md",
+      "skills/build-gtk/SKILL.md",
+      "skills/build-live-game/SKILL.md",
+      "skills/create-2d-physics/SKILL.md",
+      "skills/create-tile-palette-or-rule-tiles/SKILL.md",
+      "skills/generate-editor-search-query/SKILL.md",
+      "skills/implement-in-app-purchases/SKILL.md",
+      "skills/initialize-ai-navigation/SKILL.md",
+      "skills/levelplay-unity-integration/SKILL.md",
+      "skills/localization/SKILL.md",
+      "skills/manage-sprite-atlas/SKILL.md",
+      "skills/migrate-birp-to-urp/SKILL.md",
+      "skills/new-unity-project/SKILL.md",
+      "skills/optimize-audio/SKILL.md",
+      "skills/optimize-text-mesh-pro/SKILL.md",
+      "skills/optimize-web/SKILL.md",
+      "skills/physics-3d-collision/SKILL.md",
+      "skills/setup-multiplayer-services/SKILL.md",
+      "skills/setup-vivox-voice-chat/SKILL.md",
+      "skills/shader-graph-create-custom-node/SKILL.md",
+      "skills/sprite-editor/SKILL.md",
+      "skills/sprite-segment-3x3grid/SKILL.md",
+      "skills/ui-imgui/SKILL.md",
+      "skills/ui-ugui/SKILL.md",
+      "skills/ui-uitk/SKILL.md",
+      "skills/ui/SKILL.md",
+      "skills/unity-cli/SKILL.md",
+      "skills/unity-package-management/SKILL.md",
+      "skills/urp-postprocessing/SKILL.md",
+      "skills/validate-urp-render-graph-renderer-feature/SKILL.md"
+    ],
+    "files": [
+      ".claude-plugin/plugin.json",
+      ".codex-plugin",
+      ".codex-plugin/plugin.json",
+      "LICENSE.md",
+      "README.md"
+    ]
+  },
+  {
+    "repo": "IvanMurzak/Unity-MCP",
+    "sha": "48643a9608037c863c5c69ea1b88aa0467c29445",
+    "branch": "main",
+    "license": "Apache-2.0",
+    "skills": [
+      ".claude/skills/build-cli/SKILL.md",
+      ".claude/skills/github-pr-review-fix/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/editor-session-quit/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/package-add/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/package-list/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/package-remove/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/package-search/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/ping/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/rql-mutate/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/rql-query/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/rql-schema/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/screenshot-camera/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/screenshot-game-view/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/screenshot-isolated/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/screenshot-scene-view/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/script-delete/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/script-execute/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/script-read/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/script-update-or-create/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/tests-run/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/tool-set-enabled-state/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/unity-initial-setup/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/unity-rql/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/unity-skill-create/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/unity-skill-generate/SKILL.md",
+      "Unity-MCP-Plugin/.claude/skills/unity-tool-list/SKILL.md"
+    ],
+    "files": [
+      "LICENSE",
+      "README.md",
+      "Unity-MCP-Plugin/.claude/skills/unity-skill-generate",
+      "Unity-MCP-Plugin/.claude/skills/unity-skill-generate/SKILL.md",
+      "cli/src/commands/setup-skills.ts",
+      "cli/tests/setup-skills.test.ts",
+      "docs/img/editor/setup-skills.jpg"
+    ]
+  }
+]

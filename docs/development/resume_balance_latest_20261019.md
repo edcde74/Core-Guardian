@@ -1,6 +1,8 @@
 코어 가디언 밸런싱을 이어서 진행해줘.
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 
+추가로 headless-game-balance와 Unity 공식 unity@unity-agent-plugin 0.1.8-beta/32스킬을 설치했어. AGENTS와 docs/development/balance_skills_20261019/README.md의 적용/계측 계약을 함께 따라. 실제 설치·활성화/기존8회 정책별 집계·기존Unity연결을검증했고 이 설치에서는 새Play/게임수치변경없었어. 대응시드/고정정책/분포비교를 쓰되 기존미지정시드8회를결정론적반복/승률로바꾸지마. IvanMurzak/Unity-MCP 별도MCP는 설치하지 않았어.
+
 먼저 AGENTS.md → docs/development/UNITY_HANDOVER.md → LOCAL_GIT.md → next_work_20261019.md → balance_measurement_20261019/README.md 순서로 읽고 실제Git HEAD·미커밋/미추적 상태를 확인해. 시작 기준은18279e1, 사운드 실제 연결은4c774c3였으며 후속계측커밋은Git으로확인해.
 
 2026-10-19 사용자 지시로 기존MeasureNaturalRounds.cs를무변형/정상초기/11R종료/새출력/증강기록으로정비해5배속실제씬Update8회를측정했어.8회·88라운드기록수지/런타임로더8회일치/보호파일1337해시동일을검증했어. 사람플레이·전체Edit/Play회귀·성능/사운드믹스승인이아니야. 새게임수치/CSV/씬/음량/Notion변경·빌드·실행파일·push는없었어.
