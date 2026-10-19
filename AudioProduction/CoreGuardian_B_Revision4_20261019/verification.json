@@ -1,0 +1,46 @@
+{
+  "groups": 2,
+  "new_cues": 6,
+  "unique_hashes": 6,
+  "retained": 21,
+  "tentative": 2,
+  "tier_chains": 3,
+  "bgm_chains": 3,
+  "http_media_checks": 41,
+  "protected_hashes": 351,
+  "sources": 3,
+  "unchanged_silver_in_each_chain": true,
+  "metrics": {
+    "aug_gold_1.wav": {
+      "duration": 1.28,
+      "lufs": -19.98970320216779,
+      "estimated_dbtp": -4.7169780153110805
+    },
+    "aug_gold_2.wav": {
+      "duration": 1.45,
+      "lufs": -19.989704666068945,
+      "estimated_dbtp": -3.911773861961171
+    },
+    "aug_gold_3.wav": {
+      "duration": 1.38,
+      "lufs": -19.989700403023782,
+      "estimated_dbtp": -4.640575933031938
+    },
+    "aug_platinum_1.wav": {
+      "duration": 2.05,
+      "lufs": -19.989703933058905,
+      "estimated_dbtp": -4.3420892815282635
+    },
+    "aug_platinum_2.wav": {
+      "duration": 2.22,
+      "lufs": -19.989701262976904,
+      "estimated_dbtp": -4.824011248772302
+    },
+    "aug_platinum_3.wav": {
+      "duration": 2.12,
+      "lufs": -19.989702694330273,
+      "estimated_dbtp": -3.652151060693633
+    }
+  },
+  "note": "File, level and HTTP checks. No subjective listening, user approval or Unity QA."
+}
