@@ -1,0 +1,19 @@
+{
+  "asset_files": 1305,
+  "unchanged": 1304,
+  "changed_only": [
+    "Assets/Resources/CoreGuardian/enemies.csv"
+  ],
+  "seed": 20261019,
+  "policies": 3,
+  "hp_variants": [
+    27,
+    30,
+    36,
+    40
+  ],
+  "simulation_runs": 12,
+  "replay_actions_and_outcomes_identical": true,
+  "round_recording_v2_includes_final_round": true,
+  "new_scene_play": false
+}
