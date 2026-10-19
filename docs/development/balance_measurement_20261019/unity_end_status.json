@@ -1,0 +1,18 @@
+{
+  "status": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"status\": \"ready\",\n  \"compiling\": false,\n  \"domainReloadInProgress\": false,\n  \"playMode\": \"stopped\",\n  \"lastHeartbeat\": \"2026-10-19T08:12:53.3174904Z\",\n  \"projectPath\": \"C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\",\n  \"unityVersion\": \"6000.6.2f1\"\n}"
+      }
+    ]
+  },
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"entries\": [],\n  \"cursor\": 738,\n  \"session\": \"aee3bc4b6c1642c69184ce655436a4ca\",\n  \"returned\": 0,\n  \"dropped\": false,\n  \"reset\": false,\n  \"counts\": {\n    \"error\": 1,\n    \"warn\": 559,\n    \"log\": 178\n  },\n  \"groundTruth\": {\n    \"sampledUtc\": \"2026-10-19T08:12:54.8142077Z\",\n    \"ageMs\": 287,\n    \"compilationFailed\": false,\n    \"compiling\": false,\n    \"consoleErrors\": 0,\n    \"consoleWarnings\": 0,\n    \"consoleLogs\": 0,\n    \"seeded\": true\n  }\n}"
+      }
+    ]
+  }
+}

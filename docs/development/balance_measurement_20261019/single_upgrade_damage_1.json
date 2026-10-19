@@ -1,0 +1,2036 @@
+{
+  "policy": "single_upgrade",
+  "playerStat": "damage",
+  "repeat": 1,
+  "speed": 5.0,
+  "head": "18279e1",
+  "utc": "2026-10-19T07:49:35.1270263Z",
+  "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+  "method": "Actual scene Update/Session.Tick; legal TryStep/Place/Upgrade/StartCombat; no data edits, forced damage, debug spawns or currency injection; preparation skipped; stationary after legal movement; automatic 30s augmentation; accelerated, not human play",
+  "randomSeed": "normal constructor, unspecified",
+  "initialRandomState": {
+    "_inext": 0,
+    "_inextp": 21,
+    "_seedArray": [
+      0,
+      2072054856,
+      497640218,
+      376034632,
+      269180925,
+      83840750,
+      758411194,
+      360484080,
+      1255677657,
+      1913472878,
+      102137659,
+      1447939441,
+      853329241,
+      1284037293,
+      2053019721,
+      2000332370,
+      679163399,
+      1516505380,
+      1620127065,
+      1401567687,
+      254137278,
+      1229458089,
+      244992432,
+      1187157042,
+      1436307138,
+      1013843026,
+      122905577,
+      1176131521,
+      724271405,
+      493829067,
+      563284806,
+      1749067801,
+      1794791358,
+      1758846164,
+      2128385688,
+      267708589,
+      725723350,
+      1500477944,
+      1993944681,
+      1786554761,
+      1309350497,
+      971342457,
+      1807679088,
+      1776599178,
+      9414770,
+      872637726,
+      1911854185,
+      1145248994,
+      515349914,
+      149847456,
+      2128504406,
+      1411289534,
+      287959158,
+      1884751529,
+      621219238,
+      1086813167
+    ]
+  },
+  "initial": {
+    "wallet": {
+      "Gold": 0,
+      "Crystals": 100,
+      "CoreEnergy": 20
+    },
+    "playerCell": "(13, 9, 0)",
+    "player": {
+      "Damage": 10.0,
+      "Rate": 1.0,
+      "Range": 3.0,
+      "ProjectileSpeed": 6.0,
+      "BuffDamage": 0.0,
+      "steps": {}
+    },
+    "towers": [],
+    "selected": [],
+    "TowerBuffPercent": 0,
+    "ExtraPlayerProjectiles": 0,
+    "PlayerSlow": false
+  },
+  "volumeBefore": 0.1084202,
+  "csv": [
+    {
+      "path": "Assets/Resources/CoreGuardian/enemies.csv",
+      "sha": "8336089CD38238F504F15069E74E0D8CCD286D088B50697387EDE8CB3DE22B08"
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/towers.csv",
+      "sha": "C61ECAC3BC4A887D41E000E387F72C23F5F3529D2655A0F82EFBC8C92DE0DF19"
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/stage.csv",
+      "sha": "A6877F5507694C54E42BF598B6767A497378D54F3A9E670068A757CA5DFFFE2D"
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/upgrades.csv",
+      "sha": "5409F2A458E280E7699C5326C8642F32B613850125D3B83443583BAB827BFB12"
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/waves.csv",
+      "sha": "BF3CA74E0E3D03076B717431BD082EC439F8134DC06FBB259BA1CD3099CB8539"
+    }
+  ],
+  "rounds": [
+    {
+      "wave": 1,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 0,
+          "Crystals": 100,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 0,
+          "Crystals": 0,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [
+        {
+          "kind": "install",
+          "wave": 1,
+          "game": 2.000616,
+          "real": 0.41506750000007742,
+          "detail": {
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "cost": 100,
+            "ok": true,
+            "before": {
+              "Gold": 0,
+              "Crystals": 100,
+              "CoreEnergy": 20
+            },
+            "after": {
+              "Gold": 0,
+              "Crystals": 0,
+              "CoreEnergy": 20
+            }
+          }
+        }
+      ],
+      "expected": 15,
+      "seconds": 39.77273,
+      "elapsedGameClock": 39.77282,
+      "realSeconds": 7.9490486000004239,
+      "end": {
+        "wallet": {
+          "Gold": 45,
+          "Crystals": 20,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 20,
+      "damage": {
+        "Tower:1": 396,
+        "Player": 9
+      },
+      "kills": {
+        "Attack": 15
+      },
+      "peakAliveSample": 10,
+      "minimumRemainingSample": 61.7936974,
+      "observedEnemies": 15,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 2,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 45,
+          "Crystals": 20,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 45,
+          "Crystals": 20,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [],
+      "expected": 16,
+      "seconds": 41.4395866,
+      "elapsedGameClock": 41.4397049,
+      "realSeconds": 8.2727165999995123,
+      "end": {
+        "wallet": {
+          "Gold": 93,
+          "Crystals": 40,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 20,
+      "damage": {
+        "Tower:1": 326,
+        "Player": 106
+      },
+      "kills": {
+        "Attack": 16
+      },
+      "peakAliveSample": 11,
+      "minimumRemainingSample": 60.45867,
+      "observedEnemies": 16,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 3,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 93,
+          "Crystals": 40,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 93,
+          "Crystals": 40,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [],
+      "expected": 16,
+      "seconds": 43.9211464,
+      "elapsedGameClock": 43.921257,
+      "realSeconds": 8.7740807000000132,
+      "end": {
+        "wallet": {
+          "Gold": 143,
+          "Crystals": 60,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 20,
+      "damage": {
+        "Tower:1": 387,
+        "Player": 91
+      },
+      "kills": {
+        "Attack": 14,
+        "Defense": 2
+      },
+      "peakAliveSample": 11,
+      "minimumRemainingSample": 60.60147,
+      "observedEnemies": 16,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 4,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 143,
+          "Crystals": 60,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 10.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {}
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 43,
+          "Crystals": 60,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 12.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 1
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [
+        {
+          "kind": "player_upgrade",
+          "wave": 4,
+          "game": 127.1344,
+          "real": 25.446237600000131,
+          "detail": {
+            "stat": "damage",
+            "cost": 100,
+            "ok": true,
+            "reason": null,
+            "before": {
+              "Gold": 143,
+              "Crystals": 60,
+              "CoreEnergy": 20
+            },
+            "after": {
+              "Gold": 43,
+              "Crystals": 60,
+              "CoreEnergy": 20
+            }
+          }
+        }
+      ],
+      "expected": 17,
+      "seconds": 43.7478256,
+      "elapsedGameClock": 43.7479858,
+      "realSeconds": 8.73932380000042,
+      "end": {
+        "wallet": {
+          "Gold": 97,
+          "Crystals": 80,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 12.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 1
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 20,
+      "damage": {
+        "Tower:1": 363,
+        "Player": 165
+      },
+      "kills": {
+        "Attack": 14,
+        "Defense": 3
+      },
+      "peakAliveSample": 12,
+      "minimumRemainingSample": 59.22565,
+      "observedEnemies": 17,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 5,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 97,
+          "Crystals": 80,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 12.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 1
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 100,
+            "stats": {
+              "Damage": 12.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {}
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 97,
+          "Crystals": 0,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 12.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 1
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [
+        {
+          "kind": "tower_upgrade",
+          "wave": 5,
+          "game": 170.882385,
+          "real": 34.1977667000001,
+          "detail": {
+            "Id": 1,
+            "stat": "damage",
+            "cost": 80,
+            "ok": true,
+            "reason": null,
+            "before": {
+              "Gold": 97,
+              "Crystals": 80,
+              "CoreEnergy": 20
+            },
+            "after": {
+              "Gold": 97,
+              "Crystals": 0,
+              "CoreEnergy": 20
+            }
+          }
+        }
+      ],
+      "expected": 17,
+      "seconds": 42.8297844,
+      "elapsedGameClock": 42.829895,
+      "realSeconds": 8.5537191000003077,
+      "end": {
+        "wallet": {
+          "Gold": 152,
+          "Crystals": 25,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 12.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 1
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 25,
+      "damage": {
+        "Tower:1": 467,
+        "Player": 84
+      },
+      "kills": {
+        "Attack": 13,
+        "Defense": 4
+      },
+      "peakAliveSample": 10,
+      "minimumRemainingSample": 60.2903061,
+      "observedEnemies": 17,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 6,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 152,
+          "Crystals": 25,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 12.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 1
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 12,
+          "Crystals": 25,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [
+        {
+          "kind": "player_upgrade",
+          "wave": 6,
+          "game": 213.71228,
+          "real": 42.762703200000033,
+          "detail": {
+            "stat": "damage",
+            "cost": 140,
+            "ok": true,
+            "reason": null,
+            "before": {
+              "Gold": 152,
+              "Crystals": 25,
+              "CoreEnergy": 20
+            },
+            "after": {
+              "Gold": 12,
+              "Crystals": 25,
+              "CoreEnergy": 20
+            }
+          }
+        }
+      ],
+      "expected": 18,
+      "seconds": 41.7049675,
+      "elapsedGameClock": 41.70511,
+      "realSeconds": 8.3304922999996052,
+      "end": {
+        "wallet": {
+          "Gold": 73,
+          "Crystals": 50,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 25,
+      "damage": {
+        "Tower:1": 489,
+        "Player": 92
+      },
+      "kills": {
+        "Attack": 13,
+        "Defense": 4,
+        "Buff": 1
+      },
+      "peakAliveSample": 12,
+      "minimumRemainingSample": 60.9041,
+      "observedEnemies": 18,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 7,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 73,
+          "Crystals": 50,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 73,
+          "Crystals": 50,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [],
+      "expected": 18,
+      "seconds": 41.6723824,
+      "elapsedGameClock": 41.6724854,
+      "realSeconds": 8.3197828999991543,
+      "end": {
+        "wallet": {
+          "Gold": 134,
+          "Crystals": 75,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 25,
+      "damage": {
+        "Tower:1": 459,
+        "Player": 122
+      },
+      "kills": {
+        "Attack": 13,
+        "Defense": 4,
+        "Buff": 1
+      },
+      "peakAliveSample": 12,
+      "minimumRemainingSample": 60.9005623,
+      "observedEnemies": 18,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 8,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 134,
+          "Crystals": 75,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 134,
+          "Crystals": 75,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [],
+      "expected": 19,
+      "seconds": 41.3204269,
+      "elapsedGameClock": 41.3206177,
+      "realSeconds": 8.2493321000001743,
+      "end": {
+        "wallet": {
+          "Gold": 199,
+          "Crystals": 100,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 25,
+      "damage": {
+        "Tower:1": 483,
+        "Player": 148
+      },
+      "kills": {
+        "Attack": 13,
+        "Defense": 5,
+        "Buff": 1
+      },
+      "peakAliveSample": 13,
+      "minimumRemainingSample": 60.6050568,
+      "observedEnemies": 19,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 9,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 199,
+          "Crystals": 100,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 14.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 180,
+            "stats": {
+              "Damage": 15.0,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 1
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 9,
+          "Crystals": 0,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 16.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 3
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 280,
+            "stats": {
+              "Damage": 17.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 2
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [
+        {
+          "kind": "tower_upgrade",
+          "wave": 9,
+          "game": 338.4105,
+          "real": 67.7019395999996,
+          "detail": {
+            "Id": 1,
+            "stat": "damage",
+            "cost": 100,
+            "ok": true,
+            "reason": null,
+            "before": {
+              "Gold": 199,
+              "Crystals": 100,
+              "CoreEnergy": 20
+            },
+            "after": {
+              "Gold": 199,
+              "Crystals": 0,
+              "CoreEnergy": 20
+            }
+          }
+        },
+        {
+          "kind": "player_upgrade",
+          "wave": 9,
+          "game": 338.4105,
+          "real": 67.701942699999563,
+          "detail": {
+            "stat": "damage",
+            "cost": 190,
+            "ok": true,
+            "reason": null,
+            "before": {
+              "Gold": 199,
+              "Crystals": 0,
+              "CoreEnergy": 20
+            },
+            "after": {
+              "Gold": 9,
+              "Crystals": 0,
+              "CoreEnergy": 20
+            }
+          }
+        }
+      ],
+      "expected": 20,
+      "seconds": 40.00694,
+      "elapsedGameClock": 40.00708,
+      "realSeconds": 7.9906724000002214,
+      "end": {
+        "wallet": {
+          "Gold": 80,
+          "Crystals": 25,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 16.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 3
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 280,
+            "stats": {
+              "Damage": 17.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 2
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 25,
+      "damage": {
+        "Tower:1": 498,
+        "Player": 163
+      },
+      "kills": {
+        "Attack": 13,
+        "Defense": 5,
+        "Buff": 2
+      },
+      "peakAliveSample": 14,
+      "minimumRemainingSample": 60.572525,
+      "observedEnemies": 20,
+      "arrivals": [],
+      "bossKilled": false
+    },
+    {
+      "wave": 10,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 80,
+          "Crystals": 25,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 16.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 3
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 280,
+            "stats": {
+              "Damage": 17.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 2
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 80,
+          "Crystals": 25,
+          "CoreEnergy": 20
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 16.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 3
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 280,
+            "stats": {
+              "Damage": 17.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 2
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [],
+      "expected": 15,
+      "seconds": 130.736435,
+      "elapsedGameClock": 130.736633,
+      "realSeconds": 26.134873200000584,
+      "end": {
+        "wallet": {
+          "Gold": 125,
+          "Crystals": 60,
+          "CoreEnergy": 8
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 16.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 3
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 280,
+            "stats": {
+              "Damage": 17.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 2
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Completed",
+      "reward": 35,
+      "damage": {
+        "Tower:1": 387,
+        "Player": 164
+      },
+      "kills": {
+        "Attack": 9,
+        "Defense": 3,
+        "Buff": 1
+      },
+      "peakAliveSample": 13,
+      "minimumRemainingSample": 0.009475708,
+      "observedEnemies": 15,
+      "arrivals": [
+        {
+          "kind": "Boss",
+          "Id": 157,
+          "CoreDamage": 10
+        },
+        {
+          "kind": "Attack",
+          "Id": 167,
+          "CoreDamage": 2
+        }
+      ],
+      "bossKilled": false
+    },
+    {
+      "wave": 11,
+      "preparationStart": {
+        "wallet": {
+          "Gold": 125,
+          "Crystals": 60,
+          "CoreEnergy": 8
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 16.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 3
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 280,
+            "stats": {
+              "Damage": 17.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 2
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "combatStart": {
+        "wallet": {
+          "Gold": 125,
+          "Crystals": 60,
+          "CoreEnergy": 8
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 16.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 3
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 280,
+            "stats": {
+              "Damage": 17.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 2
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "actions": [],
+      "expected": 21,
+      "seconds": 91.19198,
+      "elapsedGameClock": 91.1919861,
+      "realSeconds": 18.226604499999667,
+      "end": {
+        "wallet": {
+          "Gold": 187,
+          "Crystals": 60,
+          "CoreEnergy": 0
+        },
+        "playerCell": "(13, 14, 0)",
+        "player": {
+          "Damage": 16.0,
+          "Rate": 1.0,
+          "Range": 3.0,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 3
+          }
+        },
+        "towers": [
+          {
+            "Id": 1,
+            "kind": "Single",
+            "cell": "(12, 13)",
+            "Spent": 280,
+            "stats": {
+              "Damage": 17.5,
+              "Rate": 1.2,
+              "Range": 3.5,
+              "ProjectileSpeed": 6.0,
+              "BuffDamage": 0.0,
+              "steps": {
+                "damage": 2
+              }
+            }
+          }
+        ],
+        "selected": [],
+        "TowerBuffPercent": 0,
+        "ExtraPlayerProjectiles": 0,
+        "PlayerSlow": false
+      },
+      "outcome": "Defeat",
+      "reward": 0,
+      "damage": {
+        "Tower:1": 424,
+        "Player": 172
+      },
+      "kills": {
+        "Attack": 10,
+        "Defense": 5,
+        "Buff": 2
+      },
+      "peakAliveSample": 18,
+      "minimumRemainingSample": 0.0126113892,
+      "observedEnemies": 21,
+      "arrivals": [
+        {
+          "kind": "Attack",
+          "Id": 179,
+          "CoreDamage": 2
+        },
+        {
+          "kind": "Attack",
+          "Id": 182,
+          "CoreDamage": 2
+        },
+        {
+          "kind": "Attack",
+          "Id": 188,
+          "CoreDamage": 2
+        },
+        {
+          "kind": "Attack",
+          "Id": 190,
+          "CoreDamage": 2
+        }
+      ],
+      "bossKilled": false
+    }
+  ],
+  "events": [
+    {
+      "kind": "move",
+      "wave": 1,
+      "game": 0.099999994,
+      "real": 0.050566699999762932,
+      "detail": {
+        "to": "(13, 10, 0)"
+      }
+    },
+    {
+      "kind": "move",
+      "wave": 1,
+      "game": 0.266001016,
+      "real": 0.069277499999770953,
+      "detail": {
+        "to": "(13, 11, 0)"
+      }
+    },
+    {
+      "kind": "move",
+      "wave": 1,
+      "game": 0.405032,
+      "real": 0.093451599999752943,
+      "detail": {
+        "to": "(13, 12, 0)"
+      }
+    },
+    {
+      "kind": "move",
+      "wave": 1,
+      "game": 0.5381395,
+      "real": 0.12061350000021775,
+      "detail": {
+        "to": "(13, 13, 0)"
+      }
+    },
+    {
+      "kind": "move",
+      "wave": 1,
+      "game": 0.6639715,
+      "real": 0.14601680000032502,
+      "detail": {
+        "to": "(13, 14, 0)"
+      }
+    },
+    {
+      "kind": "install",
+      "wave": 1,
+      "game": 2.000616,
+      "real": 0.41506750000007742,
+      "detail": {
+        "kind": "Single",
+        "cell": "(12, 13)",
+        "cost": 100,
+        "ok": true,
+        "before": {
+          "Gold": 0,
+          "Crystals": 100,
+          "CoreEnergy": 20
+        },
+        "after": {
+          "Gold": 0,
+          "Crystals": 0,
+          "CoreEnergy": 20
+        }
+      }
+    },
+    {
+      "kind": "player_upgrade",
+      "wave": 4,
+      "game": 127.1344,
+      "real": 25.446237600000131,
+      "detail": {
+        "stat": "damage",
+        "cost": 100,
+        "ok": true,
+        "reason": null,
+        "before": {
+          "Gold": 143,
+          "Crystals": 60,
+          "CoreEnergy": 20
+        },
+        "after": {
+          "Gold": 43,
+          "Crystals": 60,
+          "CoreEnergy": 20
+        }
+      }
+    },
+    {
+      "kind": "tower_upgrade",
+      "wave": 5,
+      "game": 170.882385,
+      "real": 34.1977667000001,
+      "detail": {
+        "Id": 1,
+        "stat": "damage",
+        "cost": 80,
+        "ok": true,
+        "reason": null,
+        "before": {
+          "Gold": 97,
+          "Crystals": 80,
+          "CoreEnergy": 20
+        },
+        "after": {
+          "Gold": 97,
+          "Crystals": 0,
+          "CoreEnergy": 20
+        }
+      }
+    },
+    {
+      "kind": "player_upgrade",
+      "wave": 6,
+      "game": 213.71228,
+      "real": 42.762703200000033,
+      "detail": {
+        "stat": "damage",
+        "cost": 140,
+        "ok": true,
+        "reason": null,
+        "before": {
+          "Gold": 152,
+          "Crystals": 25,
+          "CoreEnergy": 20
+        },
+        "after": {
+          "Gold": 12,
+          "Crystals": 25,
+          "CoreEnergy": 20
+        }
+      }
+    },
+    {
+      "kind": "tower_upgrade",
+      "wave": 9,
+      "game": 338.4105,
+      "real": 67.7019395999996,
+      "detail": {
+        "Id": 1,
+        "stat": "damage",
+        "cost": 100,
+        "ok": true,
+        "reason": null,
+        "before": {
+          "Gold": 199,
+          "Crystals": 100,
+          "CoreEnergy": 20
+        },
+        "after": {
+          "Gold": 199,
+          "Crystals": 0,
+          "CoreEnergy": 20
+        }
+      }
+    },
+    {
+      "kind": "player_upgrade",
+      "wave": 9,
+      "game": 338.4105,
+      "real": 67.701942699999563,
+      "detail": {
+        "stat": "damage",
+        "cost": 190,
+        "ok": true,
+        "reason": null,
+        "before": {
+          "Gold": 199,
+          "Crystals": 0,
+          "CoreEnergy": 20
+        },
+        "after": {
+          "Gold": 9,
+          "Crystals": 0,
+          "CoreEnergy": 20
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "completedWave": 10,
+  "phase": "Defeat",
+  "final": {
+    "wallet": {
+      "Gold": 187,
+      "Crystals": 60,
+      "CoreEnergy": 0
+    },
+    "playerCell": "(13, 14, 0)",
+    "player": {
+      "Damage": 16.0,
+      "Rate": 1.0,
+      "Range": 3.0,
+      "ProjectileSpeed": 6.0,
+      "BuffDamage": 0.0,
+      "steps": {
+        "damage": 3
+      }
+    },
+    "towers": [
+      {
+        "Id": 1,
+        "kind": "Single",
+        "cell": "(12, 13)",
+        "Spent": 280,
+        "stats": {
+          "Damage": 17.5,
+          "Rate": 1.2,
+          "Range": 3.5,
+          "ProjectileSpeed": 6.0,
+          "BuffDamage": 0.0,
+          "steps": {
+            "damage": 2
+          }
+        }
+      }
+    ],
+    "selected": [],
+    "TowerBuffPercent": 0,
+    "ExtraPlayerProjectiles": 0,
+    "PlayerSlow": false
+  },
+  "elapsedGame": 600.3462,
+  "elapsedReal": 120.09074460000011,
+  "outcome": "Defeat",
+  "dataUnchanged": true,
+  "volumeAfter": 0.1084202,
+  "restoredTimeScale": 1.0
+}

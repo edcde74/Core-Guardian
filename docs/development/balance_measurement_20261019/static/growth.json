@@ -1,0 +1,248 @@
+{
+  "evidence": "static_arithmetic_not_simulation",
+  "damage_formula": "floor(max(0,D*(1-defense/100))+.5)",
+  "player_same_stat": [
+    {
+      "step": 1,
+      "cost": 100,
+      "cumulative_cost": 100,
+      "affordable_by_round_end": 3
+    },
+    {
+      "step": 2,
+      "cost": 140,
+      "cumulative_cost": 240,
+      "affordable_by_round_end": 5
+    },
+    {
+      "step": 3,
+      "cost": 190,
+      "cumulative_cost": 430,
+      "affordable_by_round_end": 8
+    },
+    {
+      "step": 4,
+      "cost": 250,
+      "cumulative_cost": 680,
+      "affordable_by_round_end": 11
+    }
+  ],
+  "player_split_first_steps": [
+    {
+      "different_stats": 1,
+      "cost": 100,
+      "affordable_by_round_end": 3
+    },
+    {
+      "different_stats": 2,
+      "cost": 200,
+      "affordable_by_round_end": 5
+    },
+    {
+      "different_stats": 3,
+      "cost": 300,
+      "affordable_by_round_end": 6
+    },
+    {
+      "different_stats": 4,
+      "cost": 400,
+      "affordable_by_round_end": 8
+    }
+  ],
+  "player_damage_steps": [
+    {
+      "step": 0,
+      "enemy": "Attack",
+      "input_damage": 10.0,
+      "hit": 10,
+      "sustained_dps": 10.0,
+      "shots": 3,
+      "attack_interval_seconds_excluding_flight": 2.0
+    },
+    {
+      "step": 0,
+      "enemy": "Defense",
+      "input_damage": 10.0,
+      "hit": 10,
+      "sustained_dps": 10.0,
+      "shots": 5,
+      "attack_interval_seconds_excluding_flight": 4.0
+    },
+    {
+      "step": 0,
+      "enemy": "Buff",
+      "input_damage": 10.0,
+      "hit": 10,
+      "sustained_dps": 10.0,
+      "shots": 3,
+      "attack_interval_seconds_excluding_flight": 2.0
+    },
+    {
+      "step": 0,
+      "enemy": "Boss",
+      "input_damage": 10.0,
+      "hit": 10,
+      "sustained_dps": 10.0,
+      "shots": 30,
+      "attack_interval_seconds_excluding_flight": 29.0
+    },
+    {
+      "step": 1,
+      "enemy": "Attack",
+      "input_damage": 12.0,
+      "hit": 12,
+      "sustained_dps": 12.0,
+      "shots": 3,
+      "attack_interval_seconds_excluding_flight": 2.0
+    },
+    {
+      "step": 1,
+      "enemy": "Defense",
+      "input_damage": 12.0,
+      "hit": 12,
+      "sustained_dps": 12.0,
+      "shots": 5,
+      "attack_interval_seconds_excluding_flight": 4.0
+    },
+    {
+      "step": 1,
+      "enemy": "Buff",
+      "input_damage": 12.0,
+      "hit": 12,
+      "sustained_dps": 12.0,
+      "shots": 3,
+      "attack_interval_seconds_excluding_flight": 2.0
+    },
+    {
+      "step": 1,
+      "enemy": "Boss",
+      "input_damage": 12.0,
+      "hit": 12,
+      "sustained_dps": 12.0,
+      "shots": 25,
+      "attack_interval_seconds_excluding_flight": 24.0
+    },
+    {
+      "step": 2,
+      "enemy": "Attack",
+      "input_damage": 14.0,
+      "hit": 14,
+      "sustained_dps": 14.0,
+      "shots": 2,
+      "attack_interval_seconds_excluding_flight": 1.0
+    },
+    {
+      "step": 2,
+      "enemy": "Defense",
+      "input_damage": 14.0,
+      "hit": 14,
+      "sustained_dps": 14.0,
+      "shots": 4,
+      "attack_interval_seconds_excluding_flight": 3.0
+    },
+    {
+      "step": 2,
+      "enemy": "Buff",
+      "input_damage": 14.0,
+      "hit": 14,
+      "sustained_dps": 14.0,
+      "shots": 3,
+      "attack_interval_seconds_excluding_flight": 2.0
+    },
+    {
+      "step": 2,
+      "enemy": "Boss",
+      "input_damage": 14.0,
+      "hit": 14,
+      "sustained_dps": 14.0,
+      "shots": 22,
+      "attack_interval_seconds_excluding_flight": 21.0
+    },
+    {
+      "step": 3,
+      "enemy": "Attack",
+      "input_damage": 16.0,
+      "hit": 16,
+      "sustained_dps": 16.0,
+      "shots": 2,
+      "attack_interval_seconds_excluding_flight": 1.0
+    },
+    {
+      "step": 3,
+      "enemy": "Defense",
+      "input_damage": 16.0,
+      "hit": 16,
+      "sustained_dps": 16.0,
+      "shots": 4,
+      "attack_interval_seconds_excluding_flight": 3.0
+    },
+    {
+      "step": 3,
+      "enemy": "Buff",
+      "input_damage": 16.0,
+      "hit": 16,
+      "sustained_dps": 16.0,
+      "shots": 2,
+      "attack_interval_seconds_excluding_flight": 1.0
+    },
+    {
+      "step": 3,
+      "enemy": "Boss",
+      "input_damage": 16.0,
+      "hit": 16,
+      "sustained_dps": 16.0,
+      "shots": 19,
+      "attack_interval_seconds_excluding_flight": 18.0
+    }
+  ],
+  "tower_dps": [
+    {
+      "tower": "Single",
+      "enemy": "Attack",
+      "per_target_dps": 15.6,
+      "max_targets_sustained_dps": 15.6
+    },
+    {
+      "tower": "Single",
+      "enemy": "Defense",
+      "per_target_dps": 14.4,
+      "max_targets_sustained_dps": 14.4
+    },
+    {
+      "tower": "Single",
+      "enemy": "Buff",
+      "per_target_dps": 15.6,
+      "max_targets_sustained_dps": 15.6
+    },
+    {
+      "tower": "Single",
+      "enemy": "Boss",
+      "per_target_dps": 15.6,
+      "max_targets_sustained_dps": 15.6
+    },
+    {
+      "tower": "Multi",
+      "enemy": "Attack",
+      "per_target_dps": 7.8,
+      "max_targets_sustained_dps": 23.4
+    },
+    {
+      "tower": "Multi",
+      "enemy": "Defense",
+      "per_target_dps": 7.2,
+      "max_targets_sustained_dps": 21.6
+    },
+    {
+      "tower": "Multi",
+      "enemy": "Buff",
+      "per_target_dps": 7.8,
+      "max_targets_sustained_dps": 23.4
+    },
+    {
+      "tower": "Multi",
+      "enemy": "Boss",
+      "per_target_dps": 7.8,
+      "max_targets_sustained_dps": 23.4
+    }
+  ]
+}

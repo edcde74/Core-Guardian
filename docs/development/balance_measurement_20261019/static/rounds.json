@@ -1,0 +1,151 @@
+{
+  "project": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD",
+  "sources_sha256": {
+    "Assets\\Resources\\CoreGuardian\\enemies.csv": "8336089cd38238f504f15069e74e0d8ccd286d088b50697387ede8cb3de22b08",
+    "Assets\\Resources\\CoreGuardian\\towers.csv": "c61ecac3bc4a887d41e000e387f72c23f5f3529d2655a0f82efbc8c92de0df19",
+    "Assets\\Resources\\CoreGuardian\\stage.csv": "a6877f5507694c54e42bf598b6767a497378d54f3a9e670068a757ca5dfffe2d",
+    "Assets\\Resources\\CoreGuardian\\upgrades.csv": "5409f2a458e280e7699c5326c8642f32b613850125d3b83443583bab827bfb12",
+    "Assets\\Resources\\CoreGuardian\\waves.csv": "bf3ca74e0e3d03076b717431bd082ec439f8134dc06fbb259ba1cd3099cb8539"
+  },
+  "limitations": [
+    "No Unity execution or live loaded-value inspection",
+    "No Notion rules inferred",
+    "No boss/augmentation simulation",
+    "All kills and completion assumed; no spending in cumulative totals",
+    "HP/spawn span is a density index, not required defense DPS"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 15,
+      "hp": 405,
+      "gold_all_kills": 45,
+      "crystal_reward": 20,
+      "cumulative_gold": 45,
+      "cumulative_reward_crystals": 20,
+      "last_spawn_seconds": 22.68,
+      "hp_per_spawn_second": 17.8571
+    },
+    {
+      "round": 2,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 16,
+      "hp": 432,
+      "gold_all_kills": 48,
+      "crystal_reward": 20,
+      "cumulative_gold": 93,
+      "cumulative_reward_crystals": 40,
+      "last_spawn_seconds": 22.95,
+      "hp_per_spawn_second": 18.8235
+    },
+    {
+      "round": 3,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 16,
+      "hp": 478,
+      "gold_all_kills": 50,
+      "crystal_reward": 20,
+      "cumulative_gold": 143,
+      "cumulative_reward_crystals": 60,
+      "last_spawn_seconds": 25.5,
+      "hp_per_spawn_second": 18.7451
+    },
+    {
+      "round": 4,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 17,
+      "hp": 528,
+      "gold_all_kills": 54,
+      "crystal_reward": 20,
+      "cumulative_gold": 197,
+      "cumulative_reward_crystals": 80,
+      "last_spawn_seconds": 25.6,
+      "hp_per_spawn_second": 20.625
+    },
+    {
+      "round": 5,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 17,
+      "hp": 551,
+      "gold_all_kills": 55,
+      "crystal_reward": 25,
+      "cumulative_gold": 252,
+      "cumulative_reward_crystals": 105,
+      "last_spawn_seconds": 25.6,
+      "hp_per_spawn_second": 21.5234
+    },
+    {
+      "round": 6,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 18,
+      "hp": 581,
+      "gold_all_kills": 61,
+      "crystal_reward": 25,
+      "cumulative_gold": 313,
+      "cumulative_reward_crystals": 130,
+      "last_spawn_seconds": 25.5,
+      "hp_per_spawn_second": 22.7843
+    },
+    {
+      "round": 7,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 18,
+      "hp": 581,
+      "gold_all_kills": 61,
+      "crystal_reward": 25,
+      "cumulative_gold": 374,
+      "cumulative_reward_crystals": 155,
+      "last_spawn_seconds": 24.65,
+      "hp_per_spawn_second": 23.57
+    },
+    {
+      "round": 8,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 19,
+      "hp": 631,
+      "gold_all_kills": 65,
+      "crystal_reward": 25,
+      "cumulative_gold": 439,
+      "cumulative_reward_crystals": 180,
+      "last_spawn_seconds": 24.3,
+      "hp_per_spawn_second": 25.9671
+    },
+    {
+      "round": 9,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 20,
+      "hp": 661,
+      "gold_all_kills": 71,
+      "crystal_reward": 25,
+      "cumulative_gold": 510,
+      "cumulative_reward_crystals": 205,
+      "last_spawn_seconds": 22.8,
+      "hp_per_spawn_second": 28.9912
+    },
+    {
+      "round": 10,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 15,
+      "hp": 750,
+      "gold_all_kills": 168,
+      "crystal_reward": 35,
+      "cumulative_gold": 678,
+      "cumulative_reward_crystals": 240,
+      "last_spawn_seconds": 16.5,
+      "hp_per_spawn_second": 45.4545
+    },
+    {
+      "round": 11,
+      "evidence": "static_all_kills_completion_assumption",
+      "enemy_count": 21,
+      "hp": 688,
+      "gold_all_kills": 74,
+      "crystal_reward": 30,
+      "cumulative_gold": 752,
+      "cumulative_reward_crystals": 270,
+      "last_spawn_seconds": 16.5,
+      "hp_per_spawn_second": 41.697
+    }
+  ]
+}
