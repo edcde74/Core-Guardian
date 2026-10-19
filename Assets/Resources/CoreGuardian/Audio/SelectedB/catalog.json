@@ -1,0 +1,256 @@
+{
+  "cues": [
+    {
+      "id": "single",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/single",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "player",
+      "category": "Player",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/player",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "hit",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/hit",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "death",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/death",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "core",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/core",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": false,
+      "priority": 90
+    },
+    {
+      "id": "boss_spawn",
+      "category": "Progress",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/boss_spawn",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 60
+    },
+    {
+      "id": "boss_accel",
+      "category": "Progress",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/boss_accel",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 60
+    },
+    {
+      "id": "install",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/install",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "install_fail",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/install_fail",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "upgrade_ok",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/upgrade_ok",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "upgrade_fail",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/upgrade_fail",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "bgm",
+      "category": "Music",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/bgm",
+      "gain": 0.35,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "cancel_install",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/cancel_install",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "round_complete",
+      "category": "Progress",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/round_complete",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 60
+    },
+    {
+      "id": "victory",
+      "category": "Progress",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/victory",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 100
+    },
+    {
+      "id": "defeat",
+      "category": "Progress",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/defeat",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 100
+    },
+    {
+      "id": "ui_click",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/ui_click",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "ui_open",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/ui_open",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "ui_close",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/ui_close",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "aug_silver",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/aug_silver",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "aug_bgm",
+      "category": "Music",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/aug_bgm",
+      "gain": 0.35,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "aug_gold",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/aug_gold",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "aug_platinum",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/aug_platinum",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "demolish",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/demolish",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "round_start",
+      "category": "Progress",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/round_start",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 60
+    },
+    {
+      "id": "multi_1",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/multi_1",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "multi_2",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/multi_2",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "multi_3",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/multi_3",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    }
+  ]
+}

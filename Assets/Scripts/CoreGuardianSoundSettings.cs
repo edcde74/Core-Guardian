@@ -1,5 +1,7 @@
 using UnityEngine;
 
+public enum CoreGuardianAudioCategory { Music, Tower, Player, MonsterCore, UI, Progress }
+
 // Local listening preferences, separate from combat data and BGM production assets.
 public static class CoreGuardianSoundSettings
 {
@@ -10,6 +12,17 @@ public static class CoreGuardianSoundSettings
         get=>SafeVolume(PlayerPrefs.GetFloat(VolumeKey,.65f));
         set=>PlayerPrefs.SetFloat(VolumeKey,SafeVolume(value));
     }
+    // Preserve the legacy master key. New category preferences default to unity gain.
+    public static float GetCategoryVolume(CoreGuardianAudioCategory category)
+    {
+        float value=PlayerPrefs.GetFloat("CoreGuardian.Audio."+category,1f);
+        return float.IsNaN(value)||float.IsInfinity(value)?1f:Mathf.Clamp01(value);
+    }
+    public static void SetCategoryVolume(CoreGuardianAudioCategory category,float value)
+    {
+        PlayerPrefs.SetFloat("CoreGuardian.Audio."+category,float.IsNaN(value)||float.IsInfinity(value)?1f:Mathf.Clamp01(value));
+    }
+    public static float EffectiveVolume(CoreGuardianAudioCategory category)=>Volume*GetCategoryVolume(category);
     // Legacy audition preference retained for compatibility; approved single audio ignores it.
     public static int Candidate
     {

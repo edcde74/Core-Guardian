@@ -2,8 +2,9 @@
   "date": "2026-10-19",
   "checkpoint_head": "f308fa1",
   "direction": "B · 단단하고 빠른 전술 / 마력포·고대 장치",
-  "game_application_authorized": false,
-  "new_audio_connected": false,
+  "game_application_authorized": true,
+  "new_audio_connected": true,
+  "application_record": "docs/development/audio_B_applied_20261019/README.md",
   "selected": 23,
   "provisional": 2,
   "multi_policy": 1,
@@ -288,8 +289,8 @@
           "sha256": "c4f68734d71ed8215a77cc67b2496e7b1f71b3a99851b46b667fd92e16ccbb32"
         }
       ],
-      "connection_authorized": false
+      "connection_authorized": true
     }
   ],
-  "note": "사용자가 골드/플래티넘5차①을 좋다고 선택하고 전체 결정의 문서/Notion 동기화와 새대화 인수인계를 요청. 새음색 선택을 게임 적용 승인으로 확대하지 않음."
+  "note": "청취 선택 정본은 유지. 이후 2026-10-19 사용자가 전체 게임 연결 및 종류별 음량 분리를 명시 요청해 적용했다. 잠정2개의 음색 상태는 유지하며 기능QA와 정상 전투 믹스 승인은 구분한다."
 }

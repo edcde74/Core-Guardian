@@ -14,6 +14,9 @@ namespace CoreGuardian
         public event Action<EnemyState,int> DamageApplied;
         // Raised at creation, before movement/hits can remove a projectile in the same Tick.
         public event Action<ProjectileState> ProjectileLaunched;
+        // Presentation event: exactly one notification per attack, after all projectiles exist.
+        public event Action<string,int> AttackLaunched;
+        public event Action DefeatReached;
         public event Action CombatStarted;
         public event Action RoundCompleted;
         public event Action VictoryReached;
@@ -98,7 +101,7 @@ namespace CoreGuardian
             // Calculate all auras before moving anyone so source order cannot alter the radius test.
             var boosts=Enemies.Where(e=>e.Alive).ToDictionary(e=>e,e=>Enemies.Where(other=>other!=e&&other.Alive&&other.Kind==EnemyKind.Buff&&Vector2.Distance(e.Position,other.Position)<=other.Spec.BuffRadius).Select(other=>other.Spec.BuffSpeed).DefaultIfEmpty(0).Max()); foreach(var e in boosts.Keys) e.Buffed=boosts[e]>0;
             foreach(var e in Enemies.Where(e=>e.Alive).ToArray()) {float boost=boosts[e];e.PathTravelled=Mathf.Min(pathLength,e.PathTravelled+e.MovementSpeed*(1+boost/100f)*dt);e.SlowRemaining=Mathf.Max(0,e.SlowRemaining-dt);PositionEnemy(e);if(e.PathRemaining<=.00001f){e.Exited=true;coreDamagedThisRound|=e.Spec.CoreDamage>0;CoreEnergy=Mathf.Max(0,CoreEnergy-e.Spec.CoreDamage);LastMessage="코어 -"+e.Spec.CoreDamage;}}
-            if(CoreEnergy<=0) {Phase=SessionPhase.Defeat;Projectiles.Clear();LastMessage="방어 실패";return;}
+            if(CoreEnergy<=0) {Phase=SessionPhase.Defeat;Projectiles.Clear();LastMessage="방어 실패";if(!Diagnostic)DefeatReached?.Invoke();return;}
             Shoot(playerPosition,Player,"Player",0,ref playerCooldown,ref playerTarget,ref playerAcquired,dt,false);
             foreach(var t in Towers.ToArray()) {if(t.Kind==TowerKind.Support)continue;float buff=Augments.TowerBuffPercent+Towers.Where(s=>s.Kind==TowerKind.Support&&Vector2.Distance(s.Position,t.Position)<=s.Stats.Range).Sum(s=>s.Stats.BuffDamage);Shoot(t.Position,t.Stats,"Tower:"+t.Id,buff,ref t.Cooldown,ref t.Target,ref t.AcquiredOnce,dt,t.Kind==TowerKind.Multi);}
             foreach(var p in Projectiles.ToArray()) {if(!p.Target.Alive){Projectiles.Remove(p);continue;}p.Position=Vector2.MoveTowards(p.Position,p.Target.Position,p.Speed*dt);if(Vector2.Distance(p.Position,p.Target.Position)<=.00001f){ApplyDamage(p.Target,p.Damage,p.Source);Projectiles.Remove(p);}}
@@ -136,7 +139,7 @@ namespace CoreGuardian
             if(target==null&&available.Length>0) {target=acquired?CombatRules.Priority(available):available.OrderBy(e=>e.Id).First();acquired=true;}
             cooldown-=dt;if(available.Length==0||stats.Rate<=0){cooldown=Mathf.Max(0,cooldown);return;}if(cooldown>0)return;
             var targets=multi?available.OrderBy(e=>e.Kind==EnemyKind.Defense?0:e.Kind==EnemyKind.Buff?1:2).ThenBy(e=>e.Health).ThenBy(e=>e.PathRemaining).ThenBy(e=>e.Id).Take(3).ToArray():new[]{target};
-            while(cooldown<=.00001f) {foreach(var e in targets) {if(e==null)continue;int shots=source=="Player"?1+Augments.ExtraPlayerProjectiles:1;for(int shot=0;shot<shots;shot++) {var projectile=new ProjectileState{Id=nextProjectile++,Position=position,Target=e,Source=source,Damage=stats.Damage*(1+buff/100f),Speed=stats.ProjectileSpeed};Projectiles.Add(projectile);ProjectileLaunched?.Invoke(projectile);}}float nextCooldown=cooldown+1/stats.Rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;}
+            while(cooldown<=.00001f) {int launched=0;foreach(var e in targets) {if(e==null)continue;int shots=source=="Player"?1+Augments.ExtraPlayerProjectiles:1;for(int shot=0;shot<shots;shot++) {var projectile=new ProjectileState{Id=nextProjectile++,Position=position,Target=e,Source=source,Damage=stats.Damage*(1+buff/100f),Speed=stats.ProjectileSpeed};Projectiles.Add(projectile);launched++;ProjectileLaunched?.Invoke(projectile);}}if(launched>0)AttackLaunched?.Invoke(source,launched);float nextCooldown=cooldown+1/stats.Rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;}
         }
         public int ApplyDamage(EnemyState target,float damage,string source)
         {

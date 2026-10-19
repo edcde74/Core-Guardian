@@ -1,0 +1,128 @@
+[
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests",
+    "IsSuite": true,
+    "HasChildren": true,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.BossHalfHealthPlaysSpeedUpOnceAndNeverOnLethalDamage",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.BossViewAppearsWithEncounterOnceAndRespectsMuteAndCorePriority",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.CombatStartUsesConfirmationForManualAndTimeoutWithoutReplaying",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.CoreArrivalPlaysSelectedGlyphAndHonorsMuteCooldownAndFullPool",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.FinalVictoryPlaysSelectedSteelOnceAndExcludesOrdinaryDiagnosticAndDefeat",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.MonsterDeathsReplaceLethalHitAndIgnoreCoreExitsMuteAndRepeatedDamage",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.MonsterHitsUseSelectedClipAndBoundOverlapWithoutChangingDamage",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.RealSingleTowerLaunchesAndDeveloperControlsRespectMuteAndVoiceLimit",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.RoundCompletionPlaysOnceForPreparationAndAugmentationButNotFinalResults",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.TowerInstallationUsesUnequipOnlyOnSuccessfulPlacement",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.UpgradeFailureUsesError006WithoutSpendingCurrencyOrShowingSuccessScan",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianCombatAudioPlayModeTests.UpgradeSuccessUsesConfirmationOnlyAfterSuccessfulPurchaseAndKeepsScan",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianSelectedAudioPlayModeTests",
+    "IsSuite": true,
+    "HasChildren": true,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianSelectedAudioPlayModeTests.ActualMultiVolleysUseExactlyOneMatchingOneTwoOrThreeShotClipWithSupportSilent",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianSelectedAudioPlayModeTests.DefeatIsOneTerminalCueAndMutedDefeatNeverReplaysOnUnmute",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianSelectedAudioPlayModeTests.EachCardGradeUsesItsSelectedFileAndRevealOnlyPlaysOnce",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianSelectedAudioPlayModeTests.LiveCategoryChangesOnlyAffectTheirOwnVoicesAndMasterStillMutesEverything",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianSelectedAudioPlayModeTests.MusicCrossfadesAtRealAugmentationAndReturnsThenStopsAtFinalVictory",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianSelectedAudioPlayModeTests.RealPlacementFailureDemolitionAndEscapeUseTheirSeparateCues",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  },
+  {
+    "FullName": "CoreGuardianSelectedAudioPlayModeTests.TerminalDefeatSurvivesTheAdaptersFollowingCoreDamageWhenEffectsPoolIsFull",
+    "IsSuite": false,
+    "HasChildren": false,
+    "state": "Runnable"
+  }
+]

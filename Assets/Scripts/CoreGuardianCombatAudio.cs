@@ -7,25 +7,26 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
 {
     public const int VoiceLimit=4;
     const float ShotGain=.55f;
-    public const string SingleShotResourcePath="CoreGuardian/Audio/TowerShot/03_Aura";
-    public const string PlayerShotResourcePath="CoreGuardian/Audio/PlayerShot/03_Glyph";
-    public const string MultiShotResourcePath="CoreGuardian/Audio/MultiShot/B_BrighterAttack";
-    public const string CoreDamageResourcePath="CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2";
-    public const string MonsterHitResourcePath="CoreGuardian/Audio/MonsterHit/03_Hit";
-    public const string MonsterDeathResourcePath="CoreGuardian/Audio/MonsterDeath/02_Flesh";
-    public const string BossSpawnResourcePath="CoreGuardian/Audio/BossSpawn/01_Encounter";
-    public const string BossAccelerationResourcePath="CoreGuardian/Audio/BossAcceleration/01_SpeedUp";
-    public const string TowerInstallResourcePath="CoreGuardian/Audio/TowerInstall/02_Unequip";
-    public const string UpgradeSuccessResourcePath="CoreGuardian/Audio/UpgradeSuccess/01_Confirmation";
-    public const string UpgradeFailureResourcePath="CoreGuardian/Audio/UpgradeFailure/03_Error006";
-    public const string RoundStartResourcePath="CoreGuardian/Audio/RoundStart/03_Confirmation004";
-    public const string RoundCompleteResourcePath="CoreGuardian/Audio/RoundComplete/01_Confirmation002";
-    public const string VictoryResourcePath="CoreGuardian/Audio/Victory/02_Steel00";
+    public const string SingleShotResourcePath="CoreGuardian/Audio/SelectedB/single";
+    public const string PlayerShotResourcePath="CoreGuardian/Audio/SelectedB/player";
+    public const string MultiShotResourcePath="CoreGuardian/Audio/SelectedB/multi_3";
+    public const string CoreDamageResourcePath="CoreGuardian/Audio/SelectedB/core";
+    public const string MonsterHitResourcePath="CoreGuardian/Audio/SelectedB/hit";
+    public const string MonsterDeathResourcePath="CoreGuardian/Audio/SelectedB/death";
+    public const string BossSpawnResourcePath="CoreGuardian/Audio/SelectedB/boss_spawn";
+    public const string BossAccelerationResourcePath="CoreGuardian/Audio/SelectedB/boss_accel";
+    public const string TowerInstallResourcePath="CoreGuardian/Audio/SelectedB/install";
+    public const string UpgradeSuccessResourcePath="CoreGuardian/Audio/SelectedB/upgrade_ok";
+    public const string UpgradeFailureResourcePath="CoreGuardian/Audio/SelectedB/upgrade_fail";
+    public const string RoundStartResourcePath="CoreGuardian/Audio/SelectedB/round_start";
+    public const string RoundCompleteResourcePath="CoreGuardian/Audio/SelectedB/round_complete";
+    public const string VictoryResourcePath="CoreGuardian/Audio/SelectedB/victory";
     AudioClip singleClip,playerClip,multiClip,coreDamageClip,monsterHitClip,monsterDeathClip,bossSpawnClip,bossAccelerationClip,towerInstallClip,upgradeSuccessClip,upgradeFailureClip,roundStartClip,roundCompleteClip,victoryClip;
     readonly System.Collections.Generic.HashSet<int> announcedBosses=new System.Collections.Generic.HashSet<int>();
     readonly System.Collections.Generic.HashSet<int> acceleratedBosses=new System.Collections.Generic.HashSet<int>();
-    readonly System.Collections.Generic.Dictionary<int,float> nextMultiShots=new System.Collections.Generic.Dictionary<int,float>();
     readonly AudioSource[] voices=new AudioSource[VoiceLimit];
+    readonly CoreGuardianAudioCue[] voiceCues=new CoreGuardianAudioCue[VoiceLimit];
+    CoreGuardianMusicAudio music;
     Session session;
     float nextShot,nextPlayerShot,nextCoreDamage,nextMonsterHit,nextMonsterDeath,nextUpgradeFailure;
     public int MonsterDeathPlayedCount {get;private set;}
@@ -41,24 +42,29 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public int CoreDamagePlayedCount {get;private set;}
     public int PlayedCount {get;private set;}
     public int DroppedCount {get;private set;}
+    public int MultiVolleyPlayedCount {get;private set;}
+    public int LastMultiShotCount {get;private set;}
+    public int DefeatPlayedCount {get;private set;}
     public int ActiveVoices=>voices.Count(v=>v!=null&&v.isPlaying);
 
     void Awake()
     {
-        singleClip=Resources.Load<AudioClip>(SingleShotResourcePath);
-        playerClip=Resources.Load<AudioClip>(PlayerShotResourcePath);
-        multiClip=Resources.Load<AudioClip>(MultiShotResourcePath);
-        coreDamageClip=Resources.Load<AudioClip>(CoreDamageResourcePath);
-        monsterHitClip=Resources.Load<AudioClip>(MonsterHitResourcePath);
-        monsterDeathClip=Resources.Load<AudioClip>(MonsterDeathResourcePath);
-        bossSpawnClip=Resources.Load<AudioClip>(BossSpawnResourcePath);
-        bossAccelerationClip=Resources.Load<AudioClip>(BossAccelerationResourcePath);
-        towerInstallClip=Resources.Load<AudioClip>(TowerInstallResourcePath);
-        upgradeSuccessClip=Resources.Load<AudioClip>(UpgradeSuccessResourcePath);
-        upgradeFailureClip=Resources.Load<AudioClip>(UpgradeFailureResourcePath);
-        roundStartClip=Resources.Load<AudioClip>(RoundStartResourcePath);
-        roundCompleteClip=Resources.Load<AudioClip>(RoundCompleteResourcePath);
-        victoryClip=Resources.Load<AudioClip>(VictoryResourcePath);
+        var musicRoot=new GameObject("CoreGuardianMusic");musicRoot.transform.SetParent(transform,false);
+        music=musicRoot.AddComponent<CoreGuardianMusicAudio>();
+        singleClip=CoreGuardianAudioCatalog.Find("single").Clip;
+        playerClip=CoreGuardianAudioCatalog.Find("player").Clip;
+        multiClip=CoreGuardianAudioCatalog.Find("multi_3").Clip;
+        coreDamageClip=CoreGuardianAudioCatalog.Find("core").Clip;
+        monsterHitClip=CoreGuardianAudioCatalog.Find("hit").Clip;
+        monsterDeathClip=CoreGuardianAudioCatalog.Find("death").Clip;
+        bossSpawnClip=CoreGuardianAudioCatalog.Find("boss_spawn").Clip;
+        bossAccelerationClip=CoreGuardianAudioCatalog.Find("boss_accel").Clip;
+        towerInstallClip=CoreGuardianAudioCatalog.Find("install").Clip;
+        upgradeSuccessClip=CoreGuardianAudioCatalog.Find("upgrade_ok").Clip;
+        upgradeFailureClip=CoreGuardianAudioCatalog.Find("upgrade_fail").Clip;
+        roundStartClip=CoreGuardianAudioCatalog.Find("round_start").Clip;
+        roundCompleteClip=CoreGuardianAudioCatalog.Find("round_complete").Clip;
+        victoryClip=CoreGuardianAudioCatalog.Find("victory").Clip;
         for(int i=0;i<voices.Length;i++)
         {
             var child=new GameObject("MagicCannonVoice_"+i);child.transform.SetParent(transform,false);
@@ -71,16 +77,16 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     {
         if(!ReferenceEquals(session,value)){announcedBosses.Clear();acceleratedBosses.Clear();}
         Unsubscribe();session=value;nextShot=nextPlayerShot=nextCoreDamage=nextMonsterHit=nextMonsterDeath=nextUpgradeFailure=0;
-        nextMultiShots.Clear();
+        music.Configure(value);
         if(isActiveAndEnabled)Subscribe();
     }
-    void Subscribe(){if(session!=null){session.ProjectileLaunched+=OnLaunch;session.DamageApplied+=OnMonsterHit;session.CombatStarted+=OnCombatStarted;session.RoundCompleted+=OnRoundCompleted;session.VictoryReached+=OnVictoryReached;}}
-    void OnEnable(){Subscribe();}
-    void Unsubscribe(){if(session!=null){session.ProjectileLaunched-=OnLaunch;session.DamageApplied-=OnMonsterHit;session.CombatStarted-=OnCombatStarted;session.RoundCompleted-=OnRoundCompleted;session.VictoryReached-=OnVictoryReached;}}
-    void OnDisable(){Unsubscribe();foreach(var voice in voices)if(voice!=null)voice.Stop();}
+    void Subscribe(){if(session!=null){session.ProjectileLaunched+=OnLaunch;session.AttackLaunched+=OnAttackLaunched;session.DefeatReached+=OnDefeatReached;session.DamageApplied+=OnMonsterHit;session.CombatStarted+=OnCombatStarted;session.RoundCompleted+=OnRoundCompleted;session.VictoryReached+=OnVictoryReached;}}
+    void OnEnable(){Subscribe();if(music!=null)music.enabled=true;}
+    void Unsubscribe(){if(session!=null){session.ProjectileLaunched-=OnLaunch;session.AttackLaunched-=OnAttackLaunched;session.DefeatReached-=OnDefeatReached;session.DamageApplied-=OnMonsterHit;session.CombatStarted-=OnCombatStarted;session.RoundCompleted-=OnRoundCompleted;session.VictoryReached-=OnVictoryReached;}}
+    void OnDisable(){Unsubscribe();foreach(var voice in voices)if(voice!=null)voice.Stop();if(music!=null)music.enabled=false;}
     void OnDestroy(){PlayerPrefs.Save();}
     void OnApplicationPause(bool paused){if(paused)PlayerPrefs.Save();}
-    void Update(){foreach(var voice in voices)if(voice!=null)voice.volume=CoreGuardianSoundSettings.Volume*ShotGain;}
+    void Update(){for(int i=0;i<voices.Length;i++)if(voices[i]!=null)voices[i].volume=voiceCues[i]?.Volume??CoreGuardianSoundSettings.Volume*ShotGain;}
     void OnLaunch(ProjectileState projectile)
     {
         if(projectile==null||session==null||projectile.Source==null)return;
@@ -94,13 +100,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         if(!int.TryParse(projectile.Source.Substring(6),out int id))return;
         var tower=session.Towers.FirstOrDefault(t=>t.Id==id);
         if(tower==null)return;
-        if(tower.Kind==TowerKind.Multi)
-        {
-            // One clip already contains all three barrel pulses. Coalesce targets per tower.
-            if(nextMultiShots.TryGetValue(id,out var next)&&Time.unscaledTime<next){DroppedCount++;return;}
-            if(PreviewMulti())nextMultiShots[id]=Time.unscaledTime+.035f;
-            return;
-        }
+        if(tower.Kind==TowerKind.Multi)return; // AttackLaunched supplies one exact count per volley.
         if(tower.Kind!=TowerKind.Single)return;
         if(Time.unscaledTime<nextShot){DroppedCount++;return;}
         if(Preview())nextShot=Time.unscaledTime+.035f;
@@ -111,6 +111,19 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     public bool PreviewPlayer()=>PlayClip(playerClip);
     public bool PreviewMulti()=>PlayClip(multiClip);
+    void OnAttackLaunched(string source,int count)
+    {
+        if(count<1||source==null||!source.StartsWith("Tower:")||!int.TryParse(source.Substring(6),out int id))return;
+        var tower=session.Towers.FirstOrDefault(t=>t.Id==id);
+        if(tower==null||tower.Kind!=TowerKind.Multi)return;
+        if(PlayCue("multi_"+Mathf.Clamp(count,1,3))){MultiVolleyPlayedCount++;LastMultiShotCount=Mathf.Clamp(count,1,3);}
+    }
+    public bool PlayCue(string id)
+    {
+        var cue=CoreGuardianAudioCatalog.Find(id);
+        return cue!=null&&cue.Category!=CoreGuardianAudioCategory.Music&&PlayClip(cue.Clip,cue.important,cue.protectCore);
+    }
+    void OnDefeatReached(){if(PlayCue("defeat"))DefeatPlayedCount++;}
     public bool PreviewCoreDamage()=>PlayClip(coreDamageClip,true);
     void OnCombatStarted()
     {
@@ -174,13 +187,24 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     }
     bool PlayClip(AudioClip clip,bool important=false,bool protectCore=false)
     {
-        if(!isActiveAndEnabled||CoreGuardianSoundSettings.Volume<=0||clip==null)return false;
+        if(!isActiveAndEnabled||clip==null)return false;
+        var cue=CoreGuardianAudioCatalog.ForClip(clip);
+        if(cue==null||cue.Volume<=0)return false;
         var voice=voices.FirstOrDefault(v=>v!=null&&!v.isPlaying);
         // Core danger remains audible when attacks occupy the bounded pool.
-        if(voice==null&&important){voice=protectCore?voices.FirstOrDefault(v=>v!=null&&v.clip!=coreDamageClip):voices[0];if(voice!=null)voice.Stop();}
+        if(voice==null&&important)
+        {
+            // A following core arrival/UI cue cannot erase terminal victory or defeat.
+            int index=Enumerable.Range(0,voices.Length)
+                .Where(i=>voices[i]!=null&&(!protectCore||voices[i].clip!=coreDamageClip)&&(voiceCues[i]?.priority??0)<=cue.priority)
+                .OrderBy(i=>voiceCues[i]?.priority??0).DefaultIfEmpty(-1).First();
+            if(index>=0){voice=voices[index];voice.Stop();}
+        }
         if(voice==null){DroppedCount++;return false;}
         voice.clip=clip;
-        voice.volume=CoreGuardianSoundSettings.Volume*ShotGain;
+        voiceCues[System.Array.IndexOf(voices,voice)]=cue;
+        voice.volume=cue.Volume;
+        if(important&&music!=null)music.Duck(Mathf.Min(clip.length,.8f));
         voice.Play();PlayedCount++;return true;
     }
 }

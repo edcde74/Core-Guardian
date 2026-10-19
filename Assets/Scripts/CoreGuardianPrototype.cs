@@ -185,9 +185,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public void ChooseTower(TowerKind kind)
     {
         CancelInstall();
-        if(Session.Phase!=SessionPhase.Preparation){Notify("전투 중에는 설치할 수 없습니다.");return;}
-        if(Session.Crystals<Session.Data.Towers[kind].Cost){Notify("수정 부족 · 필요 "+Session.Data.Towers[kind].Cost+"수정");return;}
-        if(kind==TowerKind.Support&&!Session.Towers.Any(t=>t.Kind!=TowerKind.Support)){Notify("공격 포탑을 먼저 설치하세요.");return;}
+        if(Session.Phase!=SessionPhase.Preparation){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("전투 중에는 설치할 수 없습니다.");return;}
+        if(Session.Crystals<Session.Data.Towers[kind].Cost){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("수정 부족 · 필요 "+Session.Data.Towers[kind].Cost+"수정");return;}
+        if(kind==TowerKind.Support&&!Session.Towers.Any(t=>t.Kind!=TowerKind.Support)){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("공격 포탑을 먼저 설치하세요.");return;}
         Installing=kind;
         ghost=Instantiate(towerArt[(int)kind]);ghost.name="TowerPlacementPreview";
         var shadow=ghost.transform.Find("그림자");if(shadow!=null)shadow.gameObject.SetActive(false);
@@ -213,9 +213,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     }
     public bool Place(TowerKind kind,Vector2Int cell)
     {
-        if(!CanInstall(cell)){Notify("이 칸에는 설치할 수 없습니다.");return false;}
+        if(!CanInstall(cell)){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("이 칸에는 설치할 수 없습니다.");return false;}
         string reason;var tower=Session.TryInstall(kind,cell,out reason);
-        if(tower==null){Notify(reason);return false;}
+        if(tower==null){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify(reason);return false;}
         occupied.SetTile(new Vector3Int(cell.x,cell.y,0),occupiedTile);
         GetComponent<CoreGuardianCombatAudio>()?.NotifyTowerInstalled();
         SelectedTower=tower.Id;CancelInstall();Notify("포탑 설치 완료");SynchronizeViews();return true;
@@ -224,7 +224,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public void DestroySelected()
     {
         var t=Session.Towers.FirstOrDefault(x=>x.Id==SelectedTower);if(t==null)return;
-        var pos=t.Position;Session.DestroyTower(t.Id);occupied.SetTile(new Vector3Int(pos.x,pos.y,0),null);
+        var pos=t.Position;if(!Session.DestroyTower(t.Id))return;occupied.SetTile(new Vector3Int(pos.x,pos.y,0),null);
+        GetComponent<CoreGuardianCombatAudio>()?.PlayCue("demolish");
         SelectedTower=-1;SynchronizeViews();Notify(Session.LastMessage);
     }
     public void UpgradePlayer(string stat)

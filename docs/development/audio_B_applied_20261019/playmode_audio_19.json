@@ -1,0 +1,146 @@
+{
+  "status": "completed",
+  "duration": 9.04,
+  "summary": {
+    "total": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.BossHalfHealthPlaysSpeedUpOnceAndNeverOnLethalDamage",
+      "Status": "Passed",
+      "Duration": 0.5440439,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.BossViewAppearsWithEncounterOnceAndRespectsMuteAndCorePriority",
+      "Status": "Passed",
+      "Duration": 0.2250969,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.CombatStartUsesConfirmationForManualAndTimeoutWithoutReplaying",
+      "Status": "Passed",
+      "Duration": 0.2214223,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.CoreArrivalPlaysSelectedGlyphAndHonorsMuteCooldownAndFullPool",
+      "Status": "Passed",
+      "Duration": 0.5567008,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.FinalVictoryPlaysSelectedSteelOnceAndExcludesOrdinaryDiagnosticAndDefeat",
+      "Status": "Passed",
+      "Duration": 0.1924676,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.MonsterDeathsReplaceLethalHitAndIgnoreCoreExitsMuteAndRepeatedDamage",
+      "Status": "Passed",
+      "Duration": 0.3128323,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.MonsterHitsUseSelectedClipAndBoundOverlapWithoutChangingDamage",
+      "Status": "Passed",
+      "Duration": 0.4169205,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.RealSingleTowerLaunchesAndDeveloperControlsRespectMuteAndVoiceLimit",
+      "Status": "Passed",
+      "Duration": 1.7956413,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.RoundCompletionPlaysOnceForPreparationAndAugmentationButNotFinalResults",
+      "Status": "Passed",
+      "Duration": 0.1776914,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.TowerInstallationUsesUnequipOnlyOnSuccessfulPlacement",
+      "Status": "Passed",
+      "Duration": 0.2217302,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.UpgradeFailureUsesError006WithoutSpendingCurrencyOrShowingSuccessScan",
+      "Status": "Passed",
+      "Duration": 1.0649968,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianCombatAudioPlayModeTests.UpgradeSuccessUsesConfirmationOnlyAfterSuccessfulPurchaseAndKeepsScan",
+      "Status": "Passed",
+      "Duration": 0.188353,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectedAudioPlayModeTests.ActualMultiVolleysUseExactlyOneMatchingOneTwoOrThreeShotClipWithSupportSilent",
+      "Status": "Passed",
+      "Duration": 0.1946846,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectedAudioPlayModeTests.DefeatIsOneTerminalCueAndMutedDefeatNeverReplaysOnUnmute",
+      "Status": "Passed",
+      "Duration": 0.1698176,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectedAudioPlayModeTests.EachCardGradeUsesItsSelectedFileAndRevealOnlyPlaysOnce",
+      "Status": "Passed",
+      "Duration": 0.1829472,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectedAudioPlayModeTests.LiveCategoryChangesOnlyAffectTheirOwnVoicesAndMasterStillMutesEverything",
+      "Status": "Passed",
+      "Duration": 0.1755592,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectedAudioPlayModeTests.MusicCrossfadesAtRealAugmentationAndReturnsThenStopsAtFinalVictory",
+      "Status": "Passed",
+      "Duration": 1.9759426,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectedAudioPlayModeTests.RealPlacementFailureDemolitionAndEscapeUseTheirSeparateCues",
+      "Status": "Passed",
+      "Duration": 0.1907842,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectedAudioPlayModeTests.TerminalDefeatSurvivesTheAdaptersFollowingCoreDamageWhenEffectsPoolIsFull",
+      "Status": "Passed",
+      "Duration": 0.1743661,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

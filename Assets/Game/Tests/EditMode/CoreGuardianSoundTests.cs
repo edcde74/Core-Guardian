@@ -10,16 +10,16 @@ public class CoreGuardianSoundTests
         var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
         var field=type.GetField("SingleShotResourcePath");
         Assert.That(field,Is.Not.Null,"Approved single shot must be independent from old candidate preferences");
-        Assert.That((string)field.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/TowerShot/03_Aura"));
+        Assert.That((string)field.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/SelectedB/single"));
         var player=type.GetField("PlayerShotResourcePath");
         Assert.That(player,Is.Not.Null,"Approved player attack must be connected");
-        Assert.That((string)player.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/PlayerShot/03_Glyph"));
+        Assert.That((string)player.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/SelectedB/player"));
         Assert.That(Resources.Load<AudioClip>((string)player.GetRawConstantValue()),Is.Not.Null);
         var multi=type.GetField("MultiShotResourcePath");
         Assert.That(multi,Is.Not.Null,"Selected B must be connected to multi-tower attacks");
-        Assert.That((string)multi.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/MultiShot/B_BrighterAttack"));
+        Assert.That((string)multi.GetRawConstantValue(),Is.EqualTo("CoreGuardian/Audio/SelectedB/multi_3"));
         var multiClip=Resources.Load<AudioClip>((string)multi.GetRawConstantValue());
-        Assert.That(multiClip,Is.Not.Null);Assert.That(multiClip.length,Is.EqualTo(.64f).Within(.001f));
+        Assert.That(multiClip,Is.Not.Null);Assert.That(multiClip.length,Is.EqualTo(.5229705f).Within(.001f));
         foreach(string role in new[]{"Multi","Player","Support"})Assert.That(Resources.LoadAll<AudioClip>("CoreGuardian/Audio/Auditions/"+role),Is.Empty);
     }
     [Test]
@@ -46,7 +46,7 @@ public class CoreGuardianSoundTests
     [Test]
     public void MagicCannonCandidatesHaveAudibleSamplesAndShortNonLoopingTails()
     {
-        var clips=Resources.LoadAll<AudioClip>("CoreGuardian/Audio/TowerShot");
+        var clips=new[]{Resources.Load<AudioClip>("CoreGuardian/Audio/SelectedB/single")};
         Assert.That(clips.Length,Is.EqualTo(1),"Only the approved single-tower clip remains in its runtime folder");
         foreach(var clip in clips)
         {

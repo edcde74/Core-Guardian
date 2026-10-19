@@ -40,7 +40,7 @@ public sealed partial class CoreGuardianHud
         // Augmentation disables ordinary buttons, including inactive handles. Restore on the
         // next refresh before modal gating is applied again, just like the normal Button helper.
         refresh.Add(()=>b.interactable=true);
-        b.onClick.AddListener(()=>{action();Refresh();});
+        b.onClick.AddListener(()=>{if(!b.interactable)return;game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue("ui_click");action();Refresh();});
         return r;
     }
     void SetTopCompact(bool compact)
@@ -63,7 +63,7 @@ public sealed partial class CoreGuardianHud
     }
     void BuildDeveloperMenu()
     {
-        Button("DeveloperMenu",canvas,new Vector2(16,-14),new Vector2(150,48),()=>"개발 도구",()=>developerOpen=!developerOpen);
+        Button("DeveloperMenu",canvas,new Vector2(16,-14),new Vector2(150,48),()=>"개발 도구",()=>{developerOpen=!developerOpen;game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue(developerOpen?"ui_open":"ui_close");});
         // Keep legacy object names for diagnostic scripts; only the menu exposes them now.
         var debug=canvas.Find("PrototypeActions") as RectTransform;debug.anchoredPosition=new Vector2(16,-72);
         var reload=canvas.Find("Reload") as RectTransform;reload.anchorMin=reload.anchorMax=reload.pivot=new Vector2(0,1);reload.anchoredPosition=new Vector2(32,-168);
@@ -114,6 +114,7 @@ public sealed partial class CoreGuardianHud
     {
         if(game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation||buy&&!CanBuyPlayer)return;
         bool same=toggle&&inspectorSubject==InspectorSubject.Player&&inspectorOpen&&purchaseOpen==buy;
+        if(same||!inspectorOpen||inspectorSubject!=InspectorSubject.Player)game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue(same?"ui_close":"ui_open");
         ReleaseInspection();
         installOpen=false;installPanel.gameObject.SetActive(false);
         if(!same){inspectorSubject=InspectorSubject.Player;inspectorOpen=true;purchaseOpen=buy;}
@@ -122,6 +123,7 @@ public sealed partial class CoreGuardianHud
     public void OpenSelectedTowerSpecs()
     {
         if(Selected()==null||game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return;
+        if(!inspectorOpen||inspectorSubject!=InspectorSubject.Tower||lastTower!=game.SelectedTower)game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue("ui_open");
         installOpen=false;installPanel.gameObject.SetActive(false);lastTower=game.SelectedTower;
         inspectorSubject=InspectorSubject.Tower;inspectorOpen=true;purchaseOpen=false;Refresh();
     }
@@ -130,6 +132,7 @@ public sealed partial class CoreGuardianHud
     {
         if(game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return false;
         if(!installOpen&&!inspectorOpen)return false;
+        game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue("ui_close");
         installOpen=false;installPanel.gameObject.SetActive(false);ReleaseInspection();
         if(UnityEngine.EventSystems.EventSystem.current!=null)UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
         Refresh();return true;

@@ -121,7 +121,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     UnityEngine.UI.Button Button(string name,Transform parent,Vector2 position,Vector2 size,Func<string> label,Action action,Func<bool> enabled=null)
     {
         var r=Box(name,parent,new Vector2(0,1),position,size);CoreGuardianHudSkin.Frame(r.GetComponent<UnityEngine.UI.Image>(),"Button");
-        var b=r.gameObject.AddComponent<UnityEngine.UI.Button>();b.onClick.AddListener(()=>action());
+        var b=r.gameObject.AddComponent<UnityEngine.UI.Button>();b.onClick.AddListener(()=>{if(!b.interactable)return;if(!name.StartsWith("Preview"))game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue("ui_click");action();});
         bool towerChoice=name.StartsWith("Install_")||name=="공격 포탑"||name=="지원 포탑";
         float iconSize=Mathf.Min(towerChoice?40:30,size.y-24);CoreGuardianHudSkin.Icon(r,CoreGuardianHudSkin.Symbol(name),new Vector2(16,-(size.y-iconSize)/2),new Vector2(iconSize,iconSize));
         float verticalInset=size.y<=48?8:16;
@@ -237,6 +237,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     void SetInstallPanelOpen(bool open)
     {
         open=open&&game.Session.Phase==SessionPhase.Preparation;
+        if(open!=installOpen)game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue(open?"ui_open":"ui_close");
         if(open)ReleaseInspection();
         // Every new opening starts at categories; folding changes only panel visibility.
         if(open&&!installOpen)BuildInstallCategories();
@@ -274,6 +275,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     public bool CancelInstallation()
     {
         if(!game.Installing.HasValue&&!installOpen)return false;
+        game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue("cancel_install");
         game.CancelInstall();installOpen=false;installPanel.gameObject.SetActive(false);
         if(EventSystem.current!=null)EventSystem.current.SetSelectedGameObject(null);
         game.Notify("포탑 설치 취소");return true;
