@@ -54,8 +54,32 @@ public class CoreGuardianSessionTests
     }
     [Test] public void PlayerPricesHaveIncreasingIncrementAndIndependentStats()
     {
-        var d=Data();Assert.That(Enumerable.Range(1,6).Select(d.PlayerUpgradePrice),Is.EqualTo(new[]{100,140,190,250,320,400}));
-        var s=Game();s.StartDiagnosticEncounter();string reason;Assert.That(s.UpgradePlayer("damage",out reason),Is.True);Assert.That(s.PlayerUpgradePrice("damage"),Is.EqualTo(140));Assert.That(s.PlayerUpgradePrice("range"),Is.EqualTo(100));
+        var d=Data();Assert.That(Enumerable.Range(1,6).Select(d.PlayerUpgradePrice),Is.EqualTo(new[]{80,140,190,250,320,400}));
+        var s=Game();s.StartDiagnosticEncounter();string reason;Assert.That(s.UpgradePlayer("damage",out reason),Is.True);Assert.That(s.PlayerUpgradePrice("damage"),Is.EqualTo(140));Assert.That(s.PlayerUpgradePrice("range"),Is.EqualTo(80));
+    }
+    [Test] public void FirstGrowthBudgetUnlocksPlayerAndTowerAfterTwoRounds()
+    {
+        // Functional affordability fixture, not a simulated or measured combat run.
+        var d=Data();d.StartGold=d.Waves.Where(w=>w.Wave<=2).Sum(w=>w.Count*d.Enemies[w.Kind].Gold);
+        d.StartCrystals=d.Towers[TowerKind.Single].Cost+d.RewardForWave(1)+d.RewardForWave(2);
+        var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});
+        string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);
+        Assert.That(s.Gold,Is.EqualTo(93));Assert.That(s.Crystals,Is.EqualTo(40));
+        Assert.That(s.UpgradePlayer("damage",out reason),Is.True,reason);Assert.That(s.Gold,Is.EqualTo(13));
+        Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.True,reason);Assert.That(s.Crystals,Is.Zero);
+        Assert.That(s.TowerUpgradePrice(t.Id,"damage"),Is.EqualTo(100));
+        Assert.That(s.TowerUpgradePrice(t.Id,"range"),Is.EqualTo(40));
+        Assert.That(s.UpgradeTower(t.Id,"range",out reason),Is.False,"Insufficient crystals must still reject a purchase");
+    }
+    [Test] public void FirstGrowthDiscountsAreOptionalAndCannotMakeUpgradesFree()
+    {
+        var oldStage=string.Join("\n",Csv("stage").Replace("\r","").Split('\n').Where(l=>!l.StartsWith("playerFirstUpgradeDiscount,")&&!l.StartsWith("towerFirstUpgradeDiscount,")));
+        var legacy=CombatData.Load(Csv("enemies"),Csv("towers"),oldStage,Csv("upgrades"),Csv("waves"));
+        Assert.That(legacy.PlayerUpgradePrice(1),Is.EqualTo(100));
+        var s=new Session(legacy);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});
+        string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);Assert.That(s.TowerUpgradePrice(t.Id,"damage"),Is.EqualTo(80));
+        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),oldStage+"\nplayerFirstUpgradeDiscount,100",Csv("upgrades"),Csv("waves")));
+        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),oldStage+"\ntowerFirstUpgradeDiscount,80",Csv("upgrades"),Csv("waves")));
     }
     [Test] public void TimeoutStartsCombatWithoutTowerAndCurrencyStartsCorrectly()
     {
@@ -68,7 +92,7 @@ public class CoreGuardianSessionTests
     }
     [Test] public void RefundIncludesActualUpgradesOnce()
     {
-        var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(t.Spent,Is.EqualTo(280));int before=s.Crystals;s.DestroyTower(t.Id);Assert.That(s.Crystals-before,Is.EqualTo(140));Assert.That(s.DestroyTower(t.Id),Is.False);
+        var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(t.Spent,Is.EqualTo(240));int before=s.Crystals;s.DestroyTower(t.Id);Assert.That(s.Crystals-before,Is.EqualTo(120));Assert.That(s.DestroyTower(t.Id),Is.False);
     }
     [Test] public void KillGoldAndActualDamageAreAccountedOnceWithoutOverkill()
     {

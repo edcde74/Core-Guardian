@@ -1,0 +1,188 @@
+{
+  "utc": "2026-10-19T11:22:00.8416756Z",
+  "play": false,
+  "paused": false,
+  "compiling": false,
+  "scenes": [
+    {
+      "path": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "isDirty": false,
+      "isLoaded": true
+    }
+  ],
+  "board": "(39, 22)",
+  "core": "(25, 8)",
+  "route": [
+    "(0, 10)",
+    "(10, 10)",
+    "(10, 16)",
+    "(30, 16)",
+    "(30, 5)",
+    "(15, 5)",
+    "(15, 10)",
+    "(25, 10)",
+    "(25, 8)"
+  ],
+  "grid": "(0.69, 0.69, 1.00)",
+  "refs": [
+    {
+      "path": "Assets/Resources/CoreGuardian/enemies.csv",
+      "sha": "8336089CD38238F504F15069E74E0D8CCD286D088B50697387EDE8CB3DE22B08"
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/towers.csv",
+      "sha": "C61ECAC3BC4A887D41E000E387F72C23F5F3529D2655A0F82EFBC8C92DE0DF19"
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/stage.csv",
+      "sha": "74CD7B793A29368A672D465D0E3B07A4EED78853590E1DBB252EB2686826EEB6"
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/upgrades.csv",
+      "sha": "5409F2A458E280E7699C5326C8642F32B613850125D3B83443583BAB827BFB12"
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/waves.csv",
+      "sha": "BF3CA74E0E3D03076B717431BD082EC439F8134DC06FBB259BA1CD3099CB8539"
+    }
+  ],
+  "CoreEnergy": 20,
+  "StartGold": 0,
+  "StartCrystals": 100,
+  "PlayerFirstUpgradeDiscount": 20,
+  "TowerFirstUpgradeDiscount": 40,
+  "playerPrices": [
+    80,
+    140,
+    190,
+    250,
+    320,
+    400
+  ],
+  "attack": 27,
+  "rounds": [
+    {
+      "wave": 1,
+      "count": 15,
+      "hp": 405,
+      "gold": 45,
+      "reward": 20,
+      "last": 22.68
+    },
+    {
+      "wave": 2,
+      "count": 16,
+      "hp": 432,
+      "gold": 48,
+      "reward": 20,
+      "last": 22.95
+    },
+    {
+      "wave": 3,
+      "count": 16,
+      "hp": 478,
+      "gold": 50,
+      "reward": 20,
+      "last": 25.5
+    },
+    {
+      "wave": 4,
+      "count": 17,
+      "hp": 528,
+      "gold": 54,
+      "reward": 20,
+      "last": 25.6
+    },
+    {
+      "wave": 5,
+      "count": 17,
+      "hp": 551,
+      "gold": 55,
+      "reward": 25,
+      "last": 25.6
+    },
+    {
+      "wave": 6,
+      "count": 18,
+      "hp": 581,
+      "gold": 61,
+      "reward": 25,
+      "last": 25.5
+    },
+    {
+      "wave": 7,
+      "count": 18,
+      "hp": 581,
+      "gold": 61,
+      "reward": 25,
+      "last": 24.65
+    },
+    {
+      "wave": 8,
+      "count": 19,
+      "hp": 631,
+      "gold": 65,
+      "reward": 25,
+      "last": 24.3
+    },
+    {
+      "wave": 9,
+      "count": 20,
+      "hp": 661,
+      "gold": 71,
+      "reward": 25,
+      "last": 22.8
+    },
+    {
+      "wave": 10,
+      "count": 15,
+      "hp": 750,
+      "gold": 168,
+      "reward": 35,
+      "last": 16.5
+    },
+    {
+      "wave": 11,
+      "count": 21,
+      "hp": 688,
+      "gold": 74,
+      "reward": 30,
+      "last": 16.5
+    }
+  ],
+  "volume": 0.1084202,
+  "categories": [
+    {
+      "category": "Music",
+      "volume": 1.0,
+      "hasKey": false
+    },
+    {
+      "category": "Tower",
+      "volume": 1.0,
+      "hasKey": false
+    },
+    {
+      "category": "Player",
+      "volume": 1.0,
+      "hasKey": false
+    },
+    {
+      "category": "MonsterCore",
+      "volume": 1.0,
+      "hasKey": false
+    },
+    {
+      "category": "UI",
+      "volume": 1.0,
+      "hasKey": false
+    },
+    {
+      "category": "Progress",
+      "volume": 1.0,
+      "hasKey": false
+    }
+  ],
+  "timeScale": 1.0,
+  "captureDelta": 0.0
+}

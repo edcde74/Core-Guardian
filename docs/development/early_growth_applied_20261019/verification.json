@@ -1,0 +1,22 @@
+{
+  "asset_files": 1305,
+  "changed_only": [
+    "Assets/Game/Scripts/CoreGuardian/CombatData.cs",
+    "Assets/Game/Scripts/CoreGuardian/Session.cs",
+    "Assets/Game/Tests/EditMode/CoreGuardianSessionTests.cs",
+    "Assets/Resources/CoreGuardian/stage.csv"
+  ],
+  "unchanged": 1301,
+  "play_failed_already_recorded": [
+    "CoreGuardianAnimationPlayModeTests.ActualLaunch_PreservesOriginalPlayerSprite_AndDoesNotUseRejectedMuzzle",
+    "CoreGuardianHitFlashPlayModeTests.RealProjectileDamageFlashesTheSurvivingMonster_WithoutChangingExistingFeedback",
+    "CoreGuardianPlacementHudPlayModeTests.FailedPlacementStaysFocused_AndSuccessfulPlacementRestoresHud",
+    "CoreGuardianPlayerFacingPlayModeTests.NormalGridStepsDriveOriginalLegs_AndActualLaunchStartsAtTheAimedTool",
+    "CoreGuardianRuntimePlayModeTests.ActualScene_WaveOneCombatAwardsGoldAndKeepsPrefabFeetAnchored",
+    "CoreGuardianRuntimePlayModeTests.PlayerCellTower_ManualDeparture_AndReentryBlocked"
+  ],
+  "additional_failure": [
+    "CoreGuardianAnimationPlayModeTests.OriginalTowerSpritesAndTransformsRemainExact_WhileEnemyDirectionsStillWork"
+  ],
+  "baseline_reruns_zero_tests_not_pass": true
+}

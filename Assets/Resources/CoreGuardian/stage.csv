@@ -16,6 +16,8 @@ playerRate,1
 playerRange,3
 playerProjectileSpeed,6
 playerFirstCost,100
+playerFirstUpgradeDiscount,20
+towerFirstUpgradeDiscount,40
 playerSecondIncrease,40
 playerIncreaseStep,10
 diagnosticGold,1000
