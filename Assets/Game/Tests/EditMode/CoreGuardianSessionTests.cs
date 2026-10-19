@@ -102,6 +102,20 @@ public class CoreGuardianSessionTests
     {
         var s=Game();s.StartCombat();s.DebugSpawn(EnemyKind.Attack,9.99f);s.Tick(.1f,Away);Assert.That(s.CoreEnergy,Is.EqualTo(18));Assert.That(s.Gold,Is.Zero);s.Tick(1,Away);Assert.That(s.CoreEnergy,Is.EqualTo(18));
     }
+    [Test] public void HordeAfterTwoCompressesSpawnsWithoutChangingCountsOrIntro()
+    {
+        var d=Data();Assert.That(d.Waves.Where(w=>w.Wave==1).Max(w=>w.Start+(w.Count-1)*w.Interval),Is.EqualTo(22.68f).Within(.01f));
+        Assert.That(d.Waves.Where(w=>w.Wave==2).Max(w=>w.Start+(w.Count-1)*w.Interval),Is.EqualTo(22.95f).Within(.01f));
+        int[] counts={16,17,17,18,18,19,20};int[] gold={50,54,55,61,61,65,71};
+        for(int wave=3;wave<=9;wave++)
+        {
+            var rows=d.Waves.Where(w=>w.Wave==wave).OrderBy(w=>w.Start).ToArray();
+            Assert.That(rows.Sum(w=>w.Count),Is.EqualTo(counts[wave-3]));Assert.That(rows.Sum(w=>w.Count*d.Enemies[w.Kind].Gold),Is.EqualTo(gold[wave-3]));
+            Assert.That(rows.Last().Start,Is.LessThanOrEqualTo(15.21f),"Spawn pressure must be substantially denser after round 2");
+        }
+        Assert.That(d.Waves.Single(w=>w.Wave==11&&w.Kind==EnemyKind.Attack).Interval,Is.EqualTo(1.1f));
+        Assert.That(d.Waves.Single(w=>w.Wave==10&&w.Kind==EnemyKind.Boss).Start,Is.EqualTo(.75f));
+    }
     [Test] public void BossScreenWaveTenSpawnsThreeQuickShieldsBeforeBoss()
     {
         var d=Data();var schedule=d.Waves.Where(w=>w.Wave==10).ToArray();

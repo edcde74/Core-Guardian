@@ -1,0 +1,19 @@
+{
+  "assets": 1305,
+  "changed_only": [
+    "Assets/Scripts/CoreGuardianHud.cs",
+    "Assets/Scripts/CoreGuardianPrototype.cs",
+    "Assets/Game/Tests/EditMode/CoreGuardianSessionTests.cs",
+    "Assets/Game/Tests/PlayMode/CoreGuardianRuntimePlayModeTests.cs",
+    "Assets/Resources/CoreGuardian/waves.csv"
+  ],
+  "unchanged": 1300,
+  "counts_kinds_ids_preserved": true,
+  "rounds1_2_11_and_boss_screen_preserved": true,
+  "first_two_simulation_rounds_identical": true,
+  "simulation_conditions": 12,
+  "seeds": [
+    20261020
+  ],
+  "scene_play_is_injected_functional_QA_not_balance": true
+}

@@ -12,6 +12,68 @@ public class CoreGuardianRuntimePlayModeTests
 {
     static UnityEngine.UI.Button HudButton(UnityEngine.Object runtime,string name)=>((Component)runtime).GetComponentsInChildren<UnityEngine.UI.Button>(true).Single(b=>b.name==name);
     [UnityTest]
+    public IEnumerator CombatOnlySpeedRemembersSelectionButUsesOneInPreparationAugmentationAndResults()
+    {
+#if UNITY_EDITOR
+        float previous=Time.timeScale;
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianPrototype")).First(t=>t!=null);
+        var runtime=(Component)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var s=(CoreGuardian.Session)type.GetProperty("Session").GetValue(runtime);
+        try
+        {
+            type.GetMethod("CycleTestSpeed").Invoke(runtime,null);
+            Assert.That((int)type.GetProperty("TestSpeed").GetValue(runtime),Is.EqualTo(2));
+            Assert.That(Time.timeScale,Is.EqualTo(1),"Selecting combat speed must not accelerate preparation");
+            for(int wave=1;wave<=10;wave++)
+            {
+                type.GetMethod("StartCombat").Invoke(runtime,null);Assert.That(Time.timeScale,Is.EqualTo(2));
+                // Injected functional phase QA, not difficulty measurement.
+                for(int i=0;i<1000&&s.Phase==CoreGuardian.SessionPhase.Combat;i++)
+                {s.Tick(.05f,new Vector2(100,100));foreach(var e in s.Enemies.ToArray())s.ApplyDamage(e,10000,"SpeedPhaseQA");}
+                yield return null;Assert.That(Time.timeScale,Is.EqualTo(1));
+            }
+            Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Augmentation));
+            type.GetMethod("CycleTestSpeed").Invoke(runtime,null);Assert.That(Time.timeScale,Is.EqualTo(1));
+            float remaining=s.AugmentationRemaining;yield return new WaitForSecondsRealtime(.3f);
+            Assert.That(remaining-s.AugmentationRemaining,Is.InRange(.2f,.55f),"Augmentation timer must use normal real-time pacing");
+            Assert.That(s.ChooseAugmentation(0),Is.True);yield return null;Assert.That(Time.timeScale,Is.EqualTo(1));
+            type.GetMethod("StartCombat").Invoke(runtime,null);Assert.That(Time.timeScale,Is.EqualTo(3));
+            for(int i=0;i<1000&&s.Phase==CoreGuardian.SessionPhase.Combat;i++)
+            {s.Tick(.05f,new Vector2(100,100));foreach(var e in s.Enemies.ToArray())s.ApplyDamage(e,10000,"SpeedPhaseQA");}
+            yield return null;Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Victory));Assert.That(Time.timeScale,Is.EqualTo(1));
+        }
+        finally{Time.timeScale=previous;}
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
+    public IEnumerator CombatOnlySpeedDefeatResetsAndDefaultExternalPauseIsPreserved()
+    {
+#if UNITY_EDITOR
+        float previous=Time.timeScale;
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianPrototype")).First(t=>t!=null);
+        var runtime=(Component)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var s=(CoreGuardian.Session)type.GetProperty("Session").GetValue(runtime);
+        try
+        {
+            Time.timeScale=0;yield return null;Assert.That(Time.timeScale,Is.Zero,"The default speed must not override an external QA pause");
+            type.GetMethod("CycleTestSpeed").Invoke(runtime,null);Assert.That(Time.timeScale,Is.EqualTo(1));
+            type.GetMethod("StartCombat").Invoke(runtime,null);Assert.That(Time.timeScale,Is.EqualTo(2));
+            // Injected terminal-state QA, never a balance result.
+            s.DebugSpawn(CoreGuardian.EnemyKind.Boss,1000);s.DebugSpawn(CoreGuardian.EnemyKind.Boss,1000);s.Tick(.05f,new Vector2(100,100));
+            Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Defeat));yield return null;Assert.That(Time.timeScale,Is.EqualTo(1));
+        }
+        finally{Time.timeScale=previous;}
+#else
+        yield return null;
+#endif
+    }
+    [UnityTest]
     public IEnumerator ActualScene_ElevenRoundsKeepTowerAndHud_ThenRestartResetsSession()
     {
 #if UNITY_EDITOR

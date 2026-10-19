@@ -100,7 +100,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     {
         if(!Ready)return;
         var phase=Session.Phase;
+        SyncTestSpeed();
         Session.Tick(Time.deltaTime,PlayerTile());
+        SyncTestSpeed();
         if(Installing.HasValue&&Session.Phase!=SessionPhase.Preparation)CancelInstall();
         player.enabled=Session.Phase!=SessionPhase.Augmentation;
         if(Session.Gold>previousGold){ Feedback="+"+(Session.Gold-previousGold)+" 골드 획득";notificationUntil=Time.unscaledTime+2; }
@@ -241,22 +243,28 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         else GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeFailed();
         Notify(reason);
     }
-    public void StartCombat(){CancelInstall();Session.StartCombat();Notify(Session.LastMessage);}
+    public void StartCombat(){CancelInstall();Session.StartCombat();SyncTestSpeed();Notify(Session.LastMessage);}
     public void Diagnostic()
     {
         hud.ClearDamageNumbers();
         upgradeFeedback.Clear();
         combatArt.ClearEffects();
         CancelInstall();Session.StartDiagnosticEncounter();SelectedTower=-1;previousGold=Session.Gold;previousCore=Session.CoreEnergy;
+        SyncTestSpeed();
         occupied.ClearAllTiles();foreach(var t in Session.Towers)occupied.SetTile(new Vector3Int(t.Position.x,t.Position.y,0),occupiedTile);
         SynchronizeViews();Notify("역할 검증 모드 — 정식 라운드 편성·재화와 별도");
     }
     public int TestSpeed {get;private set;}=1;
+    void SyncTestSpeed(bool force=false)
+    {
+        // An external QA pause/clock at default speed is not owned by this button.
+        if(force||TestSpeed!=1)Time.timeScale=Ready&&Session.Phase==SessionPhase.Combat?TestSpeed:1;
+    }
     public void CycleTestSpeed()
     {
         TestSpeed=TestSpeed==3?1:TestSpeed+1;
-        Time.timeScale=TestSpeed;
-        Notify("테스트 배속 ×"+TestSpeed+" · 준비/전투/증강 시간 함께 적용");
+        SyncTestSpeed(true);
+        Notify("전투 배속 ×"+TestSpeed+" · 준비/증강/결과는 ×1");
     }
     public void Restart(){if(TestSpeed!=1)Time.timeScale=1;UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);}
     public void Notify(string text){Feedback=string.IsNullOrEmpty(text)?Session.LastMessage:text;notificationUntil=Time.unscaledTime+3;Changed?.Invoke();}

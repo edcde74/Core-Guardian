@@ -150,7 +150,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         var debug=Box("PrototypeActions",canvas,new Vector2(0,1),new Vector2(16,-14),new Vector2(302,88));
         Button("RoleDiagnostic",debug,new Vector2(16,-16),new Vector2(270,56),()=>"3종 역할 검증 / 재설정",()=>game.Diagnostic());
         Button("Reload",canvas,new Vector2(1630,-16),new Vector2(276,56),()=>"처음부터 다시 시작",()=>game.Restart());
-        Button("TestSpeed",canvas,new Vector2(1630,-80),new Vector2(276,48),()=>"테스트 배속 ×"+game.TestSpeed,()=>game.CycleTestSpeed());
+        Button("TestSpeed",canvas,new Vector2(1630,-80),new Vector2(276,48),()=>"전투 배속 ×"+game.TestSpeed,()=>game.CycleTestSpeed());
 
         installPanel=Box("TowerInstallPanel",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(660,328));
         BuildInstallCategories();installPanel.gameObject.SetActive(false);
