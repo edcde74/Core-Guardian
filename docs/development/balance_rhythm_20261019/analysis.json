@@ -1,0 +1,232 @@
+{
+  "evidence": "static affordability plus archived 5x scene Update; no new Play; not human 1x measurement",
+  "assumptions": [
+    "Initial attack tower costs 100 crystals; no demolition, augment, bonus, extra spending",
+    "Gold upper bound requires every enemy killed, including boss in R10",
+    "Crystal completion rewards require round completion; available in next preparation",
+    "Gold purchases allowed during combat; exact threshold timestamp not recorded"
+  ],
+  "focus_player": [
+    {
+      "cost": 100,
+      "cumulative_cost": 100,
+      "earliest_combat_round": 3,
+      "preparation_only_purchase_round": 4
+    },
+    {
+      "cost": 140,
+      "cumulative_cost": 240,
+      "earliest_combat_round": 5,
+      "preparation_only_purchase_round": 6
+    },
+    {
+      "cost": 190,
+      "cumulative_cost": 430,
+      "earliest_combat_round": 8,
+      "preparation_only_purchase_round": 9
+    }
+  ],
+  "split_three_player_stats": [
+    {
+      "cost": 100,
+      "earliest_combat_round": 3
+    },
+    {
+      "cost": 100,
+      "earliest_combat_round": 5
+    },
+    {
+      "cost": 100,
+      "earliest_combat_round": 6
+    }
+  ],
+  "save_for_installations": [
+    1,
+    6,
+    10
+  ],
+  "same_tower_stat_upgrade_rounds": [
+    5,
+    9
+  ],
+  "reference_actions": [
+    {
+      "wave": 1,
+      "kind": "install",
+      "game_seconds": 2.01495957,
+      "cost": 100
+    },
+    {
+      "wave": 4,
+      "kind": "player_upgrade",
+      "game_seconds": 127.18676,
+      "cost": 100
+    },
+    {
+      "wave": 6,
+      "kind": "install",
+      "game_seconds": 214.89505,
+      "cost": 100
+    },
+    {
+      "wave": 6,
+      "kind": "player_upgrade",
+      "game_seconds": 214.89505,
+      "cost": 140
+    },
+    {
+      "wave": 9,
+      "kind": "player_upgrade",
+      "game_seconds": 340.992,
+      "cost": 190
+    },
+    {
+      "wave": 10,
+      "kind": "install",
+      "game_seconds": 424.546326,
+      "cost": 100
+    },
+    {
+      "wave": 11,
+      "kind": "player_upgrade",
+      "game_seconds": 571.1099,
+      "cost": 250
+    }
+  ],
+  "reference_first_augmentation": 541.0973,
+  "reference_first_player_purchase": 127.18676,
+  "reference_first_added_tower": 214.89505,
+  "first_two_combat_seconds_range": [
+    75.08,
+    81.21
+  ],
+  "rounded_threshold_candidates": {
+    "player_by_end_R2_cost_max": 93,
+    "tower_upgrade_by_prep_R3_cost_max": 40,
+    "unchanged_upgrade_cost_requires_R1_R2_crystal_sum_at_least": 80,
+    "unchanged_install_cost_requires_R1_R2_crystal_sum_at_least": 100
+  },
+  "rounds": [
+    {
+      "wave": 1,
+      "kill_gold_upper": 45,
+      "cumulative_gold_upper": 45,
+      "completion_crystals": 20,
+      "cumulative_crystals_after_initial_tower": 20,
+      "last_spawn_seconds": 22.68,
+      "archived_game_seconds_min": 37.2,
+      "archived_game_seconds_max": 39.81,
+      "archived_samples": 8
+    },
+    {
+      "wave": 2,
+      "kill_gold_upper": 48,
+      "cumulative_gold_upper": 93,
+      "completion_crystals": 20,
+      "cumulative_crystals_after_initial_tower": 40,
+      "last_spawn_seconds": 22.95,
+      "archived_game_seconds_min": 37.88,
+      "archived_game_seconds_max": 41.44,
+      "archived_samples": 8
+    },
+    {
+      "wave": 3,
+      "kill_gold_upper": 50,
+      "cumulative_gold_upper": 143,
+      "completion_crystals": 20,
+      "cumulative_crystals_after_initial_tower": 60,
+      "last_spawn_seconds": 25.5,
+      "archived_game_seconds_min": 41.29,
+      "archived_game_seconds_max": 43.97,
+      "archived_samples": 8
+    },
+    {
+      "wave": 4,
+      "kill_gold_upper": 54,
+      "cumulative_gold_upper": 197,
+      "completion_crystals": 20,
+      "cumulative_crystals_after_initial_tower": 80,
+      "last_spawn_seconds": 25.6,
+      "archived_game_seconds_min": 43.15,
+      "archived_game_seconds_max": 44.12,
+      "archived_samples": 8
+    },
+    {
+      "wave": 5,
+      "kill_gold_upper": 55,
+      "cumulative_gold_upper": 252,
+      "completion_crystals": 25,
+      "cumulative_crystals_after_initial_tower": 105,
+      "last_spawn_seconds": 25.6,
+      "archived_game_seconds_min": 42.83,
+      "archived_game_seconds_max": 46.34,
+      "archived_samples": 8
+    },
+    {
+      "wave": 6,
+      "kill_gold_upper": 61,
+      "cumulative_gold_upper": 313,
+      "completion_crystals": 25,
+      "cumulative_crystals_after_initial_tower": 130,
+      "last_spawn_seconds": 25.5,
+      "archived_game_seconds_min": 41.7,
+      "archived_game_seconds_max": 43.93,
+      "archived_samples": 8
+    },
+    {
+      "wave": 7,
+      "kill_gold_upper": 61,
+      "cumulative_gold_upper": 374,
+      "completion_crystals": 25,
+      "cumulative_crystals_after_initial_tower": 155,
+      "last_spawn_seconds": 24.65,
+      "archived_game_seconds_min": 41.44,
+      "archived_game_seconds_max": 42.66,
+      "archived_samples": 8
+    },
+    {
+      "wave": 8,
+      "kill_gold_upper": 65,
+      "cumulative_gold_upper": 439,
+      "completion_crystals": 25,
+      "cumulative_crystals_after_initial_tower": 180,
+      "last_spawn_seconds": 24.3,
+      "archived_game_seconds_min": 41.32,
+      "archived_game_seconds_max": 44.36,
+      "archived_samples": 8
+    },
+    {
+      "wave": 9,
+      "kill_gold_upper": 71,
+      "cumulative_gold_upper": 510,
+      "completion_crystals": 25,
+      "cumulative_crystals_after_initial_tower": 205,
+      "last_spawn_seconds": 22.8,
+      "archived_game_seconds_min": 40.01,
+      "archived_game_seconds_max": 93.84,
+      "archived_samples": 8
+    },
+    {
+      "wave": 10,
+      "kill_gold_upper": 168,
+      "cumulative_gold_upper": 678,
+      "completion_crystals": 35,
+      "cumulative_crystals_after_initial_tower": 240,
+      "last_spawn_seconds": 16.5,
+      "archived_game_seconds_min": 108.22,
+      "archived_game_seconds_max": 130.74,
+      "archived_samples": 8
+    },
+    {
+      "wave": 11,
+      "kill_gold_upper": 74,
+      "cumulative_gold_upper": 752,
+      "completion_crystals": 30,
+      "cumulative_crystals_after_initial_tower": 270,
+      "last_spawn_seconds": 16.5,
+      "archived_game_seconds_min": 71.78,
+      "archived_game_seconds_max": 98.4,
+      "archived_samples": 8
+    }
+  ]
+}

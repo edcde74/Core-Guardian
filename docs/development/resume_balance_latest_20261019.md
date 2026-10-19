@@ -1,7 +1,7 @@
 코어 가디언 밸런싱을 이어서 진행해줘.
 경로: C:\Users\edcde\OneDrive\Desktop\CD
 
-최신 사용자 합의는 1배속 준비·증강 선택 포함 약40분/100R의 어려운 완주/잦은 성장 판단이야. 첫3R·이후5R단위 증강은 비교 후보이며 정확한 지급 배열·수치·보스 관계는 아직 미확정이야. 배속 기능도 미정이야. docs/superpowers/specs/2026-10-19-core-guardian-balance-direction-design.md와 docs/development/balance_direction_20261019/README.md를 먼저 확인해. 기존 Notion 루트/루프/재화/증강4페이지에 역할별로 반영하고 재조회했어. 방향 합의 단계에서는 새 Unity 조회/검사/Play·게임 수치/CSV/씬/음량 변경이 없었어. 다음은 목표에 맞는 비교표이며 아래 기존 반복 제안은 현행 대조용이야. 기존 비용80→60/100→90은 채택하지 않았어.
+최신 사용자 합의는 1배속 준비·증강 선택 포함 약40분/100R의 어려운 완주/잦은 성장 판단이야. 첫3R·이후5R단위 증강은 비교 후보이며 정확한 지급 배열·수치·보스 관계는 아직 미확정이야. 배속 기능도 미정이야. docs/superpowers/specs/2026-10-19-core-guardian-balance-direction-design.md와 docs/development/balance_direction_20261019/README.md를 먼저 확인해. 기존 Notion 루트/루프/재화/증강4페이지에 역할별로 반영하고 재조회했어. 방향 합의 단계에서는 새 Unity 조회/검사/Play·게임 수치/CSV/씬/음량 변경이 없었어. 현행 비교표는 docs/development/balance_rhythm_20261019/README.md에 정리했어. 현재 씬참조/로더와 기존8회5CSV해시일치를 새 읽기 조회로 확인했지만 새Play/기능검사는 없었어. 첫 강화3R전투/포탑강화5R준비/추가설치6R준비가 정적 경계야. 다음은 첫 성장 목표 시점과 한 변수 대조안이며 아래 기존 반복 제안은 현행 대조용이야. 기존 비용80→60/100→90은 채택하지 않았어.
 
 추가로 headless-game-balance와 Unity 공식 unity@unity-agent-plugin 0.1.8-beta/32스킬을 설치했어. AGENTS와 docs/development/balance_skills_20261019/README.md의 적용/계측 계약을 함께 따라. 실제 설치·활성화/기존8회 정책별 집계·기존Unity연결을검증했고 이 설치에서는 새Play/게임수치변경없었어. 대응시드/고정정책/분포비교를 쓰되 기존미지정시드8회를결정론적반복/승률로바꾸지마. IvanMurzak/Unity-MCP 별도MCP는 설치하지 않았어.
 
