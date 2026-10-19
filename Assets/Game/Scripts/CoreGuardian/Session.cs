@@ -104,7 +104,7 @@ namespace CoreGuardian
             if(path.Count<2)throw new InvalidOperationException("Board missing");Diagnostic=true;Wave=1;CompletedWave=0;LastCompletionReward=0;waveTime=0;spawned.Clear();DamageTotals.Clear();Enemies.Clear();Projectiles.Clear();Towers.Clear();Gold=Data.DiagnosticGold;Crystals=Data.DiagnosticCrystals;CoreEnergy=Data.CoreEnergy;Phase=SessionPhase.Preparation;PreparationRemaining=Data.PreparationSeconds;playerTarget=null;playerAcquired=false;playerCooldown=0;Player=Data.Player.Clone();LastMessage="역할 검증 모드: 준비 후 시작";
             CoreMaximum=Data.CoreEnergy;Augments=new AugmentationEffects();BossKilled=false;choices=Array.Empty<AugmentationCard>();AugmentationRemaining=0;coreDamagedThisRound=false;
         }
-        public EnemyState DebugSpawn(EnemyKind kind,float distance=0) {if(path.Count<2)throw new InvalidOperationException("Board missing");var spec=Data.Enemies[kind];var e=new EnemyState{Id=nextEnemy++,Kind=kind,Spec=spec,Health=spec.Health,PathTravelled=Mathf.Clamp(distance,0,pathLength)};PositionEnemy(e);Enemies.Add(e);return e;}
+        public EnemyState DebugSpawn(EnemyKind kind,float distance=0,EnemySpec spec=null) {if(path.Count<2)throw new InvalidOperationException("Board missing");spec=spec??Data.EnemyForWave(Wave,kind);var e=new EnemyState{Id=nextEnemy++,Kind=kind,Spec=spec,Health=spec.Health,PathTravelled=Mathf.Clamp(distance,0,pathLength)};PositionEnemy(e);Enemies.Add(e);return e;}
         void PositionEnemy(EnemyState e) {float d=e.PathTravelled;for(int i=0;i<lengths.Count;i++) {if(d<=lengths[i]){e.Position=Vector2.Lerp(path[i],path[i+1],d/lengths[i]);e.PathRemaining=Mathf.Max(0,pathLength-e.PathTravelled);return;}d-=lengths[i];}e.Position=path[path.Count-1];e.PathRemaining=0;}
         public void Tick(float dt,Vector2 playerPosition)
         {
@@ -116,7 +116,7 @@ namespace CoreGuardian
             if(Phase==SessionPhase.Preparation) {PreparationRemaining=Mathf.Max(0,PreparationRemaining-dt);if(PreparationRemaining<=0)StartCombat();return;}if(Phase!=SessionPhase.Combat)return;
             var rows=Data.Waves.Where(x=>x.Wave==Wave).ToArray();
             if(Diagnostic) {if(waveTime==0) {float diagnosticDistance=Mathf.Min(Data.DiagnosticStartDistance,pathLength*.2f);DebugSpawn(EnemyKind.Attack,diagnosticDistance);DebugSpawn(EnemyKind.Defense,diagnosticDistance+Data.DiagnosticSpacing);DebugSpawn(EnemyKind.Buff,diagnosticDistance+2*Data.DiagnosticSpacing);} }
-            else foreach(var row in rows) {int count;spawned.TryGetValue(row,out count);while(count<row.Count&&waveTime+.00001f>=row.Start+count*row.Interval) {DebugSpawn(row.Kind);count++;}spawned[row]=count;}
+            else foreach(var row in rows) {int count;spawned.TryGetValue(row,out count);while(count<row.Count&&waveTime+.00001f>=row.Start+count*row.Interval) {DebugSpawn(row.Kind,0,row.Enemy??Data.Enemies[row.Kind]);count++;}spawned[row]=count;}
             waveTime+=dt;
             // Calculate all auras before moving anyone so source order cannot alter the radius test.
             var boosts=Enemies.Where(e=>e.Alive).ToDictionary(e=>e,e=>Enemies.Where(other=>other!=e&&other.Alive&&other.Kind==EnemyKind.Buff&&Vector2.Distance(e.Position,other.Position)<=other.Spec.BuffRadius).Select(other=>other.Spec.BuffSpeed).DefaultIfEmpty(0).Max()); foreach(var e in boosts.Keys) e.Buffed=boosts[e]>0;
@@ -139,7 +139,7 @@ namespace CoreGuardian
             if(Wave>=LastWave){Phase=SessionPhase.Victory;LastMessage+=" · 1~"+LastWave+"라운드 검증 완료";VictoryReached?.Invoke();return;}
             if(!Data.Waves.Any(row=>row.Wave==Wave+1))throw new InvalidOperationException("Next wave is missing");
             Wave++;PreparationRemaining=Data.PreparationSeconds;
-            if(CompletedWave%10==0&&CompletedWave<100&&BossKilled){choices=AugmentationDeck.Draw(augmentationRandom,Augments.Selected);AugmentationRemaining=30;Phase=SessionPhase.Augmentation;LastMessage+=" · 증강 선택";RoundCompleted?.Invoke();return;}
+            if(CompletedWave%Data.AugmentationEvery==0&&(!Data.AugmentationRequiresBoss||BossKilled)){choices=AugmentationDeck.Draw(augmentationRandom,Augments.Selected);AugmentationRemaining=30;Phase=SessionPhase.Augmentation;LastMessage+=" · 증강 선택";RoundCompleted?.Invoke();return;}
             Phase=SessionPhase.Preparation;
             LastMessage+=" · "+Wave+"라운드 준비";
             RoundCompleted?.Invoke();

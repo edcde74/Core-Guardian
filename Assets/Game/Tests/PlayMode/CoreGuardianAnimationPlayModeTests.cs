@@ -96,7 +96,7 @@ public class CoreGuardianAnimationPlayModeTests
 #endif
     }
     [UnityTest]
-    [Category("SharedTowersHud")]
+    [Category("SharedTowersHud"),Category("ThirtyExperiment")]
     public IEnumerator EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks()
     {
 #if UNITY_EDITOR

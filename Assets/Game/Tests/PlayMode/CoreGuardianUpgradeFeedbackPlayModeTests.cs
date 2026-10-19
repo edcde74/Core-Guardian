@@ -10,7 +10,7 @@ using UnityEngine.TestTools;
 using UnityEditor.SceneManagement;
 #endif
 
-[Category("SharedTowersHud")]
+[Category("SharedTowersHud"),Category("ThirtyExperiment")]
 public class CoreGuardianUpgradeFeedbackPlayModeTests
 {
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).FirstOrDefault(t=>t!=null);

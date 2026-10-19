@@ -1,0 +1,199 @@
+{
+  "method": "same Session, fixed dt=.05, 3 fixed policies x 4 paired seeds; not human win rate",
+  "replay_identical": true,
+  "seeds": [
+    17,
+    42,
+    73,
+    109
+  ],
+  "policies": {
+    "mixed": {
+      "n": 4,
+      "completed": [
+        27,
+        23,
+        24,
+        28
+      ],
+      "wins": 0,
+      "installations": [
+        32,
+        23,
+        27,
+        30
+      ],
+      "player_purchases": [
+        40,
+        34,
+        36,
+        42
+      ],
+      "shared_purchases": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "installed_skill_summary": {
+        "duration_seconds": {
+          "mean": 1778.2594,
+          "median": 1782.8138450000001
+        },
+        "failure_reasons": {
+          "core_depleted": 4
+        },
+        "losses": 4,
+        "reached_stage": {
+          "max": 29.0,
+          "mean": 26.5,
+          "median": 26.5,
+          "p10": 24.3,
+          "p90": 28.7
+        },
+        "runs": 4,
+        "score": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p90": 0.0
+        },
+        "win_rate": 0.0,
+        "wins": 0
+      }
+    },
+    "single": {
+      "n": 4,
+      "completed": [
+        27,
+        24,
+        24,
+        30
+      ],
+      "wins": 1,
+      "installations": [
+        32,
+        24,
+        27,
+        32
+      ],
+      "player_purchases": [
+        40,
+        36,
+        36,
+        43
+      ],
+      "shared_purchases": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "installed_skill_summary": {
+        "duration_seconds": {
+          "mean": 1910.4008175,
+          "median": 1934.8121350000001
+        },
+        "failure_reasons": {
+          "core_depleted": 3
+        },
+        "losses": 3,
+        "reached_stage": {
+          "max": 30.0,
+          "mean": 27.0,
+          "median": 26.5,
+          "p10": 25.0,
+          "p90": 29.4
+        },
+        "runs": 4,
+        "score": {
+          "mean": 0.5,
+          "median": 0.0,
+          "p90": 1.4000000000000004
+        },
+        "win_rate": 0.25,
+        "wins": 1
+      }
+    },
+    "multi": {
+      "n": 4,
+      "completed": [
+        28,
+        23,
+        24,
+        30
+      ],
+      "wins": 1,
+      "installations": [
+        31,
+        23,
+        27,
+        32
+      ],
+      "player_purchases": [
+        42,
+        34,
+        36,
+        43
+      ],
+      "shared_purchases": [
+        5,
+        4,
+        4,
+        4
+      ],
+      "installed_skill_summary": {
+        "duration_seconds": {
+          "mean": 1813.2310275,
+          "median": 1850.780155
+        },
+        "failure_reasons": {
+          "core_depleted": 3
+        },
+        "losses": 3,
+        "reached_stage": {
+          "max": 30.0,
+          "mean": 27.0,
+          "median": 27.0,
+          "p10": 24.3,
+          "p90": 29.7
+        },
+        "runs": 4,
+        "score": {
+          "mean": 1.0,
+          "median": 0.0,
+          "p90": 2.8000000000000007
+        },
+        "win_rate": 0.25,
+        "wins": 1
+      }
+    }
+  },
+  "active_csv_sha256": {
+    "enemies.csv": "e31e93aeed59fc285f152ce0755c7aaace40576efed6e312c0c82424b1ef8929",
+    "stage.csv": "7a286b43ad852c8dce499cf35a2b27317764c771cb3d69287c3c2c3f674c5bb6",
+    "towers.csv": "095f71a1c1c6bebd2d790437a7bc253b7ed32aa2cd02600fc128558c2a1edfcd",
+    "upgrades.csv": "14516b81277172cddd9efe05fbc294e77f4df3f2dbc1331992ed91c79f429aeb",
+    "waves.csv": "310c2fe55ac8abfdd2670cbaf420216a7761944648771a493f63d59020cf57e1"
+  },
+  "preservation": {
+    "baseline_phase": "after parser/tests source preparation, before changing CSV",
+    "baseline_count": 1309,
+    "changed": [
+      "Assets/Game/Scripts/CoreGuardian/Session.cs",
+      "Assets/Game/Tests/EditMode/CoreGuardianAugmentationTests.cs",
+      "Assets/Game/Tests/EditMode/CoreGuardianRoundFlowTests.cs",
+      "Assets/Game/Tests/EditMode/CoreGuardianSessionTests.cs",
+      "Assets/Game/Tests/EditMode/CoreGuardianThirtyRoundTests.cs",
+      "Assets/Game/Tests/PlayMode/CoreGuardianAnimationPlayModeTests.cs",
+      "Assets/Game/Tests/PlayMode/CoreGuardianRuntimePlayModeTests.cs",
+      "Assets/Game/Tests/PlayMode/CoreGuardianSelectedAudioPlayModeTests.cs",
+      "Assets/Game/Tests/PlayMode/CoreGuardianUpgradeFeedbackPlayModeTests.cs",
+      "Assets/Resources/CoreGuardian/stage.csv",
+      "Assets/Resources/CoreGuardian/towers.csv",
+      "Assets/Resources/CoreGuardian/upgrades.csv",
+      "Assets/Resources/CoreGuardian/waves.csv"
+    ],
+    "missing": [],
+    "added": []
+  }
+}

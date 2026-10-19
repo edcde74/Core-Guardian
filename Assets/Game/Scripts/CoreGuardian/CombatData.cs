@@ -12,7 +12,7 @@ namespace CoreGuardian
     public sealed class EnemySpec { public EnemyKind Kind; public int Health, CoreDamage, Gold; public float Speed, Defense, BuffRadius, BuffSpeed; }
     public sealed class TowerSpec { public TowerKind Kind; public int Cost; public float Damage, Rate, Range, ProjectileSpeed, BuffDamage; }
     public sealed class UpgradeSpec { public string Target, Stat; public float Delta; public int Cost, CostIncrement; }
-    public sealed class WaveSpec { public int Wave, Count; public EnemyKind Kind; public float Interval, Start; }
+    public sealed class WaveSpec { public int Wave, Count; public EnemyKind Kind; public float Interval, Start; public EnemySpec Enemy; }
     public sealed class CombatStats
     {
         public float Damage, Rate, Range, ProjectileSpeed, BuffDamage;
@@ -30,15 +30,18 @@ namespace CoreGuardian
         public int RewardForWave(int wave) => WaveRewards.TryGetValue(wave,out var reward)?reward:WaveReward;
         public int CoreEnergy, StartGold, StartCrystals, WaveReward, PlayerFirstCost, PlayerSecondIncrease, PlayerIncreaseStep, DiagnosticGold, DiagnosticCrystals;
         public int PlayerFirstUpgradeDiscount, TowerFirstUpgradeDiscount;
+        public int AugmentationEvery=10;
+        public bool AugmentationRequiresBoss=true;
+        public EnemySpec EnemyForWave(int wave,EnemyKind kind)=>Waves.FirstOrDefault(w=>w.Wave==wave&&w.Kind==kind)?.Enemy??Enemies[kind];
         public float PreparationSeconds, DiagnosticStartDistance, DiagnosticSpacing;
         public CombatStats Player;
         static float F(string s) { float v; if(!float.TryParse(s,NumberStyles.Float,CultureInfo.InvariantCulture,out v)||float.IsNaN(v)||float.IsInfinity(v)||v<0) throw new ArgumentException("Invalid non-negative number: "+s);return v; }
         static int I(string s) { float f=F(s);if(f!=Mathf.Floor(f))throw new ArgumentException("Expected integer: "+s);return (int)f; }
-        static IEnumerable<string[]> Rows(string text,int columns)
+        static IEnumerable<string[]> Rows(string text,int columns,int alternate=0)
         {
             var lines=text.Replace("\r","").Split('\n').Where(x=>!string.IsNullOrWhiteSpace(x)&&!x.TrimStart().StartsWith("#")).ToArray();
             if(lines.Length<2)throw new ArgumentException("CSV has no data rows");
-            var ids=new HashSet<string>(); foreach(var l in lines.Skip(1)) { var r=l.Split(',').Select(x=>x.Trim()).ToArray();if(r.Length!=columns||r.Any(x=>x.Length==0)||!ids.Add(r[0]))throw new ArgumentException("Invalid/duplicate CSV row: "+l);yield return r; }
+            var ids=new HashSet<string>(); foreach(var l in lines.Skip(1)) { var r=l.Split(',').Select(x=>x.Trim()).ToArray();if((r.Length!=columns&&r.Length!=alternate)||r.Any(x=>x.Length==0)||!ids.Add(r[0]))throw new ArgumentException("Invalid/duplicate CSV row: "+l);yield return r; }
         }
         static T Kind<T>(string value) where T:struct
         {
@@ -62,11 +65,25 @@ namespace CoreGuardian
             d.PlayerFirstCost=I(settings["playerFirstCost"]);d.PlayerSecondIncrease=I(settings["playerSecondIncrease"]);d.PlayerIncreaseStep=I(settings["playerIncreaseStep"]);
             d.PlayerFirstUpgradeDiscount=settings.TryGetValue("playerFirstUpgradeDiscount",out var playerDiscount)?I(playerDiscount):0;
             d.TowerFirstUpgradeDiscount=settings.TryGetValue("towerFirstUpgradeDiscount",out var towerDiscount)?I(towerDiscount):0;
+            d.AugmentationEvery=settings.TryGetValue("augmentationEvery",out var every)?I(every):10;
+            d.AugmentationRequiresBoss=!settings.TryGetValue("augmentationRequiresBoss",out var bossRequired)||I(bossRequired)==1;
+            if(d.AugmentationEvery<1||settings.TryGetValue("augmentationRequiresBoss",out var flag)&&I(flag)>1)throw new ArgumentException("Invalid augmentation schedule");
             d.DiagnosticStartDistance=F(settings["diagnosticStartDistance"]);d.DiagnosticSpacing=F(settings["diagnosticSpacing"]);d.DiagnosticGold=I(settings["diagnosticGold"]);d.DiagnosticCrystals=I(settings["diagnosticCrystals"]);
             d.Player=new CombatStats{Damage=F(settings["playerDamage"]),Rate=F(settings["playerRate"]),Range=F(settings["playerRange"]),ProjectileSpeed=F(settings["playerProjectileSpeed"])};
             foreach(var r in Rows(upgrades,6)) { var u=new UpgradeSpec{Target=r[1],Stat=r[2],Delta=F(r[3]),Cost=I(r[4]),CostIncrement=I(r[5])}; u.Target=string.Equals(u.Target,"Player",StringComparison.OrdinalIgnoreCase)?"Player":Kind<TowerKind>(u.Target).ToString();if(!new[]{"damage","rate","range","projectileSpeed","buffDamage"}.Contains(u.Stat))throw new ArgumentException("Unknown upgrade stat");if(d.Upgrades.Any(x=>x.Target==u.Target&&x.Stat==u.Stat))throw new ArgumentException("Duplicate target/stat upgrade");d.Upgrades.Add(u); }
             if(d.PlayerFirstUpgradeDiscount>0&&d.PlayerFirstUpgradeDiscount>=d.PlayerFirstCost||d.TowerFirstUpgradeDiscount>0&&d.Upgrades.Any(u=>u.Target!="Player"&&u.Cost<=d.TowerFirstUpgradeDiscount))throw new ArgumentException("First upgrade discount must leave a positive price");
-            foreach(var r in Rows(waves,6)) { var kind=Kind<EnemyKind>(r[2]);if(!d.Enemies.ContainsKey(kind))throw new ArgumentException("Missing enemy reference");d.Waves.Add(new WaveSpec{Wave=I(r[1]),Kind=kind,Count=I(r[3]),Interval=F(r[4]),Start=F(r[5])}); }
+            foreach(var r in Rows(waves,6,10))
+            {
+                var kind=Kind<EnemyKind>(r[2]);if(!d.Enemies.ContainsKey(kind))throw new ArgumentException("Missing enemy reference");
+                var wave=new WaveSpec{Wave=I(r[1]),Kind=kind,Count=I(r[3]),Interval=F(r[4]),Start=F(r[5])};
+                if(r.Length==10)
+                {
+                    var b=d.Enemies[kind];
+                    wave.Enemy=new EnemySpec{Kind=kind,Health=I(r[6]),Defense=F(r[7]),Speed=F(r[8]),Gold=I(r[9]),CoreDamage=b.CoreDamage,BuffRadius=b.BuffRadius,BuffSpeed=b.BuffSpeed};
+                    if(wave.Enemy.Health<=0||wave.Enemy.Speed<=0||wave.Enemy.Defense>=100)throw new ArgumentException("Invalid wave enemy stats");
+                }
+                d.Waves.Add(wave);
+            }
             if(!d.Waves.Any(w=>w.Wave==1)||!new[]{EnemyKind.Attack,EnemyKind.Defense,EnemyKind.Buff}.All(d.Enemies.ContainsKey)||d.Towers.Count!=3||d.CoreEnergy<=0||d.Player.Rate<=0||d.Player.ProjectileSpeed<=0||d.Enemies.Values.Any(x=>x.Health<=0||x.Speed<=0)||d.Towers.Values.Any(x=>x.Kind!=TowerKind.Support&&(x.Rate<=0||x.ProjectileSpeed<=0))||d.Waves.Any(x=>x.Wave<=0||x.Count<=0||x.Interval<=0))throw new ArgumentException("Incomplete or invalid combat data");
             return d;
         }

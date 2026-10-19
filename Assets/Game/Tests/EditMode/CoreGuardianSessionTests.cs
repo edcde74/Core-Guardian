@@ -64,9 +64,9 @@ public class CoreGuardianSessionTests
     [Test] public void UndefinedNumericKindsMissingWaveOneAndCaseDuplicateUpgradeAreRejected()
     {
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Buff,30","9,30"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers").Replace("Support,100","9,100"),Csv("stage"),Csv("upgrades"),Csv("waves")));
+        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers").Replace("Support,75","9,75"),Csv("stage"),Csv("upgrades"),Csv("waves")));
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades").Replace(",Support,",",9,"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves").Replace("wave1_attack,1,","wave1_attack,2,")));
+        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves").Replace(",1,Attack,",",2,Attack,")));
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades")+"\ncase_duplicate,single,damage,2.5,80,20",Csv("waves")));
     }
     [Test] public void AttackRateRetainsFractionalCooldownAndSupportsMultipleShotsPerStep()
@@ -76,8 +76,8 @@ public class CoreGuardianSessionTests
     }
     [Test] public void PlayerPricesHaveIncreasingIncrementAndIndependentStats()
     {
-        var d=Data();Assert.That(Enumerable.Range(1,6).Select(d.PlayerUpgradePrice),Is.EqualTo(new[]{80,140,190,250,320,400}));
-        var s=Game();s.StartDiagnosticEncounter();string reason;Assert.That(s.UpgradePlayer("damage",out reason),Is.True);Assert.That(s.PlayerUpgradePrice("damage"),Is.EqualTo(140));Assert.That(s.PlayerUpgradePrice("range"),Is.EqualTo(80));
+        var d=Data();Assert.That(Enumerable.Range(1,6).Select(d.PlayerUpgradePrice),Is.EqualTo(new[]{40,65,85,110,140,175}));
+        var s=Game();s.StartDiagnosticEncounter();string reason;Assert.That(s.UpgradePlayer("damage",out reason),Is.True);Assert.That(s.PlayerUpgradePrice("damage"),Is.EqualTo(65));Assert.That(s.PlayerUpgradePrice("range"),Is.EqualTo(40));
     }
     [Test] public void FirstGrowthBudgetUnlocksPlayerAndTowerAfterTwoRounds()
     {
@@ -86,31 +86,31 @@ public class CoreGuardianSessionTests
         d.StartCrystals=d.Towers[TowerKind.Single].Cost+d.RewardForWave(1)+d.RewardForWave(2);
         var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});
         string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);
-        Assert.That(s.Gold,Is.EqualTo(93));Assert.That(s.Crystals,Is.EqualTo(40));
-        Assert.That(s.UpgradePlayer("damage",out reason),Is.True,reason);Assert.That(s.Gold,Is.EqualTo(13));
-        Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.True,reason);Assert.That(s.Crystals,Is.Zero);
-        Assert.That(s.TowerUpgradePrice(t.Id,"damage"),Is.EqualTo(100));
-        Assert.That(s.TowerUpgradePrice(t.Id,"range"),Is.EqualTo(40));
-        Assert.That(s.UpgradeTower(t.Id,"range",out reason),Is.False,"Insufficient crystals must still reject a purchase");
+        Assert.That(s.Gold,Is.EqualTo(93));Assert.That(s.Crystals,Is.EqualTo(120));
+        Assert.That(s.UpgradePlayer("damage",out reason),Is.True,reason);Assert.That(s.Gold,Is.EqualTo(53));
+        Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.True,reason);Assert.That(s.Crystals,Is.EqualTo(60));
+        Assert.That(s.TowerUpgradePrice(t.Id,"damage"),Is.EqualTo(90));
+        Assert.That(s.TowerUpgradePrice(t.Id,"range"),Is.EqualTo(60));
+        Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.False,"Insufficient crystals must still reject a purchase");
     }
     [Test] public void FirstGrowthDiscountsAreOptionalAndCannotMakeUpgradesFree()
     {
         var oldStage=string.Join("\n",Csv("stage").Replace("\r","").Split('\n').Where(l=>!l.StartsWith("playerFirstUpgradeDiscount,")&&!l.StartsWith("towerFirstUpgradeDiscount,")));
         var legacy=CombatData.Load(Csv("enemies"),Csv("towers"),oldStage,Csv("upgrades"),Csv("waves"));
-        Assert.That(legacy.PlayerUpgradePrice(1),Is.EqualTo(100));
+        Assert.That(legacy.PlayerUpgradePrice(1),Is.EqualTo(50));
         var s=new Session(legacy);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});
-        string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);Assert.That(s.TowerUpgradePrice(t.Id,"damage"),Is.EqualTo(80));
+        string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);Assert.That(s.TowerUpgradePrice(t.Id,"damage"),Is.EqualTo(60));
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),oldStage+"\nplayerFirstUpgradeDiscount,100",Csv("upgrades"),Csv("waves")));
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),oldStage+"\ntowerFirstUpgradeDiscount,80",Csv("upgrades"),Csv("waves")));
     }
     [Test] public void TimeoutStartsCombatWithoutTowerAndCurrencyStartsCorrectly()
     {
-        var s=Game();Assert.That(s.Gold,Is.Zero);Assert.That(s.Crystals,Is.EqualTo(100));s.Tick(50.1f,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Combat));
+        var s=Game();Assert.That(s.Gold,Is.Zero);Assert.That(s.Crystals,Is.EqualTo(100));s.Tick(s.Data.PreparationSeconds+.1f,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Combat));
     }
     [Test] public void PlacementRejectsPathCoreDuplicateAndCombatButAllowsPlayerCell()
     {
         var s=Game();string r;Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(0,0),out r),Is.Null);Assert.That(s.Crystals,Is.EqualTo(100));Assert.That(s.TryInstall(TowerKind.Support,new Vector2Int(2,2),out r),Is.Null);
-        var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,2),out r);Assert.That(t,Is.Not.Null);Assert.That(s.IsBuildable(t.Position),Is.False);Assert.That(s.DestroyTower(t.Id),Is.True);Assert.That(s.DestroyTower(t.Id),Is.False);Assert.That(s.Crystals,Is.EqualTo(50));s.StartCombat();Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,3),out r),Is.Null);
+        var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,2),out r);Assert.That(t,Is.Not.Null);Assert.That(s.IsBuildable(t.Position),Is.False);Assert.That(s.DestroyTower(t.Id),Is.True);Assert.That(s.DestroyTower(t.Id),Is.False);Assert.That(s.Crystals,Is.EqualTo(70));s.StartCombat();Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,3),out r),Is.Null);
     }
     [TestCase(TowerKind.Single,"damage")][TestCase(TowerKind.Multi,"damage")][TestCase(TowerKind.Support,"buffDamage")]
     [TestCase(TowerKind.Single,"rate")][TestCase(TowerKind.Single,"range")][TestCase(TowerKind.Single,"projectileSpeed")]
@@ -124,30 +124,30 @@ public class CoreGuardianSessionTests
         float before=Stat(a.Stats,stat),otherBefore=other.Stats.Damage;int crystals=s.Crystals;
         float delta=s.Data.Upgrades.Single(u=>u.Target==kind.ToString()&&u.Stat==stat).Delta;
         Assert.That(s.UpgradeTower(a.Id,stat,out r),Is.True,r);
-        Assert.That(crystals-s.Crystals,Is.EqualTo(40));Assert.That(Stat(b.Stats,stat),Is.EqualTo(before+delta).Within(.001));
-        Assert.That(other.Stats.Damage,Is.EqualTo(otherBefore));Assert.That(s.TowerUpgradePrice(b.Id,stat),Is.EqualTo(100));
+        Assert.That(crystals-s.Crystals,Is.EqualTo(60));Assert.That(Stat(b.Stats,stat),Is.EqualTo(before+delta).Within(.001));
+        Assert.That(other.Stats.Damage,Is.EqualTo(otherBefore));Assert.That(s.TowerUpgradePrice(b.Id,stat),Is.EqualTo(90));
         var future=s.TryInstall(kind,new Vector2Int(5,1),out r);
         Assert.That(Stat(future.Stats,stat),Is.EqualTo(before+delta).Within(.001));Assert.That(future.Stats.UpgradeSteps[stat],Is.EqualTo(1));
         foreach(var t in s.Towers.Where(t=>t.Kind==kind).ToArray())s.DestroyTower(t.Id);
         var replacement=s.TryInstall(kind,new Vector2Int(2,1),out r);
-        Assert.That(Stat(replacement.Stats,stat),Is.EqualTo(before+delta).Within(.001));Assert.That(s.TowerUpgradePrice(replacement.Id,stat),Is.EqualTo(100));
+        Assert.That(Stat(replacement.Stats,stat),Is.EqualTo(before+delta).Within(.001));Assert.That(s.TowerUpgradePrice(replacement.Id,stat),Is.EqualTo(90));
         s.StartDiagnosticEncounter();if(kind==TowerKind.Support)s.TryInstall(TowerKind.Single,new Vector2Int(1,1),out r);
-        var reset=s.TryInstall(kind,new Vector2Int(2,1),out r);Assert.That(Stat(reset.Stats,stat),Is.EqualTo(before));Assert.That(s.TowerUpgradePrice(reset.Id,stat),Is.EqualTo(40));
+        var reset=s.TryInstall(kind,new Vector2Int(2,1),out r);Assert.That(Stat(reset.Stats,stat),Is.EqualTo(before));Assert.That(s.TowerUpgradePrice(reset.Id,stat),Is.EqualTo(60));
     }
     [Test] public void RefundReturnsInstallationOnlyAndSharedInvestmentRemains()
     {
-        var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(t.Spent,Is.EqualTo(100));int before=s.Crystals;s.DestroyTower(t.Id);Assert.That(s.Crystals-before,Is.EqualTo(50));Assert.That(s.DestroyTower(t.Id),Is.False);
+        var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(t.Spent,Is.EqualTo(60));int before=s.Crystals;s.DestroyTower(t.Id);Assert.That(s.Crystals-before,Is.EqualTo(30));Assert.That(s.DestroyTower(t.Id),Is.False);
     }
     [Test] public void RejectedSharedUpgradeCannotSpendOrChangeCurrentAndFutureTowers()
     {
         var s=Game();string r;var a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);
         Assert.That(s.UpgradeTower(a.Id,"damage",out r),Is.False);Assert.That(r,Is.EqualTo("수정 부족"));
-        Assert.That(s.Crystals,Is.Zero);Assert.That(a.Stats.Damage,Is.EqualTo(s.Data.Towers[TowerKind.Single].Damage));
-        Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(40));
+        Assert.That(s.Crystals,Is.EqualTo(40));Assert.That(a.Stats.Damage,Is.EqualTo(s.Data.Towers[TowerKind.Single].Damage));
+        Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(60));
         s.StartDiagnosticEncounter();a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);int crystals=s.Crystals;
         Assert.That(s.UpgradeTower(a.Id,"invalid",out r),Is.False);Assert.That(s.UpgradeTower(-1,"damage",out r),Is.False);
         s.StartCombat();Assert.That(s.UpgradeTower(a.Id,"damage",out r),Is.False);Assert.That(s.Crystals,Is.EqualTo(crystals));
-        Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(40));Assert.That(a.Stats.UpgradeSteps,Is.Empty);
+        Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(60));Assert.That(a.Stats.UpgradeSteps,Is.Empty);
     }
     [Test] public void KillGoldAndActualDamageAreAccountedOnceWithoutOverkill()
     {
@@ -157,24 +157,24 @@ public class CoreGuardianSessionTests
     {
         var s=Game();s.StartCombat();s.DebugSpawn(EnemyKind.Attack,9.99f);s.Tick(.1f,Away);Assert.That(s.CoreEnergy,Is.EqualTo(18));Assert.That(s.Gold,Is.Zero);s.Tick(1,Away);Assert.That(s.CoreEnergy,Is.EqualTo(18));
     }
-    [Test] public void HordeAfterTwoCompressesSpawnsWithoutChangingCountsOrIntro()
+    [Test] public void HordeAfterTwoUsesThirtyRoundCountsAndPreservesIntro()
     {
         var d=Data();Assert.That(d.Waves.Where(w=>w.Wave==1).Max(w=>w.Start+(w.Count-1)*w.Interval),Is.EqualTo(22.68f).Within(.01f));
         Assert.That(d.Waves.Where(w=>w.Wave==2).Max(w=>w.Start+(w.Count-1)*w.Interval),Is.EqualTo(22.95f).Within(.01f));
-        int[] counts={16,17,17,18,18,19,20};int[] gold={50,54,55,61,61,65,71};
+        int[] counts={23,26,31,35,38,42,46};int[] gold={72,82,102,116,126,142,156};
         for(int wave=3;wave<=9;wave++)
         {
             var rows=d.Waves.Where(w=>w.Wave==wave).OrderBy(w=>w.Start).ToArray();
             Assert.That(rows.Sum(w=>w.Count),Is.EqualTo(counts[wave-3]));Assert.That(rows.Sum(w=>w.Count*d.Enemies[w.Kind].Gold),Is.EqualTo(gold[wave-3]));
-            Assert.That(rows.Last().Start,Is.LessThanOrEqualTo(15.21f),"Spawn pressure must be substantially denser after round 2");
+            Assert.That(rows.Last().Start,Is.LessThanOrEqualTo(16f),"Spawn pressure must be substantially denser after round 2");
         }
-        Assert.That(d.Waves.Single(w=>w.Wave==11&&w.Kind==EnemyKind.Attack).Interval,Is.EqualTo(1.1f));
+        Assert.That(d.Waves.First(w=>w.Wave==11&&w.Kind==EnemyKind.Attack).Interval,Is.EqualTo(.34f));
         Assert.That(d.Waves.Single(w=>w.Wave==10&&w.Kind==EnemyKind.Boss).Start,Is.EqualTo(.75f));
     }
     [Test] public void BossScreenWaveTenSpawnsThreeQuickShieldsBeforeBoss()
     {
         var d=Data();var schedule=d.Waves.Where(w=>w.Wave==10).ToArray();
-        Assert.That(schedule.Sum(w=>w.Count),Is.EqualTo(15));
+        Assert.That(schedule.Sum(w=>w.Count),Is.EqualTo(38));
         d.Waves.Clear();foreach(var w in schedule)d.Waves.Add(new WaveSpec{Wave=1,Kind=w.Kind,Count=w.Count,Interval=w.Interval,Start=w.Start});
         var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});s.StartCombat();
         s.Tick(.01f,Away);Assert.That(s.Enemies.Select(e=>e.Kind),Is.EqualTo(new[]{EnemyKind.Defense}));

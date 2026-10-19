@@ -1,0 +1,171 @@
+{
+  "editor": {
+    "status": "ready",
+    "compiling": false,
+    "domainReloadInProgress": false,
+    "playMode": "stopped",
+    "lastHeartbeat": "2026-10-19T20:40:02.4022184Z",
+    "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD",
+    "unityVersion": "6000.6.2f1"
+  },
+  "console": {
+    "entries": [],
+    "cursor": 2553,
+    "session": "aee3bc4b6c1642c69184ce655436a4ca",
+    "returned": 0,
+    "dropped": false,
+    "reset": false,
+    "counts": {
+      "error": 1,
+      "warn": 1562,
+      "log": 437
+    },
+    "groundTruth": {
+      "sampledUtc": "2026-10-19T20:40:05.4470745Z",
+      "ageMs": 53,
+      "compilationFailed": false,
+      "compiling": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 1,
+      "consoleLogs": 6,
+      "seeded": true
+    }
+  },
+  "tests": {
+    "status": "completed",
+    "duration": 20.69,
+    "summary": {
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "results": [
+      {
+        "FullName": "CoreGuardianAnimationPlayModeTests.EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks",
+        "Status": "Passed",
+        "Duration": 0.4347914,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianRuntimePlayModeTests.ActualScene_ThirtyRoundsKeepTowerAndHud_ThenRestartResetsSession",
+        "Status": "Passed",
+        "Duration": 8.331702,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianRuntimePlayModeTests.CombatOnlySpeedDefeatResetsAndDefaultExternalPauseIsPreserved",
+        "Status": "Passed",
+        "Duration": 0.2068492,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianRuntimePlayModeTests.CombatOnlySpeedRemembersSelectionButUsesOneInPreparationAugmentationAndResults",
+        "Status": "Passed",
+        "Duration": 2.5579606,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianRuntimePlayModeTests.SharedUpgradeHudKeepsPanelTabsAndStatCellsFixed",
+        "Status": "Passed",
+        "Duration": 0.288111,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianRuntimePlayModeTests.ThirtyRoundActualSceneLoadsStatsShowsFiveAugmentationsAndEndsAtThirty",
+        "Status": "Passed",
+        "Duration": 2.4685757,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianSelectedAudioPlayModeTests.ActualMultiVolleysUseExactlyOneMatchingOneTwoOrThreeShotClipWithSupportSilent",
+        "Status": "Passed",
+        "Duration": 0.4742419,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianSelectedAudioPlayModeTests.DefeatIsOneTerminalCueAndMutedDefeatNeverReplaysOnUnmute",
+        "Status": "Passed",
+        "Duration": 0.1959104,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianSelectedAudioPlayModeTests.EachCardGradeUsesItsSelectedFileAndRevealOnlyPlaysOnce",
+        "Status": "Passed",
+        "Duration": 0.1851938,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianSelectedAudioPlayModeTests.LiveCategoryChangesOnlyAffectTheirOwnVoicesAndMasterStillMutesEverything",
+        "Status": "Passed",
+        "Duration": 0.1835432,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianSelectedAudioPlayModeTests.MusicCrossfadesAtRealAugmentationAndReturnsThenStopsAtFinalVictory",
+        "Status": "Passed",
+        "Duration": 1.9831035,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianSelectedAudioPlayModeTests.RealPlacementFailureDemolitionAndEscapeUseTheirSeparateCues",
+        "Status": "Passed",
+        "Duration": 0.2083795,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianSelectedAudioPlayModeTests.TerminalDefeatSurvivesTheAdaptersFollowingCoreDamageWhenEffectsPoolIsFull",
+        "Status": "Passed",
+        "Duration": 0.2066058,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianUpgradeFeedbackPlayModeTests.InspectorDurationDefaultsToPointEight_AndControlsTheActualLifetime",
+        "Status": "Passed",
+        "Duration": 1.6184619,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianUpgradeFeedbackPlayModeTests.RealSuccessfulPlayerAndAllTowerPurchasesScan_WhileRejectedPurchasesDoNot",
+        "Status": "Passed",
+        "Duration": 1.1402098,
+        "Message": null,
+        "StackTrace": null
+      }
+    ]
+  },
+  "scene": {
+    "path": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+    "dirty": false,
+    "timeScale": 1,
+    "captureDelta": 0,
+    "source": "final read-only editor eval"
+  },
+  "volume": {
+    "master": 0.195603669,
+    "categories": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "source": "earlier end-state read, preserved; no volume mutation"
+  }
+}

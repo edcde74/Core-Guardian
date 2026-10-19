@@ -1,0 +1,38 @@
+{
+  "Summary": {
+    "Total": 3,
+    "Passed": 0,
+    "Failed": 3,
+    "Skipped": 0,
+    "Inconclusive": 0
+  },
+  "Results": [
+    {
+      "FullName": "CoreGuardianThirtyRoundTests.EveryFifthRoundOpensAugmentationAndFinalThirtyEndsWithoutAnotherChoice",
+      "Status": "Failed",
+      "Duration": 0.088143,
+      "Message": "  Expected: Augmentation\r\n  But was:  Preparation\r\n",
+      "StackTrace": "at CoreGuardianThirtyRoundTests.EveryFifthRoundOpensAugmentationAndFinalThirtyEndsWithoutAnotherChoice () [0x000a7] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianThirtyRoundTests.cs:30\r\n"
+    },
+    {
+      "FullName": "CoreGuardianThirtyRoundTests.ThirtyRoundDataHasFrequentGrowthAndThreeBosses",
+      "Status": "Failed",
+      "Duration": 0.0057819,
+      "Message": "  Expected is <System.Linq.Enumerable+RangeIterator>, actual is <System.Linq.OrderedEnumerable`2[System.Int32,System.Int32]>\r\n  Values differ at index [11]\r\n",
+      "StackTrace": "at CoreGuardianThirtyRoundTests.ThirtyRoundDataHasFrequentGrowthAndThreeBosses () [0x00006] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianThirtyRoundTests.cs:14\r\n"
+    },
+    {
+      "FullName": "CoreGuardianThirtyRoundTests.WaveStatsArePerSpawnAndDoNotMutateTheBaseEnemyOrPreviouslySpawnedEnemy",
+      "Status": "Failed",
+      "Duration": 0.0037294,
+      "Message": "  Expected: greater than 40\r\n  But was:  40\r\n",
+      "StackTrace": "at CoreGuardianThirtyRoundTests.WaveStatsArePerSpawnAndDoNotMutateTheBaseEnemyOrPreviouslySpawnedEnemy () [0x00046] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianThirtyRoundTests.cs:39\r\n"
+    }
+  ],
+  "Duration": 5.86,
+  "StatusPath": null,
+  "Mode": "EditMode",
+  "FilterApplied": "testname: CoreGuardianThirtyRoundTests",
+  "success": true,
+  "result": null
+}

@@ -11,6 +11,7 @@ using UnityEditor.SceneManagement;
 #endif
 
 // Injected functional QA only: no balance or human listening claim.
+[Category("ThirtyExperiment")]
 public class CoreGuardianSelectedAudioPlayModeTests
 {
     MonoBehaviour game,audio;
