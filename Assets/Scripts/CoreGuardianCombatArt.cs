@@ -57,7 +57,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
         Show("EnemyHit",position+Vector3.up*.42f,.32f,.2f);
         if(enemy.Health>0)return;
         Show("EnemyDeath",position+Vector3.up*.3f,.48f,.55f);
-        hud.ShowGoldNumber(position+Vector3.up*1.45f,enemy.Spec.Gold,Get("GoldGain"));
+        hud.ShowGoldNumber(position+Vector3.up*1.45f,enemy.Spec.Gold,CoreGuardianHudSkin.Sprite("Gold"));
     }
     public void CoreDamaged(int amount)
     {
