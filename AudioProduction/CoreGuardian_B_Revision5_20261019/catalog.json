@@ -1,0 +1,360 @@
+{
+  "title": "코어 가디언 · 고등급 당첨음 검사",
+  "version": "B-feedback-r5-20261019",
+  "direction": "B · 단단하고 빠른 전술",
+  "groups": [
+    {
+      "id": "aug_gold",
+      "title": "증강 공개 · 골드",
+      "category": "증강",
+      "status": "새 보상 컨셉 · 미선택",
+      "description": "가챠에서 좋은 등급을 얻었다는 신호. 밝은 당첨/영웅 팡파르/빛의 폭발 세 방향입니다.",
+      "clips": [
+        {
+          "number": 1,
+          "title": "금빛 당첨 · 반짝이는 확정",
+          "description": "빠른 기대감 뒤 밝은 장조 화음과 반짝임으로 당첨 확정",
+          "url": "audio/aug_gold_1.wav",
+          "source_wav": "AudioProduction/CoreGuardian_B_Revision5_20261019/audio/aug_gold_1.wav",
+          "sha256": "96c253ca9cd2d151ba079a91dcbbdb4659c97c821467d041be4e0188871c7514",
+          "duration": 1.3,
+          "repeat_url": "audio/aug_gold_1_repeat.wav"
+        },
+        {
+          "number": 2,
+          "title": "영웅 등장 · 짧은 팡파르",
+          "description": "짧은 금관 리듬이 상승하고 큰 화음으로 해결되는 영웅 보상",
+          "url": "audio/aug_gold_2.wav",
+          "source_wav": "AudioProduction/CoreGuardian_B_Revision5_20261019/audio/aug_gold_2.wav",
+          "sha256": "36df710724c5f703bd0b7c082605e71508288c0e35cffb0f7bf565ffc76bf701",
+          "duration": 1.4,
+          "repeat_url": "audio/aug_gold_2_repeat.wav"
+        },
+        {
+          "number": 3,
+          "title": "최고등급 · 빛의 폭발",
+          "description": "빛이 모인 뒤 짧은 틈을 지나 넓은 화음과 반짝임이 터지는 고등급 공개",
+          "url": "audio/aug_gold_3.wav",
+          "source_wav": "AudioProduction/CoreGuardian_B_Revision5_20261019/audio/aug_gold_3.wav",
+          "sha256": "100a982e3a757ebc00e79b15d40408bbe70ee279266db24e6a322d4b620bf328",
+          "duration": 1.52,
+          "repeat_url": "audio/aug_gold_3_repeat.wav"
+        }
+      ]
+    },
+    {
+      "id": "aug_platinum",
+      "title": "증강 공개 · 플래티넘",
+      "category": "증강",
+      "status": "새 해방 컨셉 · 미선택",
+      "description": "같은 계열의 골드보다 큰 고등급 공개. 기대감·짧은 틈·확정 화음·고음 장식으로 최고등급을 구분합니다.",
+      "clips": [
+        {
+          "number": 1,
+          "title": "금빛 당첨 · 반짝이는 확정",
+          "description": "빠른 기대감 뒤 밝은 장조 화음과 반짝임으로 당첨 확정",
+          "url": "audio/aug_platinum_1.wav",
+          "source_wav": "AudioProduction/CoreGuardian_B_Revision5_20261019/audio/aug_platinum_1.wav",
+          "sha256": "d7e4e220d06113c84dc196687df4e9318be213b99b569dc348920f4030da1fb5",
+          "duration": 2.05,
+          "repeat_url": "audio/aug_platinum_1_repeat.wav"
+        },
+        {
+          "number": 2,
+          "title": "영웅 등장 · 짧은 팡파르",
+          "description": "짧은 금관 리듬이 상승하고 큰 화음으로 해결되는 영웅 보상",
+          "url": "audio/aug_platinum_2.wav",
+          "source_wav": "AudioProduction/CoreGuardian_B_Revision5_20261019/audio/aug_platinum_2.wav",
+          "sha256": "f2905c271da4cb616dfaf305568089bf3f6fe1f0ee2a68e6b868840b0401423d",
+          "duration": 2.1,
+          "repeat_url": "audio/aug_platinum_2_repeat.wav"
+        },
+        {
+          "number": 3,
+          "title": "최고등급 · 빛의 폭발",
+          "description": "빛이 모인 뒤 짧은 틈을 지나 넓은 화음과 반짝임이 터지는 고등급 공개",
+          "url": "audio/aug_platinum_3.wav",
+          "source_wav": "AudioProduction/CoreGuardian_B_Revision5_20261019/audio/aug_platinum_3.wav",
+          "sha256": "3657af8c765c7a3d9a2b6d4fe84e2772da46d762d9bc32c03fd1e1cd0999e3f3",
+          "duration": 2.3,
+          "repeat_url": "audio/aug_platinum_3_repeat.wav"
+        }
+      ]
+    }
+  ],
+  "retained": [
+    {
+      "id": "single",
+      "title": "단일 포탑 발사",
+      "number": 2,
+      "candidate": "묵직한 응축",
+      "url": "reference/single_2.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/single_2.wav",
+      "sha256": "78fefbd616af2791008d6ddbcc6d75642a67978f41407248c0981c3aafe4df9e",
+      "origin": "B72"
+    },
+    {
+      "id": "player",
+      "title": "플레이어 공격",
+      "number": 1,
+      "candidate": "민첩한 타격",
+      "url": "reference/player_1.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/player_1.wav",
+      "sha256": "f9c7f25cb0c5b261ae7fd3436b8345afea61ea5e8cf0fbd597fe401fe7391d20",
+      "origin": "B72"
+    },
+    {
+      "id": "hit",
+      "title": "몬스터 피격",
+      "number": 2,
+      "candidate": "두꺼운 접촉",
+      "url": "reference/hit_2.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/hit_2.wav",
+      "sha256": "04cdcc25ae24455bbf9149c4196a5b0a053eaa1fc0d585d3138106c1638dc70b",
+      "origin": "B72"
+    },
+    {
+      "id": "death",
+      "title": "몬스터 처치",
+      "number": 2,
+      "candidate": "무게 있는 붕괴",
+      "url": "reference/death_2.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/death_2.wav",
+      "sha256": "31443884334ad2d3c4f79bfa4f54cbccf1154e588ea1b9e0ff847335dd5561b5",
+      "origin": "B72"
+    },
+    {
+      "id": "core",
+      "title": "코어 피해",
+      "number": 1,
+      "candidate": "짧은 균열",
+      "url": "reference/core_1.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/core_1.wav",
+      "sha256": "984399a9ff2c56d851fb22b161e664b2124f3d2d1873e53e4417571b382bdb0a",
+      "origin": "B72"
+    },
+    {
+      "id": "boss_spawn",
+      "title": "보스 등장",
+      "number": 2,
+      "candidate": "중량 있는 도착",
+      "url": "reference/boss_spawn_2.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/boss_spawn_2.wav",
+      "sha256": "2e458c474ca3e2ca4908a4ef05735374f0fb0ab939db398b25b84df1191b07ae",
+      "origin": "B72"
+    },
+    {
+      "id": "boss_accel",
+      "title": "보스 가속 전환",
+      "number": 1,
+      "candidate": "빠른 잠금 해제",
+      "url": "reference/boss_accel_1.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/boss_accel_1.wav",
+      "sha256": "67d1242b0989776417e4ddde8ff879dabaf8cb3baaf9e54b6daafd6aa9c9275b",
+      "origin": "B72"
+    },
+    {
+      "id": "install",
+      "title": "포탑 설치 완료",
+      "number": 3,
+      "candidate": "마력 연결",
+      "url": "reference/install_3.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/install_3.wav",
+      "sha256": "a626da1e4193031731307df4253f3bd3798813a5fbf55faf013cc91bb238f2a5",
+      "origin": "B72"
+    },
+    {
+      "id": "install_fail",
+      "title": "설치 실패",
+      "number": 3,
+      "candidate": "짧은 역공명",
+      "url": "reference/install_fail_3.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/install_fail_3.wav",
+      "sha256": "a5c921a69db8bd38b0da6f1aff2432f2efbbbd38cfc66de22164e7b8e572028b",
+      "origin": "B72"
+    },
+    {
+      "id": "upgrade_ok",
+      "title": "강화 성공",
+      "number": 1,
+      "candidate": "짧은 완성",
+      "url": "reference/upgrade_ok_1.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/upgrade_ok_1.wav",
+      "sha256": "4753a88ea609bee282e5240a52ea85d746c23aa36b8b5c56de81498d82d694f6",
+      "origin": "B72"
+    },
+    {
+      "id": "upgrade_fail",
+      "title": "강화 실패·재화 부족",
+      "number": 2,
+      "candidate": "낮은 막힘",
+      "url": "reference/upgrade_fail_2.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/upgrade_fail_2.wav",
+      "sha256": "ea7e46740f81fa238f123c0e800165e8aaeffe7793e328e042123230881f9d25",
+      "origin": "B72"
+    },
+    {
+      "id": "bgm",
+      "title": "전투 BGM",
+      "number": 1,
+      "candidate": "안뜰의 방어선",
+      "url": "reference/bgm_1.wav",
+      "original_wav": "AudioProduction/CoreGuardian_B_SoundLibrary_20261019/audio/bgm_1.wav",
+      "sha256": "17f1b88efee7e79dcd8e1ceb75537ddf5b1e15b39df508a0e7b021cf42411a7d",
+      "origin": "B72"
+    },
+    {
+      "id": "cancel_install",
+      "title": "Esc · 설치 취소",
+      "number": 3,
+      "candidate": "가벼운 접힘",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/cancel_install_3.wav",
+      "sha256": "3c2cf72c49e5178421050dd0fc9b9906f5f2c38f2266fa56d47c5ccc853bb6c9",
+      "url": "reference/cancel_install_3.wav",
+      "origin": "2차"
+    },
+    {
+      "id": "round_complete",
+      "title": "라운드 완료",
+      "number": 2,
+      "candidate": "선명한 성취",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/round_complete_2.wav",
+      "sha256": "3644bd62a77b5f705a363c18342871e46f37733b700dd190d71c020f27964adc",
+      "url": "reference/round_complete_2.wav",
+      "origin": "2차"
+    },
+    {
+      "id": "victory",
+      "title": "최종 승리",
+      "number": 3,
+      "candidate": "여운 있는 마침",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/victory_3.wav",
+      "sha256": "89d748323b41ed612a6e0e58eb8320d1c90f33285d7135892d8c5e51a9e72190",
+      "url": "reference/victory_3.wav",
+      "origin": "2차"
+    },
+    {
+      "id": "defeat",
+      "title": "패배",
+      "number": 2,
+      "candidate": "선명한 성취",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/defeat_2.wav",
+      "sha256": "8207c0d386b72324ca23b93dc34f9fc65e1d9fcffdffbfffea6430f2fc11c4cd",
+      "url": "reference/defeat_2.wav",
+      "origin": "2차"
+    },
+    {
+      "id": "ui_click",
+      "title": "UI 클릭·선택",
+      "number": 2,
+      "candidate": "조용하고 둔한 동작",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/ui_click_2.wav",
+      "sha256": "215cb3ddb9f8e32310c7556dc210a4439dbccfeb9ab4126c499a0194e0e19077",
+      "url": "reference/ui_click_2.wav",
+      "origin": "2차"
+    },
+    {
+      "id": "ui_open",
+      "title": "패널 열기",
+      "number": 3,
+      "candidate": "선명한 촉각 반응",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/ui_open_3.wav",
+      "sha256": "6169e0345452b872ede23bfad35b16542245115f34a8877dcb5e8f2fde219d7a",
+      "url": "reference/ui_open_3.wav",
+      "origin": "2차"
+    },
+    {
+      "id": "ui_close",
+      "title": "패널 닫기·접기",
+      "number": 2,
+      "candidate": "조용하고 둔한 동작",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/ui_close_2.wav",
+      "sha256": "5775eded6b67b95cea0e3a26a281b190a0e7cdfbcaef3c5936b427f7c93b9b1f",
+      "url": "reference/ui_close_2.wav",
+      "origin": "2차"
+    },
+    {
+      "id": "aug_silver",
+      "title": "증강 공개 · 실버",
+      "number": 3,
+      "candidate": "묵직한 봉인 해제",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/aug_silver_3.wav",
+      "sha256": "aff83cb5b8b2cc0d00401be1e27b572885b56028a1cdbac0a5c32ecac95fe379",
+      "url": "reference/aug_silver_3.wav",
+      "origin": "2차"
+    },
+    {
+      "id": "aug_bgm",
+      "title": "증강 선택 BGM",
+      "number": 3,
+      "candidate": "은은한 선택의 공명",
+      "original_wav": "AudioProduction/CoreGuardian_B_Revision2_20261019/audio/aug_bgm_3.wav",
+      "sha256": "00488b785393d2c0de44b4dd9d13ba5572c1c91b6f14bb14e799e8bdfef1123f",
+      "url": "reference/aug_bgm_3.wav",
+      "origin": "2차"
+    }
+  ],
+  "tentative": [
+    {
+      "id": "demolish",
+      "number": 2,
+      "title": "3차 마력 회수",
+      "url": "reference/tentative_demolish_2.wav",
+      "sha256": "366a6f7b7c8457eb38e49f7923c0e016dcdcaa70feeefa4160903cf89b91e7f7",
+      "note": "잠정 선호·게임 적용과 별도"
+    },
+    {
+      "id": "round_start",
+      "number": 3,
+      "title": "2차 짧은 이중 출격",
+      "url": "reference/tentative_round_start_3.wav",
+      "sha256": "c249272b20ebc78c5a986cec2401fdf0c790acd78f5c37b205aa75ac467d4d1e",
+      "note": "잠정 선호·게임 적용과 별도"
+    }
+  ],
+  "extras": [],
+  "multi": {
+    "approved_policy": "실제 발사 수에 맞춰1·2·3발 구분 · 게임 미연결",
+    "clips": []
+  },
+  "flows": [
+    "audio/tier_chain_1.wav",
+    "audio/tier_bgm_1.wav",
+    "audio/tier_chain_2.wav",
+    "audio/tier_bgm_2.wav",
+    "audio/tier_chain_3.wav",
+    "audio/tier_bgm_3.wav"
+  ],
+  "tier_sets": [
+    {
+      "name": "금빛 당첨 · 반짝이는 확정",
+      "dry": "audio/tier_chain_1.wav",
+      "music": "audio/tier_bgm_1.wav",
+      "starts": [
+        0,
+        1.0150113378684806,
+        3.0150113378684806
+      ]
+    },
+    {
+      "name": "영웅 등장 · 짧은 팡파르",
+      "dry": "audio/tier_chain_2.wav",
+      "music": "audio/tier_bgm_2.wav",
+      "starts": [
+        0,
+        1.0150113378684806,
+        3.1150113378684807
+      ]
+    },
+    {
+      "name": "최고등급 · 빛의 폭발",
+      "dry": "audio/tier_chain_3.wav",
+      "music": "audio/tier_bgm_3.wav",
+      "starts": [
+        0,
+        1.0150113378684806,
+        3.235011337868481
+      ]
+    }
+  ]
+}
