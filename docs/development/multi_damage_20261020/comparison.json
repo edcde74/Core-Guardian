@@ -1,0 +1,2536 @@
+{
+  "roundSchemaVersion": 2,
+  "kind": "isolated actual Session simulation, not scene Update or human play",
+  "seed": 20261020,
+  "variants": "Multi base damage only; Attack HP40 and first discounts retained",
+  "results": [
+    {
+      "hp": 40,
+      "multiDamage": 12.5,
+      "policy": "single_upgrade",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Defeat",
+      "completed": 10,
+      "core": 0,
+      "gold": 189,
+      "crystals": 100,
+      "elapsed": 767.1362,
+      "augments": [],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.4996223,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 175
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 101.954651,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 45,
+          "goldEnd": 10,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 443,
+            "Player": 195
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 42.25258,
+          "coreStart": 18,
+          "coreEnd": 18,
+          "goldStart": 10,
+          "goldEnd": 60,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 494,
+            "Player": 166
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 98.1468353,
+          "coreStart": 18,
+          "coreEnd": 16,
+          "goldStart": 60,
+          "goldEnd": 111,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 512,
+            "Player": 197
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 43.0894775,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 111,
+          "goldEnd": 26,
+          "crystals": 65,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 510,
+            "Player": 210
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 43.03949,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 26,
+          "goldEnd": 87,
+          "crystals": 90,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 522,
+            "Player": 228
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 42.989502,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 87,
+          "goldEnd": 148,
+          "crystals": 115,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 500,
+            "Player": 250
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 43.5893555,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 148,
+          "goldEnd": 23,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 558,
+            "Player": 242
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 94.47696,
+          "coreStart": 16,
+          "coreEnd": 14,
+          "goldStart": 23,
+          "goldEnd": 91,
+          "crystals": 65,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 538,
+            "Player": 268
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 130.668091,
+          "coreStart": 14,
+          "coreEnd": 2,
+          "goldStart": 91,
+          "goldEnd": 136,
+          "crystals": 100,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 408,
+            "Player": 244
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 82.87976,
+          "coreStart": 2,
+          "coreEnd": 0,
+          "goldStart": 136,
+          "goldEnd": 189,
+          "crystals": 100,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 432,
+            "Player": 222
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 80.40031
+        },
+        {
+          "wave": 3,
+          "kind": "tower_upgrade",
+          "cost": 40
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 317.8959
+        },
+        {
+          "wave": 8,
+          "kind": "tower_upgrade",
+          "cost": 100
+        },
+        {
+          "wave": 8,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 449.063873
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 12.5,
+      "policy": "single_save",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Victory",
+      "completed": 11,
+      "core": 2,
+      "gold": 95,
+      "crystals": 85,
+      "elapsed": 987.732361,
+      "augments": [
+        "Gold_Flawless"
+      ],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.4996223,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 175
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 101.954651,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 45,
+          "goldEnd": 10,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 443,
+            "Player": 195
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 95.95586,
+          "coreStart": 18,
+          "coreEnd": 16,
+          "goldStart": 10,
+          "goldEnd": 57,
+          "crystals": 60,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 232
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 98.13045,
+          "coreStart": 16,
+          "coreEnd": 10,
+          "goldStart": 57,
+          "goldEnd": 102,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 421,
+            "Player": 255
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 101.375244,
+          "coreStart": 10,
+          "coreEnd": 2,
+          "goldStart": 102,
+          "goldEnd": 5,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 415,
+            "Player": 267
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 76.03146,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 5,
+          "goldEnd": 66,
+          "crystals": 30,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 424,
+            "Player": 300,
+            "Tower:2": 26
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 74.08191,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 66,
+          "goldEnd": 127,
+          "crystals": 55,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 424,
+            "Player": 300,
+            "Tower:2": 26
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 86.07898,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 127,
+          "goldEnd": 192,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 419,
+            "Player": 303,
+            "Tower:2": 78
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 82.92975,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 192,
+          "goldEnd": 73,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 407,
+            "Player": 311,
+            "Tower:2": 112
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 115.621765,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 73,
+          "goldEnd": 241,
+          "crystals": 40,
+          "bossKilled": true,
+          "damage": {
+            "Tower:1": 298,
+            "Tower:3": 224,
+            "Player": 225,
+            "Tower:2": 133
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 81.4801,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 241,
+          "goldEnd": 95,
+          "crystals": 85,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 278,
+            "Tower:3": 271,
+            "Player": 198,
+            "Tower:2": 123
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 80.40031
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 382.78006
+        },
+        {
+          "wave": 6,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 9,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 677.5081
+        },
+        {
+          "wave": 10,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 11,
+          "kind": "player_upgrade",
+          "cost": 250,
+          "elapsed": 921.048645
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 12.5,
+      "policy": "multi_save",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Victory",
+      "completed": 11,
+      "core": 10,
+      "gold": 222,
+      "crystals": 70,
+      "elapsed": 635.8183,
+      "augments": [],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 37.84971,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 450,
+            "Player": 150
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 40.20046,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 45,
+          "goldEnd": 13,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 491,
+            "Player": 149
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 44.5027161,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 13,
+          "goldEnd": 63,
+          "crystals": 60,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 475,
+            "Player": 185
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 44.102684,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 63,
+          "goldEnd": 117,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 536,
+            "Player": 174
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 42.8526154,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 117,
+          "goldEnd": 32,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 544,
+            "Player": 176
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 43.9526825,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 32,
+          "goldEnd": 93,
+          "crystals": 30,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 534,
+            "Player": 216
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 42.5902863,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 93,
+          "goldEnd": 154,
+          "crystals": 55,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 533,
+            "Player": 217
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 44.38916,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 154,
+          "goldEnd": 29,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 530,
+            "Player": 270
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 85.37915,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 29,
+          "goldEnd": 100,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 529,
+            "Player": 250,
+            "Tower:2": 51
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 126.219208,
+          "coreStart": 20,
+          "coreEnd": 10,
+          "goldStart": 100,
+          "goldEnd": 148,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 330,
+            "Tower:3": 90,
+            "Player": 241,
+            "Tower:2": 103
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 83.2296753,
+          "coreStart": 10,
+          "coreEnd": 10,
+          "goldStart": 148,
+          "goldEnd": 222,
+          "crystals": 70,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 370,
+            "Tower:3": 129,
+            "Player": 237,
+            "Tower:2": 134
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 72.8498459
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 196.90741
+        },
+        {
+          "wave": 6,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 8,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 327.893463
+        },
+        {
+          "wave": 10,
+          "kind": "install",
+          "cost": 100
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 11.0,
+      "policy": "single_upgrade",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Defeat",
+      "completed": 10,
+      "core": 0,
+      "gold": 189,
+      "crystals": 100,
+      "elapsed": 767.1362,
+      "augments": [],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.4996223,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 175
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 101.954651,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 45,
+          "goldEnd": 10,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 443,
+            "Player": 195
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 42.25258,
+          "coreStart": 18,
+          "coreEnd": 18,
+          "goldStart": 10,
+          "goldEnd": 60,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 494,
+            "Player": 166
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 98.1468353,
+          "coreStart": 18,
+          "coreEnd": 16,
+          "goldStart": 60,
+          "goldEnd": 111,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 512,
+            "Player": 197
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 43.0894775,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 111,
+          "goldEnd": 26,
+          "crystals": 65,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 510,
+            "Player": 210
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 43.03949,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 26,
+          "goldEnd": 87,
+          "crystals": 90,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 522,
+            "Player": 228
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 42.989502,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 87,
+          "goldEnd": 148,
+          "crystals": 115,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 500,
+            "Player": 250
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 43.5893555,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 148,
+          "goldEnd": 23,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 558,
+            "Player": 242
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 94.47696,
+          "coreStart": 16,
+          "coreEnd": 14,
+          "goldStart": 23,
+          "goldEnd": 91,
+          "crystals": 65,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 538,
+            "Player": 268
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 130.668091,
+          "coreStart": 14,
+          "coreEnd": 2,
+          "goldStart": 91,
+          "goldEnd": 136,
+          "crystals": 100,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 408,
+            "Player": 244
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 82.87976,
+          "coreStart": 2,
+          "coreEnd": 0,
+          "goldStart": 136,
+          "goldEnd": 189,
+          "crystals": 100,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 432,
+            "Player": 222
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 80.40031
+        },
+        {
+          "wave": 3,
+          "kind": "tower_upgrade",
+          "cost": 40
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 317.8959
+        },
+        {
+          "wave": 8,
+          "kind": "tower_upgrade",
+          "cost": 100
+        },
+        {
+          "wave": 8,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 449.063873
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 11.0,
+      "policy": "single_save",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Victory",
+      "completed": 11,
+      "core": 2,
+      "gold": 95,
+      "crystals": 85,
+      "elapsed": 987.732361,
+      "augments": [
+        "Gold_Flawless"
+      ],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.4996223,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 175
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 101.954651,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 45,
+          "goldEnd": 10,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 443,
+            "Player": 195
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 95.95586,
+          "coreStart": 18,
+          "coreEnd": 16,
+          "goldStart": 10,
+          "goldEnd": 57,
+          "crystals": 60,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 232
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 98.13045,
+          "coreStart": 16,
+          "coreEnd": 10,
+          "goldStart": 57,
+          "goldEnd": 102,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 421,
+            "Player": 255
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 101.375244,
+          "coreStart": 10,
+          "coreEnd": 2,
+          "goldStart": 102,
+          "goldEnd": 5,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 415,
+            "Player": 267
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 76.03146,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 5,
+          "goldEnd": 66,
+          "crystals": 30,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 424,
+            "Player": 300,
+            "Tower:2": 26
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 74.08191,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 66,
+          "goldEnd": 127,
+          "crystals": 55,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 424,
+            "Player": 300,
+            "Tower:2": 26
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 86.07898,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 127,
+          "goldEnd": 192,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 419,
+            "Player": 303,
+            "Tower:2": 78
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 82.92975,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 192,
+          "goldEnd": 73,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 407,
+            "Player": 311,
+            "Tower:2": 112
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 115.621765,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 73,
+          "goldEnd": 241,
+          "crystals": 40,
+          "bossKilled": true,
+          "damage": {
+            "Tower:1": 298,
+            "Tower:3": 224,
+            "Player": 225,
+            "Tower:2": 133
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 81.4801,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 241,
+          "goldEnd": 95,
+          "crystals": 85,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 278,
+            "Tower:3": 271,
+            "Player": 198,
+            "Tower:2": 123
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 80.40031
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 382.78006
+        },
+        {
+          "wave": 6,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 9,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 677.5081
+        },
+        {
+          "wave": 10,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 11,
+          "kind": "player_upgrade",
+          "cost": 250,
+          "elapsed": 921.048645
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 11.0,
+      "policy": "multi_save",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Victory",
+      "completed": 11,
+      "core": 4,
+      "gold": 213,
+      "crystals": 70,
+      "elapsed": 769.585632,
+      "augments": [],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 37.84971,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 450,
+            "Player": 150
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 40.20046,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 45,
+          "goldEnd": 13,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 457,
+            "Player": 183
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 44.5027161,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 13,
+          "goldEnd": 63,
+          "crystals": 60,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 413,
+            "Player": 247
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 44.102684,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 63,
+          "goldEnd": 117,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 487,
+            "Player": 223
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 46.3028259,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 117,
+          "goldEnd": 32,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 503,
+            "Player": 217
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 78.59387,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 32,
+          "goldEnd": 93,
+          "crystals": 30,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 471,
+            "Player": 250,
+            "Tower:2": 29
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 76.73126,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 93,
+          "goldEnd": 154,
+          "crystals": 55,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 474,
+            "Player": 247,
+            "Tower:2": 29
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 90.22797,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 154,
+          "goldEnd": 29,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 481,
+            "Player": 250,
+            "Tower:2": 69
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 92.9773254,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 29,
+          "goldEnd": 97,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 466,
+            "Player": 246,
+            "Tower:2": 111
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 126.61908,
+          "coreStart": 18,
+          "coreEnd": 8,
+          "goldStart": 97,
+          "goldEnd": 145,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 295,
+            "Tower:3": 77,
+            "Player": 246,
+            "Tower:2": 130
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 90.9277954,
+          "coreStart": 8,
+          "coreEnd": 4,
+          "goldStart": 145,
+          "goldEnd": 213,
+          "crystals": 70,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 344,
+            "Tower:3": 112,
+            "Player": 225,
+            "Tower:2": 175
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 72.8498459
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 196.90741
+        },
+        {
+          "wave": 6,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 8,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 404.07486
+        },
+        {
+          "wave": 10,
+          "kind": "install",
+          "cost": 100
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 10.0,
+      "policy": "single_upgrade",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Defeat",
+      "completed": 10,
+      "core": 0,
+      "gold": 189,
+      "crystals": 100,
+      "elapsed": 767.1362,
+      "augments": [],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.4996223,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 175
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 101.954651,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 45,
+          "goldEnd": 10,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 443,
+            "Player": 195
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 42.25258,
+          "coreStart": 18,
+          "coreEnd": 18,
+          "goldStart": 10,
+          "goldEnd": 60,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 494,
+            "Player": 166
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 98.1468353,
+          "coreStart": 18,
+          "coreEnd": 16,
+          "goldStart": 60,
+          "goldEnd": 111,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 512,
+            "Player": 197
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 43.0894775,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 111,
+          "goldEnd": 26,
+          "crystals": 65,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 510,
+            "Player": 210
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 43.03949,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 26,
+          "goldEnd": 87,
+          "crystals": 90,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 522,
+            "Player": 228
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 42.989502,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 87,
+          "goldEnd": 148,
+          "crystals": 115,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 500,
+            "Player": 250
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 43.5893555,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 148,
+          "goldEnd": 23,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 558,
+            "Player": 242
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 94.47696,
+          "coreStart": 16,
+          "coreEnd": 14,
+          "goldStart": 23,
+          "goldEnd": 91,
+          "crystals": 65,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 538,
+            "Player": 268
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 130.668091,
+          "coreStart": 14,
+          "coreEnd": 2,
+          "goldStart": 91,
+          "goldEnd": 136,
+          "crystals": 100,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 408,
+            "Player": 244
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 82.87976,
+          "coreStart": 2,
+          "coreEnd": 0,
+          "goldStart": 136,
+          "goldEnd": 189,
+          "crystals": 100,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 432,
+            "Player": 222
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 80.40031
+        },
+        {
+          "wave": 3,
+          "kind": "tower_upgrade",
+          "cost": 40
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 317.8959
+        },
+        {
+          "wave": 8,
+          "kind": "tower_upgrade",
+          "cost": 100
+        },
+        {
+          "wave": 8,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 449.063873
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 10.0,
+      "policy": "single_save",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Victory",
+      "completed": 11,
+      "core": 2,
+      "gold": 95,
+      "crystals": 85,
+      "elapsed": 987.732361,
+      "augments": [
+        "Gold_Flawless"
+      ],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.4996223,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 175
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 101.954651,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 45,
+          "goldEnd": 10,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 443,
+            "Player": 195
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 95.95586,
+          "coreStart": 18,
+          "coreEnd": 16,
+          "goldStart": 10,
+          "goldEnd": 57,
+          "crystals": 60,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 232
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 98.13045,
+          "coreStart": 16,
+          "coreEnd": 10,
+          "goldStart": 57,
+          "goldEnd": 102,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 421,
+            "Player": 255
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 101.375244,
+          "coreStart": 10,
+          "coreEnd": 2,
+          "goldStart": 102,
+          "goldEnd": 5,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 415,
+            "Player": 267
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 76.03146,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 5,
+          "goldEnd": 66,
+          "crystals": 30,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 424,
+            "Player": 300,
+            "Tower:2": 26
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 74.08191,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 66,
+          "goldEnd": 127,
+          "crystals": 55,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 424,
+            "Player": 300,
+            "Tower:2": 26
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 86.07898,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 127,
+          "goldEnd": 192,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 419,
+            "Player": 303,
+            "Tower:2": 78
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 82.92975,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 192,
+          "goldEnd": 73,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 407,
+            "Player": 311,
+            "Tower:2": 112
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 115.621765,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 73,
+          "goldEnd": 241,
+          "crystals": 40,
+          "bossKilled": true,
+          "damage": {
+            "Tower:1": 298,
+            "Tower:3": 224,
+            "Player": 225,
+            "Tower:2": 133
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 81.4801,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 241,
+          "goldEnd": 95,
+          "crystals": 85,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 278,
+            "Tower:3": 271,
+            "Player": 198,
+            "Tower:2": 123
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 80.40031
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 382.78006
+        },
+        {
+          "wave": 6,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 9,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 677.5081
+        },
+        {
+          "wave": 10,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 11,
+          "kind": "player_upgrade",
+          "cost": 250,
+          "elapsed": 921.048645
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 10.0,
+      "policy": "multi_save",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Victory",
+      "completed": 11,
+      "core": 4,
+      "gold": 213,
+      "crystals": 70,
+      "elapsed": 769.585632,
+      "augments": [],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 37.84971,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 450,
+            "Player": 150
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 40.20046,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 45,
+          "goldEnd": 13,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 440,
+            "Player": 200
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 44.5027161,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 13,
+          "goldEnd": 63,
+          "crystals": 60,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 378,
+            "Player": 282
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 44.102684,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 63,
+          "goldEnd": 117,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 458,
+            "Player": 252
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 46.3028259,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 117,
+          "goldEnd": 32,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 470,
+            "Player": 250
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 78.59387,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 32,
+          "goldEnd": 93,
+          "crystals": 30,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 440,
+            "Player": 280,
+            "Tower:2": 30
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 76.73126,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 93,
+          "goldEnd": 154,
+          "crystals": 55,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 444,
+            "Player": 276,
+            "Tower:2": 30
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 90.22797,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 154,
+          "goldEnd": 29,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 442,
+            "Player": 288,
+            "Tower:2": 70
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 92.9773254,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 29,
+          "goldEnd": 97,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 428,
+            "Player": 278,
+            "Tower:2": 114
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 126.61908,
+          "coreStart": 18,
+          "coreEnd": 8,
+          "goldStart": 97,
+          "goldEnd": 145,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 274,
+            "Tower:3": 70,
+            "Player": 264,
+            "Tower:2": 132
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 90.9277954,
+          "coreStart": 8,
+          "coreEnd": 4,
+          "goldStart": 145,
+          "goldEnd": 213,
+          "crystals": 70,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 324,
+            "Tower:3": 104,
+            "Player": 252,
+            "Tower:2": 170
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 72.8498459
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 196.90741
+        },
+        {
+          "wave": 6,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 8,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 404.07486
+        },
+        {
+          "wave": 10,
+          "kind": "install",
+          "cost": 100
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 9.0,
+      "policy": "single_upgrade",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Defeat",
+      "completed": 10,
+      "core": 0,
+      "gold": 189,
+      "crystals": 100,
+      "elapsed": 767.1362,
+      "augments": [],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.4996223,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 175
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 101.954651,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 45,
+          "goldEnd": 10,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 443,
+            "Player": 195
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 42.25258,
+          "coreStart": 18,
+          "coreEnd": 18,
+          "goldStart": 10,
+          "goldEnd": 60,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 494,
+            "Player": 166
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 98.1468353,
+          "coreStart": 18,
+          "coreEnd": 16,
+          "goldStart": 60,
+          "goldEnd": 111,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 512,
+            "Player": 197
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 43.0894775,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 111,
+          "goldEnd": 26,
+          "crystals": 65,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 510,
+            "Player": 210
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 43.03949,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 26,
+          "goldEnd": 87,
+          "crystals": 90,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 522,
+            "Player": 228
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 42.989502,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 87,
+          "goldEnd": 148,
+          "crystals": 115,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 500,
+            "Player": 250
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 43.5893555,
+          "coreStart": 16,
+          "coreEnd": 16,
+          "goldStart": 148,
+          "goldEnd": 23,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 558,
+            "Player": 242
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 94.47696,
+          "coreStart": 16,
+          "coreEnd": 14,
+          "goldStart": 23,
+          "goldEnd": 91,
+          "crystals": 65,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 538,
+            "Player": 268
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 130.668091,
+          "coreStart": 14,
+          "coreEnd": 2,
+          "goldStart": 91,
+          "goldEnd": 136,
+          "crystals": 100,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 408,
+            "Player": 244
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 82.87976,
+          "coreStart": 2,
+          "coreEnd": 0,
+          "goldStart": 136,
+          "goldEnd": 189,
+          "crystals": 100,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 432,
+            "Player": 222
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 80.40031
+        },
+        {
+          "wave": 3,
+          "kind": "tower_upgrade",
+          "cost": 40
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 317.8959
+        },
+        {
+          "wave": 8,
+          "kind": "tower_upgrade",
+          "cost": 100
+        },
+        {
+          "wave": 8,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 449.063873
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 9.0,
+      "policy": "single_save",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Victory",
+      "completed": 11,
+      "core": 2,
+      "gold": 95,
+      "crystals": 85,
+      "elapsed": 987.732361,
+      "augments": [
+        "Gold_Flawless"
+      ],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.4996223,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 175
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 101.954651,
+          "coreStart": 20,
+          "coreEnd": 18,
+          "goldStart": 45,
+          "goldEnd": 10,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 443,
+            "Player": 195
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 95.95586,
+          "coreStart": 18,
+          "coreEnd": 16,
+          "goldStart": 10,
+          "goldEnd": 57,
+          "crystals": 60,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 425,
+            "Player": 232
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 98.13045,
+          "coreStart": 16,
+          "coreEnd": 10,
+          "goldStart": 57,
+          "goldEnd": 102,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 421,
+            "Player": 255
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 101.375244,
+          "coreStart": 10,
+          "coreEnd": 2,
+          "goldStart": 102,
+          "goldEnd": 5,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 415,
+            "Player": 267
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 76.03146,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 5,
+          "goldEnd": 66,
+          "crystals": 30,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 424,
+            "Player": 300,
+            "Tower:2": 26
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 74.08191,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 66,
+          "goldEnd": 127,
+          "crystals": 55,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 424,
+            "Player": 300,
+            "Tower:2": 26
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 86.07898,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 127,
+          "goldEnd": 192,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 419,
+            "Player": 303,
+            "Tower:2": 78
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 82.92975,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 192,
+          "goldEnd": 73,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 407,
+            "Player": 311,
+            "Tower:2": 112
+          }
+        },
+        {
+          "wave": 10,
+          "seconds": 115.621765,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 73,
+          "goldEnd": 241,
+          "crystals": 40,
+          "bossKilled": true,
+          "damage": {
+            "Tower:1": 298,
+            "Tower:3": 224,
+            "Player": 225,
+            "Tower:2": 133
+          }
+        },
+        {
+          "wave": 11,
+          "seconds": 81.4801,
+          "coreStart": 2,
+          "coreEnd": 2,
+          "goldStart": 241,
+          "goldEnd": 95,
+          "crystals": 85,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 278,
+            "Tower:3": 271,
+            "Player": 198,
+            "Tower:2": 123
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 80.40031
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 382.78006
+        },
+        {
+          "wave": 6,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 9,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 677.5081
+        },
+        {
+          "wave": 10,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 11,
+          "kind": "player_upgrade",
+          "cost": 250,
+          "elapsed": 921.048645
+        }
+      ]
+    },
+    {
+      "hp": 40,
+      "multiDamage": 9.0,
+      "policy": "multi_save",
+      "policyVersion": "hp-probe-v1/stationary13,14/legal purchases/player-damage-immediate",
+      "seed": 20261020,
+      "step": 0.05,
+      "phase": "Defeat",
+      "completed": 8,
+      "core": 0,
+      "gold": 67,
+      "crystals": 80,
+      "elapsed": 736.693665,
+      "augments": [],
+      "rows": [
+        {
+          "wave": 1,
+          "seconds": 43.3496246,
+          "coreStart": 20,
+          "coreEnd": 20,
+          "goldStart": 0,
+          "goldEnd": 45,
+          "crystals": 20,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 423,
+            "Player": 177
+          }
+        },
+        {
+          "wave": 2,
+          "seconds": 97.3543549,
+          "coreStart": 20,
+          "coreEnd": 12,
+          "goldStart": 45,
+          "goldEnd": 1,
+          "crystals": 40,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 405,
+            "Player": 197
+          }
+        },
+        {
+          "wave": 3,
+          "seconds": 46.6528473,
+          "coreStart": 12,
+          "coreEnd": 12,
+          "goldStart": 1,
+          "goldEnd": 51,
+          "crystals": 60,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 351,
+            "Player": 309
+          }
+        },
+        {
+          "wave": 4,
+          "seconds": 104.595367,
+          "coreStart": 12,
+          "coreEnd": 6,
+          "goldStart": 51,
+          "goldEnd": 96,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 423,
+            "Player": 266
+          }
+        },
+        {
+          "wave": 5,
+          "seconds": 99.7756348,
+          "coreStart": 6,
+          "coreEnd": 4,
+          "goldStart": 96,
+          "goldEnd": 8,
+          "crystals": 105,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 433,
+            "Player": 274
+          }
+        },
+        {
+          "wave": 6,
+          "seconds": 80.58032,
+          "coreStart": 4,
+          "coreEnd": 4,
+          "goldStart": 8,
+          "goldEnd": 69,
+          "crystals": 30,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 409,
+            "Player": 310,
+            "Tower:2": 31
+          }
+        },
+        {
+          "wave": 7,
+          "seconds": 78.7308044,
+          "coreStart": 4,
+          "coreEnd": 4,
+          "goldStart": 69,
+          "goldEnd": 130,
+          "crystals": 55,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 410,
+            "Player": 309,
+            "Tower:2": 31
+          }
+        },
+        {
+          "wave": 8,
+          "seconds": 92.22748,
+          "coreStart": 4,
+          "coreEnd": 2,
+          "goldStart": 130,
+          "goldEnd": 192,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 403,
+            "Player": 326,
+            "Tower:2": 67
+          }
+        },
+        {
+          "wave": 9,
+          "seconds": 92.9772949,
+          "coreStart": 2,
+          "coreEnd": 0,
+          "goldStart": 192,
+          "goldEnd": 67,
+          "crystals": 80,
+          "bossKilled": false,
+          "damage": {
+            "Tower:1": 390,
+            "Player": 310,
+            "Tower:2": 113
+          }
+        }
+      ],
+      "actions": [
+        {
+          "wave": 1,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 2,
+          "kind": "player_upgrade",
+          "cost": 80,
+          "elapsed": 86.6006851
+        },
+        {
+          "wave": 5,
+          "kind": "player_upgrade",
+          "cost": 140,
+          "elapsed": 335.741547
+        },
+        {
+          "wave": 6,
+          "kind": "install",
+          "cost": 100
+        },
+        {
+          "wave": 9,
+          "kind": "player_upgrade",
+          "cost": 190,
+          "elapsed": 643.6664
+        }
+      ]
+    }
+  ]
+}

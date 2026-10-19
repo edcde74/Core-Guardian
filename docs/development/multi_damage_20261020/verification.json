@@ -1,0 +1,18 @@
+{
+  "asset_files": 1305,
+  "changed_only": [
+    "Assets/Resources/CoreGuardian/towers.csv"
+  ],
+  "unchanged": 1304,
+  "single_policy_negative_controls_identical": true,
+  "simulation_count": 12,
+  "policy_count": 3,
+  "seed": 20261020,
+  "variants": [
+    12.5,
+    11,
+    10,
+    9
+  ],
+  "new_scene_play": false
+}
