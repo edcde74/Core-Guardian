@@ -239,7 +239,12 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public void UpgradeTower(string stat)
     {
         int id=SelectedTower;string reason;
-        if(Session.UpgradeTower(id,stat,out reason)){upgradeFeedback.Trigger(TowerView(id));GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeSucceeded();}
+        if(Session.UpgradeTower(id,stat,out reason))
+        {
+            var kind=Session.Towers.First(t=>t.Id==id).Kind;
+            foreach(var tower in Session.Towers.Where(t=>t.Kind==kind))upgradeFeedback.Trigger(TowerView(tower.Id));
+            GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeSucceeded();
+        }
         else GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeFailed();
         Notify(reason);
     }
@@ -282,11 +287,12 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
                 if(e.Kind==EnemyKind.Boss)GetComponent<CoreGuardianCombatAudio>()?.NotifyBossSpawn(e.Id);
                 var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
                 bar.transform.SetParent(view.transform,false);healthViews[e.Id]=bar.transform;
+                bar.gameObject.AddComponent<SegmentedEnemyHealthBar>().Configure(e.Kind==EnemyKind.Boss);
             }
             view.transform.position=World(e.Position);
             combatAnimation.Enemy(e,view);
             healthViews[e.Id].position=view.GetComponent<CoreGuardianUnitAnimation>().HealthBarWorld;
-            healthViews[e.Id].localScale=new Vector3(.35f*e.Health/e.Spec.Health,.035f,1);
+            healthViews[e.Id].GetComponent<SegmentedEnemyHealthBar>().SetHealth(e.Health,e.Spec.Health);
             if(e.Buffed&&!auraViews.ContainsKey(e.Id))auraViews[e.Id]=combatArt.Marker("EnemySpeedBuff",World(e.Position),.17f);
             if(auraViews.TryGetValue(e.Id,out var aura)){aura.SetActive(e.Buffed);aura.transform.position=World(e.Position)+Vector3.up*1.02f;}
         }

@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "duration": 3.84,
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks",
+      "Status": "Passed",
+      "Duration": 0.4199219,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianRuntimePlayModeTests.SharedUpgradeHudKeepsPanelTabsAndStatCellsFixed",
+      "Status": "Passed",
+      "Duration": 0.4152475,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianUpgradeFeedbackPlayModeTests.InspectorDurationDefaultsToPointEight_AndControlsTheActualLifetime",
+      "Status": "Passed",
+      "Duration": 1.6451935,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianUpgradeFeedbackPlayModeTests.RealSuccessfulPlayerAndAllTowerPurchasesScan_WhileRejectedPurchasesDoNot",
+      "Status": "Passed",
+      "Duration": 1.1873736,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

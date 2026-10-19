@@ -12,7 +12,7 @@ public class CoreGuardianRoundFlowTests
         Assert.That(d.Waves.Max(w=>w.Wave),Is.EqualTo(11));
         EnemyKind boss;
         Assert.That(Enum.TryParse("Boss",out boss),Is.True);
-        Assert.That(d.Enemies[boss].Health,Is.EqualTo(300));
+        Assert.That(d.Enemies[boss].Health,Is.EqualTo(500));
         Assert.That(d.Enemies[boss].Gold,Is.EqualTo(120));
         Assert.That(d.Waves.Where(w=>w.Wave==10).Sum(w=>w.Count),Is.EqualTo(15));
         Assert.That(d.Waves.Where(w=>w.Wave==11).Sum(w=>w.Count),Is.EqualTo(21));

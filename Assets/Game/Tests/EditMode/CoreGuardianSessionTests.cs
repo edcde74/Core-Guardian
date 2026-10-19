@@ -10,6 +10,28 @@ public class CoreGuardianSessionTests
     static CombatData Data() {return CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves"));}
     static Session Game(bool noSpawns=true) {var d=Data();if(noSpawns)d.Waves.Clear();var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});return s;}
     static readonly Vector2 Away=new Vector2(100,100);
+    static float Stat(CombatStats s,string key)=>key=="damage"?s.Damage:key=="rate"?s.Rate:key=="range"?s.Range:key=="projectileSpeed"?s.ProjectileSpeed:s.BuffDamage;
+    [Test] public void SegmentedHealthBarUsesDiscreteCellsAndStableFramedWidth()
+    {
+        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardian.SegmentedEnemyHealthBar")).FirstOrDefault(t=>t!=null);
+        Assert.That(type,Is.Not.Null,"Framed cell health display is missing");
+        var go=new GameObject("SegmentHealthQA",typeof(SpriteRenderer));
+        try
+        {
+            var bar=go.AddComponent(type);var renderer=go.GetComponent<SpriteRenderer>();
+            type.GetMethod("Configure").Invoke(bar,new object[]{false});
+            type.GetMethod("SetHealth").Invoke(bar,new object[]{20,40});
+            Assert.That(type.GetProperty("SegmentCount").GetValue(bar),Is.EqualTo(8));Assert.That(type.GetProperty("FilledSegments").GetValue(bar),Is.EqualTo(4));
+            var half=renderer.sprite;float width=half.bounds.size.x;
+            type.GetMethod("SetHealth").Invoke(bar,new object[]{19,40});Assert.That(renderer.sprite,Is.SameAs(half),"HP within one cell must not smoothly shrink the display");
+            type.GetMethod("SetHealth").Invoke(bar,new object[]{15,40});Assert.That(type.GetProperty("FilledSegments").GetValue(bar),Is.EqualTo(3));
+            Assert.That(renderer.sprite.bounds.size.x,Is.EqualTo(width));Assert.That(renderer.sprite.texture.filterMode,Is.EqualTo(FilterMode.Point));
+            type.GetMethod("Configure").Invoke(bar,new object[]{true});type.GetMethod("SetHealth").Invoke(bar,new object[]{250,500});
+            Assert.That(type.GetProperty("SegmentCount").GetValue(bar),Is.EqualTo(12));Assert.That(type.GetProperty("FilledSegments").GetValue(bar),Is.EqualTo(6));
+            type.GetMethod("SetHealth").Invoke(bar,new object[]{0,500});Assert.That(type.GetProperty("FilledSegments").GetValue(bar),Is.Zero);
+        }
+        finally{UnityEngine.Object.DestroyImmediate(go);}
+    }
     [Test] public void DamageFeedbackReportsEachActualHitIncludingLethalDamage()
     {
         var s=Game();var e=s.DebugSpawn(EnemyKind.Defense);
@@ -37,7 +59,7 @@ public class CoreGuardianSessionTests
     {
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies")+"\nAttack,25,1,2,3,0,0,0,provisional",Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
         Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Attack,"+Data().Enemies[EnemyKind.Attack].Health+",","Attack,-1,"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Boss,300,0.6,10,120,0,0,0,provisional",""),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
+        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Boss,"+Data().Enemies[EnemyKind.Boss].Health+",0.6,10,120,0,0,0,provisional",""),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
     }
     [Test] public void UndefinedNumericKindsMissingWaveOneAndCaseDuplicateUpgradeAreRejected()
     {
@@ -90,9 +112,42 @@ public class CoreGuardianSessionTests
         var s=Game();string r;Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(0,0),out r),Is.Null);Assert.That(s.Crystals,Is.EqualTo(100));Assert.That(s.TryInstall(TowerKind.Support,new Vector2Int(2,2),out r),Is.Null);
         var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,2),out r);Assert.That(t,Is.Not.Null);Assert.That(s.IsBuildable(t.Position),Is.False);Assert.That(s.DestroyTower(t.Id),Is.True);Assert.That(s.DestroyTower(t.Id),Is.False);Assert.That(s.Crystals,Is.EqualTo(50));s.StartCombat();Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,3),out r),Is.Null);
     }
-    [Test] public void RefundIncludesActualUpgradesOnce()
+    [TestCase(TowerKind.Single,"damage")][TestCase(TowerKind.Multi,"damage")][TestCase(TowerKind.Support,"buffDamage")]
+    [TestCase(TowerKind.Single,"rate")][TestCase(TowerKind.Single,"range")][TestCase(TowerKind.Single,"projectileSpeed")]
+    [TestCase(TowerKind.Multi,"rate")][TestCase(TowerKind.Multi,"range")][TestCase(TowerKind.Multi,"projectileSpeed")][TestCase(TowerKind.Support,"range")]
+    public void SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(TowerKind kind,string stat)
     {
-        var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(t.Spent,Is.EqualTo(240));int before=s.Crystals;s.DestroyTower(t.Id);Assert.That(s.Crystals-before,Is.EqualTo(120));Assert.That(s.DestroyTower(t.Id),Is.False);
+        var s=Game();s.StartDiagnosticEncounter();string r;
+        if(kind==TowerKind.Support)s.TryInstall(TowerKind.Single,new Vector2Int(1,1),out r);
+        var a=s.TryInstall(kind,new Vector2Int(2,1),out r);var b=s.TryInstall(kind,new Vector2Int(3,1),out r);
+        var other=s.TryInstall(kind==TowerKind.Single?TowerKind.Multi:TowerKind.Single,new Vector2Int(4,1),out r);
+        float before=Stat(a.Stats,stat),otherBefore=other.Stats.Damage;int crystals=s.Crystals;
+        float delta=s.Data.Upgrades.Single(u=>u.Target==kind.ToString()&&u.Stat==stat).Delta;
+        Assert.That(s.UpgradeTower(a.Id,stat,out r),Is.True,r);
+        Assert.That(crystals-s.Crystals,Is.EqualTo(40));Assert.That(Stat(b.Stats,stat),Is.EqualTo(before+delta).Within(.001));
+        Assert.That(other.Stats.Damage,Is.EqualTo(otherBefore));Assert.That(s.TowerUpgradePrice(b.Id,stat),Is.EqualTo(100));
+        var future=s.TryInstall(kind,new Vector2Int(5,1),out r);
+        Assert.That(Stat(future.Stats,stat),Is.EqualTo(before+delta).Within(.001));Assert.That(future.Stats.UpgradeSteps[stat],Is.EqualTo(1));
+        foreach(var t in s.Towers.Where(t=>t.Kind==kind).ToArray())s.DestroyTower(t.Id);
+        var replacement=s.TryInstall(kind,new Vector2Int(2,1),out r);
+        Assert.That(Stat(replacement.Stats,stat),Is.EqualTo(before+delta).Within(.001));Assert.That(s.TowerUpgradePrice(replacement.Id,stat),Is.EqualTo(100));
+        s.StartDiagnosticEncounter();if(kind==TowerKind.Support)s.TryInstall(TowerKind.Single,new Vector2Int(1,1),out r);
+        var reset=s.TryInstall(kind,new Vector2Int(2,1),out r);Assert.That(Stat(reset.Stats,stat),Is.EqualTo(before));Assert.That(s.TowerUpgradePrice(reset.Id,stat),Is.EqualTo(40));
+    }
+    [Test] public void RefundReturnsInstallationOnlyAndSharedInvestmentRemains()
+    {
+        var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(t.Spent,Is.EqualTo(100));int before=s.Crystals;s.DestroyTower(t.Id);Assert.That(s.Crystals-before,Is.EqualTo(50));Assert.That(s.DestroyTower(t.Id),Is.False);
+    }
+    [Test] public void RejectedSharedUpgradeCannotSpendOrChangeCurrentAndFutureTowers()
+    {
+        var s=Game();string r;var a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);
+        Assert.That(s.UpgradeTower(a.Id,"damage",out r),Is.False);Assert.That(r,Is.EqualTo("수정 부족"));
+        Assert.That(s.Crystals,Is.Zero);Assert.That(a.Stats.Damage,Is.EqualTo(s.Data.Towers[TowerKind.Single].Damage));
+        Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(40));
+        s.StartDiagnosticEncounter();a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);int crystals=s.Crystals;
+        Assert.That(s.UpgradeTower(a.Id,"invalid",out r),Is.False);Assert.That(s.UpgradeTower(-1,"damage",out r),Is.False);
+        s.StartCombat();Assert.That(s.UpgradeTower(a.Id,"damage",out r),Is.False);Assert.That(s.Crystals,Is.EqualTo(crystals));
+        Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(40));Assert.That(a.Stats.UpgradeSteps,Is.Empty);
     }
     [Test] public void KillGoldAndActualDamageAreAccountedOnceWithoutOverkill()
     {
@@ -169,7 +224,7 @@ public class CoreGuardianSessionTests
     [Test] public void SupportAddsDamagePercentOnlyToAttackTowers()
     {
         var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);var a=s.TryInstall(TowerKind.Support,new Vector2Int(2,2),out r);var b=s.TryInstall(TowerKind.Support,new Vector2Int(3,1),out r);s.UpgradeTower(b.Id,"buffDamage",out r);s.Data.Waves.Clear();s.StartCombat();s.Tick(.01f,new Vector2(0,1));
-        var shot=s.Projectiles.First(x=>x.Source=="Tower:"+t.Id);Assert.That(shot.Damage,Is.EqualTo(12.5f*1.425f).Within(.0001));Assert.That(s.Projectiles.First(x=>x.Source=="Player").Damage,Is.EqualTo(10));Assert.That(s.Projectiles.Any(x=>x.Source=="Tower:"+a.Id||x.Source=="Tower:"+b.Id),Is.False);
+        var shot=s.Projectiles.First(x=>x.Source=="Tower:"+t.Id);Assert.That(shot.Damage,Is.EqualTo(12.5f*1.45f).Within(.0001));Assert.That(s.Projectiles.First(x=>x.Source=="Player").Damage,Is.EqualTo(10));Assert.That(s.Projectiles.Any(x=>x.Source=="Tower:"+a.Id||x.Source=="Tower:"+b.Id),Is.False);
     }
     [Test] public void EnemyBuffDoesNotStackAndSourceCannotBuffItself()
     {

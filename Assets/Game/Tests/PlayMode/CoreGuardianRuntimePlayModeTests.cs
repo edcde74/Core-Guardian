@@ -11,6 +11,46 @@ using UnityEditor.SceneManagement;
 public class CoreGuardianRuntimePlayModeTests
 {
     static UnityEngine.UI.Button HudButton(UnityEngine.Object runtime,string name)=>((Component)runtime).GetComponentsInChildren<UnityEngine.UI.Button>(true).Single(b=>b.name==name);
+    static Vector3[] Corners(Transform t){var v=new Vector3[4];((RectTransform)t).GetWorldCorners(v);return v;}
+    [UnityTest,Category("SharedTowersHud")] public IEnumerator SharedUpgradeHudKeepsPanelTabsAndStatCellsFixed()
+    {
+#if UNITY_EDITOR
+        float previous=Time.timeScale;
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianPrototype")).First(t=>t!=null);
+        var runtime=(Component)UnityEngine.Object.FindObjectsByType(type,FindObjectsSortMode.None).Single();
+        var hud=runtime.GetComponent(AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianHud")).First(t=>t!=null));
+        var s=(CoreGuardian.Session)type.GetProperty("Session").GetValue(runtime);
+        try
+        {
+            Time.timeScale=0;type.GetMethod("Diagnostic").Invoke(runtime,null);
+            foreach(var kind in new[]{CoreGuardian.TowerKind.Single,CoreGuardian.TowerKind.Multi,CoreGuardian.TowerKind.Support})
+                Assert.That(type.GetMethod("Place").Invoke(runtime,new object[]{kind,new Vector2Int(12+(int)kind,13)}),Is.EqualTo(true));
+            for(int subject=0;subject<4;subject++)
+            {
+                bool player=subject==0,support=subject==3;string prefix=player?"Player":"Tower";
+                if(player)hud.GetType().GetMethod("OpenPlayerSpecs").Invoke(hud,null);
+                else{type.GetProperty("SelectedTower").SetValue(runtime,s.Towers[subject-1].Id);hud.GetType().GetMethod("OpenSelectedTowerSpecs").Invoke(hud,null);}
+                yield return null;Canvas.ForceUpdateCanvases();
+                var panel=HudButton(runtime,prefix+"SpecTab").transform.parent;var bounds=Corners(panel);
+                var specTab=Corners(panel.Find(prefix+"SpecTab"));var buyTab=Corners(panel.Find(prefix+"BuyTab"));
+                string[] stats=support?new[]{"buffDamage","range"}:new[]{"damage","rate","range","projectileSpeed"};
+                var cells=stats.Select(k=>Corners(panel.Find("AbilityPlate/"+(k=="buffDamage"?"damage":k)))).ToArray();
+                HudButton(runtime,prefix+"BuyTab").onClick.Invoke();yield return null;Canvas.ForceUpdateCanvases();
+                Assert.That(Corners(panel),Is.EqualTo(bounds),prefix+" panel moved/resized");
+                Assert.That(Corners(panel.Find(prefix+"SpecTab")),Is.EqualTo(specTab));Assert.That(Corners(panel.Find(prefix+"BuyTab")),Is.EqualTo(buyTab));
+                for(int i=0;i<stats.Length;i++)Assert.That(Corners(panel.Find((player?"":"Tower_")+stats[i])),Is.EqualTo(cells[i]),stats[i]+" moved on tab switch");
+                var purchase=HudButton(runtime,(player?"":"Tower_")+stats[0]);Assert.That(purchase.interactable,Is.True);purchase.onClick.Invoke();yield return null;
+                Assert.That(player?s.Player.UpgradeSteps[stats[0]]:s.Towers[subject-1].Stats.UpgradeSteps[stats[0]],Is.EqualTo(1));
+                HudButton(runtime,prefix+"SpecTab").onClick.Invoke();yield return null;Assert.That(Corners(panel),Is.EqualTo(bounds));
+            }
+        }
+        finally{Time.timeScale=previous;}
+#else
+        yield return null;
+#endif
+    }
     [UnityTest]
     public IEnumerator CombatOnlySpeedRemembersSelectionButUsesOneInPreparationAugmentationAndResults()
     {

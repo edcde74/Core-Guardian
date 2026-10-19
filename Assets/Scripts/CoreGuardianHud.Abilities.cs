@@ -1,10 +1,19 @@
 using CoreGuardian;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public sealed partial class CoreGuardianHud
 {
     RectTransform playerAbilities,towerAbilities;
+    void StyleAbilityPurchase(Button button)
+    {
+        button.GetComponent<CoreGuardianHudReaction>().InsetAbilityCell=true;
+        button.GetComponent<CoreGuardianHudReaction>().SetLabelLayout(new Vector2(62,-8),new Vector2(228,48));
+        var label=button.transform.Find("Label").GetComponent<Text>();label.fontSize=16;
+        var icon=button.GetComponentsInChildren<Image>().First(i=>i.transform!=button.transform);
+        icon.rectTransform.anchoredPosition=new Vector2(16,-16);icon.rectTransform.sizeDelta=new Vector2(32,32);
+    }
     RectTransform BuildAbilityPlate(RectTransform panel)
     {
         var plate=Box("AbilityPlate",panel,new Vector2(0,1),new Vector2(264,-52),new Vector2(612,128));
@@ -27,12 +36,12 @@ public sealed partial class CoreGuardianHud
     }
     void RefreshAbilityPlate(RectTransform plate,CombatStats stats,bool support)
     {
-        plate.gameObject.SetActive(!purchaseOpen);
+        plate.gameObject.SetActive(true);
         string[] keys={"damage","rate","range","projectileSpeed"};
         string[] values={support?"+"+stats.BuffDamage.ToString("0.##")+"%":StatDisplay(stats.Damage,"damage"),stats.Rate.ToString("0.##")+"발/초",stats.Range.ToString("0.##")+"타일",stats.ProjectileSpeed.ToString("0.##")+"타일/초"};
         for(int i=0;i<keys.Length;i++)
         {
-            var cell=(RectTransform)plate.Find(keys[i]);cell.gameObject.SetActive(!support||i==0||i==2);
+            var cell=(RectTransform)plate.Find(keys[i]);cell.gameObject.SetActive(!purchaseOpen&&(!support||i==0||i==2));
             cell.anchoredPosition=support&&i==2?new Vector2(306,0):new Vector2(i%2*306,-i/2*64);
             cell.Find("Name").GetComponent<Text>().text=support?(i==0?"공격력 증가":"지원 범위"):StatName(keys[i]);
             cell.Find("Value").GetComponent<Text>().text=values[i];

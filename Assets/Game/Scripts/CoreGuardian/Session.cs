@@ -46,6 +46,9 @@ namespace CoreGuardian
         readonly List<Vector2> path=new List<Vector2>(); readonly List<float> lengths=new List<float>(); readonly HashSet<Vector2Int> pathCells=new HashSet<Vector2Int>();
         Vector2Int core;int width,height,nextEnemy=1,nextTower=1,nextProjectile=1;float pathLength,waveTime,playerCooldown;EnemyState playerTarget;bool playerAcquired;
         readonly Dictionary<WaveSpec,int> spawned=new Dictionary<WaveSpec,int>();
+        // Session investment: independent per kind/stat, retained even with no towers installed.
+        readonly Dictionary<TowerKind,Dictionary<string,int>> towerUpgradeSteps=new Dictionary<TowerKind,Dictionary<string,int>>();
+        int TowerStep(TowerKind kind,string stat) => towerUpgradeSteps.TryGetValue(kind,out var steps)&&steps.TryGetValue(stat,out var n)?n:0;
         public Session(CombatData data, int? seed=null) { Data=data??throw new ArgumentNullException(nameof(data));augmentationRandom=seed.HasValue?new System.Random(seed.Value):new System.Random();Player=data.Player.Clone();Gold=data.StartGold;Crystals=data.StartCrystals;CoreEnergy=CoreMaximum=data.CoreEnergy;PreparationRemaining=data.PreparationSeconds;Phase=SessionPhase.Preparation;Wave=1;LastWave=data.Waves.Select(x=>x.Wave).DefaultIfEmpty(1).Max();LastMessage="준비"; }
         public void SetBoard(int width,int height,Vector2Int core,IEnumerable<Vector2Int> route)
         {
@@ -61,15 +64,31 @@ namespace CoreGuardian
         }
         public TowerState TryInstall(TowerKind kind,Vector2Int cell,out string reason)
         {
-            if(!CanInstall(kind,cell,out reason))return null;var s=Data.Towers[kind];var t=new TowerState{Id=nextTower++,Kind=kind,Position=cell,Spent=s.Cost,Stats=new CombatStats{Damage=s.Damage,Rate=s.Rate,Range=s.Range,ProjectileSpeed=s.ProjectileSpeed,BuffDamage=s.BuffDamage}};Crystals-=s.Cost;Towers.Add(t);LastMessage="포탑 설치";return t;
+            if(!CanInstall(kind,cell,out reason))return null;var s=Data.Towers[kind];var t=new TowerState{Id=nextTower++,Kind=kind,Position=cell,Spent=s.Cost,Stats=new CombatStats{Damage=s.Damage,Rate=s.Rate,Range=s.Range,ProjectileSpeed=s.ProjectileSpeed,BuffDamage=s.BuffDamage}};
+            foreach(var u in Data.Upgrades.Where(u=>u.Target==kind.ToString()))
+            {
+                int step=TowerStep(kind,u.Stat);if(step==0)continue;
+                t.Stats.Add(u.Stat,u.Delta*step);t.Stats.UpgradeSteps[u.Stat]=step;
+            }
+            Crystals-=s.Cost;Towers.Add(t);LastMessage="포탑 설치";return t;
         }
         public bool DestroyTower(int id) {if(Phase==SessionPhase.Augmentation)return false;var t=Towers.FirstOrDefault(x=>x.Id==id);if(t==null)return false;Towers.Remove(t);int refund=t.Spent/2;Crystals+=refund;LastMessage="철거 +"+refund+" 수정";return true;}
         UpgradeSpec FindUpgrade(string target,string stat) {return Data.Upgrades.FirstOrDefault(u=>u.Target==target&&u.Stat==stat);}
         static int Step(CombatStats s,string stat) {int n;return s.UpgradeSteps.TryGetValue(stat,out n)?n:0;}
         public int PlayerUpgradePrice(string stat) {return FindUpgrade("Player",stat)==null?-1:Data.PlayerUpgradePrice(Step(Player,stat)+1);}
-        public int TowerUpgradePrice(int id,string stat) {var t=Towers.FirstOrDefault(x=>x.Id==id);if(t==null)return -1;var u=FindUpgrade(t.Kind.ToString(),stat);return u==null?-1:u.Cost+u.CostIncrement*Step(t.Stats,stat)-(Step(t.Stats,stat)==0?Data.TowerFirstUpgradeDiscount:0);}
+        public int TowerUpgradePrice(int id,string stat) {var t=Towers.FirstOrDefault(x=>x.Id==id);if(t==null)return -1;var u=FindUpgrade(t.Kind.ToString(),stat);int step=TowerStep(t.Kind,stat);return u==null?-1:u.Cost+u.CostIncrement*step-(step==0?Data.TowerFirstUpgradeDiscount:0);}
         public bool UpgradePlayer(string stat,out string reason) {var u=FindUpgrade("Player",stat);reason=null;if(u==null)reason="강화 불가";else if(Phase!=SessionPhase.Preparation&&Phase!=SessionPhase.Combat)reason="현재 단계에서 강화 불가";else if(Gold<PlayerUpgradePrice(stat))reason="골드 부족";if(reason!=null)return false;Gold-=PlayerUpgradePrice(stat);Player.Add(stat,u.Delta);Player.UpgradeSteps[stat]=Step(Player,stat)+1;LastMessage="기술병 강화";return true;}
-        public bool UpgradeTower(int id,string stat,out string reason) {var t=Towers.FirstOrDefault(x=>x.Id==id);var u=t==null?null:FindUpgrade(t.Kind.ToString(),stat);reason=null;if(Phase!=SessionPhase.Preparation)reason="준비 시간에만 강화 가능";else if(u==null)reason="강화 불가";else if(Crystals<TowerUpgradePrice(id,stat))reason="수정 부족";if(reason!=null)return false;int cost=TowerUpgradePrice(id,stat);Crystals-=cost;t.Spent+=cost;t.Stats.Add(stat,u.Delta);t.Stats.UpgradeSteps[stat]=Step(t.Stats,stat)+1;LastMessage="포탑 강화";return true;}
+        public bool UpgradeTower(int id,string stat,out string reason)
+        {
+            var t=Towers.FirstOrDefault(x=>x.Id==id);var u=t==null?null:FindUpgrade(t.Kind.ToString(),stat);reason=null;
+            if(Phase!=SessionPhase.Preparation)reason="준비 시간에만 강화 가능";else if(u==null)reason="강화 불가";else if(Crystals<TowerUpgradePrice(id,stat))reason="수정 부족";
+            if(reason!=null)return false;
+            Crystals-=TowerUpgradePrice(id,stat);int step=TowerStep(t.Kind,stat)+1;
+            if(!towerUpgradeSteps.TryGetValue(t.Kind,out var steps))towerUpgradeSteps[t.Kind]=steps=new Dictionary<string,int>();
+            steps[stat]=step;
+            foreach(var tower in Towers.Where(x=>x.Kind==t.Kind)){tower.Stats.Add(stat,u.Delta);tower.Stats.UpgradeSteps[stat]=step;}
+            LastMessage="같은 종류 포탑 전체 강화 · 이후 설치 포함";return true;
+        }
         public bool StartCombat()
         {
             if(Phase!=SessionPhase.Preparation||path.Count<2)return false;
@@ -81,6 +100,7 @@ namespace CoreGuardian
         }
         public void StartDiagnosticEncounter()
         {
+            towerUpgradeSteps.Clear();
             if(path.Count<2)throw new InvalidOperationException("Board missing");Diagnostic=true;Wave=1;CompletedWave=0;LastCompletionReward=0;waveTime=0;spawned.Clear();DamageTotals.Clear();Enemies.Clear();Projectiles.Clear();Towers.Clear();Gold=Data.DiagnosticGold;Crystals=Data.DiagnosticCrystals;CoreEnergy=Data.CoreEnergy;Phase=SessionPhase.Preparation;PreparationRemaining=Data.PreparationSeconds;playerTarget=null;playerAcquired=false;playerCooldown=0;Player=Data.Player.Clone();LastMessage="역할 검증 모드: 준비 후 시작";
             CoreMaximum=Data.CoreEnergy;Augments=new AugmentationEffects();BossKilled=false;choices=Array.Empty<AugmentationCard>();AugmentationRemaining=0;coreDamagedThisRound=false;
         }

@@ -50,6 +50,7 @@ public sealed class CoreGuardianHudReaction : MonoBehaviour, IPointerEnterHandle
 {
     Button button;Image image;RectTransform label;Vector2 origin;bool hover,pressed;float flash;
     public Func<bool> Selected;
+    public bool InsetAbilityCell;
     void Awake(){button=GetComponent<Button>();image=GetComponent<Image>();button.transition=Selectable.Transition.None;}
     void Start(){var text=GetComponentInChildren<Text>();if(text!=null){label=text.rectTransform;origin=label.anchoredPosition;}}
     // Layout changes must also move the resting point used by the press animation.
@@ -65,6 +66,12 @@ public sealed class CoreGuardianHudReaction : MonoBehaviour, IPointerEnterHandle
         bool usable=button!=null&&button.interactable;
         image.sprite=CoreGuardianHudSkin.Sprite(!usable?"Disabled":hover||Time.unscaledTime<flash||Selected!=null&&Selected()?"Hover":"Button");
         image.type=Image.Type.Sliced;image.color=!usable?new Color(.7f,.72f,.75f):pressed?new Color(.7f,.8f,.8f):Color.white;
+        if(InsetAbilityCell)
+        {
+            // Preserve the shared recessed plate; only the hovered/confirmed cell gets a frame.
+            bool highlight=usable&&(hover||Time.unscaledTime<flash);
+            image.color=highlight?(pressed?new Color(.7f,.8f,.8f,.75f):new Color(1,1,1,.75f)):Color.clear;
+        }
         if(label!=null)label.anchoredPosition=origin+(pressed&&usable?new Vector2(0,-3):Vector2.zero);
     }
     public void OnPointerEnter(PointerEventData e){hover=true;}

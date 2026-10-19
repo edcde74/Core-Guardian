@@ -10,6 +10,7 @@ using UnityEngine.TestTools;
 using UnityEditor.SceneManagement;
 #endif
 
+[Category("SharedTowersHud")]
 public class CoreGuardianUpgradeFeedbackPlayModeTests
 {
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).FirstOrDefault(t=>t!=null);
@@ -62,16 +63,17 @@ public class CoreGuardianUpgradeFeedbackPlayModeTests
             var kinds=new[]{TowerKind.Single,TowerKind.Multi,TowerKind.Support};
             for(int i=0;i<kinds.Length;i++)
             {
+                if(i==0)Call(game,"Place",TowerKind.Single,new Vector2Int(15,15));
                 var cell=new Vector2Int(14+i*3,15);Call(game,"Place",kinds[i],cell);Call(game,"HandleWorldClick",cell);
                 Click(game,"TowerBuyTab");Click(game,kinds[i]==TowerKind.Support?"Tower_buffDamage":"Tower_damage");
-                Assert.That(triggers(),Is.EqualTo(3+i));
+                Assert.That(triggers(),Is.EqualTo(4+i),"A shared purchase scans every existing same-kind tower");
                 int selected=(int)game.GetType().GetProperty("SelectedTower").GetValue(game);
                 var target=(Transform)game.GetType().GetMethod("TowerView").Invoke(game,new object[]{selected});
                 Assert.That(type.GetMethod("IsScanning").Invoke(feedback,new object[]{target}),Is.EqualTo(true));
             }
-            Assert.That(active(),Is.EqualTo(4));
-            Call(game,"StartCombat");Call(game,"UpgradeTower","damage");Assert.That(triggers(),Is.EqualTo(5),"Rejected combat tower upgrade cannot trigger success");
-            Time.timeScale=1;yield return new WaitForSeconds(.65f);Assert.That(active(),Is.EqualTo(4),"Default 0.8 second scans remain active beyond the old duration");
+            Assert.That(active(),Is.EqualTo(5));
+            Call(game,"StartCombat");Call(game,"UpgradeTower","damage");Assert.That(triggers(),Is.EqualTo(6),"Rejected combat tower upgrade cannot trigger success");
+            Time.timeScale=1;yield return new WaitForSeconds(.65f);Assert.That(active(),Is.EqualTo(5),"Default 0.8 second scans remain active beyond the old duration");
             yield return new WaitForSeconds(.3f);Assert.That(active(),Is.Zero,"Scan expires without leaving tinted artwork");
         }
         finally{Time.timeScale=old;}

@@ -1,0 +1,106 @@
+{
+  "editor": {
+    "status": "ready",
+    "compiling": false,
+    "domainReloadInProgress": false,
+    "playMode": "stopped",
+    "lastHeartbeat": "2026-10-19T17:24:19.7560688Z",
+    "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD",
+    "unityVersion": "6000.6.2f1"
+  },
+  "scenes": {
+    "count": 1,
+    "scenes": [
+      {
+        "name": "CoreGuardian_CombatPrototype_20261008",
+        "path": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+        "isLoaded": true,
+        "isDirty": false,
+        "isActive": true,
+        "rootCount": 7
+      }
+    ]
+  },
+  "console": {
+    "entries": [],
+    "cursor": 2041,
+    "session": "aee3bc4b6c1642c69184ce655436a4ca",
+    "returned": 0,
+    "dropped": false,
+    "reset": false,
+    "counts": {
+      "error": 1,
+      "warn": 1549,
+      "log": 450
+    },
+    "groundTruth": {
+      "sampledUtc": "2026-10-19T17:24:23.9517329Z",
+      "ageMs": 114,
+      "compilationFailed": false,
+      "compiling": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 1,
+      "consoleLogs": 16,
+      "seeded": true
+    }
+  },
+  "tests": {
+    "status": "completed",
+    "duration": 3.84,
+    "summary": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "results": [
+      {
+        "FullName": "CoreGuardianAnimationPlayModeTests.EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks",
+        "Status": "Passed",
+        "Duration": 0.4199219,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianRuntimePlayModeTests.SharedUpgradeHudKeepsPanelTabsAndStatCellsFixed",
+        "Status": "Passed",
+        "Duration": 0.4152475,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianUpgradeFeedbackPlayModeTests.InspectorDurationDefaultsToPointEight_AndControlsTheActualLifetime",
+        "Status": "Passed",
+        "Duration": 1.6451935,
+        "Message": null,
+        "StackTrace": null
+      },
+      {
+        "FullName": "CoreGuardianUpgradeFeedbackPlayModeTests.RealSuccessfulPlayerAndAllTowerPurchasesScan_WhileRejectedPurchasesDoNot",
+        "Status": "Passed",
+        "Duration": 1.1873736,
+        "Message": null,
+        "StackTrace": null
+      }
+    ]
+  },
+  "settings": {
+    "output": null,
+    "diagnostics": [],
+    "success": true,
+    "result": {
+      "Time": 1,
+      "Capture": 0,
+      "Volume": 0.195603669,
+      "Categories": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

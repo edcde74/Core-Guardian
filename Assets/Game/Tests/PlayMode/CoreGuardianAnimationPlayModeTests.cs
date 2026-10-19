@@ -96,6 +96,7 @@ public class CoreGuardianAnimationPlayModeTests
 #endif
     }
     [UnityTest]
+    [Category("SharedTowersHud")]
     public IEnumerator EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks()
     {
 #if UNITY_EDITOR
@@ -115,7 +116,14 @@ public class CoreGuardianAnimationPlayModeTests
             Assert.That(bar.GetComponent<SpriteRenderer>().bounds.min.y,Is.GreaterThan(art.bounds.max.y+.025f),enemy.Kind+" health must clear the source sprite");
             var unit=view.GetComponent(Find("CoreGuardianUnitAnimation"));
             Assert.That(bar.position,Is.EqualTo((Vector3)unit.GetType().GetProperty("HealthBarWorld").GetValue(unit)));
-            Assert.That(bar.localScale.x,Is.EqualTo(.35f).Within(.001f));
+            Assert.That(bar.localScale,Is.EqualTo(Vector3.one));
+            var cells=bar.GetComponent<CoreGuardian.SegmentedEnemyHealthBar>();
+            Assert.That(cells.SegmentCount,Is.EqualTo(enemy.Kind==CoreGuardian.EnemyKind.Boss?12:8));
+            Assert.That(cells.FilledSegments,Is.EqualTo(cells.SegmentCount));
+            var sprite=bar.GetComponent<SpriteRenderer>().sprite;float framedWidth=sprite.bounds.size.x;
+            enemy.Health=enemy.Spec.Health/2;type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
+            Assert.That(cells.FilledSegments,Is.EqualTo(cells.SegmentCount/2));
+            Assert.That(bar.GetComponent<SpriteRenderer>().sprite.bounds.size.x,Is.EqualTo(framedWidth));
         }
         var player=(Component)type.GetField("player").GetValue(game);
         Assert.That(player.GetComponentsInChildren<SpriteRenderer>(true).Single(r=>r.name=="바닥 밀착선").enabled,Is.False);
