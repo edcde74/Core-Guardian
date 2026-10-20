@@ -1,0 +1,181 @@
+[
+  {
+    "id": "3df389dbfc6881bc858bce200d1bb742",
+    "title": "🛡️ 코어 가디언 — Unity 1주 제작",
+    "url": "https://app.notion.com/p/3df389dbfc6881bc858bce200d1bb742?pvs=204",
+    "edited": "2026-10-20T13:06:12.345Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "현재 구현은1\\~30라운드 적극 성장 실험",
+        "found": true
+      },
+      {
+        "key": "5·10·15·20·25R",
+        "found": true
+      }
+    ],
+    "optimizationLink": true
+  },
+  {
+    "id": "3df389dbfc688109a5b9d5c6a5aa3415",
+    "title": "밸런스 및 난이도 설계",
+    "url": "https://app.notion.com/p/3df389dbfc688109a5b9d5c6a5aa3415?pvs=204",
+    "edited": "2026-10-20T13:07:42.583Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "더 재미있",
+        "found": true
+      },
+      {
+        "key": "측정 결과부터 보고 결정",
+        "found": true
+      }
+    ],
+    "optimizationLink": true
+  },
+  {
+    "id": "3ea389dbfc688108b75cf8b9bbc99cb3",
+    "title": "PC 조작",
+    "url": "https://app.notion.com/p/3ea389dbfc688108b75cf8b9bbc99cb3?pvs=204",
+    "edited": "2026-10-20T13:07:48.892Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "이웃 버튼",
+        "found": true
+      },
+      {
+        "key": "Submit/Cancel",
+        "found": true
+      }
+    ],
+    "optimizationLink": false
+  },
+  {
+    "id": "3df389dbfc68811f9a87e5a5ff05a571",
+    "title": "HUD 화면 및 표시",
+    "url": "https://app.notion.com/p/3df389dbfc68811f9a87e5a5ff05a571?pvs=204",
+    "edited": "2026-10-20T13:07:45.875Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "Gold.png",
+        "found": true
+      },
+      {
+        "key": "기존 병종별",
+        "found": true
+      }
+    ],
+    "optimizationLink": true
+  },
+  {
+    "id": "3fb389dbfc68813ab657f4600eeae76f",
+    "title": "셰이더·화면 후처리 기준",
+    "url": "https://app.notion.com/p/3fb389dbfc68813ab657f4600eeae76f?pvs=204",
+    "edited": "2026-10-20T13:06:34.279Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "강조 제거",
+        "found": true
+      },
+      {
+        "key": "렌더 작업",
+        "found": true
+      }
+    ],
+    "optimizationLink": true
+  },
+  {
+    "id": "3df389dbfc6881fc9f1bd004adfc5999",
+    "title": "플레이테스트 및 변경 이력",
+    "url": "https://app.notion.com/p/3df389dbfc6881fc9f1bd004adfc5999?pvs=204",
+    "edited": "2026-10-20T13:06:39.322Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "9935523",
+        "found": true
+      },
+      {
+        "key": "2764c58",
+        "found": true
+      },
+      {
+        "key": "실제포탑15",
+        "found": true
+      }
+    ],
+    "optimizationLink": true
+  },
+  {
+    "id": "3f4389dbfc688171b84dc19b138925f4",
+    "title": "후속 제작·검증 작업 순서 — 30R·최적화",
+    "url": "https://app.notion.com/p/3f4389dbfc688171b84dc19b138925f4?pvs=204",
+    "edited": "2026-10-20T13:07:36.752Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "구현 범위",
+        "found": true
+      },
+      {
+        "key": "30R·최적화",
+        "found": true
+      }
+    ],
+    "optimizationLink": true
+  },
+  {
+    "id": "3df389dbfc68814c9660c48290e90c78",
+    "title": "✅ 05. 제작·검증",
+    "url": "https://app.notion.com/p/3df389dbfc68814c9660c48290e90c78?pvs=204",
+    "edited": "2026-10-20T13:06:42.246Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "3ff389dbfc6881779abdeb5eeeb1cda4",
+        "found": true
+      }
+    ],
+    "optimizationLink": true
+  },
+  {
+    "id": "3ff389dbfc6881779abdeb5eeeb1cda4",
+    "title": "대량 전투 성능·최적화 계획",
+    "url": "https://app.notion.com/p/3ff389dbfc6881779abdeb5eeeb1cda4?pvs=204",
+    "edited": "2026-10-20T13:04:58.690Z",
+    "truncated": null,
+    "unknownBlocks": null,
+    "checks": [
+      {
+        "key": "최적화 구현 미착수",
+        "found": true
+      },
+      {
+        "key": "16행",
+        "found": true
+      },
+      {
+        "key": "검증 계약",
+        "found": true
+      },
+      {
+        "key": "시작 전",
+        "found": true
+      }
+    ],
+    "optimizationLink": true
+  }
+]
