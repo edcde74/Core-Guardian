@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "duration": 0.77,
+  "summary": {
+    "total": 4,
+    "passed": 2,
+    "failed": 2,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianSelectionOutlineTests.CachedPartsIncludeInactiveDirections_AndRefreshWhenHierarchyChanges",
+      "Status": "Failed",
+      "Duration": 0.0398896,
+      "Message": "Unhandled log message: '[Error] Mesh.vertices is too small. The supplied vertex array has less vertices than are referenced by the triangles array.'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "UnityEngine.Mesh:SetVertices (System.Collections.Generic.List`1<UnityEngine.Vector3>)\r\nCoreGuardianSelectionOutline:DrawMaskParts (UnityEngine.Matrix4x4) (at Assets/Scripts/CoreGuardianSelectionOutline.cs:204)\r\nCoreGuardianSelectionOutline:Present (UnityEngine.Transform,UnityEngine.Camera) (at Assets/Scripts/CoreGuardianSelectionOutline.cs:92)\r\nSystem.Reflection.MethodBase:Invoke (object,object[])\r\nCoreGuardianSelectionOutlineTests:<CachedPartsIncludeInactiveDirections_AndRefreshWhenHierarchyChanges>g__Count|3_2 (CoreGuardianSelectionOutlineTests/<>c__DisplayClass3_0&,CoreGuardianSelectionOutlineTests/<>c__DisplayClass3_1&) (at Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs:138)\r\nCoreGuardianSelectionOutlineTests:CachedPartsIncludeInactiveDirections_AndRefreshWhenHierarchyChanges () (at Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs:143)\r\nSystem.Reflection.MethodBase:Invoke (object,object[])\r\nNUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])\r\nNUnit.Framework.Internal.MethodWrapper:Invoke (object,object[])\r\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod (NUnit.Framework.Internal.ITestExecutionContext)\r\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod (NUnit.Framework.Internal.ITestExecutionContext)\r\nNUnit.Framework.Internal.Commands.TestMethodCommand:Execute (NUnit.Framework.Internal.ITestExecutionContext)\r\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\r\n\r\n"
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlineTests.GpuMaskUnitesOverlappingParts_AndOutlineLeavesInteriorClear(False)",
+      "Status": "Passed",
+      "Duration": 0.2707427,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlineTests.GpuMaskUnitesOverlappingParts_AndOutlineLeavesInteriorClear(True)",
+      "Status": "Passed",
+      "Duration": 0.2271278,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlineTests.SharedTexturePartsReduceSubmissions_WithoutCrossingOpacityOrTextureBoundaries",
+      "Status": "Failed",
+      "Duration": 0.0074851,
+      "Message": "Unhandled log message: '[Error] Mesh.vertices is too small. The supplied vertex array has less vertices than are referenced by the triangles array.'. Use UnityEngine.TestTools.LogAssert.Expect",
+      "StackTrace": "UnityEngine.Mesh:SetVertices (System.Collections.Generic.List`1<UnityEngine.Vector3>)\r\nCoreGuardianSelectionOutline:DrawMaskParts (UnityEngine.Matrix4x4) (at Assets/Scripts/CoreGuardianSelectionOutline.cs:204)\r\nCoreGuardianSelectionOutline:Present (UnityEngine.Transform,UnityEngine.Camera) (at Assets/Scripts/CoreGuardianSelectionOutline.cs:92)\r\nSystem.Reflection.MethodBase:Invoke (object,object[])\r\nCoreGuardianSelectionOutlineTests:<SharedTexturePartsReduceSubmissions_WithoutCrossingOpacityOrTextureBoundaries>g__Draws|1_2 (CoreGuardianSelectionOutlineTests/<>c__DisplayClass1_0&,CoreGuardianSelectionOutlineTests/<>c__DisplayClass1_1&,CoreGuardianSelectionOutlineTests/<>c__DisplayClass1_2&) (at Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs:30)\r\nCoreGuardianSelectionOutlineTests:SharedTexturePartsReduceSubmissions_WithoutCrossingOpacityOrTextureBoundaries () (at Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs:32)\r\nSystem.Reflection.MethodBase:Invoke (object,object[])\r\nNUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])\r\nNUnit.Framework.Internal.MethodWrapper:Invoke (object,object[])\r\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod (NUnit.Framework.Internal.ITestExecutionContext)\r\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod (NUnit.Framework.Internal.ITestExecutionContext)\r\nNUnit.Framework.Internal.Commands.TestMethodCommand:Execute (NUnit.Framework.Internal.ITestExecutionContext)\r\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\r\n\r\n"
+    }
+  ]
+}

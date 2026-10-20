@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "duration": 0.79,
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianSelectionOutlineTests.CachedPartsIncludeInactiveDirections_AndRefreshWhenHierarchyChanges",
+      "Status": "Passed",
+      "Duration": 0.0471523,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlineTests.GpuMaskUnitesOverlappingParts_AndOutlineLeavesInteriorClear(False)",
+      "Status": "Passed",
+      "Duration": 0.3497842,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlineTests.GpuMaskUnitesOverlappingParts_AndOutlineLeavesInteriorClear(True)",
+      "Status": "Passed",
+      "Duration": 0.2486283,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSelectionOutlineTests.SharedTexturePartsReduceSubmissions_WithoutCrossingOpacityOrTextureBoundaries",
+      "Status": "Passed",
+      "Duration": 0.004825,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}
