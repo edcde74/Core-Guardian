@@ -3,6 +3,8 @@
 최종 문서 갱신: 2026-10-20 (Asia/Seoul). 현재 사용자 지시·최신 담당 Notion이 우선이다. **최신 성능 근거는 [Profiler 병목 조사](profiler_investigation_20261020/README.md)**다. 시작 HEAD445ae8e에서 실제 엔진 캡처·상세 호출·GC 스택·Frame Debugger를 조사했다. 게임 코드/CSV/설정 최적화는 미착수이며 새 빌드/실행파일/push는 없다. 이전 [HUD 우선 제안](optimization_scope_review_20261020.md)은 추가 계측 전 제안으로 구분한다.
 
 ## 지금 재개할 작업
+추가 사용자 지시: 모든 최적화에서 최저·최고·평균 FPS도 전후 필수 기록한다. 계산/증감 규칙은 [공통 규칙](OPTIMIZATION_RULES.md), 기존 일반 캡처의 오프라인 집계는 [FPS 표](profiler_investigation_20261020/FPS.md)를 따른다. 이번 FPS 추가는 새 Unity 계측/Play가 아니다.
+
 최신 조사에서 적128/포탑15의 그림자 LateUpdate 중앙15.35~16.33ms·강조13.63~14.24ms·전투 어댑터 Update3.86~4.12ms(일반 Profiler 각3회)를 확인했다. 상세 호출에서 강제로 느려진 시간은 별도 진단이며 일반 값과 비교하지 않는다. 강조145+동적 접촉129의 중복 마스크 경로/RT 재생성이 우선 검토 대상이다. **다음은 공통 마스크/리소스 수명·참조 캐시의 구현 범위를 결정하는 것**이며 그림자/강조/효과를 제거하지 않는다. 근거·조건·원본·무효 시도·도구 한계는 담당 README를 따른다.
 
 자체 Play 종료·Deep/Profiler/Frame Debugger 중지·전투씬1 dirtyfalse·컴파일false·최종 Console 오류0/경고0·TimeScale1/captureDelta0/backgroundfalse를 재조회했다. Edit AudioListener는 진단 시작값1 복원, 저장 음량0.195603669 유지. Assets/Packages diff 없음·주요 소스/패키지 해시 일치. Deep 전환 중 재로딩 오류와 Profiler UI 오류 이력은 별도 저장했고 오류 상태의 프레임은 성능 결과에서 제외했다. 이 시점의 복원 확인도 다음 Unity 작업 전에는 실시간 재조회한다.

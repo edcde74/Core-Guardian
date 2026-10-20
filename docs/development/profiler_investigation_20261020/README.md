@@ -17,6 +17,8 @@
 - 환경: `captures_valid/normal_environment.json`. 주요 소스/패키지 전후 SHA256: `source_hashes_before/after.json`. 실제 참조 CSV/텍스트 해시: `active_data_hashes.json`의 기존 enemies/towers/stage/upgrades/waves.
 
 ## 일반 Profiler 반복 결과
+추가 사용자 지시로 기존 일반 계측 원본의 **최저·최고·평균 FPS**도 [FPS 집계표](FPS.md)에 기록했다. 계산 정의·관측 시간·프레임 누락/무효 여부와 반복별 결과를 함께 제공한다. 새 계측은 아니다.
+
 시간 단위는 ms. marker 값은 프레임 내 같은 이름의 호출을 합한 뒤 구한 중앙값이다. 부모/자식 마커를 합산하지 않는다.
 
 |실험|적|유효 Main 프레임|엔진 delta 중앙|그림자 LateUpdate 중앙|강조 LateUpdate 중앙|전투 어댑터 Update 중앙|Draw Calls 중앙|SetPass 중앙|Main GC.Alloc 중앙 B|
