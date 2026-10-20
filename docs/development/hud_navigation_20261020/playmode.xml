@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-20 10:53:12Z" end-time="2026-10-20 10:53:13Z" duration="0.7193565">
+  <test-suite type="TestSuite" id="1078" name="CD" fullname="CD" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-10-20 10:53:12Z" end-time="2026-10-20 10:53:13Z" duration="0.719357" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1149" name="Fortress.Game.PlayModeTests.dll" fullname="C:/Users/edcde/OneDrive/Desktop/CD/Library/ScriptAssemblies/Fortress.Game.PlayModeTests.dll" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-10-20 10:53:12Z" end-time="2026-10-20 10:53:13Z" duration="0.711940" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="18796" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1115" name="CoreGuardianRuntimePlayModeTests" fullname="CoreGuardianRuntimePlayModeTests" classname="CoreGuardianRuntimePlayModeTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-20 10:53:12Z" end-time="2026-10-20 10:53:13Z" duration="0.710017" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1117" name="SharedUpgradeHudKeepsPanelTabsAndStatCellsFixed" fullname="CoreGuardianRuntimePlayModeTests.SharedUpgradeHudKeepsPanelTabsAndStatCellsFixed" methodname="SharedUpgradeHudKeepsPanelTabsAndStatCellsFixed" classname="CoreGuardianRuntimePlayModeTests" runstate="Runnable" seed="1597450249" result="Passed" start-time="2026-10-20 10:53:12Z" end-time="2026-10-20 10:53:13Z" duration="0.698041" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="SharedTowersHud" />
+            <property name="Category" value="ThirtyExperiment" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: C:/Users/edcde/AppData/LocalLow/DefaultCompany/CD\TestResults.xml
+Saving results to: C:/Users/edcde/AppData/LocalLow/DefaultCompany/CD\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

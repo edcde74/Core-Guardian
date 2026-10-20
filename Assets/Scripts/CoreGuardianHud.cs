@@ -62,6 +62,8 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         var c=root.GetComponent<Canvas>();c.renderMode=RenderMode.ScreenSpaceOverlay;c.sortingOrder=2000;
         var scale=root.GetComponent<UnityEngine.UI.CanvasScaler>();scale.uiScaleMode=UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize;scale.referenceResolution=new Vector2(1920,1080);scale.matchWidthOrHeight=.5f;
         if(EventSystem.current==null)new GameObject("CombatEventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule)).transform.SetParent(transform);
+        // WASD belongs to player movement; pointer hover/click still use the UI module.
+        EventSystem.current.sendNavigationEvents=false;
         worldFeedback=Box("WorldFeedback",canvas,new Vector2(.5f,.5f),Vector2.zero,Vector2.zero,false);
         worldFeedback.anchorMin=Vector2.zero;worldFeedback.anchorMax=Vector2.one;worldFeedback.sizeDelta=Vector2.zero;
         // Floating combat feedback always renders before every HUD panel and modal.

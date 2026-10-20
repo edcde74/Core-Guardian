@@ -68,6 +68,7 @@ public class CoreGuardianRuntimePlayModeTests
         var s=(CoreGuardian.Session)type.GetProperty("Session").GetValue(runtime);
         try
         {
+            Assert.That(UnityEngine.EventSystems.EventSystem.current.sendNavigationEvents,Is.False,"WASD movement must not navigate clicked HUD buttons");
             Time.timeScale=0;type.GetMethod("Diagnostic").Invoke(runtime,null);
             foreach(var kind in new[]{CoreGuardian.TowerKind.Single,CoreGuardian.TowerKind.Multi,CoreGuardian.TowerKind.Support})
                 Assert.That(type.GetMethod("Place").Invoke(runtime,new object[]{kind,new Vector2Int(12+(int)kind,13)}),Is.EqualTo(true));
