@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "errors": [],
+  "measurements": {
+    "AGENTS.md": {
+      "chars": 1335,
+      "bytes": 2668,
+      "lines": 11
+    },
+    "docs/development/UNITY_HANDOVER.md": {
+      "chars": 1186,
+      "bytes": 2207,
+      "lines": 15
+    },
+    "docs/development/WORK_ROUTING.md": {
+      "chars": 717,
+      "bytes": 1221,
+      "lines": 14
+    },
+    "docs/development/WORKFLOW.md": {
+      "chars": 1375,
+      "bytes": 3033,
+      "lines": 18
+    },
+    "docs/development/TARGETED_QA.md": {
+      "chars": 2522,
+      "bytes": 4378,
+      "lines": 28
+    },
+    "docs/development/context_efficiency_20261021/README.md": {
+      "chars": 4132,
+      "bytes": 7982,
+      "lines": 47
+    },
+    "docs/development/context_efficiency_20261021/RESULTS.md": {
+      "chars": 1083,
+      "bytes": 1980,
+      "lines": 29
+    },
+    "docs/development/task_rules/ART.md": {
+      "chars": 1955,
+      "bytes": 4060,
+      "lines": 19
+    },
+    "docs/development/task_rules/BALANCE.md": {
+      "chars": 1353,
+      "bytes": 2446,
+      "lines": 11
+    },
+    "docs/development/task_rules/HUD.md": {
+      "chars": 1645,
+      "bytes": 3208,
+      "lines": 15
+    },
+    "docs/development/resume_optimization_latest_20261020.md": {
+      "chars": 360,
+      "bytes": 649,
+      "lines": 7
+    },
+    "docs/development/optimization_next_work_20261020.md": {
+      "chars": 360,
+      "bytes": 649,
+      "lines": 7
+    }
+  },
+  "originalRuleCount": 34,
+  "mappedRules": 34,
+  "verbatimTaskRules": 18,
+  "checkedLinks": 44,
+  "checkedQAClasses": 24,
+  "protectedFiles": 1341,
+  "unchangedSkillFiles": 570,
+  "skills": 89,
+  "configUnchanged": true,
+  "rootCharsBefore": 7311,
+  "rootCharsAfter": 1335,
+  "rootReductionPercent": 81.73984407057858,
+  "startCharsBefore": 11719,
+  "startCharsAfter": 3238,
+  "startReductionPercent": 72.36965611400291,
+  "scenarios": {
+    "document": {
+      "beforeCommonChars": 11719,
+      "afterCommonAndRoutingChars": 4613,
+      "reductionPercent": 60.63657308644082,
+      "unchangedDomainSourcesExcludedFromBoth": true
+    },
+    "art": {
+      "beforeCommonChars": 11719,
+      "afterCommonAndRoutingChars": 5193,
+      "reductionPercent": 55.687345336632816,
+      "unchangedDomainSourcesExcludedFromBoth": true
+    },
+    "hud": {
+      "beforeCommonChars": 11719,
+      "afterCommonAndRoutingChars": 4883,
+      "reductionPercent": 58.33262223739227,
+      "unchangedDomainSourcesExcludedFromBoth": true
+    },
+    "balance": {
+      "beforeCommonChars": 11719,
+      "afterCommonAndRoutingChars": 4591,
+      "reductionPercent": 60.824302414881814,
+      "unchangedDomainSourcesExcludedFromBoth": true
+    },
+    "performance": {
+      "beforeChars": 16307,
+      "afterChars": 10348,
+      "reductionPercent": 36.54258907217759
+    }
+  },
+  "actualTokenUsageMeasured": false,
+  "UnityInvoked": false,
+  "caveat": "Character-volume comparison only. Existing domain evidence and mandatory skills still load when needed; no billing/token savings guarantee."
+}
