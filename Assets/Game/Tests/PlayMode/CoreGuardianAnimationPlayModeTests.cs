@@ -200,7 +200,14 @@ public class CoreGuardianAnimationPlayModeTests
         float oldScale=Time.timeScale;
         try
         {
-            Time.timeScale=3;session.Player.Rate=30;session.StartCombat();session.DebugSpawn(CoreGuardian.EnemyKind.Defense,77);
+            // Keep the real scene/path, but put the player beside the target. Distance77 is
+            // map-dependent and no longer guarantees a target inside the player's range.
+            ((MonoBehaviour)game).enabled=false;
+            Time.timeScale=3;session.Player.Rate=30;Assert.That(session.StartCombat(),Is.True);
+            var enemy=session.DebugSpawn(CoreGuardian.EnemyKind.Defense,0);enemy.Health=10000;
+            position=enemy.Position+Vector2.up*.5f;
+            movement.transform.position=(Vector3)type.GetMethod("World").Invoke(game,new object[]{position});
+            Assert.That(Vector2.Distance(enemy.Position,position),Is.LessThan(session.Player.Range));
             int launches=0;session.ProjectileLaunched+=shot=>{if(shot.Source=="Player")launches++;};
             session.Tick(.15f,position);type.GetMethod("SynchronizeViews",flags).Invoke(game,null);
             Assert.That(launches,Is.GreaterThan(0));
@@ -211,6 +218,7 @@ public class CoreGuardianAnimationPlayModeTests
             Assert.That(rig,Is.Not.Null);Assert.That(rig.gameObject.activeSelf,Is.True,"A real launch must start the original cutout animation");
             var unit=movement.GetComponent(Find("CoreGuardianUnitAnimation"));
             Assert.That((int)unit.GetType().GetProperty("ShotCount").GetValue(unit),Is.GreaterThan(0));
+            unit.GetType().GetMethod("Move").Invoke(unit,new object[]{Vector2.zero,1f});
             unit.GetType().GetMethod("Present").Invoke(unit,new object[]{1f});
             Assert.That(rig.gameObject.activeSelf,Is.False,"Recovery must end the attack pose");
             Assert.That(art.transform.Find("OriginalIdle").gameObject.activeSelf,Is.True,"Stationary player returns to original-pixel Idle");
@@ -236,8 +244,14 @@ public class CoreGuardianAnimationPlayModeTests
             {
                 var art=clone.GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");
                 var original=art.sprite;var position=art.transform.localPosition;var scale=art.transform.localScale;var rotation=art.transform.localRotation;
-                var shadows=clone.GetComponentsInChildren<SpriteRenderer>(true).Where(r=>r!=art).ToDictionary(r=>r,r=>r.enabled);
                 var unit=animationType.GetMethod("Attach").Invoke(null,new object[]{clone,((CoreGuardian.TowerKind)i).ToString()});
+                // Attach installs the approved photo shadow and hides replaced old layers.
+                // Compare firing against that installed state, not the obsolete prefab state.
+                var renderers=clone.GetComponentsInChildren<SpriteRenderer>(true);
+                Assert.That(renderers.Single(r=>r.name=="PhotoCastShadow").enabled,Is.True);
+                if((CoreGuardian.TowerKind)i==CoreGuardian.TowerKind.Multi||(CoreGuardian.TowerKind)i==CoreGuardian.TowerKind.Support)
+                    foreach(var replaced in renderers.Where(r=>r.name=="바깥 그림자"||r.name=="접촉 그림자"||r.name=="짧은 투사 그림자"))Assert.That(replaced.enabled,Is.False);
+                var shadows=renderers.Where(r=>r!=art).ToDictionary(r=>r,r=>r.enabled);
                 animationType.GetMethod("Fire").Invoke(unit,new object[]{Vector2.left,8f});animationType.GetMethod("Present").Invoke(unit,new object[]{.15f});
                 Assert.That(art.sprite,Is.SameAs(original));Assert.That(art.transform.localPosition,Is.EqualTo(position));Assert.That(art.transform.localScale,Is.EqualTo(scale));Assert.That(art.transform.localRotation,Is.EqualTo(rotation));
                 Assert.That(shadows.All(s=>s.Key.enabled==s.Value),Is.True);Assert.That(art.transform.Find("AnimatedUpper"),Is.Null);

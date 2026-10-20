@@ -1,0 +1,55 @@
+{
+  "status": "completed",
+  "duration": 2.55,
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.ActualLaunch_PreservesOriginalPlayerSprite_AndDoesNotUseRejectedMuzzle",
+      "Status": "Passed",
+      "Duration": 0.5031065,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.DefenseRearWiderStanceIsVisibleOnActualUpwardWaypoint",
+      "Status": "Passed",
+      "Duration": 0.5017939,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.EnemyHealthBarsClearEachSprite_AndPlayerHasNoStaticSoleMarks",
+      "Status": "Passed",
+      "Duration": 0.2195641,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.FrontGait_AllOtherEnemiesAlternateOnActualDownwardWaypoints",
+      "Status": "Passed",
+      "Duration": 0.3280152,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.NormalEnemyRoute_AnimatesThroughCombatAdapter_OnEveryWorldAxis",
+      "Status": "Passed",
+      "Duration": 0.7194284,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAnimationPlayModeTests.OriginalTowerSpritesAndTransformsRemainExact_WhileEnemyDirectionsStillWork",
+      "Status": "Passed",
+      "Duration": 0.2434394,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}
