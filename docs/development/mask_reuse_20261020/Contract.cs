@@ -14,4 +14,3 @@ public static class MaskReuseContract
   }finally{UnityEngine.Object.DestroyImmediate(root);}
  }
 }
-

@@ -38,3 +38,10 @@ RT를 축소하지 않아 각 개체의 과거 최대 용량을 개체 파괴까
 - [원본 압축](profiler_raw.zip):18개 .data +18개 markers JSON, 약514MB. [압축/검증 스크립트](archive.py)와 [SHA256 manifest](archive_manifest.json)로36개 항목의 복호화 해시를 대조했다. 미압축 원본도 로컬에 남기고 폴더 .gitignore로 중복 추적만 제외했다. frames/environment/progress/completion/resources JSON은 단계 폴더에 직접 남긴다.
 - [상태 복원](restored.json): 자체 Play종료/paused=false, 씬1 dirty=false, 컴파일false, TimeScale1/captureDelta0/backgroundfalse, Profiler/Deep/alloc/FrameDebugger=false. 저장음량0.195603669·Edit AudioListener1. 최종 상태는 다음 Unity 작업 때 다시 확인한다.
 - 기존 사용자 ProjectSettings2개/미추적/폰트 도구 접근오류 표시는 보존한다. 빌드·실행파일 실행·패키지 설치·GitHub push는 하지 않았다. 노션 계획은 재조회했으나 그 페이지의 과거 ‘시작 전’ 상태는 이번 로컬 구현보다 이전 기록이며 수정하지 않았다.
+
+### 최종 설정 재대조(2026-10-21)
+검사/도메인 재로딩 후 기존 SENTIS_ANALYTICS_ENABLED 제거 차이가 사라진 것을 발견했다. Unity PlayerSettings API로 제거했으나 Inference9 패키지 AnalyticsDefineManager.Initialize가 EditorAnalytics.enabled=true를 근거로 재추가했다. 실제 프로젝트 AnalyticsSettings.enabled=false는 확인했으며 유지한다. EditorAnalytics.enabled=false 설정 시도도 getter는 계속true였고 효과를 주장하지 않는다. 해당 preference의 시작값은 계측하지 않았으므로 시작값 복원이라고 단정하지 않는다.
+
+사용자의 디스크 미커밋 상태를 보존하려고 ProjectSettings.asset의 해당 심볼 문자열만 최초 상태 APP_UI_EDITOR_ONLY로 복구했다. **런타임/재로딩 뒤 심볼 제거 유지까지 완료한 것은 아니다. 다음 도메인 재로딩에서 패키지가 재추가할 수 있다.** 패키지/전역 설정을 추가 수정하지 않았고 이 문제는 별도 확인이 필요하다. 현재 프로젝트 분석 설정false를 심볼/EditorAnalytics 값과 혼동하지 않는다. 이 최종 디스크 복구 뒤 추가 Play/재컴파일은 실행하지 않았다.
+
+TimeManager는 Unity6.6의 serializedVersion2/유리수 형식으로 재저장됐다(2822399/141120000, 엔진 조회0.0199999921초). .02f를 에디터 API로 지정해도 같은 표현이며 설정을 성능 최적화 항목으로 적용하거나 이득을 주장하지 않는다. 이 재저장 차이는 완료 커밋에 포함하지 않고 사용자 설정과 함께 남겼다. 원래 ProjectSettings 미커밋 차이2개에 TimeManager 형식 차이가 추가된 상태다. 재로딩 뒤 MCP 연결이 stale여서 공식 CLI로 동일7801 에디터의 ready/Play stopped를 확인했다.

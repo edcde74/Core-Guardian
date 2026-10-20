@@ -11,7 +11,7 @@ Edit176/176·선택/접기 Play4/4·원본 코드와 고립 렌더 픽셀576건 
 
 **후속 미적용:** 같은 본체 마스크 공유/아틀라스/명령 통합, HUD·전투 표시 풀링, Session 탐색/할당 감소. 이번 승인은1차 범위뿐이다. 현재30R 성장·물량/밸런스·원본/방향·그림자·강조·효과 수/수명·사운드·HUD를 보존한다. 목표기기/FPS/배속 예산은 미확정이다.
 
-최종 자체 Play 종료/컴파일false/씬1 dirtyfalse, TimeScale1/captureDelta0/backgroundfalse, Profiler/Deep/할당스택/FrameDebugger=false. Edit AudioListener1·저장음량0.195603669. 다음 Unity 작업 전 실시간 상태를 다시 조회한다. 사용자 Play/다른 검사를 중단·중복하지 않는다. 새 빌드/실행파일 실행/패키지 설치/GitHub push는 없다. 기존 사용자 설정/미추적/폰트 접근오류 표시는 보존한다.
+최종 자체 Play 종료/컴파일false/씬1 dirtyfalse, TimeScale1/captureDelta0/backgroundfalse, Profiler/Deep/할당스택/FrameDebugger=false. Edit AudioListener1·저장음량0.195603669. 다음 Unity 작업 전 실시간 상태를 다시 조회한다. 사용자 Play/다른 검사를 중단·중복하지 않는다. 새 빌드/실행파일 실행/패키지 설치/GitHub push는 없다. 기존 사용자 설정/미추적/폰트 접근오류 표시는 보존한다. 프로젝트 AnalyticsSettings.enabled=false 확인. Inference 패키지가 SENTIS 심볼을 재추가해 디스크 문자열만 기존 사용자 상태로 복구했으며 재로딩 뒤 유지 문제는 남는다. TimeManager의 Unity6.6 직렬화 형식 변경은 최적화 설정으로 적용/커밋하지 않았다. 상세는1차 기록 말미를 따른다.
 
 재개: [새 대화 텍스트](resume_optimization_latest_20261020.md) → [다음 순서](optimization_next_work_20261020.md) → 위1차 기록. [기존 Profiler 병목 조사](profiler_investigation_20261020/README.md)와 [4항목 해결방안](optimization_solutions_research_20261020.md)은 원인/대안 조사다. [Notion 최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4)은 재조회했으나 과거 시작 전 상태이며 로컬 구현 결과는 아직 동기화하지 않았다. 초기 HUD우선 추천을 최신 결정으로 사용하지 않는다.
 
