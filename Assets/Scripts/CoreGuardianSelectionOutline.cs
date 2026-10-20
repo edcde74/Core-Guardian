@@ -26,6 +26,12 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     RenderTexture mask;
     CommandBuffer commands;
     readonly Dictionary<Sprite,Mesh> meshes=new Dictionary<Sprite,Mesh>();
+    readonly Dictionary<Sprite,MaskGeometry> geometry=new Dictionary<Sprite,MaskGeometry>();
+    readonly List<MaskBatch> batches=new List<MaskBatch>();
+    int lastMaskDrawCalls,lastAtlasMisses;
+    CoreGuardianMaskAtlas atlas;
+    CoreGuardianMaskAtlas cachedAtlas;
+    int atlasRevision=-1;
     MaterialPropertyBlock properties;
     readonly List<SpriteRenderer> sources=new List<SpriteRenderer>();
     readonly CoreGuardianSpriteReferences bodySources=new CoreGuardianSpriteReferences();
@@ -49,6 +55,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     public void Present(Transform target,Camera camera)
     {
+        lastMaskDrawCalls=0;lastAtlasMisses=0;
         CurrentTarget=target;
         if(output!=null)output.enabled=false;
         if(target==null||camera==null||widthPixels<=0||color.a<=0)return;
@@ -85,13 +92,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         commands.Clear();commands.SetRenderTarget(mask);commands.ClearRenderTarget(false,true,Color.clear);
         // Clear the entire capacity, then rasterize at the original screen-pixel resolution.
         commands.SetViewport(new Rect(0,0,w,h));
-        foreach(var r in sources)
-        {
-            properties.Clear();properties.SetTexture("_MainTex",r.sprite.texture);properties.SetFloat("_Opacity",r.color.a);
-            properties.SetFloat("_Threshold",Mathf.Clamp(alphaThreshold,.01f,1));properties.SetMatrix("_MaskVP",vp);
-            var matrix=r.transform.localToWorldMatrix*Matrix4x4.Scale(new Vector3(r.flipX?-1:1,r.flipY?-1:1,1));
-            commands.DrawMesh(SpriteMesh(r.sprite),matrix,maskMaterial,0,0,properties);
-        }
+        DrawMaskParts(vp);
         Graphics.ExecuteCommandBuffer(commands);
         float depth=Vector3.Dot(bounds.center-camera.transform.position,camera.transform.forward);
         quadVertices[0]=Point(lo.x,lo.y);quadVertices[1]=Point(hi.x,lo.y);quadVertices[2]=Point(hi.x,hi.y);quadVertices[3]=Point(lo.x,hi.y);
@@ -128,12 +129,114 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     Mesh SpriteMesh(Sprite sprite)
     {
         if(meshes.TryGetValue(sprite,out var value))return value;
+        var shape=Geometry(sprite);
         value=new Mesh{name="Selection mask "+sprite.name,hideFlags=HideFlags.DontSave};
-        value.vertices=sprite.vertices.Select(v=>(Vector3)v).ToArray();value.uv=sprite.uv;
-        value.triangles=sprite.triangles.Select(v=>(int)v).ToArray();value.RecalculateBounds();meshes.Add(sprite,value);return value;
+        value.vertices=shape.vertices;value.uv=shape.uv;
+        value.SetUVs(5,Enumerable.Repeat(shape.atlasRect,shape.vertices.Length).ToList());
+        value.triangles=shape.triangles;value.RecalculateBounds();meshes.Add(sprite,value);return value;
+    }
+    sealed class MaskGeometry
+    {
+        public Vector3[] vertices;
+        public Vector2[] uv;
+        public int[] triangles;
+        public Texture texture;
+        public bool mapped;
+        public Vector4 atlasRect;
+    }
+    sealed class MaskBatch
+    {
+        public Texture texture;
+        public float opacity;
+        public readonly List<SpriteRenderer> parts=new List<SpriteRenderer>();
+        public readonly List<Vector3> vertices=new List<Vector3>();
+        public readonly List<Vector2> uv=new List<Vector2>();
+        public readonly List<int> triangles=new List<int>();
+        public readonly List<Vector4> row0=new List<Vector4>(),row1=new List<Vector4>(),row2=new List<Vector4>(),row3=new List<Vector4>();
+        public readonly List<Vector4> atlasRects=new List<Vector4>();
+        public Mesh mesh;
+    }
+    MaskGeometry Geometry(Sprite sprite)
+    {
+        if(geometry.TryGetValue(sprite,out var value))return value;
+        value=new MaskGeometry{vertices=sprite.vertices.Select(v=>(Vector3)v).ToArray(),uv=sprite.uv,triangles=sprite.triangles.Select(v=>(int)v).ToArray(),texture=sprite.texture};
+        if(atlas!=null&&atlas.TryGet(sprite.texture,out var entry))
+        {
+            value.texture=entry.page;value.mapped=true;
+            value.atlasRect=new Vector4(entry.layer,0,0,0);
+        }
+        geometry.Add(sprite,value);return value;
+    }
+    static Matrix4x4 PartMatrix(SpriteRenderer part)=>part.transform.localToWorldMatrix*Matrix4x4.Scale(new Vector3(part.flipX?-1:1,part.flipY?-1:1,1));
+    void MaskProperties(Texture texture,float opacity,Matrix4x4 vp,bool combined)
+    {
+        properties.Clear();bool array=texture is Texture2DArray;
+        properties.SetTexture(array?"_MaskAtlas":"_MainTex",texture);properties.SetFloat("_UseAtlas",array?1:0);properties.SetFloat("_Opacity",opacity);
+        properties.SetFloat("_Threshold",Mathf.Clamp(alphaThreshold,.01f,1));properties.SetMatrix("_MaskVP",vp);
+        properties.SetFloat("_UsePartMatrices",combined?1:0);
+    }
+    void DrawMaskParts(Matrix4x4 vp)
+    {
+        lastAtlasMisses=0;
+        foreach(var batch in batches)batch.parts.Clear();
+        int used=0;
+        foreach(var part in sources)
+        {
+            var shape=Geometry(part.sprite);var texture=shape.texture;if(!shape.mapped)lastAtlasMisses++;
+            float opacity=part.color.a;int index=0;
+            for(;index<used;index++)if(ReferenceEquals(batches[index].texture,texture)&&batches[index].opacity==opacity)break;
+            if(index==used)
+            {
+                if(used==batches.Count)batches.Add(new MaskBatch());
+                batches[index].texture=texture;batches[index].opacity=opacity;used++;
+            }
+            batches[index].parts.Add(part);
+        }
+        for(int i=0;i<used;i++)
+        {
+            var batch=batches[i];int vertices=0;
+            foreach(var part in batch.parts)vertices+=Geometry(part.sprite).vertices.Length;
+            // Preserve unrestricted source rendering when a group cannot use 16-bit indices.
+            if(batch.parts.Count==1||vertices>65535)
+            {
+                MaskProperties(batch.texture,batch.opacity,vp,false);
+                foreach(var part in batch.parts){commands.DrawMesh(SpriteMesh(part.sprite),PartMatrix(part),maskMaterial,0,0,properties);lastMaskDrawCalls++;}
+                continue;
+            }
+            if(batch.mesh==null){batch.mesh=new Mesh{name="Selection mask part batch",hideFlags=HideFlags.DontSave};batch.mesh.MarkDynamic();}
+            batch.vertices.Clear();batch.uv.Clear();batch.triangles.Clear();batch.row0.Clear();batch.row1.Clear();batch.row2.Clear();batch.row3.Clear();
+            batch.atlasRects.Clear();
+            foreach(var part in batch.parts)
+            {
+                var shape=Geometry(part.sprite);var matrix=PartMatrix(part);int offset=batch.vertices.Count;
+                var a=matrix.GetRow(0);var b=matrix.GetRow(1);var c=matrix.GetRow(2);var d=matrix.GetRow(3);
+                for(int v=0;v<shape.vertices.Length;v++)
+                {
+                    batch.vertices.Add(shape.vertices[v]);batch.uv.Add(shape.uv[v]);
+                    // Keep the original GPU matrix multiply; CPU-baked world vertices lose precision.
+                    batch.row0.Add(a);batch.row1.Add(b);batch.row2.Add(c);batch.row3.Add(d);
+                    batch.atlasRects.Add(shape.atlasRect);
+                }
+                foreach(int triangle in shape.triangles)batch.triangles.Add(offset+triangle);
+            }
+            if(batch.mesh.vertexCount>batch.vertices.Count)batch.mesh.SetTriangles(System.Array.Empty<int>(),0,false);
+            batch.mesh.SetVertices(batch.vertices);batch.mesh.SetUVs(0,batch.uv);
+            batch.mesh.SetUVs(1,batch.row0);batch.mesh.SetUVs(2,batch.row1);batch.mesh.SetUVs(3,batch.row2);batch.mesh.SetUVs(4,batch.row3);
+            batch.mesh.SetUVs(5,batch.atlasRects);
+            batch.mesh.SetTriangles(batch.triangles,0,false);
+            MaskProperties(batch.texture,batch.opacity,vp,true);
+            commands.DrawMesh(batch.mesh,Matrix4x4.identity,maskMaterial,0,0,properties);lastMaskDrawCalls++;
+        }
     }
     void EnsureResources()
     {
+        if(atlas==null&&SystemInfo.supports2DArrayTextures)atlas=Resources.Load<CoreGuardianMaskAtlas>("CoreGuardian/MaskAtlas/Manifest");
+        int revision=atlas!=null?atlas.Revision:-1;
+        if(cachedAtlas!=atlas||atlasRevision!=revision)
+        {
+            foreach(var value in meshes.Values)DisposeObject(value);meshes.Clear();geometry.Clear();
+            cachedAtlas=atlas;atlasRevision=revision;
+        }
         if(output!=null)return;
         properties=new MaterialPropertyBlock();
         maskMaterial=new Material(Resources.Load<Shader>("CoreGuardian/SelectionMask")){hideFlags=HideFlags.DontSave};
@@ -161,6 +264,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     {
         commands?.Dispose();if(mask!=null){mask.Release();DisposeObject(mask);}
         foreach(var mesh in meshes.Values)DisposeObject(mesh);meshes.Clear();
+        foreach(var batch in batches)DisposeObject(batch.mesh);batches.Clear();geometry.Clear();
         DisposeObject(quad);DisposeObject(maskMaterial);DisposeObject(outlineMaterial);if(output!=null)DisposeObject(output.gameObject);
     }
     static void DisposeObject(Object value){if(value==null)return;if(Application.isPlaying)Destroy(value);else DestroyImmediate(value);}
