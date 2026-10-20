@@ -43,6 +43,7 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
         public Transform art;
         public readonly Dictionary<SpriteRenderer,Tint> tints=new Dictionary<SpriteRenderer,Tint>();
         public readonly List<SpriteRenderer> sources=new List<SpriteRenderer>();
+        public readonly CoreGuardianSpriteReferences references=new CoreGuardianSpriteReferences();
     }
     readonly Dictionary<Transform,Body> states=new Dictionary<Transform,Body>();
     readonly HashSet<Transform> live=new HashSet<Transform>();
@@ -103,7 +104,9 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
                 state=new Body{host=host,union=union,art=art};states.Add(target,state);
             }
             if(state.art==null)continue;
-            state.sources.Clear();state.art.GetComponentsInChildren(false,state.sources);
+            state.sources.Clear();
+            foreach(var r in state.references.Read(state.art))
+                if(r!=null&&r.gameObject.activeInHierarchy)state.sources.Add(r);
             foreach(var renderer in state.sources)
             {
                 if(!renderer.enabled||renderer.sprite==null)continue;
@@ -122,6 +125,10 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
         if(state.host==null)return;
         state.host.SetActive(false);
         if(Application.isPlaying)Destroy(state.host);else DestroyImmediate(state.host);
+    }
+    public void InvalidateSources()
+    {
+        foreach(var state in states.Values){state.references.Invalidate();state.union.InvalidateSources();}
     }
     void Clear(){foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;}
     void OnDisable()

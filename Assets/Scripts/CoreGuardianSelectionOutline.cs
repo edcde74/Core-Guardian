@@ -28,6 +28,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     readonly Dictionary<Sprite,Mesh> meshes=new Dictionary<Sprite,Mesh>();
     MaterialPropertyBlock properties;
     readonly List<SpriteRenderer> sources=new List<SpriteRenderer>();
+    readonly CoreGuardianSpriteReferences bodySources=new CoreGuardianSpriteReferences();
+    readonly Vector3[] quadVertices=new Vector3[4];
+    readonly Vector2[] quadUV=new Vector2[4];
     Transform artwork,lastTarget;
 
     void LateUpdate()
@@ -55,8 +58,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
             artwork=target.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite")?.transform;
         }
         if(artwork==null)return;
-        sources.Clear();artwork.GetComponentsInChildren(false,sources);
-        sources.RemoveAll(r=>!r.enabled||r.sprite==null||r.color.a<alphaThreshold||!r.gameObject.activeInHierarchy);
+        sources.Clear();
+        foreach(var r in bodySources.Read(artwork))
+            if(r!=null&&r.enabled&&r.sprite!=null&&r.color.a>=alphaThreshold&&r.gameObject.activeInHierarchy)sources.Add(r);
         if(sources.Count==0)return;
         EnsureResources();
         var bounds=sources[0].bounds;foreach(var r in sources)bounds.Encapsulate(r.bounds);
@@ -79,6 +83,8 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         var crop=Matrix4x4.identity;crop.m00=2/(b.x-a.x);crop.m11=2/(b.y-a.y);crop.m03=-(b.x+a.x)/(b.x-a.x);crop.m13=-(b.y+a.y)/(b.y-a.y);
         var vp=GL.GetGPUProjectionMatrix(crop*camera.projectionMatrix,true)*camera.worldToCameraMatrix;
         commands.Clear();commands.SetRenderTarget(mask);commands.ClearRenderTarget(false,true,Color.clear);
+        // Clear the entire capacity, then rasterize at the original screen-pixel resolution.
+        commands.SetViewport(new Rect(0,0,w,h));
         foreach(var r in sources)
         {
             properties.Clear();properties.SetTexture("_MainTex",r.sprite.texture);properties.SetFloat("_Opacity",r.color.a);
@@ -88,9 +94,19 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         }
         Graphics.ExecuteCommandBuffer(commands);
         float depth=Vector3.Dot(bounds.center-camera.transform.position,camera.transform.forward);
-        quad.vertices=new[]{Point(lo.x,lo.y),Point(hi.x,lo.y),Point(hi.x,hi.y),Point(lo.x,hi.y)};quad.RecalculateBounds();
+        quadVertices[0]=Point(lo.x,lo.y);quadVertices[1]=Point(hi.x,lo.y);quadVertices[2]=Point(hi.x,hi.y);quadVertices[3]=Point(lo.x,hi.y);
+        quad.vertices=quadVertices;quad.RecalculateBounds();
+        // One texture texel remains one screen pixel, including the contact shader's lower band.
+        float u=(float)w/mask.width,v=(float)h/mask.height;
+        quadUV[0]=Vector2.zero;quadUV[1]=new Vector2(u,0);quadUV[2]=new Vector2(u,v);quadUV[3]=new Vector2(0,v);quad.uv=quadUV;
         Vector3 Point(float x,float y)=>output.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(x,y,depth)));
-        var front=sources.OrderBy(r=>SortingLayer.GetLayerValueFromID(r.sortingLayerID)).ThenBy(r=>r.sortingOrder).Last();
+        var front=sources[0];int frontLayer=SortingLayer.GetLayerValueFromID(front.sortingLayerID);
+        foreach(var r in sources)
+        {
+            int layer=SortingLayer.GetLayerValueFromID(r.sortingLayerID);
+            // >= preserves the previous stable OrderBy(...).ThenBy(...).Last() tie behavior.
+            if(layer>frontLayer||(layer==frontLayer&&r.sortingOrder>=front.sortingOrder)){front=r;frontLayer=layer;}
+        }
         output.sortingLayerID=front.sortingLayerID;output.sortingOrder=front.sortingOrder+4;
         outlineMaterial.mainTexture=mask;outlineMaterial.SetColor("_Color",color);outlineMaterial.SetInt("_Width",radius);
         output.sharedMaterial=outlineMaterial;
@@ -131,11 +147,15 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     void EnsureMask(int width,int height)
     {
-        if(mask!=null&&mask.width==width&&mask.height==height)return;
+        if(mask!=null&&mask.width>=width&&mask.height>=height){if(!mask.IsCreated())mask.Create();return;}
+        if(mask!=null){width=Mathf.Max(width,mask.width);height=Mathf.Max(height,mask.height);}
         if(mask!=null){mask.Release();DisposeObject(mask);}
         mask=new RenderTexture(width,height,0,RenderTextureFormat.ARGB32,RenderTextureReadWrite.Linear)
             {name="Selected unit union mask",filterMode=FilterMode.Point,wrapMode=TextureWrapMode.Clamp,hideFlags=HideFlags.DontSave};mask.Create();
     }
+    // Component-only edits on an existing transform must explicitly invalidate this cache.
+    // New/reparented/destroyed children are detected automatically, including inactive rigs.
+    public void InvalidateSources(){bodySources.Invalidate();lastTarget=null;artwork=null;}
     void OnDisable(){if(output!=null)output.enabled=false;CurrentTarget=null;}
     void OnDestroy()
     {
@@ -144,4 +164,37 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         DisposeObject(quad);DisposeObject(maskMaterial);DisposeObject(outlineMaterial);if(output!=null)DisposeObject(output.gameObject);
     }
     static void DisposeObject(Object value){if(value==null)return;if(Application.isPlaying)Destroy(value);else DestroyImmediate(value);}
+}
+
+// Per-consumer references only; this does not share masks or alter presentation order.
+// Hierarchy checks do not use Transform.hasChanged: walking moves transforms every frame.
+internal sealed class CoreGuardianSpriteReferences
+{
+    Transform root;
+    bool dirty=true;
+    readonly List<SpriteRenderer> renderers=new List<SpriteRenderer>();
+    readonly List<Transform> nodes=new List<Transform>();
+    readonly List<int> childCounts=new List<int>();
+    readonly List<Transform> parents=new List<Transform>();
+    public void Invalidate()=>dirty=true;
+    public List<SpriteRenderer> Read(Transform target)
+    {
+        bool refresh=dirty||root!=target;
+        if(!refresh)
+        {
+            for(int i=0;i<nodes.Count;i++)
+                if(nodes[i]==null||nodes[i].childCount!=childCounts[i]||nodes[i].parent!=parents[i]){refresh=true;break;}
+            if(!refresh)for(int i=0;i<renderers.Count;i++)if(renderers[i]==null){refresh=true;break;}
+        }
+        if(refresh)
+        {
+            root=target;dirty=false;renderers.Clear();nodes.Clear();childCounts.Clear();parents.Clear();
+            if(root!=null)
+            {
+                root.GetComponentsInChildren(true,renderers);root.GetComponentsInChildren(true,nodes);
+                foreach(var node in nodes){childCounts.Add(node.childCount);parents.Add(node.parent);}
+            }
+        }
+        return renderers;
+    }
 }

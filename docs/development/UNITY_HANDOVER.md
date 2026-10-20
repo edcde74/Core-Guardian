@@ -1,28 +1,19 @@
 # 코어 가디언 Unity 인수인계
 
-최종 문서 갱신: 2026-10-20 (Asia/Seoul). 현재 사용자 지시·최신 담당 Notion이 우선이다. **최신 성능 근거는 [Profiler 병목 조사](profiler_investigation_20261020/README.md)**다. 시작 HEAD445ae8e에서 실제 엔진 캡처·상세 호출·GC 스택·Frame Debugger를 조사했다. 게임 코드/CSV/설정 최적화는 미착수이며 새 빌드/실행파일/push는 없다. 이전 [HUD 우선 제안](optimization_scope_review_20261020.md)은 추가 계측 전 제안으로 구분한다.
+최종 갱신: 2026-10-21 Asia/Seoul. 현재 사용자 지시와 최신 담당 기획서가 우선이다.
 
-## 지금 재개할 작업
-후속 자료 조사: [4항목 해결방안 보고](optimization_solutions_research_20261020.md). RT 용량/참조 재사용→조건별 본체 합성 공유→표시 풀/HUD 행 재사용→Session 버퍼/버프목록/top3를 비교했다. 공식 자료·게임 사례·품질/순서 위험·측정 계약을 기록했으며 제안 단계다. 이번 조사에서는 새 Unity 접속/Play/게임 코드·설정 변경은 없다.
+## 현재 최적화 상태
+사용자가 해결방안 보고 후 **“첫 번째거부터 진행”**을 승인했다. 복구 기준 HEAD `a135d9d`에서 본체 참조·배열/정렬과 Render Texture 용량 재사용을 적용했다. **최적화 미착수라는 이전 문구는 이력이다.** 변경/원본/실험/한계 정본은 [1차 최적화 기록](mask_reuse_20261020/README.md), 수치 표는 [전후 결과](mask_reuse_20261020/RESULTS.md)다. 모든 후속 작업 전 [공통 규칙](OPTIMIZATION_RULES.md)을 읽는다.
 
-추가 사용자 지시: 모든 최적화에서 최저·최고·평균 FPS도 전후 필수 기록한다. 계산/증감 규칙은 [공통 규칙](OPTIMIZATION_RULES.md), 기존 일반 캡처의 오프라인 집계는 [FPS 표](profiler_investigation_20261020/FPS.md)를 따른다. 이번 FPS 추가는 새 Unity 계측/Play가 아니다.
+적128/실제 포탑15의 Editor 주입 스트레스, 전후 각3회×100프레임에서 그림자 LateUpdate 중앙15.355→11.339ms, 강조13.519→10.225ms, GC.Alloc 중앙517,978→217,966B/frame. RT 교체 총횟수/관측프레임221.047→1.420회/frame. 묶음 최소/최고/평균 FPS는3.924/24.132/9.486→9.987/29.932/25.302다. 효과 제한 없이 줄인 묶음 변화이며 자유실행 dt/위상 차이가 있어 결정론적 전투·순수 GPU·standalone FPS·목표 예산 통과로 확대하지 않는다.
 
-최신 조사에서 적128/포탑15의 그림자 LateUpdate 중앙15.35~16.33ms·강조13.63~14.24ms·전투 어댑터 Update3.86~4.12ms(일반 Profiler 각3회)를 확인했다. 상세 호출에서 강제로 느려진 시간은 별도 진단이며 일반 값과 비교하지 않는다. 강조145+동적 접촉129의 중복 마스크 경로/RT 재생성이 우선 검토 대상이다. **다음은 공통 마스크/리소스 수명·참조 캐시의 구현 범위를 결정하는 것**이며 그림자/강조/효과를 제거하지 않는다. 근거·조건·원본·무효 시도·도구 한계는 담당 README를 따른다.
+Edit176/176·선택/접기 Play4/4·원본 코드와 고립 렌더 픽셀576건 불일치0. 실제씬128적/15포탑 프레임 진행·HUD 포함 화면도 확인했다. 추가 보행 Play 테스트는 목록에6건이나 실행 도구0건으로 미완료이며 통과로 세지 않는다. RT 최대 용량 유지의 장기 메모리/해상도 절충도 남는다. 검사별 조건/한계·원시 ZIP과 SHA manifest는 담당 기록을 따른다.
 
-자체 Play 종료·Deep/Profiler/Frame Debugger 중지·전투씬1 dirtyfalse·컴파일false·최종 Console 오류0/경고0·TimeScale1/captureDelta0/backgroundfalse를 재조회했다. Edit AudioListener는 진단 시작값1 복원, 저장 음량0.195603669 유지. Assets/Packages diff 없음·주요 소스/패키지 해시 일치. Deep 전환 중 재로딩 오류와 Profiler UI 오류 이력은 별도 저장했고 오류 상태의 프레임은 성능 결과에서 제외했다. 이 시점의 복원 확인도 다음 Unity 작업 전에는 실시간 재조회한다.
+**후속 미적용:** 같은 본체 마스크 공유/아틀라스/명령 통합, HUD·전투 표시 풀링, Session 탐색/할당 감소. 이번 승인은1차 범위뿐이다. 현재30R 성장·물량/밸런스·원본/방향·그림자·강조·효과 수/수명·사운드·HUD를 보존한다. 목표기기/FPS/배속 예산은 미확정이다.
 
-추가 사용자 지시: 엔진 내부에서는 Unity Profiler를 적극 활용한다. 도구별 사용·전후 캡처·계측 오버헤드 구분은 [공통 규칙의 엔진 프로파일링 절](OPTIMIZATION_RULES.md#엔진-내부-프로파일링-적극-활용)을 따른다. 이번 추가는 문서 변경이며 새 Unity 계측/Play는 없다.
+최종 자체 Play 종료/컴파일false/씬1 dirtyfalse, TimeScale1/captureDelta0/backgroundfalse, Profiler/Deep/할당스택/FrameDebugger=false. Edit AudioListener1·저장음량0.195603669. 다음 Unity 작업 전 실시간 상태를 다시 조회한다. 사용자 Play/다른 검사를 중단·중복하지 않는다. 새 빌드/실행파일 실행/패키지 설치/GitHub push는 없다. 기존 사용자 설정/미추적/폰트 접근오류 표시는 보존한다.
 
-2026-10-20 후속 사용자 지시로 **모든 최적화의 변경 전후 비용·절감량 기록과 게임 퀄리티 최대 보존**을 공통 규칙으로 확정했다. 작업 전 [OPTIMIZATION_RULES](OPTIMIZATION_RULES.md)를 읽는다. [공식 유튜브·공식 문서·Skul/V Rising 조사](optimization_research_20261020.md)는 1차 정리했으며 영상은 공개 설명 확인/본문 미확보다. 문서만 변경했고 게임 코드·설정·Unity/Play·빌드/실행은 변경/시작하지 않았다. 다음은 규칙에 따른 개별 구현 범위와 전후 계측 조건 확정이다.
-
-사용자는 현재30R 성장·물량 방향이 더 재미있다고 평가하고 강한 최적화를 요청했다. 제안에 대한 마지막 선택은 **“측정 결과부터 보고 결정”**이다. 사전계측만 완료했고 **최적화 구현은 미착수**다. 이번 기획서 추가를 실제 코드/표현 변경 승인으로 확대하지 않는다.
-
-1. [새 대화 재개 텍스트](resume_optimization_latest_20261020.md)
-2. [다음 순서·결정 상태](optimization_next_work_20261020.md)
-3. [성능 원본·조건·관측·3후보](performance_baseline_20261020/README.md)
-4. [Notion 최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4), 기존 담당 문서 링크/재조회는 [이번 동기화 기록](handover_optimization_20261020/README.md)
-
-추천은 HUD/표시 객체 재사용·뷰캐시→개체 표현/외곽 강조 렌더 통합→Session 반복 계산/할당 감소다. 목표FPS/기기/해상도/배속 예산과 구현 방법은 미확정이다. 승인된 효과를 끄거나 적 수/능력치/수입/증강을 낮춰 성능을 맞추지 않는다.
+재개: [새 대화 텍스트](resume_optimization_latest_20261020.md) → [다음 순서](optimization_next_work_20261020.md) → 위1차 기록. [기존 Profiler 병목 조사](profiler_investigation_20261020/README.md)와 [4항목 해결방안](optimization_solutions_research_20261020.md)은 원인/대안 조사다. [Notion 최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4)은 재조회했으나 과거 시작 전 상태이며 로컬 구현 결과는 아직 동기화하지 않았다. 초기 HUD우선 추천을 최신 결정으로 사용하지 않는다.
 
 ## 현재 게임·검증의 범위
 - **30R 실험 aab5b86:** 설치60/60/75수정, 공유60→90→120(+30), 플레이어40→65→85→110…, 완료수정60~85/보스90·110·130, 준비20초, 증강5·10·15·20·25R완료/보스처치와독립/30R최종종료. 보스HP500/1600/4500·방어5/12/20. `waves.csv`의health/defense/speed/gold가enemies기본값보다우선. [담당](aggressive_30r_20261020/README.md).

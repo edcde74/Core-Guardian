@@ -23,7 +23,7 @@ public class CoreGuardianSelectionOutlineTests
         camera.transform.position=target.transform.position+Vector3.back*10;camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=Color.clear;
         camera.cullingMask=1<<31;
         var image=new RenderTexture(128,128,24,RenderTextureFormat.ARGB32);image.Create();camera.targetTexture=image;
-        Texture2D read=null,maskRead=null;Material scan=null;var old=RenderTexture.active;
+        Texture2D read=null,maskRead=null;Material scan=null,contact=null;var old=RenderTexture.active;
         try
         {
             var component=root.AddComponent(type);type.GetField("color").SetValue(component,Color.magenta);type.GetField("widthPixels").SetValue(component,2);
@@ -46,7 +46,27 @@ public class CoreGuardianSelectionOutlineTests
                 Assert.That(read.GetPixel(x,y).a>.5f,Is.EqualTo(edge),"Screen ring must match the exact union at "+x+","+y+"; no inversion or interior joins");
             }
             Assert.That(first.enabled,Is.False);Assert.That(first.sprite,Is.SameAs(sprite));
+            void AssertSamePixelsAfterGrowth(Material material)
+            {
+                void Present()
+                {
+                    if(material==null)type.GetMethod("Present").Invoke(component,new object[]{target.transform,camera});
+                    else type.GetMethod("PresentOverlay").Invoke(component,new object[]{target.transform,camera,material});
+                }
+                Present();camera.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,128,128),0,0);read.Apply();
+                var before=read.GetPixels32();
+                target.transform.localScale=Vector3.one*1.4f;Present();
+                var capacity=(RenderTexture)type.GetField("mask",Hidden).GetValue(component);
+                target.transform.localScale=Vector3.one;Present();
+                Assert.That(type.GetField("mask",Hidden).GetValue(component),Is.SameAs(capacity),"Smaller pose must reuse RT capacity");
+                camera.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,128,128),0,0);read.Apply();
+                Assert.That(read.GetPixels32(),Is.EqualTo(before),"Growth and reuse must preserve every output pixel");
+            }
+            AssertSamePixelsAfterGrowth(null);
+            contact=new Material(Resources.Load<Shader>("CoreGuardian/PhotoShadowContact"));contact.SetFloat("_Band",16);
+            AssertSamePixelsAfterGrowth(contact);
             scan=new Material(Resources.Load<Shader>("CoreGuardian/UpgradeScan"));scan.SetFloat("_BandY",target.transform.position.y);scan.SetFloat("_Opacity",1);
+            AssertSamePixelsAfterGrowth(scan);
             Assert.That(type.GetMethod("PresentOverlay").Invoke(component,new object[]{target.transform,camera,scan}),Is.EqualTo(true));
             camera.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,128,128),0,0);read.Apply();
             int cyan=0;
@@ -65,6 +85,34 @@ public class CoreGuardianSelectionOutlineTests
             image.Release();UnityEngine.Object.DestroyImmediate(image);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);
             if(read!=null)UnityEngine.Object.DestroyImmediate(read);if(maskRead!=null)UnityEngine.Object.DestroyImmediate(maskRead);
             if(scan!=null)UnityEngine.Object.DestroyImmediate(scan);
+            if(contact!=null)UnityEngine.Object.DestroyImmediate(contact);
         }
+    }
+
+    [Test]
+    public void CachedPartsIncludeInactiveDirections_AndRefreshWhenHierarchyChanges()
+    {
+        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianSelectionOutline")).First(t=>t!=null);
+        var root=new GameObject("Cached parts test");var cameraRoot=new GameObject("Cache camera");
+        var texture=new Texture2D(2,2);var sprite=Sprite.Create(texture,new Rect(0,0,2,2),Vector2.one*.5f,4);
+        try
+        {
+            root.transform.position=new Vector3(10000,10000,0);
+            var body=new GameObject("2D Sprite").AddComponent<SpriteRenderer>();body.transform.SetParent(root.transform,false);body.sprite=sprite;
+            var part=new GameObject("Inactive direction").AddComponent<SpriteRenderer>();part.transform.SetParent(body.transform,false);part.sprite=sprite;part.gameObject.SetActive(false);
+            var camera=cameraRoot.AddComponent<Camera>();camera.enabled=false;camera.orthographic=true;camera.transform.position=root.transform.position+Vector3.back*10;
+            var c=root.AddComponent(type);var present=type.GetMethod("Present");
+            int Count(){present.Invoke(c,new object[]{root.transform,camera});return ((System.Collections.ICollection)type.GetField("sources",Hidden).GetValue(c)).Count;}
+            Assert.That(Count(),Is.EqualTo(1));part.gameObject.SetActive(true);Assert.That(Count(),Is.EqualTo(2));
+            part.enabled=false;Assert.That(Count(),Is.EqualTo(1));part.enabled=true;part.color=new Color(1,1,1,.01f);Assert.That(Count(),Is.EqualTo(1));
+            part.color=Color.white;part.sprite=null;Assert.That(Count(),Is.EqualTo(1));part.sprite=sprite;
+            var added=new GameObject("New rig part").AddComponent<SpriteRenderer>();added.transform.SetParent(part.transform,false);added.sprite=sprite;
+            Assert.That(Count(),Is.EqualTo(3));added.transform.SetParent(cameraRoot.transform,false);Assert.That(Count(),Is.EqualTo(2));
+            UnityEngine.Object.DestroyImmediate(part.gameObject);Assert.That(Count(),Is.EqualTo(1));
+            // Adding only a renderer on an existing node uses the explicit invalidation contract.
+            var node=new GameObject("Existing rig node");node.transform.SetParent(body.transform,false);Assert.That(Count(),Is.EqualTo(1));
+            node.AddComponent<SpriteRenderer>().sprite=sprite;type.GetMethod("InvalidateSources").Invoke(c,null);Assert.That(Count(),Is.EqualTo(2));
+        }
+        finally{UnityEngine.Object.DestroyImmediate(root);UnityEngine.Object.DestroyImmediate(cameraRoot);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
     }
 }

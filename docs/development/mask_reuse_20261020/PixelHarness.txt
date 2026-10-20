@@ -1,0 +1,51 @@
+
+public static class MaskPixelComparison
+{
+ public static object Run(){
+  var rows=new System.Collections.Generic.List<object>();int failures=0,cases=0;
+  var cameraGo=new GameObject("Owned pixel comparison camera");var cam=cameraGo.AddComponent<Camera>();cam.enabled=false;cam.orthographic=true;cam.orthographicSize=1.7f;cam.aspect=1;cam.cullingMask=1<<31;cam.clearFlags=CameraClearFlags.SolidColor;cam.backgroundColor=Color.clear;
+  var image=new RenderTexture(256,256,24);image.Create();cam.targetTexture=image;var read=new Texture2D(256,256,TextureFormat.RGBA32,false);var oldActive=RenderTexture.active;
+  var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+  try{
+   string[] roles={"Attack","Defense","Buff","Boss","Player","Single","Multi","Support"};
+   string[] prefabs={"enemy_attack","enemy_defense","enemy_buff","","Player","tower_single","tower_multi","tower_support"};
+   for(int roleIndex=0;roleIndex<roles.Length;roleIndex++){
+    string role=roles[roleIndex];string path=role=="Boss"?"Assets/Resources/CoreGuardian/Animation/Boss/BossAnimated.prefab":"Assets/Art/ScreenTests/20261008_Depth/Prefabs/"+prefabs[roleIndex]+".prefab";
+    var target=UnityEngine.Object.Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path));target.transform.position=new Vector3(10000,10000,0);cam.transform.position=target.transform.position+new Vector3(0,.5f,-10);
+    var animation=CoreGuardianUnitAnimation.Attach(target,role);
+    var oldHost=new GameObject("Owned reference output");var newHost=new GameObject("Owned optimized output");
+    var reference=oldHost.AddComponent<CGReferenceOutline>();reference.enabled=false;var current=newHost.AddComponent<CoreGuardianSelectionOutline>();current.enabled=false;
+    var contact=new Material(Resources.Load<Shader>("CoreGuardian/PhotoShadowContact"));contact.SetFloat("_Band",16);
+    var scan=new Material(Resources.Load<Shader>("CoreGuardian/UpgradeScan"));scan.SetFloat("_BandY",target.transform.position.y+.4f);scan.SetFloat("_Opacity",1);
+    try{
+     // Force unused capacity so all cases exercise logical UVs, not only exact-size first allocation.
+     typeof(CoreGuardianSelectionOutline).GetMethod("EnsureMask",flags).Invoke(current,new object[]{256,256});
+     foreach(var direction in new[]{Vector2.left,Vector2.right,Vector2.up,Vector2.down})for(int phase=0;phase<3;phase++){
+      animation.Move(direction,.07f);animation.Aim(direction,.07f);if(phase==1)animation.ReceiveHit();if(phase==2)animation.Fire(direction,4);animation.Present(.07f);
+      foreach(int width in new[]{1,2})foreach(string effect in new[]{"outline","contact","scan"}){
+       reference.widthPixels=current.widthPixels=width;
+       reference.Present(target.transform,cam);current.Present(target.transform,cam);
+       var oldOutput=(MeshRenderer)typeof(CGReferenceOutline).GetField("output",flags).GetValue(reference);
+       var newOutput=(MeshRenderer)typeof(CoreGuardianSelectionOutline).GetField("output",flags).GetValue(current);
+       bool visible=reference.IsVisible==current.IsVisible;int different=0,drawn=0;
+       if(reference.IsVisible&&current.IsVisible){
+        if(effect=="contact"){reference.PresentGroundContact(target.transform,cam,contact);}
+        if(effect=="scan"){reference.PresentOverlay(target.transform,cam,scan);}
+        oldOutput.gameObject.layer=newOutput.gameObject.layer=31;newOutput.enabled=false;oldOutput.enabled=true;
+        cam.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,256,256),0,0);read.Apply();var oldPixels=read.GetPixels32();
+        if(effect=="contact")current.PresentGroundContact(target.transform,cam,contact);
+        if(effect=="scan")current.PresentOverlay(target.transform,cam,scan);
+        oldOutput.enabled=false;newOutput.enabled=true;cam.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,256,256),0,0);read.Apply();var newPixels=read.GetPixels32();
+        for(int p=0;p<oldPixels.Length;p++){if(!oldPixels[p].Equals(newPixels[p]))different++;if(oldPixels[p].a>0)drawn++;}
+        if(roleIndex==0&&phase==0&&direction==Vector2.up&&width==1&&effect=="outline")System.IO.File.WriteAllBytes("docs/development/mask_reuse_20261020/quality_optimized.png",read.EncodeToPNG());
+       }
+       bool passed=visible&&different==0;cases++;if(!passed)failures++;
+       rows.Add(new{role,directionX=direction.x,directionY=direction.y,phase,width,effect,different,drawn,passed});
+      }
+     }
+    }finally{UnityEngine.Object.DestroyImmediate(oldHost);UnityEngine.Object.DestroyImmediate(newHost);UnityEngine.Object.DestroyImmediate(target);UnityEngine.Object.DestroyImmediate(contact);UnityEngine.Object.DestroyImmediate(scan);}
+   }
+  }finally{RenderTexture.active=oldActive;cam.targetTexture=null;image.Release();UnityEngine.Object.DestroyImmediate(image);UnityEngine.Object.DestroyImmediate(read);UnityEngine.Object.DestroyImmediate(cameraGo);}
+  var result=new{cases,failures,rows};System.IO.File.WriteAllText("docs/development/mask_reuse_20261020/pixel_comparison.json",Newtonsoft.Json.JsonConvert.SerializeObject(result,Newtonsoft.Json.Formatting.Indented));return new{cases,failures};
+ }
+}

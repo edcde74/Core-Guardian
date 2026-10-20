@@ -1,0 +1,250 @@
+diff --git a/Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs b/Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs
+index 2855fc3..7a090b7 100644
+--- a/Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs
++++ b/Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs
+@@ -23,7 +23,7 @@ public class CoreGuardianSelectionOutlineTests
+         camera.transform.position=target.transform.position+Vector3.back*10;camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=Color.clear;
+         camera.cullingMask=1<<31;
+         var image=new RenderTexture(128,128,24,RenderTextureFormat.ARGB32);image.Create();camera.targetTexture=image;
+-        Texture2D read=null,maskRead=null;Material scan=null;var old=RenderTexture.active;
++        Texture2D read=null,maskRead=null;Material scan=null,contact=null;var old=RenderTexture.active;
+         try
+         {
+             var component=root.AddComponent(type);type.GetField("color").SetValue(component,Color.magenta);type.GetField("widthPixels").SetValue(component,2);
+@@ -46,7 +46,27 @@ public class CoreGuardianSelectionOutlineTests
+                 Assert.That(read.GetPixel(x,y).a>.5f,Is.EqualTo(edge),"Screen ring must match the exact union at "+x+","+y+"; no inversion or interior joins");
+             }
+             Assert.That(first.enabled,Is.False);Assert.That(first.sprite,Is.SameAs(sprite));
++            void AssertSamePixelsAfterGrowth(Material material)
++            {
++                void Present()
++                {
++                    if(material==null)type.GetMethod("Present").Invoke(component,new object[]{target.transform,camera});
++                    else type.GetMethod("PresentOverlay").Invoke(component,new object[]{target.transform,camera,material});
++                }
++                Present();camera.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,128,128),0,0);read.Apply();
++                var before=read.GetPixels32();
++                target.transform.localScale=Vector3.one*1.4f;Present();
++                var capacity=(RenderTexture)type.GetField("mask",Hidden).GetValue(component);
++                target.transform.localScale=Vector3.one;Present();
++                Assert.That(type.GetField("mask",Hidden).GetValue(component),Is.SameAs(capacity),"Smaller pose must reuse RT capacity");
++                camera.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,128,128),0,0);read.Apply();
++                Assert.That(read.GetPixels32(),Is.EqualTo(before),"Growth and reuse must preserve every output pixel");
++            }
++            AssertSamePixelsAfterGrowth(null);
++            contact=new Material(Resources.Load<Shader>("CoreGuardian/PhotoShadowContact"));contact.SetFloat("_Band",16);
++            AssertSamePixelsAfterGrowth(contact);
+             scan=new Material(Resources.Load<Shader>("CoreGuardian/UpgradeScan"));scan.SetFloat("_BandY",target.transform.position.y);scan.SetFloat("_Opacity",1);
++            AssertSamePixelsAfterGrowth(scan);
+             Assert.That(type.GetMethod("PresentOverlay").Invoke(component,new object[]{target.transform,camera,scan}),Is.EqualTo(true));
+             camera.Render();RenderTexture.active=image;read.ReadPixels(new Rect(0,0,128,128),0,0);read.Apply();
+             int cyan=0;
+@@ -65,6 +85,34 @@ public class CoreGuardianSelectionOutlineTests
+             image.Release();UnityEngine.Object.DestroyImmediate(image);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);
+             if(read!=null)UnityEngine.Object.DestroyImmediate(read);if(maskRead!=null)UnityEngine.Object.DestroyImmediate(maskRead);
+             if(scan!=null)UnityEngine.Object.DestroyImmediate(scan);
++            if(contact!=null)UnityEngine.Object.DestroyImmediate(contact);
++        }
++    }
++
++    [Test]
++    public void CachedPartsIncludeInactiveDirections_AndRefreshWhenHierarchyChanges()
++    {
++        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianSelectionOutline")).First(t=>t!=null);
++        var root=new GameObject("Cached parts test");var cameraRoot=new GameObject("Cache camera");
++        var texture=new Texture2D(2,2);var sprite=Sprite.Create(texture,new Rect(0,0,2,2),Vector2.one*.5f,4);
++        try
++        {
++            root.transform.position=new Vector3(10000,10000,0);
++            var body=new GameObject("2D Sprite").AddComponent<SpriteRenderer>();body.transform.SetParent(root.transform,false);body.sprite=sprite;
++            var part=new GameObject("Inactive direction").AddComponent<SpriteRenderer>();part.transform.SetParent(body.transform,false);part.sprite=sprite;part.gameObject.SetActive(false);
++            var camera=cameraRoot.AddComponent<Camera>();camera.enabled=false;camera.orthographic=true;camera.transform.position=root.transform.position+Vector3.back*10;
++            var c=root.AddComponent(type);var present=type.GetMethod("Present");
++            int Count(){present.Invoke(c,new object[]{root.transform,camera});return ((System.Collections.ICollection)type.GetField("sources",Hidden).GetValue(c)).Count;}
++            Assert.That(Count(),Is.EqualTo(1));part.gameObject.SetActive(true);Assert.That(Count(),Is.EqualTo(2));
++            part.enabled=false;Assert.That(Count(),Is.EqualTo(1));part.enabled=true;part.color=new Color(1,1,1,.01f);Assert.That(Count(),Is.EqualTo(1));
++            part.color=Color.white;part.sprite=null;Assert.That(Count(),Is.EqualTo(1));part.sprite=sprite;
++            var added=new GameObject("New rig part").AddComponent<SpriteRenderer>();added.transform.SetParent(part.transform,false);added.sprite=sprite;
++            Assert.That(Count(),Is.EqualTo(3));added.transform.SetParent(cameraRoot.transform,false);Assert.That(Count(),Is.EqualTo(2));
++            UnityEngine.Object.DestroyImmediate(part.gameObject);Assert.That(Count(),Is.EqualTo(1));
++            // Adding only a renderer on an existing node uses the explicit invalidation contract.
++            var node=new GameObject("Existing rig node");node.transform.SetParent(body.transform,false);Assert.That(Count(),Is.EqualTo(1));
++            node.AddComponent<SpriteRenderer>().sprite=sprite;type.GetMethod("InvalidateSources").Invoke(c,null);Assert.That(Count(),Is.EqualTo(2));
+         }
++        finally{UnityEngine.Object.DestroyImmediate(root);UnityEngine.Object.DestroyImmediate(cameraRoot);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
+     }
+ }
+diff --git a/Assets/Scripts/CoreGuardianObjectEmphasis.cs b/Assets/Scripts/CoreGuardianObjectEmphasis.cs
+index 0f8f71f..4397070 100644
+--- a/Assets/Scripts/CoreGuardianObjectEmphasis.cs
++++ b/Assets/Scripts/CoreGuardianObjectEmphasis.cs
+@@ -43,6 +43,7 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
+         public Transform art;
+         public readonly Dictionary<SpriteRenderer,Tint> tints=new Dictionary<SpriteRenderer,Tint>();
+         public readonly List<SpriteRenderer> sources=new List<SpriteRenderer>();
++        public readonly CoreGuardianSpriteReferences references=new CoreGuardianSpriteReferences();
+     }
+     readonly Dictionary<Transform,Body> states=new Dictionary<Transform,Body>();
+     readonly HashSet<Transform> live=new HashSet<Transform>();
+@@ -103,7 +104,9 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
+                 state=new Body{host=host,union=union,art=art};states.Add(target,state);
+             }
+             if(state.art==null)continue;
+-            state.sources.Clear();state.art.GetComponentsInChildren(false,state.sources);
++            state.sources.Clear();
++            foreach(var r in state.references.Read(state.art))
++                if(r!=null&&r.gameObject.activeInHierarchy)state.sources.Add(r);
+             foreach(var renderer in state.sources)
+             {
+                 if(!renderer.enabled||renderer.sprite==null)continue;
+@@ -123,6 +126,10 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
+         state.host.SetActive(false);
+         if(Application.isPlaying)Destroy(state.host);else DestroyImmediate(state.host);
+     }
++    public void InvalidateSources()
++    {
++        foreach(var state in states.Values){state.references.Invalidate();state.union.InvalidateSources();}
++    }
+     void Clear(){foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;}
+     void OnDisable()
+     {
+diff --git a/Assets/Scripts/CoreGuardianPhotoShadow.cs b/Assets/Scripts/CoreGuardianPhotoShadow.cs
+index 355a7ad..97a3b0c 100644
+--- a/Assets/Scripts/CoreGuardianPhotoShadow.cs
++++ b/Assets/Scripts/CoreGuardianPhotoShadow.cs
+@@ -16,6 +16,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
+     string role;
+     bool mobile,replace;
+     float size=1;
++    readonly CoreGuardianSpriteReferences shadowSources=new CoreGuardianSpriteReferences();
+     public static CoreGuardianPhotoShadow Attach(GameObject root,string role)
+     {
+         var shadow=root.GetComponent<CoreGuardianPhotoShadow>();
+@@ -47,7 +48,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
+     public void Present(Camera camera)
+     {
+         if(cast==null||art==null)return;
+-        foreach(var r in GetComponentsInChildren<SpriteRenderer>(true))
++        foreach(var r in shadowSources.Read(transform))
+             if(r.name=="바닥 밀착선"||(replace&&(r.name=="바깥 그림자"||r.name=="접촉 그림자"||r.name=="짧은 투사 그림자"||r.name=="바닥 수정빛")))r.enabled=false;
+         cast.transform.position=transform.position+offset;
+         cast.transform.rotation=Quaternion.identity;
+@@ -65,6 +66,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
+         }
+     }
+     void LateUpdate()=>Present(Camera.main);
++    public void InvalidateSources()=>shadowSources.Invalidate();
+     void OnDisable(){if(cast!=null)cast.enabled=false;if(contact!=null)contact.gameObject.SetActive(false);}
+     void OnEnable(){if(cast!=null)cast.enabled=true;if(contact!=null)contact.gameObject.SetActive(true);}
+     void OnDestroy(){if(contactMaterial!=null){if(Application.isPlaying)Destroy(contactMaterial);else DestroyImmediate(contactMaterial);}}
+diff --git a/Assets/Scripts/CoreGuardianSelectionOutline.cs b/Assets/Scripts/CoreGuardianSelectionOutline.cs
+index af7cc6e..1e69b0a 100644
+--- a/Assets/Scripts/CoreGuardianSelectionOutline.cs
++++ b/Assets/Scripts/CoreGuardianSelectionOutline.cs
+@@ -28,6 +28,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+     readonly Dictionary<Sprite,Mesh> meshes=new Dictionary<Sprite,Mesh>();
+     MaterialPropertyBlock properties;
+     readonly List<SpriteRenderer> sources=new List<SpriteRenderer>();
++    readonly CoreGuardianSpriteReferences bodySources=new CoreGuardianSpriteReferences();
++    readonly Vector3[] quadVertices=new Vector3[4];
++    readonly Vector2[] quadUV=new Vector2[4];
+     Transform artwork,lastTarget;
+ 
+     void LateUpdate()
+@@ -55,8 +58,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+             artwork=target.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite")?.transform;
+         }
+         if(artwork==null)return;
+-        sources.Clear();artwork.GetComponentsInChildren(false,sources);
+-        sources.RemoveAll(r=>!r.enabled||r.sprite==null||r.color.a<alphaThreshold||!r.gameObject.activeInHierarchy);
++        sources.Clear();
++        foreach(var r in bodySources.Read(artwork))
++            if(r!=null&&r.enabled&&r.sprite!=null&&r.color.a>=alphaThreshold&&r.gameObject.activeInHierarchy)sources.Add(r);
+         if(sources.Count==0)return;
+         EnsureResources();
+         var bounds=sources[0].bounds;foreach(var r in sources)bounds.Encapsulate(r.bounds);
+@@ -79,6 +83,8 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+         var crop=Matrix4x4.identity;crop.m00=2/(b.x-a.x);crop.m11=2/(b.y-a.y);crop.m03=-(b.x+a.x)/(b.x-a.x);crop.m13=-(b.y+a.y)/(b.y-a.y);
+         var vp=GL.GetGPUProjectionMatrix(crop*camera.projectionMatrix,true)*camera.worldToCameraMatrix;
+         commands.Clear();commands.SetRenderTarget(mask);commands.ClearRenderTarget(false,true,Color.clear);
++        // Clear the entire capacity, then rasterize at the original screen-pixel resolution.
++        commands.SetViewport(new Rect(0,0,w,h));
+         foreach(var r in sources)
+         {
+             properties.Clear();properties.SetTexture("_MainTex",r.sprite.texture);properties.SetFloat("_Opacity",r.color.a);
+@@ -88,9 +94,19 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+         }
+         Graphics.ExecuteCommandBuffer(commands);
+         float depth=Vector3.Dot(bounds.center-camera.transform.position,camera.transform.forward);
+-        quad.vertices=new[]{Point(lo.x,lo.y),Point(hi.x,lo.y),Point(hi.x,hi.y),Point(lo.x,hi.y)};quad.RecalculateBounds();
++        quadVertices[0]=Point(lo.x,lo.y);quadVertices[1]=Point(hi.x,lo.y);quadVertices[2]=Point(hi.x,hi.y);quadVertices[3]=Point(lo.x,hi.y);
++        quad.vertices=quadVertices;quad.RecalculateBounds();
++        // One texture texel remains one screen pixel, including the contact shader's lower band.
++        float u=(float)w/mask.width,v=(float)h/mask.height;
++        quadUV[0]=Vector2.zero;quadUV[1]=new Vector2(u,0);quadUV[2]=new Vector2(u,v);quadUV[3]=new Vector2(0,v);quad.uv=quadUV;
+         Vector3 Point(float x,float y)=>output.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(x,y,depth)));
+-        var front=sources.OrderBy(r=>SortingLayer.GetLayerValueFromID(r.sortingLayerID)).ThenBy(r=>r.sortingOrder).Last();
++        var front=sources[0];int frontLayer=SortingLayer.GetLayerValueFromID(front.sortingLayerID);
++        foreach(var r in sources)
++        {
++            int layer=SortingLayer.GetLayerValueFromID(r.sortingLayerID);
++            // >= preserves the previous stable OrderBy(...).ThenBy(...).Last() tie behavior.
++            if(layer>frontLayer||(layer==frontLayer&&r.sortingOrder>=front.sortingOrder)){front=r;frontLayer=layer;}
++        }
+         output.sortingLayerID=front.sortingLayerID;output.sortingOrder=front.sortingOrder+4;
+         outlineMaterial.mainTexture=mask;outlineMaterial.SetColor("_Color",color);outlineMaterial.SetInt("_Width",radius);
+         output.sharedMaterial=outlineMaterial;
+@@ -131,11 +147,15 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+     }
+     void EnsureMask(int width,int height)
+     {
+-        if(mask!=null&&mask.width==width&&mask.height==height)return;
++        if(mask!=null&&mask.width>=width&&mask.height>=height){if(!mask.IsCreated())mask.Create();return;}
++        if(mask!=null){width=Mathf.Max(width,mask.width);height=Mathf.Max(height,mask.height);}
+         if(mask!=null){mask.Release();DisposeObject(mask);}
+         mask=new RenderTexture(width,height,0,RenderTextureFormat.ARGB32,RenderTextureReadWrite.Linear)
+             {name="Selected unit union mask",filterMode=FilterMode.Point,wrapMode=TextureWrapMode.Clamp,hideFlags=HideFlags.DontSave};mask.Create();
+     }
++    // Component-only edits on an existing transform must explicitly invalidate this cache.
++    // New/reparented/destroyed children are detected automatically, including inactive rigs.
++    public void InvalidateSources(){bodySources.Invalidate();lastTarget=null;artwork=null;}
+     void OnDisable(){if(output!=null)output.enabled=false;CurrentTarget=null;}
+     void OnDestroy()
+     {
+@@ -145,3 +165,36 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+     }
+     static void DisposeObject(Object value){if(value==null)return;if(Application.isPlaying)Destroy(value);else DestroyImmediate(value);}
+ }
++
++// Per-consumer references only; this does not share masks or alter presentation order.
++// Hierarchy checks do not use Transform.hasChanged: walking moves transforms every frame.
++internal sealed class CoreGuardianSpriteReferences
++{
++    Transform root;
++    bool dirty=true;
++    readonly List<SpriteRenderer> renderers=new List<SpriteRenderer>();
++    readonly List<Transform> nodes=new List<Transform>();
++    readonly List<int> childCounts=new List<int>();
++    readonly List<Transform> parents=new List<Transform>();
++    public void Invalidate()=>dirty=true;
++    public List<SpriteRenderer> Read(Transform target)
++    {
++        bool refresh=dirty||root!=target;
++        if(!refresh)
++        {
++            for(int i=0;i<nodes.Count;i++)
++                if(nodes[i]==null||nodes[i].childCount!=childCounts[i]||nodes[i].parent!=parents[i]){refresh=true;break;}
++            if(!refresh)for(int i=0;i<renderers.Count;i++)if(renderers[i]==null){refresh=true;break;}
++        }
++        if(refresh)
++        {
++            root=target;dirty=false;renderers.Clear();nodes.Clear();childCounts.Clear();parents.Clear();
++            if(root!=null)
++            {
++                root.GetComponentsInChildren(true,renderers);root.GetComponentsInChildren(true,nodes);
++                foreach(var node in nodes){childCounts.Add(node.childCount);parents.Add(node.parent);}
++            }
++        }
++        return renderers;
++    }
++}

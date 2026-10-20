@@ -16,6 +16,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
     string role;
     bool mobile,replace;
     float size=1;
+    readonly CoreGuardianSpriteReferences shadowSources=new CoreGuardianSpriteReferences();
     public static CoreGuardianPhotoShadow Attach(GameObject root,string role)
     {
         var shadow=root.GetComponent<CoreGuardianPhotoShadow>();
@@ -47,7 +48,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
     public void Present(Camera camera)
     {
         if(cast==null||art==null)return;
-        foreach(var r in GetComponentsInChildren<SpriteRenderer>(true))
+        foreach(var r in shadowSources.Read(transform))
             if(r.name=="바닥 밀착선"||(replace&&(r.name=="바깥 그림자"||r.name=="접촉 그림자"||r.name=="짧은 투사 그림자"||r.name=="바닥 수정빛")))r.enabled=false;
         cast.transform.position=transform.position+offset;
         cast.transform.rotation=Quaternion.identity;
@@ -65,6 +66,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
         }
     }
     void LateUpdate()=>Present(Camera.main);
+    public void InvalidateSources()=>shadowSources.Invalidate();
     void OnDisable(){if(cast!=null)cast.enabled=false;if(contact!=null)contact.gameObject.SetActive(false);}
     void OnEnable(){if(cast!=null)cast.enabled=true;if(contact!=null)contact.gameObject.SetActive(true);}
     void OnDestroy(){if(contactMaterial!=null){if(Application.isPlaying)Destroy(contactMaterial);else DestroyImmediate(contactMaterial);}}
