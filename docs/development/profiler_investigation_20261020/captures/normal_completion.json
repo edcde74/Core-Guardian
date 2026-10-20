@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-20T13:28:54.597787Z",
+  "error": "System.ArgumentNullException: Value cannot be null.\r\nParameter name: key\r\n  at System.Collections.Generic.Dictionary`2[TKey,TValue].FindEntry (TKey key) [0x00008] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 \r\n  at System.Collections.Generic.Dictionary`2[TKey,TValue].TryGetValue (TKey key, TValue& value) [0x00000] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 \r\n  at CGProfilerProbe.Export (System.String label) [0x0019f] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\docs\\development\\profiler_investigation_20261020\\ProfilerProbe.cs:95 \r\n  at CGProfilerProbe.Poll () [0x0020e] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\docs\\development\\profiler_investigation_20261020\\ProfilerProbe.cs:76 ",
+  "run": 0,
+  "observed": 100,
+  "restored": true,
+  "enabled": false,
+  "deepProfiling": false,
+  "enableAllocationCallstacks": false,
+  "runInBackground": true
+}

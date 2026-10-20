@@ -1,0 +1,72 @@
+{
+  "archive": "raw_profiler_captures.zip",
+  "archiveBytes": 474350829,
+  "verifiedAllEntriesSha256": true,
+  "files": [
+    {
+      "file": "captures/normal_0_n32.data",
+      "size": 68020700,
+      "sha256": "20457b7d1a79eb4e240b3c2cfb4f77d482a3c1183e4089f38d53fedeb99028ae"
+    },
+    {
+      "file": "captures_instrumented/instrumented_0_n128.data",
+      "size": 948249816,
+      "sha256": "6a855b2fe8a6b0bfc557b956ec3486f268e903f0e385096b34ac89e209b89804"
+    },
+    {
+      "file": "captures_valid/alloc_0_n128.data",
+      "size": 325924944,
+      "sha256": "2017a5e0bc6bb9adbd1ac58cba1af3d7e6a95239879a5e2409c442b73b95ef35"
+    },
+    {
+      "file": "captures_valid/deep_0_n128.data",
+      "size": 63168032,
+      "sha256": "959a14ec56c835b65dabe693a45850780c5014eee46025fc71ca6e720d7a6e6a"
+    },
+    {
+      "file": "captures_valid/normal_0_n32.data",
+      "size": 67021772,
+      "sha256": "72d5ff25e9738a83656008aa5f8ac86e038d4ca7a7048341c16f00ce2ec478b7"
+    },
+    {
+      "file": "captures_valid/normal_1_n128.data",
+      "size": 178081340,
+      "sha256": "9fc53868d62bfe138a25b05720534c4529929b6157bab70bc260d76cde162a1d"
+    },
+    {
+      "file": "captures_valid/normal_2_n32.data",
+      "size": 71416952,
+      "sha256": "318469cd229850b36b3e0726536f826b731beb43d817945fc0cc2fc9b6f52368"
+    },
+    {
+      "file": "captures_valid/normal_3_n128.data",
+      "size": 178737164,
+      "sha256": "488fdd18a102947075c5c3d63764e75901f82e38f8cdd69d8e549be0e125b7cb"
+    },
+    {
+      "file": "captures_valid/normal_4_n32.data",
+      "size": 73221880,
+      "sha256": "7310350e3d500d83d5cd951d123433087ae373659d87260d69d740ed37f9a176"
+    },
+    {
+      "file": "captures_valid/normal_5_n128.data",
+      "size": 180358892,
+      "sha256": "1b1c508728874514cfe26cc8785b9956c9122e43d5b82db8a84d0b015e99dab4"
+    },
+    {
+      "file": "normal_0_n32.data",
+      "size": 4,
+      "sha256": "e9cf9d8c46a14093b985833e6bfd3fb8b3c06b1088ded800aa049948a660fb71"
+    },
+    {
+      "file": "normal_1_n128.data",
+      "size": 4,
+      "sha256": "e9cf9d8c46a14093b985833e6bfd3fb8b3c06b1088ded800aa049948a660fb71"
+    },
+    {
+      "file": "normal_2_n32.data",
+      "size": 4,
+      "sha256": "e9cf9d8c46a14093b985833e6bfd3fb8b3c06b1088ded800aa049948a660fb71"
+    }
+  ]
+}

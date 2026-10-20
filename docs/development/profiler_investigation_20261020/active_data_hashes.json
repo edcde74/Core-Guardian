@@ -1,0 +1,27 @@
+[
+  {
+    "field": "enemiesCsv",
+    "path": "Assets/Resources/CoreGuardian/enemies.csv",
+    "sha256": "E31E93AEED59FC285F152CE0755C7AAACE40576EFED6E312C0C82424B1EF8929"
+  },
+  {
+    "field": "towersCsv",
+    "path": "Assets/Resources/CoreGuardian/towers.csv",
+    "sha256": "095F71A1C1C6BEBD2D790437A7BC253B7ED32AA2CD02600FC128558C2A1EDFCD"
+  },
+  {
+    "field": "stageCsv",
+    "path": "Assets/Resources/CoreGuardian/stage.csv",
+    "sha256": "7A286B43AD852C8DCE499CF35A2B27317764C771CB3D69287C3C2C3F674C5BB6"
+  },
+  {
+    "field": "upgradesCsv",
+    "path": "Assets/Resources/CoreGuardian/upgrades.csv",
+    "sha256": "14516B81277172CDDD9EFE05FBC294E77F4DF3F2DBC1331992ED91C79F429AEB"
+  },
+  {
+    "field": "wavesCsv",
+    "path": "Assets/Resources/CoreGuardian/waves.csv",
+    "sha256": "310C2FE55AC8ABFDD2670CBAF420216A7761944648771A493F63D59020CF57E1"
+  }
+]

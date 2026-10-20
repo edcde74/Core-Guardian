@@ -1,0 +1,52 @@
+{
+  "utc": "2026-10-20T13:27:45.8383151Z",
+  "unity": "6000.6.2f1",
+  "cpu": "AMD Ryzen 5 5600X 6-Core Processor ",
+  "gpu": "NVIDIA GeForce RTX 3070",
+  "ramMB": 32681,
+  "os": "Windows 11  (10.0.26200)",
+  "screen": {
+    "width": 1920,
+    "height": 1080
+  },
+  "vsync": 1,
+  "targetFrameRate": -1,
+  "timeScale": 1.0,
+  "captureDeltaTime": 0.0,
+  "storedVolume": 0.195603669,
+  "audioListener": 1.0,
+  "original": {
+    "oldEnabled": false,
+    "oldEditor": false,
+    "oldDeep": false,
+    "oldStacks": false,
+    "oldBackground": true
+  },
+  "areas": {
+    "CPU": false,
+    "GPU": false,
+    "Rendering": true,
+    "Memory": true,
+    "Audio": true,
+    "Video": true,
+    "Physics": true,
+    "Physics2D": true,
+    "NetworkMessages": true,
+    "NetworkOperations": true,
+    "UI": true,
+    "UIDetails": true,
+    "GlobalIllumination": true,
+    "VirtualTexturing": true
+  },
+  "mode": "normal",
+  "targetFrames": 100,
+  "warmup": 30,
+  "populations": [
+    32,
+    128,
+    32,
+    128,
+    32,
+    128
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "kind": "runtime resource inventory, not Memory Profiler snapshot",
+  "frame": 6052,
+  "outlines": 275,
+  "visibleOutlines": 274,
+  "emphasisHosts": 145,
+  "contactHosts": 129,
+  "maskCount": 274,
+  "maskRuntimeBytes": 5687576,
+  "maskSizes": [
+    {
+      "size": "114x122",
+      "count": 1
+    },
+    {
+      "size": "59x85",
+      "count": 102
+    },
+    {
+      "size": "57x83",
+      "count": 102
+    },
+    {
+      "size": "49x102",
+      "count": 5
+    },
+    {
+      "size": "58x83",
+      "count": 10
+    },
+    {
+      "size": "60x85",
+      "count": 10
+    },
+    {
+      "size": "68x74",
+      "count": 3
+    },
+    {
+      "size": "48x102",
+      "count": 11
+    },
+    {
+      "size": "54x83",
+      "count": 1
+    },
+    {
+      "size": "50x104",
+      "count": 11
+    },
+    {
+      "size": "51x104",
+      "count": 5
+    },
+    {
+      "size": "67x74",
+      "count": 3
+    },
+    {
+      "size": "50x64",
+      "count": 1
+    },
+    {
+      "size": "52x66",
+      "count": 1
+    },
+    {
+      "size": "67x73",
+      "count": 2
+    },
+    {
+      "size": "68x73",
+      "count": 4
+    },
+    {
+      "size": "55x83",
+      "count": 2
+    }
+  ],
+  "materials": [
+    {
+      "shader": "CoreGuardian/SelectionMask",
+      "count": 274
+    },
+    {
+      "shader": "CoreGuardian/SelectionOutline",
+      "count": 274
+    },
+    {
+      "shader": "CoreGuardian/PhotoShadowContact",
+      "count": 129
+    },
+    {
+      "shader": "CoreGuardian/TowerGlow",
+      "count": 45
+    },
+    {
+      "shader": "Hidden/TextCore/Editor/Distance Field SSD",
+      "count": 20
+    },
+    {
+      "shader": "Hidden/TextCore/Distance Field SSD",
+      "count": 20
+    },
+    {
+      "shader": "Hidden/Universal Render Pipeline/Bloom",
+      "count": 17
+    },
+    {
+      "shader": "CoreGuardian/TowerBaseShade",
+      "count": 15
+    },
+    {
+      "shader": "Hidden/Internal-UIRAtlasBlitCopy",
+      "count": 9
+    },
+    {
+      "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+      "count": 6
+    },
+    {
+      "shader": "CoreGuardian/BodyHitFlash",
+      "count": 5
+    },
+    {
+      "shader": "TextMeshPro/Mobile/Distance Field",
+      "count": 4
+    },
+    {
+      "shader": "Hidden/Universal/CoreBlit",
+      "count": 4
+    },
+    {
+      "shader": "Hidden/BlitCopy",
+      "count": 3
+    },
+    {
+      "shader": "GUI/Text Shader",
+      "count": 2
+    },
+    {
+      "shader": "Hidden/Internal-GUIRoundedRect",
+      "count": 2
+    },
+    {
+      "shader": "Hidden/Internal-GUIRoundedRectWithColorPerBorder",
+      "count": 2
+    },
+    {
+      "shader": "Hidden/GUITextureBlit2SRGB",
+      "count": 2
+    },
+    {
+      "shader": "CoreGuardian/CoreAmbient",
+      "count": 2
+    },
+    {
+      "shader": "Hidden/Universal/BlitHDROverlay",
+      "count": 2
+    }
+  ]
+}
