@@ -2,12 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Unity.Profiling;
 
 // One binary union of visible original sprite parts. Never changes source materials or artwork.
 [DisallowMultipleComponent]
 [DefaultExecutionOrder(500)]
 public sealed class CoreGuardianSelectionOutline : MonoBehaviour
 {
+    static readonly ProfilerMarker presentSample=new ProfilerMarker("CG.Mask.Present");
+    static readonly ProfilerMarker resourcesSample=new ProfilerMarker("CG.Mask.Resources");
+    static readonly ProfilerMarker capacitySample=new ProfilerMarker("CG.Mask.Capacity");
+    static readonly ProfilerMarker partsSample=new ProfilerMarker("CG.Mask.Parts");
+    static readonly ProfilerMarker uploadSample=new ProfilerMarker("CG.Mask.MeshUpload");
+    static readonly ProfilerMarker executeSample=new ProfilerMarker("CG.Mask.Execute");
+    static readonly ProfilerMarker outputSample=new ProfilerMarker("CG.Mask.Output");
     [Header("선택 대상 아웃라인 · 능력치/강화 패널이 열려 있을 때만 표시")]
     [Tooltip("외곽선 색상과 불투명도. 발광이나 깜빡임은 사용하지 않습니다.")]
     public Color color=new Color(.8f,.67f,.39f,1);
@@ -55,6 +63,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     public void Present(Transform target,Camera camera)
     {
+        using var presentScope=presentSample.Auto();
         lastMaskDrawCalls=0;lastAtlasMisses=0;
         CurrentTarget=target;
         if(output!=null)output.enabled=false;
@@ -93,7 +102,8 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         // Clear the entire capacity, then rasterize at the original screen-pixel resolution.
         commands.SetViewport(new Rect(0,0,w,h));
         DrawMaskParts(vp);
-        Graphics.ExecuteCommandBuffer(commands);
+        using(executeSample.Auto())Graphics.ExecuteCommandBuffer(commands);
+        using var outputScope=outputSample.Auto();
         float depth=Vector3.Dot(bounds.center-camera.transform.position,camera.transform.forward);
         quadVertices[0]=Point(lo.x,lo.y);quadVertices[1]=Point(hi.x,lo.y);quadVertices[2]=Point(hi.x,hi.y);quadVertices[3]=Point(lo.x,hi.y);
         quad.vertices=quadVertices;quad.RecalculateBounds();
@@ -177,6 +187,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     void DrawMaskParts(Matrix4x4 vp)
     {
+        using var partsScope=partsSample.Auto();
         lastAtlasMisses=0;
         foreach(var batch in batches)batch.parts.Clear();
         int used=0;
@@ -219,17 +230,21 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
                 }
                 foreach(int triangle in shape.triangles)batch.triangles.Add(offset+triangle);
             }
-            if(batch.mesh.vertexCount>batch.vertices.Count)batch.mesh.SetTriangles(System.Array.Empty<int>(),0,false);
-            batch.mesh.SetVertices(batch.vertices);batch.mesh.SetUVs(0,batch.uv);
-            batch.mesh.SetUVs(1,batch.row0);batch.mesh.SetUVs(2,batch.row1);batch.mesh.SetUVs(3,batch.row2);batch.mesh.SetUVs(4,batch.row3);
-            batch.mesh.SetUVs(5,batch.atlasRects);
-            batch.mesh.SetTriangles(batch.triangles,0,false);
+            using(uploadSample.Auto())
+            {
+                if(batch.mesh.vertexCount>batch.vertices.Count)batch.mesh.SetTriangles(System.Array.Empty<int>(),0,false);
+                batch.mesh.SetVertices(batch.vertices);batch.mesh.SetUVs(0,batch.uv);
+                batch.mesh.SetUVs(1,batch.row0);batch.mesh.SetUVs(2,batch.row1);batch.mesh.SetUVs(3,batch.row2);batch.mesh.SetUVs(4,batch.row3);
+                batch.mesh.SetUVs(5,batch.atlasRects);
+                batch.mesh.SetTriangles(batch.triangles,0,false);
+            }
             MaskProperties(batch.texture,batch.opacity,vp,true);
             commands.DrawMesh(batch.mesh,Matrix4x4.identity,maskMaterial,0,0,properties);lastMaskDrawCalls++;
         }
     }
     void EnsureResources()
     {
+        using var resourcesScope=resourcesSample.Auto();
         if(atlas==null&&SystemInfo.supports2DArrayTextures)atlas=Resources.Load<CoreGuardianMaskAtlas>("CoreGuardian/MaskAtlas/Manifest");
         int revision=atlas!=null?atlas.Revision:-1;
         if(cachedAtlas!=atlas||atlasRevision!=revision)
@@ -250,6 +265,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     void EnsureMask(int width,int height)
     {
+        using var capacityScope=capacitySample.Auto();
         if(mask!=null&&mask.width>=width&&mask.height>=height){if(!mask.IsCreated())mask.Create();return;}
         if(mask!=null){width=Mathf.Max(width,mask.width);height=Mathf.Max(height,mask.height);}
         if(mask!=null){mask.Release();DisposeObject(mask);}
@@ -274,6 +290,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
 // Hierarchy checks do not use Transform.hasChanged: walking moves transforms every frame.
 internal sealed class CoreGuardianSpriteReferences
 {
+    static readonly ProfilerMarker readSample=new ProfilerMarker("CG.SpriteReferences.Read");
     Transform root;
     bool dirty=true;
     readonly List<SpriteRenderer> renderers=new List<SpriteRenderer>();
@@ -283,6 +300,7 @@ internal sealed class CoreGuardianSpriteReferences
     public void Invalidate()=>dirty=true;
     public List<SpriteRenderer> Read(Transform target)
     {
+        using var readScope=readSample.Auto();
         bool refresh=dirty||root!=target;
         if(!refresh)
         {

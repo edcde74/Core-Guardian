@@ -1,0 +1,96 @@
+{
+  "frame": 4,
+  "mainMs": 94.1211,
+  "costs": [
+    {
+      "name": "EditorLoop",
+      "self": 44.16009911894798,
+      "total": 44.16009911894798,
+      "calls": 4
+    },
+    {
+      "name": "CG.PhotoShadow.Cast",
+      "self": 11.332899831824761,
+      "total": 12.587799824774265,
+      "calls": 145
+    },
+    {
+      "name": "CG.Mask.Present",
+      "self": 4.672499982196314,
+      "total": 25.250299877050566,
+      "calls": 275
+    },
+    {
+      "name": "CG.Mask.Output",
+      "self": 4.636299964855425,
+      "total": 4.756599963642657,
+      "calls": 274
+    },
+    {
+      "name": "CG.Mask.Parts",
+      "self": 4.582999972626567,
+      "total": 6.030999967362732,
+      "calls": 274
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+      "self": 3.807099970894342,
+      "total": 3.889899969100952,
+      "calls": 1
+    },
+    {
+      "name": "Selected unit sprite union",
+      "self": 2.4279999848658917,
+      "total": 2.5018999823369086,
+      "calls": 274
+    },
+    {
+      "name": "CG.SpriteReferences.Read",
+      "self": 2.3060999921290204,
+      "total": 2.3060999921290204,
+      "calls": 564
+    },
+    {
+      "name": "CG.Mask.Execute",
+      "self": 2.0928000023486675,
+      "total": 8.831599973142147,
+      "calls": 274
+    },
+    {
+      "name": "TransformChangeSystem",
+      "self": 1.5883999869110994,
+      "total": 1.6064999866357539,
+      "calls": 299
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+      "self": 1.5538995733222691,
+      "total": 14.455399513244629,
+      "calls": 1
+    },
+    {
+      "name": "CG.Mask.MeshUpload",
+      "self": 1.4479999947361648,
+      "total": 1.4479999947361648,
+      "calls": 266
+    },
+    {
+      "name": "Profiler.FlushMemoryCounters",
+      "self": 0.8752999901771545,
+      "total": 0.8752999901771545,
+      "calls": 1
+    },
+    {
+      "name": "Mesh.CreateMesh",
+      "self": 0.8563999980833614,
+      "total": 0.8563999980833614,
+      "calls": 540
+    },
+    {
+      "name": "WaitForJobGroupID",
+      "self": 0.7369999874135829,
+      "total": 1.9381999738980085,
+      "calls": 280
+    }
+  ]
+}

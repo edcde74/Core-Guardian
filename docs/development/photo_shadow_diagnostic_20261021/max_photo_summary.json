@@ -1,0 +1,110 @@
+[
+  {
+    "side": "before",
+    "run": 0,
+    "rawFrames": 98,
+    "photoFrames": 98,
+    "worst": {
+      "frame": 21,
+      "main": 54.7307,
+      "photo": 27.11200009100139,
+      "self": 12.148800492439477
+    }
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "rawFrames": 100,
+    "photoFrames": 99,
+    "worst": {
+      "frame": 99,
+      "main": 40.4043,
+      "photo": 16.900799739174545,
+      "self": 11.220399869052926
+    }
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "rawFrames": 100,
+    "photoFrames": 99,
+    "worst": {
+      "frame": 50,
+      "main": 48.3094,
+      "photo": 16.532899914309382,
+      "self": 13.704499932122417
+    }
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "rawFrames": 98,
+    "photoFrames": 98,
+    "worst": {
+      "frame": 2,
+      "main": 43.1479,
+      "photo": 15.282799878157675,
+      "self": 0.1564999374531908
+    }
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "rawFrames": 100,
+    "photoFrames": 99,
+    "worst": {
+      "frame": 30,
+      "main": 45.1838,
+      "photo": 14.990299921482801,
+      "self": 0.13779998331301613
+    }
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "rawFrames": 99,
+    "photoFrames": 98,
+    "worst": {
+      "frame": 55,
+      "main": 41.7018,
+      "photo": 15.597300061956048,
+      "self": 0.12870017250679666
+    }
+  },
+  {
+    "side": "extended",
+    "run": 0,
+    "rawFrames": 300,
+    "photoFrames": 299,
+    "worst": {
+      "frame": 189,
+      "main": 41.2795,
+      "photo": 15.916400050744414,
+      "self": 0.12570000000414439
+    }
+  },
+  {
+    "side": "extended",
+    "run": 1,
+    "rawFrames": 300,
+    "photoFrames": 299,
+    "worst": {
+      "frame": 4,
+      "main": 94.1211,
+      "photo": 26.426799960434437,
+      "self": 0.17290002089430345
+    }
+  },
+  {
+    "side": "extended",
+    "run": 2,
+    "rawFrames": 300,
+    "photoFrames": 299,
+    "worst": {
+      "frame": 1,
+      "main": 52.3017,
+      "photo": 19.88349997345358,
+      "self": 0.15880010225373553
+    }
+  }
+]
