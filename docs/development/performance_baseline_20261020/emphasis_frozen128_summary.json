@@ -1,0 +1,41 @@
+[
+  {
+    "enabled": true,
+    "n": 75,
+    "median": {
+      "cpuMs": 21.5517,
+      "unscaledMs": 21.5102959,
+      "gcBytes": 278502,
+      "drawCalls": 1540,
+      "setPass": 577,
+      "enemies": 128,
+      "towers": 15
+    }
+  },
+  {
+    "enabled": false,
+    "n": 75,
+    "median": {
+      "cpuMs": 14.0984,
+      "unscaledMs": 14.1141014,
+      "gcBytes": 207411,
+      "drawCalls": 1247,
+      "setPass": 283,
+      "enemies": 128,
+      "towers": 15
+    }
+  },
+  {
+    "enabled": true,
+    "n": 75,
+    "median": {
+      "cpuMs": 21.0143,
+      "unscaledMs": 21.0446014,
+      "gcBytes": 278502,
+      "drawCalls": 1540,
+      "setPass": 577,
+      "enemies": 128,
+      "towers": 15
+    }
+  }
+]

@@ -1,0 +1,84 @@
+{
+  "kind": "isolated real CoreGuardian.Session CPU/allocation stress diagnostic; synthetic straight board, injected resources/HP/enemies; no rendering, not balance or frame FPS",
+  "seed": 17,
+  "step": 0.0166666675,
+  "rows": [
+    {
+      "enemies": 32,
+      "buff": 4,
+      "towers": 32,
+      "ticks": 180,
+      "repeats": 3,
+      "medianMsPerTick": 0.18400166666666667,
+      "medianAllocatedBytesPerTick": 0,
+      "allMs": [
+        0.11469499999999999,
+        0.18400166666666667,
+        0.20847444444444446
+      ],
+      "allBytes": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "enemies": 64,
+      "buff": 8,
+      "towers": 32,
+      "ticks": 180,
+      "repeats": 3,
+      "medianMsPerTick": 0.25042722222222225,
+      "medianAllocatedBytesPerTick": 0,
+      "allMs": [
+        0.22255666666666668,
+        0.25042722222222225,
+        0.2705005555555556
+      ],
+      "allBytes": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "enemies": 128,
+      "buff": 16,
+      "towers": 32,
+      "ticks": 180,
+      "repeats": 3,
+      "medianMsPerTick": 0.5847061111111111,
+      "medianAllocatedBytesPerTick": 0,
+      "allMs": [
+        0.5474344444444444,
+        0.5847061111111111,
+        0.66571
+      ],
+      "allBytes": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "enemies": 256,
+      "buff": 32,
+      "towers": 32,
+      "ticks": 180,
+      "repeats": 3,
+      "medianMsPerTick": 1.642595,
+      "medianAllocatedBytesPerTick": 0,
+      "allMs": [
+        1.6098622222222225,
+        1.642595,
+        1.7968827777777778
+      ],
+      "allBytes": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "allocation_counter_note": "GC.GetAllocatedBytesForCurrentThread returned 0 in this Unity runtime; zeros are unavailable readings, NOT zero allocation"
+}

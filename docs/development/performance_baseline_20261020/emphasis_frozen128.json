@@ -1,0 +1,2270 @@
+{
+  "kind": "fixed scene paired on/off/on diagnostic; simulation/view sync paused, original presentation restored; NOT an approved removal",
+  "all": [
+    {
+      "enabled": true,
+      "samples": [
+        {
+          "frame": 23680,
+          "cpuMs": 22.3216,
+          "unscaledMs": 22.0222015,
+          "gcBytes": 278179,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23681,
+          "cpuMs": 21.2146,
+          "unscaledMs": 22.3377,
+          "gcBytes": 278566,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23682,
+          "cpuMs": 21.3981,
+          "unscaledMs": 21.0736961,
+          "gcBytes": 279018,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23683,
+          "cpuMs": 22.291,
+          "unscaledMs": 21.367,
+          "gcBytes": 278172,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23684,
+          "cpuMs": 22.8221,
+          "unscaledMs": 22.3940048,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23685,
+          "cpuMs": 22.4153,
+          "unscaledMs": 22.795599,
+          "gcBytes": 278251,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23686,
+          "cpuMs": 22.4443,
+          "unscaledMs": 22.3540955,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23687,
+          "cpuMs": 20.9659,
+          "unscaledMs": 22.6286983,
+          "gcBytes": 279110,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23688,
+          "cpuMs": 20.9601,
+          "unscaledMs": 20.832901,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23689,
+          "cpuMs": 22.5026,
+          "unscaledMs": 20.9356,
+          "gcBytes": 287955,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23690,
+          "cpuMs": 23.9155,
+          "unscaledMs": 22.6333046,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23691,
+          "cpuMs": 22.2357,
+          "unscaledMs": 23.7985954,
+          "gcBytes": 278849,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23692,
+          "cpuMs": 23.0061,
+          "unscaledMs": 22.2258987,
+          "gcBytes": 278688,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23693,
+          "cpuMs": 22.6048,
+          "unscaledMs": 23.0892982,
+          "gcBytes": 278155,
+          "drawCalls": 1682,
+          "setPass": 585,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23694,
+          "cpuMs": 23.1146,
+          "unscaledMs": 22.7253971,
+          "gcBytes": 278243,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23695,
+          "cpuMs": 22.0585,
+          "unscaledMs": 22.9296055,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23696,
+          "cpuMs": 22.8188,
+          "unscaledMs": 22.068594,
+          "gcBytes": 278849,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23697,
+          "cpuMs": 25.7079,
+          "unscaledMs": 22.8877048,
+          "gcBytes": 278907,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23698,
+          "cpuMs": 24.9762,
+          "unscaledMs": 25.6712933,
+          "gcBytes": 287812,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23699,
+          "cpuMs": 24.2106,
+          "unscaledMs": 25.0700035,
+          "gcBytes": 278211,
+          "drawCalls": 1714,
+          "setPass": 605,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23700,
+          "cpuMs": 25.199,
+          "unscaledMs": 24.1208973,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23701,
+          "cpuMs": 23.6861,
+          "unscaledMs": 25.4702034,
+          "gcBytes": 279106,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23702,
+          "cpuMs": 23.004,
+          "unscaledMs": 23.5745964,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23703,
+          "cpuMs": 22.7321,
+          "unscaledMs": 22.861599,
+          "gcBytes": 278172,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23704,
+          "cpuMs": 23.1341,
+          "unscaledMs": 22.7616,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23705,
+          "cpuMs": 23.6793,
+          "unscaledMs": 23.1561012,
+          "gcBytes": 279183,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23706,
+          "cpuMs": 22.9728,
+          "unscaledMs": 23.7088013,
+          "gcBytes": 295907,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23707,
+          "cpuMs": 21.3097,
+          "unscaledMs": 22.8889027,
+          "gcBytes": 287795,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23708,
+          "cpuMs": 21.3898,
+          "unscaledMs": 21.4903984,
+          "gcBytes": 278590,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23709,
+          "cpuMs": 20.2002,
+          "unscaledMs": 21.2119961,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23710,
+          "cpuMs": 21.1633,
+          "unscaledMs": 20.2234058,
+          "gcBytes": 278610,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23711,
+          "cpuMs": 22.0244,
+          "unscaledMs": 21.1639938,
+          "gcBytes": 278619,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23712,
+          "cpuMs": 20.8133,
+          "unscaledMs": 22.0452023,
+          "gcBytes": 278172,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23713,
+          "cpuMs": 20.901,
+          "unscaledMs": 20.7981,
+          "gcBytes": 279046,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23714,
+          "cpuMs": 20.8259,
+          "unscaledMs": 20.954895,
+          "gcBytes": 278155,
+          "drawCalls": 1673,
+          "setPass": 579,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23715,
+          "cpuMs": 20.1887,
+          "unscaledMs": 20.7976055,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23716,
+          "cpuMs": 20.5562,
+          "unscaledMs": 20.3363953,
+          "gcBytes": 278707,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23717,
+          "cpuMs": 20.8797,
+          "unscaledMs": 20.4221,
+          "gcBytes": 287795,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23718,
+          "cpuMs": 24.5782,
+          "unscaledMs": 20.8468037,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23719,
+          "cpuMs": 27.2817,
+          "unscaledMs": 27.6701946,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23720,
+          "cpuMs": 27.2314,
+          "unscaledMs": 27.6188,
+          "gcBytes": 278554,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23721,
+          "cpuMs": 33.2702,
+          "unscaledMs": 36.1574,
+          "gcBytes": 278983,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23722,
+          "cpuMs": 20.577,
+          "unscaledMs": 21.1896038,
+          "gcBytes": 278299,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23723,
+          "cpuMs": 20.4685,
+          "unscaledMs": 20.3422985,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23724,
+          "cpuMs": 21.0331,
+          "unscaledMs": 20.4757023,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23725,
+          "cpuMs": 20.4271,
+          "unscaledMs": 21.0987034,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23726,
+          "cpuMs": 20.8804,
+          "unscaledMs": 20.3647976,
+          "gcBytes": 288606,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23727,
+          "cpuMs": 20.8371,
+          "unscaledMs": 20.8775,
+          "gcBytes": 278172,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23728,
+          "cpuMs": 21.1827,
+          "unscaledMs": 20.8771973,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23729,
+          "cpuMs": 20.8705,
+          "unscaledMs": 21.1923046,
+          "gcBytes": 278207,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23730,
+          "cpuMs": 21.8769,
+          "unscaledMs": 20.9858971,
+          "gcBytes": 278590,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23731,
+          "cpuMs": 21.0098,
+          "unscaledMs": 21.922102,
+          "gcBytes": 278966,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23732,
+          "cpuMs": 21.6896,
+          "unscaledMs": 20.8772964,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23733,
+          "cpuMs": 20.7392,
+          "unscaledMs": 21.7535019,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23734,
+          "cpuMs": 20.4154,
+          "unscaledMs": 20.6866,
+          "gcBytes": 278211,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23735,
+          "cpuMs": 20.7585,
+          "unscaledMs": 20.4200039,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23736,
+          "cpuMs": 22.6881,
+          "unscaledMs": 20.8359,
+          "gcBytes": 288606,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23737,
+          "cpuMs": 20.6457,
+          "unscaledMs": 22.6474,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23738,
+          "cpuMs": 21.0072,
+          "unscaledMs": 20.7341976,
+          "gcBytes": 278243,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23739,
+          "cpuMs": 20.8357,
+          "unscaledMs": 20.8650017,
+          "gcBytes": 278207,
+          "drawCalls": 1678,
+          "setPass": 583,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23740,
+          "cpuMs": 21.3467,
+          "unscaledMs": 20.9007015,
+          "gcBytes": 278849,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23741,
+          "cpuMs": 20.5998,
+          "unscaledMs": 21.2902985,
+          "gcBytes": 278619,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23742,
+          "cpuMs": 21.4401,
+          "unscaledMs": 20.6,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23743,
+          "cpuMs": 22.1468,
+          "unscaledMs": 21.4895,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23744,
+          "cpuMs": 20.2908,
+          "unscaledMs": 22.1465988,
+          "gcBytes": 278172,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23745,
+          "cpuMs": 21.8057,
+          "unscaledMs": 20.2974,
+          "gcBytes": 279905,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23746,
+          "cpuMs": 24.712,
+          "unscaledMs": 22.0679,
+          "gcBytes": 288403,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23747,
+          "cpuMs": 23.7941,
+          "unscaledMs": 24.4940052,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23748,
+          "cpuMs": 22.1376,
+          "unscaledMs": 23.7300949,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23749,
+          "cpuMs": 21.9745,
+          "unscaledMs": 22.2174034,
+          "gcBytes": 569886,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23750,
+          "cpuMs": 21.5517,
+          "unscaledMs": 21.9641018,
+          "gcBytes": 5549374,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23751,
+          "cpuMs": 21.0417,
+          "unscaledMs": 21.5102959,
+          "gcBytes": 278619,
+          "drawCalls": 1595,
+          "setPass": 621,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23752,
+          "cpuMs": 21.0877,
+          "unscaledMs": 21.0798054,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23753,
+          "cpuMs": 20.94,
+          "unscaledMs": 21.2008,
+          "gcBytes": 278243,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23754,
+          "cpuMs": 21.1942,
+          "unscaledMs": 20.798893,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        }
+      ]
+    },
+    {
+      "enabled": false,
+      "samples": [
+        {
+          "frame": 23780,
+          "cpuMs": 18.6498,
+          "unscaledMs": 20.5004959,
+          "gcBytes": 207291,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23781,
+          "cpuMs": 27.2866,
+          "unscaledMs": 18.5737038,
+          "gcBytes": 207702,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23782,
+          "cpuMs": 14.2637,
+          "unscaledMs": 24.270195,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23783,
+          "cpuMs": 14.3308,
+          "unscaledMs": 14.4651012,
+          "gcBytes": 207443,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23784,
+          "cpuMs": 14.7948,
+          "unscaledMs": 14.1702023,
+          "gcBytes": 217342,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23785,
+          "cpuMs": 18.7377,
+          "unscaledMs": 18.1520977,
+          "gcBytes": 300687,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23786,
+          "cpuMs": 14.1322,
+          "unscaledMs": 15.3517008,
+          "gcBytes": 207338,
+          "drawCalls": 1339,
+          "setPass": 288,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23787,
+          "cpuMs": 14.6803,
+          "unscaledMs": 14.1588011,
+          "gcBytes": 207754,
+          "drawCalls": 1339,
+          "setPass": 288,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23788,
+          "cpuMs": 13.9916,
+          "unscaledMs": 14.7571,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23789,
+          "cpuMs": 14.0685,
+          "unscaledMs": 13.9043016,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23790,
+          "cpuMs": 14.8728,
+          "unscaledMs": 14.0732,
+          "gcBytes": 207355,
+          "drawCalls": 1334,
+          "setPass": 288,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23791,
+          "cpuMs": 14.3156,
+          "unscaledMs": 14.9353952,
+          "gcBytes": 207702,
+          "drawCalls": 1353,
+          "setPass": 302,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23792,
+          "cpuMs": 15.2575,
+          "unscaledMs": 14.3254032,
+          "gcBytes": 207819,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23793,
+          "cpuMs": 14.5145,
+          "unscaledMs": 15.2055988,
+          "gcBytes": 207394,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23794,
+          "cpuMs": 14.5774,
+          "unscaledMs": 14.7321005,
+          "gcBytes": 207886,
+          "drawCalls": 1341,
+          "setPass": 290,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23795,
+          "cpuMs": 15.0775,
+          "unscaledMs": 14.3761978,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23796,
+          "cpuMs": 13.7276,
+          "unscaledMs": 15.1309023,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23797,
+          "cpuMs": 13.7782,
+          "unscaledMs": 13.6720028,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23798,
+          "cpuMs": 14.2113,
+          "unscaledMs": 13.8103952,
+          "gcBytes": 217342,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23799,
+          "cpuMs": 14.4321,
+          "unscaledMs": 14.1976051,
+          "gcBytes": 207819,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23800,
+          "cpuMs": 13.8646,
+          "unscaledMs": 14.465498,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23801,
+          "cpuMs": 13.8732,
+          "unscaledMs": 13.8481007,
+          "gcBytes": 207754,
+          "drawCalls": 1375,
+          "setPass": 324,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23802,
+          "cpuMs": 13.9016,
+          "unscaledMs": 13.8735971,
+          "gcBytes": 207355,
+          "drawCalls": 1375,
+          "setPass": 324,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23803,
+          "cpuMs": 13.7278,
+          "unscaledMs": 13.8895054,
+          "gcBytes": 207338,
+          "drawCalls": 1326,
+          "setPass": 288,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23804,
+          "cpuMs": 13.8316,
+          "unscaledMs": 13.7705,
+          "gcBytes": 207355,
+          "drawCalls": 1326,
+          "setPass": 288,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23805,
+          "cpuMs": 15.133,
+          "unscaledMs": 13.9610968,
+          "gcBytes": 207443,
+          "drawCalls": 1314,
+          "setPass": 284,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23806,
+          "cpuMs": 13.9432,
+          "unscaledMs": 15.0348005,
+          "gcBytes": 207702,
+          "drawCalls": 1314,
+          "setPass": 284,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23807,
+          "cpuMs": 14.5076,
+          "unscaledMs": 13.9416027,
+          "gcBytes": 207802,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23808,
+          "cpuMs": 15.0038,
+          "unscaledMs": 14.5629959,
+          "gcBytes": 207702,
+          "drawCalls": 1324,
+          "setPass": 287,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23809,
+          "cpuMs": 15.0661,
+          "unscaledMs": 14.9612036,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23810,
+          "cpuMs": 15.2923,
+          "unscaledMs": 15.0426941,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23811,
+          "cpuMs": 14.1032,
+          "unscaledMs": 15.2883005,
+          "gcBytes": 207394,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23812,
+          "cpuMs": 13.9798,
+          "unscaledMs": 14.1280041,
+          "gcBytes": 216995,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23813,
+          "cpuMs": 14.1058,
+          "unscaledMs": 13.9565973,
+          "gcBytes": 207702,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23814,
+          "cpuMs": 14.5318,
+          "unscaledMs": 14.1163969,
+          "gcBytes": 207802,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23815,
+          "cpuMs": 14.0226,
+          "unscaledMs": 14.5416031,
+          "gcBytes": 207754,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23816,
+          "cpuMs": 14.0033,
+          "unscaledMs": 14.2017,
+          "gcBytes": 207443,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23817,
+          "cpuMs": 13.9169,
+          "unscaledMs": 13.8163977,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23818,
+          "cpuMs": 13.2908,
+          "unscaledMs": 13.9285994,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23819,
+          "cpuMs": 14.1388,
+          "unscaledMs": 13.331604,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23820,
+          "cpuMs": 17.7419,
+          "unscaledMs": 14.148901,
+          "gcBytes": 207702,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23821,
+          "cpuMs": 16.506,
+          "unscaledMs": 17.7813,
+          "gcBytes": 207802,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23822,
+          "cpuMs": 15.0655,
+          "unscaledMs": 16.4958973,
+          "gcBytes": 207702,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23823,
+          "cpuMs": 13.8201,
+          "unscaledMs": 15.0143986,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23824,
+          "cpuMs": 13.6899,
+          "unscaledMs": 13.9093046,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23825,
+          "cpuMs": 14.2259,
+          "unscaledMs": 13.6036,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23826,
+          "cpuMs": 14.7114,
+          "unscaledMs": 14.2571993,
+          "gcBytes": 216995,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23827,
+          "cpuMs": 14.2982,
+          "unscaledMs": 15.0173969,
+          "gcBytes": 207790,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23828,
+          "cpuMs": 14.0984,
+          "unscaledMs": 14.1141014,
+          "gcBytes": 207819,
+          "drawCalls": 1314,
+          "setPass": 284,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23829,
+          "cpuMs": 13.8541,
+          "unscaledMs": 14.0756025,
+          "gcBytes": 207793,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23830,
+          "cpuMs": 14.0449,
+          "unscaledMs": 13.7835951,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23831,
+          "cpuMs": 13.2258,
+          "unscaledMs": 14.0396051,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23832,
+          "cpuMs": 13.5035,
+          "unscaledMs": 13.3771973,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23833,
+          "cpuMs": 14.8826,
+          "unscaledMs": 13.3363028,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23834,
+          "cpuMs": 14.1448,
+          "unscaledMs": 15.0523949,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23835,
+          "cpuMs": 14.0147,
+          "unscaledMs": 14.0059032,
+          "gcBytes": 207685,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23836,
+          "cpuMs": 13.4394,
+          "unscaledMs": 14.0458965,
+          "gcBytes": 208166,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23837,
+          "cpuMs": 13.5737,
+          "unscaledMs": 13.4491,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23838,
+          "cpuMs": 14.3929,
+          "unscaledMs": 13.8027,
+          "gcBytes": 207443,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23839,
+          "cpuMs": 13.8618,
+          "unscaledMs": 14.1871033,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23840,
+          "cpuMs": 13.9415,
+          "unscaledMs": 13.8751984,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23841,
+          "cpuMs": 14.3101,
+          "unscaledMs": 13.9201031,
+          "gcBytes": 216995,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23842,
+          "cpuMs": 14.6298,
+          "unscaledMs": 14.3082981,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23843,
+          "cpuMs": 13.2504,
+          "unscaledMs": 14.6104021,
+          "gcBytes": 208049,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23844,
+          "cpuMs": 14.213,
+          "unscaledMs": 13.3440971,
+          "gcBytes": 207871,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23845,
+          "cpuMs": 13.7406,
+          "unscaledMs": 14.1579018,
+          "gcBytes": 207338,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23846,
+          "cpuMs": 13.6432,
+          "unscaledMs": 13.7053,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23847,
+          "cpuMs": 13.8966,
+          "unscaledMs": 13.754096,
+          "gcBytes": 207411,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23848,
+          "cpuMs": 13.7817,
+          "unscaledMs": 13.8556051,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23849,
+          "cpuMs": 13.6094,
+          "unscaledMs": 13.9102964,
+          "gcBytes": 207426,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23850,
+          "cpuMs": 13.6684,
+          "unscaledMs": 13.4773035,
+          "gcBytes": 207500,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23851,
+          "cpuMs": 14.0543,
+          "unscaledMs": 13.6870966,
+          "gcBytes": 207904,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23852,
+          "cpuMs": 13.5765,
+          "unscaledMs": 14.0520058,
+          "gcBytes": 207802,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23853,
+          "cpuMs": 13.0809,
+          "unscaledMs": 13.5762968,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23854,
+          "cpuMs": 13.8895,
+          "unscaledMs": 13.0792017,
+          "gcBytes": 207355,
+          "drawCalls": 1247,
+          "setPass": 283,
+          "enemies": 128,
+          "towers": 15
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "samples": [
+        {
+          "frame": 23880,
+          "cpuMs": 20.5195,
+          "unscaledMs": 21.1610966,
+          "gcBytes": 278091,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23881,
+          "cpuMs": 20.5816,
+          "unscaledMs": 20.417099,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23882,
+          "cpuMs": 21.0143,
+          "unscaledMs": 20.5974064,
+          "gcBytes": 278619,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23883,
+          "cpuMs": 21.2019,
+          "unscaledMs": 21.0230942,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23884,
+          "cpuMs": 21.362,
+          "unscaledMs": 21.7848015,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23885,
+          "cpuMs": 24.4921,
+          "unscaledMs": 20.8277,
+          "gcBytes": 278211,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23886,
+          "cpuMs": 27.5901,
+          "unscaledMs": 27.7357,
+          "gcBytes": 288230,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23887,
+          "cpuMs": 26.723,
+          "unscaledMs": 27.3824062,
+          "gcBytes": 279035,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23888,
+          "cpuMs": 33.1061,
+          "unscaledMs": 35.317997,
+          "gcBytes": 278172,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23889,
+          "cpuMs": 22.0172,
+          "unscaledMs": 21.4762974,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23890,
+          "cpuMs": 21.6399,
+          "unscaledMs": 22.0702038,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23891,
+          "cpuMs": 22.9664,
+          "unscaledMs": 21.5767,
+          "gcBytes": 279313,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23892,
+          "cpuMs": 21.3749,
+          "unscaledMs": 23.1406956,
+          "gcBytes": 278243,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23893,
+          "cpuMs": 21.2667,
+          "unscaledMs": 21.2733059,
+          "gcBytes": 278453,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23894,
+          "cpuMs": 21.219,
+          "unscaledMs": 21.2120953,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23895,
+          "cpuMs": 20.8065,
+          "unscaledMs": 21.2461014,
+          "gcBytes": 288142,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23896,
+          "cpuMs": 20.5755,
+          "unscaledMs": 20.8086948,
+          "gcBytes": 279074,
+          "drawCalls": 1677,
+          "setPass": 583,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23897,
+          "cpuMs": 20.6954,
+          "unscaledMs": 20.6009,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23898,
+          "cpuMs": 25.4107,
+          "unscaledMs": 20.6593037,
+          "gcBytes": 3919994,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23899,
+          "cpuMs": 21.7649,
+          "unscaledMs": 25.7149029,
+          "gcBytes": 2198551,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23900,
+          "cpuMs": 20.7939,
+          "unscaledMs": 21.4712944,
+          "gcBytes": 278994,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23901,
+          "cpuMs": 21.3208,
+          "unscaledMs": 20.7792015,
+          "gcBytes": 278619,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23902,
+          "cpuMs": 20.4054,
+          "unscaledMs": 21.3613033,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23903,
+          "cpuMs": 20.5836,
+          "unscaledMs": 20.3879967,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23904,
+          "cpuMs": 20.5054,
+          "unscaledMs": 20.5821,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23905,
+          "cpuMs": 21.536,
+          "unscaledMs": 20.534502,
+          "gcBytes": 288489,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23906,
+          "cpuMs": 21.0723,
+          "unscaledMs": 21.5761986,
+          "gcBytes": 278671,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23907,
+          "cpuMs": 20.4494,
+          "unscaledMs": 21.209,
+          "gcBytes": 278243,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23908,
+          "cpuMs": 20.7482,
+          "unscaledMs": 20.2892017,
+          "gcBytes": 278211,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23909,
+          "cpuMs": 20.9557,
+          "unscaledMs": 20.7763042,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23910,
+          "cpuMs": 20.5446,
+          "unscaledMs": 20.9103947,
+          "gcBytes": 278849,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23911,
+          "cpuMs": 20.5024,
+          "unscaledMs": 20.5688,
+          "gcBytes": 278619,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23912,
+          "cpuMs": 21.1522,
+          "unscaledMs": 20.5003033,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23913,
+          "cpuMs": 21.5615,
+          "unscaledMs": 21.1423969,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23914,
+          "cpuMs": 21.1037,
+          "unscaledMs": 21.6456,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23915,
+          "cpuMs": 20.7898,
+          "unscaledMs": 21.2539043,
+          "gcBytes": 288577,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23916,
+          "cpuMs": 21.7672,
+          "unscaledMs": 20.6281948,
+          "gcBytes": 278671,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23917,
+          "cpuMs": 20.8949,
+          "unscaledMs": 21.74,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23918,
+          "cpuMs": 20.6158,
+          "unscaledMs": 20.9247017,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23919,
+          "cpuMs": 20.518,
+          "unscaledMs": 20.553196,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23920,
+          "cpuMs": 20.9435,
+          "unscaledMs": 20.5832043,
+          "gcBytes": 278922,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23921,
+          "cpuMs": 20.4326,
+          "unscaledMs": 20.915596,
+          "gcBytes": 278619,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23922,
+          "cpuMs": 20.8673,
+          "unscaledMs": 20.4273033,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23923,
+          "cpuMs": 20.3425,
+          "unscaledMs": 21.0674973,
+          "gcBytes": 278243,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23924,
+          "cpuMs": 20.4769,
+          "unscaledMs": 20.2109985,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23925,
+          "cpuMs": 20.6365,
+          "unscaledMs": 20.4221,
+          "gcBytes": 288142,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23926,
+          "cpuMs": 20.1963,
+          "unscaledMs": 20.7327023,
+          "gcBytes": 278671,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23927,
+          "cpuMs": 20.6501,
+          "unscaledMs": 20.1150017,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23928,
+          "cpuMs": 21.0253,
+          "unscaledMs": 20.6709976,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23929,
+          "cpuMs": 20.9784,
+          "unscaledMs": 21.0446014,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23930,
+          "cpuMs": 20.5315,
+          "unscaledMs": 20.9464989,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23931,
+          "cpuMs": 20.389,
+          "unscaledMs": 20.6856,
+          "gcBytes": 278707,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23932,
+          "cpuMs": 21.4695,
+          "unscaledMs": 20.3547974,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23933,
+          "cpuMs": 20.8562,
+          "unscaledMs": 21.3658028,
+          "gcBytes": 278211,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23934,
+          "cpuMs": 20.079,
+          "unscaledMs": 20.8760986,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23935,
+          "cpuMs": 20.781,
+          "unscaledMs": 20.1903057,
+          "gcBytes": 288142,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23936,
+          "cpuMs": 20.3489,
+          "unscaledMs": 20.7118969,
+          "gcBytes": 278671,
+          "drawCalls": 1639,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23937,
+          "cpuMs": 20.6377,
+          "unscaledMs": 20.3442974,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23938,
+          "cpuMs": 22.6074,
+          "unscaledMs": 20.6432037,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23939,
+          "cpuMs": 22.6266,
+          "unscaledMs": 22.7545986,
+          "gcBytes": 278590,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23940,
+          "cpuMs": 21.7197,
+          "unscaledMs": 22.4639034,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23941,
+          "cpuMs": 21.4167,
+          "unscaledMs": 21.8162975,
+          "gcBytes": 278619,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23942,
+          "cpuMs": 21.9306,
+          "unscaledMs": 21.3926029,
+          "gcBytes": 278172,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23943,
+          "cpuMs": 21.3868,
+          "unscaledMs": 21.879797,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23944,
+          "cpuMs": 21.0682,
+          "unscaledMs": 21.4073982,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23945,
+          "cpuMs": 21.0134,
+          "unscaledMs": 21.0740013,
+          "gcBytes": 288198,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23946,
+          "cpuMs": 21.4495,
+          "unscaledMs": 21.1542034,
+          "gcBytes": 278759,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23947,
+          "cpuMs": 21.1938,
+          "unscaledMs": 21.3127975,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23948,
+          "cpuMs": 20.8679,
+          "unscaledMs": 21.2036,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23949,
+          "cpuMs": 21.4156,
+          "unscaledMs": 20.857,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23950,
+          "cpuMs": 21.5141,
+          "unscaledMs": 21.4470024,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23951,
+          "cpuMs": 20.9391,
+          "unscaledMs": 21.4801941,
+          "gcBytes": 278619,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23952,
+          "cpuMs": 21.6615,
+          "unscaledMs": 20.9291039,
+          "gcBytes": 278155,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23953,
+          "cpuMs": 21.6405,
+          "unscaledMs": 21.7267017,
+          "gcBytes": 278502,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        },
+        {
+          "frame": 23954,
+          "cpuMs": 22.0663,
+          "unscaledMs": 21.935997,
+          "gcBytes": 278243,
+          "drawCalls": 1540,
+          "setPass": 577,
+          "enemies": 128,
+          "towers": 15
+        }
+      ]
+    }
+  ]
+}
