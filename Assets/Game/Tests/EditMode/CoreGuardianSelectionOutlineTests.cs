@@ -81,6 +81,7 @@ public class CoreGuardianSelectionOutlineTests
         }
         finally
         {
+            foreach(var c in root.GetComponents(type))type.GetMethod("OnDestroy",Hidden)?.Invoke(c,null);
             RenderTexture.active=old;camera.targetTexture=null;UnityEngine.Object.DestroyImmediate(root);UnityEngine.Object.DestroyImmediate(cameraRoot);
             image.Release();UnityEngine.Object.DestroyImmediate(image);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);
             if(read!=null)UnityEngine.Object.DestroyImmediate(read);if(maskRead!=null)UnityEngine.Object.DestroyImmediate(maskRead);
@@ -113,6 +114,6 @@ public class CoreGuardianSelectionOutlineTests
             var node=new GameObject("Existing rig node");node.transform.SetParent(body.transform,false);Assert.That(Count(),Is.EqualTo(1));
             node.AddComponent<SpriteRenderer>().sprite=sprite;type.GetMethod("InvalidateSources").Invoke(c,null);Assert.That(Count(),Is.EqualTo(2));
         }
-        finally{UnityEngine.Object.DestroyImmediate(root);UnityEngine.Object.DestroyImmediate(cameraRoot);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
+        finally{foreach(var c in root.GetComponents(type))type.GetMethod("OnDestroy",Hidden)?.Invoke(c,null);UnityEngine.Object.DestroyImmediate(root);UnityEngine.Object.DestroyImmediate(cameraRoot);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
     }
 }

@@ -17,6 +17,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
     SpriteRenderer cast,art;
     CoreGuardianSelectionOutline contact;
     Material contactMaterial;
+    CoreGuardianSharedMaskMaterial contactLease;
     Vector3 offset;
     string role;
     bool mobile,replace;
@@ -46,7 +47,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
         {
             var host=new GameObject("PhotoDynamicContact");host.transform.SetParent(transform,false);
             contact=host.AddComponent<CoreGuardianSelectionOutline>();contact.enabled=false;
-            contactMaterial=new Material(Resources.Load<Shader>("CoreGuardian/PhotoShadowContact")){hideFlags=HideFlags.DontSave};
+            contactLease=CoreGuardianSharedMaskMaterial.Acquire("CoreGuardian/PhotoShadowContact");contactMaterial=contactLease.Material;
         }
         Present(null);
     }
@@ -70,8 +71,7 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
             if(camera!=null)
             {
                 float ratio=camera.pixelHeight/(2*camera.orthographicSize)/63.52941f;
-                contactMaterial.SetFloat("_Band",(role=="Boss"?22:16)*ratio*size);
-                contact.PresentGroundContact(transform,camera,contactMaterial);
+                contact.PresentGroundContactWithBand(transform,camera,contactMaterial,(role=="Boss"?22:16)*ratio*size);
             }
         }
     }
@@ -84,5 +84,5 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
     public void InvalidateSources()=>shadowSources.Invalidate();
     void OnDisable(){if(cast!=null)cast.enabled=false;if(contact!=null)contact.gameObject.SetActive(false);}
     void OnEnable(){if(cast!=null)cast.enabled=true;if(contact!=null)contact.gameObject.SetActive(true);}
-    void OnDestroy(){if(contactMaterial!=null){if(Application.isPlaying)Destroy(contactMaterial);else DestroyImmediate(contactMaterial);}}
+    void OnDestroy(){contactLease?.Release();contactLease=null;contactMaterial=null;}
 }

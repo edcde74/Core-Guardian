@@ -1,0 +1,2102 @@
+[
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.008385714252802486,
+    "selfMsPerFrame": 0.008346938743874934,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.10088163226538775,
+    "selfMsPerFrame": 0.0995704078066373,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 770.8979591836735
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.014571428657105496,
+    "selfMsPerFrame": 0.012885714383312971,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.09411326478911346,
+    "selfMsPerFrame": 0.04361428552993504,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 2070.204081632653
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudHandleReaction.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.002966326511731105,
+    "selfMsPerFrame": 0.002966326511731105,
+    "callsPerFrame": 2,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudReaction.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.017606122414486444,
+    "selfMsPerFrame": 0.017606122414486444,
+    "callsPerFrame": 5,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.035691836278657525,
+    "selfMsPerFrame": 0.03511020364021533,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 380
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 9.806178579525072,
+    "selfMsPerFrame": 0.9758878032045352,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 40
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 11.029928535736184,
+    "selfMsPerFrame": 0.12272551308156761,
+    "callsPerFrame": 145,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 2.5060020271612675,
+    "selfMsPerFrame": 2.4241061100339203,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 111650.10204081633
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianSelectionOutline.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0035673469347803264,
+    "selfMsPerFrame": 0.0027428571524143654,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUnitAnimation.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.034070407694659424,
+    "selfMsPerFrame": 0.034070407694659424,
+    "callsPerFrame": 144,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUpgradeFeedback.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0006938775296308746,
+    "selfMsPerFrame": 0.0006938775296308746,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.Mask.Capacity",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.14528265202356197,
+    "selfMsPerFrame": 0.14500306019151454,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 22.040816326530614
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.Mask.Execute",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 5.947248942864944,
+    "selfMsPerFrame": 1.362363246930671,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.Mask.MeshUpload",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.9450050964405076,
+    "selfMsPerFrame": 0.9450050964405076,
+    "callsPerFrame": 258.2448979591837,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.Mask.Output",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 2.943586717996442,
+    "selfMsPerFrame": 2.8531101904319462,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.Mask.Parts",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 4.070392838836058,
+    "selfMsPerFrame": 3.1253877423955507,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.Mask.Present",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 16.71528053780669,
+    "selfMsPerFrame": 3.1240061297561326,
+    "callsPerFrame": 275,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.Mask.Resources",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.029531631926555727,
+    "selfMsPerFrame": 0.029531631926555727,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.PhotoShadow.Camera",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.05189693715584902,
+    "selfMsPerFrame": 0.03191224380639234,
+    "callsPerFrame": 145,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.PhotoShadow.Cast",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 2.24888570417593,
+    "selfMsPerFrame": 1.4645020355269573,
+    "callsPerFrame": 145,
+    "gcBytesPerFrame": 106966
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.PhotoShadow.Contact",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 8.54804896148948,
+    "selfMsPerFrame": 0.28304287566974456,
+    "callsPerFrame": 129,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.PhotoShadow.Present",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 10.855306085560242,
+    "selfMsPerFrame": 0.05837141989483213,
+    "callsPerFrame": 145,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "CG.SpriteReferences.Read",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 1.4147887647497035,
+    "selfMsPerFrame": 1.4147887647497035,
+    "callsPerFrame": 564,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "GC.Alloc",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.15036020045197207,
+    "selfMsPerFrame": 0.15036020045197207,
+    "callsPerFrame": 3945.3673469387754,
+    "gcBytesPerFrame": 232301.52040816325
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "GfxDeviceD3D12.WaitForLastPresentation",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0011153061035545353,
+    "selfMsPerFrame": 0.0011153061035545353,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "ParticleSystem.WaitForPreviousRenderingToFinish",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0012061224403382487,
+    "selfMsPerFrame": 0.0012061224403382487,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "RenderingCommandBuffer.PrepareKeywords",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.04482244776932485,
+    "selfMsPerFrame": 0.04482244776932485,
+    "callsPerFrame": 276,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "Semaphore.WaitForSignal",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0010928571499214147,
+    "selfMsPerFrame": 0.0010928571499214147,
+    "callsPerFrame": 2.0306122448979593,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "TimeUpdate.WaitForLastPresentationAndUpdateTime",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.30677550452837377,
+    "selfMsPerFrame": 0.0034857091989263663,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "WaitForCompleted",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0,
+    "selfMsPerFrame": 0.0,
+    "callsPerFrame": 1104.8163265306123,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "WaitForJobGroupID",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 1.7415724385221494,
+    "selfMsPerFrame": 0.7540357096668046,
+    "callsPerFrame": 285.6938775510204,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "WaitForLastPresentation",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0002142857071647791,
+    "selfMsPerFrame": 0.00014081632089444759,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 0,
+    "name": "WaitForRenderJobs",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.3828295921155178,
+    "selfMsPerFrame": 0.004938776423229256,
+    "callsPerFrame": 3,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.008166999956592917,
+    "selfMsPerFrame": 0.00816099995674449,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.1006389993429184,
+    "selfMsPerFrame": 0.09938499937503366,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 762.48
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.013777999921003356,
+    "selfMsPerFrame": 0.0121319999305706,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.1483040009025717,
+    "selfMsPerFrame": 0.05614400161022786,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 2274.52
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudHandleReaction.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0028789999888977034,
+    "selfMsPerFrame": 0.0028789999888977034,
+    "callsPerFrame": 1.98,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudReaction.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.017082999954582193,
+    "selfMsPerFrame": 0.017082999954582193,
+    "callsPerFrame": 4.95,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.03550699982792139,
+    "selfMsPerFrame": 0.03493299984183977,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 376.2
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 9.787431020736694,
+    "selfMsPerFrame": 1.0153490632409374,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 39.6
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 10.874967968435959,
+    "selfMsPerFrame": 0.12103300612739985,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.610842995643616,
+    "selfMsPerFrame": 2.5190239969472894,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 110929.72
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianSelectionOutline.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0032189999846741557,
+    "selfMsPerFrame": 0.0024979999951028732,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUnitAnimation.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.038107999433996155,
+    "selfMsPerFrame": 0.038107999433996155,
+    "callsPerFrame": 142.56,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUpgradeFeedback.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0006419999827630818,
+    "selfMsPerFrame": 0.0006419999827630818,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.Mask.Capacity",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.16910399921645877,
+    "selfMsPerFrame": 0.16835999922521297,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 62
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.Mask.Execute",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 5.835940963067114,
+    "selfMsPerFrame": 1.3290119808536838,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.Mask.MeshUpload",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.9408489940757864,
+    "selfMsPerFrame": 0.9408489940757864,
+    "callsPerFrame": 256.06,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.Mask.Output",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.9174509817175567,
+    "selfMsPerFrame": 2.8272399847670022,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.Mask.Parts",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 4.002709982218221,
+    "selfMsPerFrame": 3.0618609881424343,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.Mask.Present",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 16.486137925616784,
+    "selfMsPerFrame": 3.070811007469456,
+    "callsPerFrame": 272.25,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.Mask.Resources",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.029375999278490782,
+    "selfMsPerFrame": 0.029375999278490782,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.PhotoShadow.Camera",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.050490998435852814,
+    "selfMsPerFrame": 0.03126599894159881,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.PhotoShadow.Cast",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.2363329895585777,
+    "selfMsPerFrame": 1.427906995078738,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 105896.34
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.PhotoShadow.Contact",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 8.398768977485597,
+    "selfMsPerFrame": 0.2748600113764405,
+    "callsPerFrame": 127.71,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.PhotoShadow.Present",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 10.703443963909521,
+    "selfMsPerFrame": 0.06834199686534703,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "CG.SpriteReferences.Read",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 1.506557989710709,
+    "selfMsPerFrame": 1.506557989710709,
+    "callsPerFrame": 558.36,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "GC.Alloc",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.14966199639624392,
+    "selfMsPerFrame": 0.14966199639624392,
+    "callsPerFrame": 3926.34,
+    "gcBytesPerFrame": 237551.77
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "GfxDeviceD3D12.WaitForLastPresentation",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.000978999991202727,
+    "selfMsPerFrame": 0.000978999991202727,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "ParticleSystem.WaitForPreviousRenderingToFinish",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0011829999880865216,
+    "selfMsPerFrame": 0.0011829999880865216,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "RenderingCommandBuffer.PrepareKeywords",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.04387799883959815,
+    "selfMsPerFrame": 0.04387799883959815,
+    "callsPerFrame": 273.24,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "Semaphore.WaitForSignal",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0003769999990618089,
+    "selfMsPerFrame": 0.0003769999990618089,
+    "callsPerFrame": 1.78,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "TimeUpdate.WaitForLastPresentationAndUpdateTime",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.06712899974547326,
+    "selfMsPerFrame": 0.0035710009455215187,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "WaitForCompleted",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0,
+    "selfMsPerFrame": 0.0,
+    "callsPerFrame": 1095.71,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "WaitForJobGroupID",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 1.7575749916769565,
+    "selfMsPerFrame": 0.7588829966777848,
+    "callsPerFrame": 284.25,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "WaitForLastPresentation",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0001939999947353499,
+    "selfMsPerFrame": 0.00012299999652896077,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 1,
+    "name": "WaitForRenderJobs",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.39492499896783556,
+    "selfMsPerFrame": 0.005037998645493644,
+    "callsPerFrame": 2.97,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.008163999947719276,
+    "selfMsPerFrame": 0.008158999947845587,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.10027899950742722,
+    "selfMsPerFrame": 0.0989989995398355,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 762.48
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.014198999847867527,
+    "selfMsPerFrame": 0.012543999870904371,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.08960199789551553,
+    "selfMsPerFrame": 0.042279998148515005,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 2034.56
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudHandleReaction.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0029409999842755497,
+    "selfMsPerFrame": 0.0029409999842755497,
+    "callsPerFrame": 1.98,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudReaction.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.017134999936097302,
+    "selfMsPerFrame": 0.017134999936097302,
+    "callsPerFrame": 4.95,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.03545799981802702,
+    "selfMsPerFrame": 0.03486399983332376,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 376.2
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 9.672360973358154,
+    "selfMsPerFrame": 1.0107860127011372,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 39.6
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 10.812754962900653,
+    "selfMsPerFrame": 0.12004799581074621,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.5001459908485413,
+    "selfMsPerFrame": 2.4122079919907993,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 110910.8
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianSelectionOutline.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0033659999747760595,
+    "selfMsPerFrame": 0.00252199997936259,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUnitAnimation.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.03667799946240848,
+    "selfMsPerFrame": 0.03667799946240848,
+    "callsPerFrame": 142.56,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUpgradeFeedback.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0006509999858099036,
+    "selfMsPerFrame": 0.0006509999858099036,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.Mask.Capacity",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.18172799873238546,
+    "selfMsPerFrame": 0.18058499874496192,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 109.2
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.Mask.Execute",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 5.7789889685064555,
+    "selfMsPerFrame": 1.3112009840421524,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.Mask.MeshUpload",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.9343929937365465,
+    "selfMsPerFrame": 0.9343929937365465,
+    "callsPerFrame": 256.06,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.Mask.Output",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.894981983406469,
+    "selfMsPerFrame": 2.804111986564385,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.Mask.Parts",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 3.94317898186855,
+    "selfMsPerFrame": 3.008785988132004,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.Mask.Present",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 16.329881927865355,
+    "selfMsPerFrame": 3.04533900361268,
+    "callsPerFrame": 272.25,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.Mask.Resources",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.028589999297255416,
+    "selfMsPerFrame": 0.028589999297255416,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.PhotoShadow.Camera",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.05013499840089935,
+    "selfMsPerFrame": 0.031041998904474895,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.PhotoShadow.Cast",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.2224529892392457,
+    "selfMsPerFrame": 1.4033679955812841,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 105896.34
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.PhotoShadow.Contact",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 8.352732986211777,
+    "selfMsPerFrame": 0.2720020209252834,
+    "callsPerFrame": 127.71,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.PhotoShadow.Present",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 10.642571968799457,
+    "selfMsPerFrame": 0.06738599334843456,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "CG.SpriteReferences.Read",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 1.517444988739444,
+    "selfMsPerFrame": 1.517444988739444,
+    "callsPerFrame": 558.36,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "GC.Alloc",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.14718099644182076,
+    "selfMsPerFrame": 0.14718099644182076,
+    "callsPerFrame": 3912.85,
+    "gcBytesPerFrame": 230333.66
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "GfxDeviceD3D12.WaitForLastPresentation",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0009309999889228493,
+    "selfMsPerFrame": 0.0009309999889228493,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "ParticleSystem.WaitForPreviousRenderingToFinish",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0011859999934677034,
+    "selfMsPerFrame": 0.0011859999934677034,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "RenderingCommandBuffer.PrepareKeywords",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.04355199883619207,
+    "selfMsPerFrame": 0.04355199883619207,
+    "callsPerFrame": 273.24,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "Semaphore.WaitForSignal",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.027896998854266712,
+    "selfMsPerFrame": 0.027896998854266712,
+    "callsPerFrame": 1.81,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "TimeUpdate.WaitForLastPresentationAndUpdateTime",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.006056999964639545,
+    "selfMsPerFrame": 0.0030270000084419734,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "WaitForCompleted",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0,
+    "selfMsPerFrame": 0.0,
+    "callsPerFrame": 1094.6,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "WaitForJobGroupID",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 1.7395519909693393,
+    "selfMsPerFrame": 0.7572069968089636,
+    "callsPerFrame": 283.1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "WaitForLastPresentation",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.02765900014717772,
+    "selfMsPerFrame": 0.00013800129338051192,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "before",
+    "run": 2,
+    "name": "WaitForRenderJobs",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.4036319990229094,
+    "selfMsPerFrame": 0.00492700015718583,
+    "callsPerFrame": 2.97,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.007990816270704476,
+    "selfMsPerFrame": 0.007976530556853894,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.10058163212878364,
+    "selfMsPerFrame": 0.09934897909780764,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 770.0408163265306
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.014655101867345142,
+    "selfMsPerFrame": 0.013041836577179552,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.14462551065692109,
+    "selfMsPerFrame": 0.04879489868828238,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 2070.5714285714284
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudHandleReaction.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.002879591833334416,
+    "selfMsPerFrame": 0.002879591833334416,
+    "callsPerFrame": 2,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudReaction.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.01688571414275912,
+    "selfMsPerFrame": 0.01688571414275912,
+    "callsPerFrame": 5,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.035395918185917696,
+    "selfMsPerFrame": 0.03481530595583573,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 380
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 9.282094867862,
+    "selfMsPerFrame": 0.9457316410519023,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 40
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 10.305158133647044,
+    "selfMsPerFrame": 0.10720510929337362,
+    "callsPerFrame": 145,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 2.597181631594288,
+    "selfMsPerFrame": 2.388407147726031,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 112158.02040816327
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianSelectionOutline.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0031867346735861227,
+    "selfMsPerFrame": 0.0025581632555481426,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUnitAnimation.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.03540101990460689,
+    "selfMsPerFrame": 0.03540101990460689,
+    "callsPerFrame": 144,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUpgradeFeedback.LateUpdate() [Invoke]",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0005142857188154582,
+    "selfMsPerFrame": 0.0005142857188154582,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.Mask.Capacity",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.15177959065343258,
+    "selfMsPerFrame": 0.1512510192308638,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 46.93877551020408
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.Mask.Execute",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 5.517657116910785,
+    "selfMsPerFrame": 1.2268112184100741,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.Mask.MeshUpload",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.9422969323635215,
+    "selfMsPerFrame": 0.9422969323635215,
+    "callsPerFrame": 258.734693877551,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.Mask.Output",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 2.4470989685173015,
+    "selfMsPerFrame": 2.353022441113019,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.Mask.Parts",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 3.7968612054971103,
+    "selfMsPerFrame": 2.854564273133589,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.Mask.Present",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 15.397373398759388,
+    "selfMsPerFrame": 2.9920755048210133,
+    "callsPerFrame": 275,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.Mask.Resources",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.027972448288316944,
+    "selfMsPerFrame": 0.027972448288316944,
+    "callsPerFrame": 274,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.PhotoShadow.Camera",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.050823467774646316,
+    "selfMsPerFrame": 0.031481631540744424,
+    "callsPerFrame": 145,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.PhotoShadow.Cast",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 2.209077539967791,
+    "selfMsPerFrame": 1.4204204024470677,
+    "callsPerFrame": 145,
+    "gcBytesPerFrame": 106966
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.PhotoShadow.Contact",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 7.871154048042942,
+    "selfMsPerFrame": 0.4117336742655963,
+    "callsPerFrame": 129,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.PhotoShadow.Present",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 10.14712955666782,
+    "selfMsPerFrame": 0.06689796865708669,
+    "callsPerFrame": 145,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "CG.SpriteReferences.Read",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 1.4777918264670156,
+    "selfMsPerFrame": 1.4777918264670156,
+    "callsPerFrame": 564,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "GC.Alloc",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.14897244539219062,
+    "selfMsPerFrame": 0.14897244539219062,
+    "callsPerFrame": 3966.183673469388,
+    "gcBytesPerFrame": 240198.97959183675
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "GfxDeviceD3D12.WaitForLastPresentation",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0010112244748671977,
+    "selfMsPerFrame": 0.0010112244748671977,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "ParticleSystem.WaitForPreviousRenderingToFinish",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0011132652948524955,
+    "selfMsPerFrame": 0.0011132652948524955,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "RenderingCommandBuffer.PrepareKeywords",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.04340306008497446,
+    "selfMsPerFrame": 0.04340306008497446,
+    "callsPerFrame": 276,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "Semaphore.WaitForSignal",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0002693877524544238,
+    "selfMsPerFrame": 0.0002693877524544238,
+    "callsPerFrame": 1.5408163265306123,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "TimeUpdate.WaitForLastPresentationAndUpdateTime",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.10748469476987209,
+    "selfMsPerFrame": 0.0031744916130413245,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "WaitForCompleted",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0,
+    "selfMsPerFrame": 0.0,
+    "callsPerFrame": 1106.3265306122448,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "WaitForJobGroupID",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 1.6394183584699782,
+    "selfMsPerFrame": 0.7393142843925025,
+    "callsPerFrame": 286.6530612244898,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "WaitForLastPresentation",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.0001979591779301551,
+    "selfMsPerFrame": 0.00013979591409336034,
+    "callsPerFrame": 1,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 0,
+    "name": "WaitForRenderJobs",
+    "validMainFrames": 98,
+    "totalMsPerFrame": 0.3409714276731021,
+    "selfMsPerFrame": 0.004956122552376117,
+    "callsPerFrame": 3,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.007516999943181873,
+    "selfMsPerFrame": 0.007506999943434494,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.09827099956572055,
+    "selfMsPerFrame": 0.09710499959553999,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 762.3
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.014845999930403196,
+    "selfMsPerFrame": 0.013248999957941123,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.13601299928559457,
+    "selfMsPerFrame": 0.047785999710467875,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 2035.24
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudHandleReaction.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.002834999989718199,
+    "selfMsPerFrame": 0.002834999989718199,
+    "callsPerFrame": 1.98,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudReaction.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.016205999861704186,
+    "selfMsPerFrame": 0.016205999861704186,
+    "callsPerFrame": 4.95,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.034853999875485896,
+    "selfMsPerFrame": 0.034219999891647604,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 376.2
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 8.906645956039428,
+    "selfMsPerFrame": 0.8824589971694513,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 39.6
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 9.943027967326342,
+    "selfMsPerFrame": 0.1043389960406057,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.389944999217987,
+    "selfMsPerFrame": 2.3078550003492273,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 110487.6
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianSelectionOutline.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.002602999967057258,
+    "selfMsPerFrame": 0.0020769999779440694,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUnitAnimation.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.03472099946629896,
+    "selfMsPerFrame": 0.03472099946629896,
+    "callsPerFrame": 142.56,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUpgradeFeedback.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0005240000045159831,
+    "selfMsPerFrame": 0.0005240000045159831,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.Mask.Capacity",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.1505339986184845,
+    "selfMsPerFrame": 0.14983599862724076,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 56.8
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.Mask.Execute",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 5.347303974609822,
+    "selfMsPerFrame": 1.181903994236418,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.Mask.MeshUpload",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.9247499934304506,
+    "selfMsPerFrame": 0.9247499934304506,
+    "callsPerFrame": 256.14,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.Mask.Output",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.3665269881254063,
+    "selfMsPerFrame": 2.277941991200205,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.Mask.Parts",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 3.699805982131511,
+    "selfMsPerFrame": 2.7750559887010606,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.Mask.Present",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 14.875722927861862,
+    "selfMsPerFrame": 2.843762992976481,
+    "callsPerFrame": 272.25,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.Mask.Resources",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.02744599931902485,
+    "selfMsPerFrame": 0.02744599931902485,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.PhotoShadow.Camera",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.04900199840994901,
+    "selfMsPerFrame": 0.030263998892332892,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.PhotoShadow.Cast",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.1019119896460325,
+    "selfMsPerFrame": 1.344802995000864,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 105896.34
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.PhotoShadow.Contact",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 7.622587962858379,
+    "selfMsPerFrame": 0.399831996075809,
+    "callsPerFrame": 127.71,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.PhotoShadow.Present",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 9.789686973029747,
+    "selfMsPerFrame": 0.06518702052533626,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "CG.SpriteReferences.Read",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 1.4012709891132544,
+    "selfMsPerFrame": 1.4012709891132544,
+    "callsPerFrame": 558.36,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "GC.Alloc",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.14395999652784666,
+    "selfMsPerFrame": 0.14395999652784666,
+    "callsPerFrame": 3917.88,
+    "gcBytesPerFrame": 237059.81
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "GfxDeviceD3D12.WaitForLastPresentation",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0010319999878993257,
+    "selfMsPerFrame": 0.0010319999878993257,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "ParticleSystem.WaitForPreviousRenderingToFinish",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.001060999987530522,
+    "selfMsPerFrame": 0.001060999987530522,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "RenderingCommandBuffer.PrepareKeywords",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.04187299893172167,
+    "selfMsPerFrame": 0.04187299893172167,
+    "callsPerFrame": 273.24,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "Semaphore.WaitForSignal",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0003700000001117587,
+    "selfMsPerFrame": 0.0003700000001117587,
+    "callsPerFrame": 1.83,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "TimeUpdate.WaitForLastPresentationAndUpdateTime",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.21763399893417953,
+    "selfMsPerFrame": 0.0034939980297349392,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "WaitForCompleted",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0,
+    "selfMsPerFrame": 0.0,
+    "callsPerFrame": 1095.77,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "WaitForJobGroupID",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 1.6247189893765608,
+    "selfMsPerFrame": 0.7418069939455745,
+    "callsPerFrame": 284.25,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "WaitForLastPresentation",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.00017999999538005794,
+    "selfMsPerFrame": 0.00011599999699683394,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 1,
+    "name": "WaitForRenderJobs",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.3369889985327609,
+    "selfMsPerFrame": 0.004812000275123864,
+    "callsPerFrame": 2.97,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.007690999992191792,
+    "selfMsPerFrame": 0.007678999992494937,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0989259997755289,
+    "selfMsPerFrame": 0.09776799980463693,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 763.32
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.014498999887146057,
+    "selfMsPerFrame": 0.012881999921009992,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.14043900092714467,
+    "selfMsPerFrame": 0.048864001606561944,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 2035.24
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudHandleReaction.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0028759999899193645,
+    "selfMsPerFrame": 0.0028759999899193645,
+    "callsPerFrame": 1.98,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianHudReaction.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.01675399991858285,
+    "selfMsPerFrame": 0.01675399991858285,
+    "callsPerFrame": 4.95,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.03420099973678589,
+    "selfMsPerFrame": 0.033645999750879126,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 376.2
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 8.946667976379395,
+    "selfMsPerFrame": 0.8862910180377367,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 39.6
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 9.93752096902579,
+    "selfMsPerFrame": 0.10417800408737093,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.5009279918670653,
+    "selfMsPerFrame": 2.3266189971326092,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 109102.82
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianSelectionOutline.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.002850999990478158,
+    "selfMsPerFrame": 0.0022980000016104896,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUnitAnimation.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.03388099948810122,
+    "selfMsPerFrame": 0.03388099948810122,
+    "callsPerFrame": 142.56,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Assembly-CSharp.dll!::CoreGuardianUpgradeFeedback.LateUpdate() [Invoke]",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.000501000004587695,
+    "selfMsPerFrame": 0.000501000004587695,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.Mask.Capacity",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.1540809989956324,
+    "selfMsPerFrame": 0.15248999900089985,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 46.4
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.Mask.Execute",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 5.37790897840634,
+    "selfMsPerFrame": 1.2107769994509727,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.Mask.MeshUpload",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.9271769933099858,
+    "selfMsPerFrame": 0.9271769933099858,
+    "callsPerFrame": 255.58,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.Mask.Output",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.3829479878023268,
+    "selfMsPerFrame": 2.2888489909965575,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.Mask.Parts",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 3.7016679808637125,
+    "selfMsPerFrame": 2.774490987553727,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.Mask.Present",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 14.966268922047457,
+    "selfMsPerFrame": 2.8857429846072047,
+    "callsPerFrame": 272.25,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.Mask.Resources",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.027211999335850123,
+    "selfMsPerFrame": 0.027211999335850123,
+    "callsPerFrame": 271.26,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.PhotoShadow.Camera",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.049841998409756345,
+    "selfMsPerFrame": 0.03091899889826891,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.PhotoShadow.Cast",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 2.078811989026144,
+    "selfMsPerFrame": 1.3661679932259723,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 105896.34
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.PhotoShadow.Contact",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 7.64505196493119,
+    "selfMsPerFrame": 0.3995720027759671,
+    "callsPerFrame": 127.71,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.PhotoShadow.Present",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 9.78350096666254,
+    "selfMsPerFrame": 0.05963701270520687,
+    "callsPerFrame": 143.55,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "CG.SpriteReferences.Read",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 1.320093990887981,
+    "selfMsPerFrame": 1.320093990887981,
+    "callsPerFrame": 558.36,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "GC.Alloc",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.1474189964510151,
+    "selfMsPerFrame": 0.1474189964510151,
+    "callsPerFrame": 3902.25,
+    "gcBytesPerFrame": 235670.12
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "GfxDeviceD3D12.WaitForLastPresentation",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0009219999908236787,
+    "selfMsPerFrame": 0.0009219999908236787,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "ParticleSystem.WaitForPreviousRenderingToFinish",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.00102099999319762,
+    "selfMsPerFrame": 0.00102099999319762,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "RenderingCommandBuffer.PrepareKeywords",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.041795998926754695,
+    "selfMsPerFrame": 0.041795998926754695,
+    "callsPerFrame": 273.24,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "Semaphore.WaitForSignal",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0009590000002935995,
+    "selfMsPerFrame": 0.0009590000002935995,
+    "callsPerFrame": 3.16,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "TimeUpdate.WaitForLastPresentationAndUpdateTime",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.03625199892558158,
+    "selfMsPerFrame": 0.0031210000210558065,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "WaitForCompleted",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.0,
+    "selfMsPerFrame": 0.0,
+    "callsPerFrame": 1095,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "WaitForJobGroupID",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 1.6497249929312965,
+    "selfMsPerFrame": 0.7195369993602071,
+    "callsPerFrame": 284.4,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "WaitForLastPresentation",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.00020899999472021591,
+    "selfMsPerFrame": 0.00013599999620055313,
+    "callsPerFrame": 0.99,
+    "gcBytesPerFrame": 0
+  },
+  {
+    "side": "after",
+    "run": 2,
+    "name": "WaitForRenderJobs",
+    "validMainFrames": 100,
+    "totalMsPerFrame": 0.3735539990606048,
+    "selfMsPerFrame": 0.00619099780342367,
+    "callsPerFrame": 2.97,
+    "gcBytesPerFrame": 0
+  }
+]

@@ -6,6 +6,14 @@ using UnityEngine;
 
 public class CoreGuardianPhotoShadowTests
 {
+    static void DestroyOwned(GameObject root)
+    {
+        // EditMode-created, non-ExecuteAlways components need explicit native cleanup.
+        foreach(var c in root.GetComponentsInChildren<MonoBehaviour>(true))
+            if(c!=null&&(c.GetType().Name=="CoreGuardianSelectionOutline"||c.GetType().Name=="CoreGuardianPhotoShadow"))
+                c.GetType().GetMethod("OnDestroy",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic)?.Invoke(c,null);
+        UnityEngine.Object.DestroyImmediate(root);
+    }
     static Type Type(string name)=>TypeCache.GetTypesDerivedFrom<MonoBehaviour>().FirstOrDefault(t=>t.Name==name);
     [TestCase("Attack","enemy_attack")][TestCase("Defense","enemy_defense")][TestCase("Buff","enemy_buff")]
     [TestCase("Single","tower_single")][TestCase("Multi","tower_multi")][TestCase("Support","tower_support")]
@@ -32,7 +40,7 @@ public class CoreGuardianPhotoShadowTests
             Assert.That(body.sprite,Is.SameAs(original));Assert.That(body.sharedMaterial,Is.SameAs(material));Assert.That(body.transform.localPosition,Is.EqualTo(position));
             if(role=="Defense"||role=="Multi"||role=="Support")
                 Assert.That(root.GetComponentsInChildren<SpriteRenderer>(true).Where(r=>r.name=="바깥 그림자"||r.name=="접촉 그림자"||r.name=="짧은 투사 그림자").All(r=>!r.enabled),Is.True,"Do not stack replaced old shadow ellipses");
-        } finally {UnityEngine.Object.DestroyImmediate(root);}
+        } finally {DestroyOwned(root);}
     }
     [Test]
     public void AllEightPhotoMasksAreDistinctPointFilteredResources()
@@ -57,6 +65,6 @@ public class CoreGuardianPhotoShadowTests
             Assert.That(root.GetComponentsInChildren<SpriteRenderer>(true).Single(r=>r.name=="PhotoCastShadow").sprite,Is.Not.Null);
             if(role=="Core")Assert.That(root.GetComponentsInChildren<SpriteRenderer>(true).Where(r=>r.name=="바닥 수정빛").All(r=>!r.enabled),Is.True);
             else Assert.That(root.transform.Find("PhotoDynamicContact"),Is.Not.Null,"Moving feet must use current animation contact, not a frozen sole copy");
-        } finally {UnityEngine.Object.DestroyImmediate(root);}
+        } finally {DestroyOwned(root);}
     }
 }

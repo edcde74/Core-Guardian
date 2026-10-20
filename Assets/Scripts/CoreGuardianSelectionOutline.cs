@@ -29,6 +29,8 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
 
     CoreGuardianHud hud;
     Material maskMaterial,outlineMaterial;
+    CoreGuardianSharedMaskMaterial maskLease,outlineLease;
+    MaterialPropertyBlock outputProperties;
     Mesh quad;
     MeshRenderer output;
     RenderTexture mask;
@@ -56,12 +58,17 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     // A dedicated disabled instance is owned by the upgrade effect; the HUD outline stays separate.
     public bool PresentOverlay(Transform target,Camera camera,Material material)
     {
-        Present(target,camera);
+        PresentMask(target,camera,material==null);
         if(!IsVisible||material==null)return false;
-        material.mainTexture=mask;output.sharedMaterial=material;output.sortingOrder++;
+        SetOutputMask();output.SetPropertyBlock(outputProperties);
+        output.sharedMaterial=material;output.sortingOrder++;
         return true;
     }
     public void Present(Transform target,Camera camera)
+    {
+        PresentMask(target,camera,true);
+    }
+    void PresentMask(Transform target,Camera camera,bool writeOutlineProperties)
     {
         using var presentScope=presentSample.Auto();
         lastMaskDrawCalls=0;lastAtlasMisses=0;
@@ -119,7 +126,11 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
             if(layer>frontLayer||(layer==frontLayer&&r.sortingOrder>=front.sortingOrder)){front=r;frontLayer=layer;}
         }
         output.sortingLayerID=front.sortingLayerID;output.sortingOrder=front.sortingOrder+4;
-        outlineMaterial.mainTexture=mask;outlineMaterial.SetColor("_Color",color);outlineMaterial.SetInt("_Width",radius);
+        if(writeOutlineProperties)
+        {
+            SetOutputMask();outputProperties.SetColor("_Color",color);outputProperties.SetInt("_Width",radius);
+            output.SetPropertyBlock(outputProperties);
+        }
         output.sharedMaterial=outlineMaterial;
         output.enabled=true;
     }
@@ -132,9 +143,23 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     // A separate owner uses the current body mask for floor contact, below all bodies.
     public void PresentGroundContact(Transform target,Camera camera,Material material)
     {
-        Present(target,camera);
-        if(output==null||!output.enabled||material==null)return;
-        material.mainTexture=mask;output.sharedMaterial=material;output.sortingOrder=43;
+        PresentContact(target,camera,material,null);
+    }
+    public void PresentGroundContactWithBand(Transform target,Camera camera,Material material,float band)
+    {
+        PresentContact(target,camera,material,band);
+    }
+    void PresentContact(Transform target,Camera camera,Material material,float? band)
+    {
+        PresentMask(target,camera,material==null);
+        if(!IsVisible||material==null)return;
+        SetOutputMask();if(band.HasValue)outputProperties.SetFloat("_Band",band.Value);
+        output.SetPropertyBlock(outputProperties);output.sharedMaterial=material;output.sortingOrder=43;
+    }
+    void SetOutputMask()
+    {
+        outputProperties.Clear();outputProperties.SetTexture("_MainTex",mask);
+        outputProperties.SetVector("_MainTex_TexelSize",new Vector4(1f/mask.width,1f/mask.height,mask.width,mask.height));
     }
     Mesh SpriteMesh(Sprite sprite)
     {
@@ -254,8 +279,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         }
         if(output!=null)return;
         properties=new MaterialPropertyBlock();
-        maskMaterial=new Material(Resources.Load<Shader>("CoreGuardian/SelectionMask")){hideFlags=HideFlags.DontSave};
-        outlineMaterial=new Material(Resources.Load<Shader>("CoreGuardian/SelectionOutline")){hideFlags=HideFlags.DontSave};
+        outputProperties=new MaterialPropertyBlock();
+        maskLease=CoreGuardianSharedMaskMaterial.Acquire("CoreGuardian/SelectionMask");maskMaterial=maskLease.Material;
+        outlineLease=CoreGuardianSharedMaskMaterial.Acquire("CoreGuardian/SelectionOutline");outlineMaterial=outlineLease.Material;
         commands=new CommandBuffer{name="Selected unit sprite union"};
         var root=new GameObject("SelectionOutline"){hideFlags=HideFlags.DontSave};root.transform.SetParent(transform,false);
         quad=new Mesh{name="Selected unit outline quad",hideFlags=HideFlags.DontSave};quad.vertices=new Vector3[4];
@@ -281,9 +307,38 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         commands?.Dispose();if(mask!=null){mask.Release();DisposeObject(mask);}
         foreach(var mesh in meshes.Values)DisposeObject(mesh);meshes.Clear();
         foreach(var batch in batches)DisposeObject(batch.mesh);batches.Clear();geometry.Clear();
-        DisposeObject(quad);DisposeObject(maskMaterial);DisposeObject(outlineMaterial);if(output!=null)DisposeObject(output.gameObject);
+        DisposeObject(quad);if(output!=null)DisposeObject(output.gameObject);
+        maskLease?.Release();maskLease=null;outlineLease?.Release();outlineLease=null;
+        maskMaterial=null;outlineMaterial=null;
     }
     static void DisposeObject(Object value){if(value==null)return;if(Application.isPlaying)Destroy(value);else DestroyImmediate(value);}
+}
+
+// Immutable shader state only. Each owner keeps its changing texture and values in a property block.
+internal sealed class CoreGuardianSharedMaskMaterial
+{
+    static readonly Dictionary<string,CoreGuardianSharedMaskMaterial> entries=new Dictionary<string,CoreGuardianSharedMaskMaterial>();
+    readonly string path;
+    int users;
+    public Material Material {get;private set;}
+    CoreGuardianSharedMaskMaterial(string path)
+    {
+        this.path=path;
+        Material=new Material(Resources.Load<Shader>(path)){name="Shared "+path,hideFlags=HideFlags.DontSave};
+    }
+    public static CoreGuardianSharedMaskMaterial Acquire(string path)
+    {
+        if(!entries.TryGetValue(path,out var entry)){entry=new CoreGuardianSharedMaskMaterial(path);entries.Add(path,entry);}
+        entry.users++;return entry;
+    }
+    public void Release()
+    {
+        if(users<=0)return;
+        if(--users!=0)return;
+        entries.Remove(path);
+        if(Material!=null){if(Application.isPlaying)Object.Destroy(Material);else Object.DestroyImmediate(Material);}
+        Material=null;
+    }
 }
 
 // Per-consumer references only; this does not share masks or alter presentation order.
