@@ -1,0 +1,21 @@
+{
+  "owners": 18,
+  "targets": 17,
+  "duplicateTargets": 1,
+  "sourceDraws": 24,
+  "onePerTargetSourceDraws": 20,
+  "repeatedSourceDraws": 4,
+  "contracts": [
+    {
+      "widthPixels": 1,
+      "alphaThreshold": 0.1,
+      "count": 17
+    },
+    {
+      "widthPixels": 2,
+      "alphaThreshold": 0.1,
+      "count": 1
+    }
+  ],
+  "enemies": 0
+}

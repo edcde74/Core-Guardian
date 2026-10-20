@@ -1,0 +1,32 @@
+[
+  {
+    "run": "normal_0_n128_frames",
+    "frames": 100,
+    "drawMedian": 3208,
+    "setPassMedian": 1608,
+    "deltaMedian": 43.61024755,
+    "fpsMin": 9.177233486256634,
+    "fpsMax": 25.362750742494526,
+    "fpsAvg": 21.122503849601998
+  },
+  {
+    "run": "normal_1_n128_frames",
+    "frames": 100,
+    "drawMedian": 3208,
+    "setPassMedian": 1608,
+    "deltaMedian": 49.03144895,
+    "fpsMin": 8.049197208486893,
+    "fpsMax": 25.213497305514224,
+    "fpsAvg": 19.056046574779465
+  },
+  {
+    "run": "normal_2_n128_frames",
+    "frames": 100,
+    "drawMedian": 3208,
+    "setPassMedian": 1608,
+    "deltaMedian": 41.94260145,
+    "fpsMin": 14.21929073785347,
+    "fpsMax": 25.657207576056148,
+    "fpsAvg": 22.725890802524344
+  }
+]
