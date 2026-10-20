@@ -1,0 +1,47 @@
+[
+  {
+    "name": "before/normal_0_n128.data",
+    "bytes": 107324504,
+    "sha256": "6A71EDF5514F1BB46F3C8FE8A548FCA788E0F6E695242F7784EA8BE9E7460369"
+  },
+  {
+    "name": "before/normal_1_n128.data",
+    "bytes": 109257012,
+    "sha256": "76CE15B4142F77930774C2F7976D0F8511C162C6261050E224381BAA34B376E6"
+  },
+  {
+    "name": "before/normal_2_n128.data",
+    "bytes": 105004348,
+    "sha256": "2173CA22945F53BDB160E54E54902BFB1086F6F55876CC012F885B8C568E96C2"
+  },
+  {
+    "name": "after/normal_0_n128.data",
+    "bytes": 104085688,
+    "sha256": "1877340D27AA053E22834CA50122B08F5DDD60174B029F7F5C525A1E69C0B497"
+  },
+  {
+    "name": "after/normal_1_n128.data",
+    "bytes": 112214456,
+    "sha256": "ACF7BF0DECC1398246989AF5CEA7CC54116207BB0975150D085FA52524C575C8"
+  },
+  {
+    "name": "after/normal_2_n128.data",
+    "bytes": 112475444,
+    "sha256": "0A1506DA2059BA5C5401286AD731317662EEFE7401EFE2149C9642D40374B61D"
+  },
+  {
+    "name": "lifecycle/memory_run0.data",
+    "bytes": 33497020,
+    "sha256": "39263F7977842F30C491F67E2F140E74BCAC186B86EE311186F1DC5F02DBE672"
+  },
+  {
+    "name": "lifecycle/memory_run1.data",
+    "bytes": 33884816,
+    "sha256": "AF594E0A55715AF409DC3A08903A8876A51E5695FC05049C512B1C1F8C69D191"
+  },
+  {
+    "name": "lifecycle/memory_run2.data",
+    "bytes": 38225744,
+    "sha256": "6D8BCF8B82DBF6EA5CA1CA5B5027C4FED163ACE2F54A40198C3B03F86819C824"
+  }
+]

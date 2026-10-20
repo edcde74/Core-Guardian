@@ -1,0 +1,172 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/mask_atlas_20261021/Inventory.cs",
+      "entry": "CGAtlasInventory.Run",
+      "timeout_ms": "30000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 53,
+      "executeMs": 25,
+      "assemblyName": "PipelineRunScript_Inventory_99bf81cd42b0454abfff745931a11394",
+      "success": true,
+      "result": {
+        "enemies": 128,
+        "owners": 274,
+        "parts": 1216,
+        "draws": 274,
+        "mergedOwners": 236,
+        "examples": [
+          {
+            "target": "PlayerStart_Prototype",
+            "owner": "ObjectEmphasis_B2_PlayerStart_Prototype",
+            "parts": 4,
+            "draws": 1,
+            "misses": 0,
+            "texturePaths": [
+              "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_Body.png",
+              "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_Arm.png",
+              "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_LeftLeg.png",
+              "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_RightLeg.png"
+            ],
+            "textures": [
+              "D0_Body",
+              "D0_Arm",
+              "D0_LeftLeg",
+              "D0_RightLeg"
+            ],
+            "spriteNames": [
+              "D0_Body",
+              "D0_Arm",
+              "D0_LeftLeg",
+              "D0_RightLeg"
+            ]
+          },
+          {
+            "target": "Enemy_Attack_814",
+            "owner": "PhotoDynamicContact",
+            "parts": 5,
+            "draws": 1,
+            "misses": 0,
+            "texturePaths": [
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/Body.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftUpper.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftLower.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightUpper.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightLower.png"
+            ],
+            "textures": [
+              "Body",
+              "LeftUpper",
+              "LeftLower",
+              "RightUpper",
+              "RightLower"
+            ],
+            "spriteNames": [
+              "Body",
+              "LeftUpper",
+              "LeftLower",
+              "RightUpper",
+              "RightLower"
+            ]
+          },
+          {
+            "target": "Enemy_Attack_823",
+            "owner": "PhotoDynamicContact",
+            "parts": 5,
+            "draws": 1,
+            "misses": 0,
+            "texturePaths": [
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/Body.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftUpper.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftLower.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightUpper.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightLower.png"
+            ],
+            "textures": [
+              "Body",
+              "LeftUpper",
+              "LeftLower",
+              "RightUpper",
+              "RightLower"
+            ],
+            "spriteNames": [
+              "Body",
+              "LeftUpper",
+              "LeftLower",
+              "RightUpper",
+              "RightLower"
+            ]
+          },
+          {
+            "target": "Enemy_Attack_824",
+            "owner": "PhotoDynamicContact",
+            "parts": 5,
+            "draws": 1,
+            "misses": 0,
+            "texturePaths": [
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/Body.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftUpper.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftLower.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightUpper.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightLower.png"
+            ],
+            "textures": [
+              "Body",
+              "LeftUpper",
+              "LeftLower",
+              "RightUpper",
+              "RightLower"
+            ],
+            "spriteNames": [
+              "Body",
+              "LeftUpper",
+              "LeftLower",
+              "RightUpper",
+              "RightLower"
+            ]
+          },
+          {
+            "target": "Enemy_Attack_825",
+            "owner": "PhotoDynamicContact",
+            "parts": 5,
+            "draws": 1,
+            "misses": 0,
+            "texturePaths": [
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/Body.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftUpper.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftLower.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightUpper.png",
+              "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightLower.png"
+            ],
+            "textures": [
+              "Body",
+              "LeftUpper",
+              "LeftLower",
+              "RightUpper",
+              "RightLower"
+            ],
+            "spriteNames": [
+              "Body",
+              "LeftUpper",
+              "LeftLower",
+              "RightUpper",
+              "RightLower"
+            ]
+          }
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

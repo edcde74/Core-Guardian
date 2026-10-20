@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "duration": 1.86,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianMaskAtlasTests.DistinctSourceTexturesShareMaskDraw_WhileAlphaAndUnknownSourcesRemainSeparate",
+      "Status": "Passed",
+      "Duration": 0.9832225,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianMaskAtlasTests.SourceReimportInvalidatesOldAlphaWithoutChangingTheBody",
+      "Status": "Passed",
+      "Duration": 0.6617626,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

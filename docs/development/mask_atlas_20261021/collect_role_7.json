@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/mask_atlas_20261021/PixelComparison.cs",
+      "entry": "CGExtendedValidation.RunEffects",
+      "args": "[7]",
+      "timeout_ms": "60000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 177,
+      "executeMs": 1620,
+      "assemblyName": "PipelineRunScript_PixelComparison_ab87c687d62e4fadbd2db5d910db4d78",
+      "success": true,
+      "result": {
+        "role": "Support",
+        "exactSize": false,
+        "effectsOnly": true,
+        "cases": 432,
+        "failed": 0,
+        "empty": 0,
+        "maxDifference": 0,
+        "maxParts": 2,
+        "maxDraws": 2,
+        "maxMisses": 2,
+        "submissionShapes": [
+          "1:1:1",
+          "0:0:0",
+          "2:2:2",
+          "0:0:1"
+        ],
+        "peakBytes": 6297792,
+        "baseline": 14,
+        "after": 14
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

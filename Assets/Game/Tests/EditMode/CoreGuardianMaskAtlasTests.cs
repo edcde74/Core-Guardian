@@ -16,6 +16,7 @@ public class CoreGuardianMaskAtlasTests
         var atlasType=Find("CoreGuardianMaskAtlas");var builder=Find("CoreGuardianMaskAtlasBuilder");
         Assert.That(atlasType,Is.Not.Null,"A mask-only source/page manifest is required");
         Assert.That(builder,Is.Not.Null);
+        var nativeBefore=NativeCounts();
         string folder="Assets/MaskAtlasTest_"+Guid.NewGuid().ToString("N");
         var textures=new Texture2D[4];var sprites=new Sprite[4];
         var root=new GameObject("Atlas test");var camRoot=new GameObject("Atlas camera");
@@ -90,14 +91,23 @@ public class CoreGuardianMaskAtlasTests
         }
         finally
         {
+            // EditMode-created disabled MonoBehaviours need explicit owner cleanup.
+            foreach(var owner in root.GetComponentsInChildren<MonoBehaviour>(true).Concat(camRoot.GetComponentsInChildren<MonoBehaviour>(true)))
+                if(owner!=null&&owner.GetType().Name=="CoreGuardianSelectionOutline")owner.GetType().GetMethod("OnDestroy",Hidden).Invoke(owner,null);
             UnityEngine.Object.DestroyImmediate(root);UnityEngine.Object.DestroyImmediate(camRoot);
             if(image!=null){image.Release();UnityEngine.Object.DestroyImmediate(image);}
             foreach(var s in sprites)if(s!=null)UnityEngine.Object.DestroyImmediate(s);
             if(AssetDatabase.IsValidFolder(folder))AssetDatabase.DeleteAsset(folder);
             if(replacement!=null)UnityEngine.Object.DestroyImmediate(replacement);
             if(empty!=null)UnityEngine.Object.DestroyImmediate(empty);
+            Assert.That(NativeCounts(),Is.EqualTo(nativeBefore),"The test must release every mask, mesh and material it owns");
         }
     }
+
+    static (int masks,int meshes,int materials) NativeCounts()=>
+        (Resources.FindObjectsOfTypeAll<RenderTexture>().Count(t=>t.name=="Selected unit union mask"),
+         Resources.FindObjectsOfTypeAll<Mesh>().Count(m=>m.name.StartsWith("Selection mask ")||m.name=="Selected unit outline quad"),
+         Resources.FindObjectsOfTypeAll<Material>().Count(m=>m.shader!=null&&(m.shader.name=="CoreGuardian/SelectionMask"||m.shader.name=="CoreGuardian/SelectionOutline")));
 
     static Color32[] ReadMask(Component owner)
     {

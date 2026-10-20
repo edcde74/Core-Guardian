@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "duration": 1.44,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianMaskAtlasTests.DistinctSourceTexturesShareMaskDraw_WhileAlphaAndUnknownSourcesRemainSeparate",
+      "Status": "Passed",
+      "Duration": 1.2282081,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}
