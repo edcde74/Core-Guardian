@@ -4,13 +4,13 @@
 
 ## 현재 작업
 
-사용자가 **본체 마스크 중복 생성 제거**와 [설계](../superpowers/specs/2026-10-21-shared-body-mask-design.md)·[계획/Native 순차 구현](../superpowers/plans/2026-10-21-shared-body-mask.md)을 승인했다. 같은 본체의 동일 생성 영역 마스크를 프레임 내 공유하도록 구현했다. 제품 성능 측정1c57020, 후속은 EditMode 소유 자원 정리다. 현재 checkout은 `codex/shared-body-mask`, 최종 상태는 HEAD를 확인한다.
+사용자가 **본체 마스크 중복 생성 제거**와 [설계](../superpowers/specs/2026-10-21-shared-body-mask-design.md)·[계획/Native 순차 구현](../superpowers/plans/2026-10-21-shared-body-mask.md)을 승인했다. 같은 본체의 동일 생성 영역 마스크를 프레임 내 공유하도록 구현하고 검증·기록을 마쳤다. **완료 기준40831f3**, 성능 측정1c57020이며 완료 기준에는 EditMode 소유 자원 정리도 포함한다. 현재 checkout은 `codex/shared-body-mask`다. 새 기능·후속 최적화는 시작하지 않았다.
 
 포함 영역 공유 후보는 실제 픽셀 차이로 폐기했다. 최종 접촉→강조 공유는 **1920×1080·줌8.5/4.25·기본 직교/회전identity·viewport origin0·정수 경계·XY±32·접촉 폭2** 등 검증한 뷰에서만 적용하고 나머지는 원래 합성한다. 표시 quad/접촉 밴드/정렬/효과 수·수명은 유지했다. 같은128적/15포탑100frame×3에서 합성274→145, 중앙 Draw2178→2050/SetPass578→450, 평균FPS30.543→32.381(+6.018%)를 관측했다. **p95는 소폭 악화했고 전체 성능 통과가 아니다.**
 
 관련 계약51/51, 실제 공유 native1,024건+다른 뷰 fallback3,456건 픽셀 차이0. 최종600frame×3/줌·초기화 및 충분히 진행된86개 엔진 프레임의 캐시 전체 하위 GC0을 확인했다. 실제 할당 RT는 예비 세대 포함274개로 현재 bound145개와 구분한다. 실패 후보/측정 실패·보완·제한·메모리/원본·리뷰·복원은 [본체 공유 결과 정본](shared_body_mask_20261021/RESULTS.md)을 따른다.
 
-마지막 자체 Play 종료 후 전투씬1/clean·Play/컴파일/Profiler/FrameDebugger=false, cache entries/bindings/owned RT0. 사용자 설정2파일은 그대로며 설정3파일/전환 옵션을 시작 해시와 대조했다. 추적 레지스트리에 없는 native 재질6개는 일괄 삭제하지 않았다. 전역 누수 통과가 아니다. [최종 상태](shared_body_mask_20261021/final_state.json). 빌드·실행파일·push 없음.
+마지막 실행 검증의 종료 상태는 전투씬1/clean·Play/컴파일/Profiler/FrameDebugger=false, cache entries/bindings/owned RT0이다. 사용자 설정2파일은 그대로며 설정3파일/전환 옵션을 시작 해시와 대조했다. 추적 레지스트리에 없는 native 재질6개는 일괄 삭제하지 않았다. 전역 누수 통과가 아니다. [실제 종료 기록](shared_body_mask_20261021/final_state.json). 이번 **인수인계**에서는 문서와 Git만 확인했으며 Unity 현재 상태를 새로 조회하거나 추가 Play·검사·빌드·실행파일·push를 하지 않았다.
 
 ## 게임 최신 기준과 정본
 
@@ -21,6 +21,7 @@
 
 ## 미완료와 다음 행동
 
+- 재개 시40831f3 이후 HEAD/diff와 기존 사용자 변경 `ProjectSettings/PackageManagerSettings.asset`, `ProjectSettings/TimeManager.asset`을 먼저 확인한다. 기존 미추적 파일도 보존한다. [결과 정본](shared_body_mask_20261021/RESULTS.md)의 적용 제한·실패·미검증 범위를 읽고, 사용자 Play/다른 검사가 진행 중이면 중단·겹치지 않는다. 같은 자동 검증을 근거 없이 다시 돌리지 않는다.
 - 사용자 실제 플레이에서 현재 검증 뷰의 방향/선택·강조/접촉·체감 확인. 8방향 실제 키보드 입력·사람 조작, 정상30R 전체/수십분, GPU VRAM/Memory Profiler 스냅샷은 이번 검증에 포함하지 않았다.
 - 다른 해상도/줌/회전·사용자 투영으로 공유 범위를 확장하려면 같은 조건 픽셀·비용부터 확인한다. 제한 밖은 기존 합성이다. 알려진 픽셀 차이를 품질 절충으로 임의 허용하지 않는다.
 - 보스 전체 합성 미확정9건과 원래 순간 지연은 별도다. 재현 시 기존 세분화 마커를 추적한다. 목표 FPS/기기/배속 예산은 미확정이다.
