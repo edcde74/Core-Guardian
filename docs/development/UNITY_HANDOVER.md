@@ -4,6 +4,8 @@
 
 ## 현재 상태와 승인 범위
 
+- 2026-10-22 사용자 명시 요청으로 A/B 복원 상태의 Windows64 일반 빌드를 생성했다. `Builds/CoreGuardian_Windows_20261022_062018.zip` 및 동명 폴더의 `CoreGuardian.exe`. BuildReport Succeeded/오류0/경고499, 35.383초. 실행파일은 실행하지 않았다. 사용자 씬·설정6파일 해시 동일, Play stopped/컴파일 false. 원본 보고서: `Logs/CoreGuardian_build_report_20261022_062018.json`. 이는 빌드 성공 확인이며 실행 품질 검증은 아니다.
+
 - **A/B 렌더 배칭 작업 중지·구현 전 복원 완료**(2026-10-22 사용자 요청). A 후보는 픽셀 회귀/성능 악화로 미채택·제거했고, B는 신규 검사만 작성한 단계에서 제거했다. 제품 소스/리소스/기존 검사는 A/B 전 `1278449`와 차이가 없다. 계획·조사·실험 원본은 기록으로만 보관하며 A/B를 자동 재개하지 않는다. [복원 기록](render_batching_20261022/ROLLBACK.md).
 - SRP OFF 진단도 미채택·원복 상태다. 이번 복원에서 Play stopped·scene clean을 확인하고 기존 Profiler buffer 및 driver true/Profiler OFF를 복원했다. 사용자 씬/설정4파일은 실험 전 해시와 동일하다. 추가 Play·테스트·빌드·실행파일 실행·push는 하지 않았다. [복원 확인](render_batching_20261022/rollback_state.json).
 - 구현·검증 완료 커밋 **`5943523`**, 브랜치 `codex/shared-body-mask`. 구현 기준 `51fb785`, 누적 최적화 비교 전 `5914347`. 최신 결과 정본은 [누적 런타임 검증](runtime_validation_20261021/RESULTS.md)이다.
