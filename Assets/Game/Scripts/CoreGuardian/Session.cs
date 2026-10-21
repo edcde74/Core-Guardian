@@ -56,10 +56,11 @@ namespace CoreGuardian
         {
             public readonly List<WaveSpec> Rows=new List<WaveSpec>();
             public readonly List<EnemyState> Enemies=new List<EnemyState>();
+            public readonly List<EnemyState> BuffSources=new List<EnemyState>();
             public readonly Dictionary<EnemyState,float> Boosts=new Dictionary<EnemyState,float>();
             public readonly List<TowerState> Towers=new List<TowerState>();
             public readonly List<ProjectileState> Projectiles=new List<ProjectileState>();
-            public void Clear(){Rows.Clear();Enemies.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();}
+            public void Clear(){Rows.Clear();Enemies.Clear();BuffSources.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();}
         }
         sealed class ShotWork
         {
@@ -147,11 +148,13 @@ namespace CoreGuardian
                 waveTime+=dt;
                 // Calculate all auras before moving anyone so source order cannot alter the radius test.
                 var boosts=work.Boosts;
+                // Keep the original source order and freeze membership before any movement.
+                foreach(var source in Enemies)if(source.Alive&&source.Kind==EnemyKind.Buff)work.BuffSources.Add(source);
                 foreach(var enemy in Enemies)if(enemy.Alive)
                 {
                     float boost=0;bool found=false;
-                    foreach(var other in Enemies)
-                        if(other!=enemy&&other.Alive&&other.Kind==EnemyKind.Buff&&Vector2.Distance(enemy.Position,other.Position)<=other.Spec.BuffRadius)
+                    foreach(var other in work.BuffSources)
+                        if(other!=enemy&&Vector2.Distance(enemy.Position,other.Position)<=other.Spec.BuffRadius)
                         {
                             float value=other.Spec.BuffSpeed;
                             if(!found||value>boost||float.IsNaN(boost))boost=value;
