@@ -31,6 +31,13 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     readonly Dictionary<int, GameObject> auraViews = new Dictionary<int, GameObject>();
     readonly Dictionary<int, GameObject> towerAuraViews = new Dictionary<int, GameObject>();
     readonly Dictionary<int, Transform> healthViews = new Dictionary<int, Transform>();
+    readonly List<EnemyState> livingViewEnemies = new List<EnemyState>();
+    readonly HashSet<int> activeEnemyViewIds = new HashSet<int>();
+    readonly HashSet<int> activeTowerViewIds = new HashSet<int>();
+    readonly HashSet<int> activeProjectileViewIds = new HashSet<int>();
+    readonly List<int> removedViewIds = new List<int>();
+    const int MaxRetainedProjectileViews=256;
+    readonly Stack<SpriteRenderer> projectileViewPool = new Stack<SpriteRenderer>();
     readonly List<GameObject> highlights = new List<GameObject>();
     GameObject ghost;
     Sprite square, dot;
@@ -275,10 +282,13 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public void Notify(string text){Feedback=string.IsNullOrEmpty(text)?Session.LastMessage:text;notificationUntil=Time.unscaledTime+3;Changed?.Invoke();}
     void SynchronizeViews()
     {
-        var living=Session.Enemies.Where(e=>e.Alive).ToArray();
-        SyncRemoved(enemyViews,living.Select(e=>e.Id));SyncRemoved(auraViews,living.Select(e=>e.Id));
-        foreach(var id in healthViews.Keys.Except(living.Select(e=>e.Id)).ToArray())healthViews.Remove(id);
-        foreach(var e in living)
+        livingViewEnemies.Clear();activeEnemyViewIds.Clear();
+        foreach(var enemy in Session.Enemies)if(enemy.Alive){livingViewEnemies.Add(enemy);activeEnemyViewIds.Add(enemy.Id);}
+        SyncRemoved(enemyViews,activeEnemyViewIds);SyncRemoved(auraViews,activeEnemyViewIds);
+        removedViewIds.Clear();
+        foreach(var id in healthViews.Keys)if(!activeEnemyViewIds.Contains(id))removedViewIds.Add(id);
+        foreach(var id in removedViewIds)healthViews.Remove(id);
+        foreach(var e in livingViewEnemies)
         {
             GameObject view;
             if(!enemyViews.TryGetValue(e.Id,out view))
@@ -296,8 +306,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             if(e.Buffed&&!auraViews.ContainsKey(e.Id))auraViews[e.Id]=combatArt.Marker("EnemySpeedBuff",World(e.Position),.17f);
             if(auraViews.TryGetValue(e.Id,out var aura)){aura.SetActive(e.Buffed);aura.transform.position=World(e.Position)+Vector3.up*1.02f;}
         }
-        SyncRemoved(towerViews,Session.Towers.Select(t=>t.Id));
-        SyncRemoved(towerAuraViews,Session.Towers.Select(t=>t.Id));
+        activeTowerViewIds.Clear();foreach(var tower in Session.Towers)activeTowerViewIds.Add(tower.Id);
+        SyncRemoved(towerViews,activeTowerViewIds);
+        SyncRemoved(towerAuraViews,activeTowerViewIds);
         foreach(var t in Session.Towers)
         {
             if(!towerViews.TryGetValue(t.Id,out var view)){view=Instantiate(towerArt[(int)t.Kind]);view.name="Tower_"+t.Kind+"_"+t.Id;towerViews.Add(t.Id,view);}
@@ -307,19 +318,44 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             if(supported&&!towerAuraViews.ContainsKey(t.Id))towerAuraViews[t.Id]=combatArt.Marker("TowerDamageBuff",World(t.Position),.2f);
             if(towerAuraViews.TryGetValue(t.Id,out var aura)){aura.SetActive(supported);aura.transform.position=World(t.Position)+Vector3.up*.88f;}
         }
-        SyncRemoved(projectileViews,Session.Projectiles.Select(p=>p.Id));
+        activeProjectileViewIds.Clear();foreach(var projectile in Session.Projectiles)activeProjectileViewIds.Add(projectile.Id);
+        SyncRemoved(projectileViews,activeProjectileViewIds,true);
         foreach(var p in Session.Projectiles)
         {
-            if(!projectileViews.TryGetValue(p.Id,out var view)){view=CreateSprite("Projectile_"+p.Id,combatArt.Projectile(p),World(p.Position),Color.white,1500);CoreGuardianCombatArt.SetWidth(view.GetComponent<SpriteRenderer>(),p.Source=="Player"?.2f:.275f);projectileViews.Add(p.Id,view);}
+            if(!projectileViews.TryGetValue(p.Id,out var view)){view=RentProjectileView(p);projectileViews.Add(p.Id,view);}
             view.transform.position=combatAnimation.ProjectilePosition(p);
             var direction=World(p.Target.Position)+Vector3.up*.25f-view.transform.position;
             if(direction.sqrMagnitude>.000001f)view.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
         }
         combatAnimation.Player();
     }
-    void SyncRemoved(Dictionary<int,GameObject> views,IEnumerable<int> active)
+    void SyncRemoved(Dictionary<int,GameObject> views,HashSet<int> active,bool poolProjectiles=false)
     {
-        var ids=new HashSet<int>(active);foreach(var id in views.Keys.Where(k=>!ids.Contains(k)).ToArray()){if(views[id]!=null)Destroy(views[id]);views.Remove(id);}
+        removedViewIds.Clear();
+        foreach(var id in views.Keys)if(!active.Contains(id))removedViewIds.Add(id);
+        foreach(var id in removedViewIds)
+        {
+            var view=views[id];
+            if(view!=null)
+            {
+                var renderer=poolProjectiles?view.GetComponent<SpriteRenderer>():null;
+                if(renderer!=null&&projectileViewPool.Count<MaxRetainedProjectileViews){view.SetActive(false);projectileViewPool.Push(renderer);}
+                else Destroy(view);
+            }
+            views.Remove(id);
+        }
+        removedViewIds.Clear();
+    }
+    GameObject RentProjectileView(ProjectileState projectile)
+    {
+        SpriteRenderer renderer=null;
+        while(projectileViewPool.Count>0&&renderer==null)renderer=projectileViewPool.Pop();
+        if(renderer==null)renderer=CreateSprite("Projectile_"+projectile.Id,combatArt.Projectile(projectile),World(projectile.Position),Color.white,1500).GetComponent<SpriteRenderer>();
+        else{renderer.name="Projectile_"+projectile.Id;renderer.sprite=combatArt.Projectile(projectile);}
+        renderer.color=Color.white;renderer.flipX=renderer.flipY=false;renderer.sortingOrder=1500;
+        renderer.transform.position=World(projectile.Position);renderer.transform.rotation=Quaternion.identity;
+        CoreGuardianCombatArt.SetWidth(renderer,projectile.Source=="Player"?.2f:.275f);
+        renderer.transform.SetAsLastSibling();renderer.gameObject.SetActive(true);return renderer.gameObject;
     }
     GameObject CreateSprite(string name,Sprite sprite,Vector3 pos,Color color,int order)
     {
@@ -346,6 +382,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         Cursor.visible=true;
         if(occupiedTile!=null)Destroy(occupiedTile);
         foreach(var views in new[]{enemyViews,towerViews,projectileViews,auraViews,towerAuraViews})foreach(var g in views.Values)if(g!=null)Destroy(g);
+        while(projectileViewPool.Count>0){var renderer=projectileViewPool.Pop();if(renderer!=null)Destroy(renderer.gameObject);}
         if(ghost!=null)Destroy(ghost);if(square!=null){Destroy(square.texture);Destroy(square);}if(dot!=null){Destroy(dot.texture);Destroy(dot);}
     }
 }

@@ -11,6 +11,9 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     public static readonly string[] Names={"EngineerChip","SingleBolt","MultiBolt","EnemyHit","EnemyDeath","EnemySpeedBuff","TowerDamageBuff","CoreHit","GoldGain"};
     readonly Dictionary<string,Sprite> sprites=new Dictionary<string,Sprite>();
     readonly List<Effect> effects=new List<Effect>();
+    const int MaxRetainedEffects=256;
+    readonly Stack<Effect> effectPool=new Stack<Effect>();
+    bool disposingEffects;
     CoreGuardianPrototype game;
     CoreGuardianHud hud;
     CoreGuardianCoreFeedback coreFeedback;
@@ -71,8 +74,22 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     }
     void Show(string name,Vector3 position,float width,float duration,float rise=0)
     {
-        var renderer=NewRenderer(name,Get(name),position,1750);SetWidth(renderer,width);
-        effects.Add(new Effect{Renderer=renderer,Started=Time.time,Duration=duration,Width=width,Rise=rise,Origin=position});
+        Effect effect=null;
+        while(effectPool.Count>0&&effect==null){var candidate=effectPool.Pop();if(candidate.Renderer!=null)effect=candidate;}
+        if(effect==null)effect=new Effect{Renderer=NewRenderer(name,Get(name),position,1750)};
+        var renderer=effect.Renderer;
+        renderer.name=name;renderer.sprite=Get(name);renderer.color=Color.white;
+        renderer.flipX=renderer.flipY=false;renderer.sortingOrder=1750;
+        renderer.transform.position=position;renderer.transform.localRotation=Quaternion.identity;SetWidth(renderer,width);
+        effect.Started=Time.time;effect.Duration=duration;effect.Width=width;effect.Rise=rise;effect.Origin=position;
+        renderer.transform.SetAsLastSibling();renderer.gameObject.SetActive(true);effects.Add(effect);
+    }
+    void ReturnEffect(Effect effect)
+    {
+        if(effect.Renderer==null)return;
+        effect.Renderer.gameObject.SetActive(false);
+        if(!disposingEffects&&effectPool.Count<MaxRetainedEffects)effectPool.Push(effect);
+        else Destroy(effect.Renderer.gameObject);
     }
     void Update()
     {
@@ -81,13 +98,19 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
         for(int i=effects.Count-1;i>=0;i--)
         {
             var effect=effects[i];float age=(Time.time-effect.Started)/effect.Duration;
-            if(effect.Renderer==null||age>=1){if(effect.Renderer!=null)Destroy(effect.Renderer.gameObject);effects.RemoveAt(i);continue;}
+            if(effect.Renderer==null||age>=1){ReturnEffect(effect);effects.RemoveAt(i);continue;}
             effect.Renderer.transform.position=effect.Origin+Vector3.up*(age*effect.Rise);
             effect.Renderer.color=new Color(1,1,1,1-Mathf.Clamp01((age-.3f)/.7f));
         }
     }
-    public void ClearEffects(){foreach(var e in effects)if(e.Renderer!=null)Destroy(e.Renderer.gameObject);effects.Clear();coreFeedback?.Clear();}
+    public void ClearEffects(){foreach(var e in effects)ReturnEffect(e);effects.Clear();coreFeedback?.Clear();}
     void OnEnable(){coreAmbient?.SetEnabled(true);}
     void OnDisable(){coreFeedback?.Clear();coreAmbient?.SetEnabled(false);}
-    void OnDestroy(){if(game!=null&&game.Session!=null)game.Session.DamageApplied-=OnDamage;ClearEffects();coreFeedback?.Dispose();coreAmbient?.Dispose();}
+    void OnDestroy()
+    {
+        if(game!=null&&game.Session!=null)game.Session.DamageApplied-=OnDamage;
+        disposingEffects=true;ClearEffects();
+        while(effectPool.Count>0){var effect=effectPool.Pop();if(effect.Renderer!=null)Destroy(effect.Renderer.gameObject);}
+        coreFeedback?.Dispose();coreAmbient?.Dispose();
+    }
 }

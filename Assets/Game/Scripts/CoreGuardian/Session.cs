@@ -23,10 +23,14 @@ namespace CoreGuardian
         public EnemyState PlayerTarget => playerTarget;
         public EnemyState TowerTarget(int id)
         {
-            var tower=Towers.FirstOrDefault(t=>t.Id==id);
+            TowerState tower=null;foreach(var candidate in Towers)if(candidate.Id==id){tower=candidate;break;}
             if(tower==null)return null;
             // Multi fires at its role-priority list, not the single-target acquisition cache.
-            return tower.Kind==TowerKind.Multi?CombatRules.TowerPriorityOrder(Enemies.Where(e=>e.Alive&&Vector2.Distance(e.Position,tower.Position)<=tower.Stats.Range)).FirstOrDefault():tower.Target;
+            if(tower.Kind!=TowerKind.Multi)return tower.Target;
+            EnemyState best=null;
+            foreach(var enemy in Enemies)
+                if(enemy.Alive&&Vector2.Distance(enemy.Position,tower.Position)<=tower.Stats.Range&&(best==null||ComparePriority(enemy,best,true)<0))best=enemy;
+            return best;
         }
         public CombatStats Player {get;private set;}
         public int Gold {get;private set;} public int Crystals {get;private set;} public int CoreEnergy {get;private set;}
@@ -46,6 +50,25 @@ namespace CoreGuardian
         readonly List<Vector2> path=new List<Vector2>(); readonly List<float> lengths=new List<float>(); readonly HashSet<Vector2Int> pathCells=new HashSet<Vector2Int>();
         Vector2Int core;int width,height,nextEnemy=1,nextTower=1,nextProjectile=1;float pathLength,waveTime,playerCooldown;EnemyState playerTarget;bool playerAcquired;
         readonly Dictionary<WaveSpec,int> spawned=new Dictionary<WaveSpec,int>();
+        // Rent per invocation so callbacks that re-enter Tick cannot overwrite outer snapshots.
+        const int MaxRetainedWorkBuffers=8;
+        sealed class StepWork
+        {
+            public readonly List<WaveSpec> Rows=new List<WaveSpec>();
+            public readonly List<EnemyState> Enemies=new List<EnemyState>();
+            public readonly Dictionary<EnemyState,float> Boosts=new Dictionary<EnemyState,float>();
+            public readonly List<TowerState> Towers=new List<TowerState>();
+            public readonly List<ProjectileState> Projectiles=new List<ProjectileState>();
+            public void Clear(){Rows.Clear();Enemies.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();}
+        }
+        sealed class ShotWork
+        {
+            public readonly List<EnemyState> Available=new List<EnemyState>();
+            public readonly EnemyState[] Targets=new EnemyState[3];
+            public void Clear(){Available.Clear();Array.Clear(Targets,0,Targets.Length);}
+        }
+        readonly Stack<StepWork> stepWorkPool=new Stack<StepWork>();
+        readonly Stack<ShotWork> shotWorkPool=new Stack<ShotWork>();
         // Session investment: independent per kind/stat, retained even with no towers installed.
         readonly Dictionary<TowerKind,Dictionary<string,int>> towerUpgradeSteps=new Dictionary<TowerKind,Dictionary<string,int>>();
         int TowerStep(TowerKind kind,string stat) => towerUpgradeSteps.TryGetValue(kind,out var steps)&&steps.TryGetValue(stat,out var n)?n:0;
@@ -114,20 +137,54 @@ namespace CoreGuardian
         {
             if(Phase==SessionPhase.Augmentation){AugmentationRemaining=Mathf.Max(0,AugmentationRemaining-dt);if(AugmentationRemaining<=.0001f)ChooseAugmentation(AugmentationDeck.BestIndex(choices));return;}
             if(Phase==SessionPhase.Preparation) {PreparationRemaining=Mathf.Max(0,PreparationRemaining-dt);if(PreparationRemaining<=0)StartCombat();return;}if(Phase!=SessionPhase.Combat)return;
-            var rows=Data.Waves.Where(x=>x.Wave==Wave).ToArray();
-            if(Diagnostic) {if(waveTime==0) {float diagnosticDistance=Mathf.Min(Data.DiagnosticStartDistance,pathLength*.2f);DebugSpawn(EnemyKind.Attack,diagnosticDistance);DebugSpawn(EnemyKind.Defense,diagnosticDistance+Data.DiagnosticSpacing);DebugSpawn(EnemyKind.Buff,diagnosticDistance+2*Data.DiagnosticSpacing);} }
-            else foreach(var row in rows) {int count;spawned.TryGetValue(row,out count);while(count<row.Count&&waveTime+.00001f>=row.Start+count*row.Interval) {DebugSpawn(row.Kind,0,row.Enemy??Data.Enemies[row.Kind]);count++;}spawned[row]=count;}
-            waveTime+=dt;
-            // Calculate all auras before moving anyone so source order cannot alter the radius test.
-            var boosts=Enemies.Where(e=>e.Alive).ToDictionary(e=>e,e=>Enemies.Where(other=>other!=e&&other.Alive&&other.Kind==EnemyKind.Buff&&Vector2.Distance(e.Position,other.Position)<=other.Spec.BuffRadius).Select(other=>other.Spec.BuffSpeed).DefaultIfEmpty(0).Max()); foreach(var e in boosts.Keys) e.Buffed=boosts[e]>0;
-            foreach(var e in Enemies.Where(e=>e.Alive).ToArray()) {float boost=boosts[e];e.PathTravelled=Mathf.Min(pathLength,e.PathTravelled+e.MovementSpeed*(1+boost/100f)*dt);e.SlowRemaining=Mathf.Max(0,e.SlowRemaining-dt);PositionEnemy(e);if(e.PathRemaining<=.00001f){e.Exited=true;coreDamagedThisRound|=e.Spec.CoreDamage>0;CoreEnergy=Mathf.Max(0,CoreEnergy-e.Spec.CoreDamage);LastMessage="코어 -"+e.Spec.CoreDamage;}}
-            if(CoreEnergy<=0) {Phase=SessionPhase.Defeat;Projectiles.Clear();LastMessage="방어 실패";if(!Diagnostic)DefeatReached?.Invoke();return;}
-            Shoot(playerPosition,Player,"Player",0,ref playerCooldown,ref playerTarget,ref playerAcquired,dt,false);
-            foreach(var t in Towers.ToArray()) {if(t.Kind==TowerKind.Support)continue;float buff=Augments.TowerBuffPercent+Towers.Where(s=>s.Kind==TowerKind.Support&&Vector2.Distance(s.Position,t.Position)<=s.Stats.Range).Sum(s=>s.Stats.BuffDamage);Shoot(t.Position,t.Stats,"Tower:"+t.Id,buff,ref t.Cooldown,ref t.Target,ref t.AcquiredOnce,dt,t.Kind==TowerKind.Multi);}
-            foreach(var p in Projectiles.ToArray()) {if(!p.Target.Alive){Projectiles.Remove(p);continue;}p.Position=Vector2.MoveTowards(p.Position,p.Target.Position,p.Speed*dt);if(Vector2.Distance(p.Position,p.Target.Position)<=.00001f){ApplyDamage(p.Target,p.Damage,p.Source);Projectiles.Remove(p);}}
-            Enemies.RemoveAll(e=>!e.Alive);
-            bool complete=Diagnostic||rows.Length>0&&rows.All(r=>spawned.ContainsKey(r)&&spawned[r]>=r.Count);
-            if(complete&&Enemies.Count==0)CompleteRound();
+            var work=stepWorkPool.Count>0?stepWorkPool.Pop():new StepWork();
+            try
+            {
+                var rows=work.Rows;
+                foreach(var row in Data.Waves)if(row.Wave==Wave)rows.Add(row);
+                if(Diagnostic) {if(waveTime==0) {float diagnosticDistance=Mathf.Min(Data.DiagnosticStartDistance,pathLength*.2f);DebugSpawn(EnemyKind.Attack,diagnosticDistance);DebugSpawn(EnemyKind.Defense,diagnosticDistance+Data.DiagnosticSpacing);DebugSpawn(EnemyKind.Buff,diagnosticDistance+2*Data.DiagnosticSpacing);} }
+                else foreach(var row in rows) {int count;spawned.TryGetValue(row,out count);while(count<row.Count&&waveTime+.00001f>=row.Start+count*row.Interval) {DebugSpawn(row.Kind,0,row.Enemy??Data.Enemies[row.Kind]);count++;}spawned[row]=count;}
+                waveTime+=dt;
+                // Calculate all auras before moving anyone so source order cannot alter the radius test.
+                var boosts=work.Boosts;
+                foreach(var enemy in Enemies)if(enemy.Alive)
+                {
+                    float boost=0;bool found=false;
+                    foreach(var other in Enemies)
+                        if(other!=enemy&&other.Alive&&other.Kind==EnemyKind.Buff&&Vector2.Distance(enemy.Position,other.Position)<=other.Spec.BuffRadius)
+                        {
+                            float value=other.Spec.BuffSpeed;
+                            if(!found||value>boost||float.IsNaN(boost))boost=value;
+                            found=true;
+                        }
+                    boosts.Add(enemy,boost);work.Enemies.Add(enemy);
+                }
+                foreach(var e in work.Enemies)e.Buffed=boosts[e]>0;
+                foreach(var e in work.Enemies) {float boost=boosts[e];e.PathTravelled=Mathf.Min(pathLength,e.PathTravelled+e.MovementSpeed*(1+boost/100f)*dt);e.SlowRemaining=Mathf.Max(0,e.SlowRemaining-dt);PositionEnemy(e);if(e.PathRemaining<=.00001f){e.Exited=true;coreDamagedThisRound|=e.Spec.CoreDamage>0;CoreEnergy=Mathf.Max(0,CoreEnergy-e.Spec.CoreDamage);LastMessage="코어 -"+e.Spec.CoreDamage;}}
+                if(CoreEnergy<=0) {Phase=SessionPhase.Defeat;Projectiles.Clear();LastMessage="방어 실패";if(!Diagnostic)DefeatReached?.Invoke();return;}
+                Shoot(playerPosition,Player,"Player",0,ref playerCooldown,ref playerTarget,ref playerAcquired,dt,false);
+                work.Towers.AddRange(Towers);
+                foreach(var t in work.Towers)
+                {
+                    if(t.Kind==TowerKind.Support)continue;
+                    // Enumerable.Sum(float) accumulates in double before returning a float.
+                    double supportBuff=0;
+                    foreach(var support in Towers)if(support.Kind==TowerKind.Support&&Vector2.Distance(support.Position,t.Position)<=support.Stats.Range)supportBuff+=support.Stats.BuffDamage;
+                    float buff=Augments.TowerBuffPercent+(float)supportBuff;
+                    Shoot(t.Position,t.Stats,"Tower:"+t.Id,buff,ref t.Cooldown,ref t.Target,ref t.AcquiredOnce,dt,t.Kind==TowerKind.Multi);
+                }
+                work.Projectiles.AddRange(Projectiles);
+                foreach(var p in work.Projectiles) {if(!p.Target.Alive){Projectiles.Remove(p);continue;}p.Position=Vector2.MoveTowards(p.Position,p.Target.Position,p.Speed*dt);if(Vector2.Distance(p.Position,p.Target.Position)<=.00001f){ApplyDamage(p.Target,p.Damage,p.Source);Projectiles.Remove(p);}}
+                Enemies.RemoveAll(e=>!e.Alive);
+                bool complete=Diagnostic;
+                if(!complete&&rows.Count>0)
+                {
+                    complete=true;
+                    foreach(var row in rows)if(!spawned.TryGetValue(row,out int count)||count<row.Count){complete=false;break;}
+                }
+                if(complete&&Enemies.Count==0)CompleteRound();
+                }
+            finally{work.Clear();if(stepWorkPool.Count<MaxRetainedWorkBuffers)stepWorkPool.Push(work);}
         }
         void CompleteRound()
         {
@@ -154,14 +211,51 @@ namespace CoreGuardian
         }
         void Shoot(Vector2 position,CombatStats stats,string source,float buff,ref float cooldown,ref EnemyState target,ref bool acquired,float dt,bool multi)
         {
-            var available=Enemies.Where(e=>e.Alive&&Vector2.Distance(e.Position,position)<=stats.Range).ToArray();
-            bool isTower=source!="Player";
-            if(target!=null&&(!target.Alive||Vector2.Distance(target.Position,position)>stats.Range))target=null;
-            if(isTower&&target!=null&&target.Kind==EnemyKind.Boss&&available.Any(e=>e.Kind!=EnemyKind.Boss))target=null;
-            if(target==null&&available.Length>0) {target=isTower?(acquired?CombatRules.TowerPriorityOrder(available).First():available.OrderBy(e=>e.Kind==EnemyKind.Boss?1:0).ThenBy(e=>e.Id).First()):(acquired?CombatRules.Priority(available):available.OrderBy(e=>e.Id).First());acquired=true;}
-            cooldown-=dt;if(available.Length==0||stats.Rate<=0){cooldown=Mathf.Max(0,cooldown);return;}if(cooldown>0)return;
-            var targets=multi?CombatRules.TowerPriorityOrder(available).Take(3).ToArray():new[]{target};
-            while(cooldown<=.00001f) {int launched=0;foreach(var e in targets) {if(e==null)continue;int shots=source=="Player"?1+Augments.ExtraPlayerProjectiles:1;for(int shot=0;shot<shots;shot++) {var projectile=new ProjectileState{Id=nextProjectile++,Position=position,Target=e,Source=source,Damage=stats.Damage*(1+buff/100f),Speed=stats.ProjectileSpeed};Projectiles.Add(projectile);launched++;ProjectileLaunched?.Invoke(projectile);}}if(launched>0)AttackLaunched?.Invoke(source,launched);float nextCooldown=cooldown+1/stats.Rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;}
+            var work=shotWorkPool.Count>0?shotWorkPool.Pop():new ShotWork();
+            try
+            {
+                var available=work.Available;
+                foreach(var enemy in Enemies)if(enemy.Alive&&Vector2.Distance(enemy.Position,position)<=stats.Range)available.Add(enemy);
+                bool isTower=source!="Player";
+                if(target!=null&&(!target.Alive||Vector2.Distance(target.Position,position)>stats.Range))target=null;
+                if(isTower&&target!=null&&target.Kind==EnemyKind.Boss)
+                    foreach(var enemy in available)if(enemy.Kind!=EnemyKind.Boss){target=null;break;}
+                if(target==null&&available.Count>0)
+                {
+                    foreach(var enemy in available)
+                        if(target==null||(acquired?ComparePriority(enemy,target,isTower):CompareInitialTarget(enemy,target,isTower))<0)target=enemy;
+                    acquired=true;
+                }
+                cooldown-=dt;if(available.Count==0||stats.Rate<=0){cooldown=Mathf.Max(0,cooldown);return;}if(cooldown>0)return;
+                var targets=work.Targets;int targetCount=1;
+                if(!multi)targets[0]=target;
+                else
+                {
+                    targetCount=0;
+                    // Stable insertion keeps the first three entries in the original full sort.
+                    foreach(var enemy in available)
+                    {
+                        int index=0;while(index<targetCount&&ComparePriority(enemy,targets[index],true)>=0)index++;
+                        if(index>=3)continue;
+                        for(int i=Math.Min(targetCount,2);i>index;i--)targets[i]=targets[i-1];
+                        targets[index]=enemy;targetCount=Math.Min(targetCount+1,3);
+                    }
+                }
+                while(cooldown<=.00001f) {int launched=0;for(int i=0;i<targetCount;i++) {var e=targets[i];if(e==null)continue;int shots=source=="Player"?1+Augments.ExtraPlayerProjectiles:1;for(int shot=0;shot<shots;shot++) {var projectile=new ProjectileState{Id=nextProjectile++,Position=position,Target=e,Source=source,Damage=stats.Damage*(1+buff/100f),Speed=stats.ProjectileSpeed};Projectiles.Add(projectile);launched++;ProjectileLaunched?.Invoke(projectile);}}if(launched>0)AttackLaunched?.Invoke(source,launched);float nextCooldown=cooldown+1/stats.Rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;}
+                }
+            finally{work.Clear();if(shotWorkPool.Count<MaxRetainedWorkBuffers)shotWorkPool.Push(work);}
+        }
+        static int TargetRank(EnemyState enemy,bool tower)=>enemy.Kind==EnemyKind.Defense?0:enemy.Kind==EnemyKind.Buff?1:tower&&enemy.Kind==EnemyKind.Boss?3:2;
+        static int ComparePriority(EnemyState a,EnemyState b,bool tower)
+        {
+            int order=TargetRank(a,tower).CompareTo(TargetRank(b,tower));if(order!=0)return order;
+            order=a.Health.CompareTo(b.Health);if(order!=0)return order;
+            order=a.PathRemaining.CompareTo(b.PathRemaining);return order!=0?order:a.Id.CompareTo(b.Id);
+        }
+        static int CompareInitialTarget(EnemyState a,EnemyState b,bool tower)
+        {
+            if(tower){int order=(a.Kind==EnemyKind.Boss?1:0).CompareTo(b.Kind==EnemyKind.Boss?1:0);if(order!=0)return order;}
+            return a.Id.CompareTo(b.Id);
         }
         public int ApplyDamage(EnemyState target,float damage,string source)
         {

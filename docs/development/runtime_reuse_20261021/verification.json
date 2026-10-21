@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-21 Asia/Seoul",
+  "baseCommit": "5914347",
+  "recompile": {
+    "status": "completed",
+    "failed": false,
+    "errors": [],
+    "compilationFailed": false
+  },
+  "warnings": {
+    "returned": 116,
+    "counts": {
+      "UAC0005": 36,
+      "CS0618": 79,
+      "other": 1
+    },
+    "affected": [
+      "Assets\\Scripts\\CoreGuardianCombatArt.cs(32,99): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "Assets\\Scripts\\CoreGuardianCombatArt.cs(32,18): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'"
+    ],
+    "groundTruth": {
+      "sampledUtc": "2026-10-21T04:36:39.7970057Z",
+      "ageMs": 217,
+      "compilationFailed": false,
+      "compiling": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 117,
+      "consoleLogs": 68,
+      "seeded": true
+    }
+  },
+  "review": {
+    "mode": "read-only independent code review",
+    "actionableFindings": 0
+  },
+  "tests": "deferred by user; not run",
+  "play": "not started",
+  "performance": "not measured",
+  "scene": {
+    "path": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+    "isDirty": true,
+    "dirtyBeforeChanges": true,
+    "savedByAgent": false
+  },
+  "settingsComparedTo": "../shared_body_mask_20261021/settings_after.json",
+  "settingsAllMatched": true
+}

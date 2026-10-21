@@ -14,9 +14,14 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
     readonly Dictionary<int,Vector2> previousEnemies=new Dictionary<int,Vector2>();
     readonly Dictionary<int,Vector3> launchOffsets=new Dictionary<int,Vector3>();
     readonly Dictionary<int,Vector2> launchOrigins=new Dictionary<int,Vector2>();
+    readonly List<int> expiredIds=new List<int>();
+    readonly HashSet<int> activeProjectileIds=new HashSet<int>();
+    readonly HashSet<int> livingEnemyIds=new HashSet<int>();
     Vector3 previousPlayer;
     sealed class Flash {public SpriteRenderer renderer; public float age;public int createdFrame;}
     readonly List<Flash> flashes=new List<Flash>();
+    const int MaxRetainedFlashes=128;
+    readonly Stack<Flash> flashPool=new Stack<Flash>();
     readonly Dictionary<string,int> volleyFrames=new Dictionary<string,int>();
     Sprite flashSprite;
 
@@ -70,15 +75,32 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         previousPlayer=game.player.transform.position;
         if(target!=null&&target.Alive)player.Aim((Vector2)(game.World(target.Position)-game.player.transform.position),dt);
         player.Present(dt);
-        foreach(int id in enemies.Where(x=>x.Value==null).Select(x=>x.Key).ToArray()){enemies.Remove(id);previousEnemies.Remove(id);}
-        if(pendingHits.Count>0)pendingHits.RemoveWhere(id=>!game.Session.Enemies.Any(e=>e.Id==id&&e.Alive));
-        foreach(int id in towers.Where(x=>x.Value==null).Select(x=>x.Key).ToArray())towers.Remove(id);
-        var active=new HashSet<int>(game.Session.Projectiles.Select(p=>p.Id));
-        foreach(int id in launchOffsets.Keys.Where(id=>!active.Contains(id)).ToArray()){launchOffsets.Remove(id);launchOrigins.Remove(id);}
+        expiredIds.Clear();foreach(var entry in enemies)if(entry.Value==null)expiredIds.Add(entry.Key);
+        foreach(int id in expiredIds){enemies.Remove(id);previousEnemies.Remove(id);}
+        if(pendingHits.Count>0)
+        {
+            livingEnemyIds.Clear();foreach(var enemy in game.Session.Enemies)if(enemy.Alive)livingEnemyIds.Add(enemy.Id);
+            expiredIds.Clear();foreach(int id in pendingHits)if(!livingEnemyIds.Contains(id))expiredIds.Add(id);
+            foreach(int id in expiredIds)pendingHits.Remove(id);
+        }
+        expiredIds.Clear();foreach(var entry in towers)if(entry.Value==null)expiredIds.Add(entry.Key);
+        foreach(int id in expiredIds)towers.Remove(id);
+        activeProjectileIds.Clear();foreach(var projectile in game.Session.Projectiles)activeProjectileIds.Add(projectile.Id);
+        expiredIds.Clear();foreach(int id in launchOffsets.Keys)if(!activeProjectileIds.Contains(id))expiredIds.Add(id);
+        foreach(int id in expiredIds){launchOffsets.Remove(id);launchOrigins.Remove(id);}
+        expiredIds.Clear();
         for(int i=flashes.Count-1;i>=0;i--)
         {
             var f=flashes[i];if(f.createdFrame!=Time.frameCount)f.age+=dt;
-            if(f.age>=.07f||f.renderer==null){if(f.renderer!=null)Destroy(f.renderer.gameObject);flashes.RemoveAt(i);continue;}
+            if(f.age>=.07f||f.renderer==null)
+            {
+                if(f.renderer!=null)
+                {
+                    f.renderer.gameObject.SetActive(false);
+                    if(flashPool.Count<MaxRetainedFlashes)flashPool.Push(f);else Destroy(f.renderer.gameObject);
+                }
+                flashes.RemoveAt(i);continue;
+            }
             f.renderer.color=new Color(1,.85f,.4f,1-f.age/.07f);
         }
     }
@@ -111,11 +133,15 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         launchOrigins[shot.Id]=shot.Position;
         // Original cutouts keep the approved projectile effect; only its real launch origin moves.
         if(source.UsesOriginalArtwork)return;
-        var flash=new GameObject("Muzzle_"+shot.Id).AddComponent<SpriteRenderer>();
+        Flash entry=null;
+        while(flashPool.Count>0&&entry==null){var candidate=flashPool.Pop();if(candidate.renderer!=null)entry=candidate;}
+        if(entry==null)entry=new Flash{renderer=new GameObject("Muzzle_"+shot.Id).AddComponent<SpriteRenderer>()};
+        var flash=entry.renderer;flash.name="Muzzle_"+shot.Id;
         flash.transform.SetParent(transform,false);flash.transform.position=muzzle;
         flash.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
-        flash.sprite=flashSprite;flash.sortingOrder=1501;CoreGuardianCombatArt.SetWidth(flash,.12f);
-        flashes.Add(new Flash{renderer=flash,createdFrame=Time.frameCount});
+        flash.sprite=flashSprite;flash.color=Color.white;flash.flipX=flash.flipY=false;flash.sortingOrder=1501;CoreGuardianCombatArt.SetWidth(flash,.12f);
+        entry.age=0;entry.createdFrame=Time.frameCount;
+        flash.transform.SetAsLastSibling();flash.gameObject.SetActive(true);flashes.Add(entry);
     }
     public Vector3 ProjectilePosition(ProjectileState shot)
     {
@@ -129,5 +155,6 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         if(game!=null&&game.Session!=null)game.Session.ProjectileLaunched-=Launched;
         if(game!=null&&game.Session!=null)game.Session.DamageApplied-=Damaged;
         foreach(var flash in flashes)if(flash.renderer!=null)Destroy(flash.renderer.gameObject);
+        while(flashPool.Count>0){var flash=flashPool.Pop();if(flash.renderer!=null)Destroy(flash.renderer.gameObject);}
     }
 }

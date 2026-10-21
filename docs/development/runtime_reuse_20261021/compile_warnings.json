@@ -1,0 +1,1068 @@
+{
+  "entries": [
+    {
+      "seq": 664,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianCoreAmbientTests.cs(11,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 665,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianHitFlashTests.cs(9,36): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 666,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianCoreParticleSettingsTests.cs(11,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 667,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskAtlasTests.cs(11,36): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 668,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianObjectEmphasisTests.cs(9,36): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 669,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianCoreFeedbackTests.cs(12,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 670,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianCoreAmbientTests.cs(28,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 671,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianPlayerFacingTests.cs(10,23): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 672,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianOriginalGaitTests.cs(47,23): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 673,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianSharedMaskMaterialTests.cs(12,36): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 674,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianSessionTests.cs(16,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 675,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianOriginalGaitTests.cs(88,22): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 676,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianSelectionOutlineTests.cs(14,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 677,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianBodyMaskSharingTests.cs(11,26): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 678,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianSelectionOutlineTests.cs(96,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 679,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianTowerGlowTests.cs(18,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 680,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianOriginalGaitTests.cs(179,26): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 681,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianPlacementHudPlayModeTests.cs(18,111): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 682,
+      "timestampUtc": "2026-10-21T04:35:44.8503103Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianPlacementHudPlayModeTests.cs(18,42): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 683,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianHitFlashPlayModeTests.cs(21,71): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 684,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianHitFlashPlayModeTests.cs(21,29): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 685,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianSelectedAudioPlayModeTests.cs(43,75): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 686,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianSelectedAudioPlayModeTests.cs(43,29): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 687,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianSelectionOutlinePlayModeTests.cs(17,108): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 688,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianSelectionOutlinePlayModeTests.cs(17,41): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 689,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCoreFeedbackPlayModeTests.cs(22,71): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 690,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCoreFeedbackPlayModeTests.cs(22,29): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 691,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCoreFeedbackPlayModeTests.cs(31,75): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 692,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCoreFeedbackPlayModeTests.cs(31,22): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 693,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCoreAmbientPlayModeTests.cs(32,17): warning CS0618: 'Object.FindFirstObjectByType(Type)' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 694,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianPlayerFacingPlayModeTests.cs(21,114): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 695,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianPlayerFacingPlayModeTests.cs(21,72): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 696,
+      "timestampUtc": "2026-10-21T04:35:44.8518193Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(23,75): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 697,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(23,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 698,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(23,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 699,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(23,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 700,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianPlacementHudPlayModeTests.cs(107,73): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 701,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianPlacementHudPlayModeTests.cs(107,25): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 702,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianTowerGlowPlayModeTests.cs(22,75): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 703,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianTowerGlowPlayModeTests.cs(22,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 704,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(21,114): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 705,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(21,72): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 706,
+      "timestampUtc": "2026-10-21T04:35:44.8526665Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(66,74): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 707,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(66,32): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 708,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianUpgradeFeedbackPlayModeTests.cs(25,114): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 709,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianUpgradeFeedbackPlayModeTests.cs(25,47): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 710,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(73,114): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 711,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(73,72): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 712,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianUpgradeFeedbackPlayModeTests.cs(48,114): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 713,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianUpgradeFeedbackPlayModeTests.cs(48,47): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 714,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(107,74): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 715,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(107,32): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 716,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(61,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 717,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(61,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 718,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(150,74): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 719,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(150,32): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 720,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(105,114): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 721,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(105,72): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 722,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(173,63): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 723,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(173,21): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 724,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(201,63): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 725,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(201,21): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 726,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(100,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 727,
+      "timestampUtc": "2026-10-21T04:35:44.85319Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(100,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 728,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(141,114): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 729,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(141,72): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 730,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(219,70): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 731,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(219,21): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 732,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(247,73): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 733,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(247,23): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 734,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(252,75): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 735,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(252,24): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 736,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(191,110): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 737,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(191,68): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 738,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(136,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 739,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(136,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 740,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(237,110): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 741,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(237,68): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 742,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(182,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 743,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(182,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 744,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(230,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 745,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(230,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 746,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(273,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 747,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(273,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 748,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(311,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 749,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(311,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 750,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(353,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 751,
+      "timestampUtc": "2026-10-21T04:35:44.8541949Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(353,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 752,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(402,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 753,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(402,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 754,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(451,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 755,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(451,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 756,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(505,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 757,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(505,33): warning CS0618: 'Object.FindObjectsByType(Type, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType(Type) or FindObjectsByType(Type, FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 758,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianHudInteractionTests.cs(12,29): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 759,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianAnimationPlayModeTests.cs(14,36): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 760,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianHitFlashPlayModeTests.cs(20,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 761,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCoreFeedbackPlayModeTests.cs(21,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 762,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianSelectionOutlinePlayModeTests.cs(16,36): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 763,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianPlayerFacingPlayModeTests.cs(14,33): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 764,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCoreAmbientPlayModeTests.cs(31,21): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 765,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(22,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 766,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianTowerGlowPlayModeTests.cs(21,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 767,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianUpgradeFeedbackPlayModeTests.cs(16,36): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 768,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianPlacementHudPlayModeTests.cs(17,38): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 769,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(65,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 770,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(67,38): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 771,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(106,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 772,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(242,27): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 773,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(251,28): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 774,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(218,25): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 775,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(172,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 776,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianRuntimePlayModeTests.cs(149,18): warning UAC0005: AppDomain.GetAssemblies() in Unity may return already unloaded assemblies and result in errors or leaks. Use Unity APIs instead, such as 'CurrentAssemblies.GetLoadedAssemblies()' or 'TypeCache.GetTypesDerivedFrom()'.",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 777,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Scripts\\CoreGuardianCombatArt.cs(32,99): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 778,
+      "timestampUtc": "2026-10-21T04:35:44.8552144Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Scripts\\CoreGuardianCombatArt.cs(32,18): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 806,
+      "timestampUtc": "2026-10-21T04:36:21.3805455Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Account API did not become accessible within 30 seconds. This may be due to network issues or editor focus.",
+      "stackTrace": "UnityEngine.Debug:LogWarning (object)\nUnity.AI.Toolkit.Accounts.Services.States.ApiAccessibleState/<WaitForCloudProjectSettings>d__4:MoveNext () (at ./Library/PackageCache/com.unity.ai.assistant@8d1e3e89e3a7/Modules/Unity.AI.Toolkit.Accounts/Services/States/ApiAccessibleState.cs:46)\nSystem.Threading.Tasks.TaskCompletionSource`1<bool>:TrySetResult (bool)\nUnity.AI.Toolkit.EditorTask/<>c__DisplayClass22_0:<WaitForCondition>b__0 () (at ./Library/PackageCache/com.unity.ai.assistant@8d1e3e89e3a7/Modules/Unity.AI.Toolkit.Async/EditorTask.cs:420)\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions ()\n",
+      "seeded": false
+    }
+  ],
+  "cursor": 806,
+  "session": "8b5baadf8c0d45c0819b6af32c7aa4d0",
+  "returned": 116,
+  "dropped": false,
+  "reset": false,
+  "counts": {
+    "error": 17,
+    "warn": 456,
+    "log": 324
+  },
+  "groundTruth": {
+    "sampledUtc": "2026-10-21T04:36:39.7970057Z",
+    "ageMs": 217,
+    "compilationFailed": false,
+    "compiling": false,
+    "consoleErrors": 0,
+    "consoleWarnings": 117,
+    "consoleLogs": 68,
+    "seeded": true
+  }
+}

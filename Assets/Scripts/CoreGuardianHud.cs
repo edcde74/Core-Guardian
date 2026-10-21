@@ -19,6 +19,14 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     readonly List<Action> refresh = new List<Action>();
     float nextRefresh;
     string damageSignature;
+    sealed class DamageRow
+    {
+        public RectTransform Root, Bar;
+        public UnityEngine.UI.Image Icon;
+        public UnityEngine.UI.Text Label, Total;
+    }
+    // Retain the peak row count; inactive rows do not participate in the layout.
+    readonly List<DamageRow> damageRows=new List<DamageRow>();
     RectTransform damageFold;
     static readonly Dictionary<string,Sprite> damageSprites=new Dictionary<string,Sprite>();
     RectTransform augmentationPanel;
@@ -38,6 +46,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     int lastTower=-1;
     sealed class DamageNumber
     {
+        public string Kind;
         public TextMeshProUGUI Text;
         public RectTransform Root;
         public UnityEngine.UI.Image Icon;
@@ -47,6 +56,11 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         public int Lane;
     }
     readonly List<DamageNumber> damageNumbers=new List<DamageNumber>();
+    const int MaxRetainedNumbersPerKind=128;
+    readonly Stack<DamageNumber> hitNumberPool=new Stack<DamageNumber>();
+    readonly Stack<DamageNumber> goldNumberPool=new Stack<DamageNumber>();
+    readonly Stack<DamageNumber> coreNumberPool=new Stack<DamageNumber>();
+    bool disposingNumbers;
     int nextDamageLane;
     public void Configure(CoreGuardianPrototype prototype)
     {
@@ -314,15 +328,9 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         var number=FloatingNumber("GoldNumber","+"+amount,position,new Color(1f,.76f,.22f),0);
         var text=number.Text;
         float textWidth=Mathf.Ceil(text.GetPreferredValues(text.text).x);
-        var group=Box("GoldFeedback",worldFeedback,new Vector2(.5f,.5f),Vector2.zero,new Vector2(40+textWidth,52),false);
-        text.rectTransform.SetParent(group,false);
-        text.rectTransform.anchorMin=text.rectTransform.anchorMax=text.rectTransform.pivot=new Vector2(0,.5f);
-        text.rectTransform.anchoredPosition=new Vector2(40,0);
+        number.Root.sizeDelta=new Vector2(40+textWidth,52);
         text.rectTransform.sizeDelta=new Vector2(textWidth,52);
-        text.alignment=TextAlignmentOptions.Left;
-        var symbol=Box("GoldGain",group,new Vector2(0,.5f),Vector2.zero,new Vector2(36,36),false).gameObject.AddComponent<UnityEngine.UI.Image>();
-        symbol.sprite=icon;symbol.preserveAspect=true;symbol.raycastTarget=false;
-        number.Root=group;number.Icon=symbol;number.Offset=new Vector2(0,24);
+        number.Icon.sprite=icon;
     }
     public UnityEngine.UI.Graphic[] CoreDamageGraphics()=>new UnityEngine.UI.Graphic[]{topDetails.Find("Symbol_Core").GetComponent<UnityEngine.UI.Image>(),topDetails.Find("Status_Core").GetComponent<UnityEngine.UI.Text>()};
     public void ShowCoreNumber(Vector3 position,int amount)
@@ -333,14 +341,45 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     }
     DamageNumber FloatingNumber(string name,string value,Vector3 position,Color color,int lane)
     {
+        var pool=NumberPool(name);
+        DamageNumber number=null;
+        while(pool.Count>0&&number==null){var candidate=pool.Pop();if(candidate.Root!=null&&candidate.Text!=null)number=candidate;else if(candidate.Root!=null)Destroy(candidate.Root.gameObject);}
+        if(number==null)number=CreateFloatingNumber(name);
+        number.World=position;number.Started=Time.time;number.Lane=lane;
+        number.Text.text=value;number.Text.color=color;
+        if(number.Icon!=null)number.Icon.color=Color.white;
+        number.Root.localScale=Vector3.one;number.Root.localRotation=Quaternion.identity;
+        number.Root.SetAsLastSibling();number.Root.gameObject.SetActive(true);
+        damageNumbers.Add(number);return number;
+    }
+    Stack<DamageNumber> NumberPool(string kind)=>kind=="GoldNumber"?goldNumberPool:kind=="CoreDamageNumber"?coreNumberPool:hitNumberPool;
+    DamageNumber CreateFloatingNumber(string name)
+    {
         var rect=Box(name,worldFeedback,new Vector2(.5f,.5f),Vector2.zero,new Vector2(200,52),false);
         var text=rect.gameObject.AddComponent<TextMeshProUGUI>();
         text.font=damageFont;text.fontSharedMaterial=damageMaterial;text.fontSize=32;
-        text.alignment=TextAlignmentOptions.Center;text.text=value;text.color=color;
+        text.alignment=TextAlignmentOptions.Center;
         text.raycastTarget=false;text.textWrappingMode=TextWrappingModes.NoWrap;
         text.overflowMode=TextOverflowModes.Overflow;
-        var number=new DamageNumber{Text=text,Root=rect,World=position,Started=Time.time,Lane=lane};
-        damageNumbers.Add(number);return number;
+        var number=new DamageNumber{Kind=name,Text=text,Root=rect};
+        if(name=="GoldNumber")
+        {
+            var group=Box("GoldFeedback",worldFeedback,new Vector2(.5f,.5f),Vector2.zero,new Vector2(40,52),false);
+            rect.SetParent(group,false);rect.anchorMin=rect.anchorMax=rect.pivot=new Vector2(0,.5f);
+            rect.anchoredPosition=new Vector2(40,0);text.alignment=TextAlignmentOptions.Left;
+            var symbol=Box("GoldGain",group,new Vector2(0,.5f),Vector2.zero,new Vector2(36,36),false).gameObject.AddComponent<UnityEngine.UI.Image>();
+            symbol.preserveAspect=true;symbol.raycastTarget=false;
+            number.Root=group;number.Icon=symbol;number.Offset=new Vector2(0,24);
+        }
+        return number;
+    }
+    void ReturnNumber(DamageNumber number)
+    {
+        if(number.Root==null)return;
+        number.Root.gameObject.SetActive(false);
+        var pool=NumberPool(number.Kind);
+        if(!disposingNumbers&&pool.Count<MaxRetainedNumbersPerKind)pool.Push(number);
+        else Destroy(number.Root.gameObject);
     }
     void LateUpdate()
     {
@@ -348,7 +387,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         for(int i=damageNumbers.Count-1;i>=0;i--)
         {
             var number=damageNumbers[i];float age=Time.time-number.Started;
-            if(age>=.85f){Destroy(number.Root.gameObject);damageNumbers.RemoveAt(i);continue;}
+            if(age>=.85f){ReturnNumber(number);damageNumbers.RemoveAt(i);continue;}
             if(camera==null)continue;
             var screen=camera.WorldToScreenPoint(number.World);
             number.Root.gameObject.SetActive(screen.z>0);
@@ -360,7 +399,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     }
     public void ClearDamageNumbers()
     {
-        foreach(var number in damageNumbers)if(number.Root!=null)Destroy(number.Root.gameObject);
+        foreach(var number in damageNumbers)ReturnNumber(number);
         damageNumbers.Clear();nextDamageLane=0;
     }
     void Update(){if(game==null||!game.Ready||Time.unscaledTime<nextRefresh)return;nextRefresh=Time.unscaledTime+.2f;Refresh();}
@@ -387,22 +426,44 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         var totals=s.DamageTotals.OrderByDescending(x=>x.Value).ThenBy(x=>x.Key).ToArray();
         var signature=string.Join("|",totals.Select(x=>x.Key+":"+x.Value));
         if(signature==damageSignature)return;damageSignature=signature;
-        foreach(Transform child in damageContent)Destroy(child.gameObject);
         int max=totals.Length==0?0:totals[0].Value;
-        foreach(var pair in totals)
+        for(int i=0;i<totals.Length;i++)
         {
-            var row=Box(pair.Key,damageContent,new Vector2(0,1),Vector2.zero,new Vector2(288,60),false);
-            row.gameObject.AddComponent<UnityEngine.UI.LayoutElement>().preferredHeight=60;
-            var icon=Box("RoleIcon",row,new Vector2(0,1),new Vector2(4,-2),new Vector2(25,25),false).gameObject.AddComponent<UnityEngine.UI.Image>();
-            icon.sprite=DamageSprite(DamageRole(pair.Key));icon.preserveAspect=true;icon.raycastTarget=false;
-            Text("Value",row,new Vector2(34,-2),new Vector2(182,28),17).text=SourceName(pair.Key);
-            var total=Text("Total",row,new Vector2(216,-2),new Vector2(68,28),17);total.text=pair.Value.ToString();total.alignment=TextAnchor.MiddleRight;
-            total.resizeTextForBestFit=true;total.resizeTextMinSize=11;total.resizeTextMaxSize=17;total.horizontalOverflow=HorizontalWrapMode.Overflow;
-            var track=Box("BarTrack",row,new Vector2(0,1),new Vector2(4,-34),new Vector2(280,18));
-            track.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
-            var bar=Box("Bar",track,new Vector2(0,1),new Vector2(4,-4),new Vector2(max==0?0:272f*pair.Value/max,10),false);
-            var fill=bar.gameObject.AddComponent<UnityEngine.UI.Image>();fill.color=new Color(.1f,.73f,.77f);fill.raycastTarget=false;
+            if(i==damageRows.Count)damageRows.Add(CreateDamageRow());
+            var row=damageRows[i];var pair=totals[i];
+            row.Root.name=pair.Key;
+            row.Icon.sprite=DamageSprite(DamageRole(pair.Key));
+            row.Label.text=SourceName(pair.Key);
+            row.Total.text=pair.Value.ToString();
+            row.Bar.sizeDelta=new Vector2(max==0?0:272f*pair.Value/max,10);
+            if(!row.Root.gameObject.activeSelf)row.Root.gameObject.SetActive(true);
         }
+        for(int i=totals.Length;i<damageRows.Count;i++)
+            if(damageRows[i].Root.gameObject.activeSelf)damageRows[i].Root.gameObject.SetActive(false);
     }
-    void OnDestroy(){if(game!=null){game.Changed-=Refresh;if(game.Session!=null)game.Session.DamageApplied-=ShowDamageNumber;}ClearDamageNumbers();}
+    DamageRow CreateDamageRow()
+    {
+        var row=Box("DamageRow",damageContent,new Vector2(0,1),Vector2.zero,new Vector2(288,60),false);
+        row.gameObject.AddComponent<UnityEngine.UI.LayoutElement>().preferredHeight=60;
+        var icon=Box("RoleIcon",row,new Vector2(0,1),new Vector2(4,-2),new Vector2(25,25),false).gameObject.AddComponent<UnityEngine.UI.Image>();
+        icon.preserveAspect=true;icon.raycastTarget=false;
+        var label=Text("Value",row,new Vector2(34,-2),new Vector2(182,28),17);
+        var total=Text("Total",row,new Vector2(216,-2),new Vector2(68,28),17);total.alignment=TextAnchor.MiddleRight;
+        total.resizeTextForBestFit=true;total.resizeTextMinSize=11;total.resizeTextMaxSize=17;total.horizontalOverflow=HorizontalWrapMode.Overflow;
+        var track=Box("BarTrack",row,new Vector2(0,1),new Vector2(4,-34),new Vector2(280,18));
+        track.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+        var bar=Box("Bar",track,new Vector2(0,1),new Vector2(4,-4),new Vector2(0,10),false);
+        var fill=bar.gameObject.AddComponent<UnityEngine.UI.Image>();fill.color=new Color(.1f,.73f,.77f);fill.raycastTarget=false;
+        return new DamageRow{Root=row,Bar=bar,Icon=icon,Label=label,Total=total};
+    }
+    void OnDestroy()
+    {
+        if(game!=null){game.Changed-=Refresh;if(game.Session!=null)game.Session.DamageApplied-=ShowDamageNumber;}
+        disposingNumbers=true;ClearDamageNumbers();
+        DestroyNumberPool(hitNumberPool);DestroyNumberPool(goldNumberPool);DestroyNumberPool(coreNumberPool);
+    }
+    void DestroyNumberPool(Stack<DamageNumber> pool)
+    {
+        while(pool.Count>0){var number=pool.Pop();if(number.Root!=null)Destroy(number.Root.gameObject);}
+    }
 }
