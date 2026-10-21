@@ -87,9 +87,9 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     void OnDestroy(){PlayerPrefs.Save();}
     void OnApplicationPause(bool paused){if(paused)PlayerPrefs.Save();}
     void Update(){for(int i=0;i<voices.Length;i++)if(voices[i]!=null)voices[i].volume=voiceCues[i]?.Volume??CoreGuardianSoundSettings.Volume*ShotGain;}
-    void OnLaunch(ProjectileState projectile)
+    void OnLaunch(ProjectileSnapshot projectile)
     {
-        if(projectile==null||session==null||projectile.Source==null)return;
+        if(session==null||projectile.Source==null)return;
         if(projectile.Source=="Player")
         {
             if(Time.unscaledTime<nextPlayerShot){DroppedCount++;return;}
@@ -157,10 +157,10 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         if(!PlayClip(bossSpawnClip,true,true))return false;
         BossSpawnPlayedCount++;return true;
     }
-    void OnMonsterHit(EnemyState target,int amount)
+    void OnMonsterHit(EnemySnapshot target,int amount)
     {
         // A lethal hit gets only the selected death clip, even during the hit cooldown.
-        if(target==null||amount<=0||target.Exited)return;
+        if(amount<=0||target.Exited)return;
         if(target.Health<=0)
         {
             if(Time.unscaledTime<nextMonsterDeath||!PlayClip(monsterDeathClip))return;

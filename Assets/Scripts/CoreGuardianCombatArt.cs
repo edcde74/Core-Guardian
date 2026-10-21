@@ -35,7 +35,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
         if(coreBody!=null)coreAmbient=new CoreGuardianCoreAmbient(coreBody,game.GetComponent<CoreGuardianCoreParticleSettings>());
     }
     public Sprite Get(string name)=>sprites[name];
-    public Sprite Projectile(ProjectileState projectile)
+    public Sprite Projectile(ProjectileHandle projectile)
     {
         if(projectile.Source=="Player")return Get("EngineerChip");
         var tower=game.Session.Towers.FirstOrDefault(t=>projectile.Source=="Tower:"+t.Id);
@@ -54,7 +54,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     {
         renderer.transform.localScale=Vector3.one*(width/renderer.sprite.bounds.size.x);
     }
-    void OnDamage(EnemyState enemy,int amount)
+    void OnDamage(EnemySnapshot enemy,int amount)
     {
         var position=game.World(enemy.Position);
         Show("EnemyHit",position+Vector3.up*.42f,.32f,.2f);

@@ -1,0 +1,220 @@
+{
+  "date": "2026-10-21 Asia/Seoul",
+  "baseCommit": "ed81777",
+  "previousProduct": "1f523a8",
+  "approvedDesign": "docs/superpowers/specs/2026-10-21-model-pooling-design.md",
+  "before": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ready\",\n  \"compiling\": false,\n  \"domainReloadInProgress\": false,\n  \"playMode\": \"stopped\",\n  \"lastHeartbeat\": \"2026-10-21T09:42:37.9826456Z\",\n  \"projectPath\": \"C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\",\n  \"unityVersion\": \"6000.6.2f1\"\n}"
+          }
+        ]
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"count\": 1,\n  \"scenes\": [\n    {\n      \"name\": \"CoreGuardian_CombatPrototype_20261008\",\n      \"path\": \"Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity\",\n      \"isLoaded\": true,\n      \"isDirty\": true,\n      \"isActive\": true,\n      \"rootCount\": 7\n    }\n  ]\n}"
+          }
+        ]
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"status\":\"no_tests\",\"message\":\"No test run in progress\"}"
+          }
+        ]
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"entries\": [],\n  \"cursor\": 1328,\n  \"session\": \"8b5baadf8c0d45c0819b6af32c7aa4d0\",\n  \"returned\": 0,\n  \"dropped\": false,\n  \"reset\": false,\n  \"counts\": {\n    \"error\": 17,\n    \"warn\": 944,\n    \"log\": 358\n  },\n  \"groundTruth\": {\n    \"sampledUtc\": \"2026-10-21T09:42:45.5736485Z\",\n    \"ageMs\": 281,\n    \"compilationFailed\": false,\n    \"compiling\": false,\n    \"consoleErrors\": 0,\n    \"consoleWarnings\": 23,\n    \"consoleLogs\": 204,\n    \"seeded\": true\n  }\n}"
+          }
+        ]
+      }
+    }
+  ],
+  "finalState": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ready\",\n  \"compiling\": false,\n  \"domainReloadInProgress\": false,\n  \"playMode\": \"stopped\",\n  \"lastHeartbeat\": \"2026-10-21T10:05:57.8391833Z\",\n  \"projectPath\": \"C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\",\n  \"unityVersion\": \"6000.6.2f1\"\n}"
+          }
+        ]
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"count\": 1,\n  \"scenes\": [\n    {\n      \"name\": \"CoreGuardian_CombatPrototype_20261008\",\n      \"path\": \"Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity\",\n      \"isLoaded\": true,\n      \"isDirty\": true,\n      \"isActive\": true,\n      \"rootCount\": 7\n    }\n  ]\n}"
+          }
+        ]
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"status\":\"no_tests\",\"message\":\"No test run in progress\"}"
+          }
+        ]
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"entries\": [],\n  \"cursor\": 1846,\n  \"session\": \"8b5baadf8c0d45c0819b6af32c7aa4d0\",\n  \"returned\": 0,\n  \"dropped\": false,\n  \"reset\": false,\n  \"counts\": {\n    \"error\": 20,\n    \"warn\": 1425,\n    \"log\": 392\n  },\n  \"groundTruth\": {\n    \"sampledUtc\": \"2026-10-21T10:06:04.0207291Z\",\n    \"ageMs\": 137,\n    \"compilationFailed\": false,\n    \"compiling\": false,\n    \"consoleErrors\": 0,\n    \"consoleWarnings\": 10,\n    \"consoleLogs\": 408,\n    \"seeded\": true\n  }\n}"
+          }
+        ]
+      }
+    }
+  ],
+  "compile": {
+    "initialFailure": {
+      "count": 3,
+      "errors": [
+        {
+          "seq": 1337,
+          "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianHitFlashPlayModeTests.cs(31,57): error CS0019: Operator '==' cannot be applied to operands of type 'EnemySnapshot' and 'EnemyHandle'"
+        },
+        {
+          "seq": 1403,
+          "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(415,71): error CS1503: Argument 1: cannot convert from '<null>' to 'CoreGuardian.EnemyHandle'"
+        },
+        {
+          "seq": 1427,
+          "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianSessionTests.cs(54,51): error CS1503: Argument 1: cannot convert from '<null>' to 'CoreGuardian.EnemyHandle'"
+        }
+      ]
+    },
+    "secondReturn": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"status\": \"completed\",\n  \"failed\": false,\n  \"errors\": [],\n  \"compilationFailed\": true\n}"
+        }
+      ]
+    },
+    "subsequent": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"status\": \"completed\",\n  \"failed\": false,\n  \"errors\": [],\n  \"compilationFailed\": false\n}"
+        }
+      ]
+    },
+    "reviewRepair": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"status\": \"completed\",\n  \"failed\": false,\n  \"errors\": [],\n  \"compilationFailed\": false\n}"
+        }
+      ]
+    },
+    "final": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"status\": \"completed\",\n  \"failed\": false,\n  \"errors\": [],\n  \"compilationFailed\": false\n}"
+        }
+      ]
+    },
+    "secondFlagNote": "Second return failed=false/errors=[] with compilationFailed=true; later console groundTruth false. Final call confirms all flags false."
+  },
+  "console": {
+    "returned": 484,
+    "dropped": false,
+    "reset": false,
+    "categories": {
+      "CS0618": 316,
+      "error": 3,
+      "UAC0005": 161,
+      "other": 4
+    },
+    "errors": [
+      {
+        "seq": 1337,
+        "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianHitFlashPlayModeTests.cs(31,57): error CS0019: Operator '==' cannot be applied to operands of type 'EnemySnapshot' and 'EnemyHandle'"
+      },
+      {
+        "seq": 1403,
+        "message": "Assets\\Game\\Tests\\PlayMode\\CoreGuardianCombatAudioPlayModeTests.cs(415,71): error CS1503: Argument 1: cannot convert from '<null>' to 'CoreGuardian.EnemyHandle'"
+      },
+      {
+        "seq": 1427,
+        "message": "Assets\\Game\\Tests\\EditMode\\CoreGuardianSessionTests.cs(54,51): error CS1503: Argument 1: cannot convert from '<null>' to 'CoreGuardian.EnemyHandle'"
+      }
+    ],
+    "productWarnings": [],
+    "groundTruth": {
+      "sampledUtc": "2026-10-21T10:06:05.9696956Z",
+      "ageMs": 307,
+      "compilationFailed": false,
+      "compiling": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 10,
+      "consoleLogs": 408,
+      "seeded": true
+    }
+  },
+  "review": {
+    "resolved": [
+      "final retired target position",
+      "defeat dead/exited retirement",
+      "initialization failure slot return",
+      "reference-reuse assertions preserved",
+      "quarantine finally cleanup and missing-spec snapshots"
+    ],
+    "finalNarrowChange": "ModelList-to-ModelList AddRange avoids interface enumeration; independent review no issue",
+    "remainingFindings": 0,
+    "mode": "independent static review, follow-up confirmed; no execution"
+  },
+  "tests": {
+    "newCases": 14,
+    "executed": 0,
+    "migratedExistingFiles": 5,
+    "reason": "User deferred Play, automatic tests and performance measurements"
+  },
+  "performance": {
+    "status": "unmeasured",
+    "before": null,
+    "after": null,
+    "savings": null,
+    "savingsPercent": null
+  },
+  "settings": {
+    "matchedExistingHashes": 3
+  },
+  "limits": {
+    "inactiveNormalPerKind": 32,
+    "inactiveBoss": 4,
+    "inactiveProjectile": 256,
+    "activeLimit": false
+  }
+}

@@ -341,7 +341,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         if(!placementFocused&&EventSystem.current!=null)EventSystem.current.SetSelectedGameObject(null);
         placementFocused=true;
     }
-    void ShowDamageNumber(EnemyState enemy,int amount)
+    void ShowDamageNumber(EnemySnapshot enemy,int amount)
     {
         FloatingNumber("HitDamage",amount.ToString(),game.World(enemy.Position)+Vector3.up*.95f,new Color(1f,.94f,.68f),nextDamageLane++%3-1);
     }

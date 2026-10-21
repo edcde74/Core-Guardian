@@ -28,9 +28,9 @@ public class CoreGuardianAnimationTimingTests
         var launched = new List<int>();
         var feedback = typeof(Session).GetEvent("ProjectileLaunched");
         Assert.That(feedback,Is.Not.Null,"Animation must receive the actual shot, including same-tick hits");
-        feedback.AddEventHandler(session,new Action<ProjectileState>(shot => {
-            Assert.That(session.Projectiles.Contains(shot),Is.True);
-            Assert.That(shot.Target,Is.SameAs(enemy));
+        feedback.AddEventHandler(session,new Action<ProjectileSnapshot>(shot => {
+            Assert.That(session.Projectiles.Contains(shot.Handle),Is.True);
+            Assert.That(shot.Target.Handle,Is.EqualTo(enemy));
             Assert.That(shot.Position,Is.EqualTo(new Vector2(0,.05f)));
             launched.Add(shot.Id);
         }));
@@ -46,10 +46,10 @@ public class CoreGuardianAnimationTimingTests
         var session = Game();
         session.Augments.Apply(new AugmentationCard(AugmentationGrade.Platinum,AugmentationFamily.Player));
         session.DebugSpawn(EnemyKind.Defense,1);
-        var shots = new List<ProjectileState>();
+        var shots = new List<ProjectileSnapshot>();
         var feedback = typeof(Session).GetEvent("ProjectileLaunched");
         Assert.That(feedback,Is.Not.Null);
-        feedback.AddEventHandler(session,new Action<ProjectileState>(shots.Add));
+        feedback.AddEventHandler(session,new Action<ProjectileSnapshot>(shots.Add));
         session.Tick(.01f,new Vector2(0,1));
         Assert.That(shots.Count,Is.EqualTo(2));
         Assert.That(shots.Select(p=>p.Id).Distinct().Count(),Is.EqualTo(2));

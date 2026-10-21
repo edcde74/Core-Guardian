@@ -1,0 +1,66 @@
+[
+  {
+    "Path": "Assets/Game/Scripts/CoreGuardian/CombatData.cs",
+    "SHA256": "828A7B09FA788F15C6B895F88353F7F01385FE6083F9BA4FA3F5B9439D40CE1E"
+  },
+  {
+    "Path": "Assets/Game/Scripts/CoreGuardian/Session.cs",
+    "SHA256": "DFC4E77C07C3388B6EC16445568198AD96E406555F21E45E17BB55CC077AE7AE"
+  },
+  {
+    "Path": "Assets/Game/Scripts/CoreGuardian/ModelPooling.cs",
+    "SHA256": "556F495BFE38D6D10BF1851BE11CE31884EAFC65834CD7B434D71C1952FC4A0C"
+  },
+  {
+    "Path": "Assets/Game/Scripts/CoreGuardian/ModelPooling.cs.meta",
+    "SHA256": "68024D6CF71505E3062CC3037E5A1E85E3D149A7A5F3EA1B4909A129AA4DD1EA"
+  },
+  {
+    "Path": "Assets/Game/Scripts/CoreGuardian/SessionModels.cs",
+    "SHA256": "BFC9A630D2C0BF7C18438F84F49D7E45A88B708BD14CC9C32C256C8832B41747"
+  },
+  {
+    "Path": "Assets/Game/Scripts/CoreGuardian/SessionModels.cs.meta",
+    "SHA256": "990041EFD04A4B6E845D5133C21B6D530F666B5670B81E680285BDC123394752"
+  },
+  {
+    "Path": "Assets/Scripts/CoreGuardianPrototype.cs",
+    "SHA256": "BF9DCF4064C25E0834BD1E39E59571B32842DB3ED5BF12EFBB60CCF7A8EEC968"
+  },
+  {
+    "Path": "Assets/Scripts/CoreGuardianCombatAnimation.cs",
+    "SHA256": "D9367FA20343EF4B77B5778DC2B9314B5C8AF617EE56C60809B489042D5B73E1"
+  },
+  {
+    "Path": "Assets/Scripts/CoreGuardianCombatArt.cs",
+    "SHA256": "57BE9890AD0DE6A1E7EA18F72997AD1A310ECBCC4755EFE2FC0EE9C1CF895BFF"
+  },
+  {
+    "Path": "Assets/Scripts/CoreGuardianCombatAudio.cs",
+    "SHA256": "373AF073629141CA9686A9694B26418DC9CE1DF7D213A309880F0C612D797C38"
+  },
+  {
+    "Path": "Assets/Scripts/CoreGuardianHud.cs",
+    "SHA256": "CB992D5C9EB958EA491C55E117D8C467EB73EF1510D2F41BFCB6BC5E674F354E"
+  },
+  {
+    "Path": "Assets/Game/Tests/EditMode/CoreGuardianSessionTests.cs",
+    "SHA256": "B90BB4687875CB3E9FBC3AA43D1AA02787DC664EAD5ABF4870ADBB8E4A3875EB"
+  },
+  {
+    "Path": "Assets/Game/Tests/EditMode/CoreGuardianAnimationTimingTests.cs",
+    "SHA256": "87753F230FB357DFD2D8B7331286FA39AC1F3918256DD7BA1FF2C17A7595D6F6"
+  },
+  {
+    "Path": "Assets/Game/Tests/PlayMode/CoreGuardianCombatAudioPlayModeTests.cs",
+    "SHA256": "768E9D21AA161091A34DD77044F0242C19C1778F6A082BD8DA24D175B87ED5CE"
+  },
+  {
+    "Path": "Assets/Game/Tests/PlayMode/CoreGuardianHitFlashPlayModeTests.cs",
+    "SHA256": "7AD0528A6FD7BFA5FB7DCF21A1671519EC33B30E4B4562A1B34CF2EEA66ED881"
+  },
+  {
+    "Path": "Assets/Game/Tests/PlayMode/CoreGuardianRuntimePlayModeTests.cs",
+    "SHA256": "86D2860A1E531FD445FB4B996FBCC84833D90D29BB7D742F436B2F3171F187D6"
+  }
+]

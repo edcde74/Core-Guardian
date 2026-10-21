@@ -412,7 +412,7 @@ public class CoreGuardianCombatAudioPlayModeTests
             var configure=type.GetMethod("Configure");configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});
             var count=type.GetProperty("MonsterHitPlayedCount");
             var enemy=session.DebugSpawn(EnemyKind.Attack);float hp=enemy.Health;
-            session.ApplyDamage(enemy,0,"Player");session.ApplyDamage(null,10,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(0));
+            session.ApplyDamage(enemy,0,"Player");session.ApplyDamage(default,10,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(0));
             session.ApplyDamage(enemy,1,"Player");Assert.That(enemy.Health,Is.EqualTo(hp-1));
             Assert.That(count.GetValue(audio),Is.EqualTo(1),"Configure twice must not double-subscribe");
             var clip=Resources.Load<AudioClip>((string)type.GetField("MonsterHitResourcePath").GetRawConstantValue());

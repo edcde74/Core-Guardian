@@ -37,7 +37,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         game.Session.ProjectileLaunched+=Launched;
         game.Session.DamageApplied+=Damaged;
     }
-    public void Enemy(EnemyState enemy,GameObject view)
+    public void Enemy(EnemyHandle enemy,GameObject view)
     {
         if(!enemies.TryGetValue(enemy.Id,out var animation))
         {
@@ -60,11 +60,11 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         if(!towers.TryGetValue(tower.Id,out var animation))
         {animation=CoreGuardianUnitAnimation.Attach(view,tower.Kind.ToString());towers.Add(tower.Id,animation);}
         var target=game.Session.TowerTargetForView(tower);
-        if(target!=null&&target.Alive)
+        if(target.Alive)
             animation.Aim(tower.Kind==TowerKind.Single?(Vector2)(game.World(target.Position)+Vector3.up*.25f-animation.AimOriginWorld):target.Position-tower.Position,Time.deltaTime);
         animation.Present(Time.deltaTime);
     }
-    void Damaged(EnemyState enemy,int amount)
+    void Damaged(EnemySnapshot enemy,int amount)
     {
         if(amount<=0||!enemy.Alive)return;
         if(enemies.TryGetValue(enemy.Id,out var animation)&&animation!=null)animation.ReceiveHit();
@@ -75,9 +75,9 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         float dt=Time.deltaTime;
         Vector2 velocity=dt>0?(Vector2)(game.player.transform.position-previousPlayer)/dt:Vector2.zero;
         var target=game.Session.PlayerTarget;
-        if(target!=null&&target.Alive)player.MoveWithoutTurning(velocity,dt);else player.Move(velocity,dt);
+        if(target.Alive)player.MoveWithoutTurning(velocity,dt);else player.Move(velocity,dt);
         previousPlayer=game.player.transform.position;
-        if(target!=null&&target.Alive)player.Aim((Vector2)(game.World(target.Position)-game.player.transform.position),dt);
+        if(target.Alive)player.Aim((Vector2)(game.World(target.Position)-game.player.transform.position),dt);
         player.Present(dt);
         expiredIds.Clear();foreach(var entry in enemies)if(entry.Value==null)expiredIds.Add(entry.Key);
         foreach(int id in expiredIds){enemies.Remove(id);previousEnemies.Remove(id);}
@@ -108,7 +108,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
             f.renderer.color=new Color(1,.85f,.4f,1-f.age/.07f);
         }
     }
-    void Launched(ProjectileState shot)
+    void Launched(ProjectileSnapshot shot)
     {
         CoreGuardianUnitAnimation source=null;float rate=1;bool single=false;
         if(shot.Source=="Player"){source=player;rate=game.Session.Player.Rate;}
@@ -148,11 +148,11 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         entry.age=0;entry.createdFrame=Time.frameCount;
         flash.transform.SetAsLastSibling();flash.gameObject.SetActive(true);flashes.Add(entry);
     }
-    public Vector3 ProjectilePosition(ProjectileState shot)
+    public Vector3 ProjectilePosition(ProjectileHandle shot)
     {
         var position=game.World(shot.Position)+Vector3.up*.25f;
         if(launchOffsets.TryGetValue(shot.Id,out var offset))
-            position+=offset*Mathf.Clamp01(1-Vector2.Distance(shot.Position,launchOrigins[shot.Id])/Mathf.Max(.001f,Vector2.Distance(shot.Target.Position,launchOrigins[shot.Id])));
+            position+=offset*Mathf.Clamp01(1-Vector2.Distance(shot.Position,launchOrigins[shot.Id])/Mathf.Max(.001f,Vector2.Distance(shot.TargetPosition,launchOrigins[shot.Id])));
         return position;
     }
     void OnDestroy()

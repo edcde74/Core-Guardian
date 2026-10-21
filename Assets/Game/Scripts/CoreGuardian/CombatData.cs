@@ -92,15 +92,15 @@ namespace CoreGuardian
     public static class CombatRules
     {
         public static int Damage(float damage,float defense) { return Mathf.FloorToInt(Mathf.Max(0,damage*(1-defense/100f))+.5f); }
-        sealed class TargetComparer : IComparer<EnemyState>
+        sealed class TargetComparer : IComparer<EnemyHandle>
         {
             readonly bool tower;
             public TargetComparer(bool tower){this.tower=tower;}
-            public int Compare(EnemyState a,EnemyState b)=>CompareTargetPriority(a,b,tower);
+            public int Compare(EnemyHandle a,EnemyHandle b)=>CompareTargetPriority(a,b,tower);
         }
-        static readonly IComparer<EnemyState> playerPriority=new TargetComparer(false),towerPriority=new TargetComparer(true);
-        static int TargetRank(EnemyState enemy,bool tower)=>enemy.Kind==EnemyKind.Defense?0:enemy.Kind==EnemyKind.Buff?1:tower&&enemy.Kind==EnemyKind.Boss?3:2;
-        public static int CompareTargetPriority(EnemyState a,EnemyState b,bool tower)
+        static readonly IComparer<EnemyHandle> playerPriority=new TargetComparer(false),towerPriority=new TargetComparer(true);
+        static int TargetRank(EnemyHandle enemy,bool tower)=>enemy.Kind==EnemyKind.Defense?0:enemy.Kind==EnemyKind.Buff?1:tower&&enemy.Kind==EnemyKind.Boss?3:2;
+        public static int CompareTargetPriority(EnemyHandle a,EnemyHandle b,bool tower)
         {
             int order=TargetRank(a,tower).CompareTo(TargetRank(b,tower));if(order!=0)return order;
             order=a.Health.CompareTo(b.Health);if(order!=0)return order;
@@ -108,19 +108,17 @@ namespace CoreGuardian
             // distance along every remaining X/Y segment, never straight-line distance to core.
             order=a.PathRemaining.CompareTo(b.PathRemaining);return order!=0?order:a.Id.CompareTo(b.Id);
         }
-        public static EnemyState Priority(IEnumerable<EnemyState> enemies)=>enemies.Where(e=>e.Alive).OrderBy(e=>e,playerPriority).FirstOrDefault();
-        public static IOrderedEnumerable<EnemyState> TowerPriorityOrder(IEnumerable<EnemyState> enemies)=>enemies.Where(e=>e.Alive).OrderBy(e=>e,towerPriority);
+        public static EnemyHandle Priority(IEnumerable<EnemyHandle> enemies)=>enemies.Where(e=>e.Alive).OrderBy(e=>e,playerPriority).FirstOrDefault();
+        public static IOrderedEnumerable<EnemyHandle> TowerPriorityOrder(IEnumerable<EnemyHandle> enemies)=>enemies.Where(e=>e.Alive).OrderBy(e=>e,towerPriority);
     }
-    public sealed class EnemyState { public int Id,Health;public EnemyKind Kind;public Vector2 Position;public float PathTravelled,PathRemaining,SlowRemaining;public bool Buffed,Exited;public EnemySpec Spec;public bool Enraged => Kind==EnemyKind.Boss&&Health<=Spec.Health/2f;public float MovementSpeed => Spec.Speed*(Enraged?1.3f:1)*(SlowRemaining>0?.8f:1);public bool Alive {get{return Health>0&&!Exited;}} }
     public sealed class TowerState
     {
-        public int Id,Spent;public TowerKind Kind;public Vector2Int Position;public CombatStats Stats;internal float Cooldown;internal EnemyState Target;internal bool AcquiredOnce;
+        public int Id,Spent;public TowerKind Kind;public Vector2Int Position;public CombatStats Stats;internal float Cooldown;internal EnemyHandle Target;internal bool AcquiredOnce;
         int sourceId;string attackSource,supportSource;
         void RefreshSources(){if(attackSource!=null&&sourceId==Id&&Id>=0)return;sourceId=Id;attackSource="Tower:"+Id;supportSource="Support:"+Id;}
         public string AttackSource {get{RefreshSources();return attackSource;}}
         public string SupportSource {get{RefreshSources();return supportSource;}}
     }
-    public sealed class ProjectileState { public int Id;public Vector2 Position;public EnemyState Target;public string Source;public float Damage,Speed; }
 }
 
 

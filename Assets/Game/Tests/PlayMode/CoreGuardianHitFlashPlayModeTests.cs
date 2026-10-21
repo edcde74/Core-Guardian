@@ -28,7 +28,7 @@ public class CoreGuardianHitFlashPlayModeTests
         {
             Time.timeScale=0;session.StartCombat();var enemy=session.DebugSpawn(CoreGuardian.EnemyKind.Defense,77);
             synchronize.Invoke(game,null);int health=enemy.Health;
-            session.DamageApplied+=(target,damage)=>{if(target==enemy&&damage>0)received=true;};
+            session.DamageApplied+=(target,damage)=>{if(target.Handle==enemy&&damage>0)received=true;};
             for(int step=0;step<200&&!received;step++){session.Tick(.02f,position);synchronize.Invoke(game,null);}
             Assert.That(received,Is.True,"A real player projectile must hit the isolated target");
             Assert.That(enemy.Health,Is.LessThan(health));Assert.That(enemy.Alive,Is.True);

@@ -31,7 +31,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     readonly Dictionary<int, GameObject> auraViews = new Dictionary<int, GameObject>();
     readonly Dictionary<int, GameObject> towerAuraViews = new Dictionary<int, GameObject>();
     readonly Dictionary<int, Transform> healthViews = new Dictionary<int, Transform>();
-    readonly List<EnemyState> livingViewEnemies = new List<EnemyState>();
+    readonly List<EnemyHandle> livingViewEnemies = new List<EnemyHandle>();
     readonly HashSet<int> activeEnemyViewIds = new HashSet<int>();
     readonly HashSet<int> activeTowerViewIds = new HashSet<int>();
     readonly HashSet<int> activeProjectileViewIds = new HashSet<int>();
@@ -339,7 +339,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         {
             if(!projectileViews.TryGetValue(p.Id,out var view)){view=RentProjectileView(p);projectileViews.Add(p.Id,view);}
             view.transform.position=combatAnimation.ProjectilePosition(p);
-            var direction=World(p.Target.Position)+Vector3.up*.25f-view.transform.position;
+            var direction=World(p.TargetPosition)+Vector3.up*.25f-view.transform.position;
             if(direction.sqrMagnitude>.000001f)view.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
         }
         combatAnimation.Player();
@@ -381,7 +381,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         }
         removedViewIds.Clear();
     }
-    EnemyBodyView RentEnemyBody(EnemyState enemy)
+    EnemyBodyView RentEnemyBody(EnemyHandle enemy)
     {
         var source=enemy.Kind==EnemyKind.Boss?bossArt:enemyArt[(int)enemy.Kind];
         EnemyBodyView body=null;
@@ -431,7 +431,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         }
         removedViewIds.Clear();
     }
-    GameObject RentProjectileView(ProjectileState projectile)
+    GameObject RentProjectileView(ProjectileHandle projectile)
     {
         SpriteRenderer renderer=null;
         while(projectileViewPool.Count>0&&renderer==null)renderer=projectileViewPool.Pop();
@@ -462,6 +462,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     }
     void OnDestroy()
     {
+        Session?.Dispose();
         if(TestSpeed!=1)Time.timeScale=1;
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
         Cursor.visible=true;

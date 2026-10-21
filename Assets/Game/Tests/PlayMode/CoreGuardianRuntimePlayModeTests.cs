@@ -34,7 +34,7 @@ public class CoreGuardianRuntimePlayModeTests
                 {
                     s.Tick(.05f,new Vector2(100,100));
                     var boss=s.Enemies.FirstOrDefault(e=>e.Kind==CoreGuardian.EnemyKind.Boss);
-                    if(boss!=null&&!bossSeen)
+                    if(boss.IsValid&&!bossSeen)
                     {
                         bossSeen=true;Assert.That(boss.Spec.Health,Is.EqualTo(wave==10?500:wave==20?1600:4500));
                         type.GetMethod("SynchronizeViews",System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Instance).Invoke(game,null);
