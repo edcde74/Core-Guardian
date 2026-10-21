@@ -319,15 +319,20 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         activeTowerViewIds.Clear();foreach(var tower in Session.Towers)activeTowerViewIds.Add(tower.Id);
         SyncRemoved(towerViews,activeTowerViewIds);
         SyncRemoved(towerAuraViews,activeTowerViewIds);
+        Session.BeginTowerViews();
+        try
+        {
         foreach(var t in Session.Towers)
         {
             if(!towerViews.TryGetValue(t.Id,out var view)){view=Instantiate(towerArt[(int)t.Kind]);view.name="Tower_"+t.Kind+"_"+t.Id;towerViews.Add(t.Id,view);}
             view.transform.position=World(t.Position);
             combatAnimation.Tower(t,view);
-            bool supported=t.Kind!=TowerKind.Support&&(Session.Augments.TowerBuffPercent>0||Session.Towers.Any(s=>s.Kind==TowerKind.Support&&Vector2.Distance(s.Position,t.Position)<=s.Stats.Range));
+            bool supported=t.Kind!=TowerKind.Support&&(Session.Augments.TowerBuffPercent>0||Session.HasTowerSupport(t));
             if(supported&&!towerAuraViews.ContainsKey(t.Id))towerAuraViews[t.Id]=combatArt.Marker("TowerDamageBuff",World(t.Position),.2f);
             if(towerAuraViews.TryGetValue(t.Id,out var aura)){aura.SetActive(supported);aura.transform.position=World(t.Position)+Vector3.up*.88f;}
         }
+        }
+        finally{Session.EndTowerViews();}
         activeProjectileViewIds.Clear();foreach(var projectile in Session.Projectiles)activeProjectileViewIds.Add(projectile.Id);
         SyncRemoved(projectileViews,activeProjectileViewIds,true);
         foreach(var p in Session.Projectiles)

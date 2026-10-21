@@ -307,6 +307,106 @@ public class CoreGuardianSessionTests
         var s=ProjectileGame(out var live);var shot=Shot(live,new Vector2(float.NaN,0));s.Projectiles.Add(shot);
         s.Tick(.01f,Away);CollectionAssert.AreEqual(new[]{shot},s.Projectiles);Assert.That(live.Health,Is.EqualTo(1000));
     }
+    [Test] public void TowerSourcesAreReusedAndTrackPublicIdChanges()
+    {
+        var tower=new TowerState{Id=12};string source=tower.AttackSource,support=tower.SupportSource;
+        Assert.That(tower.AttackSource,Is.SameAs(source));Assert.That(tower.SupportSource,Is.SameAs(support));
+        tower.Id=19;Assert.That(tower.AttackSource,Is.EqualTo("Tower:19"));Assert.That(tower.SupportSource,Is.EqualTo("Support:19"));
+    }
+    [Test] public void CachedTowerLookupTracksReorderingDuplicateIdsReplacementAndRemoval()
+    {
+        var s=Game();var a=new TowerState{Id=7};var b=new TowerState{Id=7};s.Towers.AddRange(new[]{a,b});
+        Assert.That(s.TowerFromSource("Tower:7"),Is.SameAs(a));s.Towers.Reverse();Assert.That(s.FindTower(7),Is.SameAs(b));
+        b.Id=8;Assert.That(s.TowerFromSource("Tower:7"),Is.SameAs(a));
+        var replacement=new TowerState{Id=7};s.Towers[1]=replacement;Assert.That(s.TowerFromSource("Tower:7"),Is.SameAs(replacement));
+        s.Towers.Clear();Assert.That(s.TowerFromSource("Tower:7"),Is.Null);Assert.That(s.TowerFromSource("Player"),Is.Null);Assert.That(s.TowerFromSource("Tower:bad"),Is.Null);
+    }
+    [Test] public void NegativeTowerSourceFormattingAndParsingTrackCultureSignChanges()
+    {
+        var s=Game();var tower=new TowerState{Id=-12};s.Towers.Add(tower);
+        var original=System.Globalization.CultureInfo.CurrentCulture;
+        try
+        {
+            var culture=(System.Globalization.CultureInfo)System.Globalization.CultureInfo.InvariantCulture.Clone();
+            System.Globalization.CultureInfo.CurrentCulture=culture;
+            Assert.That(s.TowerFromSource(tower.AttackSource),Is.SameAs(tower));
+            culture.NumberFormat.NegativeSign="~";
+            Assert.That(tower.AttackSource,Is.EqualTo("Tower:~12"));Assert.That(tower.SupportSource,Is.EqualTo("Support:~12"));
+            Assert.That(s.TowerFromSource(tower.AttackSource),Is.SameAs(tower));Assert.That(s.TowerFromSource("Tower:-12"),Is.Null);
+        }
+        finally{System.Globalization.CultureInfo.CurrentCulture=original;}
+    }
+    [Test] public void TowerSupportRangeIncludesZeroBuffAndTracksDirectChanges()
+    {
+        var s=Game();var attack=new TowerState{Id=1,Kind=TowerKind.Single,Position=new Vector2Int(2,1)};
+        var support=new TowerState{Id=2,Kind=TowerKind.Support,Position=new Vector2Int(2,2),Stats=new CombatStats{Range=1,BuffDamage=0}};
+        s.Towers.AddRange(new[]{attack,support});Assert.That(s.HasTowerSupport(attack),Is.True);
+        support.Stats.Range=.5f;Assert.That(s.HasTowerSupport(attack),Is.False);
+        support.Position=attack.Position;Assert.That(s.HasTowerSupport(attack),Is.True);
+        support.Kind=TowerKind.Single;Assert.That(s.HasTowerSupport(attack),Is.False);
+        support.Kind=TowerKind.Support;s.Towers.Remove(support);Assert.That(s.HasTowerSupport(attack),Is.False);
+    }
+    [Test] public void SupportCacheRefreshesBetweenLaunchCallbacksAndOnTheNextTick()
+    {
+        var s=Game();s.StartDiagnosticEncounter();string reason;
+        var a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);var b=s.TryInstall(TowerKind.Single,new Vector2Int(3,1),out reason);
+        var support=s.TryInstall(TowerKind.Support,new Vector2Int(2,2),out reason);
+        a.Stats.ProjectileSpeed=b.Stats.ProjectileSpeed=.001f;
+        s.StartCombat();s.Player.Rate=0;var enemy=s.DebugSpawn(EnemyKind.Attack,2);enemy.Spec.Speed=0;enemy.Health=10000;
+        support.Stats.Range=10;support.Stats.BuffDamage=0;
+        s.ProjectileLaunched+=shot=>{if(shot.Source==a.AttackSource)support.Stats.BuffDamage=100;};
+        s.Tick(.01f,Away);
+        Assert.That(s.Projectiles.First(p=>p.Source==a.AttackSource).Damage,Is.EqualTo(a.Stats.Damage));
+        Assert.That(s.Projectiles.First(p=>p.Source==b.AttackSource).Damage,Is.EqualTo(b.Stats.Damage*2));
+        support.Stats.BuffDamage=200;Assert.That(s.HasTowerSupport(b),Is.True);
+        // A zero-rate first tower prevents its observer from replacing the next-tick edit.
+        a.Stats.Rate=0;b.Stats.Rate=100;s.Projectiles.Clear();s.Tick(.05f,Away);
+        // Existing cooldown can delay b; advance enough for the next real volley.
+        s.Tick(2,Away);Assert.That(s.Projectiles.Any(p=>p.Source==b.AttackSource&&p.Damage==b.Stats.Damage*3),Is.True);
+    }
+    [TestCase(0)] [TestCase(1)] [TestCase(2)] [TestCase(3)]
+    public void IndexedPathPositionMatchesSequentialSubtractionAtTurnsAndFractions(int turns)
+    {
+        Vector2Int Rotate(Vector2Int p){for(int i=0;i<turns;i++)p=new Vector2Int(-p.y,p.x);return p+new Vector2Int(12,12);}
+        var route=new[]{new Vector2Int(0,0),new Vector2Int(10,0),new Vector2Int(10,10),new Vector2Int(0,10),new Vector2Int(0,1),new Vector2Int(8,1)}.Select(Rotate).ToArray();
+        var s=new Session(Data());s.SetBoard(30,30,route.Last(),route);
+        foreach(float travelled in new[]{0,.00001f,9.999999f,10,10.000001f,19.999998f,20,30,39,40.125f,47,float.NaN})
+        {
+            float d=travelled;Vector2 expected=route.Last();
+            for(int i=0;i<route.Length-1;i++){float len=Vector2.Distance(route[i],route[i+1]);if(d<=len){expected=Vector2.Lerp(route[i],route[i+1],d/len);break;}d-=len;}
+            var enemy=s.DebugSpawn(EnemyKind.Attack,travelled);Assert.That(enemy.Position.Equals(expected),Is.True,"distance "+travelled);
+            Assert.That(enemy.PathRemaining,float.IsNaN(travelled)?Is.EqualTo(0):Is.EqualTo(Mathf.Max(0,47-travelled)));
+        }
+    }
+    [Test] public void ViewTargetIndexTracksPositionHealthRevivalAndMembershipChanges()
+    {
+        var s=Game();var tower=new TowerState{Id=1,Kind=TowerKind.Multi,Position=new Vector2Int(2,1),Stats=new CombatStats{Range=2}};s.Towers.Add(tower);
+        for(int i=0;i<96;i++)s.DebugSpawn(EnemyKind.Attack,1+i%8);
+        s.BeginTowerViews();
+        try
+        {
+            Assert.That(s.TowerTargetForView(tower),Is.SameAs(s.TowerTarget(tower.Id)));
+            var enemy=s.Enemies[50];enemy.Position=tower.Position;enemy.Health=1;
+            Assert.That(s.TowerTargetForView(tower),Is.SameAs(enemy));
+            enemy.Health=0;Assert.That(s.TowerTargetForView(tower),Is.SameAs(s.TowerTarget(tower.Id)));
+            enemy.Health=1;s.Enemies.Reverse();Assert.That(s.TowerTargetForView(tower),Is.SameAs(enemy));
+            s.Enemies.Remove(enemy);Assert.That(s.TowerTargetForView(tower),Is.SameAs(s.TowerTarget(tower.Id)));
+            tower.Stats.Range=float.PositiveInfinity;Assert.That(s.TowerTargetForView(tower),Is.SameAs(s.TowerTarget(tower.Id)));
+        }
+        finally{s.EndTowerViews();}
+        Assert.That(s.TowerTargetForView(tower),Is.SameAs(s.TowerTarget(tower.Id)));
+    }
+    [TestCase(false)] [TestCase(true)]
+    public void AttackIndexHandlesUnchangedAndMutatingLaunchObservers(bool mutate)
+    {
+        var s=Game();s.StartDiagnosticEncounter();string reason;var tower=s.TryInstall(TowerKind.Single,new Vector2Int(30,1),out reason);
+        tower.Stats.Range=2;s.StartCombat();var first=s.DebugSpawn(EnemyKind.Attack,1);first.Spec.Speed=0;first.Health=10000;
+        for(int i=0;i<95;i++)s.DebugSpawn(EnemyKind.Attack,1+i%8);
+        bool observed=false;
+        s.ProjectileLaunched+=shot=>{if(!observed&&shot.Source=="Player"){observed=true;if(mutate)first.Position=new Vector2(30,0);}};
+        s.Tick(.01f,new Vector2(1,1));Assert.That(observed,Is.True);
+        Assert.That(s.Projectiles.Any(p=>p.Source==tower.AttackSource&&ReferenceEquals(p.Target,first)),Is.EqualTo(mutate));
+    }
 }
 
 

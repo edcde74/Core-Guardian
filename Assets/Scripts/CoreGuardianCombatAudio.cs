@@ -96,9 +96,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
             if(PreviewPlayer())nextPlayerShot=Time.unscaledTime+.035f;
             return;
         }
-        if(!projectile.Source.StartsWith("Tower:"))return;
-        if(!int.TryParse(projectile.Source.Substring(6),out int id))return;
-        var tower=session.Towers.FirstOrDefault(t=>t.Id==id);
+        var tower=session.TowerFromSource(projectile.Source);
         if(tower==null)return;
         if(tower.Kind==TowerKind.Multi)return; // AttackLaunched supplies one exact count per volley.
         if(tower.Kind!=TowerKind.Single)return;
@@ -113,8 +111,8 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
     public bool PreviewMulti()=>PlayClip(multiClip);
     void OnAttackLaunched(string source,int count)
     {
-        if(count<1||source==null||!source.StartsWith("Tower:")||!int.TryParse(source.Substring(6),out int id))return;
-        var tower=session.Towers.FirstOrDefault(t=>t.Id==id);
+        if(count<1)return;
+        var tower=session.TowerFromSource(source);
         if(tower==null||tower.Kind!=TowerKind.Multi)return;
         if(PlayCue("multi_"+Mathf.Clamp(count,1,3))){MultiVolleyPlayedCount++;LastMultiShotCount=Mathf.Clamp(count,1,3);}
     }

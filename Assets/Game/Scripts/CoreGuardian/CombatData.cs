@@ -112,7 +112,14 @@ namespace CoreGuardian
         public static IOrderedEnumerable<EnemyState> TowerPriorityOrder(IEnumerable<EnemyState> enemies)=>enemies.Where(e=>e.Alive).OrderBy(e=>e,towerPriority);
     }
     public sealed class EnemyState { public int Id,Health;public EnemyKind Kind;public Vector2 Position;public float PathTravelled,PathRemaining,SlowRemaining;public bool Buffed,Exited;public EnemySpec Spec;public bool Enraged => Kind==EnemyKind.Boss&&Health<=Spec.Health/2f;public float MovementSpeed => Spec.Speed*(Enraged?1.3f:1)*(SlowRemaining>0?.8f:1);public bool Alive {get{return Health>0&&!Exited;}} }
-    public sealed class TowerState { public int Id,Spent;public TowerKind Kind;public Vector2Int Position;public CombatStats Stats;internal float Cooldown;internal EnemyState Target;internal bool AcquiredOnce; }
+    public sealed class TowerState
+    {
+        public int Id,Spent;public TowerKind Kind;public Vector2Int Position;public CombatStats Stats;internal float Cooldown;internal EnemyState Target;internal bool AcquiredOnce;
+        int sourceId;string attackSource,supportSource;
+        void RefreshSources(){if(attackSource!=null&&sourceId==Id&&Id>=0)return;sourceId=Id;attackSource="Tower:"+Id;supportSource="Support:"+Id;}
+        public string AttackSource {get{RefreshSources();return attackSource;}}
+        public string SupportSource {get{RefreshSources();return supportSource;}}
+    }
     public sealed class ProjectileState { public int Id;public Vector2 Position;public EnemyState Target;public string Source;public float Damage,Speed; }
 }
 

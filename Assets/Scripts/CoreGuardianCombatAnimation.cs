@@ -59,7 +59,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
     {
         if(!towers.TryGetValue(tower.Id,out var animation))
         {animation=CoreGuardianUnitAnimation.Attach(view,tower.Kind.ToString());towers.Add(tower.Id,animation);}
-        var target=game.Session.TowerTarget(tower.Id);
+        var target=game.Session.TowerTargetForView(tower);
         if(target!=null&&target.Alive)
             animation.Aim(tower.Kind==TowerKind.Single?(Vector2)(game.World(target.Position)+Vector3.up*.25f-animation.AimOriginWorld):target.Position-tower.Position,Time.deltaTime);
         animation.Present(Time.deltaTime);
@@ -112,10 +112,10 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
     {
         CoreGuardianUnitAnimation source=null;float rate=1;bool single=false;
         if(shot.Source=="Player"){source=player;rate=game.Session.Player.Rate;}
-        else if(shot.Source.StartsWith("Tower:")&&int.TryParse(shot.Source.Substring(6),out int id))
+        else if(game.Session.TryTowerSourceId(shot.Source,out int id))
         {
             towers.TryGetValue(id,out source);
-            var tower=game.Session.Towers.FirstOrDefault(t=>t.Id==id);if(tower!=null){rate=tower.Stats.Rate;single=tower.Kind==TowerKind.Single;}
+            var tower=game.Session.FindTower(id);if(tower!=null){rate=tower.Stats.Rate;single=tower.Kind==TowerKind.Single;}
         }
         if(source==null)return;
         var direction=game.World(shot.Target.Position)-game.World(shot.Position);
@@ -125,9 +125,10 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         if(shot.Source.StartsWith("Tower:"))
         {
             // A support crystal responds only when a tower inside its actual buff radius fires.
-            foreach(var support in game.Session.Towers.Where(t=>t.Kind==TowerKind.Support&&Vector2.Distance(t.Position,shot.Position)<=t.Stats.Range))
+            foreach(var support in game.Session.Towers)
             {
-                string key="Support:"+support.Id;
+                if(support.Kind!=TowerKind.Support||!(Vector2.Distance(support.Position,shot.Position)<=support.Stats.Range))continue;
+                string key=support.SupportSource;
                 if(towers.TryGetValue(support.Id,out var aura)&&(!volleyFrames.TryGetValue(key,out int last)||last!=Time.frameCount))
                 {aura.Fire(direction,rate);volleyFrames[key]=Time.frameCount;}
             }
