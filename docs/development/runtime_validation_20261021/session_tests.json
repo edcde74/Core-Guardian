@@ -1,0 +1,538 @@
+{
+  "status": "completed",
+  "duration": 1.19,
+  "summary": {
+    "total": 75,
+    "passed": 75,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianSessionTests.AttackIndexHandlesUnchangedAndMutatingLaunchObservers(False)",
+      "Status": "Passed",
+      "Duration": 0.0661949,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.AttackIndexHandlesUnchangedAndMutatingLaunchObservers(True)",
+      "Status": "Passed",
+      "Duration": 0.0086,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.AttackRateRetainsFractionalCooldownAndSupportsMultipleShotsPerStep",
+      "Status": "Passed",
+      "Duration": 0.017686,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.AuraAtBoundaryIsIndependentOfSourceInsertionOrder",
+      "Status": "Passed",
+      "Duration": 0.0092813,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.BossScreenDoesNotChangePlayerExistingBossLock",
+      "Status": "Passed",
+      "Duration": 0.008629,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.BossScreenTowersPutEvenLowHealthFirstArrivalBossLast(Single)",
+      "Status": "Passed",
+      "Duration": 0.0145792,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.BossScreenTowersPutEvenLowHealthFirstArrivalBossLast(Multi)",
+      "Status": "Passed",
+      "Duration": 0.0105106,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.BossScreenTowersYieldBossLockWhenOrdinaryEnemyEntersRange(Single)",
+      "Status": "Passed",
+      "Duration": 0.0133641,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.BossScreenTowersYieldBossLockWhenOrdinaryEnemyEntersRange(Multi)",
+      "Status": "Passed",
+      "Duration": 0.0350862,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.BossScreenWaveTenSpawnsThreeQuickShieldsBeforeBoss",
+      "Status": "Passed",
+      "Duration": 0.030753,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.CachedTowerLookupTracksReorderingDuplicateIdsReplacementAndRemoval",
+      "Status": "Passed",
+      "Duration": 0.0288174,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.CoreArrivalNeverRewardsAndNeverHitsTwice",
+      "Status": "Passed",
+      "Duration": 0.0086928,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.CsvRejectsDuplicateNegativeAndMissingReference",
+      "Status": "Passed",
+      "Duration": 0.0211352,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DamageFeedbackIgnoresZeroDamageMissingTargetsAndCoreArrival",
+      "Status": "Passed",
+      "Duration": 0.0088244,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DamageFeedbackReportsEachActualHitIncludingLethalDamage",
+      "Status": "Passed",
+      "Duration": 0.0094061,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DeadTargetProjectilesVanishWithoutCollateralDamage",
+      "Status": "Passed",
+      "Duration": 0.0087615,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DefeatRetiresExitedModelsAndPreservesLivingFrozenBodies",
+      "Status": "Passed",
+      "Duration": 0.0088369,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DiagnosticResetInvalidatesBothModelLifetimesAndKeepsIdsIncreasing",
+      "Status": "Passed",
+      "Duration": 0.0257815,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.DisposeInsideDamageObserverInvalidatesModelsAndFinishesQuarantine",
+      "Status": "Passed",
+      "Duration": 0.0092006,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EnemyBuffDoesNotStackAndSourceCannotBuffItself",
+      "Status": "Passed",
+      "Duration": 0.0159687,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EnemyModelReuseInvalidatesOldHandleAndResetsEveryLifetimeField",
+      "Status": "Passed",
+      "Duration": 0.010739,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EnemyPoolCapsOnlyInactiveStorage(Attack,40,32)",
+      "Status": "Passed",
+      "Duration": 0.0106676,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EnemyPoolCapsOnlyInactiveStorage(Boss,6,4)",
+      "Status": "Passed",
+      "Duration": 0.007995,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EqualRoleAndHealthPriorityUsesRemainingRouteAcrossAllTravelDirections(0)",
+      "Status": "Passed",
+      "Duration": 0.0126502,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EqualRoleAndHealthPriorityUsesRemainingRouteAcrossAllTravelDirections(1)",
+      "Status": "Passed",
+      "Duration": 0.0113298,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EqualRoleAndHealthPriorityUsesRemainingRouteAcrossAllTravelDirections(2)",
+      "Status": "Passed",
+      "Duration": 0.0212162,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.EqualRoleAndHealthPriorityUsesRemainingRouteAcrossAllTravelDirections(3)",
+      "Status": "Passed",
+      "Duration": 0.0082833,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.FailedEnemyInitializationReturnsSlotAndMissingSpecCannotBlockRetirement",
+      "Status": "Passed",
+      "Duration": 0.0093311,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.FirstGrowthBudgetUnlocksPlayerAndTowerAfterTwoRounds",
+      "Status": "Passed",
+      "Duration": 0.0108489,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.FirstGrowthDiscountsAreOptionalAndCannotMakeUpgradesFree",
+      "Status": "Passed",
+      "Duration": 0.0094118,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.FirstTargetIsFirstArrivalThenRangeExitReacquiresPriority",
+      "Status": "Passed",
+      "Duration": 0.0087452,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.HordeAfterTwoUsesThirtyRoundCountsAndPreservesIntro",
+      "Status": "Passed",
+      "Duration": 0.0109096,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.IndexedPathPositionMatchesSequentialSubtractionAtTurnsAndFractions(0)",
+      "Status": "Passed",
+      "Duration": 0.0098391,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.IndexedPathPositionMatchesSequentialSubtractionAtTurnsAndFractions(1)",
+      "Status": "Passed",
+      "Duration": 0.0239295,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.IndexedPathPositionMatchesSequentialSubtractionAtTurnsAndFractions(2)",
+      "Status": "Passed",
+      "Duration": 0.0081409,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.IndexedPathPositionMatchesSequentialSubtractionAtTurnsAndFractions(3)",
+      "Status": "Passed",
+      "Duration": 0.007988,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.KillGoldAndActualDamageAreAccountedOnceWithoutOverkill",
+      "Status": "Passed",
+      "Duration": 0.0087857,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ModelHandlesRejectForeignSessionAndDefaultUpdates",
+      "Status": "Passed",
+      "Duration": 0.0186599,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ModelRetirementWaitsForOutermostEventAndNestedTick",
+      "Status": "Passed",
+      "Duration": 0.0092152,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.MultishotUsesThreeDistinctTargetsWithNoSplash",
+      "Status": "Passed",
+      "Duration": 0.0115278,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.NegativeTowerSourceFormattingAndParsingTrackCultureSignChanges",
+      "Status": "Passed",
+      "Duration": 0.0142512,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ObserverExceptionStillFlushesRetiredModelQuarantine",
+      "Status": "Passed",
+      "Duration": 0.0262728,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.PlacementRejectsPathCoreDuplicateAndCombatButAllowsPlayerCell",
+      "Status": "Passed",
+      "Duration": 0.0089973,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.PlayerPricesHaveIncreasingIncrementAndIndependentStats",
+      "Status": "Passed",
+      "Duration": 0.0171546,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.PriorityUsesRoleThenHealthThenRemainingPathDistance",
+      "Status": "Passed",
+      "Duration": 0.0081408,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ProjectileBatchFlushesEarlierRemovalsOnProcessingException",
+      "Status": "Passed",
+      "Duration": 0.0108339,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ProjectileBatchPreservesSurvivorOrderAndDuplicateRemovalCounts",
+      "Status": "Passed",
+      "Duration": 0.0085246,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ProjectileModelReuseLeavesSavedSnapshotUnchanged",
+      "Status": "Passed",
+      "Duration": 0.0087996,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ProjectileObserverCanReenterWithIndependentRemovalBuffers",
+      "Status": "Passed",
+      "Duration": 0.0092263,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ProjectileObserverExceptionKeepsCurrentShotAfterPriorRemovals",
+      "Status": "Passed",
+      "Duration": 0.025895,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ProjectileObserverSeesPriorRemovalsAndMayReplaceList",
+      "Status": "Passed",
+      "Duration": 0.0087175,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ProjectilePoolCapsOnlyInactiveStorageAndDisposeClearsModels",
+      "Status": "Passed",
+      "Duration": 0.0096909,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ProjectileWithNonFinitePositionDoesNotBecomeAHit",
+      "Status": "Passed",
+      "Duration": 0.0082759,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.RefundReturnsInstallationOnlyAndSharedInvestmentRemains",
+      "Status": "Passed",
+      "Duration": 0.0082829,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.RejectedSharedUpgradeCannotSpendOrChangeCurrentAndFutureTowers",
+      "Status": "Passed",
+      "Duration": 0.0086975,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SegmentedHealthBarUsesDiscreteCellsAndStableFramedWidth",
+      "Status": "Passed",
+      "Duration": 0.0079346,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Single,\"damage\")",
+      "Status": "Passed",
+      "Duration": 0.009374,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Multi,\"damage\")",
+      "Status": "Passed",
+      "Duration": 0.0082788,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Support,\"buffDamage\")",
+      "Status": "Passed",
+      "Duration": 0.0151442,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Single,\"rate\")",
+      "Status": "Passed",
+      "Duration": 0.0215448,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Single,\"range\")",
+      "Status": "Passed",
+      "Duration": 0.0084681,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Single,\"projectileSpeed\")",
+      "Status": "Passed",
+      "Duration": 0.0086194,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Multi,\"rate\")",
+      "Status": "Passed",
+      "Duration": 0.0080955,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Multi,\"range\")",
+      "Status": "Passed",
+      "Duration": 0.0081475,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Multi,\"projectileSpeed\")",
+      "Status": "Passed",
+      "Duration": 0.0081379,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(Support,\"range\")",
+      "Status": "Passed",
+      "Duration": 0.0082131,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.StaleProjectileTargetNeverHitsReusedEnemySlot",
+      "Status": "Passed",
+      "Duration": 0.008319,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SupportAddsDamagePercentOnlyToAttackTowers",
+      "Status": "Passed",
+      "Duration": 0.0121849,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SupportCacheRefreshesBetweenLaunchCallbacksAndOnTheNextTick",
+      "Status": "Passed",
+      "Duration": 0.0230437,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.SurvivingProjectileKeepsFinalTargetPositionAfterCallbackMovementAndSlotReuse",
+      "Status": "Passed",
+      "Duration": 0.0087349,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.TimeoutStartsCombatWithoutTowerAndCurrencyStartsCorrectly",
+      "Status": "Passed",
+      "Duration": 0.0081836,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.TowerSourcesAreReusedAndTrackPublicIdChanges",
+      "Status": "Passed",
+      "Duration": 0.000297,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.TowerSupportRangeIncludesZeroBuffAndTracksDirectChanges",
+      "Status": "Passed",
+      "Duration": 0.0083155,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.UndefinedNumericKindsMissingWaveOneAndCaseDuplicateUpgradeAreRejected",
+      "Status": "Passed",
+      "Duration": 0.0102255,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSessionTests.ViewTargetIndexTracksPositionHealthRevivalAndMembershipChanges",
+      "Status": "Passed",
+      "Duration": 0.0093897,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

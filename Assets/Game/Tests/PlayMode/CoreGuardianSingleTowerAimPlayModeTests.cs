@@ -37,7 +37,7 @@ public class CoreGuardianSingleTowerAimPlayModeTests
    var world=(Vector3)type.GetMethod("World").Invoke(game,new object[]{shot.Target.Position});
    var muzzle=(Vector3)unit.GetType().GetProperty("MuzzleWorld").GetValue(unit);
    Assert.That(Vector2.Dot(((Vector2)(world+Vector3.up*.25f-mount.position)).normalized,((Vector2)(muzzle-mount.position)).normalized),Is.GreaterThan(.999f));
-   var visual=(Vector3)adapter.GetType().GetMethod("ProjectilePosition").Invoke(adapter,new object[]{shot});
+   var visual=(Vector3)adapter.GetType().GetMethod("ProjectilePosition").Invoke(adapter,new object[]{shot.Handle});
    Assert.That(Vector3.Distance(visual,muzzle),Is.LessThan(.0001f),"Actual projectile starts at the rotated/recoiling muzzle");
   };
   session.StartCombat();session.DebugSpawn(EnemyKind.Defense,1).Health=10000;

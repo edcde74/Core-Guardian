@@ -26,7 +26,20 @@ public class CoreGuardianHitFlashPlayModeTests
         var oldScale=Time.timeScale;bool received=false,flashed=false;
         try
         {
-            Time.timeScale=0;session.StartCombat();var enemy=session.DebugSpawn(CoreGuardian.EnemyKind.Defense,77);
+            // Follow the current scene route instead of assuming a historical path offset.
+            var path=(System.Collections.Generic.List<Vector2>)typeof(CoreGuardian.Session).GetField("path",flags).GetValue(session);
+            float travelled=0,spawnDistance=0,nearest=float.PositiveInfinity;
+            for(int i=0;i<path.Count-1;i++)
+            {
+                var segment=path[i+1]-path[i];float length=segment.magnitude;
+                if(length<=0)continue;
+                float along=Mathf.Clamp(Vector2.Dot(position-path[i],segment)/length,0,length);
+                float distance=Vector2.Distance(position,path[i]+segment*(along/length));
+                if(distance<nearest){nearest=distance;spawnDistance=travelled+along;}
+                travelled+=length;
+            }
+            Assert.That(nearest,Is.LessThan(session.Player.Range),"The actual player must be in range of the scene route");
+            Time.timeScale=0;session.StartCombat();var enemy=session.DebugSpawn(CoreGuardian.EnemyKind.Defense,spawnDistance);
             synchronize.Invoke(game,null);int health=enemy.Health;
             session.DamageApplied+=(target,damage)=>{if(target.Handle==enemy&&damage>0)received=true;};
             for(int step=0;step<200&&!received;step++){session.Tick(.02f,position);synchronize.Invoke(game,null);}

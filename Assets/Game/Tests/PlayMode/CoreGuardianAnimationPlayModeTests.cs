@@ -11,6 +11,29 @@ using UnityEditor.SceneManagement;
 
 public class CoreGuardianAnimationPlayModeTests
 {
+    [UnityTest]
+    public IEnumerator BossHudClearsAfterLastBossHandleIsRetired()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        yield return null;
+        var game=(MonoBehaviour)UnityEngine.Object.FindAnyObjectByType(Find("CoreGuardianPrototype"));
+        var session=(CoreGuardian.Session)game.GetType().GetProperty("Session").GetValue(game);
+        game.enabled=false;
+        var hud=UnityEngine.Object.FindAnyObjectByType(Find("CoreGuardianHud"));
+        var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+        var refresh=hud.GetType().GetMethod("Refresh",flags);
+        var label=(UnityEngine.UI.Text)hud.GetType().GetField("bossStatus",flags).GetValue(hud);
+        refresh.Invoke(hud,null);Assert.That(label.text,Is.Empty);
+        var boss=session.DebugSpawn(CoreGuardian.EnemyKind.Boss,1);
+        refresh.Invoke(hud,null);Assert.That(label.text,Does.StartWith("보스 · "));
+        session.DebugRemoveEnemy(boss);
+        Assert.That(boss.IsValid,Is.False);
+        refresh.Invoke(hud,null);Assert.That(label.text,Is.Empty);
+#else
+        yield return null;
+#endif
+    }
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).First(t=>t!=null);
     [UnityTest]
     public IEnumerator FrontGait_AllOtherEnemiesAlternateOnActualDownwardWaypoints()

@@ -229,7 +229,8 @@ public class CoreGuardianRuntimePlayModeTests
         Assert.That(session.Crystals,Is.EqualTo(session.Data.StartCrystals-session.Data.Towers[CoreGuardian.TowerKind.Single].Cost+session.Data.RewardForWave(1)));
         Assert.That(session.CoreEnergy,Is.EqualTo(20));
         Assert.That(session.DamageTotals.Values.Sum(),Is.EqualTo(session.Data.Waves.Where(w=>w.Wave==1).Sum(w=>w.Count*session.Data.Enemies[w.Kind].Health)));
-        Assert.That(GameObject.Find("Tower_Single_1").transform.position.x,Is.EqualTo(8.7f).Within(.001f));
+        var expectedTowerPosition=(Vector3)runtimeType.GetMethod("World").Invoke(runtime,new object[]{new Vector2(14,15)});
+        Assert.That(Vector3.Distance(GameObject.Find("Tower_Single_1").transform.position,expectedTowerPosition),Is.LessThan(.001f));
         Assert.That(UnityEngine.Object.FindObjectsByType<Canvas>().Length,Is.EqualTo(1));
 #else
         yield return null;
@@ -251,9 +252,12 @@ public class CoreGuardianRuntimePlayModeTests
         var movementType = AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("PrototypeGridMovement")).First(t=>t!=null);
         var movement = UnityEngine.Object.FindObjectsByType(movementType, FindObjectsSortMode.None).Single();
         var start = ((Component)movement).transform.position;
+        var ground=(UnityEngine.Tilemaps.Tilemap)runtimeType.GetField("ground").GetValue(runtime);
+        var startCell=(Vector3Int)movementType.GetProperty("CurrentCell").GetValue(movement);
+        float expectedX=start.x+ground.GetCellCenterWorld(startCell+Vector3Int.right).x-ground.GetCellCenterWorld(startCell).x;
         Assert.That(movementType.GetMethod("TryStep").Invoke(movement,new object[]{Vector2Int.right}), Is.EqualTo(true));
         yield return new WaitForSeconds(.16f);
-        Assert.That(((Component)movement).transform.position.x, Is.EqualTo(start.x+.6f).Within(.001f));
+        Assert.That(((Component)movement).transform.position.x, Is.EqualTo(expectedX).Within(.001f));
         Assert.That(movementType.GetMethod("TryStep").Invoke(movement,new object[]{Vector2Int.left}), Is.EqualTo(false));
 #else
         yield return null;

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"status\": \"completed\",\n  \"duration\": 2.19,\n  \"summary\": {\n    \"total\": 2,\n    \"passed\": 2,\n    \"failed\": 0,\n    \"skipped\": 0,\n    \"inconclusive\": 0\n  },\n  \"results\": [\n    {\n      \"FullName\": \"CoreGuardianHudInteractionTests.CardRevealIgnoresDoubleClickAndAllowsSelectionBeforeOtherCardsOpen\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.9397351,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianHudInteractionTests.ClosingDuringRevealCancelsSparksAndLeavesNoPendingSelection\",\n      \"Status\": \"Passed\",\n      \"Duration\": 1.2182573,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ]\n}"
+    }
+  ]
+}

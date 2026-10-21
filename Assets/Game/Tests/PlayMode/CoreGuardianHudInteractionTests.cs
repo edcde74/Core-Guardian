@@ -19,7 +19,9 @@ public class CoreGuardianHudInteractionTests
         try{
             Assert.That(root.GetComponentsInChildren<Text>(),Is.Empty,"Back has no labels or badges");
             root.GetComponent<Button>().onClick.Invoke();root.GetComponent<Button>().onClick.Invoke();Assert.That(selected,Is.Zero,"Double click during flip must not choose");
-            yield return new WaitForSecondsRealtime(1.05f);
+            float deadline=Time.realtimeSinceStartup+3f;
+            while((bool)type.GetProperty("Busy").GetValue(view)&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.That(type.GetProperty("Busy").GetValue(view),Is.False,"The flip must finish within the deadline");
             Assert.That(root.GetComponentsInChildren<Text>().Any(t=>t.text.Contains("600")),Is.True);
             root.GetComponent<Button>().onClick.Invoke();Assert.That(selected,Is.EqualTo(1));
             allowed=false;root.GetComponent<Button>().onClick.Invoke();Assert.That(selected,Is.EqualTo(1),"Timeout/phase change must reject stale clicks");

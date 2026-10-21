@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"Summary\": {\n    \"Total\": 0,\n    \"Passed\": 0,\n    \"Failed\": 0,\n    \"Skipped\": 0,\n    \"Inconclusive\": 0\n  },\n  \"Results\": [],\n  \"Duration\": 0,\n  \"StatusPath\": null,\n  \"Mode\": null,\n  \"FilterApplied\": null,\n  \"success\": false,\n  \"error\": \"PlayMode tests cannot run synchronously over HTTP: entering play mode triggers a domain reload that drops the request. Re-run asynchronously (run_tests --mode playmode --async_tests) and poll the test_status command for results.\"\n}"
+    }
+  ]
+}

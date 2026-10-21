@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"status\": \"completed\",\n  \"duration\": 1.58,\n  \"summary\": {\n    \"total\": 4,\n    \"passed\": 4,\n    \"failed\": 0,\n    \"skipped\": 0,\n    \"inconclusive\": 0\n  },\n  \"results\": [\n    {\n      \"FullName\": \"CoreGuardianPlacementHudPlayModeTests.FailedPlacementStaysFocused_AndSuccessfulPlacementRestoresHud\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.4988941,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianPlacementHudPlayModeTests.ManualRoundStartClosesOpenInstallationPanel\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.3790948,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianPlacementHudPlayModeTests.PlacementHidesOtherHud_AndCancelRestoresPanelAndCanvasGroupStates\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.2343822,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianPlacementHudPlayModeTests.PreparationTimeoutCancelsPlacementAndClosesChooser\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.435472,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ]\n}"
+    }
+  ]
+}

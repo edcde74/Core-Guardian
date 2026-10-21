@@ -81,9 +81,11 @@ public class CoreGuardianPlacementHudPlayModeTests
         try
         {
             Time.timeScale=0;Click(hud,"PlayerGrowth");Begin(hud);
-            Assert.That(game.GetType().GetMethod("Place").Invoke(game,new object[]{TowerKind.Single,new Vector2Int(0,12)}),Is.EqualTo(false));
+            Assert.That(game.GetType().GetMethod("Place").Invoke(game,new object[]{TowerKind.Single,new Vector2Int(-1,-1)}),Is.EqualTo(false));
             Assert.That(Installing(game),Is.True);Assert.That(Visible(hud.Find("BottomControls")),Is.False);
-            Assert.That(game.GetType().GetMethod("Place").Invoke(game,new object[]{TowerKind.Single,new Vector2Int(14,15)}),Is.EqualTo(true));
+            var board=(Vector2Int)game.GetType().GetProperty("BoardSize").GetValue(game);
+            var cell=Enumerable.Range(0,board.x).SelectMany(x=>Enumerable.Range(0,board.y).Select(y=>new Vector2Int(x,y))).First(Session(game).IsBuildable);
+            Assert.That(game.GetType().GetMethod("Place").Invoke(game,new object[]{TowerKind.Single,cell}),Is.EqualTo(true));
             Assert.That(Installing(game),Is.False);Assert.That(Visible(hud.Find("BottomControls")),Is.True);
             Assert.That(Visible(hud.Find("PlayerGrowthPanel")),Is.False);Assert.That(Visible(hud.Find("TowerInstallPanel")),Is.True,"The pre-placement chooser returns after a successful placement");
             Assert.That(Visible(hud.Find("TowerInformation")),Is.False,"Successful placement must not auto expand specs");
