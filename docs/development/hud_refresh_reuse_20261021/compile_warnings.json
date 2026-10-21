@@ -1,0 +1,42 @@
+{
+  "entries": [
+    {
+      "seq": 810,
+      "timestampUtc": "2026-10-21T07:54:39.849704Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Scripts\\CoreGuardianCombatArt.cs(32,99): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+      "stackTrace": "",
+      "seeded": false
+    },
+    {
+      "seq": 811,
+      "timestampUtc": "2026-10-21T07:54:39.849704Z",
+      "level": "warn",
+      "logType": "Warning",
+      "message": "Assets\\Scripts\\CoreGuardianCombatArt.cs(32,18): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsInactive, FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+      "stackTrace": "",
+      "seeded": false
+    }
+  ],
+  "cursor": 845,
+  "session": "8b5baadf8c0d45c0819b6af32c7aa4d0",
+  "returned": 2,
+  "dropped": false,
+  "reset": false,
+  "counts": {
+    "error": 17,
+    "warn": 461,
+    "log": 358
+  },
+  "groundTruth": {
+    "sampledUtc": "2026-10-21T07:54:58.1064134Z",
+    "ageMs": 150,
+    "compilationFailed": false,
+    "compiling": false,
+    "consoleErrors": 0,
+    "consoleWarnings": 2,
+    "consoleLogs": 34,
+    "seeded": true
+  }
+}

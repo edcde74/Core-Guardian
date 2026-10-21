@@ -18,7 +18,24 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     UnityEngine.UI.Text status, center, feedback, towerInfo;
     readonly List<Action> refresh = new List<Action>();
     float nextRefresh;
-    string damageSignature;
+    struct DamageTotal
+    {
+        public string Key;
+        public int Value,Ordinal;
+    }
+    sealed class DamageTotalComparer : IComparer<DamageTotal>
+    {
+        public int Compare(DamageTotal a,DamageTotal b)
+        {
+            int order=b.Value.CompareTo(a.Value);if(order!=0)return order;
+            order=Comparer<string>.Default.Compare(a.Key,b.Key);
+            return order!=0?order:a.Ordinal.CompareTo(b.Ordinal);
+        }
+    }
+    static readonly IComparer<DamageTotal> damageTotalComparer=new DamageTotalComparer();
+    readonly List<DamageTotal> damageTotals=new List<DamageTotal>(),previousDamageTotals=new List<DamageTotal>();
+    string damageNegativeSign;
+    bool damageTotalsPresented;
     sealed class DamageRow
     {
         public RectTransform Root, Bar;
@@ -62,6 +79,10 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     readonly Stack<DamageNumber> coreNumberPool=new Stack<DamageNumber>();
     bool disposingNumbers;
     int nextDamageLane;
+    static void SetHudActive(GameObject target,bool active){if(target.activeSelf!=active)target.SetActive(active);}
+    static void SetHudSize(RectTransform target,Vector2 size){if(!target.sizeDelta.Equals(size))target.sizeDelta=size;}
+    static void SetHudPosition(RectTransform target,Vector2 position){if(!target.anchoredPosition.Equals(position))target.anchoredPosition=position;}
+    static void SetHudText(UnityEngine.UI.Text target,string value){if(target.text!=value)target.text=value;}
     public void Configure(CoreGuardianPrototype prototype)
     {
         game=prototype;
@@ -159,7 +180,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         Button("Start",controls,new Vector2(220,-16),new Vector2(224,56),()=>game.Session.Phase==SessionPhase.Preparation?"라운드 시작":game.Session.Phase==SessionPhase.Combat?"전투 진행":game.Session.Phase==SessionPhase.Augmentation?"증강 선택 중":game.Session.Phase==SessionPhase.Defeat?"패배":"라운드 완료",()=>game.StartCombat(),()=>game.Session.Phase==SessionPhase.Preparation);
         Button("PlayerSpecs",controls,new Vector2(468,-16),new Vector2(220,56),()=>"플레이어 능력치",()=>OpenPlayer(false));
         Button("PlayerGrowth",controls,new Vector2(712,-16),new Vector2(224,56),()=>"플레이어 강화",()=>OpenPlayer(true),()=>CanBuyPlayer);
-        var stagePlate=Box("StagePlate",canvas,new Vector2(.5f,1),new Vector2(0,-74),new Vector2(900,78));
+        var stagePlate=Box("StagePlate",canvas,new Vector2(.5f,1),new Vector2(0,-74),new Vector2(900,78));stagePlateView=stagePlate;
         CoreGuardianHudSkin.Icon(stagePlate,"Wave",new Vector2(16,-16),new Vector2(28,28));
         center=Text("Preparation",stagePlate,new Vector2(54,-8),new Vector2(826,28),21);
         feedback=Text("Feedback",stagePlate,new Vector2(20,-38),new Vector2(860,30),17);
@@ -170,7 +191,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
 
         installPanel=Box("TowerInstallPanel",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(660,328));
         BuildInstallCategories();installPanel.gameObject.SetActive(false);
-        Button("CancelPlacement",canvas,new Vector2(18,-1000),new Vector2(270,56),()=>"설치 취소 · Esc",()=>CancelInstallation(),()=>game.Installing.HasValue||installOpen);
+        cancelPlacementView=Button("CancelPlacement",canvas,new Vector2(18,-1000),new Vector2(270,56),()=>"설치 취소 · Esc",()=>CancelInstallation(),()=>game.Installing.HasValue||installOpen).gameObject;
         BuildInspectors();
         damagePanel=Box("DamagePanel",canvas,new Vector2(1,1),new Vector2(-16,-140),new Vector2(320,380));
         CoreGuardianHudSkin.Icon(damagePanel,"Damage",new Vector2(16,-16),new Vector2(28,28));
@@ -186,6 +207,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         BuildDamageFold();
         // Top compact display retains all four critical values when collapsed.
         var topFold=SmallHandle("TopFold",canvas,()=>stageFolded=!stageFolded,true);
+        stageFoldView=topFold;stageFoldArt=topFold.Find("HandleArt");
         topFold.anchorMin=topFold.anchorMax=topFold.pivot=new Vector2(.5f,1);topFold.anchoredPosition=new Vector2(0,-84);
         BuildDeveloperMenu();
         Refresh();
@@ -407,39 +429,50 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     {
         if(game==null||!game.Ready||status==null)return;
         var s=game.Session;
-        if(s.Phase!=SessionPhase.Preparation){installOpen=false;installPanel.gameObject.SetActive(false);}
+        if(s.Phase!=SessionPhase.Preparation){installOpen=false;SetHudActive(installPanel.gameObject,false);}
         status.text="코어 "+s.CoreEnergy+" / "+s.CoreMaximum+"  |  "+(s.Diagnostic?"역할 검증":"라운드 "+s.Wave+" / "+s.LastWave)+"  |  골드 "+s.Gold+"  |  수정 "+s.Crystals+"  |  증강 "+s.Augments.Selected.Count;
         bool selecting=s.Phase==SessionPhase.Augmentation;
         if(augmentationPanel!=null){augmentationPanel.gameObject.SetActive(selecting);if(selecting){RefreshCards();augmentationTimer.text="선택 "+Mathf.CeilToInt(s.AugmentationRemaining)+"초 · 클릭 공개 / 공개된 카드 다시 클릭 선택\n시간 초과 시 최고 등급 자동 선택 · 동률이면 왼쪽 우선";}else choiceSignature=null;}
         if(bossStatus!=null){var boss=s.Enemies.FirstOrDefault(e=>e.Alive&&e.Kind==EnemyKind.Boss);bossStatus.text=boss==null?"":"보스 · "+boss.Health+" / "+boss.Spec.Health+(boss.Enraged?" · 격노: 이동속도 +30%":"");}
         center.text=s.Phase==SessionPhase.Preparation?s.Wave+"라운드 준비 "+Mathf.CeilToInt(s.PreparationRemaining)+"초":s.Phase==SessionPhase.Combat?s.Wave+"라운드 전투 · 살아 있는 적 "+s.Enemies.Count(e=>e.Alive):s.Phase==SessionPhase.Defeat?"코어 파괴 · 패배":s.Diagnostic?"역할 검증 완료":"1~"+s.LastWave+"라운드 완료";
-        feedback.text=game.Feedback;
+        SetHudText(feedback,game.Feedback);
         bool showFeedback=s.Phase==SessionPhase.Preparation||game.HasFeedback;
-        feedback.gameObject.SetActive(showFeedback);
-        var stagePlate=(RectTransform)center.transform.parent;stagePlate.sizeDelta=new Vector2(900,showFeedback?78:42);
+        SetHudActive(feedback.gameObject,showFeedback);
+        SetHudSize(stagePlateView,new Vector2(900,showFeedback?78:42));
         if(selecting)center.text="보스 라운드 완료 · 증강 선택";
         foreach(var action in refresh.ToArray())action();
         if(selecting){foreach(var button in canvas.GetComponentsInChildren<UnityEngine.UI.Button>(true))if(!augmentationButtons.Contains(button))button.interactable=false;if(EventSystem.current!=null&&!augmentationButtons.Any(b=>b.gameObject==EventSystem.current.currentSelectedGameObject))EventSystem.current.SetSelectedGameObject(augmentationButtons[0].gameObject);}
         RefreshInspectors();
         RefreshStageFold();
         RefreshPlacementVisibility();
-        var totals=s.DamageTotals.OrderByDescending(x=>x.Value).ThenBy(x=>x.Key).ToArray();
-        var signature=string.Join("|",totals.Select(x=>x.Key+":"+x.Value));
-        if(signature==damageSignature)return;damageSignature=signature;
-        int max=totals.Length==0?0:totals[0].Value;
-        for(int i=0;i<totals.Length;i++)
+        RefreshDamageTotals();
+    }
+    void RefreshDamageTotals()
+    {
+        damageTotals.Clear();int ordinal=0;
+        foreach(var pair in game.Session.DamageTotals)damageTotals.Add(new DamageTotal{Key=pair.Key,Value=pair.Value,Ordinal=ordinal++});
+        // Ordinal preserves LINQ's stable ordering even for culture-equivalent distinct keys.
+        damageTotals.Sort(damageTotalComparer);
+        string negativeSign=System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NegativeSign;
+        bool changed=!damageTotalsPresented||negativeSign!=damageNegativeSign||damageTotals.Count!=previousDamageTotals.Count;
+        if(!changed)
+            for(int i=0;i<damageTotals.Count;i++)if(damageTotals[i].Key!=previousDamageTotals[i].Key||damageTotals[i].Value!=previousDamageTotals[i].Value){changed=true;break;}
+        if(!changed)return;
+        int max=damageTotals.Count==0?0:damageTotals[0].Value;
+        for(int i=0;i<damageTotals.Count;i++)
         {
             if(i==damageRows.Count)damageRows.Add(CreateDamageRow());
-            var row=damageRows[i];var pair=totals[i];
-            row.Root.name=pair.Key;
-            row.Icon.sprite=DamageSprite(DamageRole(pair.Key));
-            row.Label.text=SourceName(pair.Key);
-            row.Total.text=pair.Value.ToString();
-            row.Bar.sizeDelta=new Vector2(max==0?0:272f*pair.Value/max,10);
-            if(!row.Root.gameObject.activeSelf)row.Root.gameObject.SetActive(true);
+            var row=damageRows[i];var pair=damageTotals[i];
+            if(row.Root.name!=pair.Key)row.Root.name=pair.Key;
+            var icon=DamageSprite(DamageRole(pair.Key));if(row.Icon.sprite!=icon)row.Icon.sprite=icon;
+            SetHudText(row.Label,SourceName(pair.Key));
+            if(!damageTotalsPresented||negativeSign!=damageNegativeSign||i>=previousDamageTotals.Count||previousDamageTotals[i].Value!=pair.Value)SetHudText(row.Total,pair.Value.ToString());
+            SetHudSize(row.Bar,new Vector2(max==0?0:272f*pair.Value/max,10));
+            SetHudActive(row.Root.gameObject,true);
         }
-        for(int i=totals.Length;i<damageRows.Count;i++)
-            if(damageRows[i].Root.gameObject.activeSelf)damageRows[i].Root.gameObject.SetActive(false);
+        for(int i=damageTotals.Count;i<damageRows.Count;i++)SetHudActive(damageRows[i].Root.gameObject,false);
+        previousDamageTotals.Clear();previousDamageTotals.AddRange(damageTotals);
+        damageNegativeSign=negativeSign;damageTotalsPresented=true;
     }
     DamageRow CreateDamageRow()
     {

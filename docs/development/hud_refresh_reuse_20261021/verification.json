@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-21 Asia/Seoul",
+  "baseCommit": "b8ddb2f",
+  "compile": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"status\": \"completed\",\n  \"failed\": false,\n  \"errors\": [],\n  \"compilationFailed\": false\n}"
+      }
+    ]
+  },
+  "console": {
+    "returned": 2,
+    "categories": {
+      "CS0618": 2
+    },
+    "groundTruth": {
+      "sampledUtc": "2026-10-21T07:54:58.1064134Z",
+      "ageMs": 150,
+      "compilationFailed": false,
+      "compiling": false,
+      "consoleErrors": 0,
+      "consoleWarnings": 2,
+      "consoleLogs": 34,
+      "seeded": true
+    },
+    "other": []
+  },
+  "review": {
+    "mode": "independent read-only code review",
+    "actionableFindings": 0
+  },
+  "tests": "deferred by user; not run",
+  "performance": "not measured",
+  "projectSettingsComparedTo": "../shared_body_mask_20261021/settings_after.json",
+  "settingsMatched": 3
+}

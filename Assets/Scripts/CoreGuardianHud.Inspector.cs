@@ -12,6 +12,11 @@ public sealed partial class CoreGuardianHud
     SessionPhase? displayedPhase;
     RectTransform inspectorFold;
     UnityEngine.UI.Text playerInfo, playerTitle, towerTitle;
+    RectTransform stagePlateView,stageFoldView;
+    Transform stageFoldArt;
+    UnityEngine.UI.Image towerIdentityIcon;
+    GameObject cancelPlacementView;
+    readonly System.Collections.Generic.List<GameObject> developerViews=new System.Collections.Generic.List<GameObject>();
     bool CanBuyPlayer=>game.Session.Phase==SessionPhase.Preparation||game.Session.Phase==SessionPhase.Combat;
     public Transform InspectionTarget
     {
@@ -47,19 +52,19 @@ public sealed partial class CoreGuardianHud
     {
         topDetails.sizeDelta=new Vector2(920,compact?52:72);
         foreach(Transform child in topDetails){var r=child as RectTransform;if(r==null||child.name=="Status")continue;bool icon=child.name.StartsWith("Symbol");r.anchoredPosition=new Vector2(r.anchoredPosition.x,compact?-12:(icon?-21:-16));if(!icon)r.sizeDelta=new Vector2(r.sizeDelta.x,compact?28:40);}
-        var stage=canvas.Find("StagePlate") as RectTransform;if(stage!=null)stage.anchoredPosition=new Vector2(0,compact?-74:-94);
+        if(stagePlateView!=null)SetHudPosition(stagePlateView,new Vector2(0,compact?-74:-94));
     }
     void RefreshStageFold()
     {
         var phase=game.Session.Phase;
-        var stage=(RectTransform)canvas.Find("StagePlate");var handle=(RectTransform)canvas.Find("TopFold");
+        var stage=stagePlateView;var handle=stageFoldView;
         // The user's collapse choice hides combat details, while preparation/augmentation timers
         // retain their existing phase-specific presentation and the resource row stays visible.
         bool hidden=phase==SessionPhase.Combat&&stageFolded;
-        stage.gameObject.SetActive(!hidden);
-        handle.gameObject.SetActive(phase==SessionPhase.Combat);
-        handle.anchoredPosition=new Vector2(0,hidden?topDetails.anchoredPosition.y-topDetails.sizeDelta.y:stage.anchoredPosition.y-stage.sizeDelta.y);
-        handle.Find("HandleArt").localScale=new Vector3(hidden?-1:1,1,1);
+        SetHudActive(stage.gameObject,!hidden);
+        SetHudActive(handle.gameObject,phase==SessionPhase.Combat);
+        SetHudPosition(handle,new Vector2(0,hidden?topDetails.anchoredPosition.y-topDetails.sizeDelta.y:stage.anchoredPosition.y-stage.sizeDelta.y));
+        var scale=new Vector3(hidden?-1:1,1,1);if(!stageFoldArt.localScale.Equals(scale))stageFoldArt.localScale=scale;
     }
     void BuildDeveloperMenu()
     {
@@ -69,21 +74,24 @@ public sealed partial class CoreGuardianHud
         var reload=canvas.Find("Reload") as RectTransform;reload.anchorMin=reload.anchorMax=reload.pivot=new Vector2(0,1);reload.anchoredPosition=new Vector2(32,-168);
         var speed=canvas.Find("TestSpeed") as RectTransform;speed.anchorMin=speed.anchorMax=speed.pivot=new Vector2(0,1);speed.anchoredPosition=new Vector2(32,-232);
         BuildSoundControls();
+        developerViews.Add(debug.gameObject);developerViews.Add(reload.gameObject);developerViews.Add(speed.gameObject);
+        var sound=canvas.Find("SoundControls");if(sound!=null)developerViews.Add(sound.gameObject);
         SetTopCompact(true);
     }
     void BuildInspectors()
     {
         playerPanel=Box("PlayerGrowthPanel",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,220));
-        towerPanel=Box("TowerInformation",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,270));
+        towerPanel=Box("TowerInformation",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,280));
         CoreGuardianHudSkin.Icon(playerPanel,"PlayerIdentity",new Vector2(16,-16),new Vector2(28,28));
         playerTitle=Text("Title",playerPanel,new Vector2(54,-12),new Vector2(820,32),22);
-        CoreGuardianHudSkin.Icon(towerPanel,"TowerIdentity",new Vector2(16,-16),new Vector2(28,28));
+        towerIdentityIcon=CoreGuardianHudSkin.Icon(towerPanel,"TowerIdentity",new Vector2(16,-16),new Vector2(28,28));
         towerTitle=Text("Title",towerPanel,new Vector2(54,-12),new Vector2(820,32),22);
         foreach(var panel in new[]{playerPanel,towerPanel})
         {
             bool isPlayer=panel==playerPanel;
-            Button(isPlayer?"PlayerSpecTab":"TowerSpecTab",panel,new Vector2(16,-56),new Vector2(220,56),()=>"현재 능력치",()=>{purchaseOpen=false;Refresh();});
-            Button(isPlayer?"PlayerBuyTab":"TowerBuyTab",panel,new Vector2(16,-120),new Vector2(220,56),()=>isPlayer?"능력치 강화":"종류 전체 강화",()=>{purchaseOpen=true;Refresh();},()=>isPlayer?CanBuyPlayer:game.Session.Phase==SessionPhase.Preparation);
+            var specTab=Button(isPlayer?"PlayerSpecTab":"TowerSpecTab",panel,new Vector2(16,-56),new Vector2(220,56),()=>"현재 능력치",()=>{purchaseOpen=false;Refresh();});
+            var buyTab=Button(isPlayer?"PlayerBuyTab":"TowerBuyTab",panel,new Vector2(16,-120),new Vector2(220,56),()=>isPlayer?"능력치 강화":"종류 전체 강화",()=>{purchaseOpen=true;Refresh();},()=>isPlayer?CanBuyPlayer:game.Session.Phase==SessionPhase.Preparation);
+            StyleInspectorTab(specTab);StyleInspectorTab(buyTab);
         }
         playerAbilities=BuildAbilityPlate(playerPanel);towerAbilities=BuildAbilityPlate(towerPanel);
         playerInfo=Text("Stats",playerPanel,new Vector2(280,-186),new Vector2(580,24),16);playerInfo.alignment=TextAnchor.UpperLeft;
@@ -103,9 +111,18 @@ public sealed partial class CoreGuardianHud
             StyleAbilityPurchase(b);
             refresh.Add(()=>{var t=Selected();bool relevant=t!=null&&Relevant(t,captured);b.gameObject.SetActive(purchaseOpen&&relevant);if(relevant){int row=t.Kind==TowerKind.Support?(captured=="buffDamage"?0:1):index;((RectTransform)b.transform).anchoredPosition=new Vector2(264+row%2*306,-52-row/2*64);}});
         }
-        Button("Destroy",towerPanel,new Vector2(264,-220),new Vector2(612,44),()=>"철거 · 설치비 50% 반환 · 공유 강화 유지",()=>game.DestroySelected(),()=>CanBuyPlayer&&Selected()!=null);
+        var destroy=Button("Destroy",towerPanel,new Vector2(264,-220),new Vector2(612,44),()=>"철거 · 설치비 50% 반환 · 공유 강화 유지",()=>game.DestroySelected(),()=>CanBuyPlayer&&Selected()!=null);
+        var destroyLabel=(RectTransform)destroy.transform.Find("Label");
+        SetHudSize(destroyLabel,new Vector2(542,28));
         inspectorFold=SmallHandle("InspectorFold",canvas,()=>TryFoldDetails(),true);
         playerPanel.gameObject.SetActive(false);towerPanel.gameObject.SetActive(false);
+    }
+    void StyleInspectorTab(UnityEngine.UI.Button button)
+    {
+        var tab=(RectTransform)button.transform;
+        button.GetComponent<CoreGuardianHudReaction>().SetLabelLayout(new Vector2(54,-16),tab.sizeDelta-new Vector2(70,32));
+        var icon=tab.GetComponentsInChildren<UnityEngine.UI.Image>().First(i=>i.transform!=tab).rectTransform;
+        icon.anchoredPosition=new Vector2(16,-(tab.sizeDelta.y-icon.sizeDelta.y)/2);
     }
     void OpenPlayer(bool buy)
     {
@@ -160,43 +177,27 @@ public sealed partial class CoreGuardianHud
         playerOpen=inspectorOpen&&inspectorSubject==InspectorSubject.Player&&!installOpen;
         bool towerOpen=inspectorOpen&&inspectorSubject==InspectorSubject.Tower&&selected!=null&&!installOpen;
         towerFolded=!towerOpen;
-        playerPanel.gameObject.SetActive(playerOpen);towerPanel.gameObject.SetActive(towerOpen);
-        playerPanel.sizeDelta=new Vector2(900,220);towerPanel.sizeDelta=new Vector2(900,280);
-        foreach(var panel in new[]{playerPanel,towerPanel})
-        {
-            bool isPlayer=panel==playerPanel;int index=0;
-            foreach(var name in new[]{isPlayer?"PlayerSpecTab":"TowerSpecTab",isPlayer?"PlayerBuyTab":"TowerBuyTab"})
-            {
-                var tab=(RectTransform)panel.Find(name);tab.anchoredPosition=new Vector2(16,-56-index*64);
-                tab.sizeDelta=new Vector2(220,56);
-                tab.GetComponent<CoreGuardianHudReaction>().SetLabelLayout(new Vector2(54,-16),tab.sizeDelta-new Vector2(70,32));
-                var icon=tab.GetComponentsInChildren<UnityEngine.UI.Image>().First(i=>i.transform!=tab).rectTransform;
-                icon.anchoredPosition=new Vector2(16,-(tab.sizeDelta.y-icon.sizeDelta.y)/2);
-                index++;
-            }
-        }
-        playerInfo.gameObject.SetActive(true);towerInfo.gameObject.SetActive(true);
+        SetHudActive(playerPanel.gameObject,playerOpen);SetHudActive(towerPanel.gameObject,towerOpen);
+        SetHudActive(playerInfo.gameObject,true);SetHudActive(towerInfo.gameObject,true);
         var st=s.Player;
         RefreshAbilityPlate(playerAbilities,st,false);
-        playerTitle.text=purchaseOpen?"플레이어 능력치 강화":"플레이어 능력치";
-        playerInfo.text="추가 발사 "+s.Augments.ExtraPlayerProjectiles+"발 · 둔화 효과 "+(s.Augments.PlayerSlow?"있음":"없음");
+        SetHudText(playerTitle,purchaseOpen?"플레이어 능력치 강화":"플레이어 능력치");
+        SetHudText(playerInfo,"추가 발사 "+s.Augments.ExtraPlayerProjectiles+"발 · 둔화 효과 "+(s.Augments.PlayerSlow?"있음":"없음"));
         if(selected!=null)
         {
-            st=selected.Stats;towerTitle.text=TowerName(selected.Kind)+(purchaseOpen?" · 종류 전체 강화":" #"+selected.Id+" · 능력치");
-            towerPanel.Find("Symbol_TowerIdentity").GetComponent<UnityEngine.UI.Image>().sprite=CoreGuardianHudSkin.Sprite(CoreGuardianHudSkin.Symbol("Install_"+selected.Kind));
+            st=selected.Stats;SetHudText(towerTitle,TowerName(selected.Kind)+(purchaseOpen?" · 종류 전체 강화":" #"+selected.Id+" · 능력치"));
+            var identity=CoreGuardianHudSkin.Sprite(CoreGuardianHudSkin.Symbol("Install_"+selected.Kind));if(towerIdentityIcon.sprite!=identity)towerIdentityIcon.sprite=identity;
             RefreshAbilityPlate(towerAbilities,st,selected.Kind==TowerKind.Support);
             float support=s.Towers.Where(t=>t.Kind==TowerKind.Support&&Vector2.Distance(t.Position,selected.Position)<=t.Stats.Range).Sum(t=>t.Stats.BuffDamage);
             float buff=support+s.Augments.TowerBuffPercent;
-            towerInfo.rectTransform.anchoredPosition=new Vector2(280,selected.Kind==TowerKind.Support?-138:-186);
-            towerInfo.text=purchaseOpen?"같은 종류의 모든 포탑과 이후 설치분에 적용됩니다.\n철거해도 공유 강화 단계는 유지됩니다.":selected.Kind==TowerKind.Support?"범위 안 공격 포탑의 공격력을 높입니다.\n직접 공격하지 않습니다.":
-                "지원 포탑 +"+support.ToString("0.##")+"% · 증강 +"+s.Augments.TowerBuffPercent+"%\n버프 적용 공격력 "+StatDisplay(st.Damage*(1+buff/100f),"damage")+" (적 방어력 적용 전)";
-            var destroy=(RectTransform)towerPanel.Find("Destroy");destroy.anchoredPosition=new Vector2(264,-220);destroy.sizeDelta=new Vector2(612,44);
-            ((RectTransform)destroy.Find("Label")).sizeDelta=new Vector2(destroy.sizeDelta.x-70,28);
+            SetHudPosition(towerInfo.rectTransform,new Vector2(280,selected.Kind==TowerKind.Support?-138:-186));
+            SetHudText(towerInfo,purchaseOpen?"같은 종류의 모든 포탑과 이후 설치분에 적용됩니다.\n철거해도 공유 강화 단계는 유지됩니다.":selected.Kind==TowerKind.Support?"범위 안 공격 포탑의 공격력을 높입니다.\n직접 공격하지 않습니다.":
+                "지원 포탑 +"+support.ToString("0.##")+"% · 증강 +"+s.Augments.TowerBuffPercent+"%\n버프 적용 공격력 "+StatDisplay(st.Damage*(1+buff/100f),"damage")+" (적 방어력 적용 전)");
         }
         bool details=playerOpen||towerOpen||installOpen;
-        inspectorFold.gameObject.SetActive(details&&s.Phase!=SessionPhase.Augmentation);
-        inspectorFold.anchoredPosition=new Vector2(0,112+(installOpen?installPanel.sizeDelta.y:playerOpen?playerPanel.sizeDelta.y:towerPanel.sizeDelta.y));
-        foreach(var name in new[]{"PrototypeActions","Reload","TestSpeed","SoundControls"}){var node=canvas.Find(name);if(node!=null)node.gameObject.SetActive(developerOpen);}
-        var cancel=canvas.Find("CancelPlacement");if(cancel!=null)cancel.gameObject.SetActive(game.Installing.HasValue);
+        SetHudActive(inspectorFold.gameObject,details&&s.Phase!=SessionPhase.Augmentation);
+        SetHudPosition(inspectorFold,new Vector2(0,112+(installOpen?installPanel.sizeDelta.y:playerOpen?playerPanel.sizeDelta.y:towerPanel.sizeDelta.y)));
+        foreach(var node in developerViews)SetHudActive(node,developerOpen);
+        if(cancelPlacementView!=null)SetHudActive(cancelPlacementView,game.Installing.HasValue);
     }
 }
