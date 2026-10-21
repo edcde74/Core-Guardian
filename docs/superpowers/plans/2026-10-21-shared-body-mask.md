@@ -58,7 +58,7 @@ internal static class CoreGuardianBodyMaskCache
 
 Request의 소스 snapshot은 renderer 참조, sprite/texture 참조와 updateCount, enabled/active/alpha/flip/실제 행렬을 재사용 버퍼에 저장한다. 각 record는 비교용 값을 복사해 보존한다. 기하 변경은 명시 invalidate와 GeometryEpoch로 전달한다. 본체 entry를 재생성해도 epoch가 재사용돼 이전 소비자의 기하 캐시가 유효해지는 일이 없어야 한다. Pose 비교는 해시만으로 통과시키지 않는다.
 
-## Task1: 기준과 실패 계약 확보
+## Task 1: 기준과 실패 계약 확보
 
 **Files:** 새 진단 폴더의 README/Probe/전 캡처, 새 CoreGuardianBodyMaskSharingTests.cs.
 
@@ -70,7 +70,7 @@ Request의 소스 snapshot은 renderer 참조, sprite/texture 참조와 updateCo
 - [ ] 공식 `run_tests --mode editor --filter CoreGuardianBodyMaskSharingTests --filter_type testName` 실행 후 test_status의 실제 테스트 수/실패 메시지를 저장한다. 현재 개별 RT로 인해 공유 assert가 실패해야 RED다. 컴파일/0건은 RED가 아니다.
 - [ ] baseline·실패 계약을 파일 지정 로컬 커밋으로 남긴다. 사용자 설정은 포함하지 않는다.
 
-## Task2: 공유 합성과 부분 UV 연결
+## Task 2: 공유 합성과 부분 UV 연결
 
 **Files:** CoreGuardianBodyMaskCache.cs, CoreGuardianSelectionOutline.cs, PhotoShadowContact.shader, 공유 계약 파일.
 
@@ -84,7 +84,7 @@ Request의 소스 snapshot은 renderer 참조, sprite/texture 참조와 updateCo
 - [ ] raw threshold/source 필터, atlas revision/fallback, null material, 색/두께/표시 순서/스캔 world Y를 보존한다. 비지원 stereo/dynamic-resolution/비호환 조건은 독립 합성한다. 같은 frame의 호환되지 않는 요청을 stale hit로 만들지 않는다.
 - [ ] 새 계약을 GREEN까지 확인하고 기존 공유 재질2·아틀라스2·아웃라인3 계약을 관련 필터로 순차 검증한다. failed/0건이면 원인을 좁히고 제품 검증 완료로 표시하지 않는다. 로컬 구현 커밋을 남긴다.
 
-## Task3: 무효화·생존자·전환 수명 완성
+## Task 3: 무효화·생존자·전환 수명 완성
 
 **Files:** 캐시/SelectionOutline, PhotoShadow/ObjectEmphasis 연결, 공유 계약 및 필요 시 기존 cleanup.
 
@@ -97,7 +97,7 @@ Request의 소스 snapshot은 renderer 참조, sprite/texture 참조와 updateCo
 - [ ] scene/Play 전환을 캐시 epoch와 일회 등록 hook으로 처리한다. ResetOwned는 캐시가 추적하는 자기 출력부터 숨기고 binding을 반환한다. domain/scene reload 옵션의 시작값을 저장하고 각 변경한 조합의 동작을 확인한 뒤 정확히 복원한다. 사용자 진행 중 Play를 종료해 검사하지 않는다.
 - [ ] warmed 상태 GC.Alloc을 캐시 마커 하위에서 관측한다. reflection 호출 자체의 할당을 캐시 할당으로 합산하지 않는다. 매 frame 새 lease/배열을 만드는 구현은 버퍼 재사용으로 고친다. 관련 계약 GREEN과 임시 상태 복원 후 로컬 커밋한다.
 
-## Task4: 실제 공유 픽셀·CPU·수명 검증과 완료 기록
+## Task 4: 실제 공유 픽셀·CPU·수명 검증과 완료 기록
 
 **Files:** 새 진단 폴더의 기존 도구 복사본/원본/RESULTS, 영향받은 기존 검사, UNITY_HANDOVER.md.
 
