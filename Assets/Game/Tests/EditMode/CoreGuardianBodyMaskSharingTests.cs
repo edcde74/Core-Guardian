@@ -23,14 +23,16 @@ public class CoreGuardianBodyMaskSharingTests
         public readonly List<GameObject> roots=new List<GameObject>();
         public readonly List<Component> owners=new List<Component>();
         public Camera camera;public Transform target;public SpriteRenderer body;public Texture2D texture;public Sprite sprite;public RenderTexture image;
-        public Fixture()
+        public Fixture():this(false){}
+        public Fixture(bool native)
         {
             var root=Root("Sharing target");target=root.transform;
             texture=new Texture2D(8,8,TextureFormat.RGBA32,false){filterMode=FilterMode.Point,wrapMode=TextureWrapMode.Clamp};texture.SetPixels(Enumerable.Repeat(Color.white,64).ToArray());texture.Apply();
             sprite=Sprite.Create(texture,new Rect(0,0,8,8),Vector2.one*.5f,16,0,SpriteMeshType.FullRect);
             body=new GameObject("2D Sprite").AddComponent<SpriteRenderer>();body.transform.SetParent(target,false);body.sprite=sprite;
             camera=Root("Sharing camera").AddComponent<Camera>();camera.enabled=false;camera.orthographic=true;camera.orthographicSize=1;camera.aspect=1;camera.transform.position=target.position+Vector3.back*10;
-            image=new RenderTexture(128,128,24);image.Create();camera.targetTexture=image;
+            image=new RenderTexture(native?1920:128,native?1080:128,24);image.Create();camera.targetTexture=image;
+            if(native){camera.orthographicSize=8.5f;camera.aspect=1920f/1080;}
         }
         public GameObject Root(string name){var r=new GameObject(name);roots.Add(r);return r;}
         public Component Owner(int width=2){var c=Root("Mask consumer").AddComponent(Outline);owners.Add(c);Set(c,"widthPixels",width);return c;}
@@ -49,11 +51,13 @@ public class CoreGuardianBodyMaskSharingTests
         finally{RenderTexture.active=old;UnityEngine.Object.DestroyImmediate(read);}
     }
     [Test]
-    public void SameBodySameFrame_ReusesOneMask_AndPad4To3UsesInnerUV()
+    public void ContactPad4Output_UsesEmphasisCrop_AndEmphasisReusesIt()
     {
-        using(var f=new Fixture())
+        using(var f=new Fixture(true))
         {
-            var a=f.Owner(2);var b=f.Owner(1);var first=f.Show(a);var second=f.Show(b);
+            var a=f.Owner(2);var b=f.Owner(1);var material=new Material(Resources.Load<Shader>("CoreGuardian/PhotoShadowContact"));
+            Outline.GetMethod("PresentGroundContactWithBand").Invoke(a,new object[]{f.target,f.camera,material,16f});
+            var first=Field<RenderTexture>(a,"mask");var second=f.Show(b);UnityEngine.Object.DestroyImmediate(material);
             Assert.That(second,Is.SameAs(first),"Same body must reuse its covering frame mask");
             Assert.That(Field<int>(a,"lastMaskDrawCalls"),Is.EqualTo(1));Assert.That(Field<int>(b,"lastMaskDrawCalls"),Is.Zero);
             var auv=Field<Mesh>(a,"quad").uv;var buv=Field<Mesh>(b,"quad").uv;
@@ -131,6 +135,27 @@ public class CoreGuardianBodyMaskSharingTests
         }
     }
     [Test]
+    public void FractionalUpperViewportEdge_DifferentCropMustNotShare()
+    {
+        using(var f=new Fixture())
+        {
+            f.camera.pixelRect=new Rect(0,0,100.5f,100.5f);f.body.transform.localPosition=new Vector3(.85f,.85f,0);
+            var a=f.Owner(2);var b=f.Owner(1);var first=f.Show(a);
+            Assert.That(f.Show(b),Is.Not.SameAs(first),"Fractional actual crop must keep its own texel mapping");
+        }
+    }
+    [Test]
+    public void ContactJustOutsideViewport_EmptyCompactCropUsesOriginalValidCrop()
+    {
+        using(var f=new Fixture(true))
+        {
+            f.body.transform.localPosition=f.camera.ScreenToWorldPoint(new Vector3(1926,540,10))+Vector3.right*.25f;var a=f.Owner(2);
+            var material=new Material(Resources.Load<Shader>("CoreGuardian/PhotoShadowContact"));
+            try{Assert.DoesNotThrow(()=>Outline.GetMethod("PresentGroundContactWithBand").Invoke(a,new object[]{f.target,f.camera,material,16f}));}
+            finally{UnityEngine.Object.DestroyImmediate(material);}
+        }
+    }
+    [Test]
     public void LastRelease_DisposesOwnedRecords_AndRepeatedReleaseIsSafe()
     {
         int entries=Count("EntryCount"),bindings=Count("BindingCount");
@@ -177,6 +202,52 @@ public class CoreGuardianBodyMaskSharingTests
         {
             var a=f.Owner();var rt=f.Show(a);Outline.GetMethod("InvalidateSources").Invoke(a,null);
             Assert.That(f.Show(a),Is.SameAs(rt));Assert.That(Field<int>(a,"lastMaskDrawCalls"),Is.EqualTo(1));
+        }
+    }
+    [Test]
+    public void SoloOwnerNextFrame_ReusesCapacityButRegenerates()
+    {
+        using(var f=new Fixture())
+        {
+            var a=f.Owner();var rt=f.Show(a);var lease=Field<object>(a,"maskBinding");
+            var record=lease.GetType().GetField("current",Hidden|BindingFlags.Public).GetValue(lease);
+            var field=record.GetType().GetField("request",Hidden|BindingFlags.Public);var request=field.GetValue(record);
+            request.GetType().GetField("frame",Hidden|BindingFlags.Public).SetValue(request,Time.frameCount-1);field.SetValue(record,request);
+            Assert.That(f.Show(a),Is.SameAs(rt));Assert.That(Field<int>(a,"lastMaskDrawCalls"),Is.EqualTo(1));
+        }
+    }
+    [Test]
+    public void SameCameraNewTargetReference_ForcesMiss()
+    {
+        using(var f=new Fixture())
+        {
+            var a=f.Owner();var b=f.Owner();var rt=f.Show(a);var next=new RenderTexture(128,128,24);next.Create();
+            try{f.camera.targetTexture=next;Assert.That(f.Show(b),Is.Not.SameAs(rt));Assert.That(Field<int>(b,"lastMaskDrawCalls"),Is.EqualTo(1));}
+            finally{f.camera.targetTexture=f.image;next.Release();UnityEngine.Object.DestroyImmediate(next);}
+        }
+    }
+    [Test]
+    public void AtlasRevision_ForcesNewGeneration()
+    {
+        using(var f=new Fixture())
+        {
+            var atlasType=Outline.Assembly.GetType("CoreGuardianMaskAtlas");var atlas=ScriptableObject.CreateInstance(atlasType);
+            try{
+                var a=f.Owner();var b=f.Owner();Outline.GetField("atlas",Hidden).SetValue(a,atlas);Outline.GetField("atlas",Hidden).SetValue(b,atlas);
+                var rt=f.Show(a);atlasType.GetMethod("Invalidate").Invoke(atlas,null);
+                Assert.That(f.Show(b),Is.Not.SameAs(rt));Assert.That(Field<int>(b,"lastMaskDrawCalls"),Is.EqualTo(1));
+            }finally{UnityEngine.Object.DestroyImmediate(atlas);}
+        }
+    }
+    [Test]
+    public void ExplicitGeometryInvalidation_RebuildsOtherConsumersMeshes()
+    {
+        using(var f=new Fixture())
+        {
+            var b=f.Owner(1);var a=f.Owner(2);f.Show(b);f.Show(a);
+            var meshes=(System.Collections.IDictionary)Field<object>(b,"meshes");var old=(Mesh)meshes[f.sprite];Assert.That(old,Is.Not.Null);
+            Outline.GetMethod("InvalidateSources").Invoke(a,null);f.Show(b);
+            Assert.That(old==null,Is.True);Assert.That(meshes[f.sprite],Is.Not.SameAs(old));Assert.That(Field<int>(b,"lastMaskDrawCalls"),Is.EqualTo(1));
         }
     }
     [TestCase("target")][TestCase("width")][TestCase("color")][TestCase("hidden")]

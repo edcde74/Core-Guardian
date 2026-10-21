@@ -45,7 +45,6 @@ internal static class CoreGuardianBodyMaskCache
         internal readonly int atlasRevision;
         internal readonly List<SpriteRenderer> sources;
         internal readonly bool shareable;
-        internal readonly bool subrectSafe;
         internal Request(Transform artwork,Camera camera,float threshold,Rect rect,CoreGuardianMaskAtlas atlas,List<SpriteRenderer> sources)
         {
             this.artwork=artwork;this.camera=camera;this.threshold=threshold;this.rect=rect;this.atlas=atlas;this.sources=sources;
@@ -54,11 +53,8 @@ internal static class CoreGuardianBodyMaskCache
             targetAA=target!=null?target.antiAliasing:QualitySettings.antiAliasing;targetFormat=target!=null?target.graphicsFormat:UnityEngine.Experimental.Rendering.GraphicsFormat.None;
             atlasRevision=atlas!=null?atlas.Revision:-1;
             shareable=camera.orthographic&&!camera.stereoEnabled&&!camera.allowDynamicResolution&&rect.x==Mathf.Round(rect.x)&&rect.y==Mathf.Round(rect.y);
-            // Cropping at distant world coordinates changes float rasterization at sprite edges.
-            // Equal rectangles still share exactly; differing crops use the validated local playfield range.
-            subrectSafe=viewport.width>=viewport.height&&camera.orthographicSize>=1
-                &&Mathf.Abs(camera.transform.position.x)<=32&&Mathf.Abs(camera.transform.position.y)<=32
-                &&Mathf.Abs(artwork.position.x)<=32&&Mathf.Abs(artwork.position.y)<=32;
+            shareable=shareable&&viewport.xMin==Mathf.Round(viewport.xMin)&&viewport.yMin==Mathf.Round(viewport.yMin)
+                &&viewport.xMax==Mathf.Round(viewport.xMax)&&viewport.yMax==Mathf.Round(viewport.yMax);
         }
     }
     internal readonly struct Sample
@@ -132,8 +128,8 @@ internal static class CoreGuardianBodyMaskCache
         if(!record.valid||record.epoch!=record.entry.epoch||record.texture==null||!record.texture.IsCreated()||!request.shareable||!a.shareable)return false;
         if(a.frame!=request.frame||!ReferenceEquals(a.camera,request.camera)||!a.threshold.Equals(request.threshold)||!a.view.Equals(request.view)||!a.projection.Equals(request.projection)||!a.viewport.Equals(request.viewport))return false;
         if(!ReferenceEquals(a.target,request.target)||a.targetWidth!=request.targetWidth||a.targetHeight!=request.targetHeight||a.targetAA!=request.targetAA||a.targetFormat!=request.targetFormat||!ReferenceEquals(a.atlas,request.atlas)||a.atlasRevision!=request.atlasRevision)return false;
-        if(request.rect.xMin<a.rect.xMin||request.rect.yMin<a.rect.yMin||request.rect.xMax>a.rect.xMax||request.rect.yMax>a.rect.yMax||record.parts.Count!=parts.Count)return false;
-        if(!a.rect.Equals(request.rect)&&(!a.subrectSafe||!request.subrectSafe))return false;
+        // Different crop matrices can rasterize point-sampled sprite edges differently, even near the origin.
+        if(!a.rect.Equals(request.rect)||record.parts.Count!=parts.Count)return false;
         for(int i=0;i<parts.Count;i++)if(!record.parts[i].Equals(parts[i]))return false;
         return true;
     }

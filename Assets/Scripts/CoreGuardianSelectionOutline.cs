@@ -70,7 +70,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     {
         PresentMask(target,camera,true);
     }
-    void PresentMask(Transform target,Camera camera,bool writeOutlineProperties)
+    void PresentMask(Transform target,Camera camera,bool writeOutlineProperties,bool compactContact=false)
     {
         using var presentScope=presentSample.Auto();
         lastMaskDrawCalls=0;lastAtlasMisses=0;
@@ -99,10 +99,29 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         }
         int radius=Mathf.Clamp(widthPixels,0,8),pad=radius+2;
         var viewport=camera.pixelRect;
+        var bodyLo=lo;var bodyHi=hi;
         lo=new Vector2(Mathf.Max(viewport.xMin-pad,Mathf.Floor(lo.x)-pad),Mathf.Max(viewport.yMin-pad,Mathf.Floor(lo.y)-pad));
         hi=new Vector2(Mathf.Min(viewport.xMax+pad,Mathf.Ceil(hi.x)+pad),Mathf.Min(viewport.yMax+pad,Mathf.Ceil(hi.y)+pad));
         int w=Mathf.CeilToInt(hi.x-lo.x),h=Mathf.CeilToInt(hi.y-lo.y);if(w<=0||h<=0){ReleasePresentation();return;}
-        var request=new CoreGuardianBodyMaskCache.Request(artwork,camera,alphaThreshold,new Rect(lo.x,lo.y,w,h),atlas,sources);
+        // The contact band can read the same pad3 crop as emphasis. Keep its original pad4 output quad.
+        // Outside the clipped viewport, the original output padding remains outside the camera too.
+        var maskLo=lo;var maskHi=hi;
+        bool localContact=compactContact&&camera.orthographic&&!camera.stereoEnabled&&!camera.allowDynamicResolution
+            // Enable the alternate contact crop only for the gameplay views covered by native pixel QA.
+            &&viewport.width==1920&&viewport.height==1080&&(camera.orthographicSize==8.5f||camera.orthographicSize==4.25f)
+            &&radius==2&&viewport.x==0&&viewport.y==0&&camera.transform.rotation.Equals(Quaternion.identity)&&DefaultProjection(camera)
+            &&Mathf.Abs(camera.transform.position.x)<=32&&Mathf.Abs(camera.transform.position.y)<=32
+            &&Mathf.Abs(artwork.position.x)<=32&&Mathf.Abs(artwork.position.y)<=32
+            &&viewport.xMin==Mathf.Round(viewport.xMin)&&viewport.yMin==Mathf.Round(viewport.yMin)
+            &&viewport.xMax==Mathf.Round(viewport.xMax)&&viewport.yMax==Mathf.Round(viewport.yMax);
+        if(localContact&&radius>1)
+        {
+            maskLo=new Vector2(Mathf.Max(viewport.xMin-3,Mathf.Floor(bodyLo.x)-3),Mathf.Max(viewport.yMin-3,Mathf.Floor(bodyLo.y)-3));
+            maskHi=new Vector2(Mathf.Min(viewport.xMax+3,Mathf.Ceil(bodyHi.x)+3),Mathf.Min(viewport.yMax+3,Mathf.Ceil(bodyHi.y)+3));
+        }
+        int maskWidth=Mathf.CeilToInt(maskHi.x-maskLo.x),maskHeight=Mathf.CeilToInt(maskHi.y-maskLo.y);
+        if(maskWidth<=0||maskHeight<=0){maskLo=lo;maskHi=hi;maskWidth=w;maskHeight=h;}
+        var request=new CoreGuardianBodyMaskCache.Request(artwork,camera,alphaThreshold,new Rect(maskLo.x,maskLo.y,maskWidth,maskHeight),atlas,sources);
         CoreGuardianBodyMaskCache.Sample sample;
         try
         {
@@ -110,12 +129,12 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
             if(!hit)
             {
                 if(maskGeometryEpoch!=sample.GeometryEpoch){ClearGeometry();maskGeometryEpoch=sample.GeometryEpoch;}
-                var a=(lo-viewport.position)/viewport.size*2-Vector2.one;
-                var b=(hi-viewport.position)/viewport.size*2-Vector2.one;
+                var a=(maskLo-viewport.position)/viewport.size*2-Vector2.one;
+                var b=(maskHi-viewport.position)/viewport.size*2-Vector2.one;
                 var crop=Matrix4x4.identity;crop.m00=2/(b.x-a.x);crop.m11=2/(b.y-a.y);crop.m03=-(b.x+a.x)/(b.x-a.x);crop.m13=-(b.y+a.y)/(b.y-a.y);
                 var vp=GL.GetGPUProjectionMatrix(crop*camera.projectionMatrix,true)*camera.worldToCameraMatrix;
                 commands.Clear();commands.SetRenderTarget(mask);commands.ClearRenderTarget(false,true,Color.clear);
-                commands.SetViewport(new Rect(0,0,w,h));DrawMaskParts(vp);
+                commands.SetViewport(new Rect(0,0,maskWidth,maskHeight));DrawMaskParts(vp);
                 using(executeSample.Auto())Graphics.ExecuteCommandBuffer(commands);
                 CoreGuardianBodyMaskCache.Publish(maskBinding);
             }
@@ -147,6 +166,11 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         output.sharedMaterial=outlineMaterial;
         output.enabled=true;
     }
+    static bool DefaultProjection(Camera camera)
+    {
+        float h=camera.orthographicSize,w=h*camera.aspect;
+        return camera.projectionMatrix.Equals(Matrix4x4.Ortho(-w,w,-h,h,camera.nearClipPlane,camera.farClipPlane));
+    }
     // Always-on readability sits below inspection (+4) and the success scan (+5).
     public void PresentAtOrder(Transform target,Camera camera,int offset)
     {
@@ -164,7 +188,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     void PresentContact(Transform target,Camera camera,Material material,float? band)
     {
-        PresentMask(target,camera,material==null);
+        PresentMask(target,camera,material==null,material!=null&&material.shader.name=="CoreGuardian/PhotoShadowContact");
         if(!IsVisible||material==null)return;
         SetOutputMask();if(band.HasValue)outputProperties.SetFloat("_Band",band.Value);
         output.SetPropertyBlock(outputProperties);output.sharedMaterial=material;output.sortingOrder=43;
