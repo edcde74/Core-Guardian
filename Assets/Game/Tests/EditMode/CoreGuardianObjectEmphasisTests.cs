@@ -65,7 +65,8 @@ public class CoreGuardianObjectEmphasisTests
             var camera=cameraGo.AddComponent<Camera>();camera.enabled=false;camera.orthographic=true;camera.orthographicSize=1;camera.transform.position=target.transform.position+Vector3.back*10;
             var component=host.AddComponent(type);type.GetField("outlineWidthPixels").SetValue(component,3);type.GetField("outlineColor").SetValue(component,Color.magenta);
             var present=type.GetMethod("PresentTargets");var targets=new List<Transform>{target.transform};present.Invoke(component,new object[]{targets,camera});
-            var output=host.GetComponentInChildren<MeshRenderer>();Assert.That(output.enabled,Is.True);Assert.That(output.sharedMaterial.GetInt("_Width"),Is.EqualTo(3));Assert.That(output.sharedMaterial.GetColor("_Color"),Is.EqualTo(Color.magenta));
+            var output=host.GetComponentInChildren<MeshRenderer>();var properties=new MaterialPropertyBlock();output.GetPropertyBlock(properties);
+            Assert.That(output.enabled,Is.True);Assert.That(properties.GetInt("_Width"),Is.EqualTo(3));Assert.That(properties.GetColor("_Color"),Is.EqualTo(Color.magenta));
             var selection=selectionHost.AddComponent(Find("CoreGuardianSelectionOutline"));selection.GetType().GetField("color").SetValue(selection,Color.green);selection.GetType().GetMethod("Present").Invoke(selection,new object[]{target.transform,camera});
             var green=selectionHost.GetComponentInChildren<MeshRenderer>();Assert.That(green.sortingOrder,Is.GreaterThan(output.sortingOrder),"Inspection must remain above always-on emphasis");
             type.GetField("outlineWidthPixels").SetValue(component,0);present.Invoke(component,new object[]{targets,camera});

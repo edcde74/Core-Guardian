@@ -11,7 +11,6 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
 {
     static readonly ProfilerMarker presentSample=new ProfilerMarker("CG.Mask.Present");
     static readonly ProfilerMarker resourcesSample=new ProfilerMarker("CG.Mask.Resources");
-    static readonly ProfilerMarker capacitySample=new ProfilerMarker("CG.Mask.Capacity");
     static readonly ProfilerMarker partsSample=new ProfilerMarker("CG.Mask.Parts");
     static readonly ProfilerMarker uploadSample=new ProfilerMarker("CG.Mask.MeshUpload");
     static readonly ProfilerMarker executeSample=new ProfilerMarker("CG.Mask.Execute");
@@ -34,6 +33,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     Mesh quad;
     MeshRenderer output;
     RenderTexture mask;
+    CoreGuardianBodyMaskCache.Lease maskBinding;
+    Vector2 maskOriginPx;
+    long maskGeometryEpoch=-1;
     CommandBuffer commands;
     readonly Dictionary<Sprite,Mesh> meshes=new Dictionary<Sprite,Mesh>();
     readonly Dictionary<Sprite,MaskGeometry> geometry=new Dictionary<Sprite,MaskGeometry>();
@@ -74,17 +76,17 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         lastMaskDrawCalls=0;lastAtlasMisses=0;
         CurrentTarget=target;
         if(output!=null)output.enabled=false;
-        if(target==null||camera==null||widthPixels<=0||color.a<=0)return;
+        if(target==null||camera==null||widthPixels<=0||color.a<=0){ReleasePresentation();return;}
         if(target!=lastTarget||artwork==null)
         {
             lastTarget=target;
             artwork=target.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite")?.transform;
         }
-        if(artwork==null)return;
+        if(artwork==null){ReleasePresentation();return;}
         sources.Clear();
         foreach(var r in bodySources.Read(artwork))
             if(r!=null&&r.enabled&&r.sprite!=null&&r.color.a>=alphaThreshold&&r.gameObject.activeInHierarchy)sources.Add(r);
-        if(sources.Count==0)return;
+        if(sources.Count==0){ReleasePresentation();return;}
         EnsureResources();
         var bounds=sources[0].bounds;foreach(var r in sources)bounds.Encapsulate(r.bounds);
         TargetBounds=bounds;
@@ -92,31 +94,42 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         for(int i=0;i<8;i++)
         {
             var corner=bounds.center+Vector3.Scale(bounds.extents,new Vector3((i&1)==0?-1:1,(i&2)==0?-1:1,(i&4)==0?-1:1));
-            var screen=camera.WorldToScreenPoint(corner);if(screen.z<=0)return;
+            var screen=camera.WorldToScreenPoint(corner);if(screen.z<=0){ReleasePresentation();return;}
             lo=Vector2.Min(lo,screen);hi=Vector2.Max(hi,screen);
         }
         int radius=Mathf.Clamp(widthPixels,0,8),pad=radius+2;
         var viewport=camera.pixelRect;
         lo=new Vector2(Mathf.Max(viewport.xMin-pad,Mathf.Floor(lo.x)-pad),Mathf.Max(viewport.yMin-pad,Mathf.Floor(lo.y)-pad));
         hi=new Vector2(Mathf.Min(viewport.xMax+pad,Mathf.Ceil(hi.x)+pad),Mathf.Min(viewport.yMax+pad,Mathf.Ceil(hi.y)+pad));
-        int w=Mathf.CeilToInt(hi.x-lo.x),h=Mathf.CeilToInt(hi.y-lo.y);if(w<=0||h<=0)return;
-        EnsureMask(w,h);
-        var a=(lo-viewport.position)/viewport.size*2-Vector2.one;
-        var b=(hi-viewport.position)/viewport.size*2-Vector2.one;
-        var crop=Matrix4x4.identity;crop.m00=2/(b.x-a.x);crop.m11=2/(b.y-a.y);crop.m03=-(b.x+a.x)/(b.x-a.x);crop.m13=-(b.y+a.y)/(b.y-a.y);
-        var vp=GL.GetGPUProjectionMatrix(crop*camera.projectionMatrix,true)*camera.worldToCameraMatrix;
-        commands.Clear();commands.SetRenderTarget(mask);commands.ClearRenderTarget(false,true,Color.clear);
-        // Clear the entire capacity, then rasterize at the original screen-pixel resolution.
-        commands.SetViewport(new Rect(0,0,w,h));
-        DrawMaskParts(vp);
-        using(executeSample.Auto())Graphics.ExecuteCommandBuffer(commands);
+        int w=Mathf.CeilToInt(hi.x-lo.x),h=Mathf.CeilToInt(hi.y-lo.y);if(w<=0||h<=0){ReleasePresentation();return;}
+        var request=new CoreGuardianBodyMaskCache.Request(artwork,camera,alphaThreshold,new Rect(lo.x,lo.y,w,h),atlas,sources);
+        CoreGuardianBodyMaskCache.Sample sample;
+        try
+        {
+            bool hit=CoreGuardianBodyMaskCache.Begin(maskBinding,request,out sample);mask=sample.Texture;
+            if(!hit)
+            {
+                if(maskGeometryEpoch!=sample.GeometryEpoch){ClearGeometry();maskGeometryEpoch=sample.GeometryEpoch;}
+                var a=(lo-viewport.position)/viewport.size*2-Vector2.one;
+                var b=(hi-viewport.position)/viewport.size*2-Vector2.one;
+                var crop=Matrix4x4.identity;crop.m00=2/(b.x-a.x);crop.m11=2/(b.y-a.y);crop.m03=-(b.x+a.x)/(b.x-a.x);crop.m13=-(b.y+a.y)/(b.y-a.y);
+                var vp=GL.GetGPUProjectionMatrix(crop*camera.projectionMatrix,true)*camera.worldToCameraMatrix;
+                commands.Clear();commands.SetRenderTarget(mask);commands.ClearRenderTarget(false,true,Color.clear);
+                commands.SetViewport(new Rect(0,0,w,h));DrawMaskParts(vp);
+                using(executeSample.Auto())Graphics.ExecuteCommandBuffer(commands);
+                CoreGuardianBodyMaskCache.Publish(maskBinding);
+            }
+        }
+        catch{CoreGuardianBodyMaskCache.Abort(maskBinding);mask=null;throw;}
+        maskOriginPx=lo-sample.ProducerRect.position;
         using var outputScope=outputSample.Auto();
         float depth=Vector3.Dot(bounds.center-camera.transform.position,camera.transform.forward);
         quadVertices[0]=Point(lo.x,lo.y);quadVertices[1]=Point(hi.x,lo.y);quadVertices[2]=Point(hi.x,hi.y);quadVertices[3]=Point(lo.x,hi.y);
         quad.vertices=quadVertices;quad.RecalculateBounds();
         // One texture texel remains one screen pixel, including the contact shader's lower band.
         float u=(float)w/mask.width,v=(float)h/mask.height;
-        quadUV[0]=Vector2.zero;quadUV[1]=new Vector2(u,0);quadUV[2]=new Vector2(u,v);quadUV[3]=new Vector2(0,v);quad.uv=quadUV;
+        var origin=new Vector2(maskOriginPx.x/mask.width,maskOriginPx.y/mask.height);
+        quadUV[0]=origin;quadUV[1]=origin+new Vector2(u,0);quadUV[2]=origin+new Vector2(u,v);quadUV[3]=origin+new Vector2(0,v);quad.uv=quadUV;
         Vector3 Point(float x,float y)=>output.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(x,y,depth)));
         var front=sources[0];int frontLayer=SortingLayer.GetLayerValueFromID(front.sortingLayerID);
         foreach(var r in sources)
@@ -160,6 +173,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     {
         outputProperties.Clear();outputProperties.SetTexture("_MainTex",mask);
         outputProperties.SetVector("_MainTex_TexelSize",new Vector4(1f/mask.width,1f/mask.height,mask.width,mask.height));
+        outputProperties.SetVector("_MaskOriginPx",new Vector4(maskOriginPx.x,maskOriginPx.y,0,0));
     }
     Mesh SpriteMesh(Sprite sprite)
     {
@@ -279,32 +293,27 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         }
         if(output!=null)return;
         properties=new MaterialPropertyBlock();
+        maskBinding=new CoreGuardianBodyMaskCache.Lease(this);
         outputProperties=new MaterialPropertyBlock();
         maskLease=CoreGuardianSharedMaskMaterial.Acquire("CoreGuardian/SelectionMask");maskMaterial=maskLease.Material;
         outlineLease=CoreGuardianSharedMaskMaterial.Acquire("CoreGuardian/SelectionOutline");outlineMaterial=outlineLease.Material;
         commands=new CommandBuffer{name="Selected unit sprite union"};
         var root=new GameObject("SelectionOutline"){hideFlags=HideFlags.DontSave};root.transform.SetParent(transform,false);
+        root.AddComponent<CoreGuardianBodyMaskLifetime>().owner=this;
         quad=new Mesh{name="Selected unit outline quad",hideFlags=HideFlags.DontSave};quad.vertices=new Vector3[4];
         quad.uv=new[]{Vector2.zero,Vector2.right,Vector2.one,Vector2.up};quad.triangles=new[]{0,1,2,0,2,3};
         root.AddComponent<MeshFilter>().sharedMesh=quad;output=root.AddComponent<MeshRenderer>();output.sharedMaterial=outlineMaterial;
         output.shadowCastingMode=ShadowCastingMode.Off;output.receiveShadows=false;output.enabled=false;
     }
-    void EnsureMask(int width,int height)
-    {
-        using var capacityScope=capacitySample.Auto();
-        if(mask!=null&&mask.width>=width&&mask.height>=height){if(!mask.IsCreated())mask.Create();return;}
-        if(mask!=null){width=Mathf.Max(width,mask.width);height=Mathf.Max(height,mask.height);}
-        if(mask!=null){mask.Release();DisposeObject(mask);}
-        mask=new RenderTexture(width,height,0,RenderTextureFormat.ARGB32,RenderTextureReadWrite.Linear)
-            {name="Selected unit union mask",filterMode=FilterMode.Point,wrapMode=TextureWrapMode.Clamp,hideFlags=HideFlags.DontSave};mask.Create();
-    }
     // Component-only edits on an existing transform must explicitly invalidate this cache.
     // New/reparented/destroyed children are detected automatically, including inactive rigs.
-    public void InvalidateSources(){bodySources.Invalidate();lastTarget=null;artwork=null;}
-    void OnDisable(){if(output!=null)output.enabled=false;CurrentTarget=null;}
+    public void InvalidateSources(){CoreGuardianBodyMaskCache.Invalidate(artwork);bodySources.Invalidate();ClearGeometry();maskGeometryEpoch=-1;lastTarget=null;artwork=null;}
+    void ClearGeometry(){foreach(var mesh in meshes.Values)DisposeObject(mesh);meshes.Clear();geometry.Clear();}
+    internal void ReleasePresentation(){if(output!=null)output.enabled=false;CurrentTarget=null;CoreGuardianBodyMaskCache.Release(maskBinding);mask=null;maskOriginPx=Vector2.zero;}
+    void OnDisable(){ReleasePresentation();}
     void OnDestroy()
     {
-        commands?.Dispose();if(mask!=null){mask.Release();DisposeObject(mask);}
+        ReleasePresentation();commands?.Dispose();
         foreach(var mesh in meshes.Values)DisposeObject(mesh);meshes.Clear();
         foreach(var batch in batches)DisposeObject(batch.mesh);batches.Clear();geometry.Clear();
         DisposeObject(quad);if(output!=null)DisposeObject(output.gameObject);

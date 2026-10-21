@@ -13,6 +13,11 @@ public class CoreGuardianBodyMaskSharingTests
     static void Set(Component c,string name,object value)=>Outline.GetField(name).SetValue(c,value);
     static void Show(Component c,Transform target,Camera camera)=>Outline.GetMethod("Present").Invoke(c,new object[]{target,camera});
     static void Clear(Component c){if(c!=null)Outline.GetMethod("OnDestroy",Hidden).Invoke(c,null);}
+    static Type Cache=>Outline.Assembly.GetType("CoreGuardianBodyMaskCache");
+    const BindingFlags Static=BindingFlags.Static|BindingFlags.NonPublic;
+    static object CacheCall(string method,params object[] args)=>Cache.GetMethod(method,Static).Invoke(null,args);
+    static void Release(Component c)=>Outline.GetMethod("ReleasePresentation",Hidden).Invoke(c,null);
+    static int Count(string name)=>(int)Cache.GetProperty(name,Static).GetValue(null);
     sealed class Fixture:IDisposable
     {
         public readonly List<GameObject> roots=new List<GameObject>();
@@ -20,7 +25,7 @@ public class CoreGuardianBodyMaskSharingTests
         public Camera camera;public Transform target;public SpriteRenderer body;public Texture2D texture;public Sprite sprite;public RenderTexture image;
         public Fixture()
         {
-            var root=Root("Sharing target");root.transform.position=new Vector3(10000,10000,0);target=root.transform;
+            var root=Root("Sharing target");target=root.transform;
             texture=new Texture2D(8,8,TextureFormat.RGBA32,false){filterMode=FilterMode.Point,wrapMode=TextureWrapMode.Clamp};texture.SetPixels(Enumerable.Repeat(Color.white,64).ToArray());texture.Apply();
             sprite=Sprite.Create(texture,new Rect(0,0,8,8),Vector2.one*.5f,16,0,SpriteMeshType.FullRect);
             body=new GameObject("2D Sprite").AddComponent<SpriteRenderer>();body.transform.SetParent(target,false);body.sprite=sprite;
@@ -71,7 +76,7 @@ public class CoreGuardianBodyMaskSharingTests
             Assert.That(fresh!=null&&fresh.IsCreated(),Is.True,"Borrower must survive producer destruction");
         }
     }
-    [TestCase("alpha")][TestCase("flip")][TestCase("threshold")][TestCase("texture")][TestCase("camera")][TestCase("viewport")][TestCase("invalidate")]
+    [TestCase("alpha")][TestCase("flip")][TestCase("threshold")][TestCase("texture")][TestCase("camera")][TestCase("viewport")][TestCase("invalidate")][TestCase("target-size")][TestCase("rotation")][TestCase("sprite")]
     public void ChangedInputs_AreNotStaleHits(string change)
     {
         using(var f=new Fixture())
@@ -86,8 +91,12 @@ public class CoreGuardianBodyMaskSharingTests
                 case "camera":f.camera.transform.position+=Vector3.right*.1f;break;
                 case "viewport":f.camera.pixelRect=new Rect(0,0,96,128);break;
                 case "invalidate":Outline.GetMethod("InvalidateSources").Invoke(a,null);break;
+                case "target-size":f.image.Release();f.image.width=96;f.image.Create();break;
+                case "rotation":f.body.transform.localRotation=Quaternion.Euler(0,0,15);break;
+                case "sprite":f.body.sprite=Sprite.Create(f.texture,new Rect(0,0,4,8),Vector2.one*.5f,16,0,SpriteMeshType.FullRect);break;
             }
             Assert.That(f.Show(b),Is.Not.SameAs(old));Assert.That(Field<int>(b,"lastMaskDrawCalls"),Is.EqualTo(1));
+            if(change=="sprite")UnityEngine.Object.DestroyImmediate(f.body.sprite);
         }
     }
     [Test]
@@ -109,6 +118,88 @@ public class CoreGuardianBodyMaskSharingTests
         {
             var a=f.Owner(1);var b=f.Owner(2);var first=f.Show(a);var pixels=Pixels(first);
             Assert.That(f.Show(b),Is.Not.SameAs(first));Assert.That(Pixels(first),Is.EqualTo(pixels));
+        }
+    }
+    [Test]
+    public void DistantWorld_DifferentCropFallsBack_EqualCropStillShares()
+    {
+        using(var f=new Fixture())
+        {
+            f.target.position=new Vector3(10000,10000,0);f.camera.transform.position=f.target.position+Vector3.back*10;
+            var a=f.Owner(2);var b=f.Owner(1);var c=f.Owner(2);var first=f.Show(a);
+            Assert.That(f.Show(b),Is.Not.SameAs(first));Assert.That(f.Show(c),Is.SameAs(first));
+        }
+    }
+    [Test]
+    public void LastRelease_DisposesOwnedRecords_AndRepeatedReleaseIsSafe()
+    {
+        int entries=Count("EntryCount"),bindings=Count("BindingCount");
+        using(var f=new Fixture())
+        {
+            var a=f.Owner();var b=f.Owner();var rt=f.Show(a);f.Show(b);Release(a);Release(a);
+            Assert.That(rt!=null&&rt.IsCreated(),Is.True);Assert.That(f.Show(b),Is.SameAs(rt));Release(b);
+            Assert.That(rt==null,Is.True);Assert.That(Count("EntryCount"),Is.EqualTo(entries));Assert.That(Count("BindingCount"),Is.EqualTo(bindings));
+        }
+    }
+    [Test]
+    public void DisabledManualConsumer_CanPresentThenReleaseWhenHostDeactivated()
+    {
+        using(var f=new Fixture())
+        {
+            var a=(Behaviour)f.Owner();a.enabled=false;var rt=f.Show(a);Assert.That(rt!=null,Is.True);
+            a.gameObject.SetActive(false);Assert.That(Field<RenderTexture>(a,"mask"),Is.Null);Assert.That(rt==null,Is.True);
+        }
+    }
+    [Test]
+    public void ReleasedHardware_RegeneratesBeforeHit()
+    {
+        using(var f=new Fixture())
+        {
+            var a=f.Owner();var b=f.Owner();var rt=f.Show(a);rt.Release();var next=f.Show(b);
+            Assert.That(next!=null&&next.IsCreated(),Is.True);Assert.That(Field<int>(b,"lastMaskDrawCalls"),Is.EqualTo(1));
+        }
+    }
+    [Test]
+    public void UnpublishedRecord_IsNeverReturnedAsHit()
+    {
+        using(var f=new Fixture())
+        {
+            var a=f.Owner();var b=f.Owner();var rt=f.Show(a);
+            var binding=Field<object>(a,"maskBinding");var record=binding.GetType().GetField("current",Hidden|BindingFlags.Public).GetValue(binding);
+            record.GetType().GetField("valid",Hidden|BindingFlags.Public).SetValue(record,false);
+            Assert.That(f.Show(b),Is.Not.SameAs(rt));Assert.That(Field<int>(b,"lastMaskDrawCalls"),Is.EqualTo(1));
+        }
+    }
+    [Test]
+    public void SoloOwnerNextGeneration_ReusesCapacity()
+    {
+        using(var f=new Fixture())
+        {
+            var a=f.Owner();var rt=f.Show(a);Outline.GetMethod("InvalidateSources").Invoke(a,null);
+            Assert.That(f.Show(a),Is.SameAs(rt));Assert.That(Field<int>(a,"lastMaskDrawCalls"),Is.EqualTo(1));
+        }
+    }
+    [TestCase("target")][TestCase("width")][TestCase("color")][TestCase("hidden")]
+    public void InvalidPresentation_ReleasesBinding(string reason)
+    {
+        using(var f=new Fixture())
+        {
+            var a=f.Owner();var rt=f.Show(a);
+            if(reason=="width")Set(a,"widthPixels",0);if(reason=="color")Set(a,"color",Color.clear);if(reason=="hidden")f.body.enabled=false;
+            Show(a,reason=="target"?null:f.target,f.camera);
+            Assert.That(Field<RenderTexture>(a,"mask"),Is.Null);Assert.That(rt==null,Is.True);
+        }
+    }
+    [Test]
+    public void NullOverlayAndModeSwitch_PreserveFallback_AndResetHidesOutputs()
+    {
+        using(var f=new Fixture())
+        {
+            var a=f.Owner();Assert.That(Outline.GetMethod("PresentOverlay").Invoke(a,new object[]{f.target,f.camera,null}),Is.False);
+            Assert.That((bool)Outline.GetProperty("IsVisible").GetValue(a),Is.True);
+            var renderer=Field<MeshRenderer>(a,"output");Assert.That(renderer.sharedMaterial.shader.name,Does.Contain("Selection"));
+            var rt=Field<RenderTexture>(a,"mask");CacheCall("ResetOwned");
+            Assert.That(renderer.enabled,Is.False);Assert.That(Field<RenderTexture>(a,"mask"),Is.Null);Assert.That(rt==null,Is.True);
         }
     }
 }

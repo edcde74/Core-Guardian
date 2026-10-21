@@ -81,8 +81,8 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
         using(cameraSample.Auto())camera=Camera.main;
         Present(camera);
     }
-    public void InvalidateSources()=>shadowSources.Invalidate();
-    void OnDisable(){if(cast!=null)cast.enabled=false;if(contact!=null)contact.gameObject.SetActive(false);}
+    public void InvalidateSources(){shadowSources.Invalidate();contact?.InvalidateSources();}
+    void OnDisable(){if(cast!=null)cast.enabled=false;if(contact!=null){contact.ReleasePresentation();contact.gameObject.SetActive(false);}}
     void OnEnable(){if(cast!=null)cast.enabled=true;if(contact!=null)contact.gameObject.SetActive(true);}
     void OnDestroy(){contactLease?.Release();contactLease=null;contactMaterial=null;}
 }
