@@ -6,3 +6,5 @@
 /docs/development/mask_atlas_20261021/profiler_raw.zip filter=lfs diff=lfs merge=lfs -text
 /docs/development/photo_shadow_diagnostic_20261021/profiler_raw.zip filter=lfs diff=lfs merge=lfs -text
 /docs/development/shared_mask_materials_20261021/profiler_raw.zip filter=lfs diff=lfs merge=lfs -text
+/docs/development/shared_body_mask_20261021/profiler_containment_candidate.zip filter=lfs diff=lfs merge=lfs -text
+/docs/development/shared_body_mask_20261021/profiler_raw.zip filter=lfs diff=lfs merge=lfs -text

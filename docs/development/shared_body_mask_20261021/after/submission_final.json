@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/shared_body_mask_20261021/Probe.cs",
+      "entry": "CGBodyMaskProbe.Start",
+      "args": "[\"normal\",\"after\"]",
+      "timeout_ms": "60000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 1787,
+      "executeMs": 207,
+      "assemblyName": "PipelineRunScript_Probe_1c3bb05b54fc4ea197cd083a69b3d6f5",
+      "success": true,
+      "result": {
+        "running": true,
+        "mode": "normal",
+        "run": 0,
+        "warm": 30,
+        "observed": 0,
+        "targetFrames": 100,
+        "frame": 1,
+        "progress": []
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/shared_body_mask_20261021/Probe.cs",
+      "entry": "CGBodyMaskProbe.ExportSaved",
+      "args": "[\"docs/development/shared_body_mask_20261021/lifecycle\",\"memory_run1\"]",
+      "timeout_ms": "60000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 90,
+      "executeMs": 4,
+      "assemblyName": "PipelineRunScript_Probe_3da067fc7b134c798648dbedf4d90e6b",
+      "success": true,
+      "result": {
+        "first": -1,
+        "last": -1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

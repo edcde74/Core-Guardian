@@ -7,6 +7,15 @@ using UnityEngine;
 public class CoreGuardianObjectEmphasisTests
 {
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).FirstOrDefault(t=>t!=null);
+    static void DestroyOwned(GameObject root)
+    {
+        if(root==null)return;
+        var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+        var emphasis=root.GetComponent(Find("CoreGuardianObjectEmphasis"));if(emphasis!=null)emphasis.GetType().GetMethod("OnDestroy",flags).Invoke(emphasis,null);
+        foreach(var owner in root.GetComponentsInChildren<MonoBehaviour>(true))
+            if(owner.GetType()==Find("CoreGuardianSelectionOutline"))owner.GetType().GetMethod("OnDestroy",flags).Invoke(owner,null);
+        UnityEngine.Object.DestroyImmediate(root);
+    }
     static void Begin(Component component,Camera camera)=>component.GetType().GetMethod("BeginCameraRendering",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).Invoke(component,new object[]{default(UnityEngine.Rendering.ScriptableRenderContext),camera});
     [Test]
     public void RenderScopedBrightnessDoesNotFeedBackIntoIdleToAttackCutouts()
@@ -26,7 +35,7 @@ public class CoreGuardianObjectEmphasisTests
             cutout.color=original.color;original.enabled=false;cutout.enabled=true;
             present.Invoke(component,new object[]{new List<Transform>{target.transform},camera});begin.Invoke(component,args);Assert.That(cutout.color.r,Is.EqualTo(1.15f).Within(.00001f),"Copied cutout must not become 1.3225");end.Invoke(component,args);Assert.That(cutout.color,Is.EqualTo(Color.white));
             original.enabled=true;cutout.enabled=false;present.Invoke(component,new object[]{new List<Transform>{target.transform},camera});begin.Invoke(component,args);end.Invoke(component,args);Assert.That(original.color,Is.EqualTo(Color.white));
-        } finally {UnityEngine.Object.DestroyImmediate(host);UnityEngine.Object.DestroyImmediate(target);UnityEngine.Object.DestroyImmediate(cameraGo);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
+        } finally {DestroyOwned(host);UnityEngine.Object.DestroyImmediate(target);UnityEngine.Object.DestroyImmediate(cameraGo);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
     }
     [Test]
     public void BodyBoostDoesNotAccumulate_RespectsNewTint_AndRestoresOnRemoval()
@@ -52,7 +61,7 @@ public class CoreGuardianObjectEmphasisTests
             present.Invoke(component,new object[]{new List<Transform>(),camera});Assert.That(body.color,Is.EqualTo(changed));
             present.Invoke(component,new object[]{targets,camera});Begin(component,camera);body.color=Color.red;
             present.Invoke(component,new object[]{new List<Transform>(),camera});Assert.That(body.color,Is.EqualTo(Color.red),"Removal must not overwrite another system's newer tint");Assert.That(shadow.color,Is.EqualTo(shadowBefore));
-        } finally {UnityEngine.Object.DestroyImmediate(host);UnityEngine.Object.DestroyImmediate(target);UnityEngine.Object.DestroyImmediate(cameraGo);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
+        } finally {DestroyOwned(host);UnityEngine.Object.DestroyImmediate(target);UnityEngine.Object.DestroyImmediate(cameraGo);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
     }
     [Test]
     public void InspectorOutlineChangesApplyLive_ZeroHidesOnlyEmphasis_SelectionRendersAboveIt()
@@ -71,6 +80,6 @@ public class CoreGuardianObjectEmphasisTests
             var green=selectionHost.GetComponentInChildren<MeshRenderer>();Assert.That(green.sortingOrder,Is.GreaterThan(output.sortingOrder),"Inspection must remain above always-on emphasis");
             type.GetField("outlineWidthPixels").SetValue(component,0);present.Invoke(component,new object[]{targets,camera});
             Assert.That(output.enabled,Is.False);Assert.That(green.enabled,Is.True);Begin(component,camera);Assert.That(body.color.r,Is.EqualTo(1.15f).Within(.00001f));
-        } finally {UnityEngine.Object.DestroyImmediate(host);UnityEngine.Object.DestroyImmediate(target);UnityEngine.Object.DestroyImmediate(cameraGo);UnityEngine.Object.DestroyImmediate(selectionHost);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
+        } finally {DestroyOwned(host);UnityEngine.Object.DestroyImmediate(target);UnityEngine.Object.DestroyImmediate(cameraGo);DestroyOwned(selectionHost);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
     }
 }

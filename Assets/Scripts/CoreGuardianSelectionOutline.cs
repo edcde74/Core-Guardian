@@ -342,9 +342,10 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     void ClearGeometry(){foreach(var mesh in meshes.Values)DisposeObject(mesh);meshes.Clear();geometry.Clear();}
     internal void ReleasePresentation(){if(output!=null)output.enabled=false;CurrentTarget=null;CoreGuardianBodyMaskCache.Release(maskBinding);mask=null;maskOriginPx=Vector2.zero;}
     void OnDisable(){ReleasePresentation();}
-    void OnDestroy()
+    void OnDestroy(){ReleaseResources();}
+    internal void ReleaseResources()
     {
-        ReleasePresentation();commands?.Dispose();
+        ReleasePresentation();commands?.Dispose();commands=null;
         foreach(var mesh in meshes.Values)DisposeObject(mesh);meshes.Clear();
         foreach(var batch in batches)DisposeObject(batch.mesh);batches.Clear();geometry.Clear();
         DisposeObject(quad);if(output!=null)DisposeObject(output.gameObject);

@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var s=Resources.Load<Shader>(\"CoreGuardian/PhotoShadowContact\");var m=new Material(s);try{long start=System.GC.GetAllocatedBytesForCurrentThread();for(int i=0;i<1000;i++){bool a=m.shader.name==\"CoreGuardian/PhotoShadowContact\";}long names=System.GC.GetAllocatedBytesForCurrentThread()-start;start=System.GC.GetAllocatedBytesForCurrentThread();for(int i=0;i<1000;i++){bool a=m.shader==s;}return new{iterations=1000,nameBytes=names,referenceBytes=System.GC.GetAllocatedBytesForCurrentThread()-start};}finally{UnityEngine.Object.DestroyImmediate(m);}"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "iterations": 1000,
+        "nameBytes": 0,
+        "referenceBytes": 0
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,202 @@
+{
+  "role": "Buff",
+  "worldOffset": 16.0,
+  "sharedReads": 8,
+  "cases": 16,
+  "failed": 0,
+  "empty": 0,
+  "maxDifference": 0,
+  "maxParts": 6,
+  "maxDraws": 1,
+  "maxMisses": 0,
+  "submissionShapes": [
+    "5:1:0",
+    "5:0:0",
+    "0:0:0",
+    "1:1:0",
+    "1:0:0",
+    "6:1:0",
+    "6:0:0"
+  ],
+  "peakBytes": 779136,
+  "baseline": 0,
+  "after": 0,
+  "rows": [
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 0,
+      "effect": 0,
+      "different": 0,
+      "drawn": 1115
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 0,
+      "effect": 1,
+      "different": 0,
+      "drawn": 100
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 0,
+      "effect": 2,
+      "different": 0,
+      "drawn": 831
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 0,
+      "effect": 3,
+      "different": 0,
+      "drawn": 1979
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 1,
+      "effect": 0,
+      "different": 0,
+      "drawn": 1095
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 1,
+      "effect": 1,
+      "different": 0,
+      "drawn": 98
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 1,
+      "effect": 2,
+      "different": 0,
+      "drawn": 834
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 1,
+      "effect": 3,
+      "different": 0,
+      "drawn": 1957
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 2,
+      "effect": 0,
+      "different": 0,
+      "drawn": 956
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 2,
+      "effect": 1,
+      "different": 0,
+      "drawn": 38
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 2,
+      "effect": 2,
+      "different": 0,
+      "drawn": 741
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 2,
+      "effect": 3,
+      "different": 0,
+      "drawn": 1713
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 3,
+      "effect": 0,
+      "different": 0,
+      "drawn": 966
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 3,
+      "effect": 1,
+      "different": 0,
+      "drawn": 80
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 3,
+      "effect": 2,
+      "different": 0,
+      "drawn": 895
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 0,
+      "d": 3,
+      "effect": 3,
+      "different": 0,
+      "drawn": 1896
+    }
+  ]
+}

@@ -1,2 +1,7 @@
-# 동일 본체 마스크 공유 실험
-2026-10-21. 승인 계획 docs/superpowers/plans/2026-10-21-shared-body-mask.md. 제품 기준47ca358/작업 기준12aebd5. baseline100프레임×3 완료/error=null. 새 계약11건 중 공유 부재3건 실패/나머지8건 통과 RED. 후속 결과는 실제 검증 후 기록한다.
+# 동일 본체 마스크 공유
+
+사용자 승인 설계·계획을 직접 순차 구현했다. 최종 방식, 검증 뷰 제한, 전후 비용/FPS, 픽셀·수명, 실패 후보·원본·복원·미완료는 [RESULTS.md](RESULTS.md)가 정본이다.
+
+- [설계](../../superpowers/specs/2026-10-21-shared-body-mask-design.md), [실행 계획과 품질 보완](../../superpowers/plans/2026-10-21-shared-body-mask.md)
+- [합산 수치](summary.json), [반복별 수치](comparison.json), [리뷰](review.md)
+- [최종 종료 상태](final_state.json), [설정 복원](settings_after.json)

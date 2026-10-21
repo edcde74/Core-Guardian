@@ -80,12 +80,19 @@ public static class CGBodyMaskProbe
             if(ProfilerDriver.firstFrameIndex<0||ProfilerDriver.lastFrameIndex<0)throw new Exception("No actual Profiler frames received; capture invalid");
             bool saved=ProfilerDriver.SaveProfile(Path.GetFullPath(root+"/"+label+".data"));
             Write(label+"_frames.json",frames);
-            var rt=knownMasks.Values.Where(r=>r!=null).ToArray();Write(label+"_resources.json",new{replacements,owners=owners.Length,maskCount=rt.Length,bytes=rt.Sum(r=>Profiler.GetRuntimeMemorySizeLong(r)),sizes=rt.Select(r=>new{r.width,r.height}).ToArray(),materials=Materials()});
+            var aliases=knownMasks.Values.Where(r=>r!=null).ToArray();var rt=aliases.Distinct().ToArray();Write(label+"_resources.json",new{replacements,owners=owners.Length,boundAliases=aliases.Length,cache=CacheTelemetry(),maskCount=rt.Length,bytes=rt.Sum(r=>Profiler.GetRuntimeMemorySizeLong(r)),sizes=rt.Select(r=>new{r.width,r.height}).ToArray(),materials=Materials()});
             Export(label);
             progress.Add(new{label,saved,frames=frames.Count,first=ProfilerDriver.firstFrameIndex,last=ProfilerDriver.lastFrameIndex});Write(mode+"_progress.json",progress);
             run++;if(run>=populations.Length){Finish(null);return;}Setup();
         }catch(Exception ex){Finish(ex.ToString());}
     }
+    public static object ExportSaved(string directory,string label)
+    {
+        if(EditorApplication.isPlaying||Profiler.enabled)throw new Exception("Idle own capture analysis required");
+        root=directory;mode="lifecycle";ProfilerDriver.LoadProfile(Path.GetFullPath(root+"/"+label+".data"),false);
+        return new{first=ProfilerDriver.firstFrameIndex,last=ProfilerDriver.lastFrameIndex};
+    }
+    public static object ExportLoaded(string directory,string label){root=directory;mode="lifecycle";if(ProfilerDriver.firstFrameIndex<0)throw new Exception("Profile not loaded");Export(label);return new{first=ProfilerDriver.firstFrameIndex,last=ProfilerDriver.lastFrameIndex};}
     static void Export(string label)
     {
         var output=new List<object>();var stacks=new Dictionary<string,long>();int stackSamples=0;
@@ -95,14 +102,14 @@ public static class CGBodyMaskProbe
                 for(int thread=0;thread<count;thread++)using(var raw=ProfilerDriver.GetRawFrameDataView(frame,thread)){
                     if(!raw.valid||raw.sampleCount==0)continue;
                     if(raw.threadName!="Main Thread"&&!raw.threadName.Contains("Render")&&!raw.threadName.Contains("GfxDevice"))continue;
-                    var costs=new Dictionary<string,Cost>();var parent=new Stack<int>();var ends=new Stack<int>();
+                    long cacheInclusiveGC=0;var costs=new Dictionary<string,Cost>();var parent=new Stack<int>();var ends=new Stack<int>();
                     for(int i=0;i<raw.sampleCount;i++){
                         while(ends.Count>0&&i>=ends.Peek()){ends.Pop();parent.Pop();}
                         string name=raw.GetSampleName(i)??"<unnamed-root>";double total=raw.GetSampleTimeMs(i);int end=i+raw.GetSampleChildrenCountRecursive(i)+1;
                         double childMs=0;for(int c=i+1;c<end;c+=raw.GetSampleChildrenCountRecursive(c)+1)childMs+=raw.GetSampleTimeMs(c);
                         Cost cost;if(!costs.TryGetValue(name,out cost))costs[name]=cost=new Cost();cost.calls++;cost.totalMs+=total;cost.selfMs+=Math.Max(0,total-childMs);
                         if(name=="GC.Alloc"&&raw.GetSampleMetadataCount(i)>0){
-                            long bytes=raw.GetSampleMetadataAsLong(i,0);cost.gcBytes+=bytes;
+                            long bytes=raw.GetSampleMetadataAsLong(i,0);cost.gcBytes+=bytes;if(parent.Any(index=>raw.GetSampleName(index)=="CG.Mask.CacheLookup"))cacheInclusiveGC+=bytes;
                             if(parent.Count>0){var owner=raw.GetSampleName(parent.Peek())??"<unnamed-root>";if(!costs.ContainsKey(owner))costs[owner]=new Cost();costs[owner].gcBytes+=bytes;}
                             if(mode=="alloc"&&stackSamples<3000){
                                 var addresses=new List<ulong>();raw.GetSampleCallstack(i,addresses);
@@ -113,12 +120,17 @@ public static class CGBodyMaskProbe
                         }
                         if(end>i+1){parent.Push(i);ends.Push(end);}
                     }
-                    output.Add(new{frame,thread,raw.threadName,raw.threadGroupName,raw.frameTimeMs,raw.frameGpuTimeMs,raw.sampleCount,costs});
+                    output.Add(new{frame,thread,raw.threadName,raw.threadGroupName,raw.frameTimeMs,raw.frameGpuTimeMs,raw.sampleCount,cacheInclusiveGC,costs});
                 }
             }
         }
         Write(label+"_markers.json",output);
         if(mode=="alloc")Write(label+"_allocation_stacks.json",new{sampleLimit=3000,stackSamples,stacks});
+    }
+    static object CacheTelemetry()
+    {
+        var t=typeof(CoreGuardianSelectionOutline).Assembly.GetType("CoreGuardianBodyMaskCache");var f=BindingFlags.Static|BindingFlags.NonPublic;
+        return new{entries=t.GetProperty("EntryCount",f).GetValue(null),bindings=t.GetProperty("BindingCount",f).GetValue(null),allocated=t.GetProperty("AllocatedCount",f).GetValue(null),bytes=t.GetProperty("AllocatedBytes",f).GetValue(null),hits=t.GetField("Hits",f).GetValue(null),generations=t.GetField("Generations",f).GetValue(null),allocations=t.GetField("Allocations",f).GetValue(null),releases=t.GetField("Releases",f).GetValue(null)};
     }
     static object Materials()
     {

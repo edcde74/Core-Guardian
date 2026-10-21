@@ -124,6 +124,8 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
         foreach(var pair in state.tints)pair.Value.Restore(pair.Key);
         if(state.host==null)return;
         if(state.union!=null)state.union.ReleasePresentation();
+        // Non-ExecuteAlways EditMode consumers may never receive OnDestroy.
+        if(!Application.isPlaying&&state.union!=null)state.union.ReleaseResources();
         state.host.SetActive(false);
         if(Application.isPlaying)Destroy(state.host);else DestroyImmediate(state.host);
     }

@@ -1,0 +1,12 @@
+{
+  "success": false,
+  "command": "unity command eval",
+  "data": null,
+  "errors": [
+    {
+      "code": "COMMAND_FAILED",
+      "message": "Compilation Failed\n  'Object' is an ambiguous reference between 'UnityEngine.Object' and 'object'(1행, 519열)\n  Unreachable code detected(2행, 12열)"
+    }
+  ],
+  "warnings": []
+}

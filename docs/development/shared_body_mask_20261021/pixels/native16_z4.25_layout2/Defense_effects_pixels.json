@@ -1,0 +1,200 @@
+{
+  "role": "Defense",
+  "worldOffset": 16.0,
+  "sharedReads": 8,
+  "cases": 16,
+  "failed": 0,
+  "empty": 0,
+  "maxDifference": 0,
+  "maxParts": 6,
+  "maxDraws": 1,
+  "maxMisses": 0,
+  "submissionShapes": [
+    "5:1:0",
+    "5:0:0",
+    "0:0:0",
+    "6:1:0",
+    "6:0:0"
+  ],
+  "peakBytes": 401016,
+  "baseline": 0,
+  "after": 0,
+  "rows": [
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 0,
+      "effect": 0,
+      "different": 0,
+      "drawn": 277
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 0,
+      "effect": 1,
+      "different": 0,
+      "drawn": 46
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 0,
+      "effect": 2,
+      "different": 0,
+      "drawn": 352
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 0,
+      "effect": 3,
+      "different": 0,
+      "drawn": 644
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 1,
+      "effect": 0,
+      "different": 0,
+      "drawn": 292
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 1,
+      "effect": 1,
+      "different": 0,
+      "drawn": 19
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 1,
+      "effect": 2,
+      "different": 0,
+      "drawn": 780
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 1,
+      "effect": 3,
+      "different": 0,
+      "drawn": 1083
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 2,
+      "effect": 0,
+      "different": 0,
+      "drawn": 238
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 2,
+      "effect": 1,
+      "different": 0,
+      "drawn": 36
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 2,
+      "effect": 2,
+      "different": 0,
+      "drawn": 461
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 2,
+      "effect": 3,
+      "different": 0,
+      "drawn": 714
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 3,
+      "effect": 0,
+      "different": 0,
+      "drawn": 276
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 3,
+      "effect": 1,
+      "different": 0,
+      "drawn": 34
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 3,
+      "effect": 2,
+      "different": 0,
+      "drawn": 431
+    },
+    {
+      "resolution": 0,
+      "w": 1920,
+      "h": 1080,
+      "zoom": 4.25,
+      "layout": 2,
+      "d": 3,
+      "effect": 3,
+      "different": 0,
+      "drawn": 720
+    }
+  ]
+}

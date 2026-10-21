@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/shared_body_mask_20261021/PixelComparison.cs",
+      "entry": "CGSharedBodyPixels.RunOffset",
+      "args": "[2,0]",
+      "timeout_ms": "60000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 186,
+      "executeMs": 1714,
+      "assemblyName": "PipelineRunScript_PixelComparison_2599c5cbd9f746e09ac4b38bdfbf162e",
+      "success": true,
+      "result": {
+        "role": "Buff",
+        "worldOffset": 0,
+        "sharedReads": 288,
+        "exactSize": false,
+        "effectsOnly": true,
+        "cases": 432,
+        "failed": 0,
+        "empty": 7,
+        "maxDifference": 0,
+        "maxParts": 6,
+        "maxDraws": 1,
+        "maxMisses": 0,
+        "submissionShapes": [
+          "5:1:0",
+          "5:0:0",
+          "0:0:0",
+          "1:1:0",
+          "1:0:0",
+          "6:1:0",
+          "6:0:0"
+        ],
+        "peakBytes": 1926552,
+        "baseline": 0,
+        "after": 0
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
