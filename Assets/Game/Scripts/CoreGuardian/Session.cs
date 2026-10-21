@@ -113,8 +113,9 @@ namespace CoreGuardian
             public readonly Dictionary<EnemyState,float> Boosts=new Dictionary<EnemyState,float>();
             public readonly List<TowerState> Towers=new List<TowerState>();
             public readonly List<ProjectileState> Projectiles=new List<ProjectileState>();
+            public readonly Dictionary<ProjectileState,int> ProjectileRemovals=new Dictionary<ProjectileState,int>();
             public readonly EnemyRangeIndex RangeIndex=new EnemyRangeIndex();
-            public void Clear(){Rows.Clear();Enemies.Clear();BuffSources.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();RangeIndex.Clear();}
+            public void Clear(){Rows.Clear();Enemies.Clear();BuffSources.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();ProjectileRemovals.Clear();RangeIndex.Clear();}
         }
         sealed class ShotWork
         {
@@ -233,7 +234,7 @@ namespace CoreGuardian
                     Shoot(t.Position,t.Stats,"Tower:"+t.Id,buff,ref t.Cooldown,ref t.Target,ref t.AcquiredOnce,dt,t.Kind==TowerKind.Multi,work.RangeIndex);
                 }
                 work.Projectiles.AddRange(Projectiles);
-                foreach(var p in work.Projectiles) {if(!p.Target.Alive){Projectiles.Remove(p);continue;}p.Position=Vector2.MoveTowards(p.Position,p.Target.Position,p.Speed*dt);if(Vector2.Distance(p.Position,p.Target.Position)<=.00001f){ApplyDamage(p.Target,p.Damage,p.Source);Projectiles.Remove(p);}}
+                MoveProjectiles(dt,work);
                 Enemies.RemoveAll(e=>!e.Alive);
                 bool complete=Diagnostic;
                 if(!complete&&rows.Count>0)
@@ -244,6 +245,49 @@ namespace CoreGuardian
                 if(complete&&Enemies.Count==0)CompleteRound();
                 }
             finally{work.Clear();if(stepWorkPool.Count<MaxRetainedWorkBuffers)stepWorkPool.Push(work);}
+        }
+        void MoveProjectiles(float dt,StepWork work)
+        {
+            var removals=work.ProjectileRemovals;
+            try
+            {
+                foreach(var p in work.Projectiles)
+                {
+                    if(p.Target.Alive)
+                    {
+                        p.Position=Vector2.MoveTowards(p.Position,p.Target.Position,p.Speed*dt);
+                        if(!(Vector2.Distance(p.Position,p.Target.Position)<=.00001f))continue;
+                        if(DamageApplied!=null)
+                        {
+                            // Observers see prior removals, but still see the current shot.
+                            // Remove after the callback using the original first-match rule:
+                            // the observer may clear/reorder the list or re-enter Tick.
+                            FlushProjectileRemovals(removals);
+                            ApplyDamage(p.Target,p.Damage,p.Source);
+                            Projectiles.Remove(p);
+                            continue;
+                        }
+                        ApplyDamage(p.Target,p.Damage,p.Source);
+                    }
+                    removals.TryGetValue(p,out int count);removals[p]=count+1;
+                }
+            }
+            finally{FlushProjectileRemovals(removals);}
+        }
+        void FlushProjectileRemovals(Dictionary<ProjectileState,int> removals)
+        {
+            if(removals.Count==0)return;
+            int write=0,count=Projectiles.Count;
+            for(int read=0;read<count;read++)
+            {
+                var projectile=Projectiles[read];
+                if(projectile!=null&&removals.TryGetValue(projectile,out int remaining)&&remaining>0)
+                {removals[projectile]=remaining-1;continue;}
+                if(write!=read)Projectiles[write]=projectile;
+                write++;
+            }
+            if(write<count)Projectiles.RemoveRange(write,count-write);
+            removals.Clear();
         }
         void CompleteRound()
         {

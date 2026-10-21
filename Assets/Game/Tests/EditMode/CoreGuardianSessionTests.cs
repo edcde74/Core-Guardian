@@ -255,6 +255,58 @@ public class CoreGuardianSessionTests
     {
         var s=Game();s.StartCombat();var e=s.DebugSpawn(EnemyKind.Attack,0);var other=s.DebugSpawn(EnemyKind.Defense,1);s.Tick(.01f,new Vector2(0,1));Assert.That(s.Projectiles.Count,Is.EqualTo(1));s.ApplyDamage(e,100,"Test");s.Tick(.01f,Away);Assert.That(s.Projectiles.Count,Is.Zero);Assert.That(other.Health,Is.EqualTo(50));Assert.That(s.Gold,Is.EqualTo(3));
     }
+    static ProjectileState Shot(EnemyState target,Vector2 position,float damage=1)=>new ProjectileState{Target=target,Position=position,Damage=damage,Speed=0,Source="Test"};
+    static Session ProjectileGame(out EnemyState target)
+    {
+        var s=Game();s.StartCombat();s.Player.Rate=0;target=s.DebugSpawn(EnemyKind.Attack,1);target.Spec.Speed=0;target.Health=1000;return s;
+    }
+    [Test] public void ProjectileBatchPreservesSurvivorOrderAndDuplicateRemovalCounts()
+    {
+        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
+        var a=Shot(live,new Vector2(20,20));var b=Shot(live,new Vector2(21,20));var removed=Shot(dead,Vector2.zero);var hit=Shot(live,live.Position);
+        s.Projectiles.AddRange(new[]{removed,a,removed,hit,b});s.Tick(.01f,Away);
+        CollectionAssert.AreEqual(new[]{a,b},s.Projectiles);Assert.That(live.Health,Is.EqualTo(999));
+    }
+    [Test] public void ProjectileObserverSeesPriorRemovalsAndMayReplaceList()
+    {
+        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
+        var removed=Shot(dead,Vector2.zero);var hit=Shot(live,live.Position);var later=Shot(live,live.Position);var added=Shot(live,new Vector2(20,20));int calls=0;
+        s.Projectiles.AddRange(new[]{removed,hit,later});
+        s.DamageApplied+=(target,damage)=>
+        {
+            if(calls++==0){CollectionAssert.AreEqual(new[]{hit,later},s.Projectiles);s.Projectiles.Clear();s.Projectiles.Add(added);}
+            else CollectionAssert.AreEqual(new[]{added},s.Projectiles);
+        };
+        s.Tick(.01f,Away);Assert.That(calls,Is.EqualTo(2));Assert.That(live.Health,Is.EqualTo(998));CollectionAssert.AreEqual(new[]{added},s.Projectiles);
+    }
+    [Test] public void ProjectileObserverCanReenterWithIndependentRemovalBuffers()
+    {
+        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
+        var hit=Shot(live,live.Position);s.Projectiles.AddRange(new[]{Shot(dead,Vector2.zero),hit});int calls=0;
+        Action<EnemyState,int> observer=null;
+        observer=(target,damage)=>{calls++;CollectionAssert.AreEqual(new[]{hit},s.Projectiles);s.DamageApplied-=observer;s.Tick(.01f,Away);};
+        s.DamageApplied+=observer;s.Tick(.01f,Away);
+        Assert.That(calls,Is.EqualTo(1));Assert.That(live.Health,Is.EqualTo(998));Assert.That(s.Projectiles,Is.Empty);
+    }
+    [Test] public void ProjectileObserverExceptionKeepsCurrentShotAfterPriorRemovals()
+    {
+        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
+        var hit=Shot(live,live.Position);s.Projectiles.AddRange(new[]{Shot(dead,Vector2.zero),hit});
+        s.DamageApplied+=(target,damage)=>throw new InvalidOperationException("Expected observer failure");
+        Assert.Throws<InvalidOperationException>(()=>s.Tick(.01f,Away));
+        CollectionAssert.AreEqual(new[]{hit},s.Projectiles);Assert.That(live.Health,Is.EqualTo(999));
+    }
+    [Test] public void ProjectileBatchFlushesEarlierRemovalsOnProcessingException()
+    {
+        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
+        var invalid=Shot(null,Vector2.zero);s.Projectiles.AddRange(new[]{Shot(dead,Vector2.zero),invalid});
+        Assert.Throws<NullReferenceException>(()=>s.Tick(.01f,Away));CollectionAssert.AreEqual(new[]{invalid},s.Projectiles);
+    }
+    [Test] public void ProjectileWithNonFinitePositionDoesNotBecomeAHit()
+    {
+        var s=ProjectileGame(out var live);var shot=Shot(live,new Vector2(float.NaN,0));s.Projectiles.Add(shot);
+        s.Tick(.01f,Away);CollectionAssert.AreEqual(new[]{shot},s.Projectiles);Assert.That(live.Health,Is.EqualTo(1000));
+    }
 }
 
 
