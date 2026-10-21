@@ -15,6 +15,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     static readonly ProfilerMarker uploadSample=new ProfilerMarker("CG.Mask.MeshUpload");
     static readonly ProfilerMarker executeSample=new ProfilerMarker("CG.Mask.Execute");
     static readonly ProfilerMarker outputSample=new ProfilerMarker("CG.Mask.Output");
+    static Shader contactShader;
     [Header("선택 대상 아웃라인 · 능력치/강화 패널이 열려 있을 때만 표시")]
     [Tooltip("외곽선 색상과 불투명도. 발광이나 깜빡임은 사용하지 않습니다.")]
     public Color color=new Color(.8f,.67f,.39f,1);
@@ -188,7 +189,13 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     void PresentContact(Transform target,Camera camera,Material material,float? band)
     {
-        PresentMask(target,camera,material==null,material!=null&&material.shader.name=="CoreGuardian/PhotoShadowContact");
+        bool compact=false;
+        if(material!=null)
+        {
+            if(contactShader==null)contactShader=Resources.Load<Shader>("CoreGuardian/PhotoShadowContact");
+            compact=material.shader==contactShader;
+        }
+        PresentMask(target,camera,material==null,compact);
         if(!IsVisible||material==null)return;
         SetOutputMask();if(band.HasValue)outputProperties.SetFloat("_Band",band.Value);
         output.SetPropertyBlock(outputProperties);output.sharedMaterial=material;output.sortingOrder=43;
