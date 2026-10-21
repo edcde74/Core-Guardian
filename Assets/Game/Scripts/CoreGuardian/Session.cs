@@ -52,6 +52,59 @@ namespace CoreGuardian
         readonly Dictionary<WaveSpec,int> spawned=new Dictionary<WaveSpec,int>();
         // Rent per invocation so callbacks that re-enter Tick cannot overwrite outer snapshots.
         const int MaxRetainedWorkBuffers=8;
+        struct RangeEntry {public EnemyState Enemy;public int Ordinal;}
+        sealed class RangeEntryComparer : IComparer<RangeEntry>
+        {
+            public int Compare(RangeEntry a,RangeEntry b)=>a.Ordinal.CompareTo(b.Ordinal);
+        }
+        static readonly IComparer<RangeEntry> rangeEntryComparer=new RangeEntryComparer();
+        sealed class EnemyRangeIndex
+        {
+            const float CellSize=4,CoordinateLimit=65536;
+            const int MinimumEnemies=32,MaximumQueryCells=256,MaximumRetainedBuckets=128;
+            readonly Dictionary<Vector2Int,List<RangeEntry>> buckets=new Dictionary<Vector2Int,List<RangeEntry>>();
+            readonly Stack<List<RangeEntry>> spareBuckets=new Stack<List<RangeEntry>>();
+            bool ready;
+            int sourceCount;
+            static bool Supported(Vector2 point)=>!float.IsNaN(point.x)&&!float.IsNaN(point.y)&&Mathf.Abs(point.x)<=CoordinateLimit&&Mathf.Abs(point.y)<=CoordinateLimit;
+            public void Clear()
+            {
+                ready=false;
+                foreach(var bucket in buckets.Values){bucket.Clear();if(spareBuckets.Count<MaximumRetainedBuckets)spareBuckets.Push(bucket);}
+                buckets.Clear();sourceCount=0;
+            }
+            public void Invalidate(){ready=false;}
+            public void Build(List<EnemyState> enemies)
+            {
+                Clear();sourceCount=enemies.Count;if(sourceCount<MinimumEnemies)return;
+                for(int i=0;i<enemies.Count;i++)
+                {
+                    var enemy=enemies[i];if(!enemy.Alive)continue;
+                    if(!Supported(enemy.Position))return;
+                    var key=new Vector2Int(Mathf.FloorToInt(enemy.Position.x/CellSize),Mathf.FloorToInt(enemy.Position.y/CellSize));
+                    if(!buckets.TryGetValue(key,out var bucket)){bucket=spareBuckets.Count>0?spareBuckets.Pop():new List<RangeEntry>();buckets.Add(key,bucket);}
+                    bucket.Add(new RangeEntry{Enemy=enemy,Ordinal=i});
+                }
+                ready=true;
+            }
+            public bool TryCollect(Vector2 position,float range,List<EnemyState> result,List<RangeEntry> candidates)
+            {
+                if(!ready||!Supported(position)||float.IsNaN(range)||float.IsInfinity(range)||range<0)return false;
+                double minX=Math.Floor(((double)position.x-range)/CellSize)-1,maxX=Math.Floor(((double)position.x+range)/CellSize)+1;
+                double minY=Math.Floor(((double)position.y-range)/CellSize)-1,maxY=Math.Floor(((double)position.y+range)/CellSize)+1;
+                double cells=(maxX-minX+1)*(maxY-minY+1);
+                // One extra cell includes float-rounding/underflow boundary candidates. The
+                // original float Distance remains the final predicate; unusual views fall back.
+                if(cells>MaximumQueryCells||cells>=sourceCount||minX<int.MinValue||maxX>=int.MaxValue||minY<int.MinValue||maxY>=int.MaxValue)return false;
+                candidates.Clear();
+                for(int y=(int)minY;y<=(int)maxY;y++)for(int x=(int)minX;x<=(int)maxX;x++)
+                    if(buckets.TryGetValue(new Vector2Int(x,y),out var bucket))
+                        foreach(var entry in bucket)if(entry.Enemy.Alive&&Vector2.Distance(entry.Enemy.Position,position)<=range)candidates.Add(entry);
+                candidates.Sort(rangeEntryComparer);
+                foreach(var entry in candidates)result.Add(entry.Enemy);
+                return true;
+            }
+        }
         sealed class StepWork
         {
             public readonly List<WaveSpec> Rows=new List<WaveSpec>();
@@ -60,13 +113,15 @@ namespace CoreGuardian
             public readonly Dictionary<EnemyState,float> Boosts=new Dictionary<EnemyState,float>();
             public readonly List<TowerState> Towers=new List<TowerState>();
             public readonly List<ProjectileState> Projectiles=new List<ProjectileState>();
-            public void Clear(){Rows.Clear();Enemies.Clear();BuffSources.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();}
+            public readonly EnemyRangeIndex RangeIndex=new EnemyRangeIndex();
+            public void Clear(){Rows.Clear();Enemies.Clear();BuffSources.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();RangeIndex.Clear();}
         }
         sealed class ShotWork
         {
             public readonly List<EnemyState> Available=new List<EnemyState>();
             public readonly EnemyState[] Targets=new EnemyState[3];
-            public void Clear(){Available.Clear();Array.Clear(Targets,0,Targets.Length);}
+            public readonly List<RangeEntry> SpatialCandidates=new List<RangeEntry>();
+            public void Clear(){Available.Clear();SpatialCandidates.Clear();Array.Clear(Targets,0,Targets.Length);}
         }
         readonly Stack<StepWork> stepWorkPool=new Stack<StepWork>();
         readonly Stack<ShotWork> shotWorkPool=new Stack<ShotWork>();
@@ -165,7 +220,8 @@ namespace CoreGuardian
                 foreach(var e in work.Enemies)e.Buffed=boosts[e]>0;
                 foreach(var e in work.Enemies) {float boost=boosts[e];e.PathTravelled=Mathf.Min(pathLength,e.PathTravelled+e.MovementSpeed*(1+boost/100f)*dt);e.SlowRemaining=Mathf.Max(0,e.SlowRemaining-dt);PositionEnemy(e);if(e.PathRemaining<=.00001f){e.Exited=true;coreDamagedThisRound|=e.Spec.CoreDamage>0;CoreEnergy=Mathf.Max(0,CoreEnergy-e.Spec.CoreDamage);LastMessage="코어 -"+e.Spec.CoreDamage;}}
                 if(CoreEnergy<=0) {Phase=SessionPhase.Defeat;Projectiles.Clear();LastMessage="방어 실패";if(!Diagnostic)DefeatReached?.Invoke();return;}
-                Shoot(playerPosition,Player,"Player",0,ref playerCooldown,ref playerTarget,ref playerAcquired,dt,false);
+                work.RangeIndex.Build(Enemies);
+                Shoot(playerPosition,Player,"Player",0,ref playerCooldown,ref playerTarget,ref playerAcquired,dt,false,work.RangeIndex);
                 work.Towers.AddRange(Towers);
                 foreach(var t in work.Towers)
                 {
@@ -174,7 +230,7 @@ namespace CoreGuardian
                     double supportBuff=0;
                     foreach(var support in Towers)if(support.Kind==TowerKind.Support&&Vector2.Distance(support.Position,t.Position)<=support.Stats.Range)supportBuff+=support.Stats.BuffDamage;
                     float buff=Augments.TowerBuffPercent+(float)supportBuff;
-                    Shoot(t.Position,t.Stats,"Tower:"+t.Id,buff,ref t.Cooldown,ref t.Target,ref t.AcquiredOnce,dt,t.Kind==TowerKind.Multi);
+                    Shoot(t.Position,t.Stats,"Tower:"+t.Id,buff,ref t.Cooldown,ref t.Target,ref t.AcquiredOnce,dt,t.Kind==TowerKind.Multi,work.RangeIndex);
                 }
                 work.Projectiles.AddRange(Projectiles);
                 foreach(var p in work.Projectiles) {if(!p.Target.Alive){Projectiles.Remove(p);continue;}p.Position=Vector2.MoveTowards(p.Position,p.Target.Position,p.Speed*dt);if(Vector2.Distance(p.Position,p.Target.Position)<=.00001f){ApplyDamage(p.Target,p.Damage,p.Source);Projectiles.Remove(p);}}
@@ -212,13 +268,14 @@ namespace CoreGuardian
             choices=Array.Empty<AugmentationCard>();AugmentationRemaining=0;Phase=SessionPhase.Preparation;PreparationRemaining=Data.PreparationSeconds;
             LastMessage=card.GradeName+" · "+card.Title+" 선택 · "+Wave+"라운드 준비";return true;
         }
-        void Shoot(Vector2 position,CombatStats stats,string source,float buff,ref float cooldown,ref EnemyState target,ref bool acquired,float dt,bool multi)
+        void Shoot(Vector2 position,CombatStats stats,string source,float buff,ref float cooldown,ref EnemyState target,ref bool acquired,float dt,bool multi,EnemyRangeIndex rangeIndex)
         {
             var work=shotWorkPool.Count>0?shotWorkPool.Pop():new ShotWork();
             try
             {
                 var available=work.Available;
-                foreach(var enemy in Enemies)if(enemy.Alive&&Vector2.Distance(enemy.Position,position)<=stats.Range)available.Add(enemy);
+                if(!rangeIndex.TryCollect(position,stats.Range,available,work.SpatialCandidates))
+                    foreach(var enemy in Enemies)if(enemy.Alive&&Vector2.Distance(enemy.Position,position)<=stats.Range)available.Add(enemy);
                 bool isTower=source!="Player";
                 if(target!=null&&(!target.Alive||Vector2.Distance(target.Position,position)>stats.Range))target=null;
                 if(isTower&&target!=null&&target.Kind==EnemyKind.Boss)
@@ -244,17 +301,28 @@ namespace CoreGuardian
                         targets[index]=enemy;targetCount=Math.Min(targetCount+1,3);
                     }
                 }
-                while(cooldown<=.00001f) {int launched=0;for(int i=0;i<targetCount;i++) {var e=targets[i];if(e==null)continue;int shots=source=="Player"?1+Augments.ExtraPlayerProjectiles:1;for(int shot=0;shot<shots;shot++) {var projectile=new ProjectileState{Id=nextProjectile++,Position=position,Target=e,Source=source,Damage=stats.Damage*(1+buff/100f),Speed=stats.ProjectileSpeed};Projectiles.Add(projectile);launched++;ProjectileLaunched?.Invoke(projectile);}}if(launched>0)AttackLaunched?.Invoke(source,launched);float nextCooldown=cooldown+1/stats.Rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;}
+                while(cooldown<=.00001f)
+                {
+                    int launched=0;
+                    for(int i=0;i<targetCount;i++)
+                    {
+                        var e=targets[i];if(e==null)continue;int shots=source=="Player"?1+Augments.ExtraPlayerProjectiles:1;
+                        for(int shot=0;shot<shots;shot++)
+                        {
+                            var projectile=new ProjectileState{Id=nextProjectile++,Position=position,Target=e,Source=source,Damage=stats.Damage*(1+buff/100f),Speed=stats.ProjectileSpeed};
+                            Projectiles.Add(projectile);launched++;
+                            var onProjectile=ProjectileLaunched;
+                            if(onProjectile!=null){rangeIndex.Invalidate();onProjectile(projectile);}
+                        }
+                    }
+                    var onAttack=AttackLaunched;
+                    if(launched>0&&onAttack!=null){rangeIndex.Invalidate();onAttack(source,launched);}
+                    float nextCooldown=cooldown+1/stats.Rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;
+                }
                 }
             finally{work.Clear();if(shotWorkPool.Count<MaxRetainedWorkBuffers)shotWorkPool.Push(work);}
         }
-        static int TargetRank(EnemyState enemy,bool tower)=>enemy.Kind==EnemyKind.Defense?0:enemy.Kind==EnemyKind.Buff?1:tower&&enemy.Kind==EnemyKind.Boss?3:2;
-        static int ComparePriority(EnemyState a,EnemyState b,bool tower)
-        {
-            int order=TargetRank(a,tower).CompareTo(TargetRank(b,tower));if(order!=0)return order;
-            order=a.Health.CompareTo(b.Health);if(order!=0)return order;
-            order=a.PathRemaining.CompareTo(b.PathRemaining);return order!=0?order:a.Id.CompareTo(b.Id);
-        }
+        static int ComparePriority(EnemyState a,EnemyState b,bool tower)=>CombatRules.CompareTargetPriority(a,b,tower);
         static int CompareInitialTarget(EnemyState a,EnemyState b,bool tower)
         {
             if(tower){int order=(a.Kind==EnemyKind.Boss?1:0).CompareTo(b.Kind==EnemyKind.Boss?1:0);if(order!=0)return order;}

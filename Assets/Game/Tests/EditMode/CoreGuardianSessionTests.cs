@@ -211,6 +211,25 @@ public class CoreGuardianSessionTests
     {
         var s=Game();var a=s.DebugSpawn(EnemyKind.Attack,9);var b=s.DebugSpawn(EnemyKind.Buff,9);var d=s.DebugSpawn(EnemyKind.Defense,1);var d2=s.DebugSpawn(EnemyKind.Defense,2);Assert.That(CombatRules.Priority(s.Enemies),Is.SameAs(d2));d.Health=1;Assert.That(CombatRules.Priority(s.Enemies),Is.SameAs(d));
     }
+    [TestCase(0)] [TestCase(1)] [TestCase(2)] [TestCase(3)]
+    public void EqualRoleAndHealthPriorityUsesRemainingRouteAcrossAllTravelDirections(int turns)
+    {
+        Vector2Int Rotate(Vector2Int point)
+        {
+            for(int i=0;i<turns;i++)point=new Vector2Int(-point.y,point.x);
+            return point+new Vector2Int(12,12);
+        }
+        var route=new[]{new Vector2Int(0,0),new Vector2Int(10,0),new Vector2Int(10,10),new Vector2Int(0,10),new Vector2Int(0,1),new Vector2Int(8,1)}.Select(Rotate).ToArray();
+        var session=new Session(Data(),17);var core=route[route.Length-1];session.SetBoard(30,30,core,route);
+        var straightNear=session.DebugSpawn(EnemyKind.Attack,8);
+        var routeNear=session.DebugSpawn(EnemyKind.Attack,40);
+        Assert.That(routeNear.Health,Is.EqualTo(straightNear.Health));
+        Assert.That(Vector2.Distance(straightNear.Position,core),Is.LessThan(Vector2.Distance(routeNear.Position,core)));
+        Assert.That(routeNear.PathRemaining,Is.LessThan(straightNear.PathRemaining));
+        Assert.That(CombatRules.Priority(session.Enemies),Is.SameAs(routeNear));
+        Assert.That(CombatRules.CompareTargetPriority(routeNear,straightNear,false),Is.LessThan(0));
+        Assert.That(CombatRules.TowerPriorityOrder(session.Enemies).First(),Is.SameAs(routeNear));
+    }
     [Test] public void FirstTargetIsFirstArrivalThenRangeExitReacquiresPriority()
     {
         var s=Game();s.StartCombat();var attack=s.DebugSpawn(EnemyKind.Attack,0);var defense=s.DebugSpawn(EnemyKind.Defense,1);s.Tick(.01f,new Vector2(0,1));Assert.That(s.Projectiles.Single().Target,Is.SameAs(attack));
