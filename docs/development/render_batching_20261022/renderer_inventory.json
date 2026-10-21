@@ -1,0 +1,58 @@
+[
+  {
+    "type": "SpriteRenderer",
+    "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+    "count": 1322,
+    "materials": 1,
+    "textures": 19,
+    "mpb": 0
+  },
+  {
+    "type": "SpriteRenderer",
+    "shader": "Universal Render Pipeline/2D/Sprite-Lit-Default",
+    "count": 259,
+    "materials": 1,
+    "textures": 2,
+    "mpb": 0
+  },
+  {
+    "type": "MeshRenderer",
+    "shader": "CoreGuardian/TowerBaseShade",
+    "count": 15,
+    "materials": 15,
+    "textures": 2,
+    "mpb": 0
+  },
+  {
+    "type": "MeshRenderer",
+    "shader": "CoreGuardian/TowerGlow",
+    "count": 15,
+    "materials": 15,
+    "textures": 2,
+    "mpb": 0
+  },
+  {
+    "type": "MeshRenderer",
+    "shader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+    "count": 6,
+    "materials": 2,
+    "textures": 2,
+    "mpb": 0
+  },
+  {
+    "type": "MeshRenderer",
+    "shader": "CoreGuardian/CoreAmbient",
+    "count": 1,
+    "materials": 1,
+    "textures": 1,
+    "mpb": 0
+  },
+  {
+    "type": "ParticleSystemRenderer",
+    "shader": "CoreGuardian/CoreAmbient",
+    "count": 1,
+    "materials": 1,
+    "textures": 1,
+    "mpb": 1
+  }
+]

@@ -1,0 +1,4983 @@
+[
+  {
+    "frame": 0,
+    "frameMs": 163.24099731445313,
+    "gc": 108836,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 163.241,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.12569999659899622,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 168.0363,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 149.2240003189072,
+          "Gfx.SetRenderTarget": 0.38609999499749392,
+          "Camera.Render": 0.00029999998514540493,
+          "Gfx.DrawDynamic": 0.046599999070167542,
+          "Gfx.RequestAsyncReadbackData": 0.27900001406669617
+        }
+      }
+    ]
+  },
+  {
+    "frame": 1,
+    "frameMs": 29.19420051574707,
+    "gc": 117008,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 29.1942,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.228100003732834,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.4054,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.SetRenderTarget": 0.36499999562511221,
+          "Gfx.WaitForGfxCommandsFromMainThread": 12.367800070038356,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.31410000217147171,
+          "RenderLoop.DrawSRPBatcher": 0.10100000048987567
+        }
+      }
+    ]
+  },
+  {
+    "frame": 2,
+    "frameMs": 27.165599822998047,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.1656,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.19600000273203477,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.7676,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.915400089594186,
+          "Gfx.SetRenderTarget": 0.35669999499805272,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.3806000011973083,
+          "RenderLoop.DrawSRPBatcher": 0.12239999882876873
+        }
+      }
+    ]
+  },
+  {
+    "frame": 3,
+    "frameMs": 27.610599517822266,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.6106,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35130001057405025,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 29.2916,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.01499984064867,
+          "Gfx.SetRenderTarget": 0.35829999396810308,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.29069999372586608,
+          "RenderLoop.DrawSRPBatcher": 0.10420000017620623
+        }
+      }
+    ]
+  },
+  {
+    "frame": 4,
+    "frameMs": 28.7239990234375,
+    "gc": 108404,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 28.723999,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.24169999401783571,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 28.1814,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.SetRenderTarget": 0.36289999511791393,
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.124899887872743,
+          "Camera.Render": 0.00029999998514540493
+        }
+      }
+    ]
+  },
+  {
+    "frame": 5,
+    "frameMs": 27.431299209594727,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.4313,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.23349999610218219,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.7137,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.SetRenderTarget": 0.37109999550739303,
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.327499963153969,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.34580000815913081,
+          "RenderLoop.DrawSRPBatcher": 0.13049999997019768
+        }
+      }
+    ]
+  },
+  {
+    "frame": 6,
+    "frameMs": 26.716899871826172,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.7169,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.23699999944074079,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 42.3048,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.SetRenderTarget": 0.3329999953857623,
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.10339999878488,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.29909999412484467,
+          "RenderLoop.DrawSRPBatcher": 0.10380000132136047
+        }
+      }
+    ]
+  },
+  {
+    "frame": 7,
+    "frameMs": 27.628299713134766,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.6283,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.4880999946326483,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 10.1047,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.SetRenderTarget": 0.25809999826014973,
+          "Camera.Render": 0.00019999999494757503,
+          "Gfx.WaitForGfxCommandsFromMainThread": 1.0240999609231949
+        }
+      }
+    ]
+  },
+  {
+    "frame": 8,
+    "frameMs": 27.097700119018555,
+    "gc": 108468,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.0977,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.17849999951431528,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.387,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 15.063000010224641,
+          "Gfx.SetRenderTarget": 0.36289999482687563,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.27730000228621066,
+          "RenderLoop.DrawSRPBatcher": 0.086099999956786633
+        }
+      }
+    ]
+  },
+  {
+    "frame": 9,
+    "frameMs": 27.248600006103516,
+    "gc": 117008,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.2486,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.4000000047381036,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.074500001966953278
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.1142,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.543399832109571,
+          "Gfx.SetRenderTarget": 0.36389999510720372,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.21080000000074506,
+          "RenderLoop.Draw": 0.4012000085785985
+        }
+      }
+    ]
+  },
+  {
+    "frame": 10,
+    "frameMs": 31.281099319458008,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 31.2811,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.46619999938411638,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 31.0868,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 16.430499878450064,
+          "Gfx.SetRenderTarget": 0.42069999454542994,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.11409999709576368,
+          "RenderLoop.Draw": 0.18499999865889549
+        }
+      }
+    ]
+  },
+  {
+    "frame": 11,
+    "frameMs": 27.30620002746582,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.3062,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.45080000342568383,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 30.7046,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.794499988180178,
+          "Gfx.SetRenderTarget": 0.34739999542944133,
+          "Camera.Render": 0.00019999999494757503
+        }
+      }
+    ]
+  },
+  {
+    "frame": 12,
+    "frameMs": 26.584699630737305,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.5847,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.20470000430941582,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 23.145,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.SetRenderTarget": 0.32099999574711546,
+          "Gfx.WaitForGfxCommandsFromMainThread": 12.389599922847992,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.30810000305064023,
+          "RenderLoop.DrawSRPBatcher": 0.10609999974258244
+        }
+      }
+    ]
+  },
+  {
+    "frame": 13,
+    "frameMs": 26.779300689697266,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.7793,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.29929999919841066,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.7783,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.987099971622229,
+          "Gfx.SetRenderTarget": 0.357499995152466,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.39240000932477415,
+          "RenderLoop.DrawSRPBatcher": 0.10600000037811697
+        }
+      }
+    ]
+  },
+  {
+    "frame": 14,
+    "frameMs": 25.166999816894531,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.167,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.3087999927229248,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.1672,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.225000010701478,
+          "Gfx.SetRenderTarget": 0.35249999520601705,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.0674000009894371,
+          "RenderLoop.Draw": 0.18780000507831573
+        }
+      }
+    ]
+  },
+  {
+    "frame": 15,
+    "frameMs": 25.014699935913086,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0147,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18820000061532483,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.161,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.884899914264679,
+          "Gfx.SetRenderTarget": 0.31969999492866918,
+          "Camera.Render": 0.00019999999494757503,
+          "Gfx.DrawDynamic": 0.01360000018030405,
+          "Gfx.RequestAsyncReadbackData": 0.23739999532699585,
+          "Gfx.UpdateAsyncReadbackData": 0.048000000417232513
+        }
+      }
+    ]
+  },
+  {
+    "frame": 16,
+    "frameMs": 30.53809928894043,
+    "gc": 108596,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 30.5381,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.7985000143526122,
+          "Camera.Render": 0.0010999999940395355,
+          "RenderLoop.DrawSRPBatcher": 0.25010000355541706,
+          "RenderLoop.Draw": 0.15590000152587891
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 29.4065,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.SetRenderTarget": 0.32519999425858259,
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.427399990097911,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.43480000644922256,
+          "RenderLoop.Draw": 0.19439999759197235
+        }
+      }
+    ]
+  },
+  {
+    "frame": 17,
+    "frameMs": 30.901599884033203,
+    "gc": 117008,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 30.9016,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.20879999990575016,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 30.8857,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 17.979300105944276,
+          "Gfx.SetRenderTarget": 0.45239999622572213,
+          "Camera.Render": 0.00029999998514540493
+        }
+      }
+    ]
+  },
+  {
+    "frame": 18,
+    "frameMs": 24.785600662231445,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.7856,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.29360000111046247,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.7864,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.8696000110358,
+          "Gfx.SetRenderTarget": 0.32539999560685828,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.082499999552965164,
+          "RenderLoop.Draw": 0.125900000333786
+        }
+      }
+    ]
+  },
+  {
+    "frame": 19,
+    "frameMs": 25.188499450683594,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.1885,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.12420000036945567,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.1917,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.435599912889302,
+          "Gfx.SetRenderTarget": 0.34549999481532723,
+          "Camera.Render": 0.00029999998514540493
+        }
+      }
+    ]
+  },
+  {
+    "frame": 20,
+    "frameMs": 25.453800201416016,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4538,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.33040000865003094,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4551,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.617499874970235,
+          "Gfx.SetRenderTarget": 0.33849999605445191,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.23270000237971544,
+          "RenderLoop.DrawSRPBatcher": 0.082399999490007758
+        }
+      }
+    ]
+  },
+  {
+    "frame": 21,
+    "frameMs": 26.521799087524414,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.5218,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.26319998706458136,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.5226,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.86169980186969,
+          "Gfx.SetRenderTarget": 0.38739999523386359,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.37210000911727548,
+          "RenderLoop.DrawSRPBatcher": 0.12519999826326966
+        }
+      }
+    ]
+  },
+  {
+    "frame": 22,
+    "frameMs": 24.728700637817383,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.7287,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.11820000197621994,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.7272,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.423999945865944,
+          "Gfx.SetRenderTarget": 0.33749999472638592,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.23900000425055623,
+          "RenderLoop.DrawSRPBatcher": 0.087099998025223613
+        }
+      }
+    ]
+  },
+  {
+    "frame": 23,
+    "frameMs": 25.005800247192383,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0058,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.25249999290099367,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.0038,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.432599813277193,
+          "Gfx.SetRenderTarget": 0.34719999588560313,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.10020000115036964,
+          "RenderLoop.Draw": 0.13439999893307686
+        }
+      }
+    ]
+  },
+  {
+    "frame": 24,
+    "frameMs": 25.080600738525391,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0806,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.45769998963805847,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.0809,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.136399887313019,
+          "Gfx.SetRenderTarget": 0.36429999413667247,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.3542999941855669,
+          "RenderLoop.DrawSRPBatcher": 0.12149999989196658
+        }
+      }
+    ]
+  },
+  {
+    "frame": 25,
+    "frameMs": 24.807899475097656,
+    "gc": 117008,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.8079,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.255600000731647,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.9231,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.265399997188069,
+          "Gfx.SetRenderTarget": 0.32629999436903745,
+          "Camera.Render": 0.00039999998989515007,
+          "RenderLoop.DrawSRPBatcher": 0.081799998879432678,
+          "RenderLoop.Draw": 0.20409999787807465
+        }
+      }
+    ]
+  },
+  {
+    "frame": 26,
+    "frameMs": 25.293600082397461,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2936,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.34209999645827338,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.1813,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.459299953829031,
+          "Gfx.SetRenderTarget": 0.34019999543670565,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.10479999799281359,
+          "RenderLoop.Draw": 0.14469999819993973
+        }
+      }
+    ]
+  },
+  {
+    "frame": 27,
+    "frameMs": 25.07390022277832,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0739,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.31090000824769959,
+          "Camera.Render": 0.00050000002374872565
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.0733,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.06419997948251,
+          "Gfx.SetRenderTarget": 0.34729999501723796,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.09339999919757247,
+          "RenderLoop.Draw": 0.12369999848306179
+        }
+      }
+    ]
+  },
+  {
+    "frame": 28,
+    "frameMs": 24.860099792480469,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.8601,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.24939999700291082,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.8582,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.175600051778019,
+          "Gfx.SetRenderTarget": 0.3474999945028685,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.26100000110454857,
+          "RenderLoop.DrawSRPBatcher": 0.095600001281127334
+        }
+      }
+    ]
+  },
+  {
+    "frame": 29,
+    "frameMs": 25.6299991607666,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.63,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.44029999332269654,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.6301,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.036999946627475,
+          "Gfx.SetRenderTarget": 0.34869999543298036,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.086899999063462019,
+          "RenderLoop.Draw": 0.16289999894797802
+        }
+      }
+    ]
+  },
+  {
+    "frame": 30,
+    "frameMs": 24.990999221801758,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.991,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.21659999241819605,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.9968,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.98940006736666,
+          "Gfx.SetRenderTarget": 0.34409999364288524,
+          "Camera.Render": 0.00029999998514540493,
+          "Gfx.DrawDynamic": 0.011400000192224979,
+          "Gfx.RequestAsyncReadbackData": 0.2231999933719635,
+          "Gfx.UpdateAsyncReadbackData": 0.030400000512599945
+        }
+      }
+    ]
+  },
+  {
+    "frame": 31,
+    "frameMs": 26.580400466918945,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.5804,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.26980000868206844,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.5797,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.159299939754419,
+          "Gfx.SetRenderTarget": 0.35579999448964372,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.37900001322850585,
+          "RenderLoop.DrawSRPBatcher": 0.13720000023022294
+        }
+      }
+    ]
+  },
+  {
+    "frame": 32,
+    "frameMs": 26.097999572753906,
+    "gc": 108852,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.098,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.32809999719029292,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.0927,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.585899933008477,
+          "Gfx.SetRenderTarget": 0.34019999398151413,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 33,
+    "frameMs": 25.268699645996094,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2687,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.41020000126445666,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.271,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.355000109178945,
+          "Gfx.SetRenderTarget": 0.33649999531917274,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.289399994071573,
+          "RenderLoop.DrawSRPBatcher": 0.093899998581036925
+        }
+      }
+    ]
+  },
+  {
+    "frame": 34,
+    "frameMs": 25.812999725341797,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.813,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.27570000424748287,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.8151,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.810700051486492,
+          "Gfx.SetRenderTarget": 0.36329999554436654,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.10550000052899122,
+          "RenderLoop.Draw": 0.095999999204650521
+        }
+      }
+    ]
+  },
+  {
+    "frame": 35,
+    "frameMs": 26.153400421142578,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.1534,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.060800000966992229,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.1529,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.848099920898676,
+          "Gfx.SetRenderTarget": 0.35729999438626692,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.32899999828077853,
+          "RenderLoop.DrawSRPBatcher": 0.085899999132379889
+        }
+      }
+    ]
+  },
+  {
+    "frame": 36,
+    "frameMs": 25.039699554443359,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0397,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.13919999537756667,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.0388,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.965000021504238,
+          "Gfx.SetRenderTarget": 0.38409999402938411,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.26510000228881836,
+          "RenderLoop.DrawSRPBatcher": 0.083299999823793769
+        }
+      }
+    ]
+  },
+  {
+    "frame": 37,
+    "frameMs": 25.477800369262695,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4778,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.19090000673895702,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4792,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.180199819682457,
+          "Gfx.SetRenderTarget": 0.35559999465476722,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.23570000333711505,
+          "RenderLoop.DrawSRPBatcher": 0.081000000471249223
+        }
+      }
+    ]
+  },
+  {
+    "frame": 38,
+    "frameMs": 25.736400604248047,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.7364,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.38009998755296692,
+          "Camera.Render": 0.00059999997029080987
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.736,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.421699938131496,
+          "Gfx.SetRenderTarget": 0.3416999951004982,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.19240000168792903,
+          "RenderLoop.Draw": 0.22940000565722585
+        }
+      }
+    ]
+  },
+  {
+    "frame": 39,
+    "frameMs": 25.430700302124023,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4307,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.21709999808808789,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4291,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.409400053322315,
+          "Gfx.SetRenderTarget": 0.341399994737003,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.086599999107420444,
+          "RenderLoop.Draw": 0.10379999876022339
+        }
+      }
+    ]
+  },
+  {
+    "frame": 40,
+    "frameMs": 25.235300064086914,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2353,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.15550000028451905,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.2389,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.103300066846714,
+          "Gfx.SetRenderTarget": 0.35049999540206045,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.10169999953359365,
+          "RenderLoop.Draw": 0.13850000128149986
+        }
+      }
+    ]
+  },
+  {
+    "frame": 41,
+    "frameMs": 26.291099548339844,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.2911,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.205700003716629,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.2877,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.76169994007796,
+          "Gfx.SetRenderTarget": 0.3317999952705577,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.29280000529251993,
+          "RenderLoop.DrawSRPBatcher": 0.10139999794773757
+        }
+      }
+    ]
+  },
+  {
+    "frame": 42,
+    "frameMs": 25.585599899291992,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.5856,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.33060000179102644,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5841,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.23510006070137,
+          "Gfx.SetRenderTarget": 0.3486999943270348,
+          "Camera.Render": 0.00059999997029080987,
+          "RenderLoop.DrawSRPBatcher": 0.082300000824034214,
+          "RenderLoop.Draw": 0.13349999859929085
+        }
+      }
+    ]
+  },
+  {
+    "frame": 43,
+    "frameMs": 26.136199951171875,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.1362,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.22609999257838354,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.1382,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.770299958065152,
+          "Gfx.SetRenderTarget": 0.364099994127173,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.074900001287460327,
+          "RenderLoop.Draw": 0.17880000174045563
+        }
+      }
+    ]
+  },
+  {
+    "frame": 44,
+    "frameMs": 24.958599090576172,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.9586,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.2805000128573738,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.9569,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.981399907614104,
+          "Gfx.SetRenderTarget": 0.35479999543167651,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.10729999933391809,
+          "RenderLoop.Draw": 0.15129999816417694
+        }
+      }
+    ]
+  },
+  {
+    "frame": 45,
+    "frameMs": 27.067600250244141,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.0676,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.19079999305540696,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.0678,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 15.185799962840974,
+          "Gfx.SetRenderTarget": 0.34599999518832192,
+          "Camera.Render": 9.9999997473787516E-05,
+          "Gfx.DrawDynamic": 0.01510000042617321,
+          "Gfx.RequestAsyncReadbackData": 0.30340000987052917,
+          "Gfx.UpdateAsyncReadbackData": 0.044599998742341995
+        }
+      }
+    ]
+  },
+  {
+    "frame": 46,
+    "frameMs": 25.774700164794922,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.7747,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.16929999639978632,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.7775,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.661000056192279,
+          "Gfx.SetRenderTarget": 0.31679999554762617,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.2794999941252172,
+          "RenderLoop.DrawSRPBatcher": 0.0940000000409782
+        }
+      }
+    ]
+  },
+  {
+    "frame": 47,
+    "frameMs": 27.015899658203125,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.0159,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.52859997242921963,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.20729999989271164,
+          "RenderLoop.Draw": 0.16059999912977219
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.0171,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.16329996380955,
+          "Gfx.SetRenderTarget": 0.34769999497802928,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.17989999800920486,
+          "RenderLoop.Draw": 0.3807000070810318
+        }
+      }
+    ]
+  },
+  {
+    "frame": 48,
+    "frameMs": 26.311399459838867,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.3114,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.34170000901212916,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.056200001388788223
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.319,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.819999881088734,
+          "Gfx.SetRenderTarget": 0.37249999592313543,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.1896999969612807,
+          "RenderLoop.Draw": 0.3186999864410609
+        }
+      }
+    ]
+  },
+  {
+    "frame": 49,
+    "frameMs": 25.660600662231445,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.6606,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.39620001247385517,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.655,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.710299876416684,
+          "Gfx.SetRenderTarget": 0.343099994759541,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.20139999780803919,
+          "RenderLoop.Draw": 0.15909999795258045
+        }
+      }
+    ]
+  },
+  {
+    "frame": 50,
+    "frameMs": 25.481199264526367,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4812,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.12690000206930563,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4787,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.367500077671139,
+          "Gfx.SetRenderTarget": 0.3475999953225255,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.27999999863095582,
+          "RenderLoop.DrawSRPBatcher": 0.081700000213459134
+        }
+      }
+    ]
+  },
+  {
+    "frame": 51,
+    "frameMs": 25.857099533081055,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.8571,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.3807000137749128,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.858099,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 15.017099887198128,
+          "Gfx.SetRenderTarget": 0.33509999443776906,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.27540000155568123,
+          "RenderLoop.DrawSRPBatcher": 0.087799998465925455
+        }
+      }
+    ]
+  },
+  {
+    "frame": 52,
+    "frameMs": 25.356599807739258,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3566,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18640000346931629,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3547,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.792599910870194,
+          "Gfx.SetRenderTarget": 0.35689999529859051,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.24189999978989363,
+          "RenderLoop.DrawSRPBatcher": 0.081300000660121441
+        }
+      }
+    ]
+  },
+  {
+    "frame": 53,
+    "frameMs": 26.183399200439453,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.1834,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.27720000216504559,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.1859,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.757200067164376,
+          "Gfx.SetRenderTarget": 0.32889999489998445,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.10490000061690807,
+          "RenderLoop.Draw": 0.17009999975562096
+        }
+      }
+    ]
+  },
+  {
+    "frame": 54,
+    "frameMs": 25.972099304199219,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.9721,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.41749999060994014,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.061500001698732376
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.9727,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.319800085388124,
+          "Gfx.SetRenderTarget": 0.34109999524662271,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.19049999676644802,
+          "RenderLoop.Draw": 0.16889999806880951
+        }
+      }
+    ]
+  },
+  {
+    "frame": 55,
+    "frameMs": 25.340000152587891,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.34,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.086400003114249557,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.9734,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.329400022514164,
+          "Gfx.SetRenderTarget": 0.3491999949910678,
+          "Camera.Render": 0.00029999998514540493
+        }
+      }
+    ]
+  },
+  {
+    "frame": 56,
+    "frameMs": 25.377700805664063,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3777,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.0052999998442828655,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.7445,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.16109990113182,
+          "Gfx.SetRenderTarget": 0.35609999531880021,
+          "Camera.Render": 0.00050000002374872565
+        }
+      }
+    ]
+  },
+  {
+    "frame": 57,
+    "frameMs": 25.828800201416016,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.8288,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.1790999939548783,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.8278,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.848900058044819,
+          "Gfx.SetRenderTarget": 0.35889999545179307,
+          "Camera.Render": 0.00029999998514540493
+        }
+      }
+    ]
+  },
+  {
+    "frame": 58,
+    "frameMs": 25.327400207519531,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3274,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.40210001214290969,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3284,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.372200100580812,
+          "Gfx.SetRenderTarget": 0.3395999955246225,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.1061999979428947,
+          "RenderLoop.Draw": 0.14389999955892563
+        }
+      }
+    ]
+  },
+  {
+    "frame": 59,
+    "frameMs": 25.649299621582031,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.6493,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.26919998595258221,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.6463,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.490999937523156,
+          "Gfx.SetRenderTarget": 0.34779999445891008,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.18749999930150807,
+          "RenderLoop.Draw": 0.35019999323412776
+        }
+      }
+    ]
+  },
+  {
+    "frame": 60,
+    "frameMs": 26.978599548339844,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.9786,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.0056000000913627446,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.5598,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 15.030999846756458,
+          "Gfx.SetRenderTarget": 0.37219999416265637,
+          "Camera.Render": 0.00029999998514540493,
+          "Gfx.DrawDynamic": 0.019099999219179153,
+          "Gfx.RequestAsyncReadbackData": 0.22939999401569366,
+          "Gfx.UpdateAsyncReadbackData": 0.045800000429153442
+        }
+      }
+    ]
+  },
+  {
+    "frame": 61,
+    "frameMs": 26.287500381469727,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.2875,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.28930000762920827,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.7078,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.728599789996224,
+          "Gfx.SetRenderTarget": 0.34129999554716051,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.12790000066161156,
+          "RenderLoop.Draw": 0.14699999988079071
+        }
+      }
+    ]
+  },
+  {
+    "frame": 62,
+    "frameMs": 27.636800765991211,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.6368,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.36230000408249907,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.058400001376867294
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 28.6034,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.79660003236495,
+          "Gfx.SetRenderTarget": 0.44079999532550573,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.16500000189989805,
+          "RenderLoop.Draw": 0.26049999427050352
+        }
+      }
+    ]
+  },
+  {
+    "frame": 63,
+    "frameMs": 25.959400177001953,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.9594,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.36700000538257882,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.9938,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.SetRenderTarget": 0.34409999556373805,
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.249100108761922,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.16579999751411378,
+          "RenderLoop.Draw": 0.42219999618828297
+        }
+      }
+    ]
+  },
+  {
+    "frame": 64,
+    "frameMs": 25.28019905090332,
+    "gc": 109364,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2802,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.25399999780347571,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.2785,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.406200072844513,
+          "Gfx.SetRenderTarget": 0.35069999494589865,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.11439999844878912,
+          "RenderLoop.Draw": 0.17159999907016754
+        }
+      }
+    ]
+  },
+  {
+    "frame": 65,
+    "frameMs": 26.697299957275391,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.6973,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35850000841310248,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.7007,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.481700031086802,
+          "Gfx.SetRenderTarget": 0.35439999517984688,
+          "Camera.Render": 0.00039999998989515007,
+          "RenderLoop.Draw": 0.32230001082643867,
+          "RenderLoop.DrawSRPBatcher": 0.095599999651312828
+        }
+      }
+    ]
+  },
+  {
+    "frame": 66,
+    "frameMs": 26.069700241088867,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.0697,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.46410001156618819,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.078100003302097321
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.0674,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.2227000342682,
+          "Gfx.SetRenderTarget": 0.33979999489383772,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.22109999787062407,
+          "RenderLoop.Draw": 0.15430000005289912
+        }
+      }
+    ]
+  },
+  {
+    "frame": 67,
+    "frameMs": 26.83690071105957,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.8369,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.19829999335343018,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.8363,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.977599877864122,
+          "Gfx.SetRenderTarget": 0.34629999508615583,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 68,
+    "frameMs": 25.127300262451172,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.1273,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.34879999508848414,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.1284,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.363799951621331,
+          "Gfx.SetRenderTarget": 0.34909999420051463,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.25099999154917896,
+          "RenderLoop.DrawSRPBatcher": 0.096899999538436532
+        }
+      }
+    ]
+  },
+  {
+    "frame": 69,
+    "frameMs": 25.248800277709961,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2488,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.22729999473085627,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.2499,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.205199889642245,
+          "Gfx.SetRenderTarget": 0.33579999557696283,
+          "Camera.Render": 0.00029999998514540493
+        }
+      }
+    ]
+  },
+  {
+    "frame": 70,
+    "frameMs": 24.911899566650391,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.9119,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.2509999924513977,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.9117,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.42989989592752,
+          "Gfx.SetRenderTarget": 0.32019999530166388,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.069399997591972351,
+          "RenderLoop.Draw": 0.1437000036239624
+        }
+      }
+    ]
+  },
+  {
+    "frame": 71,
+    "frameMs": 25.586000442504883,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.586,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.25869999191490933,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5858,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 15.033399898558855,
+          "Gfx.SetRenderTarget": 0.33319999603554606,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.11519999988377094,
+          "RenderLoop.Draw": 0.13759999629110098
+        }
+      }
+    ]
+  },
+  {
+    "frame": 72,
+    "frameMs": 26.589500427246094,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.5895,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.17350000509759411,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.591,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.386099944109446,
+          "Gfx.SetRenderTarget": 0.34119999487302266,
+          "Camera.Render": 0.00029999998514540493
+        }
+      }
+    ]
+  },
+  {
+    "frame": 73,
+    "frameMs": 26.237899780273438,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.2379,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.41769999399548396,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.064000003039836884
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.238,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.569899942725897,
+          "Gfx.SetRenderTarget": 0.34749999528867193,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.18409999762661755,
+          "RenderLoop.Draw": 0.29909999342635274
+        }
+      }
+    ]
+  },
+  {
+    "frame": 74,
+    "frameMs": 25.649200439453125,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.6492,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.52409997716313228,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.0640999972820282
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.6477,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.073399935849011,
+          "Gfx.SetRenderTarget": 0.3331999946385622,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.16289999848231673,
+          "RenderLoop.Draw": 0.20539999939501286
+        }
+      }
+    ]
+  },
+  {
+    "frame": 75,
+    "frameMs": 24.870100021362305,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.8701,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35580000770278275,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.8713,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.90869988873601,
+          "Gfx.SetRenderTarget": 0.34279999503633007,
+          "Camera.Render": 0.00019999999494757503,
+          "Gfx.DrawDynamic": 0.013500000350177288,
+          "Gfx.RequestAsyncReadbackData": 0.22130000591278076,
+          "Gfx.UpdateAsyncReadbackData": 0.05260000005364418
+        }
+      }
+    ]
+  },
+  {
+    "frame": 76,
+    "frameMs": 25.48069953918457,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4807,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.27489999408135191,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.480999,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.096799923107028,
+          "Gfx.SetRenderTarget": 0.33589999546529725,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.26380000286735594,
+          "RenderLoop.DrawSRPBatcher": 0.095000000204890966
+        }
+      }
+    ]
+  },
+  {
+    "frame": 77,
+    "frameMs": 26.198699951171875,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.1987,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.28819999954430386,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.1978,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.700599927455187,
+          "Gfx.SetRenderTarget": 0.33369999472051859,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 78,
+    "frameMs": 25.26409912109375,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2641,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.4122999919927679,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.2645,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.233400015160441,
+          "Gfx.SetRenderTarget": 0.32369999535148963,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.1994999994058162,
+          "RenderLoop.Draw": 0.26900000707246363
+        }
+      }
+    ]
+  },
+  {
+    "frame": 79,
+    "frameMs": 24.887699127197266,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.8877,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.20189999329159036,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.8873,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.605700055377383,
+          "Gfx.SetRenderTarget": 0.31839999451767653,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.23509999411180615,
+          "RenderLoop.DrawSRPBatcher": 0.082199999364092946
+        }
+      }
+    ]
+  },
+  {
+    "frame": 80,
+    "frameMs": 25.321599960327148,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3216,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18279999861260876,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3269,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.309400066638773,
+          "Gfx.SetRenderTarget": 0.36239999468671158,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.33850000728853047,
+          "RenderLoop.DrawSRPBatcher": 0.094000000506639481
+        }
+      }
+    ]
+  },
+  {
+    "frame": 81,
+    "frameMs": 26.059200286865234,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.0592,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.44639999518403783,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.13779999688267708,
+          "RenderLoop.Draw": 0.086400002241134644
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.0564,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.450099961133674,
+          "Gfx.SetRenderTarget": 0.3400999940931797,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.26749999914318323,
+          "RenderLoop.Draw": 0.49729999736882746
+        }
+      }
+    ]
+  },
+  {
+    "frame": 82,
+    "frameMs": 26.330400466918945,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.3304,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.41750000737374648,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.3296,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.666100091300905,
+          "Gfx.SetRenderTarget": 0.34979999531060457,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.12880000099539757,
+          "RenderLoop.Draw": 0.2182999961078167
+        }
+      }
+    ]
+  },
+  {
+    "frame": 83,
+    "frameMs": 25.207500457763672,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2075,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.16699999704724178,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.2067,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.814700061455369,
+          "Gfx.SetRenderTarget": 0.33619999489746988,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.091499998699873686,
+          "RenderLoop.Draw": 0.16239999979734421
+        }
+      }
+    ]
+  },
+  {
+    "frame": 84,
+    "frameMs": 25.930299758911133,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.9303,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.39879999024560675,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.055500000715255737
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.9306,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.722100058570504,
+          "Gfx.SetRenderTarget": 0.33089999493677169,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.15150000108405948,
+          "RenderLoop.Draw": 0.43620000453665853
+        }
+      }
+    ]
+  },
+  {
+    "frame": 85,
+    "frameMs": 25.820899963378906,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.8209,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35580000089248642,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.063100002706050873
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.8198,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.364599911496043,
+          "Gfx.SetRenderTarget": 0.33459999563638121,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.24649999849498272,
+          "RenderLoop.Draw": 0.24069999810308218
+        }
+      }
+    ]
+  },
+  {
+    "frame": 86,
+    "frameMs": 25.40839958190918,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4084,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.22520000202348456,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4124,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.782799931243062,
+          "Gfx.SetRenderTarget": 0.324499994458165,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 87,
+    "frameMs": 24.407199859619141,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.4072,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.2335999952047132,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.35,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.382499867118895,
+          "Gfx.SetRenderTarget": 0.33139999595005065,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.30199999804608524,
+          "RenderLoop.DrawSRPBatcher": 0.10359999956563115
+        }
+      }
+    ]
+  },
+  {
+    "frame": 88,
+    "frameMs": 27.128200531005859,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.1282,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.14320000394945964,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.1834,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.766200013822527,
+          "Gfx.SetRenderTarget": 0.34939999599009752,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.076399996876716614,
+          "RenderLoop.Draw": 0.16550000011920929
+        }
+      }
+    ]
+  },
+  {
+    "frame": 89,
+    "frameMs": 27.562099456787109,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.5621,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.43040001258486882,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.5633,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.769099955912679,
+          "Gfx.SetRenderTarget": 0.38529999431921169,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.2379000005312264,
+          "RenderLoop.Draw": 0.4051999943330884
+        }
+      }
+    ]
+  },
+  {
+    "frame": 90,
+    "frameMs": 25.593900680541992,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.5939,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.10180000268155709,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5949,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.032299943268299,
+          "Gfx.SetRenderTarget": 0.34439999581081793,
+          "Camera.Render": 9.9999997473787516E-05,
+          "Gfx.DrawDynamic": 0.012099999934434891,
+          "Gfx.RequestAsyncReadbackData": 0.26609998941421509,
+          "Gfx.UpdateAsyncReadbackData": 0.043899998068809509
+        }
+      }
+    ]
+  },
+  {
+    "frame": 91,
+    "frameMs": 25.335399627685547,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3354,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35440001351526007,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3376,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.417200041934848,
+          "Gfx.SetRenderTarget": 0.32469999417662621,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.28689999808557332,
+          "RenderLoop.DrawSRPBatcher": 0.09409999824129045
+        }
+      }
+    ]
+  },
+  {
+    "frame": 92,
+    "frameMs": 24.980400085449219,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.9804,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.24460000119870529,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.9767,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.805599893443286,
+          "Gfx.SetRenderTarget": 0.3334999947110191,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.25270000100135803,
+          "RenderLoop.DrawSRPBatcher": 0.09909999999217689
+        }
+      }
+    ]
+  },
+  {
+    "frame": 93,
+    "frameMs": 24.510400772094727,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.5104,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.20600000483682379,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.5097,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.06669994071126,
+          "Gfx.SetRenderTarget": 0.32639999536331743,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.26480000396259129,
+          "RenderLoop.DrawSRPBatcher": 0.094299998832866549
+        }
+      }
+    ]
+  },
+  {
+    "frame": 94,
+    "frameMs": 25.482999801635742,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.483,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.47019999701296911,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.04960000142455101
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4855,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.734699992368405,
+          "Gfx.SetRenderTarget": 0.33069999440340325,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.22909999825060368,
+          "RenderLoop.Draw": 0.23629999998956919
+        }
+      }
+    ]
+  },
+  {
+    "frame": 95,
+    "frameMs": 24.430599212646484,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.4306,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.21239999489625916,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.428,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.16910000279313,
+          "Gfx.SetRenderTarget": 0.32699999370379373,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.2689999989233911,
+          "RenderLoop.DrawSRPBatcher": 0.085599998710677028
+        }
+      }
+    ]
+  },
+  {
+    "frame": 96,
+    "frameMs": 25.660799026489258,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.660799,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.0053000000189058483,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.6646,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.032400080002844,
+          "Gfx.SetRenderTarget": 0.31359999440610409,
+          "Camera.Render": 0.00019999999494757503
+        }
+      }
+    ]
+  },
+  {
+    "frame": 97,
+    "frameMs": 25.519599914550781,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.5196,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.16000000131316483,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5201,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.355499940924346,
+          "Gfx.SetRenderTarget": 0.3422999947797507,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 98,
+    "frameMs": 24.878000259399414,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.878,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.28059999964898452,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.875,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.356800055131316,
+          "Gfx.SetRenderTarget": 0.32519999431679025,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.10139999911189079,
+          "RenderLoop.Draw": 0.20349999889731407
+        }
+      }
+    ]
+  },
+  {
+    "frame": 99,
+    "frameMs": 26.940099716186523,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.9401,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.0072999998810701072,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.9411,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.890499889850616,
+          "Gfx.SetRenderTarget": 0.33939999458380044,
+          "Camera.Render": 0.00039999998989515007
+        }
+      }
+    ]
+  },
+  {
+    "frame": 100,
+    "frameMs": 26.383600234985352,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.3836,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.15399999305373058,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.39,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 15.091800010763109,
+          "Gfx.SetRenderTarget": 0.35369999654358253,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.23919999692589045,
+          "RenderLoop.DrawSRPBatcher": 0.0813000004272908
+        }
+      }
+    ]
+  },
+  {
+    "frame": 101,
+    "frameMs": 25.666399002075195,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.666399,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.0050000000628642738,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.6585,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.602099942043424,
+          "Gfx.SetRenderTarget": 0.33229999546892941,
+          "Camera.Render": 0.00019999999494757503
+        }
+      }
+    ]
+  },
+  {
+    "frame": 102,
+    "frameMs": 25.20989990234375,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2099,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.14110000239452347,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.2111,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.466699769720435,
+          "Gfx.SetRenderTarget": 0.3377999949734658,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.27569999638944864,
+          "RenderLoop.DrawSRPBatcher": 0.095899998908862472
+        }
+      }
+    ]
+  },
+  {
+    "frame": 103,
+    "frameMs": 25.634099960327148,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.6341,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.31150000443449244,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.6353,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.870599959045649,
+          "Gfx.SetRenderTarget": 0.32669999555218965,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.24969999631866813,
+          "RenderLoop.DrawSRPBatcher": 0.096499998820945621
+        }
+      }
+    ]
+  },
+  {
+    "frame": 104,
+    "frameMs": 25.489200592041016,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4892,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.12299999635433778,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4886,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.398699911311269,
+          "Gfx.SetRenderTarget": 0.31399999558925629,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.28980000549927354,
+          "RenderLoop.DrawSRPBatcher": 0.1027999990619719
+        }
+      }
+    ]
+  },
+  {
+    "frame": 105,
+    "frameMs": 25.630100250244141,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.6301,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.066000000981148332,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.6307,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.201799827744253,
+          "Gfx.SetRenderTarget": 0.32719999525579624,
+          "Camera.Render": 9.9999997473787516E-05,
+          "Gfx.DrawDynamic": 0.011799999512732029,
+          "Gfx.RequestAsyncReadbackData": 0.243599995970726,
+          "Gfx.UpdateAsyncReadbackData": 0.051500000059604645
+        }
+      }
+    ]
+  },
+  {
+    "frame": 106,
+    "frameMs": 25.406099319458008,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4061,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.2579000010737218,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4056,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.003699991153553,
+          "Gfx.SetRenderTarget": 0.34729999472619966,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.18980000028386712,
+          "RenderLoop.Draw": 0.36739999847486615
+        }
+      }
+    ]
+  },
+  {
+    "frame": 107,
+    "frameMs": 25.760799407958984,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.7608,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.21800000121584162,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.7594,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.45590001437813,
+          "Gfx.SetRenderTarget": 0.34859999507898465,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.36769999470561743,
+          "RenderLoop.DrawSRPBatcher": 0.13150000153109431
+        }
+      }
+    ]
+  },
+  {
+    "frame": 108,
+    "frameMs": 25.339899063110352,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3399,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35019998898496851,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3437,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.002999836811796,
+          "Gfx.SetRenderTarget": 0.32919999596197158,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.088399999774992466,
+          "RenderLoop.Draw": 0.12279999814927578
+        }
+      }
+    ]
+  },
+  {
+    "frame": 109,
+    "frameMs": 24.259500503540039,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.2595,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.16690000353264622,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.2597,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.925300087081268,
+          "Gfx.SetRenderTarget": 0.32689999527065083,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.11989999748766422,
+          "RenderLoop.Draw": 0.13100000051781535
+        }
+      }
+    ]
+  },
+  {
+    "frame": 110,
+    "frameMs": 25.863100051879883,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.8631,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.51239997014636174,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.067100003361701965
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.8617,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.278399973642081,
+          "Gfx.SetRenderTarget": 0.32389999448787421,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.15860000252723694,
+          "RenderLoop.Draw": 0.18799999356269836
+        }
+      }
+    ]
+  },
+  {
+    "frame": 111,
+    "frameMs": 25.721199035644531,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.721199,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.54480002142372541,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.080499999225139618
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.721199,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.040399952791631,
+          "Gfx.SetRenderTarget": 0.33909999424940906,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.12689999863505363,
+          "RenderLoop.Draw": 0.3036000058054924
+        }
+      }
+    ]
+  },
+  {
+    "frame": 112,
+    "frameMs": 25.507600784301758,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.5076,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.43850000487873331,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.511,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.160799923818558,
+          "Gfx.SetRenderTarget": 0.32999999460298568,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.19529999699443579,
+          "RenderLoop.Draw": 0.17359999939799309
+        }
+      }
+    ]
+  },
+  {
+    "frame": 113,
+    "frameMs": 25.795299530029297,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.7953,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.23409999182331376,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.7943,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.793899964541197,
+          "Gfx.SetRenderTarget": 0.31639999483013526,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.42130000377073884,
+          "RenderLoop.DrawSRPBatcher": 0.15029999753460288
+        }
+      }
+    ]
+  },
+  {
+    "frame": 114,
+    "frameMs": 24.900400161743164,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.9004,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.4204999853100162,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.9031,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.830499928444624,
+          "Gfx.SetRenderTarget": 0.33809999481309205,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.26390000176616013,
+          "RenderLoop.DrawSRPBatcher": 0.0989999973680824
+        }
+      }
+    ]
+  },
+  {
+    "frame": 115,
+    "frameMs": 24.784200668334961,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.7842,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35679999453714117,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.073499999940395355
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.7802,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.058200007202686,
+          "Gfx.SetRenderTarget": 0.3430999941774644,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.19110000086948276,
+          "RenderLoop.Draw": 0.26909999921917915
+        }
+      }
+    ]
+  },
+  {
+    "frame": 116,
+    "frameMs": 25.078300476074219,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0783,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.31770000362303108,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.0779,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.232699877647974,
+          "Gfx.SetRenderTarget": 0.32079999463167042,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.088799997698515654,
+          "RenderLoop.Draw": 0.11719999834895134
+        }
+      }
+    ]
+  },
+  {
+    "frame": 117,
+    "frameMs": 24.260000228881836,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.26,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18869999254820868,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.2654,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.140999871306121,
+          "Gfx.SetRenderTarget": 0.32149999518878758,
+          "Camera.Render": 0.00019999999494757503
+        }
+      }
+    ]
+  },
+  {
+    "frame": 118,
+    "frameMs": 25.552799224853516,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.5528,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.22239999350858852,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5498,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.183499896898866,
+          "Gfx.SetRenderTarget": 0.3225999953574501,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.10660000145435333,
+          "RenderLoop.Draw": 0.15459999814629555
+        }
+      }
+    ]
+  },
+  {
+    "frame": 119,
+    "frameMs": 25.448200225830078,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4482,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.32899999798974022,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4472,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.426199864428781,
+          "Gfx.SetRenderTarget": 0.34239999484270811,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.26759999734349549,
+          "RenderLoop.DrawSRPBatcher": 0.094199999002739787
+        }
+      }
+    ]
+  },
+  {
+    "frame": 120,
+    "frameMs": 27.088100433349609,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.0881,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.12519999634241685,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 28.0094,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.449300070358731,
+          "Gfx.SetRenderTarget": 0.34579999459674582,
+          "Camera.Render": 0.00019999999494757503,
+          "Gfx.DrawDynamic": 0.013399999588727951,
+          "Gfx.RequestAsyncReadbackData": 0.27500000596046448,
+          "Gfx.UpdateAsyncReadbackData": 0.059099998325109482
+        }
+      }
+    ]
+  },
+  {
+    "frame": 121,
+    "frameMs": 30.253000259399414,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 30.253,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18040000513428822,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 29.3335,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 17.022499953025545,
+          "Gfx.SetRenderTarget": 0.48909999523311853,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.085900000296533108,
+          "RenderLoop.Draw": 0.1096000000834465
+        }
+      }
+    ]
+  },
+  {
+    "frame": 122,
+    "frameMs": 25.340499877929688,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3405,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.48550000990508124,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3399,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.152300005080178,
+          "Gfx.SetRenderTarget": 0.325099995941855,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.10159999877214432
+        }
+      }
+    ]
+  },
+  {
+    "frame": 123,
+    "frameMs": 25.56719970703125,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.5672,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35199999943142757,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.056899998337030411
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5648,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.972599974833429,
+          "Gfx.SetRenderTarget": 0.33339999418240041,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.17980000237002969,
+          "RenderLoop.Draw": 0.13930000178515911
+        }
+      }
+    ]
+  },
+  {
+    "frame": 124,
+    "frameMs": 25.042699813842773,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0427,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.28280001360690221,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.043499,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.277600005269051,
+          "Gfx.SetRenderTarget": 0.34289999527391046,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.19089999468997121,
+          "RenderLoop.Draw": 0.36149999313056469
+        }
+      }
+    ]
+  },
+  {
+    "frame": 125,
+    "frameMs": 25.648599624633789,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.6486,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.55849997999030165,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.08150000125169754
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.6491,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.149100050330162,
+          "Gfx.SetRenderTarget": 0.31129999429685995,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.181399994995445,
+          "RenderLoop.Draw": 0.24869999708607793
+        }
+      }
+    ]
+  },
+  {
+    "frame": 126,
+    "frameMs": 25.743900299072266,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.7439,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.39220000125351362,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.7454,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.658600086346269,
+          "Gfx.SetRenderTarget": 0.335399993986357,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.18399999756366014,
+          "RenderLoop.Draw": 0.14729999750852585
+        }
+      }
+    ]
+  },
+  {
+    "frame": 127,
+    "frameMs": 25.169500350952148,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.1695,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.364800011011539,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.10229999851435423,
+          "RenderLoop.Draw": 0.06379999965429306
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.168499,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.471100005459448,
+          "Gfx.SetRenderTarget": 0.34619999525602907,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.22639999911189079,
+          "RenderLoop.Draw": 0.24290000041946769
+        }
+      }
+    ]
+  },
+  {
+    "frame": 128,
+    "frameMs": 24.886800765991211,
+    "gc": 110388,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.8868,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18400000402471051,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.8906,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.064100039191544,
+          "Gfx.SetRenderTarget": 0.34519999596523121,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.28779999352991581,
+          "RenderLoop.DrawSRPBatcher": 0.087599999504163861
+        }
+      }
+    ]
+  },
+  {
+    "frame": 129,
+    "frameMs": 25.071800231933594,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0718,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.37640001246472821,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.049300000071525574
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.0696,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.095500136638293,
+          "Gfx.SetRenderTarget": 0.33559999504359439,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.13779999921098351,
+          "RenderLoop.Draw": 0.4010999952442944
+        }
+      }
+    ]
+  },
+  {
+    "frame": 130,
+    "frameMs": 25.070400238037109,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0704,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.47509999616886489,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.14810000080615282,
+          "RenderLoop.Draw": 0.11629999615252018
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.07,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.325199886225164,
+          "Gfx.SetRenderTarget": 0.32189999526599422,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.26879999693483114,
+          "RenderLoop.Draw": 0.14880000054836273
+        }
+      }
+    ]
+  },
+  {
+    "frame": 131,
+    "frameMs": 28.269199371337891,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 28.2692,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.30609998659929261,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 28.2712,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 17.814399887807667,
+          "Gfx.SetRenderTarget": 0.34099999457248487,
+          "Camera.Render": 0.00050000002374872565,
+          "RenderLoop.Draw": 0.22919999761506915,
+          "RenderLoop.DrawSRPBatcher": 0.0825999986846
+        }
+      }
+    ]
+  },
+  {
+    "frame": 132,
+    "frameMs": 28.864500045776367,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 28.8645,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.26080000604270026,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 28.8632,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 18.039699883440335,
+          "Gfx.SetRenderTarget": 0.34129999502329156,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.11440000031143427,
+          "RenderLoop.Draw": 0.1242999997921288
+        }
+      }
+    ]
+  },
+  {
+    "frame": 133,
+    "frameMs": 30.169898986816406,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 30.169899,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.44259999057976529,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.0689999982714653
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 30.168,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 18.942399824038148,
+          "Gfx.SetRenderTarget": 0.34499999467516318,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.0625
+        }
+      }
+    ]
+  },
+  {
+    "frame": 134,
+    "frameMs": 28.936399459838867,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 28.9364,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18150000131572597,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 28.9399,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 17.896599803185381,
+          "Gfx.SetRenderTarget": 0.44249999354360625,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.34659999748691916,
+          "RenderLoop.DrawSRPBatcher": 0.12070000031962991
+        }
+      }
+    ]
+  },
+  {
+    "frame": 135,
+    "frameMs": 40.08599853515625,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 40.086,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.28850000951206312,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 40.5433,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 28.708700317023613,
+          "Gfx.SetRenderTarget": 0.35679999506101012,
+          "Camera.Render": 0.00019999999494757503,
+          "Gfx.DrawDynamic": 0.0099999997764825821,
+          "Gfx.RequestAsyncReadbackData": 0.29210001230239868,
+          "Gfx.UpdateAsyncReadbackData": 0.074799999594688416
+        }
+      }
+    ]
+  },
+  {
+    "frame": 136,
+    "frameMs": 25.830099105834961,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.8301,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.52650000486755744,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3698,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.862499922412098,
+          "Gfx.SetRenderTarget": 0.34829999459907413,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.13289999961853027,
+          "RenderLoop.Draw": 0.17960000038146973
+        }
+      }
+    ]
+  },
+  {
+    "frame": 137,
+    "frameMs": 26.284900665283203,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.2849,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.49639999022474512,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.2892,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.104399893898517,
+          "Gfx.SetRenderTarget": 0.3348999951267615,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.2005000002682209,
+          "RenderLoop.Draw": 0.18160000070929527
+        }
+      }
+    ]
+  },
+  {
+    "frame": 138,
+    "frameMs": 27.115200042724609,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 27.1152,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.49620001303264871,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 27.1116,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 15.311699807760306,
+          "Gfx.SetRenderTarget": 0.37689999589929357,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.2528999992646277,
+          "RenderLoop.Draw": 0.5154999871738255
+        }
+      }
+    ]
+  },
+  {
+    "frame": 139,
+    "frameMs": 25.151300430297852,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.1513,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.50210000207880512,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.1295999982394278,
+          "RenderLoop.Draw": 0.10779999755322933
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.1521,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.179700068263628,
+          "Gfx.SetRenderTarget": 0.32919999456498772,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.15329999895766377,
+          "RenderLoop.Draw": 0.23169999942183495
+        }
+      }
+    ]
+  },
+  {
+    "frame": 140,
+    "frameMs": 25.245899200439453,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2459,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.43260001012822613,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.2475,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.538199833659746,
+          "Gfx.SetRenderTarget": 0.34149999544024467,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.11839999910444021,
+          "RenderLoop.Draw": 0.1399999987334013
+        }
+      }
+    ]
+  },
+  {
+    "frame": 141,
+    "frameMs": 25.09630012512207,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.0963,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.300399994419422,
+          "Camera.Render": 0.00059999997029080987,
+          "RenderLoop.DrawSRPBatcher": 0.066100001335144043
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.0957,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.154699946753681,
+          "Gfx.SetRenderTarget": 0.33119999524205923,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.18409999716095626,
+          "RenderLoop.Draw": 0.28609999665059149
+        }
+      }
+    ]
+  },
+  {
+    "frame": 142,
+    "frameMs": 25.494600296020508,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4946,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.41039999548229389,
+          "Camera.Render": 0.000699999975040555
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4953,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.411699922755361,
+          "Gfx.SetRenderTarget": 0.32589999528136104,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.30740000656805933,
+          "RenderLoop.DrawSRPBatcher": 0.20490000024437904
+        }
+      }
+    ]
+  },
+  {
+    "frame": 143,
+    "frameMs": 25.347700119018555,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3477,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.25949998543364927,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3494,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.575599864365358,
+          "Gfx.SetRenderTarget": 0.327899994852487,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.23459999985061586,
+          "RenderLoop.DrawSRPBatcher": 0.087700000498443842
+        }
+      }
+    ]
+  },
+  {
+    "frame": 144,
+    "frameMs": 25.277700424194336,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2777,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.28230000095209107,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.276,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.727199777029455,
+          "Gfx.SetRenderTarget": 0.34179999504704028,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.161800000583753,
+          "RenderLoop.Draw": 0.29860000032931566
+        }
+      }
+    ]
+  },
+  {
+    "frame": 145,
+    "frameMs": 25.935400009155273,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.9354,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.354000007675495,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.935,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.893999835541763,
+          "Gfx.SetRenderTarget": 0.362199995550327,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.23919999971985817,
+          "RenderLoop.DrawSRPBatcher": 0.078799998387694359
+        }
+      }
+    ]
+  },
+  {
+    "frame": 146,
+    "frameMs": 24.994400024414063,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.9944,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18849999428493902,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.9969,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.224900023145892,
+          "Gfx.SetRenderTarget": 0.343099994934164,
+          "Camera.Render": 0.00029999998514540493
+        }
+      }
+    ]
+  },
+  {
+    "frame": 147,
+    "frameMs": 24.702899932861328,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.7029,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.18860000575659797,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.7034,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.084900120178645,
+          "Gfx.SetRenderTarget": 0.33609999535838142,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.22470000269822776,
+          "RenderLoop.DrawSRPBatcher": 0.0813999988604337
+        }
+      }
+    ]
+  },
+  {
+    "frame": 148,
+    "frameMs": 25.499900817871094,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4999,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.50519998400704935,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.05559999868273735
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4962,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.873199900612235,
+          "Gfx.SetRenderTarget": 0.34259999508503824,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.19550000131130219,
+          "RenderLoop.Draw": 0.16859999671578407
+        }
+      }
+    ]
+  },
+  {
+    "frame": 149,
+    "frameMs": 25.159500122070313,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.1595,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.10369999607792124,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.161499,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.136600061319768,
+          "Gfx.SetRenderTarget": 0.3503999951062724,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.32559998659417033,
+          "RenderLoop.DrawSRPBatcher": 0.096399998990818858
+        }
+      }
+    ]
+  },
+  {
+    "frame": 150,
+    "frameMs": 25.107900619506836,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.1079,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.051200001442339271,
+          "Camera.Render": 0.00039999998989515007
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.1078,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.257899941876531,
+          "Gfx.SetRenderTarget": 0.32839999429415911,
+          "Camera.Render": 0.00019999999494757503,
+          "Gfx.DrawDynamic": 0.019199999049305916,
+          "Gfx.RequestAsyncReadbackData": 0.36089998483657837,
+          "Gfx.UpdateAsyncReadbackData": 0.049100000411272049
+        }
+      }
+    ]
+  },
+  {
+    "frame": 151,
+    "frameMs": 25.419700622558594,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4197,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.23780000576516613,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4209,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.029299844056368,
+          "Gfx.SetRenderTarget": 0.33169999480014667,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.27320000343024731,
+          "RenderLoop.DrawSRPBatcher": 0.098999999929219484
+        }
+      }
+    ]
+  },
+  {
+    "frame": 152,
+    "frameMs": 25.533699035644531,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.533699,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.28529998514568433,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5339,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.556500107981265,
+          "Gfx.SetRenderTarget": 0.33379999455064535,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.18479999527335167,
+          "RenderLoop.Draw": 0.17410000041127205
+        }
+      }
+    ]
+  },
+  {
+    "frame": 153,
+    "frameMs": 25.342800140380859,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3428,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.23139999288832769,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3429,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.402299995999783,
+          "Gfx.SetRenderTarget": 0.342599994270131,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.08320000022649765,
+          "RenderLoop.Draw": 0.13209999911487103
+        }
+      }
+    ]
+  },
+  {
+    "frame": 154,
+    "frameMs": 25.303899765014648,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3039,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.342800012731459,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3025,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.492299817567982,
+          "Gfx.SetRenderTarget": 0.32679999482934363,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.18769999803043902,
+          "RenderLoop.Draw": 0.33009999338537455
+        }
+      }
+    ]
+  },
+  {
+    "frame": 155,
+    "frameMs": 24.762699127197266,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.7627,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.3141999896033667,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.048599999397993088
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.7677,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.002099993536831,
+          "Gfx.SetRenderTarget": 0.33779999491525814,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.17389999702572823,
+          "RenderLoop.Draw": 0.098699999041855335
+        }
+      }
+    ]
+  },
+  {
+    "frame": 156,
+    "frameMs": 25.315099716186523,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.3151,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.14530000282684341,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3097,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.469299892960407,
+          "Gfx.SetRenderTarget": 0.3619999946677126,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.11749999970197678,
+          "RenderLoop.Draw": 0.15119999647140503
+        }
+      }
+    ]
+  },
+  {
+    "frame": 157,
+    "frameMs": 25.322000503540039,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.322,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.3236000127508305,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.054800000041723251
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.3246,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.619699934730306,
+          "Gfx.SetRenderTarget": 0.35639999544946477,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.1640999992378056,
+          "RenderLoop.Draw": 0.21969999559223652
+        }
+      }
+    ]
+  },
+  {
+    "frame": 158,
+    "frameMs": 26.684900283813477,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.6849,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.0385000008973293,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.6853,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.55990009202651,
+          "Gfx.SetRenderTarget": 0.33219999575521797,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.28950000344775617,
+          "RenderLoop.DrawSRPBatcher": 0.081299998331815
+        }
+      }
+    ]
+  },
+  {
+    "frame": 159,
+    "frameMs": 25.260200500488281,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2602,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.32719999429536983,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.049699999392032623
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.259,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.267600014689378,
+          "Gfx.SetRenderTarget": 0.34709999573533423,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.13749999552965164,
+          "RenderLoop.Draw": 0.33990000188350677
+        }
+      }
+    ]
+  },
+  {
+    "frame": 160,
+    "frameMs": 25.690700531005859,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.6907,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.26199999649543315,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.693,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.629299979424104,
+          "Gfx.SetRenderTarget": 0.3347999945981428,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.Draw": 0.29810000024735928,
+          "RenderLoop.DrawSRPBatcher": 0.099800000200048089
+        }
+      }
+    ]
+  },
+  {
+    "frame": 161,
+    "frameMs": 25.222400665283203,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.2224,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.25289999408414587,
+          "Camera.Render": 0.000699999975040555
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.222599,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.059399916091934,
+          "Gfx.SetRenderTarget": 0.34559999400516972,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.080300000496208668,
+          "RenderLoop.Draw": 0.097899999469518661
+        }
+      }
+    ]
+  },
+  {
+    "frame": 162,
+    "frameMs": 26.227399826049805,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.2274,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.21970000091823749,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.2549,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.707399833481759,
+          "Gfx.SetRenderTarget": 0.35199999442556873,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 163,
+    "frameMs": 25.746500015258789,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.7465,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.38159999385243282,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.085100002586841583
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.7613,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.38259981200099,
+          "Gfx.SetRenderTarget": 0.3174999943585135,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.15000000596046448,
+          "RenderLoop.Draw": 0.35250000655651093
+        }
+      }
+    ]
+  },
+  {
+    "frame": 164,
+    "frameMs": 26.007499694824219,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.0075,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.59910001518437639,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.19299999997019768,
+          "RenderLoop.Draw": 0.11579999886453152
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.9974,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.189600053243339,
+          "Gfx.SetRenderTarget": 0.3336999955936335,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.30689999274909496,
+          "RenderLoop.Draw": 0.14310000138357282
+        }
+      }
+    ]
+  },
+  {
+    "frame": 165,
+    "frameMs": 25.741800308227539,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.7418,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.23029999242862687,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.7087,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.259100030176342,
+          "Gfx.SetRenderTarget": 0.33799999498296529,
+          "Camera.Render": 9.9999997473787516E-05,
+          "Gfx.DrawDynamic": 0.020500000566244125,
+          "Gfx.RequestAsyncReadbackData": 0.38470000028610229,
+          "Gfx.UpdateAsyncReadbackData": 0.019300000742077827
+        }
+      }
+    ]
+  },
+  {
+    "frame": 166,
+    "frameMs": 26.034500122070313,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.0345,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.37850000249454752,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.0341,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.78659987822175,
+          "Gfx.SetRenderTarget": 0.3487999940989539,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.DrawSRPBatcher": 0.19270000117830932,
+          "RenderLoop.Draw": 0.30389999784529209
+        }
+      }
+    ]
+  },
+  {
+    "frame": 167,
+    "frameMs": 25.862899780273438,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.8629,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.16629999992437661,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.8617,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.48969991132617,
+          "Gfx.SetRenderTarget": 0.32519999600481242,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.27490000147372484,
+          "RenderLoop.DrawSRPBatcher": 0.098600000841543078
+        }
+      }
+    ]
+  },
+  {
+    "frame": 168,
+    "frameMs": 25.191600799560547,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.1916,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.37699998563039117,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.1912,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.145500076934695,
+          "Gfx.SetRenderTarget": 0.33809999475488439,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.082200001459568739,
+          "RenderLoop.Draw": 0.13980000093579292
+        }
+      }
+    ]
+  },
+  {
+    "frame": 169,
+    "frameMs": 26.210899353027344,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.2109,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.086499997822102159,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.2119,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 15.001300011528656,
+          "Gfx.SetRenderTarget": 0.37699999497272074,
+          "Camera.Render": 0.00019999999494757503,
+          "RenderLoop.Draw": 0.23649999964982271,
+          "RenderLoop.DrawSRPBatcher": 0.07969999872148037
+        }
+      }
+    ]
+  },
+  {
+    "frame": 170,
+    "frameMs": 25.856300354003906,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.8563,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.25700000132201239,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.8608,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.296600056346506,
+          "Gfx.SetRenderTarget": 0.33879999542841688,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 171,
+    "frameMs": 26.294898986816406,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 26.294899,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.35230000290903263,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 26.2901,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.81409999076277,
+          "Gfx.SetRenderTarget": 0.332999995269347,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.Draw": 0.25809999764896929,
+          "RenderLoop.DrawSRPBatcher": 0.097399999853223562
+        }
+      }
+    ]
+  },
+  {
+    "frame": 172,
+    "frameMs": 25.573200225830078,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.5732,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.17160000192234293,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5749,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.683300079777837,
+          "Gfx.SetRenderTarget": 0.33359999529784545,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 173,
+    "frameMs": 25.167900085449219,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.1679,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.0077000001328997314,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.1696,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.416999925626442,
+          "Gfx.SetRenderTarget": 0.32819999539060518,
+          "Camera.Render": 0.00039999998989515007
+        }
+      }
+    ]
+  },
+  {
+    "frame": 174,
+    "frameMs": 25.571199417114258,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.5712,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.19209999492159113,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.5699,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.107999913394451,
+          "Gfx.SetRenderTarget": 0.440399994229665,
+          "Camera.Render": 9.9999997473787516E-05,
+          "RenderLoop.DrawSRPBatcher": 0.085399998351931572,
+          "RenderLoop.Draw": 0.1339000016450882
+        }
+      }
+    ]
+  },
+  {
+    "frame": 175,
+    "frameMs": 25.496799468994141,
+    "gc": 108772,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4968,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.31330000510206446,
+          "Camera.Render": 0.00019999999494757503
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4957,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.329999996349216,
+          "Gfx.SetRenderTarget": 0.33759999455651268,
+          "Camera.Render": 9.9999997473787516E-05
+        }
+      }
+    ]
+  },
+  {
+    "frame": 176,
+    "frameMs": 24.799800872802734,
+    "gc": 116544,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 24.7998,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.44459999067476019,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.069399997591972351
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 24.8005,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 13.843399981036782,
+          "Gfx.SetRenderTarget": 0.32289999589556828,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.23339999839663506,
+          "RenderLoop.Draw": 0.25289999460801482
+        }
+      }
+    ]
+  },
+  {
+    "frame": 177,
+    "frameMs": 25.426399230957031,
+    "gc": 108308,
+    "threads": [
+      {
+        "threadName": "Main Thread",
+        "frameTimeMs": 25.4264,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.EndAsyncJobFrame": 0.31900001032045111,
+          "Camera.Render": 0.00029999998514540493
+        }
+      },
+      {
+        "threadName": "Render Thread",
+        "frameTimeMs": 25.4279,
+        "frameGpuTimeMs": 0.0,
+        "markers": {
+          "Gfx.WaitForGfxCommandsFromMainThread": 14.550899915360787,
+          "Gfx.SetRenderTarget": 0.33839999494375661,
+          "Camera.Render": 0.00029999998514540493,
+          "RenderLoop.DrawSRPBatcher": 0.14249999914318323,
+          "RenderLoop.Draw": 0.15859999833628535
+        }
+      }
+    ]
+  }
+]

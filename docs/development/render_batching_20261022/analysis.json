@@ -1,0 +1,229 @@
+{
+  "kind": "Frozen injected rendering settings diagnostic; no normal combat or product improvement verdict",
+  "trials": [
+    {
+      "trial": 0,
+      "srp": true,
+      "statsFrames": 180,
+      "nativeFrames": 178,
+      "draw": 2070.427777777778,
+      "setPass": 462.4888888888889,
+      "observedNative": {
+        "mean": 26.76167296291737,
+        "p95": 28.936399459838867,
+        "count": 178,
+        "max": 163.24099731445312,
+        "fpsMax": 41.220964127191166,
+        "fpsMin": 6.125912095928254,
+        "invalid": 0,
+        "min": 24.25950050354004,
+        "fpsMean": 37.366871696910046,
+        "p99": 40.08599853515625
+      },
+      "observedUnscaled": {
+        "mean": 27.07051403722223,
+        "p95": 29.2066975,
+        "count": 180,
+        "max": 162.395111,
+        "fpsMax": 41.2502049413307,
+        "fpsMin": 6.157820847205184,
+        "invalid": 0,
+        "min": 24.2423038,
+        "fpsMean": 36.94056192006513,
+        "p99": 84.8485
+      },
+      "nativeGC": 109513.59550561798,
+      "gpuNonzero": 0
+    },
+    {
+      "trial": 1,
+      "srp": false,
+      "statsFrames": 180,
+      "nativeFrames": 179,
+      "draw": 538.0333333333333,
+      "setPass": 512.9722222222222,
+      "observedNative": {
+        "mean": 25.99080670745679,
+        "p95": 30.129899978637695,
+        "count": 179,
+        "max": 47.14899826049805,
+        "fpsMax": 41.07214621172655,
+        "fpsMin": 21.209358351051353,
+        "invalid": 0,
+        "min": 24.347400665283203,
+        "fpsMean": 38.47514281705996,
+        "p99": 37.961299896240234
+      },
+      "observedUnscaled": {
+        "mean": 25.98935330000001,
+        "p95": 29.2541943,
+        "count": 180,
+        "max": 44.11971,
+        "fpsMax": 41.0755314082182,
+        "fpsMin": 22.66560682289163,
+        "invalid": 0,
+        "min": 24.3453941,
+        "fpsMean": 38.47729446965499,
+        "p99": 40.6679
+      },
+      "nativeGC": 109470.98882681564,
+      "gpuNonzero": 0
+    },
+    {
+      "trial": 2,
+      "srp": true,
+      "statsFrames": 180,
+      "nativeFrames": 179,
+      "draw": 2075.6944444444443,
+      "setPass": 464.02777777777777,
+      "observedNative": {
+        "mean": 26.219899907458426,
+        "p95": 29.478899002075195,
+        "count": 179,
+        "max": 38.25230026245117,
+        "fpsMax": 40.81715907627635,
+        "fpsMin": 26.142218719892504,
+        "invalid": 0,
+        "min": 24.499500274658203,
+        "fpsMean": 38.13897091634371,
+        "p99": 36.68429946899414
+      },
+      "observedUnscaled": {
+        "mean": 26.22545232833332,
+        "p95": 29.1545,
+        "count": 180,
+        "max": 38.2433052,
+        "fpsMax": 40.82615080223141,
+        "fpsMin": 26.14836753178959,
+        "invalid": 0,
+        "min": 24.4941044,
+        "fpsMean": 38.13089617980107,
+        "p99": 36.684
+      },
+      "nativeGC": 109473.58100558659,
+      "gpuNonzero": 0
+    },
+    {
+      "trial": 3,
+      "srp": false,
+      "statsFrames": 180,
+      "nativeFrames": 179,
+      "draw": 538.4833333333333,
+      "setPass": 513.4388888888889,
+      "observedNative": {
+        "mean": 26.806360884085713,
+        "p95": 31.020000457763672,
+        "count": 179,
+        "max": 42.55390167236328,
+        "fpsMax": 40.80117187569918,
+        "fpsMin": 23.499607807982787,
+        "invalid": 0,
+        "min": 24.50909996032715,
+        "fpsMean": 37.30457872756894,
+        "p99": 36.160499572753906
+      },
+      "observedUnscaled": {
+        "mean": 26.810086641666672,
+        "p95": 30.8389034,
+        "count": 180,
+        "max": 48.3832054,
+        "fpsMax": 40.804501552611285,
+        "fpsMin": 20.668328849497847,
+        "invalid": 0,
+        "min": 24.5071,
+        "fpsMean": 37.299394566142816,
+        "p99": 35.5725
+      },
+      "nativeGC": 109476.17318435754,
+      "gpuNonzero": 0
+    },
+    {
+      "trial": 4,
+      "srp": true,
+      "statsFrames": 180,
+      "nativeFrames": 179,
+      "draw": 2075.766666666667,
+      "setPass": 463.76666666666665,
+      "observedNative": {
+        "mean": 27.256683679932323,
+        "p95": 32.637699127197266,
+        "count": 179,
+        "max": 44.689598083496094,
+        "fpsMax": 40.748964930838646,
+        "fpsMin": 22.376571794887116,
+        "invalid": 0,
+        "min": 24.54050064086914,
+        "fpsMean": 36.68824908204984,
+        "p99": 39.12540054321289
+      },
+      "observedUnscaled": {
+        "mean": 27.260606765000006,
+        "p95": 32.4782028,
+        "count": 180,
+        "max": 44.6748,
+        "fpsMax": 40.748135772788395,
+        "fpsMin": 22.383983811902908,
+        "invalid": 0,
+        "min": 24.541,
+        "fpsMean": 36.68296926112091,
+        "p99": 40.1003952
+      },
+      "nativeGC": 109476.17318435754,
+      "gpuNonzero": 0
+    },
+    {
+      "trial": 5,
+      "srp": false,
+      "statsFrames": 180,
+      "nativeFrames": 179,
+      "draw": 538.6888888888889,
+      "setPass": 513.6055555555556,
+      "observedNative": {
+        "mean": 25.905274215357263,
+        "p95": 29.84309959411621,
+        "count": 179,
+        "max": 41.97679901123047,
+        "fpsMax": 41.326755583890346,
+        "fpsMin": 23.822683566997572,
+        "invalid": 0,
+        "min": 24.197399139404297,
+        "fpsMean": 38.60217775294485,
+        "p99": 33.806400299072266
+      },
+      "observedUnscaled": {
+        "mean": 25.905774449999996,
+        "p95": 29.0133,
+        "count": 180,
+        "max": 38.9923058,
+        "fpsMax": 41.33050534585701,
+        "fpsMin": 25.64608528485638,
+        "invalid": 0,
+        "min": 24.1952038,
+        "fpsMean": 38.60143235362725,
+        "p99": 33.8253975
+      },
+      "nativeGC": 109427.56983240224,
+      "gpuNonzero": 0
+    }
+  ],
+  "on": {
+    "setPass": 463.42777777777775,
+    "draw": 2073.962962962963
+  },
+  "off": {
+    "setPass": 513.3388888888888,
+    "draw": 538.4018518518518
+  },
+  "drawSaved": 1535.5611111111111,
+  "drawSavedPct": 74.03994856867332,
+  "setPassSaved": -49.9111111111111,
+  "setPassSavedPct": -10.769986933119146,
+  "limits": [
+    "180 stats rows per trial; native captures contain 178/179 frames due recording boundary; no one-to-one join or imputed frames",
+    "Time.timeScale=0, driver game.enabled=false; animation and unscaled effects are not fully frozen",
+    "No pixel equivalence test for the temporary SRP setting; original restored",
+    "Native frame samples report observed FPS only; no full contiguous-window FPS claim",
+    "Profiler overhead included; GPU profiler reports unsupported in current Editor/D3D12",
+    "No product changes or savings have been accepted"
+  ]
+}
