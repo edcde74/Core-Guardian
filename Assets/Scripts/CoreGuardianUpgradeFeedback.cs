@@ -60,6 +60,10 @@ public sealed class CoreGuardianUpgradeFeedback : MonoBehaviour
         DisposeObject(scan.root);DisposeObject(scan.material);
     }
     public void Clear(){for(int i=scans.Count-1;i>=0;i--)Remove(i);}
+    public void ReleaseTarget(Transform target)
+    {
+        for(int i=scans.Count-1;i>=0;i--)if(scans[i].target==target)Remove(i);
+    }
     void OnDisable(){Clear();}
     void OnDestroy(){Clear();}
     void OnValidate(){duration=Mathf.Max(.05f,duration);}

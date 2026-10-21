@@ -38,6 +38,21 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     readonly List<int> removedViewIds = new List<int>();
     const int MaxRetainedProjectileViews=256;
     readonly Stack<SpriteRenderer> projectileViewPool = new Stack<SpriteRenderer>();
+    const int MaxRetainedEnemyBodies=32,MaxRetainedBossBodies=4;
+    sealed class EnemyBodyView
+    {
+        public EnemyKind Kind;
+        public GameObject Source,Root;
+        public CoreGuardianUnitAnimation Animation;
+        public CoreGuardianPhotoShadow Shadow;
+        public SegmentedEnemyHealthBar Health;
+        public Vector3 InitialScale;
+        public Quaternion InitialRotation;
+        public bool Valid=>Root!=null&&Animation!=null&&Health!=null&&Shadow!=null;
+    }
+    readonly Dictionary<int,EnemyBodyView> enemyBodies=new Dictionary<int,EnemyBodyView>();
+    readonly Dictionary<EnemyKind,Stack<EnemyBodyView>> enemyBodyPools=new Dictionary<EnemyKind,Stack<EnemyBodyView>>();
+    Transform enemyPoolRoot;
     readonly List<GameObject> highlights = new List<GameObject>();
     GameObject ghost;
     Sprite square, dot;
@@ -284,25 +299,20 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     {
         livingViewEnemies.Clear();activeEnemyViewIds.Clear();
         foreach(var enemy in Session.Enemies)if(enemy.Alive){livingViewEnemies.Add(enemy);activeEnemyViewIds.Add(enemy.Id);}
-        SyncRemoved(enemyViews,activeEnemyViewIds);SyncRemoved(auraViews,activeEnemyViewIds);
-        removedViewIds.Clear();
-        foreach(var id in healthViews.Keys)if(!activeEnemyViewIds.Contains(id))removedViewIds.Add(id);
-        foreach(var id in removedViewIds)healthViews.Remove(id);
+        ReturnRemovedEnemyBodies();SyncRemoved(auraViews,activeEnemyViewIds);
         foreach(var e in livingViewEnemies)
         {
-            GameObject view;
-            if(!enemyViews.TryGetValue(e.Id,out view))
+            if(!enemyBodies.TryGetValue(e.Id,out var body))
             {
-                view=Instantiate(e.Kind==EnemyKind.Boss?bossArt:enemyArt[(int)e.Kind]);view.name="Enemy_"+e.Kind+"_"+e.Id;enemyViews.Add(e.Id,view);
+                body=RentEnemyBody(e);enemyBodies.Add(e.Id,body);enemyViews.Add(e.Id,body.Root);
+                healthViews.Add(e.Id,body.Health.transform);
                 if(e.Kind==EnemyKind.Boss)GetComponent<CoreGuardianCombatAudio>()?.NotifyBossSpawn(e.Id);
-                var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
-                bar.transform.SetParent(view.transform,false);healthViews[e.Id]=bar.transform;
-                bar.gameObject.AddComponent<SegmentedEnemyHealthBar>().Configure(e.Kind==EnemyKind.Boss);
             }
+            var view=body.Root;
             view.transform.position=World(e.Position);
             combatAnimation.Enemy(e,view);
-            healthViews[e.Id].position=view.GetComponent<CoreGuardianUnitAnimation>().HealthBarWorld;
-            healthViews[e.Id].GetComponent<SegmentedEnemyHealthBar>().SetHealth(e.Health,e.Spec.Health);
+            body.Health.transform.position=body.Animation.HealthBarWorld;
+            body.Health.SetHealth(e.Health,e.Spec.Health);
             if(e.Buffed&&!auraViews.ContainsKey(e.Id))auraViews[e.Id]=combatArt.Marker("EnemySpeedBuff",World(e.Position),.17f);
             if(auraViews.TryGetValue(e.Id,out var aura)){aura.SetActive(e.Buffed);aura.transform.position=World(e.Position)+Vector3.up*1.02f;}
         }
@@ -328,6 +338,76 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             if(direction.sqrMagnitude>.000001f)view.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
         }
         combatAnimation.Player();
+    }
+    void ReturnRemovedEnemyBodies()
+    {
+        removedViewIds.Clear();
+        foreach(var entry in enemyViews)
+            if(!activeEnemyViewIds.Contains(entry.Key)||entry.Value==null||!enemyBodies.TryGetValue(entry.Key,out var body)||!body.Valid)removedViewIds.Add(entry.Key);
+        foreach(int id in removedViewIds)
+        {
+            combatAnimation.ReleaseEnemy(id);
+            enemyBodies.TryGetValue(id,out var body);
+            var root=enemyViews[id];
+            if(root!=null)
+            {
+                // These hosts live outside the enemy hierarchy. Detach them before same-frame reuse.
+                GetComponent<CoreGuardianObjectEmphasis>()?.ReleaseTarget(root.transform);
+                upgradeFeedback?.ReleaseTarget(root.transform);
+                root.SetActive(false); // Restores hit materials and releases the contact-mask binding.
+                if(body!=null&&body.Valid)
+                {
+                    body.Animation.ResetEnemyForReuse();
+                    if(!enemyBodyPools.TryGetValue(body.Kind,out var pool)){pool=new Stack<EnemyBodyView>();enemyBodyPools.Add(body.Kind,pool);}
+                    int capacity=body.Kind==EnemyKind.Boss?MaxRetainedBossBodies:MaxRetainedEnemyBodies;
+                    if(pool.Count<capacity)
+                    {
+                        if(enemyPoolRoot==null)
+                        {
+                            var host=new GameObject("CoreGuardianEnemyBodyPool");host.transform.SetParent(transform,false);host.SetActive(false);enemyPoolRoot=host.transform;
+                        }
+                        root.transform.SetParent(enemyPoolRoot,false);pool.Push(body);
+                    }
+                    else Destroy(root);
+                }
+                else Destroy(root);
+            }
+            enemyViews.Remove(id);healthViews.Remove(id);enemyBodies.Remove(id);
+        }
+        removedViewIds.Clear();
+    }
+    EnemyBodyView RentEnemyBody(EnemyState enemy)
+    {
+        var source=enemy.Kind==EnemyKind.Boss?bossArt:enemyArt[(int)enemy.Kind];
+        EnemyBodyView body=null;
+        if(enemyBodyPools.TryGetValue(enemy.Kind,out var pool))
+            while(pool.Count>0&&body==null)
+            {
+                var candidate=pool.Pop();
+                if(candidate.Valid&&candidate.Source==source)body=candidate;
+                else if(candidate.Root!=null)Destroy(candidate.Root);
+            }
+        if(body==null)
+        {
+            var root=Instantiate(source);root.name="Enemy_"+enemy.Kind+"_"+enemy.Id;root.transform.position=World(enemy.Position);
+            var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
+            bar.transform.SetParent(root.transform,false);
+            var health=bar.AddComponent<SegmentedEnemyHealthBar>();health.Configure(enemy.Kind==EnemyKind.Boss);
+            var animation=CoreGuardianUnitAnimation.Attach(root,enemy.Kind.ToString());
+            body=new EnemyBodyView{Kind=enemy.Kind,Source=source,Root=root,Animation=animation,Shadow=root.GetComponent<CoreGuardianPhotoShadow>(),Health=health,InitialScale=root.transform.localScale,InitialRotation=root.transform.rotation};
+        }
+        else
+        {
+            body.Root.transform.SetParent(null,false);
+            body.Root.transform.localScale=body.InitialScale;body.Root.transform.rotation=body.InitialRotation;
+            body.Root.transform.position=World(enemy.Position);
+            body.Animation.ResetEnemyForReuse();body.Shadow.InvalidateSources();
+            body.Health.Configure(enemy.Kind==EnemyKind.Boss);
+        }
+        body.Root.name="Enemy_"+enemy.Kind+"_"+enemy.Id;
+        body.Health.SetHealth(enemy.Health,enemy.Spec.Health);
+        body.Health.transform.position=body.Animation.HealthBarWorld;
+        body.Root.SetActive(true);return body;
     }
     void SyncRemoved(Dictionary<int,GameObject> views,HashSet<int> active,bool poolProjectiles=false)
     {
@@ -382,6 +462,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         Cursor.visible=true;
         if(occupiedTile!=null)Destroy(occupiedTile);
         foreach(var views in new[]{enemyViews,towerViews,projectileViews,auraViews,towerAuraViews})foreach(var g in views.Values)if(g!=null)Destroy(g);
+        foreach(var pool in enemyBodyPools.Values)
+            while(pool.Count>0){var body=pool.Pop();if(body.Root!=null)Destroy(body.Root);}
+        enemyBodyPools.Clear();enemyBodies.Clear();
         while(projectileViewPool.Count>0){var renderer=projectileViewPool.Pop();if(renderer!=null)Destroy(renderer.gameObject);}
         if(ghost!=null)Destroy(ghost);if(square!=null){Destroy(square.texture);Destroy(square);}if(dot!=null){Destroy(dot.texture);Destroy(dot);}
     }

@@ -133,6 +133,11 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
     {
         foreach(var state in states.Values){state.references.Invalidate();state.union.InvalidateSources();}
     }
+    public void ReleaseTarget(Transform target)
+    {
+        if(target==null||!states.TryGetValue(target,out var state))return;
+        Release(state);states.Remove(target);live.Remove(target);
+    }
     void Clear(){foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;}
     void OnDisable()
     {

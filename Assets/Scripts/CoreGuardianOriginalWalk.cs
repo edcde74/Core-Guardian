@@ -14,6 +14,8 @@ public sealed class CoreGuardianOriginalWalk
     readonly Sprite[,] verticalFrames=new Sprite[2,4];
     readonly VerticalLegPair verticalLegs;
     readonly Leg left,right;
+    readonly Color initialColor;
+    readonly bool initialFlipY;
     float phase,weight;
     bool walking,mirror;
     int verticalFacing;
@@ -28,7 +30,7 @@ public sealed class CoreGuardianOriginalWalk
         groundInParent+Vector3.up*((healthTopPixels+4)*original.transform.localScale.y/ppu));
     public CoreGuardianOriginalWalk(SpriteRenderer artwork,string role)
     {
-        original=artwork;ppu=original.sprite.pixelsPerUnit;
+        original=artwork;ppu=original.sprite.pixelsPerUnit;initialColor=original.color;initialFlipY=original.flipY;
         // Maximum opaque height above the foot anchor across source and all Y frames.
         // Include raised equipment, so the bar never cuts across a spear or banner.
         // Stable per role: walking frames must not make the health bar bob.
@@ -87,6 +89,13 @@ public sealed class CoreGuardianOriginalWalk
         phase=Mathf.Repeat(phase+local.magnitude*Mathf.Max(0,delta)*ppu/cyclePixels,1);
         if(mirror)local.x=-local.x;
         groundDirection=local.normalized;
+    }
+    public void ResetForReuse()
+    {
+        phase=weight=0;walking=mirror=false;verticalFacing=0;groundDirection=Vector2.left;
+        original.color=initialColor;original.flipX=false;original.flipY=initialFlipY;
+        original.enabled=true;rig.localScale=Vector3.one;
+        rig.gameObject.SetActive(false);vertical.gameObject.SetActive(false);AlignGround();
     }
     // Stance lasts exactly half a cycle for either leg. The other half is a lifted return.
     public static Vector2 FootOffset(float phase,float cyclePixels,float lift,Vector2 direction)

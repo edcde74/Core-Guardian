@@ -88,6 +88,14 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         hitFlash?.Advance(justHit?0:delta);justHit=false;
     }
     public void ReceiveHit(){if(hitFlash!=null&&hitFlash.Trigger())justHit=true;}
+    public void ResetEnemyForReuse()
+    {
+        if(!UsesOriginalWalking||originalWalk==null)throw new InvalidOperationException("Only configured enemy walking bodies can be reused");
+        hitFlash?.ResetForReuse();originalWalk.ResetForReuse();
+        justHit=walking=justFired=aiming=false;
+        shotAge=100;shotDuration=.25f;idleTime=0;facingAngle=-90;aim=Vector2.down;
+        direction=3;lastShotFrame=-1;ShotCount=0;MuzzleWorld=artwork.transform.position;
+    }
     void OnEnable(){towerGlow?.Enable();}
     void OnDisable(){hitFlash?.Clear();if(towerGlow!=null){shotAge=100;justFired=false;towerGlow.Clear();}}
     void OnDestroy(){towerGrounding?.Dispose();towerGlow?.Dispose();originalMotion?.Dispose();}

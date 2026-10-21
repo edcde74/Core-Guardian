@@ -51,6 +51,10 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         previousEnemies[enemy.Id]=enemy.Position;
         animation.Present(dt);
     }
+    public void ReleaseEnemy(int id)
+    {
+        enemies.Remove(id);previousEnemies.Remove(id);pendingHits.Remove(id);
+    }
     public void Tower(TowerState tower,GameObject view)
     {
         if(!towers.TryGetValue(tower.Id,out var animation))

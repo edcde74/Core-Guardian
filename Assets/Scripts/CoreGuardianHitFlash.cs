@@ -60,4 +60,6 @@ public sealed class CoreGuardianHitFlash
         }
         active=false;
     }
+    // A pooled body belongs to a new enemy; an old retrigger cooldown must not follow it.
+    public void ResetForReuse(){Clear();age=Duration;cooldown=0;}
 }
