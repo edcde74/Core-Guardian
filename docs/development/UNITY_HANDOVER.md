@@ -41,3 +41,5 @@
 - [최신 B 구현·실측·품질·실패/한계](render_batching_20261022/B_RESULTS.md), [CPU/GC 누적 결과](runtime_validation_20261021/RESULTS.md), [RT 재사용](mask_reuse_20261020/RESULTS.md), [동일 본체 공유·적용 제한](shared_body_mask_20261021/RESULTS.md).
 - [모델 풀/API 수명](model_pooling_20261021/README.md), [적 본체 풀](enemy_body_pool_20261021/README.md), [표시/Session 재사용](runtime_reuse_20261021/README.md), [HUD 갱신](hud_refresh_reuse_20261021/README.md), [남은 런타임 구현](remaining_runtime_20261021/README.md).
 - [기존 보스 등 미확정](mask_validation_20261021/README.md), [현재30R 기준](aggressive_30r_20261020/README.md). 원본 native `.data`·비교 소스/해시·씬 백업은 각 정본이 가리키는 `Logs/`에 보존한다. 예전 소스 교체 manifest는 중간 버전이므로 현재 파일에 무조건 복원 스크립트를 적용하지 않는다.
+
+- 2026-10-23 접촉 그림자 시각 비교: 플레이어 확대 실제 렌더 before/without-contact를 Logs/CG_ContactPreview_20261023/에 보존. PhotoDynamicContact 출력만 일시 숨김(넓은 PhotoCastShadow 유지), 같은 프레임 462픽셀 차이. 촬영 후 출력/카메라 복원·자체 Play 종료, scene dirty=false·Profiler recording=false·driver=true·background=false 확인. 영구 게임 변경 없음.
