@@ -76,4 +76,3 @@ public static class CGNormalCounterCheck
     public static object Status()=>new{running,frames=frames.Count,wave=game==null?0:game.Session.Wave,completed=game==null?0:game.Session.CompletedWave,elapsed=EditorApplication.timeSinceStartup-started};
     static void Write(string file,object value){File.WriteAllText(Root+file,JsonConvert.SerializeObject(value,Formatting.Indented));}
 }
-
