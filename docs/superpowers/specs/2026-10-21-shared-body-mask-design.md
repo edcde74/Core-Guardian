@@ -10,7 +10,7 @@
 
 ## 현재 확인한 구조
 
-- [SelectionOutline](../../../Assets/Scripts/CoreGuardianSelectionOutline.cs)은 소비자마다 sources/geometry/메시/CommandBuffer/RT/출력 quad를 보유한다. `PresentMask`가 소스 선별→경계/크롭→RT clear→DrawMaskParts→Execute→quad/속성을 순차 처리한다.
+- [SelectionOutline](../../../Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs)은 소비자마다 sources/geometry/메시/CommandBuffer/RT/출력 quad를 보유한다. `PresentMask`가 소스 선별→경계/크롭→RT clear→DrawMaskParts→Execute→quad/속성을 순차 처리한다.
 - PhotoShadow 순서200, ObjectEmphasis450, 선택500, UpgradeFeedback600이다. 일반 경로에서는 접촉 그림자가 먼저 합성한다. 실행 순서를 바꿔 공유를 강제하지 않는다.
 - 접촉 그림자의 기본 widthPixels=2이므로 pad=4, 강조 기본 widthPixels=1이므로 pad=3이다. 같은 본체라도 기존 크롭은 다르다. width/color/sorting은 이진 본체 합성과 소비자 표현을 구분해서 다뤄야 한다.
 - 접촉 셰이더는 `uv.y * textureHeight`로 밴드를 계산한다. 공유 RT의 부분 영역을 읽을 때 로컬 원점을 보정하지 않으면 접지 모양이 바뀐다. 스캔 밴드는 world Y를 사용한다.

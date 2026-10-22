@@ -6,7 +6,7 @@
 
 선택23·잠정2·멀티정책1의 정본은 [선택 manifest](../audio_selection_final_20261019/selection_manifest.json) 그대로다. 멀티만 승인된 재구성1·2·3발 파일을 사용해 런타임 WAV는28개다. [원본→런타임 매핑·SHA256](runtime_mapping.json)의28개 모두 원본과 바이트 해시가 같다. 원본/BGM 제작자료·기존14개 리소스는 삭제하지 않고 보존했다. 지원 포탑 전투는 계속 무음이다.
 
-현재 데이터 담당은 `Assets/Resources/CoreGuardian/Audio/SelectedB/catalog.json`이다. 사운드 ID마다 category/resourcePath/gain/priority/important/protectCore를 둔다. `CoreGuardianAudioCatalog`가 실제 로드·분류를 담당하며, 기존 경로 상수는 호환 검사에만 남겼다. 골드·플래티넘5차①, 실버2차③, 전투BGM B72①, 증강BGM2차③ 등 선택을 변경하지 않았다. 철거3차②·시작2차③은 연결했으나 음색 선택의 잠정 상태는 유지한다.
+현재 데이터 담당은 `Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/catalog.json`이다. 사운드 ID마다 category/resourcePath/gain/priority/important/protectCore를 둔다. `CoreGuardianAudioCatalog`가 실제 로드·분류를 담당하며, 기존 경로 상수는 호환 검사에만 남겼다. 골드·플래티넘5차①, 실버2차③, 전투BGM B72①, 증강BGM2차③ 등 선택을 변경하지 않았다. 철거3차②·시작2차③은 연결했으나 음색 선택의 잠정 상태는 유지한다.
 
 ## 음량 분류와 향후 설정 연결
 

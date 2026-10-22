@@ -1,11 +1,11 @@
 [
   {
-    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/",
-    "destination": "Assets/Art/Effects/MagicAura/Materials/Aura_2/"
-  },
-  {
     "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/",
     "destination": "Assets/Art/Effects/MagicAura/Materials/Aura_1/"
+  },
+  {
+    "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/",
+    "destination": "Assets/Art/Effects/MagicAura/Materials/Aura_2/"
   },
   {
     "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/",
@@ -20,6 +20,10 @@
     "destination": "Assets/Art/Effects/MagicAura/"
   },
   {
+    "source": "Assets/Resources/CoreGuardian/Audio/BossAcceleration/",
+    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/BossAcceleration/"
+  },
+  {
     "source": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/",
     "destination": "Assets/Audio/Libraries/MagicAura/SoundEffects/"
   },
@@ -32,8 +36,8 @@
     "destination": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Support/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/Audio/BossAcceleration/",
-    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/BossAcceleration/"
+    "source": "Assets/Resources/CoreGuardian/OriginalMotion/Single/",
+    "destination": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Single/"
   },
   {
     "source": "Assets/Resources/CoreGuardian/OriginalMotion/Player/",
@@ -44,20 +48,16 @@
     "destination": "Assets/Data/Presentation/ContactShapes/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/OriginalMotion/Single/",
-    "destination": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Single/"
-  },
-  {
     "source": "Assets/Resources/CoreGuardian/Audio/UpgradeFailure/",
     "destination": "Assets/Audio/Resources/CoreGuardian/Audio/UpgradeFailure/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/OriginalMotion/Multi/",
-    "destination": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Multi/"
+    "source": "Assets/Resources/CoreGuardian/Audio/UpgradeSuccess/",
+    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/UpgradeSuccess/"
   },
   {
-    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/",
-    "destination": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/"
+    "source": "Assets/Resources/CoreGuardian/OriginalMotion/Multi/",
+    "destination": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Multi/"
   },
   {
     "source": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/",
@@ -68,8 +68,16 @@
     "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/Audio/UpgradeSuccess/",
-    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/UpgradeSuccess/"
+    "source": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/",
+    "destination": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/Audio/RoundComplete/",
+    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/RoundComplete/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/",
+    "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Attack/"
   },
   {
     "source": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/",
@@ -80,40 +88,28 @@
     "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/OriginalIdle/Player/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/",
-    "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Attack/"
-  },
-  {
     "source": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/",
     "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/Audio/RoundComplete/",
-    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/RoundComplete/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/Audio/MonsterDeath/",
-    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/MonsterDeath/"
   },
   {
     "source": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/",
     "destination": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/"
   },
   {
+    "source": "Assets/Resources/CoreGuardian/Audio/MonsterDeath/",
+    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/MonsterDeath/"
+  },
+  {
     "source": "Assets/Resources/CoreGuardian/Audio/TowerInstall/",
     "destination": "Assets/Audio/Resources/CoreGuardian/Audio/TowerInstall/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/Animation/Defense/",
-    "destination": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Defense/"
+    "source": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/",
+    "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/"
   },
   {
     "source": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/",
     "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/",
-    "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/"
   },
   {
     "source": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/",
@@ -132,16 +128,12 @@
     "destination": "Assets/Fonts/TextMeshPro/Resources/Fonts & Materials/"
   },
   {
+    "source": "Assets/Resources/CoreGuardian/Animation/Defense/",
+    "destination": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Defense/"
+  },
+  {
     "source": "Assets/Resources/CoreGuardian/Audio/RoundStart/",
     "destination": "Assets/Audio/Resources/CoreGuardian/Audio/RoundStart/"
-  },
-  {
-    "source": "Assets/Art/RejectedAnimations/20261015/Support/",
-    "destination": "Assets/Documentation/Art/RejectedAnimationMetadata/Support_"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/Animation/Attack/",
-    "destination": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Attack/"
   },
   {
     "source": "Assets/Resources/CoreGuardian/Audio/PlayerShot/",
@@ -156,64 +148,72 @@
     "destination": "Assets/Audio/Resources/CoreGuardian/Audio/CoreDamage/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/Audio/SelectedB/",
-    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/"
+    "source": "Assets/Resources/CoreGuardian/Animation/Attack/",
+    "destination": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Attack/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D0/",
-    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D0/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/Audio/MultiShot/",
-    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/MultiShot/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/Audio/TowerShot/",
-    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/TowerShot/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D2/",
-    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D2/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D6/",
-    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D6/"
-  },
-  {
-    "source": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/",
-    "destination": "Assets/Prefabs/Gameplay/Units/"
-  },
-  {
-    "source": "Assets/Art/RejectedAnimations/20261015/Single/",
-    "destination": "Assets/Documentation/Art/RejectedAnimationMetadata/Single_"
+    "source": "Assets/Art/RejectedAnimations/20261015/Support/",
+    "destination": "Assets/Documentation/Art/RejectedAnimationMetadata/Support_"
   },
   {
     "source": "Assets/Resources/CoreGuardian/PlayerFacing/D1/",
     "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D1/"
   },
   {
+    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D0/",
+    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D0/"
+  },
+  {
     "source": "Assets/Art/RejectedAnimations/20261015/Player/",
     "destination": "Assets/Documentation/Art/RejectedAnimationMetadata/Player_"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D3/",
-    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D3/"
+    "source": "Assets/Art/RejectedAnimations/20261015/Single/",
+    "destination": "Assets/Documentation/Art/RejectedAnimationMetadata/Single_"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D4/",
-    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D4/"
+    "source": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/",
+    "destination": "Assets/Prefabs/Gameplay/Units/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/Audio/TowerShot/",
+    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/TowerShot/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/Audio/SelectedB/",
+    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D7/",
+    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D7/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D2/",
+    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D2/"
   },
   {
     "source": "Assets/Resources/CoreGuardian/PlayerFacing/D5/",
     "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D5/"
   },
   {
+    "source": "Assets/Resources/CoreGuardian/Audio/MultiShot/",
+    "destination": "Assets/Audio/Resources/CoreGuardian/Audio/MultiShot/"
+  },
+  {
     "source": "Assets/Resources/CoreGuardian/Audio/BossSpawn/",
     "destination": "Assets/Audio/Resources/CoreGuardian/Audio/BossSpawn/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D7/",
-    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D7/"
+    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D4/",
+    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D4/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D3/",
+    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D3/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/PlayerFacing/D6/",
+    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D6/"
   },
   {
     "source": "Assets/Resources/CoreGuardian/Animation/Buff/",
@@ -236,28 +236,24 @@
     "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/PhotoShadows/",
-    "destination": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/PlayerFacing/",
-    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/"
-  },
-  {
     "source": "Assets/Resources/CoreGuardian/OriginalIdle/",
     "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/OriginalIdle/"
-  },
-  {
-    "source": "Assets/Resources/CoreGuardian/VerticalWalk/",
-    "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/"
   },
   {
     "source": "Assets/TextMesh Pro/Resources/Style Sheets/",
     "destination": "Assets/Art/UI/TextMeshPro/Resources/Style Sheets/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/Art/BossEye/",
-    "destination": "Assets/Prefabs/Characters/Boss/Resources/CoreGuardian/Art/BossEye/"
+    "source": "Assets/Resources/CoreGuardian/PlayerFacing/",
+    "destination": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/VerticalWalk/",
+    "destination": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/"
+  },
+  {
+    "source": "Assets/Resources/CoreGuardian/PhotoShadows/",
+    "destination": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/"
   },
   {
     "source": "Assets/Art/MagitechFortress/TilePalettes/",
@@ -272,16 +268,16 @@
     "destination": "Assets/Art/Environment/Tiles/"
   },
   {
-    "source": "Assets/Resources/CoreGuardian/Fonts/",
-    "destination": "Assets/Fonts/Resources/CoreGuardian/Fonts/"
+    "source": "Assets/Art/ScreenTests/Sprite_Atlas/",
+    "destination": "Assets/Art/Atlases/Sprites/"
   },
   {
     "source": "Assets/Resources/CoreGuardian/Audio/",
     "destination": "Assets/Audio/Resources/CoreGuardian/Audio/"
   },
   {
-    "source": "Assets/Art/ScreenTests/Sprite_Atlas/",
-    "destination": "Assets/Art/Atlases/Sprites/"
+    "source": "Assets/Resources/CoreGuardian/Fonts/",
+    "destination": "Assets/Fonts/Resources/CoreGuardian/Fonts/"
   },
   {
     "source": "Assets/Leohpaz/RPG_Essentials_Free/",

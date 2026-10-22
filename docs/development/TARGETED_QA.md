@@ -8,7 +8,7 @@
 3. 자신이 변경하거나 테스트가 건드릴 수 있는 상태를 저장한다: 시간/배속/일시정지/카메라/입력/백그라운드/Profiler·음량/PlayerPrefs·ProjectSettings/define 차이. 처음부터 있던 변경은 자신의 복원 대상으로 처리하지 않는다. 광범위한 설정 저장·복원은 피한다.
 
 ## 선택 색인
-경로는 `Assets/Game/Tests/{EditMode,PlayMode}/` 아래 기존 클래스다. 실제 변경과 관계있는 클래스/메서드만 고른다. 추가 회귀 범위는 변경 영향이나 실패로 정당화한다.
+경로는 `Assets/Scripts/Tests/{EditMode,PlayMode}/` 아래 기존 클래스다. 실제 변경과 관계있는 클래스/메서드만 고른다. 추가 회귀 범위는 변경 영향이나 실패로 정당화한다.
 
 |변경|EditMode 후보|PlayMode 후보/보조 확인|
 |---|---|---|

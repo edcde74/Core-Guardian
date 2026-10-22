@@ -14,7 +14,7 @@
 
 ## 스프라이트와 제작
 
-내장 imagegen으로 투명 원본 아틀라스와 등급별 뒷면을 제작했다. [프롬프트](../../Assets/Art/Hud/20261013/prompts.md), [원본/아트](../../Assets/Art/Hud/20261013/), [실행 스프라이트](../../Assets/Resources/CoreGuardian/Hud/). 승인 보드를 통째로 HUD에 사용하지 않았다. `ImportHudSprites.cs`의 에디터 API로 알파 경계 추출/최근접 정규화/메타 생성을 수행했다. 심볼48×48, 프레임128×96·9-slice, 뒷면160×240. Point/무압축/mipmap 없음, 20개 PNG 모두 알파 최솟값0 확인. 인수인계의 공통 Pixel Perfect 규격을 새로 확정한 것은 아니다.
+내장 imagegen으로 투명 원본 아틀라스와 등급별 뒷면을 제작했다. [프롬프트](../../Assets/Documentation/Art/UI/prompts.md), [원본/아트](../../Assets/Art/Hud/20261013/), [실행 스프라이트](../../Assets/Resources/CoreGuardian/Hud/). 승인 보드를 통째로 HUD에 사용하지 않았다. `ImportHudSprites.cs`의 에디터 API로 알파 경계 추출/최근접 정규화/메타 생성을 수행했다. 심볼48×48, 프레임128×96·9-slice, 뒷면160×240. Point/무압축/mipmap 없음, 20개 PNG 모두 알파 최솟값0 확인. 인수인계의 공통 Pixel Perfect 규격을 새로 확정한 것은 아니다.
 
 ## 검증과 복구
 

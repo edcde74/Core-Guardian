@@ -51,7 +51,7 @@ function Destination([string]$p){
             '^CoreGuardian/(OriginalWalk|VerticalWalk)/' {$category='Art/Characters/Enemies';break}
             '^CoreGuardian/PhotoShadows/' {$category='Art/Effects/Shadows';break}
             '^CoreGuardian/Animation/' {$category=$(if($ext -eq '.prefab'){'Prefabs/Characters/Enemies'}else{'Data/Animation'});break}
-            '^CoreGuardian/Art/BossEye/' {$category='Prefabs/Characters/Boss';break}
+            '^CoreGuardian/Art/BossEye/' {$category=$(if($ext -eq '.prefab'){'Prefabs/Characters/Boss'}elseif($ext -eq '.png'){'Art/Characters/Enemies/Boss'}else{'Data/Presentation'});break}
             '^CoreGuardian/Art/' {$category='Art/Effects/Combat';break}
             default {throw "Unclassified resource $p"}
         }
@@ -90,5 +90,13 @@ $duplicate=@($map|Group-Object destination|Where-Object Count -gt 1)
 if($duplicate.Count){$duplicate|ForEach-Object {Write-Output ($_.Group|ConvertTo-Json)};throw 'Destination collision'}
 foreach($row in $map){if($row.source -ne $row.destination -and (Test-Path -LiteralPath $row.destination)){throw ('Destination exists: '+$row.destination)}}
 $map|ConvertTo-Json -Depth 6|Set-Content -LiteralPath "$root/move_map.json" -Encoding utf8
+$dirs=@();foreach($r in $map){$d=Split-Path $r.source -Parent;while($d -and $d -ne 'Assets'){$dirs+=$d.Replace('\','/');$d=Split-Path $d -Parent}}
+$prefixes=@();foreach($d in ($dirs|Sort-Object -Unique)){
+    $rows=@($map|Where-Object {$_.source.StartsWith($d+'/')});if(-not $rows.Count){continue}
+    $relative=$rows[0].source.Substring($d.Length+1);if(-not $rows[0].destination.EndsWith($relative)){continue}
+    $dest=$rows[0].destination.Substring(0,$rows[0].destination.Length-$relative.Length)
+    if(@($rows|Where-Object {$_.destination -ne ($dest+$_.source.Substring($d.Length+1))}).Count -eq 0 -and $dest -ne ($d+'/')){$prefixes+=[pscustomobject]@{source=$d+'/';destination=$dest}}
+}
+$prefixes|Sort-Object {$_.source.Length} -Descending|ConvertTo-Json|Set-Content "$root/prefix_map.json" -Encoding utf8
 $map|Group-Object {($_.destination -split '/')[1]}|Select-Object Count,Name|Sort-Object Name|Format-Table -AutoSize
 [pscustomobject]@{files=$map.Count;moves=@($map|Where-Object {$_.source -ne $_.destination}).Count;resourceKeysPreserved=@($map|Where-Object resourceKey).Count}|ConvertTo-Json

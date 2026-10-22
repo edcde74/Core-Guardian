@@ -4,6 +4,8 @@
 
 ## 현재 상태와 승인 범위
 
+- 2026-10-23 사용자 정정에 따라 Unity Assets **552개 전체 분류·551개 이동** 완료. Art/Audio/Data/Documentation/Fonts/Prefabs/Scenes/Scripts/Settings9분류와 하위 용도로 통일했다. 복구 기준 `c1203f1`, [위치 색인](directory_reorganization_20261023/DIRECTORY_INDEX.md)·[이전→새 경로](directory_reorganization_20261023/path_map.csv)·[검증 정본](directory_reorganization_20261023/README.md). GUID/meta/의존성552·Resources key227·스크립트assembly102·마스크hash92 유지, 경로 영향 EditMode22/22 통과. 코드10개는 직접 경로 갱신, 길에셋12개는 이름만 변경. 전투씬 bytes·사용자 설정2개 동일/scene clean. 기록·캡처·기존 복구씬 보존, Play/빌드/실행파일/push 없음. 과거 진단 원본의 Assets 경로는 당시 값이므로 재실행 전 이동표로 맞춘다.
+
 - 2026-10-23 사용자 요청으로 Unity 미사용 이미지 정리 완료: **리소스69개 제거·현재 연결170개 보존·기록 캡처13개는 문서 폴더로 이동 보존**. dirty 씬 저장을 명시 승인받아 같은 전투씬을 저장한 뒤 복구 커밋 `5ae39a1`을 먼저 만들고 원본/meta164개 존재 확인 후 제거했다. 보존 hash170/170·동적 Sprite136경로·의존성181개·live15개 유지, 사용자 설정2/저장씬/아틀라스 hash5/5 동일·scene clean. 새 Play/성능 측정/빌드/실행파일/push 없음. [정리·복구·검증 정본](resource_cleanup_20261023/README.md), [재사용 후보 별도 보고](resource_cleanup_20261023/REUSE_CANDIDATES.md). 현재 새 `CG_Enemies`는 유지했으며 packables는 비어 있다.
 
 - 2026-10-23 후속 제한 관측(시작 HEAD `4f2516a`): 게임 변경 없이 정상1배속120초·2R 완료/3R Combat까지 관측했다. 최초 진단 종료의 ProfilerRecorder.ToArray 네이티브 충돌로 해당 원본은 무효; 재연결 뒤 배열 복사를 제거해 종료 성공.120초의 고정 카운터값은 무효 처리하고 옵션 수정15초에서 CPU/GC/SetPass 변동만 확인했다. 자체 Play 종료 후 대상mask RT/페이지 메시/공유재질0, 사용자 씬·설정 hash3/3·CSV 동일·scene clean/상태 복구. 전체 할당 메모리 증가·max347.669ms 스파이크가 남아 정상30R/장시간/GPU/전체 잔류/목표기기60FPS 통과 아님. 실패·원본·조건·다음 범위는 [정상 초반 관측 정본](normal_probe_20261023/README.md). A/B 제한 유지, 빌드/실행파일/push 없음.

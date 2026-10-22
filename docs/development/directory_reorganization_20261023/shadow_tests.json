@@ -1,0 +1,87 @@
+{
+  "Summary": {
+    "Total": 10,
+    "Passed": 10,
+    "Failed": 0,
+    "Skipped": 0,
+    "Inconclusive": 0
+  },
+  "Results": [
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.AllEightPhotoMasksAreDistinctPointFilteredResources",
+      "Status": "Passed",
+      "Duration": 0.0031959,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.PlayerCoreAndBossKeepTheirOwnOriginalAndUsePhotoShadows(\"Player\",\"Assets/Prefabs/Gameplay/Units/Player.prefab\")",
+      "Status": "Passed",
+      "Duration": 0.0164709,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.PlayerCoreAndBossKeepTheirOwnOriginalAndUsePhotoShadows(\"Core\",\"Assets/Prefabs/Gameplay/Units/core.prefab\")",
+      "Status": "Passed",
+      "Duration": 0.0019721,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.PlayerCoreAndBossKeepTheirOwnOriginalAndUsePhotoShadows(\"Boss\",\"Assets/Prefabs/Characters/Enemies/Resources/CoreGuardian/Animation/Boss/BossAnimated.prefab\")",
+      "Status": "Passed",
+      "Duration": 0.0090002,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Attack\",\"enemy_attack\")",
+      "Status": "Passed",
+      "Duration": 0.0131486,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Defense\",\"enemy_defense\")",
+      "Status": "Passed",
+      "Duration": 0.0053122,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Buff\",\"enemy_buff\")",
+      "Status": "Passed",
+      "Duration": 0.0045204,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Single\",\"tower_single\")",
+      "Status": "Passed",
+      "Duration": 0.0083267,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Multi\",\"tower_multi\")",
+      "Status": "Passed",
+      "Duration": 0.0027025,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Support\",\"tower_support\")",
+      "Status": "Passed",
+      "Duration": 0.002611,
+      "Message": null,
+      "StackTrace": null
+    }
+  ],
+  "Duration": 0.48,
+  "StatusPath": null,
+  "Mode": "EditMode",
+  "FilterApplied": "testname: CoreGuardianPhotoShadowTests",
+  "success": true,
+  "result": null
+}

@@ -1,0 +1,6 @@
+{
+  "utc": "2026-10-22T18:20:26.083906Z",
+  "moved": [],
+  "changedSources": [],
+  "error": "System.Exception: Cannot move asset from Assets/Art/Hud/20261013/prompts.md to Assets/Documentation/Art/UI/prompts.md: Parent directory is not in asset database\r\n  at CGDirectoryMove.Run () [0x0024b] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\docs\\development\\directory_reorganization_20261023\\Move.cs:32 "
+}

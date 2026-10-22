@@ -1,0 +1,2773 @@
+{
+  "utc": "2026-10-22T18:21:16.6771241Z",
+  "moved": [
+    {
+      "from": "Assets/Art/Hud/20261013/prompts.md",
+      "to": "Assets/Documentation/Art/UI/prompts.md",
+      "guid": "00f3df3d899526c44ae207c9f8bc29f7"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/17_Def_buff_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Buffs_Heals_SFX/17_Def_buff_01.wav",
+      "guid": "00e4eb96f4f6cc249a632e4027644cad"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 5.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/Route_Material_05.mat",
+      "guid": "0038ea1fe1d2c6f4bbe30d1fc6660e80"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Tiles/path_tile.asset",
+      "to": "Assets/Art/Environment/Tiles/path_tile.asset",
+      "guid": "00ea99663f1c28e4b89da83ad54bad75"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_2.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/Up_2.png",
+      "guid": "1019b37f4cbf2e14ca92a45688989d0b"
+    },
+    {
+      "from": "Assets/Art/RejectedAnimations/20261015/Support/frames.json",
+      "to": "Assets/Documentation/Art/RejectedAnimationMetadata/Support_frames.json",
+      "guid": "20685087b3eb7574b9aebae688e0cdf0"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_05.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_05.asset",
+      "guid": "3058b6eaa31f56644a5406dcdf3b6ed2"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_2.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_2.asset",
+      "guid": "301c3e1515efab540b2b078d561acd7d"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianCoreAmbientTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianCoreAmbientTests.cs",
+      "guid": "30ee1ff3dde8fa94e94c0566ff78c744"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianHitFlash.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianHitFlash.cs",
+      "guid": "4076af58cf6f61f4f8ec8c23fd20c34c"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMPro.cginc",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMPro.cginc",
+      "guid": "407bc68d299748449bbf7f48ee690f8d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Gold.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Gold.png",
+      "guid": "501cc510f4457e44fb5ed73c750e2fec"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_11.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_11.asset",
+      "guid": "501ccc624d7eb4c44bbe1df8578bf681"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/14_Step_water_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/14_Step_water_02.wav",
+      "guid": "60f9efe3d97bc8f47bea1af7f7093d41"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianPlacementHudPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianPlacementHudPlayModeTests.cs",
+      "guid": "70c0fd5b4f8a2bc418726f51be9c88f0"
+    },
+    {
+      "from": "Assets/Editor/CoreGuardian/MaskAtlasBuilder.cs",
+      "to": "Assets/Scripts/Editor/Rendering/MaskAtlasBuilder.cs",
+      "guid": "7031c70b23294c34493020f60265b6cb"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rays_2.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_2/Rays_2.png",
+      "guid": "70592c1e0cbdb48329ec1b5aeaac2ee9"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianHud.Abilities.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.Abilities.cs",
+      "guid": "707bef9b052c5b749950f38870b36eb6"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/round_start.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/round_start.wav",
+      "guid": "9072a1c85cb013545a5f92e52cdc8598"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalMotion/Multi/Moving.png",
+      "to": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Multi/Moving.png",
+      "guid": "90a63fad7f84cbd4abfdfa653e447263"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/Stone_B_2.asset",
+      "to": "Assets/Art/Environment/Tiles/Stone_B_2.asset",
+      "guid": "a000dcc1a429b7f42bad8313c1042885"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/Route_Order1 2.asset",
+      "to": "Assets/Art/Environment/Meshes/Routes/Route_Order_01_Part_02.asset",
+      "guid": "a04490cfd16e06f47aacba40a1990a42"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/upgrades.csv",
+      "to": "Assets/Data/Balance/Resources/CoreGuardian/upgrades.csv",
+      "guid": "a0591fcf8b759904ebb385938a7a2f85"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile Overlay.shader",
+      "guid": "a02a7d8c237544f1962732b55a9aebf1"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/16_Atk_buff_04.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Buffs_Heals_SFX/16_Atk_buff_04.wav",
+      "guid": "b0e62ed71b1538648b719821f4f63b4c"
+    },
+    {
+      "from": "Assets/Game/Scripts/Enemies/EnemyDefinition.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Enemies/EnemyDefinition.cs",
+      "guid": "b0c8308e158077e49a185a9f4225b157"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png",
+      "to": "Assets/Art/Environment/MagitechFortress/Source/MagitechFortress_BaseTiles.png",
+      "guid": "c057fe2befadb6b4fb2d791a4706ff33"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/BeanProjectilePlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/BeanProjectilePlayModeTests.cs",
+      "guid": "c04d686d43498794eae8e4fc956d31ed"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_0.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/Up_0.png",
+      "guid": "d0d07849d72c6554093ddb5575cddce8"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 1.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/Route_Material_01.mat",
+      "guid": "e07389a873e5d4448b1d804e4e781e05"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_07.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_07.asset",
+      "guid": "e0f33682758e3c04f9b86899e8be4a9c"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 3.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/Route_Material_03.mat",
+      "guid": "e05fb306ed09cc04cb9c8f0baef32c8c"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_02.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_02.asset",
+      "guid": "e05f272d5cab5cb40925ba23818d80a1"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile-2-Pass.shader",
+      "guid": "0178fcb869bafef4690d177d31d17db8"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianBodyMaskCache.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianBodyMaskCache.cs",
+      "guid": "11355ec0c0e41fb4bb8bf9e97a195c48"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_10.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_10.asset",
+      "guid": "11bd1fb22d2cec84cb5828692077215d"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianMaskOutputBatchTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianMaskOutputBatchTests.cs",
+      "guid": "11ee6436ab3c77d488b8b51c07e6a732"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/55_Encounter_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/55_Encounter_02.wav",
+      "guid": "21c4a490b24ba2045bc815f7626a40ef"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/Buff.png",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/Buff.png",
+      "guid": "31145b88d4773d640ad54556792c9d2e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/AbilityUpgrade.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/AbilityUpgrade.png",
+      "guid": "418240f6d6edc4f46acd2b7ced43aaed"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalMotion/Player/Fixed.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/OriginalMotion/Player/Fixed.png",
+      "guid": "413e0cc99c8f64143b17868ee2de079d"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_1_1.asset",
+      "to": "Assets/Art/Environment/Tiles/slab_1_1.asset",
+      "guid": "615ae133bcb63684ab73090b80c8ab14"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_buff_v2.png",
+      "to": "Assets/Art/Characters/Enemies/Sprites/enemy_buff_v2.png",
+      "guid": "71043c1d47a3cc74d8375d3a61b1a743"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightLower.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Attack/RightLower.png",
+      "guid": "71a8a324af1d093419d0727f628ad644"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/TowerCombatStatsTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/TowerCombatStatsTests.cs",
+      "guid": "91a5d066d4173cb4782c720dee7c09b4"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_1_0.asset",
+      "to": "Assets/Art/Environment/Tiles/slab_1_0.asset",
+      "guid": "a1232f1100ee3124985fe66cbc9f4a61"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_PathContrast/PathContrast_A.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/PathContrast_A.mat",
+      "guid": "b1912a6bd82ebad4ea8a03354cea946b"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianRulesTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianRulesTests.cs",
+      "guid": "b1d36ab4fd494d947b82bdf3f2a7f0b2"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_1.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/Down_1.png",
+      "guid": "b18c6fa6ca6dc734e902ccc1e94d4823"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/TowerShot/03_Aura.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/TowerShot/03_Aura.wav",
+      "guid": "b13e21e3691c1d344b61418da1173aed"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianAudioRoutingTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianAudioRoutingTests.cs",
+      "guid": "c1392ccda87457646bc3f62e4de97e5c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/LeftUpper.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Buff/LeftUpper.png",
+      "guid": "d1f2a12382c368c4180db41e863f3888"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/45_Charge_05.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/45_Charge_05.wav",
+      "guid": "d1afd3f4d23c24f418ffc315afb04965"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/42_Cling_climb_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/42_Cling_climb_03.wav",
+      "guid": "e1e2d06fe0d78194b9c7c8cc88414d0d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_Body.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D2/D2_Body.png",
+      "guid": "e1f99028cf89e3a46a902ab2e3f44256"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/aug_platinum.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/aug_platinum.wav",
+      "guid": "e12f13667182b4243b07555462318236"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Glyph_2.wav",
+      "to": "Assets/Audio/Libraries/MagicAura/SoundEffects/Aura_Glyph_2.wav",
+      "guid": "f126dd7aa600246c29bc92e20ceab0e7"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/18_Thunder_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/18_Thunder_02.wav",
+      "guid": "f1cb5d83282f2904a85f73111d068616"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/35_Miss_Evade_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/35_Miss_Evade_02.wav",
+      "guid": "f11db4559b3ffff45b62e9327fc5535d"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianCoreFeedback.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianCoreFeedback.cs",
+      "guid": "0216d4933a7d9d94cb98a5a9de40406c"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/08_Step_rock_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/08_Step_rock_02.wav",
+      "guid": "023ea3ddeaa8dd146b7633a0800e5a0e"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-URP Unlit.shadergraph",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-URP Unlit.shadergraph",
+      "guid": "124c112a6e8f1a54e8b0870e881b56d8"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_Bitmap.shader",
+      "guid": "128e987d567d4e2c824d754223b3f3b0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/CardBackPlatinum.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/CardBackPlatinum.png",
+      "guid": "22bb76525286ada438207648bc9ee561"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 4.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/Route_Material_04.mat",
+      "guid": "32753b509817d734ab977029d2874e92"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/bgm.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/bgm.wav",
+      "guid": "32e5bc97e4689a347b50d1c12f110c8e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/Multi.png",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/Multi.png",
+      "guid": "32ca5c642f0a7ee43ab1855d86b76daf"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/56_Attack_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/56_Attack_03.wav",
+      "guid": "323e15cfe809e114ab92c9f4b25e8bc2"
+    },
+    {
+      "from": "Assets/Settings/Renderer2D.asset",
+      "to": "Assets/Settings/Rendering/Renderer2D.asset",
+      "guid": "424799608f7334c24bf367e4bbfa7f9a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/MonsterHit/03_Hit.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/MonsterHit/03_Hit.wav",
+      "guid": "523a114f484271e49bf7132b4f80598d"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Rune.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Rune.mat",
+      "guid": "62a42f29c2766463abb8787680972643"
+    },
+    {
+      "from": "Assets/Scripts/ArtDepthSorting.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/World/ArtDepthSorting.cs",
+      "guid": "62c7bc6fb54642d47b3bc941bcf18f6d"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png",
+      "to": "Assets/Art/Environment/Backgrounds/Route01_FlagstoneSource.png",
+      "guid": "62e8b4aed8b30784489a4c9ccd0f2f33"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_attack_v2.png",
+      "to": "Assets/Art/Characters/Enemies/Sprites/enemy_attack_v2.png",
+      "guid": "62c98fe4c0fe6b54d8e9a020e09efd5a"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianSoundSettings.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianSoundSettings.cs",
+      "guid": "72aa593c707ebd84c8c696785b3829f6"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Fonts/PixelifySansBoldDamage.asset",
+      "to": "Assets/Fonts/Resources/CoreGuardian/Fonts/PixelifySansBoldDamage.asset",
+      "guid": "8225a04490d7fdb40a89c5656e4803c3"
+    },
+    {
+      "from": "Assets/Welcome/Welcome2DScript.cs",
+      "to": "Assets/Scripts/Editor/ProjectWelcome/Welcome2DScript.cs",
+      "guid": "82a8d20c41f345e382312ee1050e7ce2"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Animation/Boss/frames.json",
+      "to": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Boss/frames.json",
+      "guid": "828a180a64ce9ce49961165022d55782"
+    },
+    {
+      "from": "Assets/_Recovery/0 (1).unity",
+      "to": "Assets/Scenes/Recovery/CombatRecovery_Additional.unity",
+      "guid": "829ee6f499c3c7c4c822cec703acbd06"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Magic Circle.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_2/Magic Circle.mat",
+      "guid": "9263419daaf9344dd91f615129643e56"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianSelectionOutline.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs",
+      "guid": "9269443d13cdce84e9f9d1858c5344e6"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_12.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_12.asset",
+      "guid": "b21256459cf80c94d80f768f80a1c572"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/EnemyMovementPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/EnemyMovementPlayModeTests.cs",
+      "guid": "b26a620e4f5ea8e4f8e3a4e99744abb0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_8.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_8.asset",
+      "guid": "c2486858b015e3040a44c5f6e66d2dff"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/demolish.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/demolish.wav",
+      "guid": "d2d1f4669714b2744bd955bb6fd6e40d"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs",
+      "guid": "d2aa936eaf70b744d8c62b95da6acd13"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightUpper.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Attack/RightUpper.png",
+      "guid": "d23e8684615c3074e868e04513076483"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianPlacementOverlay.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/World/CoreGuardianPlacementOverlay.cs",
+      "guid": "e247ace805eb8ee4ba806b908a842c45"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_0.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/Up_0.png",
+      "guid": "e2f7570ef049b454fbdf9e1949d5ce05"
+    },
+    {
+      "from": "Assets/Game/Scripts/CoreGuardian/Session.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Rules/Session.cs",
+      "guid": "e26e67362c401d6418e27cf138c007fc"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianHudHandleReaction.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHudHandleReaction.cs",
+      "guid": "f28cb8741d84fdd499ae28fd59c0dc3b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/upgrade_ok.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/upgrade_ok.wav",
+      "guid": "0350749c57023d7469dae1fe0db37b37"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/Sprite_Atlas/CG_Enemies.spriteatlasv2",
+      "to": "Assets/Art/Atlases/Sprites/CG_Enemies.spriteatlasv2",
+      "guid": "0378943720130f64ca331af5f072b742"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Sprites/path_tile.png",
+      "to": "Assets/Art/Environment/Tiles/Sprites/path_tile.png",
+      "guid": "13900443727addc4fb2350518a248821"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianTowerGlowPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianTowerGlowPlayModeTests.cs",
+      "guid": "13a0e1b86f4a0d742ad4cc0ca2b4644d"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianRuntimePlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianRuntimePlayModeTests.cs",
+      "guid": "13d2cff4563e54b4dadc1eae4eb23dc1"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_LeftLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D2/D2_LeftLeg.png",
+      "guid": "131844a3f40aa8f48980d3f2a0844a5c"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianSelectionOutlinePlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianSelectionOutlinePlayModeTests.cs",
+      "guid": "13baefeac6887f842b12ea5fc8a47b27"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_Arm.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D1/D1_Arm.png",
+      "guid": "23a1881905033d44aa3759da12a7d6d1"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Glyph.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Glyph.mat",
+      "guid": "23d1292e6537b4935ad031963236f4b1"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/12_Step_wood_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/12_Step_wood_03.wav",
+      "guid": "2352822feb4caa14ebdbc0c713289f8d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_0.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_0.asset",
+      "guid": "231aa432817b7f045b1c9d743c8b835a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/TowerSupport.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/TowerSupport.png",
+      "guid": "236afbff0f7c2bc4fac5f1ac3c74c051"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_defense.asset",
+      "to": "Assets/Data/Presentation/ContactShapes/enemy_defense.asset",
+      "guid": "23fc86c0c8e8098468175ee19c931743"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_Arm.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D4/D4_Arm.png",
+      "guid": "338b6b0ffba12b745bfd884c58bffd98"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Tiles/ground_tile.asset",
+      "to": "Assets/Art/Environment/Tiles/ground_tile.asset",
+      "guid": "43540252a5d5c6a4ba088c06cca3fa96"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_RightLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D1/D1_RightLeg.png",
+      "guid": "4357beda494860a468eceab0c4e6ca36"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Fonts/PixelifySansBoldDamageOutline.mat",
+      "to": "Assets/Fonts/Resources/CoreGuardian/Fonts/PixelifySansBoldDamageOutline.mat",
+      "guid": "433f2702c587dcf42afdb57f323fd84b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Cancel.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Cancel.png",
+      "guid": "7380e59687815a44facb6c77b5cc4fb7"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/NaturalCourtyard_01_ClearBorder.png",
+      "to": "Assets/Art/Environment/Backgrounds/NaturalCourtyard_01_ClearBorder.png",
+      "guid": "73133471def78714fab975213be73303"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_5x5/Floor_Small.asset",
+      "to": "Assets/Art/Environment/Tiles/Floor_Small.asset",
+      "guid": "730c40c19ae961346926428ebda65bd7"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/46_Poison_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/46_Poison_01.wav",
+      "guid": "83829ff414f47a048b5387e4ab33571c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/TowerGlow.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/TowerGlow.shader",
+      "guid": "83c3e9b24441aa94f91601384f33f6a5"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianMaskAtlasTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianMaskAtlasTests.cs",
+      "guid": "93b3d1818a450d949906c03a17bc37d6"
+    },
+    {
+      "from": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+      "to": "Assets/Settings/Rendering/UniversalRenderPipelineGlobalSettings.asset",
+      "guid": "93b439a37f63240aca3dd4e01d978a9f"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/defeat.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/defeat.wav",
+      "guid": "93573bdc0c1ef4d40bbfee77a73ed7f2"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-URP Lit.shadergraph",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-URP Lit.shadergraph",
+      "guid": "a3d800b099a06e0478fb790c5e79057a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/TowerIdentity.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/TowerIdentity.png",
+      "guid": "a3d877b6f06efed44964a5180921c6ff"
+    },
+    {
+      "from": "Assets/Welcome/TutorialProjectSettings.asset",
+      "to": "Assets/Settings/Editor/TutorialProjectSettings.asset",
+      "guid": "b3f6a21cd2a544cf8acfee7cf2793670"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianGridCoordinatesTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianGridCoordinatesTests.cs",
+      "guid": "b37a576d1eab5c9489af10452a21f889"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_5x5/Ground_Countable.png",
+      "to": "Assets/Art/Environment/Tiles/Sprites/Ground_Countable.png",
+      "guid": "b3daa0b11029e924984d3e2d3daa01f0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalMotion/Player/Moving.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/OriginalMotion/Player/Moving.png",
+      "guid": "c372d1b44652b0549a842415a7c6e9b0"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMPro_Mobile.cginc",
+      "guid": "c334973cef89a9840b0b0c507e0377ab"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/MultiShot/B_BrighterAttack.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/MultiShot/B_BrighterAttack.wav",
+      "guid": "c30e6ee6494242741a04791af1e4e86a"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+      "to": "Assets/Fonts/Libraries/TextMeshPro/Fonts/LiberationSans.ttf",
+      "guid": "e3265ab4bf004d28a9537516768c1c75"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Damage.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Damage.png",
+      "guid": "e32b8cc1bdf8a5b44942ec7553c79a18"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianAnimationTimingTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianAnimationTimingTests.cs",
+      "guid": "0461d04fa6c35a54da84daa980aba0ec"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianRouteMeshBake.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/World/CoreGuardianRouteMeshBake.cs",
+      "guid": "04842584c6559cb499347cac7a1243fd"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_attack.prefab",
+      "to": "Assets/Prefabs/Gameplay/Units/enemy_attack.prefab",
+      "guid": "046c8c0e1b813b448bd7cf5c692bf9c3"
+    },
+    {
+      "from": "Assets/Editor/CoreGuardian/RouteMeshBuilder.cs",
+      "to": "Assets/Scripts/Editor/Rendering/RouteMeshBuilder.cs",
+      "guid": "14d9cca96d61b6c49a87e33545cc704f"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianBodyMaskSharingTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianBodyMaskSharingTests.cs",
+      "guid": "14abb3ed47397324c80154b6cad7d631"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF SSD.shader",
+      "guid": "14eb328de4b8eb245bb7cea29e4ac00b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_3.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/Up_3.png",
+      "guid": "14ee55cbae32f9f43a4a1049bc285ed8"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianPlacementOverlayTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianPlacementOverlayTests.cs",
+      "guid": "2403809eaf943ec4689b8d4b26eef230"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianCombatArt.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Combat/CoreGuardianCombatArt.cs",
+      "guid": "34e374854910d5e48a3e0f935bc10593"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_04.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_04.asset",
+      "guid": "345b28f9592db7c48b19f84473d273e1"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_support.prefab",
+      "to": "Assets/Prefabs/Gameplay/Units/tower_support.prefab",
+      "guid": "548195c84a028c64f93391bbb101d82b"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianUpgradeFeedback.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianUpgradeFeedback.cs",
+      "guid": "54b1697ebf177694d95c7f02df3f0718"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Restart.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Restart.png",
+      "guid": "54290cafdf443044f990f49b6d26cbc3"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/catalog.json",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/catalog.json",
+      "guid": "74f22a3a349001c46aa7bf15e5dc26bc"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalIdle/Player/Feet.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/OriginalIdle/Player/Feet.png",
+      "guid": "745c1c67e2acde44cbd70fad8086de8e"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianTowerGlowTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianTowerGlowTests.cs",
+      "guid": "74bc70dc8d29afe43bea8e608a1e012b"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianObjectEmphasis.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianObjectEmphasis.cs",
+      "guid": "9421c8bf00181a743af87722e4ef86b6"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/SpawnTunnel02_Patch.asset",
+      "to": "Assets/Art/Environment/Tiles/SpawnTunnel02_Patch.asset",
+      "guid": "a4e833889ecfbc04faf52a20184186df"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftUpper.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Attack/LeftUpper.png",
+      "guid": "b43c693a18339da4baa4da73511af498"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_LeftLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D1/D1_LeftLeg.png",
+      "guid": "b47ca0b6dc30f7b4ba03bea7d0b04ebf"
+    },
+    {
+      "from": "Assets/Welcome/Unity.2D.Welcome.asmdef",
+      "to": "Assets/Scripts/Editor/ProjectWelcome/Unity.2D.Welcome.asmdef",
+      "guid": "c4e190310040447a0bce900c4ca7e605"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/51_Flee_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/51_Flee_02.wav",
+      "guid": "c458b6714dab015479d507b21fd2cead"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianHud.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.cs",
+      "guid": "c47b871da48308a45a0cf5057353f181"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianAugmentationView.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianAugmentationView.cs",
+      "guid": "c4dcc4ce44a57a84a8a248d2a7da92ec"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Sprites/tower_multi.png",
+      "to": "Assets/Art/Characters/Towers/Sprites/tower_multi.png",
+      "guid": "d4a1b759f588e3743b47312b560ae29e"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Loop_2.wav",
+      "to": "Assets/Audio/Libraries/MagicAura/SoundEffects/Aura_Loop_2.wav",
+      "guid": "d4e15999d041f4bba890a97ff7f0c230"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianObjectEmphasisTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianObjectEmphasisTests.cs",
+      "guid": "d4365814ea42e9b43b37046bafb3692f"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/LowProps.asset",
+      "to": "Assets/Art/Environment/Tiles/LowProps.asset",
+      "guid": "f460c1a1bae5166488330bf4c6150342"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_2.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/Down_2.png",
+      "guid": "f48735f74ddce714ba0229b0aaeb9b77"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_Body.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D1/D1_Body.png",
+      "guid": "f4e77cba97e650b4b968d0731239f0ca"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Sprites/ground_tile.png",
+      "to": "Assets/Art/Environment/Tiles/Sprites/ground_tile.png",
+      "guid": "f45b41a5b9dbf674da70b2e99ff889c2"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/ui_open.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/ui_open.wav",
+      "guid": "0546d55143bfb254585ce98fdc71a51a"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/core.asset",
+      "to": "Assets/Data/Presentation/ContactShapes/core.asset",
+      "guid": "05ba1844dc08c514e981b4a1f4fcb3ad"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianCoreAmbient.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianCoreAmbient.cs",
+      "guid": "25475aaedec64424b9ab9d383380d0ff"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianPhotoShadow.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianPhotoShadow.cs",
+      "guid": "25488bcaa1f84864f9c03c5275c12783"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/StatDamage.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/StatDamage.png",
+      "guid": "257c0898c012eb743817fae4fb9d763e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/CardBack.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/CardBack.png",
+      "guid": "355557028d298c44e8633c62f09d715c"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/001_Hover_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/001_Hover_01.wav",
+      "guid": "35cf7766e9e2aa542811e896fde57989"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalMotion/Single/Moving.png",
+      "to": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Single/Moving.png",
+      "guid": "4575a3515622fb640bc7e6d2dbcb4532"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_03.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_03.asset",
+      "guid": "45573a6821134b24a9ef5106b3020421"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/PlayerShot/03_Glyph.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/PlayerShot/03_Glyph.wav",
+      "guid": "45683b01bd60c024c892606ccfa9641f"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/aug_bgm.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/aug_bgm.wav",
+      "guid": "450b7296c49aa12469b87ff78ce2c3e1"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 2.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/Route_Material_02.mat",
+      "guid": "55a591f577a03954aa25d07e839358b3"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_1.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/Down_1.png",
+      "guid": "65c1e067d7bdb564c969c9dbeadbc874"
+    },
+    {
+      "from": "Assets/Art/Combat/20261010/Fonts/OFL.txt",
+      "to": "Assets/Fonts/Libraries/PixelifySans/OFL.txt",
+      "guid": "65d3ab3e553252b4191e03152db413e4"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/HybridDecoration_Unlit.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/HybridDecoration_Unlit.mat",
+      "guid": "65ab627074db66a459e5da7f0009c0ed"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_0.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/Down_0.png",
+      "guid": "85e39cdb18f8aab47887e3a626adff0e"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Surface-Mobile.shader",
+      "guid": "85187c2149c549c5b33f0cdb02836b17"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianMaskOutputBatch.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianMaskOutputBatch.cs",
+      "guid": "a5d6e9bef52c2514bb04a66428c35012"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/CoreDamage/06_Aura_Glyph_2.wav",
+      "guid": "a58d597e01232fb44915d4b52c2461da"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_3.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/Down_3.png",
+      "guid": "b5684cd1af2af0d4c8c8390b35e83b32"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF SpaceWarp.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF SpaceWarp.shader",
+      "guid": "b5ab6cb89ffa7004ca59c01dddd06493"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/Player.png",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/Player.png",
+      "guid": "b57d815e57fcd8640a9d1269f2706a19"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rays.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_2/Rays.mat",
+      "guid": "b5ade05b104c5499e8d928af021208d5"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/013_Confirm_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/013_Confirm_03.wav",
+      "guid": "c5cb2ac29e89dbf43a9b644caaad45e6"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/StatProjectile.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/StatProjectile.png",
+      "guid": "d5717ad785791d34495a7899edc157d2"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadowContact.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/PhotoShadowContact.shader",
+      "guid": "d5f1060170a5b3844acae82d00c67e7c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalMotion/Single/Fixed.png",
+      "to": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Single/Fixed.png",
+      "guid": "d5ceacd036b102c4a89ebc5d03187f48"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Loop_1.wav",
+      "to": "Assets/Audio/Libraries/MagicAura/SoundEffects/Aura_Loop_1.wav",
+      "guid": "e58b563b0100d4b73b563b9bd51aafa3"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/098_Unpause_04.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/098_Unpause_04.wav",
+      "guid": "e58d8bd078f188a4ba314e933b98528b"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/Route_Order2.asset",
+      "to": "Assets/Art/Environment/Meshes/Routes/Route_Order_02.asset",
+      "guid": "169be777be913174c99c9d44c7c11fe7"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianHudSkin.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHudSkin.cs",
+      "guid": "162f84fb443535c48b77bf47b720cc8e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_LeftLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D7/D7_LeftLeg.png",
+      "guid": "26267b2643330a24bb7a6bbcd492df47"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Augment.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Augment.png",
+      "guid": "36024e370f105f14d8671856a75f2c85"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianTowerGroundingTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianTowerGroundingTests.cs",
+      "guid": "36534eaf43caa244f9101fad500ed1d0"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Spiral_Doodle_1.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Spiral_Doodle_1.png",
+      "guid": "36d92653c7f364164be726549e9f2e3a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_RightLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D0/D0_RightLeg.png",
+      "guid": "36ed2899088f6254a9aa70c2ed344be7"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/03_Claw_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/03_Claw_03.wav",
+      "guid": "56703418e3aed4c47a5f6622816b8e41"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Crystal.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Crystal.png",
+      "guid": "5626699532f0af844b61530362f30e21"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianPlayerMotion.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianPlayerMotion.cs",
+      "guid": "5656ffe7551d164489f9c3e1fd2c3934"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Glyph_1.wav",
+      "to": "Assets/Audio/Libraries/MagicAura/SoundEffects/Aura_Glyph_1.wav",
+      "guid": "5628b2d5e74ab4cc79e1ab991dd47d70"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/69_Enemy_death_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/69_Enemy_death_01.wav",
+      "guid": "566d2ea6240b489479a6e9fd608c2621"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_Arm.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D0/D0_Arm.png",
+      "guid": "6665ab0f81b25004ca053357f9b3c8ce"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_1.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/Down_1.png",
+      "guid": "7601829eeff04ce4991ac85f7aee50d0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/stage.csv",
+      "to": "Assets/Data/Balance/Resources/CoreGuardian/stage.csv",
+      "guid": "863aab37f57422f42a600eada7cce8ce"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/SDFFunctions.hlsl",
+      "guid": "96de908384869cd409c75efa351d5edf"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/04_Fire_explosion_04_medium.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/04_Fire_explosion_04_medium.wav",
+      "guid": "a652877b012108e41871f867ada9f176"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/multi_1.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/multi_1.wav",
+      "guid": "a6147e972e3d149419e61949ccd5c6f7"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/HybridDecoration_Transparent.png",
+      "to": "Assets/Art/Environment/Backgrounds/HybridDecoration_Transparent.png",
+      "guid": "b6557107c81651b46b72ac016110d21b"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png",
+      "to": "Assets/Art/Environment/Tiles/Sprites/ShadowEllipse.png",
+      "guid": "b6581a4eb0990d34fa69014ca0be04ca"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/26_Swim_Submerged_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/26_Swim_Submerged_02.wav",
+      "guid": "c619008f1efb180488a78e4a966a3e16"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/30_Revive_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Buffs_Heals_SFX/30_Revive_03.wav",
+      "guid": "d654174ef194bd7479bf4b8d8f753318"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Smoke.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Smoke.mat",
+      "guid": "d69ad2795eb354a9893a27bd4b35b34b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Play.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Play.png",
+      "guid": "e6e24eab33fac2f48973809a138c3a81"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_LeftLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D5/D5_LeftLeg.png",
+      "guid": "e69416e282a26dc4b80697320ffdfd32"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/waves.csv",
+      "to": "Assets/Data/Balance/Resources/CoreGuardian/waves.csv",
+      "guid": "e6eecdb3bbdf146438ed319e8d5d1019"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-HDRP UNLIT.shadergraph",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-HDRP UNLIT.shadergraph",
+      "guid": "f63d574838ccfb44f84acc05fed0af48"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/StatRate.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/StatRate.png",
+      "guid": "f65d419ee1eb0f6458c9b2447a384ac8"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Art/BossEye/BossEyePrefab.prefab",
+      "to": "Assets/Prefabs/Characters/Boss/Resources/CoreGuardian/Art/BossEye/BossEyePrefab.prefab",
+      "guid": "07a4c632c45aefe4dbe69059bcde07c7"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/TowerBaseShade.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/TowerBaseShade.shader",
+      "guid": "077a1959f77f8134783c7823584baed9"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/SpawnTunnel02_Approved.png",
+      "to": "Assets/Art/Environment/Backgrounds/SpawnTunnel02_Approved.png",
+      "guid": "07dc08807dbc6a1438edf42d45f8eec6"
+    },
+    {
+      "from": "Assets/_Recovery/0.unity",
+      "to": "Assets/Scenes/Recovery/CombatRecovery_Original.unity",
+      "guid": "072d4f4642e5cce4ab9314d7854d75a8"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Particle.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_2/Particle.mat",
+      "guid": "17e637e4cccf345ce9a9fdae33186a8a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_RightLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D4/D4_RightLeg.png",
+      "guid": "17ee7195bf9bfde40802549bcdb57946"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/Body.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Attack/Body.png",
+      "guid": "17ffcd26d5e22654cad0813ab00d01e4"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/upgrade_fail.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/upgrade_fail.wav",
+      "guid": "27f1e4d7a0c1d214d81dc97d45f4a7bc"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/_ReadMe.pdf",
+      "to": "Assets/Documentation/ThirdParty/MagicAura/_ReadMe.pdf",
+      "guid": "275b99d3e74484d229bfc373a82f52f0"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Source/MagitechFortress_DarkPathCorner_L_final_362.png",
+      "to": "Assets/Art/Environment/MagitechFortress/Source/MagitechFortress_DarkPathCorner_L_final_362.png",
+      "guid": "275b4de1f5a6d2949bf9edfb94a62c73"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/LeftUpper.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Defense/LeftUpper.png",
+      "guid": "37a009a02caa87b4ea3db341016b586a"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/HealthPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/HealthPlayModeTests.cs",
+      "guid": "4747a1cb562fcef44b27c4228bb01109"
+    },
+    {
+      "from": "Assets/Welcome/2d-template.png",
+      "to": "Assets/Art/Editor/ProjectWelcome/2d-template.png",
+      "guid": "474ce57d7c1704418af05d72d996ae5e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/LeftLower.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Defense/LeftLower.png",
+      "guid": "478df1508a9a55340b7bef6e2851fc86"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_2.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/Down_2.png",
+      "guid": "47ad151336aa5644884e61e12c3d4089"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_3.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/Up_3.png",
+      "guid": "57c477f61a7e28248901a33426d46afb"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianOriginalWalk.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalWalk.cs",
+      "guid": "57b53ccf89a0071448aad8f8ac9c8ca7"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png",
+      "to": "Assets/Art/Environment/Backgrounds/StoneSlabs_B_2x2.png",
+      "guid": "6754e956afb05874b81017007380fd25"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/SpawnTunnel02_Selected.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/SpawnTunnel02_Selected.mat",
+      "guid": "673a24105e2f9a046b9ed0e7a52d33ab"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/Victory/02_Steel00.ogg",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/Victory/02_Steel00.ogg",
+      "guid": "676ea8e59586d51459c8ab669d842a9a"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianSoundTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianSoundTests.cs",
+      "guid": "671f6f7824efe134d82c7fc1ea2ce019"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/registration.json",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/registration.json",
+      "guid": "778828c7113de75419496214bafe38bc"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_Arm.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D6/D6_Arm.png",
+      "guid": "770a6c7cca809484a94e2cc308f55c37"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/RoundStart/03_Confirmation004.ogg",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/RoundStart/03_Confirmation004.ogg",
+      "guid": "77ae19ec25c00a4479ce6ca972ac382c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Wave.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Wave.png",
+      "guid": "77ceb33e107d4bd468d178395e8d8ec8"
+    },
+    {
+      "from": "Assets/Game/Scripts/Towers/TowerTargeting.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Towers/TowerTargeting.cs",
+      "guid": "874a66877834fe94ea85df6c710d8ab3"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_RightLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D7/D7_RightLeg.png",
+      "guid": "9731d38ee53ec904da27220f134fb976"
+    },
+    {
+      "from": "Assets/Art/Combat/20261010/Fonts/README.md",
+      "to": "Assets/Fonts/Libraries/PixelifySans/README.md",
+      "guid": "976b579514a99974dacce72526ac89ab"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Art/CombatB.png",
+      "to": "Assets/Art/Effects/Combat/Resources/CoreGuardian/Art/CombatB.png",
+      "guid": "978c63a910d4f8e4e9d288c4e934e92c"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_defense_v2.png",
+      "to": "Assets/Art/Characters/Enemies/Sprites/enemy_defense_v2.png",
+      "guid": "a7bb228611eb64b40bc9ef649b48c2ed"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav",
+      "guid": "b7b5a6156961bac44a67504d42ce6fcf"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/30_Earth_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/30_Earth_02.wav",
+      "guid": "b7f8695cf65a4f24eb37544298821146"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/boss_accel.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/boss_accel.wav",
+      "guid": "c7978e83858f00244abcc8741f7341ba"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianCoreParticleSettings.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianCoreParticleSettings.cs",
+      "guid": "c74ed5606784f824ba3e2bab1eb6f11a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_1.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/Up_1.png",
+      "guid": "d760183d605ef5240b03e1b162c632a3"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_2.wav",
+      "to": "Assets/Audio/Libraries/MagicAura/SoundEffects/Aura_Spawn_2.wav",
+      "guid": "d76ac66dde43b481dad18b3943c0531a"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/Stone_B_0.asset",
+      "to": "Assets/Art/Environment/Tiles/Stone_B_0.asset",
+      "guid": "d7cbbdd514aad57448b455749f31af3e"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_1.wav",
+      "to": "Assets/Audio/Libraries/MagicAura/SoundEffects/Aura_Spawn_1.wav",
+      "guid": "d78deecc6fa3040c9b6481172d2745cc"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Upgrade.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Upgrade.png",
+      "guid": "d76f25d4b0a2049408dfb0ea94bff360"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_2.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/Down_2.png",
+      "guid": "d78fdaf629fbf8042b63fced9c083b62"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/PlayerIdentity.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/PlayerIdentity.png",
+      "guid": "e776f16bff4504a48aa3e6b73c01d7cd"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat",
+      "to": "Assets/Fonts/TextMeshPro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat",
+      "guid": "e73a58f6e2794ae7b1b7e50b7fb811b0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/RightLower.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Buff/RightLower.png",
+      "guid": "f760dc203c9676e4e8b5b4c313e00f9a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/install_fail.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/install_fail.wav",
+      "guid": "f746441f941e18c41903645b2c096b00"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianRouteMeshTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianRouteMeshTests.cs",
+      "guid": "f79aaac4723f09642b613d7f1e2dc2de"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Surface.shader",
+      "guid": "f7ada0af4f174f0694ca6a487b8f543d"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Magic_Circle_1.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Magic_Circle_1.png",
+      "guid": "f7fd4fc8d3b144b3888af43c1fd5a2f8"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/UpgradeFailure/03_Error006.ogg",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/UpgradeFailure/03_Error006.ogg",
+      "guid": "086bbf8caa29ad94d8785d491040300c"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/path_straight_v2.png",
+      "to": "Assets/Art/Environment/Tiles/Sprites/path_straight_v2.png",
+      "guid": "28f6c670b15f580428eb6975dee3d9dc"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Sound Kit/Aura_Spawn_3.wav",
+      "to": "Assets/Audio/Libraries/MagicAura/SoundEffects/Aura_Spawn_3.wav",
+      "guid": "28098280ac1914e709f5b480841a6976"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_01.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_01.asset",
+      "guid": "3881964b4b4f5894a87042f191a03f55"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianPlayerFacingPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianPlayerFacingPlayModeTests.cs",
+      "guid": "38cf09a97055e0d40aa506be80d217e5"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Fonts/Galmuri11.ttf",
+      "to": "Assets/Fonts/Resources/CoreGuardian/Fonts/Galmuri11.ttf",
+      "guid": "48920334c362d2a448cc98087e48713b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_LeftLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D6/D6_LeftLeg.png",
+      "guid": "48a44b5b27b69c344827d85ce422bf40"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_Bitmap-Custom-Atlas.shader",
+      "guid": "48bb5f55d8670e349b6e614913f9d910"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_Arm.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D3/D3_Arm.png",
+      "guid": "5853a2fb23c89b843aab25ce23012a6b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Core.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Core.png",
+      "guid": "5816efcbbca691549a5b8d2c6a3483c9"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF.shader",
+      "guid": "68e6db2ebdc24f95958faec2be5558d6"
+    },
+    {
+      "from": "Assets/Settings/UniversalRP.asset",
+      "to": "Assets/Settings/Rendering/UniversalRP.asset",
+      "guid": "681886c5eb7344803b6206f758bf0b1c"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_DarkPathCorner_L.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_DarkPathCorner_L.asset",
+      "guid": "78d4aeb2214fb2446abeed2a223ba9ff"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/071_Unequip_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/071_Unequip_01.wav",
+      "guid": "78ad99fd0a0a5144280b07bbdba84815"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/22_Slash_04.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/22_Slash_04.wav",
+      "guid": "88b1cbe3caa3fee4b8b103b5edd7aba9"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/ArtReview_Unlit.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/ArtReview_Unlit.mat",
+      "guid": "889af44c3e579d14cbc5dff8ca3ec14f"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalMotion/Support/Moving.png",
+      "to": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Support/Moving.png",
+      "guid": "88ee46ed7d6e9e94fa0e1c74205f150b"
+    },
+    {
+      "from": "Assets/Game/Scripts/Towers/BeanProjectile.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Towers/BeanProjectile.cs",
+      "guid": "98ee6357f738e9840be826c6a39ed49d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/install.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/install.wav",
+      "guid": "a8aa98442c152544fbe3c3bde258c3aa"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Glyph_2.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Glyph_2.png",
+      "guid": "a89df11735ab543a2a9fb581eec08097"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/092_Pause_04.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/092_Pause_04.wav",
+      "guid": "b83bf8726a7fac349a54389f0c57cda6"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianSingleTowerAimPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianSingleTowerAimPlayModeTests.cs",
+      "guid": "b84e418dc916401439eb17b1f821cb42"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile SSD.shader",
+      "guid": "c8d12adcee749c344b8117cf7c7eb912"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/SelectionOutline.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/SelectionOutline.shader",
+      "guid": "c8c4762b6ca67154183cded94f061254"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianHitFlashPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianHitFlashPlayModeTests.cs",
+      "guid": "c85bc8acae620d54aadc66b085dd9dda"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianCombatAnimation.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianCombatAnimation.cs",
+      "guid": "d8702d6c25020cf47870aa49ebe44503"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Art/BossEye/BossEye.png",
+      "to": "Assets/Art/Characters/Enemies/Boss/Resources/CoreGuardian/Art/BossEye/BossEye.png",
+      "guid": "d8c4843ad16c0804c8c6c4d20483b955"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt",
+      "to": "Assets/Art/UI/TextMeshPro/Resources/LineBreaking Leading Characters.txt",
+      "guid": "d82c1b31c7e74239bff1220585707d2b"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_08.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_08.asset",
+      "guid": "e88e74182f11bdc4b87482482f5ccc0e"
+    },
+    {
+      "from": "Assets/Game/Scripts/Enemies/EnemyController.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Enemies/EnemyController.cs",
+      "guid": "e80f025c85b76b3478341f8f9913e753"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/MonsterDeath/02_Flesh.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/MonsterDeath/02_Flesh.wav",
+      "guid": "f8637da7ccc4be0469a1e28cbc2bf5a7"
+    },
+    {
+      "from": "Assets/Scripts/PrototypeGridMovement.cs",
+      "to": "Assets/Scripts/Runtime/Bootstrap/PrototypeGridMovement.cs",
+      "guid": "09b4b776b9420154584a08f0abd7762d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_Body.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D7/D7_Body.png",
+      "guid": "19928b2343ed9a4498d0f3a14e44283e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/RightLower.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Boss/RightLower.png",
+      "guid": "2915ae459ea59db47b3a9402a12d407a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_Body.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D3/D3_Body.png",
+      "guid": "29c5cccef18f48e40bb292f1bb9091a0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_0.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/Down_0.png",
+      "guid": "293c27abe6e6cba4b92c7e777efb6a19"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/BossSpawn/01_Encounter.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/BossSpawn/01_Encounter.wav",
+      "guid": "29bd6e553e0890545bbbe9d7bf9dbf0f"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Particle_5.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_2/Particle_5.png",
+      "guid": "291fa2ba53548438eb775f95053100b7"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMPro_Properties.cginc",
+      "guid": "3997e2241185407d80309a82f9148466"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Fonts/Galmuri-OFL.txt",
+      "to": "Assets/Fonts/Resources/CoreGuardian/Fonts/Galmuri-OFL.txt",
+      "guid": "393d2dac4d83a7a48916df93210032a1"
+    },
+    {
+      "from": "Assets/Welcome/NewWelcomePage.asset",
+      "to": "Assets/Settings/Editor/NewWelcomePage.asset",
+      "guid": "49ba57cdb4db34d1098e3104407d91ad"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/070_Equip_10.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/070_Equip_10.wav",
+      "guid": "490bfbc72255342408984f60044487de"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/DamageRoles.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/DamageRoles.png",
+      "guid": "490c83575495f6d4c99d7d25c7af44f5"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/StoneFloor_B.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/StoneFloor_B.mat",
+      "guid": "5922e0930b42a6740ad24a68f4615c97"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/path_corner_v2.png",
+      "to": "Assets/Art/Environment/Tiles/Sprites/path_corner_v2.png",
+      "guid": "69840b335d9eb7f4284eca901053cc37"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianPlayerFacingTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianPlayerFacingTests.cs",
+      "guid": "69c59fe1d5a890c4bac7bccc9fe6df65"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalIdle/Player/Upper.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/OriginalIdle/Player/Upper.png",
+      "guid": "692e29edf4f4de644b7320126b7380c3"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_Arm.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D7/D7_Arm.png",
+      "guid": "69fe4d6a22be8fc40bde20f85b1ad6ee"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat",
+      "to": "Assets/Fonts/TextMeshPro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat",
+      "guid": "79459efec17a4d00a321bdcc27bbc385"
+    },
+    {
+      "from": "Assets/Art/RejectedAnimations/20261015/Player/frames.json",
+      "to": "Assets/Documentation/Art/RejectedAnimationMetadata/Player_frames.json",
+      "guid": "79dce95253b90cd438570bfe93455c03"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianAnimationPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianAnimationPlayModeTests.cs",
+      "guid": "893e33bf883936741bbf2b371fe77f5a"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/Fortress.Game.EditModeTests.asmdef",
+      "to": "Assets/Scripts/Tests/EditMode/Fortress.Game.EditModeTests.asmdef",
+      "guid": "99da11cd85d57f74386f023364c654bc"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/PathStraight_B.asset",
+      "to": "Assets/Art/Environment/Tiles/PathStraight_B.asset",
+      "guid": "a9105e588548aea45b752ff72b17b20d"
+    },
+    {
+      "from": "Assets/Settings/CoreGuardianColorGrading.asset",
+      "to": "Assets/Settings/Rendering/CoreGuardianColorGrading.asset",
+      "guid": "a961f8852bce72f49838ff8f288e1ab0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_Body.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D4/D4_Body.png",
+      "guid": "a953a8f0bbe54d1478dafca5f5a48dcd"
+    },
+    {
+      "from": "Assets/Game/Scripts/CoreGuardian/ModelPooling.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Rules/ModelPooling.cs",
+      "guid": "a98efbdae68b1c641ade55db4d963c66"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/player.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/player.wav",
+      "guid": "a93f3bd46b0c38c47923a64bf762398f"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianRoundFlowTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianRoundFlowTests.cs",
+      "guid": "b9917c8ea9b693247a222978455e069c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_2.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/Down_2.png",
+      "guid": "b9741068d21168c48940cf625180ddb8"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Sprites/player.png",
+      "to": "Assets/Art/Characters/Player/Sprites/player.png",
+      "guid": "b92e343d2ee9863468352ac2cee568c0"
+    },
+    {
+      "from": "Assets/Art/RejectedAnimations/20261015/Multi/frames.json",
+      "to": "Assets/Documentation/Art/RejectedAnimationMetadata/Multi_frames.json",
+      "guid": "c9b290eb134703e48bb73cc66e1bccc7"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Sprites/core.png",
+      "to": "Assets/Art/Characters/Core/Sprites/core.png",
+      "guid": "c973787b77038394eb50bb7519bea051"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalMotion/Support/Fixed.png",
+      "to": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Support/Fixed.png",
+      "guid": "c9aa33d0ce36ae94ba767343ce3f0b02"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/UpgradeScan.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/UpgradeScan.shader",
+      "guid": "c9fbf6c038d1a6443ab2434eab1674c6"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Animation/Defense/frames.json",
+      "to": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Defense/frames.json",
+      "guid": "c94df9733b52e144abaac0378759358d"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/25_Wind_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/25_Wind_01.wav",
+      "guid": "c91fcf414acc0344cb03b13996f1bf3b"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMPro_Surface.cginc",
+      "guid": "d930090c0cd643c7b55f19a38538c162"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Rune_3.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Rune_3.png",
+      "guid": "d9e37a0acf3ad461f98379291737416b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/TowerInstall/02_Unequip.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/TowerInstall/02_Unequip.wav",
+      "guid": "e9c1c386d4ca3de42b3e8c73b899fdd3"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianUnitAnimation.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianUnitAnimation.cs",
+      "guid": "e96ec39f8e2b0c84b9ccdda39eb5031d"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_0_1.asset",
+      "to": "Assets/Art/Environment/Tiles/slab_0_1.asset",
+      "guid": "f9b04fd077154a4408c663d4cf307ec8"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset",
+      "to": "Assets/Art/UI/TextMeshPro/Resources/Style Sheets/Default Style Sheet.asset",
+      "guid": "f952c082cb03451daed3ee968ac6c63e"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianHud.Sound.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianHud.Sound.cs",
+      "guid": "f908d6b7f17d2604cb11c8a416ea1814"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/LeftEdge.asset",
+      "to": "Assets/Art/Environment/Tiles/LeftEdge.asset",
+      "guid": "0a717b7c3598f494397387c30394986f"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_multi.asset",
+      "to": "Assets/Data/Presentation/ContactShapes/tower_multi.asset",
+      "guid": "0ad5dd7074e5d5440b02ab232d4bdf84"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianMaskPageTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianMaskPageTests.cs",
+      "guid": "0aaccb716792a8c4aaedb72754146f1b"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SpaceWarp.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile SpaceWarp.shader",
+      "guid": "2ae3f84ba70f31a448850bf95ca45125"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/LeftUpper.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Boss/LeftUpper.png",
+      "guid": "2a24a9d4da74c734b85070d81ab13085"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/TopEdge.asset",
+      "to": "Assets/Art/Environment/Tiles/TopEdge.asset",
+      "guid": "3a72bc6724efbee4e9393a1bf25a9f7c"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianSessionTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianSessionTests.cs",
+      "guid": "4a823bbc64168934f994c99a60f94d95"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/enemies.csv",
+      "to": "Assets/Data/Balance/Resources/CoreGuardian/enemies.csv",
+      "guid": "4abc4794009656b4ea7ceca0b0db4009"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_LeftLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D4/D4_LeftLeg.png",
+      "guid": "5ab414144e1fe204aafc80e493279656"
+    },
+    {
+      "from": "Assets/Game/Scripts/Common/Health.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Common/Health.cs",
+      "guid": "5ae7c514183f0fa4198e4ed3104d5a4d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_LeftLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D0/D0_LeftLeg.png",
+      "guid": "6ac02d08c5f03f14ab3c2295ed6fd466"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianSingleTowerAimTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianSingleTowerAimTests.cs",
+      "guid": "7aa78eb08911d8546827327570a154db"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_0.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/Up_0.png",
+      "guid": "7a0a41e2553f78a4a811297cdd5c33b4"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/39_Absorb_04.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Buffs_Heals_SFX/39_Absorb_04.wav",
+      "guid": "7a9de5c4d998126449cf964a6b27a8b0"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianOriginalIdle.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalIdle.cs",
+      "guid": "8a00f05b4e7e6ed45b0ba09e14e568ac"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Animation/Boss/BossFeetCenteredV2.asset",
+      "to": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Boss/BossFeetCenteredV2.asset",
+      "guid": "8ab630a3498bac44e830d1261ef4e9d0"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Smoke_1.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Smoke_1.png",
+      "guid": "8abf852b5c6ec4a18ac67fac66f65030"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/Support.png",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/Support.png",
+      "guid": "9a5d2af94e455e84390eb9437ebafd56"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Button.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Button.png",
+      "guid": "9a6fa4bfb76fc2141a6a9b6ace61811b"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Metal Plane.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Metal Plane.mat",
+      "guid": "aa03ee1f4d9b643b0969216f8712f777"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/44_Sleep_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Buffs_Heals_SFX/44_Sleep_01.wav",
+      "guid": "aa967a280457c054bb646d57611f5bd0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_7.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_7.asset",
+      "guid": "bae37a18855d1ec489a39ac4ed2e2c2b"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_support.asset",
+      "to": "Assets/Data/Presentation/ContactShapes/tower_support.asset",
+      "guid": "ba18067d4d0427644ad6e0c6f3a60cb9"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/051_use_item_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/051_use_item_01.wav",
+      "guid": "ba39bf8baf6d13046889b2d64822381a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_RightLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D2/D2_RightLeg.png",
+      "guid": "cad366d31ad54bf4c96707bdad0d8ab5"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-HDRP LIT.shadergraph",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-HDRP LIT.shadergraph",
+      "guid": "ca2ed216f98028c4dae6c5224a952b3c"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/Route_Material_Default.mat",
+      "guid": "cacf4ef8a4868fc459758921daacbdac"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianUpgradeFeedbackPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianUpgradeFeedbackPlayModeTests.cs",
+      "guid": "da016ea7bcdab224fb49eaa932ac3fe2"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Manifest.asset",
+      "guid": "da48ff1c9c679854aa3939b89a40b4b5"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/TowerMulti.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/TowerMulti.png",
+      "guid": "dacb0159286337344b7f2b356474498b"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Particle_1.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Particle_1.png",
+      "guid": "eaf769bc3745348ed909d27ad2053f7f"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/Stone_B_3.asset",
+      "to": "Assets/Art/Environment/Tiles/Stone_B_3.asset",
+      "guid": "eaccf654bc0f0ad4ebffcbea374b84f1"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/45_Landing_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/45_Landing_01.wav",
+      "guid": "eaae8fe8d600e1f459f34aa5757fa3b8"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/victory.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/victory.wav",
+      "guid": "faa61011bcc623043b882c7c38b107c6"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Fonts/Galmuri11-Bold.ttf",
+      "to": "Assets/Fonts/Resources/CoreGuardian/Fonts/Galmuri11-Bold.ttf",
+      "guid": "fa3b1c84e3efd334fb21456793c26b54"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/TilePalettes/MagitechFortress_Base.prefab",
+      "to": "Assets/Art/Environment/MagitechFortress/TilePalettes/MagitechFortress_Base.prefab",
+      "guid": "fafd2a36ce94cee42bdf50373a21d69d"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt",
+      "to": "Assets/Art/UI/TextMeshPro/Resources/LineBreaking Following Characters.txt",
+      "guid": "fade42e8bc714b018fac513c043d323b"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianCoreFeedbackPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianCoreFeedbackPlayModeTests.cs",
+      "guid": "0b4045224565bd0469e9b760a8ac2807"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_1.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/Up_1.png",
+      "guid": "0b2a53fdd4994114abc031edbb33a9ea"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/Player.asset",
+      "to": "Assets/Data/Presentation/ContactShapes/Player.asset",
+      "guid": "0bbb707371f742e47a38e6c03868eadc"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Speed.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Speed.png",
+      "guid": "1b0d68bae4fd91c4fba94f5cf64de6f2"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/single.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/single.wav",
+      "guid": "1bce7f3b825b8154fb2dbc55a9ce2035"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Disabled.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Disabled.png",
+      "guid": "1bde7efa1cfcadb40a16127752ff09db"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/77_flesh_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/77_flesh_02.wav",
+      "guid": "2b21ef916f6943c439b71a7c74568878"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/Route_Order1 1.asset",
+      "to": "Assets/Art/Environment/Meshes/Routes/Route_Order_01_Part_01.asset",
+      "guid": "2bb1fe106590f5a4498a76c855266f38"
+    },
+    {
+      "from": "Assets/Settings/InputSystem_Actions.inputactions",
+      "to": "Assets/Settings/Input/InputSystem_Actions.inputactions",
+      "guid": "2bcd2660ca9b64942af0de543d8d7100"
+    },
+    {
+      "from": "Assets/Game/Scripts/CoreGuardian/SessionModels.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Rules/SessionModels.cs",
+      "guid": "3b827d0dd654ade4ab7bef15fa1bb5fc"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/TowerSingle.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/TowerSingle.png",
+      "guid": "3ba6297a8ce29a74cad0e402a85875b1"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/Single.png",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/Single.png",
+      "guid": "3b08fe04391350445b063fa3cad5388e"
+    },
+    {
+      "from": "Assets/Welcome/Welcome2DScript.asset",
+      "to": "Assets/Settings/Editor/Welcome2DScript.asset",
+      "guid": "3becb391d378c4f35bea7e2cfd89f1d5"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_single.asset",
+      "to": "Assets/Data/Presentation/ContactShapes/tower_single.asset",
+      "guid": "3bed9cef5fa090e4f8fc78779d27ae8f"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_attack.asset",
+      "to": "Assets/Data/Presentation/ContactShapes/enemy_attack.asset",
+      "guid": "4b33f5bc0dedc7e4ebaaeb06fdfd01b3"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianSelectedAudioPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianSelectedAudioPlayModeTests.cs",
+      "guid": "4ba8a8cff5201f9428b0a6d9325eba22"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rune_1.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_2/Rune_1.png",
+      "guid": "5bdd410ff4076415e960811c8a8b95ed"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianTowerGlow.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianTowerGlow.cs",
+      "guid": "6bb20e2089556a2458eaf56f1a2188a7"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/aug_gold.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/aug_gold.wav",
+      "guid": "6bcb86a39a10f874496fdcee8ff57ba7"
+    },
+    {
+      "from": "Assets/Game/Fortress.Game.asmdef",
+      "to": "Assets/Scripts/Runtime/Domain/Fortress.Game.asmdef",
+      "guid": "7bd48abdc1420ab4ea70173d2533ccc0"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Particle.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Particle.mat",
+      "guid": "7b58225624f9946b3b7e6d1c390bf1e7"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/61_Hit_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/61_Hit_03.wav",
+      "guid": "8b23b175a78d6b5458322e3a6c9905d0"
+    },
+    {
+      "from": "Assets/Art/RejectedAnimations/20261015/Single/frames.json",
+      "to": "Assets/Documentation/Art/RejectedAnimationMetadata/Single_frames.json",
+      "guid": "9b463549be084dd40945f64f3eec6503"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/round_complete.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/round_complete.wav",
+      "guid": "9bac1b1e632502c4bbfeb797cd3ec8ca"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Magic Circle.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Magic Circle.mat",
+      "guid": "ab50b4694af2b410296680e2d230d9ff"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/Fortress.Game.PlayModeTests.asmdef",
+      "to": "Assets/Scripts/Tests/PlayMode/Fortress.Game.PlayModeTests.asmdef",
+      "guid": "ab030fdc9a8667841a36c02750ace941"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/079_Buy_sell_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/079_Buy_sell_01.wav",
+      "guid": "abdbbfd33a46f4549987385f85c536b5"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/TowerAttackCategory.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/TowerAttackCategory.png",
+      "guid": "bb366e5a90df22a4fa26e25cb1606cab"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianOriginalGaitTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianOriginalGaitTests.cs",
+      "guid": "cbd1dc58ba30c4c4582fe8054098f26a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/RightUpper.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Buff/RightUpper.png",
+      "guid": "cb0a920c2b2856d48a288ffe8c1509ce"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/Route_Order1.asset",
+      "to": "Assets/Art/Environment/Meshes/Routes/Route_Order_01.asset",
+      "guid": "cb1ac302cfc3bfc4489308b0c1acca7a"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Spiral.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_1/Spiral.mat",
+      "guid": "db787a6176f3242e5aa2dfe433ebe17c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_RightLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D6/D6_RightLeg.png",
+      "guid": "db4c60610381e9449a9ca28ebd951b79"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_2.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/Up_2.png",
+      "guid": "dbbe47f5b480c5d41bd2317db2544422"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/Body.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Buff/Body.png",
+      "guid": "eb24525b00257c940a3dfba570980981"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/BottomEdge.asset",
+      "to": "Assets/Art/Environment/Tiles/BottomEdge.asset",
+      "guid": "eba4541a927f54c4bbe1f2c3cf4ec71f"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_PathContrast/PathContrast_B.mat",
+      "to": "Assets/Art/Rendering/Materials/Environment/PathContrast_B.mat",
+      "guid": "eb057674b800ee548824c62ccf0e6308"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/BossAcceleration/01_SpeedUp.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/BossAcceleration/01_SpeedUp.wav",
+      "guid": "eb070a5c69a342747a0374a887b5ddfb"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_buff.prefab",
+      "to": "Assets/Prefabs/Gameplay/Units/enemy_buff.prefab",
+      "guid": "fb2537dbd1bb62846835e36af1224d9e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_4.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_4.asset",
+      "guid": "fb4638fffc9b85b42b71651a294d606c"
+    },
+    {
+      "from": "Assets/Game/Scripts/CoreGuardian/Augmentations.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Rules/Augmentations.cs",
+      "guid": "0cf0215eb8f1dd24894e9f9679fa040e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Animation/Boss/BossAnimated.prefab",
+      "to": "Assets/Prefabs/Characters/Enemies/Resources/CoreGuardian/Animation/Boss/BossAnimated.prefab",
+      "guid": "1c416ac623f02d542975556f307f73a9"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/LeftLower.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Buff/LeftLower.png",
+      "guid": "1c320927c6b324e458d50e19d77ce9d5"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Art/BossEye/BossEyeContact.asset",
+      "to": "Assets/Data/Presentation/Resources/CoreGuardian/Art/BossEye/BossEyeContact.asset",
+      "guid": "1c966ba41cd74484dbf740a0b67dc8e6"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/PathCorner_NorthEast_B.asset",
+      "to": "Assets/Art/Environment/Tiles/PathCorner_NorthEast_B.asset",
+      "guid": "1c1d6b9e48008f646a18804c6205e4a0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/CardBackSilver.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/CardBackSilver.png",
+      "guid": "1cff4db54c6595146a053fbc35fa8434"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/Attack.png",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/Attack.png",
+      "guid": "2c4a50f72cec0b047bcb9560e38fe9c1"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianHitFlashTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianHitFlashTests.cs",
+      "guid": "2c6fa4249de0e6548baa06a89f60f129"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_2.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/Up_2.png",
+      "guid": "3cf0d220d4bf075409f48e75c48bd2c0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/BodyHitFlash.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/BodyHitFlash.shader",
+      "guid": "3c8408a0c75ba6548892811c192dafcf"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_3.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/Down_3.png",
+      "guid": "3cda62c4790853d4c8090a3804dfb7cb"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianCoreParticleSettingsTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianCoreParticleSettingsTests.cs",
+      "guid": "4cb3ed04ed74bf640b28c29f278c74fa"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianAudioCatalog.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianAudioCatalog.cs",
+      "guid": "5c33b21b214c7b24cb9bb47f0f7655d3"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/aug_silver.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/aug_silver.wav",
+      "guid": "5cc3d3aaec96d2a4298a9e7f4c3a9c42"
+    },
+    {
+      "from": "Assets/Game/Scripts/Enemies/WaypointPath.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Enemies/WaypointPath.cs",
+      "guid": "5cc423dc95779db438d2b38e40f0ac60"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/hit.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/hit.wav",
+      "guid": "5ce4c0e0778deb946bae0d3dc77710c4"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/52_Dive_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/52_Dive_02.wav",
+      "guid": "5c7b6d4002009e842bd2621585546d19"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianMaskProducerTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianMaskProducerTests.cs",
+      "guid": "5cace2ef06efa1a4a9c1afdbd9dd1b67"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF SSD SpaceWarp.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF SSD SpaceWarp.shader",
+      "guid": "5c6f31a5a80ebc04f8bcfdeed8327fe1"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/48_Speed_up_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Buffs_Heals_SFX/48_Speed_up_02.wav",
+      "guid": "6cf9c85b5a3b88c468b21b9d21250adf"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianThirtyRoundTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianThirtyRoundTests.cs",
+      "guid": "6c0e859c009388c48981c774563956cb"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/029_Decline_09.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/029_Decline_09.wav",
+      "guid": "7cc057bed53baf34799f52aab3c84800"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav",
+      "guid": "7c47b20bb9874304a809dc5580d403ba"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_0_0.asset",
+      "to": "Assets/Art/Environment/Tiles/slab_0_0.asset",
+      "guid": "7ca9dbba568416444b4399e5cf2d961b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_0.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/Down_0.png",
+      "guid": "7c4b1111bf5156d4493f080a80cc1380"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianTowerGrounding.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianTowerGrounding.cs",
+      "guid": "7c3fd0475de555c48b1732e5169388df"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_1.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/Down_1.png",
+      "guid": "8c4232d7fc87add48b5a0a6c29d44448"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_5.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_5.asset",
+      "guid": "8cfec869ed21b0e4e917e9f18df602b4"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianCombatAudio.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianCombatAudio.cs",
+      "guid": "9cc1bb2262d3b9b4fbeb4d417b62a5f6"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Animation/Buff/frames.json",
+      "to": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Buff/frames.json",
+      "guid": "9cc6eac28192d364ea68af6b9e8fc783"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_0.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Buff/Down_0.png",
+      "guid": "9c7eb875e26c7664280cf3968639953a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Panel.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Panel.png",
+      "guid": "ac6106cbb9bfaf346bd03ddd93afccfc"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_0.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/Up_0.png",
+      "guid": "ac9822f49e7f25e4f92afc8bdadd184c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/RightLower.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Defense/RightLower.png",
+      "guid": "ac7c5b367886ca848a66d639b96dd684"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/21_Debuff_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Buffs_Heals_SFX/21_Debuff_01.wav",
+      "guid": "acbcb75601b0082458fda8807f67c813"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/RightUpper.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Boss/RightUpper.png",
+      "guid": "ac4f73bd403e2e549b9d8ec94c4baa20"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_3.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/Down_3.png",
+      "guid": "bc587750eb0bab041b9b46c79edeb292"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/Stone_B_1.asset",
+      "to": "Assets/Art/Environment/Tiles/Stone_B_1.asset",
+      "guid": "bcaa00bceb32ea44290c88b40312c7ff"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile Masking.shader",
+      "guid": "bc1ede39bf3643ee8e493720e4259791"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/Route_Order2 1.asset",
+      "to": "Assets/Art/Environment/Meshes/Routes/Route_Order_02_Part_01.asset",
+      "guid": "bcaf7faa3a083784ca604961595da9ce"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_buff.asset",
+      "to": "Assets/Data/Presentation/ContactShapes/enemy_buff.asset",
+      "guid": "dcab6b733fa829846a65333b169b7ad5"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_5x5/Path_Corner_Small.asset",
+      "to": "Assets/Art/Environment/Tiles/Path_Corner_Small.asset",
+      "guid": "ec4064e2286b10146a7e56f97c6f0a3d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_LeftLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D3/D3_LeftLeg.png",
+      "guid": "eca23be1a607aec4f9e2887deb86752f"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_Body.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D0/D0_Body.png",
+      "guid": "fc89e38e0067ae443b6145a86978a852"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_5x5/Path_Straight_Small.asset",
+      "to": "Assets/Art/Environment/Tiles/Path_Straight_Small.asset",
+      "guid": "fceb2269738aabf43930519fefbd635a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftLower.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Attack/LeftLower.png",
+      "guid": "0d0830b44e8d1104ebed4a8edf51ece7"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/13_Ice_explosion_01.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/13_Ice_explosion_01.wav",
+      "guid": "1d74880bed4586644a16a79a2d9dc8af"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/towers.csv",
+      "to": "Assets/Data/Balance/Resources/CoreGuardian/towers.csv",
+      "guid": "1d2da26488f431840b5e9bb4b4714fae"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_2.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/Up_2.png",
+      "guid": "1dfe08ce2e4770e4ab460b47c43a2361"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/ui_close.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/ui_close.wav",
+      "guid": "2d8919193928dd541a448229ccdfb746"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_multi.prefab",
+      "to": "Assets/Prefabs/Gameplay/Units/tower_multi.prefab",
+      "guid": "2ddbbad7959d04f4e8154eb446a2f598"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianCoreAmbientPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianCoreAmbientPlayModeTests.cs",
+      "guid": "2d8e24669b240f04d9327e36ba9ebf94"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianCombatAudioPlayModeTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianCombatAudioPlayModeTests.cs",
+      "guid": "2d4fd05fe4f22bf478ee804cf4c4a1e8"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/multi_3.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/multi_3.wav",
+      "guid": "2d7f10eb3833c00449b85fc7491e5350"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalMotion/Multi/Fixed.png",
+      "to": "Assets/Art/Characters/Towers/Resources/CoreGuardian/OriginalMotion/Multi/Fixed.png",
+      "guid": "3de2199068c6c0a439cc2e83cedc3c47"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/AbilityList.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/AbilityList.png",
+      "guid": "6d31679adc95ea64aa3d879f972b3d31"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/Body.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Defense/Body.png",
+      "guid": "7deab8ccc94c278419a899d07dd17c4d"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianMaskAtlas.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianMaskAtlas.cs",
+      "guid": "8d44a7584fed437449e61209299ee50c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/UpgradeSuccess/01_Confirmation.ogg",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/UpgradeSuccess/01_Confirmation.ogg",
+      "guid": "8d3a05093ab280d498913b4ac7d9e766"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianMusicAudio.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianMusicAudio.cs",
+      "guid": "9d01d004e2c14734dab5b77269e7474c"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianCoreFeedbackTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianCoreFeedbackTests.cs",
+      "guid": "9d11bb2a36d1bee4eb404ee0287d09fe"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/CoreAmbient.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/CoreAmbient.shader",
+      "guid": "adc4b80d84683f848bdb7a92298cfd38"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_RightLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D5/D5_RightLeg.png",
+      "guid": "adc818ddde9b57741bdf858ef0b42f08"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/Body.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Boss/Body.png",
+      "guid": "bd7950c16a724dd4daa1df1904c2b672"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/death.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/death.wav",
+      "guid": "bdf9164d60288194d84b44210db778f6"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_09.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_09.asset",
+      "guid": "bdeb8228ca8355547954b3e389045a4d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_3.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/Up_3.png",
+      "guid": "cd955e15ecb37a846a7c749d337c045e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_RightLeg.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D3/D3_RightLeg.png",
+      "guid": "dd434f3f5692ab2449ca8bee4ca88132"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_Body.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D6/D6_Body.png",
+      "guid": "dd46f937a4e2b8e429d773d472679f6a"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF Overlay.shader",
+      "guid": "dd89cf5b9246416f84610a006f916af7"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_3.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/Up_3.png",
+      "guid": "fd2485ec0bdaff841b2e997b3cbc7999"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_Battle_SFX/08_Bite_04.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_Battle_SFX/08_Bite_04.wav",
+      "guid": "fd25a15f9797641458336cccfb445343"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianPhotoShadowTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianPhotoShadowTests.cs",
+      "guid": "fd5f39706d69e3e4fbe9b1483b89ce1d"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_Arm.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D5/D5_Arm.png",
+      "guid": "0ed5243902d96a54aaa5ffc8c53da048"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/Player.prefab",
+      "to": "Assets/Prefabs/Gameplay/Units/Player.prefab",
+      "guid": "1e602992427557f4fabe13aa84d246cf"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Atk_Magic_SFX/22_Water_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Atk_Magic_SFX/22_Water_02.wav",
+      "guid": "1eb7cbaf61d23a64bbd36c0a38b5cb0c"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/10_UI_Menu_SFX/033_Denied_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/10_UI_Menu_SFX/033_Denied_03.wav",
+      "guid": "1ed8fb76fc64e4e46847348138782234"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_Bitmap-Mobile.shader",
+      "guid": "1e3b057af24249748ff873be7fafee47"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/core.prefab",
+      "to": "Assets/Prefabs/Gameplay/Units/core.prefab",
+      "guid": "2ea5044f2cc64d14e814a49d742da16b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/CardBackGold.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/CardBackGold.png",
+      "guid": "2e29a6d3f78a8834cb77c0a34a8f9afd"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+      "to": "Assets/Fonts/TextMeshPro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+      "guid": "2e498d1c8094910479dc3e1b768306a4"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/SelectionMask.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/SelectionMask.shader",
+      "guid": "3e798b1231e3108429507603aa4f3d9a"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_Body.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D5/D5_Body.png",
+      "guid": "3e7bf832bbb859f4bbb702676f907af5"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/30_Jump_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/30_Jump_03.wav",
+      "guid": "4e349dc959014a845b9aa317d1c2b7f0"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/RightUpper.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Defense/RightUpper.png",
+      "guid": "4e749f986ae04954ba0595354746d1e1"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianHud.Inspector.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.Inspector.cs",
+      "guid": "5e1a2ce0a3ef19846b037752db5395a8"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianMaskPage.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianMaskPage.cs",
+      "guid": "5eecffddc3d34bb40b472089d4872336"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_1.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_1.asset",
+      "guid": "6e105439d7929e2469f6ae6fd3aeb677"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Install.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Install.png",
+      "guid": "6e61b4d2d4ec8124dab7aa4eb7aacafd"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/boss_spawn.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/boss_spawn.wav",
+      "guid": "6ec18b08a601ef34bb140904cdd36d81"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_1.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Attack/Up_1.png",
+      "guid": "6eb69f58e123edb4482973b3dff6ce8c"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt",
+      "to": "Assets/Fonts/Libraries/TextMeshPro/Fonts/LiberationSans - OFL.txt",
+      "guid": "6e59c59b81ab47f9b6ec5781fa725d2c"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/cancel_install.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/cancel_install.wav",
+      "guid": "7eb44bbf3befabc46b5726b8bca96237"
+    },
+    {
+      "from": "Assets/Art/Combat/20261010/Fonts/PixelifySans-Bold.ttf",
+      "to": "Assets/Fonts/Libraries/PixelifySans/PixelifySans-Bold.ttf",
+      "guid": "7ee6a970d707169419ec6fa8bcb53cdc"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/Core.png",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/Core.png",
+      "guid": "7ead70284c43b3f439d754ee3ca1b319"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Sprites/tower_support.png",
+      "to": "Assets/Art/Characters/Towers/Sprites/tower_support.png",
+      "guid": "8e8201d8e7ac4f34380fe1d4ce114cb0"
+    },
+    {
+      "from": "Assets/Game/Scripts/CoreGuardian/CombatData.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Rules/CombatData.cs",
+      "guid": "9ef2a9b920756134eb1fc5005ce4dbba"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/multi_2.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/multi_2.wav",
+      "guid": "ae59d45361d15844aad717aaacdab43f"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rune.mat",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_2/Rune.mat",
+      "guid": "aeff0be63d81a4f349788dbdeb9c3339"
+    },
+    {
+      "from": "Assets/Game/Scripts/Towers/TowerCombatStats.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Towers/TowerCombatStats.cs",
+      "guid": "cee7e2d2295fb6a4398df74e3e9b7fe1"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Sprites/tower_single.png",
+      "to": "Assets/Art/Characters/Towers/Sprites/tower_single.png",
+      "guid": "de08fbe5115a3634ba737c889f278788"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianOriginalMotion.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalMotion.cs",
+      "guid": "dee9e950bfd8251478929feb69cbfaf2"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_1.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Boss/Up_1.png",
+      "guid": "ee91454ff5e695b4dafcf9caf18be60e"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianPrototype.cs",
+      "to": "Assets/Scripts/Runtime/Bootstrap/CoreGuardianPrototype.cs",
+      "guid": "ee972b475fab05e43a1ca29fe4bf84bb"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile.shader",
+      "guid": "fe393ace9b354375a9cb14cdbbc28be4"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_3.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk/Defense/Down_3.png",
+      "guid": "fe5d8cddd8593c04c9d38140fcfad138"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_Arm.png",
+      "to": "Assets/Art/Characters/Player/Resources/CoreGuardian/PlayerFacing/D2/D2_Arm.png",
+      "guid": "0fbee56209460a04d8ec5a44dfe09e59"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD SpaceWarp.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile SSD SpaceWarp.shader",
+      "guid": "2f52e8cb070aaf94289b130df84e2882"
+    },
+    {
+      "from": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Magic_Circle_2.png",
+      "to": "Assets/Art/Effects/MagicAura/Materials/Aura_2/Magic_Circle_2.png",
+      "guid": "2f65fe06bec9a4e44b226445a3f9d1bd"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/PhotoShadows/Defense.png",
+      "to": "Assets/Art/Effects/Shadows/Resources/CoreGuardian/PhotoShadows/Defense.png",
+      "guid": "2f5b23398b7a69e4ab834fbc7fbdc1d4"
+    },
+    {
+      "from": "Assets/Settings/DefaultVolumeProfile.asset",
+      "to": "Assets/Settings/Rendering/DefaultVolumeProfile.asset",
+      "guid": "3f9215ea0144899419cfbc0957140d3f"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_6.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_6.asset",
+      "guid": "3f041bf7c1965214183d965fadaef381"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/BatchedSelectionMask.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/BatchedSelectionMask.shader",
+      "guid": "3f39c846c906dd24483aa0d0f5007c57"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Resources/TMP Settings.asset",
+      "to": "Assets/Settings/Resources/TMP Settings.asset",
+      "guid": "3f5b5dff67a942289a9defa416b206f3"
+    },
+    {
+      "from": "Assets/Game/Tests/PlayMode/CoreGuardianHudInteractionTests.cs",
+      "to": "Assets/Scripts/Tests/PlayMode/CoreGuardianHudInteractionTests.cs",
+      "guid": "3f1d1f57f3bdc434292085a773e1c2e0"
+    },
+    {
+      "from": "Assets/Game/Scripts/CoreGuardian/SegmentedEnemyHealthBar.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Rules/SegmentedEnemyHealthBar.cs",
+      "guid": "4fb28ee18aecf024f91e8ff2870f08ba"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/ground_slab_v2.png",
+      "to": "Assets/Art/Environment/Tiles/Sprites/ground_slab_v2.png",
+      "guid": "4f1e8ad5e6fe46747ac5c31b77e5f57d"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianAugmentationTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianAugmentationTests.cs",
+      "guid": "4f5fc8823b326b245ae0911dee6be34b"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/StatRange.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/StatRange.png",
+      "guid": "5f8312147b554494aaa6df69725df4cb"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_defense.prefab",
+      "to": "Assets/Prefabs/Gameplay/Units/enemy_defense.prefab",
+      "guid": "6f432a3113b0e5b43894d045310e345e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/BatchedMaskOutput.shader",
+      "to": "Assets/Art/Rendering/Shaders/Resources/CoreGuardian/BatchedMaskOutput.shader",
+      "guid": "8fb2974e9ad76d749bb23c44460eba9f"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/88_Teleport_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/88_Teleport_02.wav",
+      "guid": "8ff2a2d7e79f81c40ac447512f879374"
+    },
+    {
+      "from": "Assets/Scripts/CoreGuardianMaskProducerBatch.cs",
+      "to": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianMaskProducerBatch.cs",
+      "guid": "8fe4c09130a15a64e99b0819d8e3b34a"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+      "to": "Assets/Fonts/TextMeshPro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+      "guid": "8f586378b4e144a9851e7b34d9b748ee"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/ui_click.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/ui_click.wav",
+      "guid": "8f4f47067e85a614db29e5feb850a8b3"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/RoundComplete/01_Confirmation002.ogg",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/RoundComplete/01_Confirmation002.ogg",
+      "guid": "afe3bc8fc220ece40a0accd0dd5cde28"
+    },
+    {
+      "from": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_single.prefab",
+      "to": "Assets/Prefabs/Gameplay/Units/tower_single.prefab",
+      "guid": "bf831e60059a4044688aee521cde7fd1"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Animation/Attack/frames.json",
+      "to": "Assets/Data/Animation/Resources/CoreGuardian/Animation/Attack/frames.json",
+      "guid": "bfb492fdeb1091946a23f23ffdaf7180"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Audio/SelectedB/core.wav",
+      "to": "Assets/Audio/Resources/CoreGuardian/Audio/SelectedB/core.wav",
+      "guid": "bf47b25b31d5bef469ee594ae12e4532"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/LeftLower.png",
+      "to": "Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk/Boss/LeftLower.png",
+      "guid": "bf9c7ac49316ce44da30410d05988b00"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/Route_Order2 2.asset",
+      "to": "Assets/Art/Environment/Meshes/Routes/Route_Order_02_Part_02.asset",
+      "guid": "cfb01ed345eeab04d9435c6e11f60b64"
+    },
+    {
+      "from": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/RightEdge.asset",
+      "to": "Assets/Art/Environment/Tiles/RightEdge.asset",
+      "guid": "cf0135c6032689e4f8e6d69b49fff1c3"
+    },
+    {
+      "from": "Assets/TextMesh Pro/Shaders/TMP_Sprite.shader",
+      "to": "Assets/Art/Rendering/Shaders/TextMeshPro/TMP_Sprite.shader",
+      "guid": "cf81c85f95fe47e1a27f6ae460cf182c"
+    },
+    {
+      "from": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_06.asset",
+      "to": "Assets/Art/Environment/MagitechFortress/Tiles/MagitechFortress_06.asset",
+      "guid": "cf37d9c0b1e25904eb7455d2a3372c05"
+    },
+    {
+      "from": "Assets/Game/Tests/EditMode/CoreGuardianSharedMaskMaterialTests.cs",
+      "to": "Assets/Scripts/Tests/EditMode/CoreGuardianSharedMaskMaterialTests.cs",
+      "guid": "cfacc9cba09adec45ac11be99a146a20"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/8_Buffs_Heals_SFX/02_Heal_02.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/8_Buffs_Heals_SFX/02_Heal_02.wav",
+      "guid": "cfce0cea076109f478783201b2a9f57f"
+    },
+    {
+      "from": "Assets/Leohpaz/RPG_Essentials_Free/12_Player_Movement_SFX/03_Step_grass_03.wav",
+      "to": "Assets/Audio/Libraries/RPG_Essentials_Free/12_Player_Movement_SFX/03_Step_grass_03.wav",
+      "guid": "df7087e4d8a8bb546bc08ce68632903f"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_3.asset",
+      "to": "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Page_2677baed320c196239eab00a343c0a59_3.asset",
+      "guid": "eff2e345e84700c4bab9c9e5a2449d9e"
+    },
+    {
+      "from": "Assets/Resources/CoreGuardian/Hud/Hover.png",
+      "to": "Assets/Art/UI/Resources/CoreGuardian/Hud/Hover.png",
+      "guid": "ef987cc38c4d98949957b78f6eccabbe"
+    },
+    {
+      "from": "Assets/Game/Scripts/Towers/LightningTower.cs",
+      "to": "Assets/Scripts/Runtime/Domain/Towers/LightningTower.cs",
+      "guid": "ff85881ca5236a54a9ce3f2a4d54d909"
+    }
+  ],
+  "changedSources": [
+    "Assets/Scripts/Editor/Rendering/RouteMeshBuilder.cs",
+    "Assets/Scripts/Tests/EditMode/CoreGuardianTowerGlowTests.cs",
+    "Assets/Scripts/Tests/EditMode/CoreGuardianTowerGroundingTests.cs",
+    "Assets/Scripts/Tests/EditMode/CoreGuardianPlayerFacingTests.cs",
+    "Assets/Scripts/Tests/PlayMode/CoreGuardianAnimationPlayModeTests.cs",
+    "Assets/Scripts/Tests/EditMode/CoreGuardianSingleTowerAimTests.cs",
+    "Assets/Scripts/Tests/EditMode/CoreGuardianOriginalGaitTests.cs",
+    "Assets/Scripts/Tests/EditMode/CoreGuardianHitFlashTests.cs",
+    "Assets/Scripts/Tests/EditMode/CoreGuardianPhotoShadowTests.cs",
+    "Assets/Scripts/Tests/EditMode/CoreGuardianSharedMaskMaterialTests.cs"
+  ],
+  "error": null
+}

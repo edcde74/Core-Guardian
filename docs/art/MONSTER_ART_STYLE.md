@@ -11,13 +11,13 @@
 
 ## 고정 기준 파일
 
-현재 실제 참조 프리팹: `Assets/Art/ScreenTests/20261008_Depth/Prefabs/{enemy_attack,enemy_defense,enemy_buff}.prefab`.
+현재 실제 참조 프리팹: `Assets/Prefabs/Gameplay/Units/{enemy_attack,enemy_defense,enemy_buff}.prefab`.
 
 | 유형 | 기준 스프라이트 | 현재 크기 |
 |---|---|---|
-| 공격형 | `Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_attack_v2.png` | 42×64px (창 포함) |
-| 수비형 | `Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_defense_v2.png` | 33×48px |
-| 버프형 | `Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_buff_v2.png` | 35×80px (군기 포함) |
+| 공격형 | `Assets/Art/Characters/Enemies/Sprites/enemy_attack_v2.png` | 42×64px (창 포함) |
+| 수비형 | `Assets/Art/Characters/Enemies/Sprites/enemy_defense_v2.png` | 33×48px |
+| 버프형 | `Assets/Art/Characters/Enemies/Sprites/enemy_buff_v2.png` | 35×80px (군기 포함) |
 
 같은 폴더의 `Revision2/Source`는 생성 참고 원본이고 게임 픽셀 규격 자체가 아니다. 이전 `20260930/Sprites`의 초안은 이력 자료이며 현재 기준과 구분한다. **V1/V2 보스 시안도 공통 기준이 아니다.** 최신 씬의 참조가 바뀌었다면 에디터 API로 확인하고 사용자가 승인한 새 기준으로 이 문서를 갱신한다.
 

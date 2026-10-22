@@ -3158,7 +3158,7 @@
   },
   {
     "source": "Assets/Resources/CoreGuardian/Art/BossEye/BossEye.png",
-    "destination": "Assets/Prefabs/Characters/Boss/Resources/CoreGuardian/Art/BossEye/BossEye.png",
+    "destination": "Assets/Art/Characters/Enemies/Boss/Resources/CoreGuardian/Art/BossEye/BossEye.png",
     "guid": "d8c4843ad16c0804c8c6c4d20483b955",
     "hash": "4DB84E1C87CE3F89E5839E501E759B56D2A52E78E2ED1DEFE5241A6724C34045",
     "metaHash": "B0E6E1645FF1686C76C5E6A3AC94AE5379C340AD7E649D93786800B08A55C300",
@@ -4555,7 +4555,7 @@
   },
   {
     "source": "Assets/Resources/CoreGuardian/Art/BossEye/BossEyeContact.asset",
-    "destination": "Assets/Prefabs/Characters/Boss/Resources/CoreGuardian/Art/BossEye/BossEyeContact.asset",
+    "destination": "Assets/Data/Presentation/Resources/CoreGuardian/Art/BossEye/BossEyeContact.asset",
     "guid": "1c966ba41cd74484dbf740a0b67dc8e6",
     "hash": "501EA17BA8DCABEE165EBBA0EE49E43384441AF4CB387761F38B7CB31239CB98",
     "metaHash": "BB17FC33066C9626D1530DB79B1310545324A139E7CC623E472E93A81B6CBD61",

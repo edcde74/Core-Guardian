@@ -1,0 +1,33 @@
+{
+  "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+  "dirty": false,
+  "playing": false,
+  "compiling": false,
+  "updating": false,
+  "profiler": false,
+  "driver": true,
+  "roots": [
+    "Main Camera",
+    "Global Light 2D",
+    "D_InsideCore_Prototype",
+    "NewArt_SizeReview_Medium",
+    "CoreGuardian_Gameplay",
+    "Color Grading",
+    "CoreGuardian_MapArt_B"
+  ],
+  "rootFolders": [
+    "Assets/Art",
+    "Assets/Audio",
+    "Assets/Data",
+    "Assets/Documentation",
+    "Assets/Fonts",
+    "Assets/Prefabs",
+    "Assets/Scenes",
+    "Assets/Scripts",
+    "Assets/Settings"
+  ],
+  "fileCount": 553,
+  "newGuide": [
+    "Assets/Documentation/ProjectStructure.md"
+  ]
+}

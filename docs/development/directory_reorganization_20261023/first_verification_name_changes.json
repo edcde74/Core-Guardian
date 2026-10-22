@@ -1,0 +1,98 @@
+{
+  "utc": "2026-10-22T18:22:50.0767172Z",
+  "files": 552,
+  "guidsVerified": 552,
+  "byteIdenticalAssets": 530,
+  "expectedChangedSourceFiles": 10,
+  "metaIdentical": 552,
+  "dependencySetsVerified": 552,
+  "resourceKeysLoaded": 227,
+  "scriptAssembliesVerified": 102,
+  "maskEntriesValid": 92,
+  "maskEntries": 92,
+  "problems": [
+    "Unexpected content change: Assets/Art/Rendering/Materials/Environment/Route_Material_05.mat",
+    "Unexpected content change: Assets/Art/Environment/Meshes/Routes/Route_Order_01_Part_02.asset",
+    "Unexpected content change: Assets/Art/Rendering/Materials/Environment/Route_Material_01.mat",
+    "Unexpected content change: Assets/Art/Rendering/Materials/Environment/Route_Material_03.mat",
+    "Unexpected content change: Assets/Art/Rendering/Materials/Environment/Route_Material_04.mat",
+    "Unexpected content change: Assets/Art/Rendering/Materials/Environment/Route_Material_02.mat",
+    "Unexpected content change: Assets/Art/Environment/Meshes/Routes/Route_Order_02.asset",
+    "Unexpected content change: Assets/Art/Rendering/Materials/Environment/Route_Material_Default.mat",
+    "Unexpected content change: Assets/Art/Environment/Meshes/Routes/Route_Order_01_Part_01.asset",
+    "Unexpected content change: Assets/Art/Environment/Meshes/Routes/Route_Order_01.asset",
+    "Unexpected content change: Assets/Art/Environment/Meshes/Routes/Route_Order_02_Part_01.asset",
+    "Unexpected content change: Assets/Art/Environment/Meshes/Routes/Route_Order_02_Part_02.asset"
+  ],
+  "hashMismatches": [
+    {
+      "path": "Assets/Art/Rendering/Materials/Environment/Route_Material_05.mat",
+      "oldHash": "32A02C4FD60FF767777427FB979377359F96D2B109C3DD2EE4E63418B192ECF6",
+      "current": "00EA2DB0350D713763131684339FAAAEB4E7E90A9E930BAF60D546DD60B2CC70"
+    },
+    {
+      "path": "Assets/Art/Environment/Meshes/Routes/Route_Order_01_Part_02.asset",
+      "oldHash": "40496E5A3AA2CD0CF59541F53D87A81D16B36D2E6BB0C8BD77C57123CA8B8A73",
+      "current": "806CDCB32D42E54025946FCEE3B5B98B119982E4863134A95CC998B7829F18A7"
+    },
+    {
+      "path": "Assets/Art/Rendering/Materials/Environment/Route_Material_01.mat",
+      "oldHash": "A7EBDD0172ADE62A796805CB3CC9AB93BA590299BF4BC724A22CF3F2F71AD501",
+      "current": "002086F29BF15AFC7A73B5BC69ED65837E2D5A461527ECE8EDC102E902657D5D"
+    },
+    {
+      "path": "Assets/Art/Rendering/Materials/Environment/Route_Material_03.mat",
+      "oldHash": "E0E7D116188E8650B7A9A05E27302390F3451F8AB59DD9D5A81760595B8FA530",
+      "current": "78A53A153EBC3AFA337EDFCCE2EE0AFDC404FA33F063F733C684AD48D7B1D781"
+    },
+    {
+      "path": "Assets/Art/Rendering/Materials/Environment/Route_Material_04.mat",
+      "oldHash": "2E3E2A50963F0FF8FB4C7411E0A2C5B7EB641E6B3CC247E8922F3C464FF52F06",
+      "current": "EDF0F76313AB352EE44C82CF1F01FB750D5A91FC41252AE32376B4CC0967D577"
+    },
+    {
+      "path": "Assets/Art/Rendering/Materials/Environment/Route_Material_02.mat",
+      "oldHash": "AA2E5CFA877A88D57F8DB86F78FC53398255D146B264CDC9CA32528E971A8157",
+      "current": "D5FB646CBB2243B18C33E19C54E5377184EF8B9F9DF3EF0C445C5B746FAF7258"
+    },
+    {
+      "path": "Assets/Art/Environment/Meshes/Routes/Route_Order_02.asset",
+      "oldHash": "FD8E998633A732C8C47D2A1027370BE605FF5888EBB2022F0E6FFBB1F59C9A8A",
+      "current": "05967E596417A965F33AF08FA87CE1FE9C2598F2CC5E141017AB8814FBECCDA4"
+    },
+    {
+      "path": "Assets/Art/Rendering/Materials/Environment/Route_Material_Default.mat",
+      "oldHash": "4087FBA7DEDC4401DAB523C6D285E7166967589B2A11991081B6143FCCC252D3",
+      "current": "CB10F949F8AA3E944E9763A331063A689F6C5D35A2C770F28E53226E21A994F2"
+    },
+    {
+      "path": "Assets/Art/Environment/Meshes/Routes/Route_Order_01_Part_01.asset",
+      "oldHash": "891817A96C7E09A740FDB58B9D168E38A7480568763F13CE0263E682EC9AFE90",
+      "current": "9138F2C76A7F8BC01B42BAA332575BD275FCEE406B201D5C23458149917CABAD"
+    },
+    {
+      "path": "Assets/Art/Environment/Meshes/Routes/Route_Order_01.asset",
+      "oldHash": "4EFF7805A82BB22010BFC8F0CB9F38CB339DBCA4593ED41CB022158D75319599",
+      "current": "E9E37445D4011EA5642E407DA45C72E2C945EC1D21BDC8681F5EC9C5AA8F10D6"
+    },
+    {
+      "path": "Assets/Art/Environment/Meshes/Routes/Route_Order_02_Part_01.asset",
+      "oldHash": "527A0FF45598CD5539054C342008083F92B388EB8FBCF227EC53B9699D90C25A",
+      "current": "CD560B867E93D29E3A7BC7B05616930ADD17D6EF10D266239ED6207D26191B29"
+    },
+    {
+      "path": "Assets/Art/Environment/Meshes/Routes/Route_Order_02_Part_02.asset",
+      "oldHash": "61F13C917AE915CFFFA4C947EB5C5DE5107BB0D4C7D9A649A47466EF26EB3834",
+      "current": "908AFA6641B0AD8728A72D4A260A14CBAF29CE2BC1A21EB3029C61ED49E8E01E"
+    }
+  ],
+  "state": {
+    "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+    "isDirty": false,
+    "playing": false,
+    "compiling": false,
+    "updating": false,
+    "profiler": false,
+    "driver": true
+  }
+}
