@@ -62,8 +62,8 @@
 - [저장 선택 JSON](natural_rounds_20261010_single_save.json)
 - [강화 선택 JSON](natural_rounds_20261010_single_upgrade.json)
 - [근접 배치 JSON](natural_rounds_20261010_coverage_save.json)
-- [첫 실행 화면](../../Assets/docs/development/natural_rounds_20261010_screen.png)
-- [근접 배치 9R 화면](../../Assets/docs/development/natural_rounds_20261010_coverage.png)
+- [첫 실행 화면](resource_cleanup_20261023/imported_evidence/development/natural_rounds_20261010_screen.png)
+- [근접 배치 9R 화면](resource_cleanup_20261023/imported_evidence/development/natural_rounds_20261010_coverage.png)
 - 담당 기획: [플레이테스트](https://www.notion.so/3df389dbfc6881fc9f1bd004adfc5999), [후속 작업](https://www.notion.so/3f4389dbfc688171b84dc19b138925f4). 최신 내용을 읽었으며, 이번 결과는 로컬 기록에 저장했다.
 
 재실행: 전투 씬에서 새 Play 시작 후 `run_script --file docs/development/MeasureNaturalRounds.cs --entry MeasureNaturalRounds.Start --args '["coverage_save"]'`. 선택 이름은 `single_save`, `single_upgrade`, `coverage_save`. 기존 결과 파일을 덮어쓰므로 반복 측정 시 먼저 결과를 별도 이름으로 보존한다. 진행 중 중단하려면 해당 임시 어셈블리의 `Stop`을 호출하거나 Play를 종료한다.

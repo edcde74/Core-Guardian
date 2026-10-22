@@ -19,7 +19,7 @@
 
 초기 Edit Mode 조회에는 Canvas가 없었지만 생성 경로 추적과 이후 Play의 읽기 전용 계층 조회로 런타임 존재를 확인했다. [unity_snapshot.json](unity_snapshot.json)의 관측 시각은 2026-10-13 02:55:03 KST, 1920×1080, compiling=false다. 보스 `150/300` 표시가 보인 실행 상태이며 자연 진행 10R 완료나 사람 플레이로 간주하지 않았다. 다른 작업이 Play와 소스를 바꾸고 있으므로 스냅샷은 그 순간의 상태만 증명한다. 이후 상태 조회에서는 Play stopped를 확인했고 새 Play를 시작하지 않았다.
 
-직접 본 화면은 2026-10-10의 [자연 전투 캡처](../../../Assets/docs/development/natural_rounds_20261010_coverage.png)와 [골드/피해 표시 검증 캡처](../../../Assets/docs/development/gold_feedback_after_20261010.png), 둘 다 1280×720이다. 전자는 자동 조작 9R, 후자는 역할 검증 화면이다. 마무리 중 다른 작업이 저장한 2026-10-13 [증강 Game View](../augmentation_selection_20261013.png), 1280×720도 직접 확인했다. 중앙 카드 3장·시간·등급·효과가 보이고, 상단 상태는 전체 배경으로 어두워지며 증강 접기 탭은 보이지 않는다. 이 화면은 [강제 처치 흐름 진단](../boss_augmentation_20261013.md)의 결과로, 자연 진행 난이도/성장 체감 검증이 아니다. 해당 작업의 실제 카드 클릭·회귀 결과는 외부 작업 기록이며 이 분석에서 재실행하지 않았다. 저장 씬·Canvas 계층·코드와 촬영 시점/조건을 구분해 사용했다.
+직접 본 화면은 2026-10-10의 [자연 전투 캡처](../resource_cleanup_20261023/imported_evidence/development/natural_rounds_20261010_coverage.png)와 [골드/피해 표시 검증 캡처](../resource_cleanup_20261023/imported_evidence/development/gold_feedback_after_20261010.png), 둘 다 1280×720이다. 전자는 자동 조작 9R, 후자는 역할 검증 화면이다. 마무리 중 다른 작업이 저장한 2026-10-13 [증강 Game View](../augmentation_selection_20261013.png), 1280×720도 직접 확인했다. 중앙 카드 3장·시간·등급·효과가 보이고, 상단 상태는 전체 배경으로 어두워지며 증강 접기 탭은 보이지 않는다. 이 화면은 [강제 처치 흐름 진단](../boss_augmentation_20261013.md)의 결과로, 자연 진행 난이도/성장 체감 검증이 아니다. 해당 작업의 실제 카드 클릭·회귀 결과는 외부 작업 기록이며 이 분석에서 재실행하지 않았다. 저장 씬·Canvas 계층·코드와 촬영 시점/조건을 구분해 사용했다.
 
 ## 2. 확인된 UX 문제점과 근거
 

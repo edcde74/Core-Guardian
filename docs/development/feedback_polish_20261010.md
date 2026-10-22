@@ -36,7 +36,7 @@
 - [전용 런타임 검사](VerifyGoldFeedback.cs): 기존 VerifyCombatArt.Begin → CheckProjectilesAndHit 후 CheckGroup·CheckProjectileSizes. 별도 CheckMotionAndExpiry → CheckExpired, Diagnostic 이후 CheckReset. 정지 검증 종료 시 반드시 Time.timeScale=1 복구.
 - [EditMode 결과](feedback_polish_editmode_20261010.json)
 - [PlayMode 결과](feedback_polish_playmode_20261010.json)
-- [수정 전 화면](../../Assets/docs/development/gold_feedback_before_20261010.png)
-- [수정 후 화면](../../Assets/docs/development/gold_feedback_after_20261010.png)
+- [수정 전 화면](resource_cleanup_20261023/imported_evidence/development/gold_feedback_before_20261010.png)
+- [수정 후 화면](resource_cleanup_20261023/imported_evidence/development/gold_feedback_after_20261010.png)
 
 다음 확인: 사용자 실제 플레이에서 투사체 크기와 골드 묶음 판독 확인. 설치·강화 선택 체감은 별도 플레이테스트에서 계속 기록한다.

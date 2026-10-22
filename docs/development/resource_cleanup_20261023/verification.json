@@ -1,0 +1,28 @@
+{
+  "utc": "2026-10-22T17:59:12.3510176Z",
+  "kept": 170,
+  "deleted": 82,
+  "runtimeSpritePathsVerified": 136,
+  "archived": 13,
+  "dependencyEdgesVerified": 181,
+  "liveImagesVerified": 15,
+  "problems": [],
+  "state": {
+    "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+    "isDirty": false,
+    "playing": false,
+    "compiling": false,
+    "updating": false,
+    "profiler": false,
+    "driver": true,
+    "roots": [
+      "Main Camera",
+      "Global Light 2D",
+      "D_InsideCore_Prototype",
+      "NewArt_SizeReview_Medium",
+      "CoreGuardian_Gameplay",
+      "Color Grading",
+      "CoreGuardian_MapArt_B"
+    ]
+  }
+}
