@@ -4,6 +4,8 @@
 
 ## 현재 상태와 승인 범위
 
+- 2026-10-23 후속 제한 관측(시작 HEAD `4f2516a`): 게임 변경 없이 정상1배속120초·2R 완료/3R Combat까지 관측했다. 최초 진단 종료의 ProfilerRecorder.ToArray 네이티브 충돌로 해당 원본은 무효; 재연결 뒤 배열 복사를 제거해 종료 성공.120초의 고정 카운터값은 무효 처리하고 옵션 수정15초에서 CPU/GC/SetPass 변동만 확인했다. 자체 Play 종료 후 대상mask RT/페이지 메시/공유재질0, 사용자 씬·설정 hash3/3·CSV 동일·scene clean/상태 복구. 전체 할당 메모리 증가·max347.669ms 스파이크가 남아 정상30R/장시간/GPU/전체 잔류/목표기기60FPS 통과 아님. 실패·원본·조건·다음 범위는 [정상 초반 관측 정본](normal_probe_20261023/README.md). A/B 제한 유지, 빌드/실행파일/push 없음.
+
 - 2026-10-23 추가 요청으로 Notion7페이지 동기화·재조회 완료: 길/설치 메시·접촉 제거 승인·짧은 성능 비교/한계·저사양60FPS 목표·후속 검증과 그림자/셰이더 정본 충돌 수정. 기존 하위페이지/DB 보존. [동기화 대상·검증](contact_shadow_removed_20261023/NOTION_SYNC.md). 새 Unity 실행/검사 없음.
 
 - 2026-10-23 사용자 전후 미리보기 승인으로 발밑 동적 접촉 그림자 생성·전용 마스크 계산 제거. 넓은 PhotoCastShadow 유지. 그림자10+공유재질2 테스트 통과, 실제 Play 접촉0/플레이어·코어 cast 유지, 종료 scene clean·자체 상태 복구. 후속 사용자 요청으로 기존60프레임 원본과 같은 진단 코드의 신규60프레임 비교: 평균40.35→45.00FPS, frame24.785→22.221ms(10.34% 감소), 그림자CPU6.480→1.682ms. 각1회 예비 비교이며 정상30R/저사양60FPS 검증 아님. 사용자 씬·설정2파일 hash3/3 동일. [변경·검증 정본](contact_shadow_removed_20261023/README.md).
@@ -28,7 +30,7 @@
 - 앞선 CPU/GC 누적: Tick−38.616%·View−9.599%·Main Thread GC.Alloc/frame−61.504%, 평균FPS30.169→30.026(−0.476%)로 FPS 개선은 확인되지 않았다. EditMode127+PlayMode42=169개 통과. 보스 미존재 기본 handle의 HUD 오류도 수정했다. [누적 결과](runtime_validation_20261021/RESULTS.md). B와 조건/비교 기준이 달라 개선율을 합산하지 않는다. 최초 RT 재사용 및 동일 본체 공유의 별도 성과는 각 담당 문서와 Notion 검사 이력에 둔다.
 - B 페이지당16MiB 추가 GPU 저장공간 및 개별RT 복사 비용이 있다. 메모리 절감·전체 잔류 검증 완료가 아니다. 최종 독립 검토는 서비스 제한으로 전체 완료되지 않았으며 지적된 결함은 RED→GREEN으로 수정했다. 상세 한계는 B 정본에 보존한다.
 - 과거 B 실행 검증 종료 시 scene clean/Play stopped/compiling false, 자체 마스크GPU 객체0, 사용자 씬·설정6파일 해시 동일. Profiler driver true/Profiler OFF/background false/time1/capture0/paused false. 빈 Profiler 백업 LoadProfile의 자체 진단 오류2건은 삭제하지 않았고, 저장본4바이트를 확인해 빈 버퍼(first/last−1)로 복원했다. [종료 상태](render_batching_20261022/shipping_final_state.json), [복원](render_batching_20261022/shipping_profiler_restore.json), [사용자 해시](render_batching_20261022/shipping_user_hashes.json).
-- 이번 인수인계는 문서 작업만 수행했다. 마지막 실제 실행은 접촉 제거 후 60프레임 측정이며, 종료 Play stopped/scene clean/compiling false·Profiler OFF/driver true/background false와 사용자 씬·설정2파일 hash3/3 동일을 확인했다. 인수인계 중에는 Unity 상태를 새로 조회하거나 Play·검사를 추가하지 않았다. 재개 시 마지막 상태를 현재로 가정하지 말고 확인한다.
+- 최신 실제 실행은 [정상 초반120초·카운터15초 관측](normal_probe_20261023/README.md)이다. 종료 Play stopped/scene clean/compiling false·Profiler OFF/driver true/background false, 사용자 씬·설정2파일 hash3/3 동일. 재개 시 이를 현재 상태로 가정하지 말고 확인한다. 이전 `7483ff0` 인수인계 자체는 문서만 수행한 기록이다.
 - 기존 Windows64 일반 빌드 `Builds/CoreGuardian_Windows_20261022_062018/CoreGuardian.exe`는 사용자 요청으로 생성, Succeeded/오류0/경고499/35.383초이며 실행하지 않았다. **B 반영 전 빌드**다. ZIP 및 폴더 모두 보존한다. 이후 새 빌드·실행파일 실행·push는 하지 않았다. Unity CLI는 사용자 요청으로 1.0.0-beta.14 업데이트·버전 확인을 완료했으며 MCP의 beta.13 안내만 보고 다시 업데이트하지 않는다.
 
 ## 미완료와 다음 행동
@@ -37,6 +39,7 @@
 
 1. 실제 HEAD/diff·사용자 파일·연결/씬/dirty/Play/컴파일·다른 검사부터 확인한다. 사용자 Play/다른 검사를 중단·중복하지 않는다. 충분한 기존169개/최신72개 검사는 새 변경·실패·불확실성 없이 반복하지 않는다. 이번 인수인계 자체는 추가 실행 권한이 아니다.
 2. **남은 정상30R 자연 플레이·장시간 실제 부하, GPU/순수 Render Thread·Memory Profiler peak/전체 잔류 검증부터** 이어간다. 사용자 목표는 GTX750Ti·RAM4~8GB·약8~9년 전 CPU급에서 안정적60FPS다. 구체 CPU/최종 해상도·배속 예산은 확정 전이며, 현재 Ryzen5600X/RTX3070 Editor 결과를 목표기기 통과로 쓰지 않는다. 현 D3D12 Editor는 GPU Profiler 미지원, Memory Profiler package 미검출이다. 무효0을 절감으로 해석하거나 패키지 설치/그래픽 API 변경을 자동 수행하지 않는다.
+   - 초반120초는 새 변경/실패 없이 반복하지 않는다. 후속은 정상 후반30R/긴 구간을 작은 단위로 진행하고, [최신 관측](normal_probe_20261023/README.md)의 실패/계측 조건을 먼저 확인한다. ToArray/CopyTo 충돌 경로와 capacity1 덮어쓰기 없는 옛 Observe.cs를 재사용하지 않는다. 대상 객체0은 전체 메모리 잔류 통과가 아니다.
 3. 모든 방향/보행 위상·선택/피격/강화·앞뒤 중첩·재등장 효과, 실제 조작·청취, 모델 풀링 직전 버전 단독 효과는 남아 있다. 기존 보스 전체 합성 미확정9건과 원래 순간 지연도 별도 미완료다. 사용자 본 범위의 깜박임·잘림·방향 이상 없음 보고를 전체 전수 통과로 확대하지 않는다.
 4. B의 현재 제한·원본 출력·개별RT와 방어형/보스 fallback을 유지한다. **A 재검토·출력 직접 배칭·RT 제거는 미채택/후속**이며 임의 확대하지 않는다. 이미 구현한 pooling/cache를 중복 구현하지 않는다.
 5. 사용자 씬·설정·미커밋/미추적·개인정보/분석 설정·폰트 도구 접근오류 표시를 임의 복원/삭제하지 않는다. 전투씬은 `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity` 하나 유지, 씬 YAML 직접수정 금지. 빌드·실행파일 실행·push는 별도 명시 요청 때만 한다.

@@ -1,0 +1,268 @@
+{
+  "running": false,
+  "reason": "Bound reached: Combat",
+  "elapsedWallSec": 15.00280650000002,
+  "completed": 0,
+  "wave": 1,
+  "phase": "Combat",
+  "errors": [],
+  "gameRenderedFrames": 3572,
+  "renderedPerWallSecond": 238.08878692130006,
+  "allObserved": {
+    "count": 3542,
+    "invalid": 0,
+    "meanMs": 4.202837120851513,
+    "medianMs": 4.0107001550495625,
+    "p95Ms": 5.372293293476105,
+    "p99Ms": 7.802395150065422,
+    "minMs": 2.8606008272618055,
+    "maxMs": 63.567593693733215,
+    "minFps": 15.731286051474127,
+    "maxFps": 349.57691072095844,
+    "avgFps": 237.93451215101945,
+    "frameGaps": 0
+  },
+  "combatOnly": {
+    "count": 3431,
+    "invalid": 0,
+    "meanMs": 4.228042431093733,
+    "medianMs": 4.025106318295002,
+    "p95Ms": 5.389101337641478,
+    "p99Ms": 7.837400771677494,
+    "minMs": 3.041000571101904,
+    "maxMs": 63.567593693733215,
+    "minFps": 15.731286051474127,
+    "maxFps": 328.8391358761406,
+    "avgFps": 236.51607482598385,
+    "frameGaps": 0
+  },
+  "byWave": [
+    {
+      "wave": "1",
+      "stats": {
+        "count": 3542,
+        "invalid": 0,
+        "meanMs": 4.202837120851513,
+        "medianMs": 4.0107001550495625,
+        "p95Ms": 5.372293293476105,
+        "p99Ms": 7.802395150065422,
+        "minMs": 2.8606008272618055,
+        "maxMs": 63.567593693733215,
+        "minFps": 15.731286051474127,
+        "maxFps": 349.57691072095844,
+        "avgFps": 237.93451215101945,
+        "frameGaps": 0
+      },
+      "peakAlive": 9.0,
+      "peakProjectiles": 4.0
+    }
+  ],
+  "counters": [
+    {
+      "name": "PlayerLoop",
+      "count": 3542,
+      "invalid": 0,
+      "distinct": 2900,
+      "usable": true,
+      "positive": 3542,
+      "zeroOrNegative": 0,
+      "meanRaw": 1357791.5866741955,
+      "maxRaw": 15725200.0
+    },
+    {
+      "name": "Main Thread",
+      "count": 3542,
+      "invalid": 0,
+      "distinct": 3207,
+      "usable": true,
+      "positive": 3542,
+      "zeroOrNegative": 0,
+      "meanRaw": 4200202.597402598,
+      "maxRaw": 65419000.0
+    },
+    {
+      "name": "GC Allocated In Frame",
+      "count": 3542,
+      "invalid": 0,
+      "distinct": 998,
+      "usable": true,
+      "positive": 3542,
+      "zeroOrNegative": 0,
+      "meanRaw": 49054.8133822699,
+      "maxRaw": 11282158.0
+    },
+    {
+      "name": "Draw Calls Count",
+      "count": 3542,
+      "invalid": 0,
+      "distinct": 1,
+      "usable": false,
+      "positive": 0,
+      "zeroOrNegative": 3542,
+      "meanRaw": 0.0,
+      "maxRaw": 0.0
+    },
+    {
+      "name": "SetPass Calls Count",
+      "count": 3542,
+      "invalid": 0,
+      "distinct": 31,
+      "usable": true,
+      "positive": 3542,
+      "zeroOrNegative": 0,
+      "meanRaw": 26.041501976284586,
+      "maxRaw": 58.0
+    },
+    {
+      "name": "CG.Mask.Present",
+      "count": 3542,
+      "invalid": 0,
+      "distinct": 1958,
+      "usable": true,
+      "positive": 3542,
+      "zeroOrNegative": 0,
+      "meanRaw": 222236.2507058159,
+      "maxRaw": 1069200.0
+    }
+  ],
+  "memory": {
+    "samples": 4,
+    "first": {
+      "frame": 777,
+      "elapsed": 0.010917100000028768,
+      "processWorkingSet": 0,
+      "totalAllocated": 1272602904,
+      "totalReserved": 3002638336,
+      "monoUsed": 192348160,
+      "renderTextures": [
+        {
+          "name": "Selected unit union mask",
+          "width": 114,
+          "height": 122,
+          "bytes": 56688
+        },
+        {
+          "name": "Core Guardian shared mask page",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 16778272
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 50,
+          "height": 65,
+          "bytes": 14056
+        }
+      ],
+      "meshes": 4,
+      "meshBytes": 8096,
+      "materials": 3,
+      "materialBytes": 7736
+    },
+    "last": {
+      "frame": 4348,
+      "elapsed": 15.002662600000008,
+      "processWorkingSet": 0,
+      "totalAllocated": 1277288240,
+      "totalReserved": 3002638336,
+      "monoUsed": 198287360,
+      "renderTextures": [
+        {
+          "name": "Selected unit union mask",
+          "width": 114,
+          "height": 122,
+          "bytes": 56688
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 121,
+          "height": 141,
+          "bytes": 69300
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 105,
+          "height": 107,
+          "bytes": 45996
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 67,
+          "height": 75,
+          "bytes": 21156
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 105,
+          "height": 107,
+          "bytes": 45996
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 76,
+          "height": 79,
+          "bytes": 25072
+        },
+        {
+          "name": "Core Guardian shared mask page",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 16778272
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 121,
+          "height": 141,
+          "bytes": 69300
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 105,
+          "height": 107,
+          "bytes": 45996
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 121,
+          "height": 141,
+          "bytes": 69300
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 105,
+          "height": 107,
+          "bytes": 45996
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 105,
+          "height": 107,
+          "bytes": 45996
+        },
+        {
+          "name": "Selected unit union mask",
+          "width": 105,
+          "height": 107,
+          "bytes": 45996
+        }
+      ],
+      "meshes": 17,
+      "meshBytes": 44184,
+      "materials": 3,
+      "materialBytes": 7736
+    },
+    "sampledPeakAllocated": 1277288240.0,
+    "sampledPeakMono": 204156928.0,
+    "sampledPeakMaskBytes": 17365064.0
+  },
+  "caveats": [
+    "Single current Editor observation; no comparable before; savings N/A",
+    "Early normal rounds under scripted legal decisions; not human play or 30R completion",
+    "120s run recorder values frozen due to missing WrapAroundWhenCapacityReached; those costs/GC/draw are unusable. Separate fixed 15s counter check only",
+    "Warmup 30 frames; LastValue read on Editor update can lag; inclusive CPU counters not additive",
+    "Resource scans every 5s and JSON checkpoints every 10s can affect following frame; no spikes removed",
+    "GPU and pure Render Thread unmeasured; no graphics API or package changes",
+    "Observed interval memory peaks only; no Memory Profiler snapshot or whole-process leak verdict; processWorkingSet API returned 0 and is invalid",
+    "VSync and auto tick/Editor scheduling affect FPS; not low-end Player benchmark; render count separately reported"
+  ]
+}

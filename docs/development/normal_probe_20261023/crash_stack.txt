@@ -1,0 +1,38 @@
+========== OUTPUTTING STACK TRACE ==================
+
+0x00007FFCDF9540F2 (Unity) profiling::CopyAndReset
+0x00007FFCDF954251 (Unity) profiling::ProfilerRecorderProxy::CopyTo_Pointer
+0x00007FFCDF3B3D8B (Unity) ProfilerRecorder_CUSTOM_CopyTo_Pointer
+0x000002102AAE730D (UnityEngine.CoreModule) (wrapper managed-to-native) Unity.Profiling.ProfilerRecorder:CopyTo_Pointer_Injected (Unity.Profiling.ProfilerRecorder&,Unity.Profiling.ProfilerRecorderSample*,int,bool)
+0x000002102AAE724B (UnityEngine.CoreModule) Unity.Profiling.ProfilerRecorder:CopyTo_Pointer (Unity.Profiling.ProfilerRecorder,Unity.Profiling.ProfilerRecorderSample*,int,bool)
+0x000002102AAE6F5B (UnityEngine.CoreModule) Unity.Profiling.ProfilerRecorder:ToArray ()
+0x000002102AB45B93 (PipelineRunScript_Observe_0c5bbd12191845a7994cc1baa6748dba) [C:\Users\edcde\OneDrive\Desktop\CD\docs\development\normal_probe_20261023\Observe.cs:67] CGNormalObservation/<>c:<Finish>b__17_0 (System.Collections.Generic.KeyValuePair`2<string, Unity.Profiling.ProfilerRecorder>) 
+0x000002102AB4576C (System.Core) System.Linq.Enumerable/SelectEnumerableIterator`2<System.Collections.Generic.KeyValuePair`2<string, Unity.Profiling.ProfilerRecorder>, <>f__AnonymousType9`5<string, bool, int, bool, <>f__AnonymousType10`2<long, long>[]>>:ToArray ()
+0x0000020E157E8947 (System.Core) System.Linq.Enumerable:ToArray<TSource_REF> (System.Collections.Generic.IEnumerable`1<TSource_REF>)
+0x000002102AB44B4B (PipelineRunScript_Observe_0c5bbd12191845a7994cc1baa6748dba) [C:\Users\edcde\OneDrive\Desktop\CD\docs\development\normal_probe_20261023\Observe.cs:67] CGNormalObservation:Finish (string) 
+0x000002102AB3C543 (PipelineRunScript_Observe_0c5bbd12191845a7994cc1baa6748dba) [C:\Users\edcde\OneDrive\Desktop\CD\docs\development\normal_probe_20261023\Observe.cs:55] CGNormalObservation:Poll () 
+0x0000020FCD3FC14D (UnityEditor.CoreModule) UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+0x0000020FD44A9E85 (mscorlib) (wrapper runtime-invoke) object:runtime_invoke_void (object,intptr,intptr,intptr)
+0x00007FFCD8D378AE (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\mini\mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007FFCD8C79104 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3068] do_runtime_invoke 
+0x00007FFCD8C791F0 (mono-2.0-bdwgc) [C:\build\output\Unity-Technologies\mono\mono\metadata\object.c:3115] mono_runtime_invoke 
+0x00007FFCDFE4AF1A (Unity) scripting_method_invoke
+0x00007FFCDFE4EC1E (Unity) ScriptingInvocation::Invoke
+0x00007FFCDFE4C5E1 (Unity) ScriptingInvocation::Invoke<void>
+0x00007FFCDD3A33BE (Unity) Scripting::UnityEditor::EditorApplicationProxy::Internal_CallUpdateFunctions
+0x00007FFCDD94ACC7 (Unity) SceneTracker::Update
+0x00007FFCDDE04D87 (Unity) Application::TickTimer
+0x00007FFCDD6D0EBC (Unity) MainMessageLoop
+0x00007FFCDD6D9A61 (Unity) UnityMain
+0x00007FF71CF7260A (Unity) __scrt_common_main_seh
+0x00007FFDED1EDDA7 (KERNEL32) BaseThreadInitThunk
+0x00007FFDEEDDEE4C (ntdll) RtlUserThreadStart
+
+========== END OF STACKTRACE ===========
+
+A crash has been intercepted by the crash handler. For call stack and other details, see the latest crash report generated in:
+ * C:/Users/edcde/AppData/Local/Temp/Unity/Editor/Crashes
+[INFO ] [relay] log Client disconnected - blocking and caching for recovery
+[WARN ] [relay] connection.lost clientId=null
+[WARN ] [relay] log Client disconnected - sessions will persist until auto-shutdown, reason: Client disconnected
+[INFO ] [relay] log Auto-shutdown timer started due to client disconnection
