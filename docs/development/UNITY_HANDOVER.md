@@ -17,6 +17,8 @@
 
 ## 실제 검증 결과
 
+- 2026-10-23 사용자 요청의 짧은 신규 비용 조회만 수행: 자체 진단 전투 적128~129/포탑15, warm10+60프레임1회. Main Thread inclusive 평균 LateUpdate11.000ms, CG.Mask.Present7.329ms, PhotoShadow.Present6.480ms(그 안 Contact4.579/Cast1.844), 일반 Update2.379ms, Mask.Output1.771/CacheLookup1.656/OutputBatch1.311/PageProducer0.443ms. 상하위·공유 경로라 합산 금지. GPU 미측정·최적화 전후 판정 아님. [원본](../../Logs/CG_QuickCost_20261023/result.json). 제품 변경/테스트/빌드 없음. 자체 Play 종료 후 scene clean/compiling false/background false/Profiler OFF/driver true 복원.
+
 - 최신 B: 같은128적/실제15포탑·고정dt·3회에서 Draw2087.311→1948.954(**−6.628%**), SetPass458.993→319.426(**−30.407%**), native 평균36.217→30.169ms, 평균FPS27.612→33.147(**+20.047%**). 조건당542native/540실제Tick, 이벤트/최종 상태3회 일치. Editor 주입 조건의 부분 개선이며 정상30R/장시간/Player/GPU 성능 통과나 당초70%/50% 목표 달성은 아니다. [최종 분석](render_batching_20261022/b2_benchmark/analysis_shipping.json).
 - 최신 B 대상검사 **신규24+관련기존47+실제씬30R·재시작1=72개 통과**. 4종132적/15포탑·줌8.5/4.25 정지 화면은 원본 대비 차이0(Overlay HUD 미포함). 기존169개 전체를 반복하지 않았으며 검사 수를 합산해 새 전체 통과 수로 쓰지 않는다. [검사 집계](render_batching_20261022/shipping_test_summary.json), [4종 화면](render_batching_20261022/b_all_kinds_scene_pixels.json).
 - 앞선 CPU/GC 누적: Tick−38.616%·View−9.599%·Main Thread GC.Alloc/frame−61.504%, 평균FPS30.169→30.026(−0.476%)로 FPS 개선은 확인되지 않았다. EditMode127+PlayMode42=169개 통과. 보스 미존재 기본 handle의 HUD 오류도 수정했다. [누적 결과](runtime_validation_20261021/RESULTS.md). B와 조건/비교 기준이 달라 개선율을 합산하지 않는다. 최초 RT 재사용 및 동일 본체 공유의 별도 성과는 각 담당 문서와 Notion 검사 이력에 둔다.
