@@ -54,6 +54,11 @@ public class CoreGuardianMaskPageTests
         }
     }
     [Test]
+    public void TinyCameraMatrixChangeInvalidatesSlot()
+    {
+        using(var view=new View()){var slot=Slot(view.camera,10);var matrix=view.camera.worldToCameraMatrix;matrix.m03+=.0000001f;view.camera.worldToCameraMatrix=matrix;Assert.That(Valid(slot),Is.False);}
+    }
+    [Test]
     public void DisableDestroyUnloadReleaseOnlyOwnedResources()
     {
         using(var view=new View())

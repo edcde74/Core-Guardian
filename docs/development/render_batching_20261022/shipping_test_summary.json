@@ -1,0 +1,83 @@
+{
+  "editMode": [
+    {
+      "file": "shipping_CoreGuardianBodyMaskSharingTests.json",
+      "summary": {
+        "Total": 31,
+        "Passed": 31,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "shipping_CoreGuardianMaskOutputBatchTests.json",
+      "summary": {
+        "Total": 10,
+        "Passed": 10,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "shipping_CoreGuardianMaskPageTests.json",
+      "summary": {
+        "Total": 5,
+        "Passed": 5,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "shipping_CoreGuardianMaskProducerTests.json",
+      "summary": {
+        "Total": 9,
+        "Passed": 9,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "shipping_CoreGuardianObjectEmphasisTests.json",
+      "summary": {
+        "Total": 3,
+        "Passed": 3,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "shipping_CoreGuardianPhotoShadowTests.json",
+      "summary": {
+        "Total": 10,
+        "Passed": 10,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    },
+    {
+      "file": "shipping_CoreGuardianSelectionOutlineTests.json",
+      "summary": {
+        "Total": 3,
+        "Passed": 3,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      }
+    }
+  ],
+  "playMode": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "total": 72.0,
+  "failed": 0.0
+}

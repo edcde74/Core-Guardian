@@ -1,0 +1,62 @@
+[
+  {
+    "path": "Assets/Scripts/CoreGuardianBodyMaskCache.cs",
+    "sha256": "DF2C6FBC4DD5656825CA1C95960745A4842EA4A2305542A67E95D41A13A52125"
+  },
+  {
+    "path": "Assets/Scripts/CoreGuardianMaskPage.cs",
+    "sha256": "7C7F5BBBEDF3F9B42D6BC7FF74FF7F2B6C3A9BFCB40F1C3A1E3CC6684745353B"
+  },
+  {
+    "path": "Assets/Scripts/CoreGuardianMaskOutputBatch.cs",
+    "sha256": "9B29FBE20C8E0D069AA8D4967D7E3483D6B3756DDC81DA253682F1CCD8C1BDCE"
+  },
+  {
+    "path": "Assets/Scripts/CoreGuardianMaskProducerBatch.cs",
+    "sha256": "D238E280EE3C66B7FB9AC5005C39232A86C14F33E8510CD05AD5456599D03D74"
+  },
+  {
+    "path": "Assets/Scripts/CoreGuardianSelectionOutline.cs",
+    "sha256": "E5E83A55ECA45EEAC2C125A9E402A28C26C9538FC733A45977972B44FF0A1D84"
+  },
+  {
+    "path": "Assets/Scripts/CoreGuardianUnitAnimation.cs",
+    "sha256": "EF2E4CC0C90D84E41A2E3BFEEFE33944256E71022388FBBB6946AD78ECC1C4EF"
+  },
+  {
+    "path": "Assets/Resources/CoreGuardian/BatchedSelectionMask.shader",
+    "sha256": "A0212EF28C17BEA6F3FF92A212EDF96E62CFE1CF968896847B8AA3176D3827F3"
+  },
+  {
+    "path": "Assets/Resources/CoreGuardian/BatchedMaskOutput.shader",
+    "sha256": "66693E79BE027FF3B572B1CE9A67C8B2220CEB5E3282DA863BB72A74245B8CFA"
+  },
+  {
+    "path": "Packages/manifest.json",
+    "sha256": "5B8F4F966B64223C9B725B01ABED58B81A68B4AC46B6A0DFF7CC7B37FBE8E685"
+  },
+  {
+    "path": "Packages/packages-lock.json",
+    "sha256": "88F2B8BAE1E33274B2D90F36F9A0B953DED6C0896F0DC52394A5A9C5A0EF2951"
+  },
+  {
+    "path": "Assets\\Resources\\CoreGuardian\\waves.csv",
+    "sha256": "310C2FE55AC8ABFDD2670CBAF420216A7761944648771A493F63D59020CF57E1"
+  },
+  {
+    "path": "Assets\\Resources\\CoreGuardian\\enemies.csv",
+    "sha256": "E31E93AEED59FC285F152CE0755C7AAACE40576EFED6E312C0C82424B1EF8929"
+  },
+  {
+    "path": "Assets\\Resources\\CoreGuardian\\upgrades.csv",
+    "sha256": "14516B81277172CDDD9EFE05FBC294E77F4DF3F2DBC1331992ED91C79F429AEB"
+  },
+  {
+    "path": "Assets\\Resources\\CoreGuardian\\towers.csv",
+    "sha256": "095F71A1C1C6BEBD2D790437A7BC253B7ED32AA2CD02600FC128558C2A1EDFCD"
+  },
+  {
+    "path": "Assets\\Resources\\CoreGuardian\\stage.csv",
+    "sha256": "7A286B43AD852C8DCE499CF35A2B27317764C771CB3D69287C3C2C3F674C5BB6"
+  }
+]

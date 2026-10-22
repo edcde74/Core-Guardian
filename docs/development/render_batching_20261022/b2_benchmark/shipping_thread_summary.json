@@ -1,0 +1,66 @@
+[
+  {
+    "side": "baseline_late",
+    "thread": "Main Thread",
+    "count": 542,
+    "wallMean": 36.216766552767574,
+    "presentMs": null,
+    "commandsMs": null,
+    "gpuNonzero": 0
+  },
+  {
+    "side": "baseline_late",
+    "thread": "Render Thread",
+    "count": 542,
+    "wallMean": 36.21701251162363,
+    "presentMs": null,
+    "commandsMs": 17.965626141190487,
+    "gpuNonzero": 0
+  },
+  {
+    "side": "baseline_late",
+    "standard": 454.02767527675275,
+    "srp": 1631.30073800738,
+    "setPass": 459.07749077490774,
+    "frame": {
+      "count": 542,
+      "min": 29.9388,
+      "max": 231.2961,
+      "mean": 36.21676655276752,
+      "p95": 43.9607,
+      "p99": 54.603
+    }
+  },
+  {
+    "side": "b_shipping",
+    "thread": "Main Thread",
+    "count": 542,
+    "wallMean": 30.168708803136553,
+    "presentMs": null,
+    "commandsMs": null,
+    "gpuNonzero": 0
+  },
+  {
+    "side": "b_shipping",
+    "thread": "Render Thread",
+    "count": 542,
+    "wallMean": 30.168953302583052,
+    "presentMs": null,
+    "commandsMs": 16.59348391234733,
+    "gpuNonzero": 0
+  },
+  {
+    "side": "b_shipping",
+    "standard": 314.49630996309963,
+    "srp": 1632.4723247232473,
+    "setPass": 319.5129151291513,
+    "frame": {
+      "count": 542,
+      "min": 23.5437,
+      "max": 54.3092,
+      "mean": 30.168708803136532,
+      "p95": 39.4319,
+      "p99": 44.9809
+    }
+  }
+]

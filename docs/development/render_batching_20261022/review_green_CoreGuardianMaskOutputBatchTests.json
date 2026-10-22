@@ -1,0 +1,106 @@
+{
+  "success": true,
+  "command": "command run_tests",
+  "data": {
+    "command": "run_tests",
+    "parameters": {
+      "mode": "editor",
+      "filter": "CoreGuardianMaskOutputBatchTests",
+      "filter_type": "testName"
+    },
+    "result": {
+      "Summary": {
+        "Total": 10,
+        "Passed": 10,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      },
+      "Results": [
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.AtlasEdgesMatchOriginalClamp",
+          "Status": "Passed",
+          "Duration": 0.1091617,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.ContactBandAndAlphaOverlapMatchOriginal",
+          "Status": "Passed",
+          "Duration": 0.0899643,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.DestroyedCameraRestoresOriginalRendererMaterial",
+          "Status": "Passed",
+          "Duration": 0.0105409,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.DestroyOrHideRemovesOnlyItsOutput",
+          "Status": "Passed",
+          "Duration": 0.015354,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.InterleavedBodyBreaksBatch(False)",
+          "Status": "Passed",
+          "Duration": 0.0802136,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.InterleavedBodyBreaksBatch(True)",
+          "Status": "Passed",
+          "Duration": 0.0957184,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.NativePresentRegistersWithoutChangingLogicalVisibility",
+          "Status": "Passed",
+          "Duration": 0.0093931,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.SharedPageKeepsOverlappingRendererIdentityAndContactPixels",
+          "Status": "Passed",
+          "Duration": 0.0707641,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.SortingGroupOrForeignCameraFallsBack",
+          "Status": "Passed",
+          "Duration": 0.0169254,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskOutputBatchTests.TwoDistinctMasksKeepIndividualInteriorAndOutline",
+          "Status": "Passed",
+          "Duration": 0.0921694,
+          "Message": null,
+          "StackTrace": null
+        }
+      ],
+      "Duration": 3.25,
+      "StatusPath": null,
+      "Mode": "EditMode",
+      "FilterApplied": "testname: CoreGuardianMaskOutputBatchTests",
+      "success": true,
+      "result": null
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,42 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/render_batching_20261022/CachedNativeCounters.cs",
+      "entry": "CGCachedNativeCounters.Run"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 77,
+      "executeMs": 2759,
+      "assemblyName": "PipelineRunScript_CachedNativeCounters_41a05836bc444c69b4e3a30a481c8232",
+      "success": true,
+      "result": [
+        {
+          "side": "b3_cached",
+          "run": 0,
+          "frames": 180
+        },
+        {
+          "side": "b3_cached",
+          "run": 1,
+          "frames": 181
+        },
+        {
+          "side": "b3_cached",
+          "run": 2,
+          "frames": 181
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

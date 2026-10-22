@@ -1,0 +1,103 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/render_batching_20261022/B3MaskPixels.cs",
+      "entry": "CGB3MaskPixels.Run"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 217,
+      "executeMs": 667,
+      "assemblyName": "PipelineRunScript_B3MaskPixels_4df63e7886dd499f807aba6421d33fb5",
+      "success": true,
+      "result": [
+        {
+          "zoom": 8.5,
+          "masks": 145,
+          "changed": 7,
+          "failed": 7,
+          "draws": 7,
+          "pages": 3,
+          "pageBytes": 50334816,
+          "failures": [
+            {
+              "name": "Enemy_Attack_66",
+              "width": 103,
+              "height": 107,
+              "difference": 1
+            },
+            {
+              "name": "Enemy_Attack_102",
+              "width": 103,
+              "height": 107,
+              "difference": 1
+            },
+            {
+              "name": "Enemy_Attack_6",
+              "width": 103,
+              "height": 107,
+              "difference": 1
+            },
+            {
+              "name": "Enemy_Attack_114",
+              "width": 103,
+              "height": 107,
+              "difference": 1
+            },
+            {
+              "name": "Enemy_Attack_126",
+              "width": 103,
+              "height": 107,
+              "difference": 1
+            },
+            {
+              "name": "Enemy_Attack_30",
+              "width": 103,
+              "height": 107,
+              "difference": 1
+            },
+            {
+              "name": "Enemy_Attack_42",
+              "width": 103,
+              "height": 107,
+              "difference": 1
+            }
+          ]
+        },
+        {
+          "zoom": 4.25,
+          "masks": 138,
+          "changed": 2,
+          "failed": 2,
+          "draws": 7,
+          "pages": 4,
+          "pageBytes": 67113088,
+          "failures": [
+            {
+              "name": "Enemy_Attack_109",
+              "width": 178,
+              "height": 107,
+              "difference": 1
+            },
+            {
+              "name": "Enemy_Attack_85",
+              "width": 178,
+              "height": 107,
+              "difference": 1
+            }
+          ]
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

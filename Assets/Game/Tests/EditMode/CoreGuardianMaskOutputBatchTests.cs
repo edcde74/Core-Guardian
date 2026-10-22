@@ -60,11 +60,16 @@ public class CoreGuardianMaskOutputBatchTests
         {
             var t=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianMaskOutputBatch")).FirstOrDefault(x=>x!=null);
             if(t!=null){foreach(var owner in owners)t.GetMethod("Release").Invoke(null,new object[]{owner});t.GetMethod("Restore").Invoke(null,new object[]{camera});}
-            Page.GetMethod("ReleaseCamera").Invoke(null,new object[]{camera});camera.targetTexture=null;image.Release();
+            Page.GetMethod("ReleaseCamera").Invoke(null,new object[]{camera});if(camera!=null)camera.targetTexture=null;image.Release();
             UnityEngine.Object.DestroyImmediate(root);UnityEngine.Object.DestroyImmediate(image);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);
         }
     }
     static int Batched=>(int)Batch.GetProperty("LastBatchedOutputs").GetValue(null);
+    [Test] public void DestroyedCameraRestoresOriginalRendererMaterial()
+    {
+        using(var f=new Fixture(overlap:true))
+        {var originals=f.sources.Select(s=>s.sharedMaterial).ToArray();f.Register(0,false,true);f.Register(1,false,true);Call("Flush",f.camera);UnityEngine.Object.DestroyImmediate(f.camera.gameObject);Call("Restore",f.camera);for(int i=0;i<2;i++)Assert.That(f.sources[i].sharedMaterial,Is.SameAs(originals[i]));}
+    }
     [Test] public void SharedPageKeepsOverlappingRendererIdentityAndContactPixels()
     {
         var type=Batch;

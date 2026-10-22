@@ -1,0 +1,6270 @@
+[
+  {
+    "frame": 0,
+    "threadName": "Main Thread",
+    "frameTimeMs": 53.5151,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.3871999724942725,
+      "CG.Mask.Resources": 0.70979999724659137,
+      "CG.Mask.CacheLookup": 1.7766999895684421,
+      "CG.Mask.Output": 1.8146999855525792,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4107000827789307,
+      "CG.Mask.PageProducer": 0.54689997434616089
+    },
+    "counters": {
+      "Standard Draw Calls Count": 317,
+      "SRP Batcher Draw Calls Count": 1584,
+      "SetPass Calls Count": 327
+    }
+  },
+  {
+    "frame": 0,
+    "threadName": "Render Thread",
+    "frameTimeMs": 53.5362,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 25.185399852693081,
+      "Semaphore.WaitForSignal": 25.179599634371698
+    },
+    "counters": {
+      "Standard Draw Calls Count": 317,
+      "SRP Batcher Draw Calls Count": 1584,
+      "SetPass Calls Count": 327
+    }
+  },
+  {
+    "frame": 1,
+    "threadName": "Main Thread",
+    "frameTimeMs": 56.9678,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 11.483799942710903,
+      "CG.Mask.Resources": 0.053799998684553429,
+      "CG.Mask.CacheLookup": 2.5750999888405204,
+      "CG.Mask.Output": 2.6265999912284315,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.9526000022888184
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 1,
+    "threadName": "Render Thread",
+    "frameTimeMs": 56.9732,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 28.821900457813172,
+      "Semaphore.WaitForSignal": 28.817399792707874
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 2,
+    "threadName": "Main Thread",
+    "frameTimeMs": 42.0096,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 9.7041999462235253,
+      "CG.Mask.Resources": 0.037299999210517853,
+      "CG.Mask.CacheLookup": 2.8709999872371554,
+      "CG.Mask.Output": 2.1211999929510057,
+      "Semaphore.WaitForSignal": 0.00049999998009298,
+      "CG.Mask.OutputBatch": 1.9119999408721924
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 2,
+    "threadName": "Render Thread",
+    "frameTimeMs": 41.9914,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 9.4214999766190886,
+      "Semaphore.WaitForSignal": 9.4165000088323723
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 3,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.8447,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9363999878405593,
+      "CG.Mask.Resources": 0.030999999267805833,
+      "CG.Mask.CacheLookup": 1.8224999830126762,
+      "CG.Mask.Output": 2.0310999904759228,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3373000621795654,
+      "CG.Mask.PageProducer": 0.48769998550415039
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 3,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.848,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.558699746026832,
+      "Semaphore.WaitForSignal": 18.554399666310928
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 4,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.6967,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5955999537545722,
+      "CG.Mask.Resources": 0.029399999322777148,
+      "CG.Mask.CacheLookup": 1.7699999834876508,
+      "CG.Mask.Output": 1.8094999850727618,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4110000133514404,
+      "CG.Mask.PageProducer": 0.49689999222755432
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 4,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.6946,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.460500464345387,
+      "Semaphore.WaitForSignal": 19.455899728796794
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 5,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.6854,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9670999546069652,
+      "CG.Mask.Resources": 0.035499999175954144,
+      "CG.Mask.CacheLookup": 1.8904999853111804,
+      "CG.Mask.Output": 1.9368999940343201,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3940000534057617,
+      "CG.Mask.PageProducer": 0.5131000280380249
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 5,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.6854,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.470699879908352,
+      "Semaphore.WaitForSignal": 18.465599841008952
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 6,
+    "threadName": "Main Thread",
+    "frameTimeMs": 44.0982,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.680599921324756,
+      "CG.Mask.Resources": 0.03379999908793252,
+      "CG.Mask.CacheLookup": 2.197899991646409,
+      "CG.Mask.Output": 1.9973999932408333,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 4.538599967956543,
+      "CG.Mask.PageProducer": 0.67259997129440308
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 6,
+    "threadName": "Render Thread",
+    "frameTimeMs": 44.0966,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 29.816499565073173,
+      "Semaphore.WaitForSignal": 29.810000485907949
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 7,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.1554,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.4937999588728417,
+      "CG.Mask.Resources": 0.035099999106023461,
+      "CG.Mask.CacheLookup": 2.0452999880071729,
+      "CG.Mask.Output": 2.1314999829046428,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4347999095916748,
+      "CG.Mask.PageProducer": 0.49129998683929443
+    },
+    "counters": {
+      "Standard Draw Calls Count": 335,
+      "SRP Batcher Draw Calls Count": 1684,
+      "SetPass Calls Count": 348
+    }
+  },
+  {
+    "frame": 7,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.1569,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.569699949657661,
+      "Semaphore.WaitForSignal": 19.564900290220976
+    },
+    "counters": {
+      "Standard Draw Calls Count": 335,
+      "SRP Batcher Draw Calls Count": 1684,
+      "SetPass Calls Count": 348
+    }
+  },
+  {
+    "frame": 8,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.1211,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5496999721217435,
+      "CG.Mask.Resources": 0.036199999223754276,
+      "CG.Mask.CacheLookup": 1.5940999838057905,
+      "CG.Mask.Output": 1.8593999873846769,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4688999652862549,
+      "CG.Mask.PageProducer": 0.52719998359680176
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 8,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.1234,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.765800586974365,
+      "Semaphore.WaitForSignal": 20.762000642884232
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 9,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.2553,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.3172999683010858,
+      "CG.Mask.Resources": 0.030699999391799793,
+      "CG.Mask.CacheLookup": 1.5770999873057008,
+      "CG.Mask.Output": 1.7660999884828925,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4235999584198,
+      "CG.Mask.PageProducer": 0.52819997072219849
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 9,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.258,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.017499138826679,
+      "Semaphore.WaitForSignal": 20.01300087790878
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 10,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.2346,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.40839998118463,
+      "CG.Mask.Resources": 0.031499999204243068,
+      "CG.Mask.CacheLookup": 1.6293999897316098,
+      "CG.Mask.Output": 1.7991999885998666,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4514999389648438,
+      "CG.Mask.PageProducer": 0.555400013923645
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 10,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.2298,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.711999669627403,
+      "Semaphore.WaitForSignal": 19.707599860383198
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 11,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.6626,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4124999388295691,
+      "CG.Mask.Resources": 0.028999999303778168,
+      "CG.Mask.CacheLookup": 1.6548999848309904,
+      "CG.Mask.Output": 1.7902999855577946,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.7588000297546387
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 11,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.6644,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.555399571276212,
+      "Semaphore.WaitForSignal": 20.551800003442622
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 12,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.7218,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6182999598968308,
+      "CG.Mask.Resources": 0.030199999273463618,
+      "CG.Mask.CacheLookup": 1.7160999858751893,
+      "CG.Mask.Output": 1.8290999867022038,
+      "Semaphore.WaitForSignal": 0.00029999998514540493,
+      "CG.Mask.OutputBatch": 2.3448998928070068,
+      "CG.Mask.PageProducer": 0.48069998621940613
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 12,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.7248,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.144299792962556,
+      "Semaphore.WaitForSignal": 20.140200138259388
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 13,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.4062,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8543999618268572,
+      "CG.Mask.Resources": 0.039699999077129178,
+      "CG.Mask.CacheLookup": 1.8271999882999808,
+      "CG.Mask.Output": 1.9541999842040241,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.42930006980896,
+      "CG.Mask.PageProducer": 0.49570000171661377
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 13,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.406,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.644799820220214,
+      "Semaphore.WaitForSignal": 18.640700584444858
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 14,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.4475,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9968999707489274,
+      "CG.Mask.Resources": 0.030699999239004683,
+      "CG.Mask.CacheLookup": 1.8915999848395586,
+      "CG.Mask.Output": 1.9397999881766737,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.7370998859405518,
+      "CG.Mask.PageProducer": 0.57400000095367432
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 14,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.4453,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.5698001340279,
+      "Semaphore.WaitForSignal": 17.5648004301911
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 15,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.0091,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7103999541432131,
+      "CG.Mask.Resources": 0.0305999992924626,
+      "CG.Mask.CacheLookup": 1.7970999889075756,
+      "CG.Mask.Output": 1.8788999868556857,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3413999080657959,
+      "CG.Mask.PageProducer": 0.49239999055862427
+    },
+    "counters": {
+      "Standard Draw Calls Count": 311,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 315
+    }
+  },
+  {
+    "frame": 15,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.0086,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.368099993756914,
+      "Semaphore.WaitForSignal": 18.363600079137541
+    },
+    "counters": {
+      "Standard Draw Calls Count": 311,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 315
+    }
+  },
+  {
+    "frame": 16,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.4987,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6211999626248144,
+      "CG.Mask.Resources": 0.032499999178980943,
+      "CG.Mask.CacheLookup": 1.7601999905891716,
+      "CG.Mask.Output": 1.8282999857328832,
+      "Semaphore.WaitForSignal": 0.00070000001869630069,
+      "CG.Mask.OutputBatch": 2.3122999668121338,
+      "CG.Mask.PageProducer": 0.48579999804496765
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 16,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.4974,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.338199946207169,
+      "Semaphore.WaitForSignal": 18.331999669680954
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 17,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.2401,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.3911999638366979,
+      "CG.Mask.Resources": 0.031699999250122346,
+      "CG.Mask.CacheLookup": 1.6232999865897,
+      "CG.Mask.Output": 1.7912999861873686,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.635699987411499,
+      "CG.Mask.PageProducer": 0.55529999732971191
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 17,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.2427,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.348800020954513,
+      "Semaphore.WaitForSignal": 20.344600252974487
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 18,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.3405,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.5938999642967246,
+      "CG.Mask.Resources": 0.037099998990015592,
+      "CG.Mask.CacheLookup": 1.7838999920058995,
+      "CG.Mask.Output": 2.0802999869920313,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4079000949859619,
+      "CG.Mask.PageProducer": 0.499099999666214
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 18,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.3433,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 22.981900789884094,
+      "Semaphore.WaitForSignal": 22.978199925441004
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 19,
+    "threadName": "Main Thread",
+    "frameTimeMs": 41.2444,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4672999630856793,
+      "CG.Mask.Resources": 0.033799999131588265,
+      "CG.Mask.CacheLookup": 1.6203999931458384,
+      "CG.Mask.Output": 1.8300999864004552,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.8925999402999878
+    },
+    "counters": {
+      "Standard Draw Calls Count": 305,
+      "SRP Batcher Draw Calls Count": 1639,
+      "SetPass Calls Count": 309
+    }
+  },
+  {
+    "frame": 19,
+    "threadName": "Render Thread",
+    "frameTimeMs": 41.2473,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 22.261699354174198,
+      "Semaphore.WaitForSignal": 22.25730023363576
+    },
+    "counters": {
+      "Standard Draw Calls Count": 305,
+      "SRP Batcher Draw Calls Count": 1639,
+      "SetPass Calls Count": 309
+    }
+  },
+  {
+    "frame": 20,
+    "threadName": "Main Thread",
+    "frameTimeMs": 39.9465981,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4930999658245128,
+      "CG.Mask.Resources": 0.034499999223044142,
+      "CG.Mask.CacheLookup": 1.5957999920938164,
+      "CG.Mask.Output": 1.8400999815203249,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.7127000093460083
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 20,
+    "threadName": "Render Thread",
+    "frameTimeMs": 39.9451981,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.534300238206924,
+      "Semaphore.WaitForSignal": 20.531000244001916
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 21,
+    "threadName": "Main Thread",
+    "frameTimeMs": 40.7152,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 9.2823999421088956,
+      "CG.Mask.Resources": 0.033999999075604137,
+      "CG.Mask.CacheLookup": 2.6717999891843647,
+      "CG.Mask.Output": 2.0926999859511852,
+      "Semaphore.WaitForSignal": 0.00060000002122251317,
+      "CG.Mask.OutputBatch": 3.5378000736236572,
+      "CG.Mask.PageProducer": 0.84829998016357422
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 21,
+    "threadName": "Render Thread",
+    "frameTimeMs": 40.7154,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 10.311100162696675,
+      "Semaphore.WaitForSignal": 10.3062998451569
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 22,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.471199,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.3447999625641387,
+      "CG.Mask.Resources": 0.035099999207886867,
+      "CG.Mask.CacheLookup": 1.5752999854739755,
+      "CG.Mask.Output": 1.779999986756593,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3994998931884766,
+      "CG.Mask.PageProducer": 0.491100013256073
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 22,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.2173,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.585699702518468,
+      "Semaphore.WaitForSignal": 19.581999950110912
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 23,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.6007,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6071999696432613,
+      "CG.Mask.Resources": 0.030399999290239066,
+      "CG.Mask.CacheLookup": 1.8013999899849296,
+      "CG.Mask.Output": 1.7891999916173518,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3543999195098877,
+      "CG.Mask.PageProducer": 0.49630001187324524
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 23,
+    "threadName": "Render Thread",
+    "frameTimeMs": 27.8534,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.195399974210886,
+      "Semaphore.WaitForSignal": 17.191400132418494
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 24,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.1293,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6300999732047785,
+      "CG.Mask.Resources": 0.032799999302369542,
+      "CG.Mask.CacheLookup": 1.7634999912697822,
+      "CG.Mask.Output": 1.8329999842680991,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4453999996185303,
+      "CG.Mask.PageProducer": 0.53200000524520874
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 24,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.1376,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.319200091027596,
+      "Semaphore.WaitForSignal": 18.314299584133551
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 25,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.7227,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9188999449252151,
+      "CG.Mask.Resources": 0.03149999922607094,
+      "CG.Mask.CacheLookup": 1.848599991761148,
+      "CG.Mask.Output": 1.9163999911397696,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4963998794555664,
+      "CG.Mask.PageProducer": 0.52240002155303955
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 25,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.7107,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.392199413319759,
+      "Semaphore.WaitForSignal": 19.387199836019136
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 26,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.9658,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.3330999733298086,
+      "CG.Mask.Resources": 0.034699999247095548,
+      "CG.Mask.CacheLookup": 1.5974999882746488,
+      "CG.Mask.Output": 1.7995999874547124,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4783999919891357,
+      "CG.Mask.PageProducer": 0.51569998264312744
+    },
+    "counters": {
+      "Standard Draw Calls Count": 333,
+      "SRP Batcher Draw Calls Count": 1669,
+      "SetPass Calls Count": 348
+    }
+  },
+  {
+    "frame": 26,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.9664,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.180500202921394,
+      "Semaphore.WaitForSignal": 20.176300158891536
+    },
+    "counters": {
+      "Standard Draw Calls Count": 333,
+      "SRP Batcher Draw Calls Count": 1669,
+      "SetPass Calls Count": 348
+    }
+  },
+  {
+    "frame": 27,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.2567,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4718999598408118,
+      "CG.Mask.Resources": 0.037799999125127215,
+      "CG.Mask.CacheLookup": 1.6504999850876629,
+      "CG.Mask.Output": 1.8337999884970486,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.30679988861084,
+      "CG.Mask.PageProducer": 0.4828999936580658
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 27,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.2602,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.117800018655544,
+      "Semaphore.WaitForSignal": 20.113599483091093
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 28,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.5404,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7335999681381509,
+      "CG.Mask.Resources": 0.032099999174533878,
+      "CG.Mask.CacheLookup": 1.7408999900799245,
+      "CG.Mask.Output": 1.9066999834030867,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.6898000240325928,
+      "CG.Mask.PageProducer": 0.58259999752044678
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 28,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.5365,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.422599883240764,
+      "Semaphore.WaitForSignal": 21.417999383062124
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 29,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.5043,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5185999802488368,
+      "CG.Mask.Resources": 0.035599999413534533,
+      "CG.Mask.CacheLookup": 1.6196999922394753,
+      "CG.Mask.Output": 1.8154999921098351,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3880000114440918,
+      "CG.Mask.PageProducer": 0.515999972820282
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 29,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.5043,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.08410011484375,
+      "Semaphore.WaitForSignal": 20.079700293186761
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 30,
+    "threadName": "Main Thread",
+    "frameTimeMs": 42.517,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.0247999755083583,
+      "CG.Mask.Resources": 0.506900001768372,
+      "CG.Mask.CacheLookup": 1.7085999858099967,
+      "CG.Mask.Output": 1.8527999939396977,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.6974999904632568
+    },
+    "counters": {
+      "Standard Draw Calls Count": 298,
+      "SRP Batcher Draw Calls Count": 1584,
+      "SetPass Calls Count": 304
+    }
+  },
+  {
+    "frame": 30,
+    "threadName": "Render Thread",
+    "frameTimeMs": 42.5221,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.570400531309133,
+      "Semaphore.WaitForSignal": 21.564999961992726
+    },
+    "counters": {
+      "Standard Draw Calls Count": 298,
+      "SRP Batcher Draw Calls Count": 1584,
+      "SetPass Calls Count": 304
+    }
+  },
+  {
+    "frame": 31,
+    "threadName": "Main Thread",
+    "frameTimeMs": 46.3108,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.97239996746066,
+      "CG.Mask.Resources": 0.031499999182415195,
+      "CG.Mask.CacheLookup": 1.8847999880090356,
+      "CG.Mask.Output": 1.9157999879680574,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.9409999847412109
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 31,
+    "threadName": "Render Thread",
+    "frameTimeMs": 46.3092,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.695899439117056,
+      "Semaphore.WaitForSignal": 19.691500191744126
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 32,
+    "threadName": "Main Thread",
+    "frameTimeMs": 38.4554,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.3338999829429667,
+      "CG.Mask.Resources": 0.031699999213742558,
+      "CG.Mask.CacheLookup": 2.0976999879349023,
+      "CG.Mask.Output": 1.9725999888032675,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.8012000322341919
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 32,
+    "threadName": "Render Thread",
+    "frameTimeMs": 38.4548,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.15059999240475,
+      "Semaphore.WaitForSignal": 17.142799871042371
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 33,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.5897,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8589999814867042,
+      "CG.Mask.Resources": 0.03089999919757247,
+      "CG.Mask.CacheLookup": 1.9341999858152121,
+      "CG.Mask.Output": 1.8670999850146472,
+      "Semaphore.WaitForSignal": 0.0,
+      "CG.Mask.OutputBatch": 2.6005001068115234,
+      "CG.Mask.PageProducer": 0.47459998726844788
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 33,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.5908,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.849999715806916,
+      "Semaphore.WaitForSignal": 17.845500142015226
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 34,
+    "threadName": "Main Thread",
+    "frameTimeMs": 38.0826,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.62739992767456,
+      "CG.Mask.Resources": 0.037399999142508022,
+      "CG.Mask.CacheLookup": 2.0475999924819916,
+      "CG.Mask.Output": 2.0423999913036823,
+      "Semaphore.WaitForSignal": 0.00029999998514540493,
+      "CG.Mask.OutputBatch": 2.7848000526428223,
+      "CG.Mask.PageProducer": 0.59839999675750732
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 34,
+    "threadName": "Render Thread",
+    "frameTimeMs": 38.085,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 22.287300114920072,
+      "Semaphore.WaitForSignal": 22.281899476161925
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 35,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.9805,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.2772999656735919,
+      "CG.Mask.Resources": 0.037499999089050107,
+      "CG.Mask.CacheLookup": 1.928099991986528,
+      "CG.Mask.Output": 1.9303999864496291,
+      "Semaphore.WaitForSignal": 0.0,
+      "CG.Mask.OutputBatch": 2.3784000873565674,
+      "CG.Mask.PageProducer": 0.50550001859664917
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 35,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.9765,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.321000065225235,
+      "Semaphore.WaitForSignal": 19.316999502647377
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 36,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.9955,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7224999676109292,
+      "CG.Mask.Resources": 0.034899999176559504,
+      "CG.Mask.CacheLookup": 1.7938999887555838,
+      "CG.Mask.Output": 1.8422999894246459,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.7944999933242798
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1660,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 36,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.995,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.949700186531118,
+      "Semaphore.WaitForSignal": 18.946499731559015
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1660,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 37,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.3893,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6695999677467626,
+      "CG.Mask.Resources": 0.03409999926952878,
+      "CG.Mask.CacheLookup": 1.785499990452081,
+      "CG.Mask.Output": 1.8333999859169126,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.802899956703186
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 37,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.3896,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.778299721787334,
+      "Semaphore.WaitForSignal": 18.774599930271506
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 38,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.4124,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.950199953338597,
+      "CG.Mask.Resources": 0.038399999124521855,
+      "CG.Mask.CacheLookup": 1.731699988944456,
+      "CG.Mask.Output": 1.9516999903135002,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4540998935699463,
+      "CG.Mask.PageProducer": 0.51450002193450928
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 38,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.409,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.676899698468333,
+      "Semaphore.WaitForSignal": 21.672100290823437
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 39,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.3452,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.2904999528545886,
+      "CG.Mask.Resources": 0.032599999169178773,
+      "CG.Mask.CacheLookup": 1.5649999880697578,
+      "CG.Mask.Output": 1.7895999932661653,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4677999019622803,
+      "CG.Mask.PageProducer": 0.54689997434616089
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1658,
+      "SetPass Calls Count": 323
+    }
+  },
+  {
+    "frame": 39,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.348299,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.554999821222737,
+      "Semaphore.WaitForSignal": 19.550199937242724
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1658,
+      "SetPass Calls Count": 323
+    }
+  },
+  {
+    "frame": 40,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.6849,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6986999706714414,
+      "CG.Mask.Resources": 0.033499999233754352,
+      "CG.Mask.CacheLookup": 1.7663999835494906,
+      "CG.Mask.Output": 1.8635999849066138,
+      "Semaphore.WaitForSignal": 0.00039999998261919245,
+      "CG.Mask.OutputBatch": 2.3571000099182129,
+      "CG.Mask.PageProducer": 0.5023999810218811
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1680,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 40,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.6881981,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.719000187935308,
+      "Semaphore.WaitForSignal": 20.713200098070956
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1680,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 41,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.0466,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8403999590664171,
+      "CG.Mask.Resources": 0.035499999110470526,
+      "CG.Mask.CacheLookup": 1.7276999929454178,
+      "CG.Mask.Output": 1.9238999849185348,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.35509991645813,
+      "CG.Mask.PageProducer": 0.50290000438690186
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1680,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 41,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.0444,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.571699975727824,
+      "Semaphore.WaitForSignal": 19.56810035014496
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1680,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 42,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.8876,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7269999493146315,
+      "CG.Mask.Resources": 0.034599999213241972,
+      "CG.Mask.CacheLookup": 1.7770999863278121,
+      "CG.Mask.Output": 1.8941999925300479,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3705999851226807,
+      "CG.Mask.PageProducer": 0.49320000410079956
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 42,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.8901,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.003499880862364,
+      "Semaphore.WaitForSignal": 18.998800236033276
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 43,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.9848,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8972999766701832,
+      "CG.Mask.Resources": 0.034099999196769204,
+      "CG.Mask.CacheLookup": 1.9030999874230474,
+      "CG.Mask.Output": 1.84049998736009,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3933999538421631,
+      "CG.Mask.PageProducer": 0.4966999888420105
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 43,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.983,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.495199539436726,
+      "Semaphore.WaitForSignal": 18.490800181571103
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 44,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.0543,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8981999761599582,
+      "CG.Mask.Resources": 0.035099999120575376,
+      "CG.Mask.CacheLookup": 1.87539998954162,
+      "CG.Mask.Output": 1.8790999869816005,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4326000213623047,
+      "CG.Mask.PageProducer": 0.58660000562667847
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 44,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.0536,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.264099760810495,
+      "Semaphore.WaitForSignal": 17.259900410062983
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 45,
+    "threadName": "Main Thread",
+    "frameTimeMs": 36.6886,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7374999473977368,
+      "CG.Mask.Resources": 0.033899999099958222,
+      "CG.Mask.CacheLookup": 1.7845999903511256,
+      "CG.Mask.Output": 1.8599999882280827,
+      "Semaphore.WaitForSignal": 0.00050000002374872565,
+      "CG.Mask.OutputBatch": 1.8128000497817993
+    },
+    "counters": {
+      "Standard Draw Calls Count": 307,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 313
+    }
+  },
+  {
+    "frame": 45,
+    "threadName": "Render Thread",
+    "frameTimeMs": 36.6878,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.640000248626166,
+      "Semaphore.WaitForSignal": 18.63619987025595
+    },
+    "counters": {
+      "Standard Draw Calls Count": 307,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 313
+    }
+  },
+  {
+    "frame": 46,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.4338,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4622999661951326,
+      "CG.Mask.Resources": 0.034199999186967034,
+      "CG.Mask.CacheLookup": 1.641499986872077,
+      "CG.Mask.Output": 1.80509998742491,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.7309000492095947
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 46,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.4383,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.207899780085427,
+      "Semaphore.WaitForSignal": 20.204699369314767
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 47,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.9141,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.26029996300349,
+      "CG.Mask.Resources": 0.039399999084707815,
+      "CG.Mask.CacheLookup": 1.8507999840658158,
+      "CG.Mask.Output": 2.1454999838024378,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3561000823974609,
+      "CG.Mask.PageProducer": 0.484499990940094
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 47,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.9128,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.577299820331973,
+      "Semaphore.WaitForSignal": 21.573299569012306
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 48,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.5098,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.3651999467401765,
+      "CG.Mask.Resources": 0.042599999003869016,
+      "CG.Mask.CacheLookup": 1.8509999895468354,
+      "CG.Mask.Output": 2.1289999834261835,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4086000919342041,
+      "CG.Mask.PageProducer": 0.50220000743865967
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 48,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.5106,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.351600680311094,
+      "Semaphore.WaitForSignal": 21.347299110144377
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 49,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.8395,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.694799943768885,
+      "CG.Mask.Resources": 0.041699999012053013,
+      "CG.Mask.CacheLookup": 1.99059998546727,
+      "CG.Mask.Output": 2.2580999839119613,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4252998828887939,
+      "CG.Mask.PageProducer": 0.49289998412132263
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 49,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.8377,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.721700220099592,
+      "Semaphore.WaitForSignal": 21.717700172383047
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 318
+    }
+  },
+  {
+    "frame": 50,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.465,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4694999686616939,
+      "CG.Mask.Resources": 0.033999999257503077,
+      "CG.Mask.CacheLookup": 1.5913999865297228,
+      "CG.Mask.Output": 1.824099984485656,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.7753000259399414
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 50,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.4663,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.630100290363771,
+      "Semaphore.WaitForSignal": 20.627299633044458
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 51,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.0033,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4221999658620916,
+      "CG.Mask.Resources": 0.034299999169888906,
+      "CG.Mask.CacheLookup": 1.6227999876718968,
+      "CG.Mask.Output": 1.7875999906100333,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3220999240875244,
+      "CG.Mask.PageProducer": 0.48399999737739563
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 51,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.0048,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.912500442231249,
+      "Semaphore.WaitForSignal": 19.908799667246058
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 52,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.1361,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8084999835700728,
+      "CG.Mask.Resources": 0.034999999254068825,
+      "CG.Mask.CacheLookup": 1.7299999869428575,
+      "CG.Mask.Output": 1.8714999905787408,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.45989990234375,
+      "CG.Mask.PageProducer": 0.52609997987747192
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 52,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.1349,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.718299859101535,
+      "Semaphore.WaitForSignal": 19.713700503278233
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 53,
+    "threadName": "Main Thread",
+    "frameTimeMs": 28.9767,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6462999572395347,
+      "CG.Mask.Resources": 0.030299999300041236,
+      "CG.Mask.CacheLookup": 1.7833999902941287,
+      "CG.Mask.Output": 1.8160999892279506,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3966000080108643,
+      "CG.Mask.PageProducer": 0.4918999969959259
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 53,
+    "threadName": "Render Thread",
+    "frameTimeMs": 28.9767,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.804600130402832,
+      "Semaphore.WaitForSignal": 17.800300137772865
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 54,
+    "threadName": "Main Thread",
+    "frameTimeMs": 36.401,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.0218999600620009,
+      "CG.Mask.Resources": 0.035099999207886867,
+      "CG.Mask.CacheLookup": 1.8600999931804836,
+      "CG.Mask.Output": 1.9676999836228788,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.7529000043869019
+    },
+    "counters": {
+      "Standard Draw Calls Count": 302,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 306
+    }
+  },
+  {
+    "frame": 54,
+    "threadName": "Render Thread",
+    "frameTimeMs": 36.4033,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.514199603894667,
+      "Semaphore.WaitForSignal": 19.510699637219659
+    },
+    "counters": {
+      "Standard Draw Calls Count": 302,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 306
+    }
+  },
+  {
+    "frame": 55,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.2834,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.790799953538226,
+      "CG.Mask.Resources": 0.031899999266897794,
+      "CG.Mask.CacheLookup": 1.841399988392368,
+      "CG.Mask.Output": 1.8910999866202474,
+      "Semaphore.WaitForSignal": 0.00029999999242136255,
+      "CG.Mask.OutputBatch": 2.4523000717163086,
+      "CG.Mask.PageProducer": 0.54149997234344482
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 55,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.2795,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.919400131831935,
+      "Semaphore.WaitForSignal": 18.914899785071611
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1672,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 56,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.7118,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7397999436943792,
+      "CG.Mask.Resources": 0.037199999205768108,
+      "CG.Mask.CacheLookup": 1.6957999914884567,
+      "CG.Mask.Output": 1.8855999954976141,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.6378998756408691,
+      "CG.Mask.PageProducer": 0.54259997606277466
+    },
+    "counters": {
+      "Standard Draw Calls Count": 314,
+      "SRP Batcher Draw Calls Count": 1667,
+      "SetPass Calls Count": 321
+    }
+  },
+  {
+    "frame": 56,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.7135,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 22.078300380715518,
+      "Semaphore.WaitForSignal": 22.073700657114387
+    },
+    "counters": {
+      "Standard Draw Calls Count": 314,
+      "SRP Batcher Draw Calls Count": 1667,
+      "SetPass Calls Count": 321
+    }
+  },
+  {
+    "frame": 57,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.9343,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6322999661206268,
+      "CG.Mask.Resources": 0.038099999226687942,
+      "CG.Mask.CacheLookup": 1.6443999910261482,
+      "CG.Mask.Output": 1.861499987076968,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4774999618530273,
+      "CG.Mask.PageProducer": 0.57480001449584961
+    },
+    "counters": {
+      "Standard Draw Calls Count": 313,
+      "SRP Batcher Draw Calls Count": 1639,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 57,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.9395,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.152499637842993,
+      "Semaphore.WaitForSignal": 20.148399911820889
+    },
+    "counters": {
+      "Standard Draw Calls Count": 313,
+      "SRP Batcher Draw Calls Count": 1639,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 58,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.4821,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4849999479192775,
+      "CG.Mask.Resources": 0.034199999179691076,
+      "CG.Mask.CacheLookup": 1.6631999851670116,
+      "CG.Mask.Output": 1.8055999865755439,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.5260999202728271,
+      "CG.Mask.PageProducer": 0.505299985408783
+    },
+    "counters": {
+      "Standard Draw Calls Count": 319,
+      "SRP Batcher Draw Calls Count": 1634,
+      "SetPass Calls Count": 325
+    }
+  },
+  {
+    "frame": 58,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.4808,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.149000081131817,
+      "Semaphore.WaitForSignal": 21.144400064069487
+    },
+    "counters": {
+      "Standard Draw Calls Count": 319,
+      "SRP Batcher Draw Calls Count": 1634,
+      "SetPass Calls Count": 325
+    }
+  },
+  {
+    "frame": 59,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.3059,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4814999799418729,
+      "CG.Mask.Resources": 0.03639999900769908,
+      "CG.Mask.CacheLookup": 1.6332999905571342,
+      "CG.Mask.Output": 1.8245999896898866,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3554999828338623,
+      "CG.Mask.PageProducer": 0.48420000076293945
+    },
+    "counters": {
+      "Standard Draw Calls Count": 318,
+      "SRP Batcher Draw Calls Count": 1634,
+      "SetPass Calls Count": 322
+    }
+  },
+  {
+    "frame": 59,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.3034,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.665899862811784,
+      "Semaphore.WaitForSignal": 19.661700146272779
+    },
+    "counters": {
+      "Standard Draw Calls Count": 318,
+      "SRP Batcher Draw Calls Count": 1634,
+      "SetPass Calls Count": 322
+    }
+  },
+  {
+    "frame": 60,
+    "threadName": "Main Thread",
+    "frameTimeMs": 37.6711,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.0063999525445979,
+      "CG.Mask.Resources": 0.52419999763515079,
+      "CG.Mask.CacheLookup": 1.6828999929130077,
+      "CG.Mask.Output": 1.8283999864943326,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4590001106262207,
+      "CG.Mask.PageProducer": 0.49250000715255737
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1609,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 60,
+    "threadName": "Render Thread",
+    "frameTimeMs": 37.6753,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.286099466931773,
+      "Semaphore.WaitForSignal": 20.280400171875954
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1609,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 61,
+    "threadName": "Main Thread",
+    "frameTimeMs": 45.0378,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.0548999639577232,
+      "CG.Mask.Resources": 0.035799999212031253,
+      "CG.Mask.CacheLookup": 1.8320999853312969,
+      "CG.Mask.Output": 1.909499988425523,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.9555000066757202
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1649,
+      "SetPass Calls Count": 313
+    }
+  },
+  {
+    "frame": 61,
+    "threadName": "Render Thread",
+    "frameTimeMs": 45.0355,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.013100176023727,
+      "Semaphore.WaitForSignal": 20.008799990042462
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1649,
+      "SetPass Calls Count": 313
+    }
+  },
+  {
+    "frame": 62,
+    "threadName": "Main Thread",
+    "frameTimeMs": 37.9576,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6309999588120263,
+      "CG.Mask.Resources": 0.032799999164126348,
+      "CG.Mask.CacheLookup": 1.7697999831289053,
+      "CG.Mask.Output": 1.8203999889083207,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.8837000131607056
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1649,
+      "SetPass Calls Count": 313
+    }
+  },
+  {
+    "frame": 62,
+    "threadName": "Render Thread",
+    "frameTimeMs": 37.9556,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.489800092669611,
+      "Semaphore.WaitForSignal": 18.485800251532055
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1649,
+      "SetPass Calls Count": 313
+    }
+  },
+  {
+    "frame": 63,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.6578,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8700999642896932,
+      "CG.Mask.Resources": 0.032699999268515967,
+      "CG.Mask.CacheLookup": 1.932499990798533,
+      "CG.Mask.Output": 1.8614999880082905,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3169999122619629,
+      "CG.Mask.PageProducer": 0.47679999470710754
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 320
+    }
+  },
+  {
+    "frame": 63,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.6636,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.051599533027911,
+      "Semaphore.WaitForSignal": 17.047600099816918
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 320
+    }
+  },
+  {
+    "frame": 64,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.4622,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5595999646175187,
+      "CG.Mask.Resources": 0.02819999928760808,
+      "CG.Mask.CacheLookup": 1.7530999856535345,
+      "CG.Mask.Output": 1.7974999886937439,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.651400089263916,
+      "CG.Mask.PageProducer": 0.62900000810623169
+    },
+    "counters": {
+      "Standard Draw Calls Count": 316,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 321
+    }
+  },
+  {
+    "frame": 64,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.4626,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.603600267393631,
+      "Semaphore.WaitForSignal": 19.598499844782054
+    },
+    "counters": {
+      "Standard Draw Calls Count": 316,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 321
+    }
+  },
+  {
+    "frame": 65,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.6326,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.54579996841494,
+      "CG.Mask.Resources": 0.035199999183532782,
+      "CG.Mask.CacheLookup": 1.77739998861216,
+      "CG.Mask.Output": 1.7904999870806932,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3357999324798584,
+      "CG.Mask.PageProducer": 0.48280000686645508
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 320
+    }
+  },
+  {
+    "frame": 65,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.6294,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.462699695766787,
+      "Semaphore.WaitForSignal": 18.457700083366944
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 320
+    }
+  },
+  {
+    "frame": 66,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.2025,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7450999533175491,
+      "CG.Mask.Resources": 0.030699999319040217,
+      "CG.Mask.CacheLookup": 1.7962999914307147,
+      "CG.Mask.Output": 1.8686999841593206,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4884998798370361,
+      "CG.Mask.PageProducer": 0.503000020980835
+    },
+    "counters": {
+      "Standard Draw Calls Count": 321,
+      "SRP Batcher Draw Calls Count": 1636,
+      "SetPass Calls Count": 326
+    }
+  },
+  {
+    "frame": 66,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.201,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.027299952766043,
+      "Semaphore.WaitForSignal": 19.02279982190521
+    },
+    "counters": {
+      "Standard Draw Calls Count": 321,
+      "SRP Batcher Draw Calls Count": 1636,
+      "SetPass Calls Count": 326
+    }
+  },
+  {
+    "frame": 67,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.8957,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.66219997353619,
+      "CG.Mask.Resources": 0.030899999343091622,
+      "CG.Mask.CacheLookup": 1.8090999869164079,
+      "CG.Mask.Output": 1.851099987514317,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3694000244140625,
+      "CG.Mask.PageProducer": 0.48809999227523804
+    },
+    "counters": {
+      "Standard Draw Calls Count": 326,
+      "SRP Batcher Draw Calls Count": 1626,
+      "SetPass Calls Count": 331
+    }
+  },
+  {
+    "frame": 67,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.8972,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.018099942484696,
+      "Semaphore.WaitForSignal": 19.013799946922518
+    },
+    "counters": {
+      "Standard Draw Calls Count": 326,
+      "SRP Batcher Draw Calls Count": 1626,
+      "SetPass Calls Count": 331
+    }
+  },
+  {
+    "frame": 68,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.6256,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4070999724208377,
+      "CG.Mask.Resources": 0.0324999991353252,
+      "CG.Mask.CacheLookup": 1.6133999885059893,
+      "CG.Mask.Output": 1.8025999888777733,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.385200023651123,
+      "CG.Mask.PageProducer": 0.49239999055862427
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1626,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 68,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.6221,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.125099879798654,
+      "Semaphore.WaitForSignal": 20.121499806809879
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1626,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 69,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.4555,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.3573999618529342,
+      "CG.Mask.Resources": 0.031799999364011455,
+      "CG.Mask.CacheLookup": 1.6136999856680632,
+      "CG.Mask.Output": 1.7980999839492142,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3643999099731445,
+      "CG.Mask.PageProducer": 0.48570001125335693
+    },
+    "counters": {
+      "Standard Draw Calls Count": 341,
+      "SRP Batcher Draw Calls Count": 1615,
+      "SetPass Calls Count": 346
+    }
+  },
+  {
+    "frame": 69,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.4586,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.353899978937989,
+      "Semaphore.WaitForSignal": 20.350100083443976
+    },
+    "counters": {
+      "Standard Draw Calls Count": 341,
+      "SRP Batcher Draw Calls Count": 1615,
+      "SetPass Calls Count": 346
+    }
+  },
+  {
+    "frame": 70,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.4433,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7460999497561716,
+      "CG.Mask.Resources": 0.03469999921071576,
+      "CG.Mask.CacheLookup": 1.7277999906800687,
+      "CG.Mask.Output": 1.8761999923735857,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3824999332427979,
+      "CG.Mask.PageProducer": 0.50190001726150513
+    },
+    "counters": {
+      "Standard Draw Calls Count": 335,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 340
+    }
+  },
+  {
+    "frame": 70,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.4413,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.078000172608881,
+      "Semaphore.WaitForSignal": 20.073000077492907
+    },
+    "counters": {
+      "Standard Draw Calls Count": 335,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 340
+    }
+  },
+  {
+    "frame": 71,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.9369,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6105999582796358,
+      "CG.Mask.Resources": 0.033299999209702946,
+      "CG.Mask.CacheLookup": 1.69849998713471,
+      "CG.Mask.Output": 1.869199987500906,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.39490008354187,
+      "CG.Mask.PageProducer": 0.49129998683929443
+    },
+    "counters": {
+      "Standard Draw Calls Count": 341,
+      "SRP Batcher Draw Calls Count": 1613,
+      "SetPass Calls Count": 346
+    }
+  },
+  {
+    "frame": 71,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.9419,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.890199509354716,
+      "Semaphore.WaitForSignal": 20.884999957102991
+    },
+    "counters": {
+      "Standard Draw Calls Count": 341,
+      "SRP Batcher Draw Calls Count": 1613,
+      "SetPass Calls Count": 346
+    }
+  },
+  {
+    "frame": 72,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.5596,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.1541999494074844,
+      "CG.Mask.Resources": 0.0352999992101104,
+      "CG.Mask.CacheLookup": 1.8453999888151884,
+      "CG.Mask.Output": 2.0124999927356839,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4205000400543213,
+      "CG.Mask.PageProducer": 0.48059999942779541
+    },
+    "counters": {
+      "Standard Draw Calls Count": 335,
+      "SRP Batcher Draw Calls Count": 1610,
+      "SetPass Calls Count": 340
+    }
+  },
+  {
+    "frame": 72,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.5602,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.171899633147405,
+      "Semaphore.WaitForSignal": 19.166600527591072
+    },
+    "counters": {
+      "Standard Draw Calls Count": 335,
+      "SRP Batcher Draw Calls Count": 1610,
+      "SetPass Calls Count": 340
+    }
+  },
+  {
+    "frame": 73,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.7597,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7091999475378543,
+      "CG.Mask.Resources": 0.033099999207479414,
+      "CG.Mask.CacheLookup": 1.8100999884773046,
+      "CG.Mask.Output": 1.8263999870978296,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.510200023651123,
+      "CG.Mask.PageProducer": 0.61330002546310425
+    },
+    "counters": {
+      "Standard Draw Calls Count": 321,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 326
+    }
+  },
+  {
+    "frame": 73,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.7575,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.794999664110946,
+      "Semaphore.WaitForSignal": 18.790000202134252
+    },
+    "counters": {
+      "Standard Draw Calls Count": 321,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 326
+    }
+  },
+  {
+    "frame": 74,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.2547,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.0719999847351573,
+      "CG.Mask.Resources": 0.036199999223754276,
+      "CG.Mask.CacheLookup": 1.914199985563755,
+      "CG.Mask.Output": 1.927799990400672,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4474999904632568,
+      "CG.Mask.PageProducer": 0.50069999694824219
+    },
+    "counters": {
+      "Standard Draw Calls Count": 326,
+      "SRP Batcher Draw Calls Count": 1615,
+      "SetPass Calls Count": 331
+    }
+  },
+  {
+    "frame": 74,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.2538,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.225699596776394,
+      "Semaphore.WaitForSignal": 19.221200115978718
+    },
+    "counters": {
+      "Standard Draw Calls Count": 326,
+      "SRP Batcher Draw Calls Count": 1615,
+      "SetPass Calls Count": 331
+    }
+  },
+  {
+    "frame": 75,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.6166,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9073999625979923,
+      "CG.Mask.Resources": 0.03339999915624503,
+      "CG.Mask.CacheLookup": 1.8550999842118472,
+      "CG.Mask.Output": 1.9524999833665788,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3828999996185303,
+      "CG.Mask.PageProducer": 0.50110000371932983
+    },
+    "counters": {
+      "Standard Draw Calls Count": 322,
+      "SRP Batcher Draw Calls Count": 1625,
+      "SetPass Calls Count": 327
+    }
+  },
+  {
+    "frame": 75,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.6194,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.430499638336187,
+      "Semaphore.WaitForSignal": 18.42680010402546
+    },
+    "counters": {
+      "Standard Draw Calls Count": 322,
+      "SRP Batcher Draw Calls Count": 1625,
+      "SetPass Calls Count": 327
+    }
+  },
+  {
+    "frame": 76,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.144,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.571999965904979,
+      "CG.Mask.Resources": 0.033299999231530819,
+      "CG.Mask.CacheLookup": 1.6632999912835658,
+      "CG.Mask.Output": 1.8811999913305044,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4323000907897949,
+      "CG.Mask.PageProducer": 0.48730000853538513
+    },
+    "counters": {
+      "Standard Draw Calls Count": 331,
+      "SRP Batcher Draw Calls Count": 1613,
+      "SetPass Calls Count": 336
+    }
+  },
+  {
+    "frame": 76,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.1451,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.245899671150255,
+      "Semaphore.WaitForSignal": 20.2413998974298
+    },
+    "counters": {
+      "Standard Draw Calls Count": 331,
+      "SRP Batcher Draw Calls Count": 1613,
+      "SetPass Calls Count": 336
+    }
+  },
+  {
+    "frame": 77,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.9443,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4439999654132407,
+      "CG.Mask.Resources": 0.035999999025079887,
+      "CG.Mask.CacheLookup": 1.6189999890048057,
+      "CG.Mask.Output": 1.8487999881617725,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3241000175476074,
+      "CG.Mask.PageProducer": 0.49050000309944153
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1618,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 77,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.943,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.308599690637493,
+      "Semaphore.WaitForSignal": 20.30470002459333
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1618,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 78,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.4718,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5151999636727851,
+      "CG.Mask.Resources": 0.0356999990544864,
+      "CG.Mask.CacheLookup": 1.6200999915599823,
+      "CG.Mask.Output": 1.814399987924844,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.364300012588501,
+      "CG.Mask.PageProducer": 0.48550000786781311
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1618,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 78,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.4689,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.460600196958694,
+      "Semaphore.WaitForSignal": 20.455900404769636
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1618,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 79,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.2703,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.723199973552255,
+      "CG.Mask.Resources": 0.034099999284080695,
+      "CG.Mask.CacheLookup": 1.7005999889224768,
+      "CG.Mask.Output": 1.954299992416054,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3454000949859619,
+      "CG.Mask.PageProducer": 0.48609998822212219
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 79,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.2731,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.589399661679636,
+      "Semaphore.WaitForSignal": 20.585099889132835
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 80,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.6629,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.547699959250167,
+      "CG.Mask.Resources": 0.034299999082577415,
+      "CG.Mask.CacheLookup": 1.6298999895807356,
+      "CG.Mask.Output": 1.8301999885588884,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.5402998924255371,
+      "CG.Mask.PageProducer": 0.5252000093460083
+    },
+    "counters": {
+      "Standard Draw Calls Count": 320,
+      "SRP Batcher Draw Calls Count": 1617,
+      "SetPass Calls Count": 325
+    }
+  },
+  {
+    "frame": 80,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.6618,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.119599775141978,
+      "Semaphore.WaitForSignal": 21.115199789572216
+    },
+    "counters": {
+      "Standard Draw Calls Count": 320,
+      "SRP Batcher Draw Calls Count": 1617,
+      "SetPass Calls Count": 325
+    }
+  },
+  {
+    "frame": 81,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.229,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4110999525873922,
+      "CG.Mask.Resources": 0.034599999322381336,
+      "CG.Mask.CacheLookup": 1.6067999918013811,
+      "CG.Mask.Output": 1.8176999860443175,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.7583000659942627,
+      "CG.Mask.PageProducer": 0.53380000591278076
+    },
+    "counters": {
+      "Standard Draw Calls Count": 318,
+      "SRP Batcher Draw Calls Count": 1617,
+      "SetPass Calls Count": 322
+    }
+  },
+  {
+    "frame": 81,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.2302,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.885600428489852,
+      "Semaphore.WaitForSignal": 20.881599614396691
+    },
+    "counters": {
+      "Standard Draw Calls Count": 318,
+      "SRP Batcher Draw Calls Count": 1617,
+      "SetPass Calls Count": 322
+    }
+  },
+  {
+    "frame": 82,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.6347,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9840999587613624,
+      "CG.Mask.Resources": 0.036399999109562486,
+      "CG.Mask.CacheLookup": 1.8261999858077615,
+      "CG.Mask.Output": 1.9896999951452017,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4256999492645264,
+      "CG.Mask.PageProducer": 0.47949999570846558
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 82,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.6362,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.059100376871356,
+      "Semaphore.WaitForSignal": 20.054399394830398
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 83,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.5737,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8999999249936081,
+      "CG.Mask.Resources": 0.0375999991374556,
+      "CG.Mask.CacheLookup": 1.8205999876372516,
+      "CG.Mask.Output": 1.9118999894708395,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 3.0107998847961426,
+      "CG.Mask.PageProducer": 0.52890002727508545
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 83,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.572998,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.832399494240235,
+      "Semaphore.WaitForSignal": 19.8270992349062
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 84,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.3257,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.1158999362378381,
+      "CG.Mask.Resources": 0.03549999919050606,
+      "CG.Mask.CacheLookup": 1.8646999881602824,
+      "CG.Mask.Output": 1.8938999846577644,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4767999649047852,
+      "CG.Mask.PageProducer": 0.48660001158714294
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 84,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.3277,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.941600371654204,
+      "Semaphore.WaitForSignal": 18.937500181011274
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 85,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.0761,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7618999655533116,
+      "CG.Mask.Resources": 0.031899999223242048,
+      "CG.Mask.CacheLookup": 1.8188999861013144,
+      "CG.Mask.Output": 1.8324999865144491,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4421000480651855,
+      "CG.Mask.PageProducer": 0.50620001554489136
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 85,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.075,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.728500126919243,
+      "Semaphore.WaitForSignal": 18.723400402719562
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 86,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.1206,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7766999592422508,
+      "CG.Mask.Resources": 0.0366999991965713,
+      "CG.Mask.CacheLookup": 1.7031999898608774,
+      "CG.Mask.Output": 1.9555999897420406,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4351000785827637,
+      "CG.Mask.PageProducer": 0.49009999632835388
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 86,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.1213,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.911999619296694,
+      "Semaphore.WaitForSignal": 20.907400539144874
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 87,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.8097,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7708999597816728,
+      "CG.Mask.Resources": 0.037699999011238106,
+      "CG.Mask.CacheLookup": 1.7105999898631126,
+      "CG.Mask.Output": 1.9025999894365668,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4542999267578125,
+      "CG.Mask.PageProducer": 0.49360001087188721
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1610,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 87,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.8078,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.87170047955442,
+      "Semaphore.WaitForSignal": 20.868099739942409
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1610,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 88,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.1925,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8145999637781642,
+      "CG.Mask.Resources": 0.033599999187572394,
+      "CG.Mask.CacheLookup": 1.7177999897394329,
+      "CG.Mask.Output": 1.9214999829418957,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.5009000301361084,
+      "CG.Mask.PageProducer": 0.489300012588501
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1610,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 88,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.1939,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.051500542591384,
+      "Semaphore.WaitForSignal": 21.046400029212236
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1610,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 89,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.4734,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4437999771325849,
+      "CG.Mask.Resources": 0.032299999184033368,
+      "CG.Mask.CacheLookup": 1.6219999890308827,
+      "CG.Mask.Output": 1.787699987180531,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3685998916625977,
+      "CG.Mask.PageProducer": 0.4984000027179718
+    },
+    "counters": {
+      "Standard Draw Calls Count": 311,
+      "SRP Batcher Draw Calls Count": 1644,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 89,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.4746,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.063299920715508,
+      "Semaphore.WaitForSignal": 20.059699883146095
+    },
+    "counters": {
+      "Standard Draw Calls Count": 311,
+      "SRP Batcher Draw Calls Count": 1644,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 90,
+    "threadName": "Main Thread",
+    "frameTimeMs": 39.483,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.1814999384223484,
+      "CG.Mask.Resources": 0.521099996229168,
+      "CG.Mask.CacheLookup": 1.7221999890170991,
+      "CG.Mask.Output": 1.8512999890372157,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4972999095916748,
+      "CG.Mask.PageProducer": 0.50059998035430908
+    },
+    "counters": {
+      "Standard Draw Calls Count": 305,
+      "SRP Batcher Draw Calls Count": 1584,
+      "SetPass Calls Count": 309
+    }
+  },
+  {
+    "frame": 90,
+    "threadName": "Render Thread",
+    "frameTimeMs": 39.4845,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.2075993974795,
+      "Semaphore.WaitForSignal": 21.202099679037929
+    },
+    "counters": {
+      "Standard Draw Calls Count": 305,
+      "SRP Batcher Draw Calls Count": 1584,
+      "SetPass Calls Count": 309
+    }
+  },
+  {
+    "frame": 91,
+    "threadName": "Main Thread",
+    "frameTimeMs": 46.6998,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.3037999541847967,
+      "CG.Mask.Resources": 0.035099999171507079,
+      "CG.Mask.CacheLookup": 1.9262999861966819,
+      "CG.Mask.Output": 1.9201999842189252,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.7972999811172485
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 91,
+    "threadName": "Render Thread",
+    "frameTimeMs": 46.6974,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.895999335589295,
+      "Semaphore.WaitForSignal": 19.891900027505471
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 92,
+    "threadName": "Main Thread",
+    "frameTimeMs": 39.6424,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.8256999560981058,
+      "CG.Mask.Resources": 0.038499998991028406,
+      "CG.Mask.CacheLookup": 2.1097999860066921,
+      "CG.Mask.Output": 2.2312999898567796,
+      "Semaphore.WaitForSignal": 0.00029999998514540493,
+      "CG.Mask.OutputBatch": 1.7855000495910645
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 92,
+    "threadName": "Render Thread",
+    "frameTimeMs": 39.6408,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.829999714987935,
+      "Semaphore.WaitForSignal": 19.826400219462812
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 93,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.2189,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8645999734580982,
+      "CG.Mask.Resources": 0.033999999119259883,
+      "CG.Mask.CacheLookup": 1.9085999908857048,
+      "CG.Mask.Output": 1.8496999898925424,
+      "Semaphore.WaitForSignal": 0.00059999997029080987,
+      "CG.Mask.OutputBatch": 2.4363000392913818,
+      "CG.Mask.PageProducer": 0.49790000915527344
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 93,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.221,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.373200110414473,
+      "Semaphore.WaitForSignal": 17.368799834031961
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 94,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.2951,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.0690999859361909,
+      "CG.Mask.Resources": 0.032499999142601155,
+      "CG.Mask.CacheLookup": 1.8426999850198627,
+      "CG.Mask.Output": 1.9944999869912863,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.50570011138916,
+      "CG.Mask.PageProducer": 0.51489996910095215
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 94,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.2977,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.305400323028152,
+      "Semaphore.WaitForSignal": 19.300599760375917
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 95,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.5166,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.2211999790160917,
+      "CG.Mask.Resources": 0.03529999923921423,
+      "CG.Mask.CacheLookup": 1.9777999918442219,
+      "CG.Mask.Output": 1.944999988656491,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.6888000965118408,
+      "CG.Mask.PageProducer": 0.62749999761581421
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 95,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.5134,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.296300434616569,
+      "Semaphore.WaitForSignal": 19.291699893772602
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 96,
+    "threadName": "Main Thread",
+    "frameTimeMs": 39.0558,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.12369996967027,
+      "CG.Mask.Resources": 0.033599999151192605,
+      "CG.Mask.CacheLookup": 1.8622999850194901,
+      "CG.Mask.Output": 1.9337999881245196,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.7731000185012817
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 96,
+    "threadName": "Render Thread",
+    "frameTimeMs": 39.0557,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.720300309862068,
+      "Semaphore.WaitForSignal": 20.716699665914348
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 97,
+    "threadName": "Main Thread",
+    "frameTimeMs": 37.7136,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.5432999420154374,
+      "CG.Mask.Resources": 0.034599999176862184,
+      "CG.Mask.CacheLookup": 2.0793999908491969,
+      "CG.Mask.Output": 2.0322999795898795,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.8306000232696533
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 97,
+    "threadName": "Render Thread",
+    "frameTimeMs": 37.7157,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.805199840331625,
+      "Semaphore.WaitForSignal": 18.799500046632602
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 98,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.7605,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4698999886750244,
+      "CG.Mask.Resources": 0.037999999163730536,
+      "CG.Mask.CacheLookup": 1.584699988598004,
+      "CG.Mask.Output": 1.8187999865040183,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3445000648498535,
+      "CG.Mask.PageProducer": 0.47870001196861267
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 98,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.7613,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.255999191736919,
+      "Semaphore.WaitForSignal": 21.252099268305756
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 99,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.8945,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.3476999430567957,
+      "CG.Mask.Resources": 0.039499999176769052,
+      "CG.Mask.CacheLookup": 1.8739999907556921,
+      "CG.Mask.Output": 2.1220999886281788,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 3.2195000648498535,
+      "CG.Mask.PageProducer": 0.69709998369216919
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 99,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.8918,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.98790053716948,
+      "Semaphore.WaitForSignal": 21.984400751236535
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 100,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.6443,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 9.33779994683573,
+      "CG.Mask.Resources": 0.04339999894000357,
+      "CG.Mask.CacheLookup": 2.1313999923877418,
+      "CG.Mask.Output": 2.2427999922074378,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3696999549865723,
+      "CG.Mask.PageProducer": 0.48609998822212219
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 100,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.644,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 23.747700308347703,
+      "Semaphore.WaitForSignal": 23.743299727495469
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 101,
+    "threadName": "Main Thread",
+    "frameTimeMs": 39.3394,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.283999939187197,
+      "CG.Mask.Resources": 0.034599999155034311,
+      "CG.Mask.CacheLookup": 1.8361999855842441,
+      "CG.Mask.Output": 1.9627999821677804,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.9706000089645386
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 101,
+    "threadName": "Render Thread",
+    "frameTimeMs": 39.3394,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 23.295699815163971,
+      "Semaphore.WaitForSignal": 23.291499829087115
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 102,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.7286,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.062399946822552,
+      "CG.Mask.Resources": 0.037199999074800871,
+      "CG.Mask.CacheLookup": 1.8292999928817153,
+      "CG.Mask.Output": 1.9141999906860292,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.5550999641418457,
+      "CG.Mask.PageProducer": 0.57069998979568481
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 102,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.733,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.328299735578184,
+      "Semaphore.WaitForSignal": 21.323500245453033
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 103,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.9825,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.829599943885114,
+      "CG.Mask.Resources": 0.037699999127653427,
+      "CG.Mask.CacheLookup": 2.0612999838776886,
+      "CG.Mask.Output": 2.1618999862112105,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 3.04259991645813,
+      "CG.Mask.PageProducer": 0.60479998588562012
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 103,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.9786,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.924700243936968,
+      "Semaphore.WaitForSignal": 20.919200322758115
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 104,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.94,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9361999378888868,
+      "CG.Mask.Resources": 0.033399999207176734,
+      "CG.Mask.CacheLookup": 1.8963999876286834,
+      "CG.Mask.Output": 1.894099990837276,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3622000217437744,
+      "CG.Mask.PageProducer": 0.48149999976158142
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1640,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 104,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.9429,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.881799620685342,
+      "Semaphore.WaitForSignal": 17.877899384460761
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1640,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 105,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.3314,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8410999539482873,
+      "CG.Mask.Resources": 0.035399999112996738,
+      "CG.Mask.CacheLookup": 1.8269999916665256,
+      "CG.Mask.Output": 1.9002999844960868,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4609000682830811,
+      "CG.Mask.PageProducer": 0.49399998784065247
+    },
+    "counters": {
+      "Standard Draw Calls Count": 311,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 315
+    }
+  },
+  {
+    "frame": 105,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.329,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.370399304702005,
+      "Semaphore.WaitForSignal": 19.365999447749346
+    },
+    "counters": {
+      "Standard Draw Calls Count": 311,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 315
+    }
+  },
+  {
+    "frame": 106,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.213,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6302999732433818,
+      "CG.Mask.Resources": 0.032299999205861241,
+      "CG.Mask.CacheLookup": 1.6758999857120216,
+      "CG.Mask.Output": 1.8631999846547842,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.40339994430542,
+      "CG.Mask.PageProducer": 0.49390000104904175
+    },
+    "counters": {
+      "Standard Draw Calls Count": 321,
+      "SRP Batcher Draw Calls Count": 1661,
+      "SetPass Calls Count": 333
+    }
+  },
+  {
+    "frame": 106,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.223299,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.359199647522473,
+      "Semaphore.WaitForSignal": 20.355100079606927
+    },
+    "counters": {
+      "Standard Draw Calls Count": 321,
+      "SRP Batcher Draw Calls Count": 1661,
+      "SetPass Calls Count": 333
+    }
+  },
+  {
+    "frame": 107,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.3049,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7020999392843805,
+      "CG.Mask.Resources": 0.037899999064393342,
+      "CG.Mask.CacheLookup": 1.6909999935887754,
+      "CG.Mask.Output": 1.9072999898344278,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.5429000854492188,
+      "CG.Mask.PageProducer": 0.48249998688697815
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 107,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.2989,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.321399269152607,
+      "Semaphore.WaitForSignal": 21.317300267452083
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 108,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.7721,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5626999632804655,
+      "CG.Mask.Resources": 0.034799999288225081,
+      "CG.Mask.CacheLookup": 1.6247999868355691,
+      "CG.Mask.Output": 1.8700999831780791,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.45740008354187,
+      "CG.Mask.PageProducer": 0.47960001230239868
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 108,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.7708,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.927799200544541,
+      "Semaphore.WaitForSignal": 20.923799165859236
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 109,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.3794,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.0065999398357235,
+      "CG.Mask.Resources": 0.036899999184242915,
+      "CG.Mask.CacheLookup": 1.7430999944917858,
+      "CG.Mask.Output": 1.9385999902151525,
+      "Semaphore.WaitForSignal": 0.00059999997029080987,
+      "CG.Mask.OutputBatch": 2.4119999408721924,
+      "CG.Mask.PageProducer": 0.49700000882148743
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 109,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.3788,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.756599575091968,
+      "Semaphore.WaitForSignal": 21.75200071575091
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 110,
+    "threadName": "Main Thread",
+    "frameTimeMs": 38.8989,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7271999557851814,
+      "CG.Mask.Resources": 0.039199999053380452,
+      "CG.Mask.CacheLookup": 1.6918999899644405,
+      "CG.Mask.Output": 1.9339999901130795,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.7812000513076782
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 110,
+    "threadName": "Render Thread",
+    "frameTimeMs": 38.9025,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.792999955003324,
+      "Semaphore.WaitForSignal": 20.790100279598846
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 111,
+    "threadName": "Main Thread",
+    "frameTimeMs": 40.0714,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4026999598718248,
+      "CG.Mask.Resources": 0.034799999149981886,
+      "CG.Mask.CacheLookup": 1.6173999896273017,
+      "CG.Mask.Output": 1.7943999865092337,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.9241999387741089
+    },
+    "counters": {
+      "Standard Draw Calls Count": 303,
+      "SRP Batcher Draw Calls Count": 1639,
+      "SetPass Calls Count": 309
+    }
+  },
+  {
+    "frame": 111,
+    "threadName": "Render Thread",
+    "frameTimeMs": 40.0699,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.7911994790702,
+      "Semaphore.WaitForSignal": 20.787299483250536
+    },
+    "counters": {
+      "Standard Draw Calls Count": 303,
+      "SRP Batcher Draw Calls Count": 1639,
+      "SetPass Calls Count": 309
+    }
+  },
+  {
+    "frame": 112,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.4064,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6948999696760438,
+      "CG.Mask.Resources": 0.034999999123101588,
+      "CG.Mask.CacheLookup": 1.7097999828401953,
+      "CG.Mask.Output": 1.8529999847523868,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4602999687194824,
+      "CG.Mask.PageProducer": 0.48429998755455017
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 112,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.4034,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.006199238894624,
+      "Semaphore.WaitForSignal": 20.001899925227917
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 113,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.0791,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8916999502689578,
+      "CG.Mask.Resources": 0.034899999154731631,
+      "CG.Mask.CacheLookup": 1.8580999909900129,
+      "CG.Mask.Output": 1.8948999904096127,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.6989998817443848,
+      "CG.Mask.PageProducer": 0.48379999399185181
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 113,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.0776,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.540999957636814,
+      "Semaphore.WaitForSignal": 19.53640004729823
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 114,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.943,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9946999484091066,
+      "CG.Mask.Resources": 0.033099999251135159,
+      "CG.Mask.CacheLookup": 1.8387999893166125,
+      "CG.Mask.Output": 1.9367999890819192,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4839000701904297,
+      "CG.Mask.PageProducer": 0.50209999084472656
+    },
+    "counters": {
+      "Standard Draw Calls Count": 388,
+      "SRP Batcher Draw Calls Count": 1669,
+      "SetPass Calls Count": 403
+    }
+  },
+  {
+    "frame": 114,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.9463,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.597200191805314,
+      "Semaphore.WaitForSignal": 18.593100394020439
+    },
+    "counters": {
+      "Standard Draw Calls Count": 388,
+      "SRP Batcher Draw Calls Count": 1669,
+      "SetPass Calls Count": 403
+    }
+  },
+  {
+    "frame": 115,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.9353,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.63109995512059,
+      "CG.Mask.Resources": 0.032199999172007665,
+      "CG.Mask.CacheLookup": 1.814399991882965,
+      "CG.Mask.Output": 1.8156999917700887,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3852999210357666,
+      "CG.Mask.PageProducer": 0.48589998483657837
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1639,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 115,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.9338,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.940500133401656,
+      "Semaphore.WaitForSignal": 18.936699737030722
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1639,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 116,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.2096,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.3910999550134875,
+      "CG.Mask.Resources": 0.033799999218899757,
+      "CG.Mask.CacheLookup": 1.6005999890621752,
+      "CG.Mask.Output": 1.7813999871723354,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3798999786376953,
+      "CG.Mask.PageProducer": 0.49160000681877136
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 116,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.213,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.735899917075585,
+      "Semaphore.WaitForSignal": 20.732100129294849
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 117,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.6802,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7241999552934431,
+      "CG.Mask.Resources": 0.036699999152915552,
+      "CG.Mask.CacheLookup": 1.6858999943360686,
+      "CG.Mask.Output": 1.8643999882042408,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.451200008392334,
+      "CG.Mask.PageProducer": 0.47889998555183411
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 117,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.6796,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.806599967749207,
+      "Semaphore.WaitForSignal": 20.801999212242663
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 118,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.7765,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4828999572782777,
+      "CG.Mask.Resources": 0.03059999922697898,
+      "CG.Mask.CacheLookup": 1.6681999873835593,
+      "CG.Mask.Output": 1.8223999910987914,
+      "Semaphore.WaitForSignal": 0.00050000002374872565,
+      "CG.Mask.OutputBatch": 2.6038999557495117,
+      "CG.Mask.PageProducer": 0.4862000048160553
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 118,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.7756,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.947900488150481,
+      "Semaphore.WaitForSignal": 20.943399695846892
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 119,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.6013,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6571999517618679,
+      "CG.Mask.Resources": 0.035999999083287548,
+      "CG.Mask.CacheLookup": 1.6617999922018498,
+      "CG.Mask.Output": 1.863999986089766,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.6923000812530518,
+      "CG.Mask.PageProducer": 0.64999997615814209
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 119,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.5999,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.335600420177798,
+      "Semaphore.WaitForSignal": 21.331300760786689
+    },
+    "counters": {
+      "Standard Draw Calls Count": 309,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 120,
+    "threadName": "Main Thread",
+    "frameTimeMs": 37.0617,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.1291999751119874,
+      "CG.Mask.Resources": 0.53019999110983917,
+      "CG.Mask.CacheLookup": 1.7121999848168343,
+      "CG.Mask.Output": 1.8486999892629683,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3705000877380371,
+      "CG.Mask.PageProducer": 0.48100000619888306
+    },
+    "counters": {
+      "Standard Draw Calls Count": 316,
+      "SRP Batcher Draw Calls Count": 1634,
+      "SetPass Calls Count": 327
+    }
+  },
+  {
+    "frame": 120,
+    "threadName": "Render Thread",
+    "frameTimeMs": 37.065,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.373999464827648,
+      "Semaphore.WaitForSignal": 20.368499626572884
+    },
+    "counters": {
+      "Standard Draw Calls Count": 316,
+      "SRP Batcher Draw Calls Count": 1634,
+      "SetPass Calls Count": 327
+    }
+  },
+  {
+    "frame": 121,
+    "threadName": "Main Thread",
+    "frameTimeMs": 46.515,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9074999549775384,
+      "CG.Mask.Resources": 0.032099999174533878,
+      "CG.Mask.CacheLookup": 1.8139999844133854,
+      "CG.Mask.Output": 1.8603999875485897,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.8215999603271484
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 121,
+    "threadName": "Render Thread",
+    "frameTimeMs": 46.5164,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.291099618792941,
+      "Semaphore.WaitForSignal": 20.286700232187286
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 122,
+    "threadName": "Main Thread",
+    "frameTimeMs": 44.4777,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9583999390888494,
+      "CG.Mask.Resources": 0.030699999180797022,
+      "CG.Mask.CacheLookup": 1.8652999908663332,
+      "CG.Mask.Output": 1.9216999923810363,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.8069000244140625
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 122,
+    "threadName": "Render Thread",
+    "frameTimeMs": 44.4789,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.263399833624135,
+      "Semaphore.WaitForSignal": 19.2591002270201
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1624,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 123,
+    "threadName": "Main Thread",
+    "frameTimeMs": 42.1959,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.2111999550252222,
+      "CG.Mask.Resources": 0.033399999192624819,
+      "CG.Mask.CacheLookup": 2.0187999906484038,
+      "CG.Mask.Output": 1.9141999869607389,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.399899959564209,
+      "CG.Mask.PageProducer": 0.47519999742507935
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 123,
+    "threadName": "Render Thread",
+    "frameTimeMs": 42.1957,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.838799654578906,
+      "Semaphore.WaitForSignal": 21.832599950022995
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 124,
+    "threadName": "Main Thread",
+    "frameTimeMs": 37.2133,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.968499967304524,
+      "CG.Mask.Resources": 0.032299999184033368,
+      "CG.Mask.CacheLookup": 1.8760999927762896,
+      "CG.Mask.Output": 1.8880999889224768,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.449699878692627,
+      "CG.Mask.PageProducer": 0.48609998822212219
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 124,
+    "threadName": "Render Thread",
+    "frameTimeMs": 37.2115,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 23.718899827290443,
+      "Semaphore.WaitForSignal": 23.713900544084026
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 125,
+    "threadName": "Main Thread",
+    "frameTimeMs": 39.5536,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.016399969405029,
+      "CG.Mask.Resources": 0.032499999164429028,
+      "CG.Mask.CacheLookup": 1.8992999920155853,
+      "CG.Mask.Output": 1.9172999882139266,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4180998802185059,
+      "CG.Mask.PageProducer": 0.474700003862381
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 125,
+    "threadName": "Render Thread",
+    "frameTimeMs": 39.5576,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 22.996999541959667,
+      "Semaphore.WaitForSignal": 22.992400145325519
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 126,
+    "threadName": "Main Thread",
+    "frameTimeMs": 51.1901,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9324999534874223,
+      "CG.Mask.Resources": 0.0316999992064666,
+      "CG.Mask.CacheLookup": 1.8393999806139618,
+      "CG.Mask.Output": 1.9327999837696552,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4094998836517334,
+      "CG.Mask.PageProducer": 0.48510000109672546
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 126,
+    "threadName": "Render Thread",
+    "frameTimeMs": 51.1865,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 34.270100518908293,
+      "Semaphore.WaitForSignal": 34.264399479245185
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 127,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.0919,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.1210999646573327,
+      "CG.Mask.Resources": 0.03349999911733903,
+      "CG.Mask.CacheLookup": 1.9153999926056713,
+      "CG.Mask.Output": 2.0023999908007681,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3894000053405762,
+      "CG.Mask.PageProducer": 0.48469999432563782
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 127,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.0924,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.979899353078508,
+      "Semaphore.WaitForSignal": 18.975099410861731
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 128,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.4277,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.700899965071585,
+      "CG.Mask.Resources": 0.033699999155942351,
+      "CG.Mask.CacheLookup": 1.6857999877538532,
+      "CG.Mask.Output": 1.8769999872893095,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3213000297546387,
+      "CG.Mask.PageProducer": 0.474700003862381
+    },
+    "counters": {
+      "Standard Draw Calls Count": 316,
+      "SRP Batcher Draw Calls Count": 1660,
+      "SetPass Calls Count": 324
+    }
+  },
+  {
+    "frame": 128,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.4276,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.820499562061741,
+      "Semaphore.WaitForSignal": 19.816099780349759
+    },
+    "counters": {
+      "Standard Draw Calls Count": 316,
+      "SRP Batcher Draw Calls Count": 1660,
+      "SetPass Calls Count": 324
+    }
+  },
+  {
+    "frame": 129,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.8685,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7775999726145528,
+      "CG.Mask.Resources": 0.036699999232951086,
+      "CG.Mask.CacheLookup": 1.7453999915160239,
+      "CG.Mask.Output": 1.887699983548373,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.5127999782562256,
+      "CG.Mask.PageProducer": 0.48919999599456787
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 129,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.8662,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.500299962048302,
+      "Semaphore.WaitForSignal": 21.495800422671891
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 130,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.9828,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5102999559021555,
+      "CG.Mask.Resources": 0.032799999273265712,
+      "CG.Mask.CacheLookup": 1.642499987501651,
+      "CG.Mask.Output": 1.8441999861970544,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4869000911712646,
+      "CG.Mask.PageProducer": 0.541700005531311
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1654,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 130,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.9837,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.580200111566228,
+      "Semaphore.WaitForSignal": 19.575899946437858
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1654,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 131,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.1121,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.2961999613035,
+      "CG.Mask.Resources": 0.034999999137653504,
+      "CG.Mask.CacheLookup": 1.9255999894812703,
+      "CG.Mask.Output": 2.1070999908261,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3740999698638916,
+      "CG.Mask.PageProducer": 0.48730000853538513
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 131,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.1138,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.829699687557877,
+      "Semaphore.WaitForSignal": 20.825399558227218
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1616,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 132,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.5509,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5764999601233285,
+      "CG.Mask.Resources": 0.033299999209702946,
+      "CG.Mask.CacheLookup": 1.745699989143759,
+      "CG.Mask.Output": 1.8225999898277223,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3559999465942383,
+      "CG.Mask.PageProducer": 0.4731999933719635
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 132,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.5486,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.502600445142889,
+      "Semaphore.WaitForSignal": 18.499099741093232
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 133,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.0565,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.1434999621124,
+      "CG.Mask.Resources": 0.0350999990987475,
+      "CG.Mask.CacheLookup": 1.886099990690127,
+      "CG.Mask.Output": 1.9415999841876328,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4460000991821289,
+      "CG.Mask.PageProducer": 0.48849999904632568
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 133,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.0564,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.662299611511116,
+      "Semaphore.WaitForSignal": 19.656799720767594
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 134,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.9118,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9729999743867666,
+      "CG.Mask.Resources": 0.03459999922051793,
+      "CG.Mask.CacheLookup": 1.8905999842099845,
+      "CG.Mask.Output": 1.8534999894909561,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3696000576019287,
+      "CG.Mask.PageProducer": 0.48690000176429749
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 134,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.9121,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 16.836699840518122,
+      "Semaphore.WaitForSignal": 16.832600079811527
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 135,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.9275,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5879999836324714,
+      "CG.Mask.Resources": 0.030499999193125404,
+      "CG.Mask.CacheLookup": 1.7841999912634492,
+      "CG.Mask.Output": 1.7892999886535108,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3204998970031738,
+      "CG.Mask.PageProducer": 0.4749000072479248
+    },
+    "counters": {
+      "Standard Draw Calls Count": 334,
+      "SRP Batcher Draw Calls Count": 1669,
+      "SetPass Calls Count": 348
+    }
+  },
+  {
+    "frame": 135,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.9272,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.922700576593343,
+      "Semaphore.WaitForSignal": 17.918299979697622
+    },
+    "counters": {
+      "Standard Draw Calls Count": 334,
+      "SRP Batcher Draw Calls Count": 1669,
+      "SetPass Calls Count": 348
+    }
+  },
+  {
+    "frame": 136,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.7783,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4908999646431766,
+      "CG.Mask.Resources": 0.034499999164836481,
+      "CG.Mask.CacheLookup": 1.6591999891679734,
+      "CG.Mask.Output": 1.8234999873675406,
+      "Semaphore.WaitForSignal": 0.00070000001869630069,
+      "CG.Mask.OutputBatch": 2.3303000926971436,
+      "CG.Mask.PageProducer": 0.47189998626708984
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 136,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.7778,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.49220052241435,
+      "Semaphore.WaitForSignal": 19.488199765197351
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 137,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.1176,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7786999726085924,
+      "CG.Mask.Resources": 0.037899999115325045,
+      "CG.Mask.CacheLookup": 1.714499986730516,
+      "CG.Mask.Output": 1.8519999929703772,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3545999526977539,
+      "CG.Mask.PageProducer": 0.48649999499320984
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 137,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.1185,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.089299715516972,
+      "Semaphore.WaitForSignal": 20.08580004999385
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 138,
+    "threadName": "Main Thread",
+    "frameTimeMs": 28.754,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4649999600369483,
+      "CG.Mask.Resources": 0.035699999149073847,
+      "CG.Mask.CacheLookup": 1.6111999885179102,
+      "CG.Mask.Output": 1.8053999855183065,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3343000411987305,
+      "CG.Mask.PageProducer": 0.49300000071525574
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 138,
+    "threadName": "Render Thread",
+    "frameTimeMs": 28.753,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.100300245823746,
+      "Semaphore.WaitForSignal": 20.097000453788496
+    },
+    "counters": {
+      "Standard Draw Calls Count": 312,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 317
+    }
+  },
+  {
+    "frame": 139,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.0038,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4900999839592259,
+      "CG.Mask.Resources": 0.034899999132903758,
+      "CG.Mask.CacheLookup": 1.6386999879032373,
+      "CG.Mask.Output": 1.8325999910011888,
+      "Semaphore.WaitForSignal": 0.01110000009794021,
+      "CG.Mask.OutputBatch": 1.9551999568939209
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 139,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.0098,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.961700277221098,
+      "Semaphore.WaitForSignal": 19.957599583052797
+    },
+    "counters": {
+      "Standard Draw Calls Count": 306,
+      "SRP Batcher Draw Calls Count": 1608,
+      "SetPass Calls Count": 311
+    }
+  },
+  {
+    "frame": 140,
+    "threadName": "Main Thread",
+    "frameTimeMs": 40.0155,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8957999914127868,
+      "CG.Mask.Resources": 0.035899999238608871,
+      "CG.Mask.CacheLookup": 1.6914999848231673,
+      "CG.Mask.Output": 1.8943999875336885,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.6973999738693237
+    },
+    "counters": {
+      "Standard Draw Calls Count": 313,
+      "SRP Batcher Draw Calls Count": 1750,
+      "SetPass Calls Count": 325
+    }
+  },
+  {
+    "frame": 140,
+    "threadName": "Render Thread",
+    "frameTimeMs": 40.0111,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 22.869299210593454,
+      "Semaphore.WaitForSignal": 22.864999207835353
+    },
+    "counters": {
+      "Standard Draw Calls Count": 313,
+      "SRP Batcher Draw Calls Count": 1750,
+      "SetPass Calls Count": 325
+    }
+  },
+  {
+    "frame": 141,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.1954,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4962999662966467,
+      "CG.Mask.Resources": 0.031799999378563371,
+      "CG.Mask.CacheLookup": 1.6513999900780618,
+      "CG.Mask.Output": 1.8080999911762774,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3736000061035156,
+      "CG.Mask.PageProducer": 0.4968000054359436
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 141,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.1985,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.1197994966642,
+      "Semaphore.WaitForSignal": 20.11550036072731
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 142,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.0069,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6622999766259454,
+      "CG.Mask.Resources": 0.031399999264976941,
+      "CG.Mask.CacheLookup": 1.7361999826971442,
+      "CG.Mask.Output": 1.8208999847993255,
+      "Semaphore.WaitForSignal": 0.00070000001869630069,
+      "CG.Mask.OutputBatch": 2.4735000133514404,
+      "CG.Mask.PageProducer": 0.52240002155303955
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 142,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.011,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.8980001890086,
+      "Semaphore.WaitForSignal": 19.894299872554257
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 143,
+    "threadName": "Main Thread",
+    "frameTimeMs": 29.6354,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.1926999732095283,
+      "CG.Mask.Resources": 0.032099999225465581,
+      "CG.Mask.CacheLookup": 1.9400999939534813,
+      "CG.Mask.Output": 1.9628999847918749,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3708000183105469,
+      "CG.Mask.PageProducer": 0.47960001230239868
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 143,
+    "threadName": "Render Thread",
+    "frameTimeMs": 29.6286,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.5920000103215,
+      "Semaphore.WaitForSignal": 18.587900598868146
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 144,
+    "threadName": "Main Thread",
+    "frameTimeMs": 36.2038,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6376999550848268,
+      "CG.Mask.Resources": 0.035899999194953125,
+      "CG.Mask.CacheLookup": 1.7588999869767576,
+      "CG.Mask.Output": 1.8243999904952943,
+      "Semaphore.WaitForSignal": 0.0093000001652399078,
+      "CG.Mask.OutputBatch": 1.8219000101089478
+    },
+    "counters": {
+      "Standard Draw Calls Count": 343,
+      "SRP Batcher Draw Calls Count": 1773,
+      "SetPass Calls Count": 357
+    }
+  },
+  {
+    "frame": 144,
+    "threadName": "Render Thread",
+    "frameTimeMs": 36.2038,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.4317995556994,
+      "Semaphore.WaitForSignal": 18.427600303832151
+    },
+    "counters": {
+      "Standard Draw Calls Count": 343,
+      "SRP Batcher Draw Calls Count": 1773,
+      "SetPass Calls Count": 357
+    }
+  },
+  {
+    "frame": 145,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.9439,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8460999622184318,
+      "CG.Mask.Resources": 0.032999999144522008,
+      "CG.Mask.CacheLookup": 1.8220999913755804,
+      "CG.Mask.Output": 1.8245999948121607,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.5906999111175537,
+      "CG.Mask.PageProducer": 0.49369999766349792
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 145,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.947,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.114799790309917,
+      "Semaphore.WaitForSignal": 19.1106001280059
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 146,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.1265,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7117999651818536,
+      "CG.Mask.Resources": 0.033099999251135159,
+      "CG.Mask.CacheLookup": 1.7572999806143343,
+      "CG.Mask.Output": 1.8369999853894114,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4279000759124756,
+      "CG.Mask.PageProducer": 0.48589998483657837
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 146,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.1252,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.795999628222489,
+      "Semaphore.WaitForSignal": 19.790899949482991
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 147,
+    "threadName": "Main Thread",
+    "frameTimeMs": 28.9704,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6174999593931716,
+      "CG.Mask.Resources": 0.03409999924042495,
+      "CG.Mask.CacheLookup": 1.6833999922964722,
+      "CG.Mask.Output": 1.8675999841652811,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.606299877166748,
+      "CG.Mask.PageProducer": 0.53420001268386841
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 147,
+    "threadName": "Render Thread",
+    "frameTimeMs": 28.9679,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.882699769827013,
+      "Semaphore.WaitForSignal": 19.878899535164237
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 148,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.7326,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5787999452441,
+      "CG.Mask.Resources": 0.03039999924658332,
+      "CG.Mask.CacheLookup": 1.6830999853555113,
+      "CG.Mask.Output": 1.8078999817371368,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.035099983215332
+    },
+    "counters": {
+      "Standard Draw Calls Count": 305,
+      "SRP Batcher Draw Calls Count": 1733,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 148,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.7364,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.685099679118139,
+      "Semaphore.WaitForSignal": 20.680999785661697
+    },
+    "counters": {
+      "Standard Draw Calls Count": 305,
+      "SRP Batcher Draw Calls Count": 1733,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 149,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.2897,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.06209995696554,
+      "CG.Mask.Resources": 0.037499999089050107,
+      "CG.Mask.CacheLookup": 1.7331999870948493,
+      "CG.Mask.Output": 1.9767999844625592,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.363300085067749,
+      "CG.Mask.PageProducer": 0.48320001363754272
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 149,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.290699,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.070699853466067,
+      "Semaphore.WaitForSignal": 21.066899833604111
+    },
+    "counters": {
+      "Standard Draw Calls Count": 308,
+      "SRP Batcher Draw Calls Count": 1671,
+      "SetPass Calls Count": 312
+    }
+  },
+  {
+    "frame": 150,
+    "threadName": "Main Thread",
+    "frameTimeMs": 39.5268,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.4812999486166518,
+      "CG.Mask.Resources": 0.65640000357234385,
+      "CG.Mask.CacheLookup": 1.7858999893069267,
+      "CG.Mask.Output": 1.8873999835923314,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4602999687194824,
+      "CG.Mask.PageProducer": 0.515999972820282
+    },
+    "counters": {
+      "Standard Draw Calls Count": 365,
+      "SRP Batcher Draw Calls Count": 1749,
+      "SetPass Calls Count": 380
+    }
+  },
+  {
+    "frame": 150,
+    "threadName": "Render Thread",
+    "frameTimeMs": 39.5252,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.347399692618637,
+      "Semaphore.WaitForSignal": 21.34200004691229
+    },
+    "counters": {
+      "Standard Draw Calls Count": 365,
+      "SRP Batcher Draw Calls Count": 1749,
+      "SetPass Calls Count": 380
+    }
+  },
+  {
+    "frame": 151,
+    "threadName": "Main Thread",
+    "frameTimeMs": 48.1193,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.5503999487846158,
+      "CG.Mask.Resources": 0.035099999106023461,
+      "CG.Mask.CacheLookup": 1.9468999914824963,
+      "CG.Mask.Output": 1.9979999838396907,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 1.8711999654769897
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1687,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 151,
+    "threadName": "Render Thread",
+    "frameTimeMs": 48.1216,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.012300041402341,
+      "Semaphore.WaitForSignal": 21.008500022864609
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1687,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 152,
+    "threadName": "Main Thread",
+    "frameTimeMs": 39.2995,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.13299997797003,
+      "CG.Mask.Resources": 0.0356999990544864,
+      "CG.Mask.CacheLookup": 1.8790999909397215,
+      "CG.Mask.Output": 1.9661999861709774,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.7979999780654907
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1687,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 152,
+    "threadName": "Render Thread",
+    "frameTimeMs": 39.299,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.084499573909852,
+      "Semaphore.WaitForSignal": 20.079999870788015
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1687,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 153,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.1614,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.4237999477772973,
+      "CG.Mask.Resources": 0.035599999158876017,
+      "CG.Mask.CacheLookup": 2.0631999976467341,
+      "CG.Mask.Output": 1.9605999891646206,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3886001110076904,
+      "CG.Mask.PageProducer": 0.50019997358322144
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1679,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 153,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.1615,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.920599616525578,
+      "Semaphore.WaitForSignal": 17.915700517929508
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1679,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 154,
+    "threadName": "Main Thread",
+    "frameTimeMs": 33.4079,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.9808999753731769,
+      "CG.Mask.Resources": 0.033499999226478394,
+      "CG.Mask.CacheLookup": 1.8517999909818172,
+      "CG.Mask.Output": 1.9034999860450625,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.6598000526428223,
+      "CG.Mask.PageProducer": 0.59359997510910034
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1679,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 154,
+    "threadName": "Render Thread",
+    "frameTimeMs": 33.4093,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.601700059036375,
+      "Semaphore.WaitForSignal": 19.597300214860297
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1679,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 155,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.0188,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 8.5037999776541255,
+      "CG.Mask.Resources": 0.036699999065604061,
+      "CG.Mask.CacheLookup": 2.0068999864161015,
+      "CG.Mask.Output": 2.0523999882861972,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4948999881744385,
+      "CG.Mask.PageProducer": 0.56519997119903564
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1679,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 155,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.0149,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.197800022659067,
+      "Semaphore.WaitForSignal": 19.192699848077609
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1679,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 156,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.5295,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8741999482153915,
+      "CG.Mask.Resources": 0.033399999134417158,
+      "CG.Mask.CacheLookup": 1.8343999900389463,
+      "CG.Mask.Output": 1.9087999896146357,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3743000030517578,
+      "CG.Mask.PageProducer": 0.49090000987052917
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1679,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 156,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.5313,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.005100068708998,
+      "Semaphore.WaitForSignal": 19.000599201935984
+    },
+    "counters": {
+      "Standard Draw Calls Count": 310,
+      "SRP Batcher Draw Calls Count": 1679,
+      "SetPass Calls Count": 314
+    }
+  },
+  {
+    "frame": 157,
+    "threadName": "Main Thread",
+    "frameTimeMs": 40.7227,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.775199967174558,
+      "CG.Mask.Resources": 0.031899999237793963,
+      "CG.Mask.CacheLookup": 1.8389999880455434,
+      "CG.Mask.Output": 1.8634999906644225,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 1.9840999841690063
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1651,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 157,
+    "threadName": "Render Thread",
+    "frameTimeMs": 40.7272,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.964800055415253,
+      "Semaphore.WaitForSignal": 18.96059959212289
+    },
+    "counters": {
+      "Standard Draw Calls Count": 304,
+      "SRP Batcher Draw Calls Count": 1651,
+      "SetPass Calls Count": 308
+    }
+  },
+  {
+    "frame": 158,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.9248,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5309999503660947,
+      "CG.Mask.Resources": 0.036199999070959166,
+      "CG.Mask.CacheLookup": 1.6706999856978655,
+      "CG.Mask.Output": 1.8312999904155731,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4112000465393066,
+      "CG.Mask.PageProducer": 0.49320000410079956
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1646,
+      "SetPass Calls Count": 320
+    }
+  },
+  {
+    "frame": 158,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.9204,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.292899596897769,
+      "Semaphore.WaitForSignal": 20.287999613377906
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1646,
+      "SetPass Calls Count": 320
+    }
+  },
+  {
+    "frame": 159,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.5897,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4788999757147394,
+      "CG.Mask.Resources": 0.037899999224464409,
+      "CG.Mask.CacheLookup": 1.6461999914608896,
+      "CG.Mask.Output": 1.8115999903529882,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4547998905181885,
+      "CG.Mask.PageProducer": 0.56269997358322144
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1646,
+      "SetPass Calls Count": 320
+    }
+  },
+  {
+    "frame": 159,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.5888,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.584199829863792,
+      "Semaphore.WaitForSignal": 20.580299846995331
+    },
+    "counters": {
+      "Standard Draw Calls Count": 315,
+      "SRP Batcher Draw Calls Count": 1646,
+      "SetPass Calls Count": 320
+    }
+  },
+  {
+    "frame": 160,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.8698,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6256999810575508,
+      "CG.Mask.Resources": 0.03469999926892342,
+      "CG.Mask.CacheLookup": 1.7027999905403703,
+      "CG.Mask.Output": 1.8414999917149544,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4556999206542969,
+      "CG.Mask.PageProducer": 0.52300000190734863
+    },
+    "counters": {
+      "Standard Draw Calls Count": 321,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 326
+    }
+  },
+  {
+    "frame": 160,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.8716,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.356000535000931,
+      "Semaphore.WaitForSignal": 20.3511998525355
+    },
+    "counters": {
+      "Standard Draw Calls Count": 321,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 326
+    }
+  },
+  {
+    "frame": 161,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.3823,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.3390999703842681,
+      "CG.Mask.Resources": 0.030599999263358768,
+      "CG.Mask.CacheLookup": 1.6468999893404543,
+      "CG.Mask.Output": 1.7656999896280468,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.5727999210357666,
+      "CG.Mask.PageProducer": 0.4846000075340271
+    },
+    "counters": {
+      "Standard Draw Calls Count": 320,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 325
+    }
+  },
+  {
+    "frame": 161,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.3813,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.05410027383914,
+      "Semaphore.WaitForSignal": 20.050099952146411
+    },
+    "counters": {
+      "Standard Draw Calls Count": 320,
+      "SRP Batcher Draw Calls Count": 1641,
+      "SetPass Calls Count": 325
+    }
+  },
+  {
+    "frame": 162,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.618,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5012999649334233,
+      "CG.Mask.Resources": 0.0314999992333469,
+      "CG.Mask.CacheLookup": 1.7207999853417277,
+      "CG.Mask.Output": 1.7925999867729843,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.6340000629425049,
+      "CG.Mask.PageProducer": 0.52410000562667847
+    },
+    "counters": {
+      "Standard Draw Calls Count": 331,
+      "SRP Batcher Draw Calls Count": 1703,
+      "SetPass Calls Count": 339
+    }
+  },
+  {
+    "frame": 162,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.6191,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.287400132707262,
+      "Semaphore.WaitForSignal": 19.283300342205621
+    },
+    "counters": {
+      "Standard Draw Calls Count": 331,
+      "SRP Batcher Draw Calls Count": 1703,
+      "SetPass Calls Count": 339
+    }
+  },
+  {
+    "frame": 163,
+    "threadName": "Main Thread",
+    "frameTimeMs": 30.3629,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6048999738413841,
+      "CG.Mask.Resources": 0.031399999228597153,
+      "CG.Mask.CacheLookup": 1.8268999895080924,
+      "CG.Mask.Output": 1.7998999888077378,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.36299991607666,
+      "CG.Mask.PageProducer": 0.4812999963760376
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1628,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 163,
+    "threadName": "Render Thread",
+    "frameTimeMs": 30.3637,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.686900284803414,
+      "Semaphore.WaitForSignal": 18.682500114999129
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1628,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 164,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.8557,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7005999504763167,
+      "CG.Mask.Resources": 0.031499999240622856,
+      "CG.Mask.CacheLookup": 1.8417999879457057,
+      "CG.Mask.Output": 1.8326999843120575,
+      "Semaphore.WaitForSignal": 0.0,
+      "CG.Mask.OutputBatch": 2.4716999530792236,
+      "CG.Mask.PageProducer": 0.51330000162124634
+    },
+    "counters": {
+      "Standard Draw Calls Count": 331,
+      "SRP Batcher Draw Calls Count": 1699,
+      "SetPass Calls Count": 340
+    }
+  },
+  {
+    "frame": 164,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.8598,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.780299697900773,
+      "Semaphore.WaitForSignal": 17.775600155815482
+    },
+    "counters": {
+      "Standard Draw Calls Count": 331,
+      "SRP Batcher Draw Calls Count": 1699,
+      "SetPass Calls Count": 340
+    }
+  },
+  {
+    "frame": 165,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.5615,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5641999719082378,
+      "CG.Mask.Resources": 0.03149999922607094,
+      "CG.Mask.CacheLookup": 1.7975999873597175,
+      "CG.Mask.Output": 1.8031999911181629,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.4161999225616455,
+      "CG.Mask.PageProducer": 0.47499999403953552
+    },
+    "counters": {
+      "Standard Draw Calls Count": 332,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 337
+    }
+  },
+  {
+    "frame": 165,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.5613,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.017799421715608,
+      "Semaphore.WaitForSignal": 19.013899963683798
+    },
+    "counters": {
+      "Standard Draw Calls Count": 332,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 337
+    }
+  },
+  {
+    "frame": 166,
+    "threadName": "Main Thread",
+    "frameTimeMs": 32.2583,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5890999647963326,
+      "CG.Mask.Resources": 0.032299999198585283,
+      "CG.Mask.CacheLookup": 1.6866999887861311,
+      "CG.Mask.Output": 1.8144999891519547,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.34689998626709,
+      "CG.Mask.PageProducer": 0.48339998722076416
+    },
+    "counters": {
+      "Standard Draw Calls Count": 330,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 166,
+    "threadName": "Render Thread",
+    "frameTimeMs": 32.2572,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.009199664666085,
+      "Semaphore.WaitForSignal": 20.005399819630838
+    },
+    "counters": {
+      "Standard Draw Calls Count": 330,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 167,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.8713,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5287999743013643,
+      "CG.Mask.Resources": 0.036999999196268618,
+      "CG.Mask.CacheLookup": 1.6682999888435006,
+      "CG.Mask.Output": 1.8313999874517322,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4303998947143555,
+      "CG.Mask.PageProducer": 0.50760000944137573
+    },
+    "counters": {
+      "Standard Draw Calls Count": 330,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 167,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.8696,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.408299711431027,
+      "Semaphore.WaitForSignal": 20.40469994785235
+    },
+    "counters": {
+      "Standard Draw Calls Count": 330,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 168,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.642,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5757999596535228,
+      "CG.Mask.Resources": 0.039399999208399095,
+      "CG.Mask.CacheLookup": 1.636399989714846,
+      "CG.Mask.Output": 1.8550999881699681,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3784999847412109,
+      "CG.Mask.PageProducer": 0.48489999771118164
+    },
+    "counters": {
+      "Standard Draw Calls Count": 330,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 168,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.6433,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.824500896698737,
+      "Semaphore.WaitForSignal": 20.820700913667679
+    },
+    "counters": {
+      "Standard Draw Calls Count": 330,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 169,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.9311,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.45229997014394,
+      "CG.Mask.Resources": 0.037699999244068749,
+      "CG.Mask.CacheLookup": 1.6313999854028225,
+      "CG.Mask.Output": 1.8166999900713563,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3585000038146973,
+      "CG.Mask.PageProducer": 0.48309999704360962
+    },
+    "counters": {
+      "Standard Draw Calls Count": 331,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 336
+    }
+  },
+  {
+    "frame": 169,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.9303,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.995999912636762,
+      "Semaphore.WaitForSignal": 19.992099957875325
+    },
+    "counters": {
+      "Standard Draw Calls Count": 331,
+      "SRP Batcher Draw Calls Count": 1623,
+      "SetPass Calls Count": 336
+    }
+  },
+  {
+    "frame": 170,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.759,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.8556999542051926,
+      "CG.Mask.Resources": 0.041999998968094587,
+      "CG.Mask.CacheLookup": 1.7176999857183546,
+      "CG.Mask.Output": 1.9573999890126288,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.7618999481201172,
+      "CG.Mask.PageProducer": 0.49129998683929443
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1627,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 170,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.7638,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 21.632199955245596,
+      "Semaphore.WaitForSignal": 21.6277003825453
+    },
+    "counters": {
+      "Standard Draw Calls Count": 325,
+      "SRP Batcher Draw Calls Count": 1627,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 171,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.0462,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.5216999807744287,
+      "CG.Mask.Resources": 0.037199999307631515,
+      "CG.Mask.CacheLookup": 1.6342999897897243,
+      "CG.Mask.Output": 1.831299985293299,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.6630001068115234,
+      "CG.Mask.PageProducer": 0.56239998340606689
+    },
+    "counters": {
+      "Standard Draw Calls Count": 324,
+      "SRP Batcher Draw Calls Count": 1627,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 171,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.0436,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.847100347207743,
+      "Semaphore.WaitForSignal": 20.842299838186591
+    },
+    "counters": {
+      "Standard Draw Calls Count": 324,
+      "SRP Batcher Draw Calls Count": 1627,
+      "SetPass Calls Count": 330
+    }
+  },
+  {
+    "frame": 172,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.2597,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.7891999362618662,
+      "CG.Mask.Resources": 0.035299999173730612,
+      "CG.Mask.CacheLookup": 1.7795999927911907,
+      "CG.Mask.Output": 1.8583999928086996,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.4302999973297119,
+      "CG.Mask.PageProducer": 0.48230001330375671
+    },
+    "counters": {
+      "Standard Draw Calls Count": 318,
+      "SRP Batcher Draw Calls Count": 1632,
+      "SetPass Calls Count": 322
+    }
+  },
+  {
+    "frame": 172,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.2599,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.482900325871015,
+      "Semaphore.WaitForSignal": 20.479500085450127
+    },
+    "counters": {
+      "Standard Draw Calls Count": 318,
+      "SRP Batcher Draw Calls Count": 1632,
+      "SetPass Calls Count": 322
+    }
+  },
+  {
+    "frame": 173,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.1403,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.6595999569981359,
+      "CG.Mask.Resources": 0.032699999210308306,
+      "CG.Mask.CacheLookup": 1.7954999904613942,
+      "CG.Mask.Output": 1.8536999910138547,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.7741000652313232,
+      "CG.Mask.PageProducer": 0.48089998960494995
+    },
+    "counters": {
+      "Standard Draw Calls Count": 329,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 173,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.1393,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 19.748699821262562,
+      "Semaphore.WaitForSignal": 19.744399545117631
+    },
+    "counters": {
+      "Standard Draw Calls Count": 329,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 174,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.8594,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.4895999885338824,
+      "CG.Mask.Resources": 0.0342999993081321,
+      "CG.Mask.CacheLookup": 1.7213999901432544,
+      "CG.Mask.Output": 1.8394999853335321,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.286099910736084,
+      "CG.Mask.PageProducer": 0.4814000129699707
+    },
+    "counters": {
+      "Standard Draw Calls Count": 329,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 174,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.8601,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 17.926999748757225,
+      "Semaphore.WaitForSignal": 17.92290004206734
+    },
+    "counters": {
+      "Standard Draw Calls Count": 329,
+      "SRP Batcher Draw Calls Count": 1620,
+      "SetPass Calls Count": 335
+    }
+  },
+  {
+    "frame": 175,
+    "threadName": "Main Thread",
+    "frameTimeMs": 31.5609,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.673499957396416,
+      "CG.Mask.Resources": 0.032399999217886943,
+      "CG.Mask.CacheLookup": 1.8065999876707792,
+      "CG.Mask.Output": 1.8349999818019569,
+      "Semaphore.WaitForSignal": 0.00019999999494757503,
+      "CG.Mask.OutputBatch": 2.3020999431610107,
+      "CG.Mask.PageProducer": 0.47529998421669006
+    },
+    "counters": {
+      "Standard Draw Calls Count": 339,
+      "SRP Batcher Draw Calls Count": 1606,
+      "SetPass Calls Count": 345
+    }
+  },
+  {
+    "frame": 175,
+    "threadName": "Render Thread",
+    "frameTimeMs": 31.5644,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 18.1019998888587,
+      "Semaphore.WaitForSignal": 18.09780029689864
+    },
+    "counters": {
+      "Standard Draw Calls Count": 339,
+      "SRP Batcher Draw Calls Count": 1606,
+      "SetPass Calls Count": 345
+    }
+  },
+  {
+    "frame": 176,
+    "threadName": "Main Thread",
+    "frameTimeMs": 44.9799,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 10.864099943311885,
+      "CG.Mask.Resources": 0.056299998504982796,
+      "CG.Mask.CacheLookup": 2.4594999903347343,
+      "CG.Mask.Output": 2.7283999864012003,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 3.2018001079559326,
+      "CG.Mask.PageProducer": 0.52939999103546143
+    },
+    "counters": {
+      "Standard Draw Calls Count": 344,
+      "SRP Batcher Draw Calls Count": 1601,
+      "SetPass Calls Count": 350
+    }
+  },
+  {
+    "frame": 176,
+    "threadName": "Render Thread",
+    "frameTimeMs": 44.9788,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 28.760600439178234,
+      "Semaphore.WaitForSignal": 28.755100534464873
+    },
+    "counters": {
+      "Standard Draw Calls Count": 344,
+      "SRP Batcher Draw Calls Count": 1601,
+      "SetPass Calls Count": 350
+    }
+  },
+  {
+    "frame": 177,
+    "threadName": "Main Thread",
+    "frameTimeMs": 43.1057,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 9.553299966501072,
+      "CG.Mask.Resources": 0.044199998956173658,
+      "CG.Mask.CacheLookup": 2.1486999895423651,
+      "CG.Mask.Output": 2.251799994148314,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 3.4054000377655029,
+      "CG.Mask.PageProducer": 0.81929999589920044
+    },
+    "counters": {
+      "Standard Draw Calls Count": 338,
+      "SRP Batcher Draw Calls Count": 1603,
+      "SetPass Calls Count": 342
+    }
+  },
+  {
+    "frame": 177,
+    "threadName": "Render Thread",
+    "frameTimeMs": 43.1025,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 26.996699859781074,
+      "Semaphore.WaitForSignal": 26.991100816987455
+    },
+    "counters": {
+      "Standard Draw Calls Count": 338,
+      "SRP Batcher Draw Calls Count": 1603,
+      "SetPass Calls Count": 342
+    }
+  },
+  {
+    "frame": 178,
+    "threadName": "Main Thread",
+    "frameTimeMs": 35.307,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.39639996617916,
+      "CG.Mask.Resources": 0.031899999172310345,
+      "CG.Mask.CacheLookup": 1.6704999895300716,
+      "CG.Mask.Output": 1.7814999902620912,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3736999034881592,
+      "CG.Mask.PageProducer": 0.48050001263618469
+    },
+    "counters": {
+      "Standard Draw Calls Count": 338,
+      "SRP Batcher Draw Calls Count": 1603,
+      "SetPass Calls Count": 342
+    }
+  },
+  {
+    "frame": 178,
+    "threadName": "Render Thread",
+    "frameTimeMs": 35.309,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.791199958614015,
+      "Semaphore.WaitForSignal": 20.786700165233924
+    },
+    "counters": {
+      "Standard Draw Calls Count": 338,
+      "SRP Batcher Draw Calls Count": 1603,
+      "SetPass Calls Count": 342
+    }
+  },
+  {
+    "frame": 179,
+    "threadName": "Main Thread",
+    "frameTimeMs": 34.2063,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "CG.Mask.Present": 7.2754999631433748,
+      "CG.Mask.Resources": 0.031899999361485243,
+      "CG.Mask.CacheLookup": 1.6006999909877777,
+      "CG.Mask.Output": 1.7870999877341092,
+      "Semaphore.WaitForSignal": 9.9999997473787516E-05,
+      "CG.Mask.OutputBatch": 2.3756000995635986,
+      "CG.Mask.PageProducer": 0.48330000042915344
+    },
+    "counters": {
+      "Standard Draw Calls Count": 328,
+      "SRP Batcher Draw Calls Count": 1611,
+      "SetPass Calls Count": 332
+    }
+  },
+  {
+    "frame": 179,
+    "threadName": "Render Thread",
+    "frameTimeMs": 34.2083,
+    "frameGpuTimeMs": 0.0,
+    "markers": {
+      "Gfx.WaitForGfxCommandsFromMainThread": 20.173900408306508,
+      "Semaphore.WaitForSignal": 20.169699760321237
+    },
+    "counters": {
+      "Standard Draw Calls Count": 328,
+      "SRP Batcher Draw Calls Count": 1611,
+      "SetPass Calls Count": 332
+    }
+  }
+]

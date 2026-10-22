@@ -17,6 +17,8 @@ internal static class CoreGuardianBodyMaskCache
     static readonly HashSet<Lease> active=new HashSet<Lease>();
     static readonly List<Lease> resetScratch=new List<Lease>();
     static long nextEpoch;
+    static readonly List<Record> pending=new List<Record>();
+    static UnityEngine.Rendering.CommandBuffer pendingCopies;
     internal static long Hits,Generations,Allocations,Releases;
     internal static int EntryCount=>entries.Count;
     internal static int BindingCount=>active.Count;
@@ -79,6 +81,8 @@ internal static class CoreGuardianBodyMaskCache
         internal long epoch;
         internal int users;
         internal bool valid;
+        internal bool pending;
+        internal CoreGuardianMaskPage.Slot page;
         internal RenderTexture texture;
         internal readonly List<Part> parts=new List<Part>();
     }
@@ -125,7 +129,7 @@ internal static class CoreGuardianBodyMaskCache
     static bool Compatible(Record record,in Request request,List<Part> parts)
     {
         var a=record.request;
-        if(!record.valid||record.epoch!=record.entry.epoch||record.texture==null||!record.texture.IsCreated()||!request.shareable||!a.shareable)return false;
+        if((!record.valid&&!(record.pending&&CoreGuardianMaskPage.IsValid(record.page)))||record.epoch!=record.entry.epoch||record.texture==null||!record.texture.IsCreated()||!request.shareable||!a.shareable)return false;
         if(a.frame!=request.frame||!ReferenceEquals(a.camera,request.camera)||!a.threshold.Equals(request.threshold)||!a.view.Equals(request.view)||!a.projection.Equals(request.projection)||!a.viewport.Equals(request.viewport))return false;
         if(!ReferenceEquals(a.target,request.target)||a.targetWidth!=request.targetWidth||a.targetHeight!=request.targetHeight||a.targetAA!=request.targetAA||a.targetFormat!=request.targetFormat||!ReferenceEquals(a.atlas,request.atlas)||a.atlasRevision!=request.atlasRevision)return false;
         // Different crop matrices can rasterize point-sampled sprite edges differently, even near the origin.
@@ -147,7 +151,7 @@ internal static class CoreGuardianBodyMaskCache
         if(record==null||record.entry!=entry||record.users!=1)record=null;
         if(record==null)foreach(var candidate in entry.records)if(candidate.users==0){record=candidate;break;}
         if(record==null){record=new Record{entry=entry};entry.records.Add(record);}
-        Bind(lease,record);record.valid=false;record.request=request;record.epoch=entry.epoch;
+        Bind(lease,record);CoreGuardianMaskPage.Release(record.page);record.page=default;record.pending=false;record.valid=false;record.request=request;record.epoch=entry.epoch;
         record.parts.Clear();record.parts.AddRange(lease.scratch);
         int width=Mathf.CeilToInt(request.rect.width),height=Mathf.CeilToInt(request.rect.height);
         if(record.texture!=null&&(record.texture.width<width||record.texture.height<height))
@@ -169,6 +173,34 @@ internal static class CoreGuardianBodyMaskCache
         if(old!=null)Return(old);
     }
     internal static void Publish(Lease lease){if(lease.current==null)return;lease.current.valid=true;Generations++;}
+    internal static void MarkPending(Lease lease,in CoreGuardianMaskPage.Slot slot)
+    {var record=lease.current;record.valid=false;record.pending=true;record.page=slot;}
+    internal static bool PreparedPage(Lease lease,out CoreGuardianMaskPage.Slot slot)
+    {slot=lease?.current?.page??default;return CoreGuardianMaskPage.IsValid(slot);}
+    internal static bool HasPage(Camera camera)
+    {foreach(var entry in entries.Values)foreach(var record in entry.records)if(record.users>0&&record.request.camera==camera&&CoreGuardianMaskPage.IsValid(record.page))return true;return false;}
+    internal static void Flush(Camera camera)
+    {
+        pending.Clear();foreach(var entry in entries.Values)foreach(var record in entry.records)if(record.pending&&record.users>0&&record.request.camera==camera)pending.Add(record);
+        if(pending.Count==0)return;
+        try
+        {
+            foreach(var record in pending)if(!CoreGuardianMaskPage.IsValid(record.page)){CoreGuardianMaskProducerBatch.RenderOriginal(record.page,record.texture);record.pending=false;record.valid=true;Generations++;}
+            CoreGuardianMaskProducerBatch.Flush(camera,false);
+            if(pendingCopies==null)pendingCopies=new UnityEngine.Rendering.CommandBuffer{name="Completed shared masks to legacy consumers"};pendingCopies.Clear();
+            foreach(var record in pending)if(record.pending)
+            {var r=record.page.Rect;pendingCopies.CopyTexture(record.page.Texture,0,0,r.x,r.y,r.width,r.height,record.texture,0,0,0,0);}
+            Graphics.ExecuteCommandBuffer(pendingCopies);
+            foreach(var record in pending)if(record.pending){record.pending=false;record.valid=true;Generations++;}
+        }
+        catch(System.Exception e)
+        {
+            foreach(var record in pending)if(record.pending)
+            {CoreGuardianMaskProducerBatch.RenderOriginal(record.page,record.texture);CoreGuardianMaskPage.Release(record.page);record.page=default;record.pending=false;record.valid=true;Generations++;}
+            Debug.LogWarning("Shared mask producer restored original rendering: "+e.Message);
+        }
+        finally{CoreGuardianMaskProducerBatch.Discard(camera);pending.Clear();}
+    }
     internal static void Abort(Lease lease){if(lease.current!=null)lease.current.valid=false;Release(lease);}
     internal static void Release(Lease lease)
     {
@@ -178,9 +210,11 @@ internal static class CoreGuardianBodyMaskCache
     static void Return(Record record)
     {
         var entry=record.entry;record.users--;entry.users--;
+        if(record.users==0){CoreGuardianMaskPage.Release(record.page);record.page=default;record.pending=false;}
         if(entry.users==0)
         {
-            foreach(var value in entry.records)DestroyTexture(value);entry.records.Clear();entries.Remove(entry.artwork);return;
+            foreach(var value in entry.records)DestroyTexture(value);entry.records.Clear();entries.Remove(entry.artwork);
+            if(entries.Count==0){CoreGuardianMaskPage.ReleaseCamera(record.request.camera);pendingCopies?.Dispose();pendingCopies=null;}return;
         }
         bool spare=false;
         for(int i=entry.records.Count-1;i>=0;i--)
@@ -195,6 +229,7 @@ internal static class CoreGuardianBodyMaskCache
     }
     static void DestroyTexture(Record record)
     {
+        CoreGuardianMaskPage.Release(record.page);record.page=default;record.pending=false;
         if(record.texture==null)return;record.texture.Release();
         if(Application.isPlaying)UnityEngine.Object.Destroy(record.texture);else UnityEngine.Object.DestroyImmediate(record.texture);
         record.texture=null;Releases++;

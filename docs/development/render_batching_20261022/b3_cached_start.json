@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/render_batching_20261022/B2RuntimeProbe.cs",
+      "entry": "CGB2RuntimeProbe.Start",
+      "args": "[\"b3_cached\"]"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 650,
+      "executeMs": 217,
+      "assemblyName": "PipelineRunScript_B2RuntimeProbe_70f9e527f535422b9511843fa4b880f2",
+      "success": true,
+      "result": {
+        "running": true,
+        "side": "b3_cached",
+        "run": 0,
+        "step": 0,
+        "pending": false,
+        "frame": 1108
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

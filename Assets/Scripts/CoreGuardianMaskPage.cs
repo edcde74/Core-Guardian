@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public static class CoreGuardianMaskPage
 {
     const int Size=2048,Padding=10;
+    // Device capabilities stay fixed until the Editor/Player graphics device is recreated.
+    // Unity's enum-validation path allocates when this API is called for every mask.
+    static readonly bool supported=SystemInfo.maxTextureSize>=Size&&SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGB32);
     sealed class Page
     {
         internal RenderTexture texture;
@@ -31,8 +34,8 @@ public static class CoreGuardianMaskPage
         internal RenderTexture target;
         internal readonly List<Page> pages=new List<Page>();
         internal readonly HashSet<long> leases=new HashSet<long>();
-        internal bool Matches(Camera c)=>c!=null&&viewport==c.pixelRect&&view==c.worldToCameraMatrix
-            &&projection==c.projectionMatrix&&target==c.targetTexture&&enabled==c.enabled
+        internal bool Matches(Camera c)=>c!=null&&viewport==c.pixelRect&&view.Equals(c.worldToCameraMatrix)
+            &&projection.Equals(c.projectionMatrix)&&target==c.targetTexture&&enabled==c.enabled
             &&width==(target!=null?target.width:Screen.width)&&height==(target!=null?target.height:Screen.height);
         internal void Begin(Camera c,int f)
         {
@@ -58,6 +61,13 @@ public static class CoreGuardianMaskPage
     static long nextGeneration,nextLease;
     public static int PageCount {get{int n=0;foreach(var v in views.Values)n+=v.pages.Count;return n;}}
     public static long RuntimeBytes {get{long n=0;foreach(var v in views.Values)foreach(var p in v.pages)if(p.texture!=null)n+=UnityEngine.Profiling.Profiler.GetRuntimeMemorySizeLong(p.texture);return n;}}
+    public static int LastProducerDraws=>CoreGuardianMaskProducerBatch.LastDraws;
+    public static bool Queue(in Slot slot,Mesh mesh,Material material,Matrix4x4 partMatrix,Matrix4x4 maskVP,Texture source,float opacity,float threshold,Vector2 viewport)
+        =>CoreGuardianMaskProducerBatch.Queue(slot,mesh,material,partMatrix,maskVP,source,opacity,threshold,viewport);
+    public static void Flush(Camera camera)=>CoreGuardianMaskProducerBatch.Flush(camera);
+    internal static bool QueueShape(in Slot slot,CoreGuardianMaskProducerBatch.Shape shape,Material material,Matrix4x4 partMatrix,Matrix4x4 maskVP,Texture source,float opacity,float threshold,Vector2 viewport)
+        // Called only by QueuePage immediately after TryAcquire, within one synchronous loop.
+        =>CoreGuardianMaskProducerBatch.QueueShape(slot,shape,material,partMatrix,maskVP,source,opacity,threshold,viewport,true);
     static CoreGuardianMaskPage()
     {
         SceneManager.sceneUnloaded+=Unload;
@@ -72,7 +82,7 @@ public static class CoreGuardianMaskPage
     {
         slot=default;
         if(camera==null||width<=0||height<=0||width>Size-2*Padding||height>Size-2*Padding
-            ||SystemInfo.maxTextureSize<Size||!SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.ARGB32))return false;
+            ||!supported)return false;
         Prune(default,null);
         var id=camera.GetEntityId();
         if(!views.TryGetValue(id,out var v)){v=new View();views.Add(id,v);v.Begin(camera,frame);}
@@ -95,11 +105,11 @@ public static class CoreGuardianMaskPage
     public static void ReleaseCamera(Camera camera)
     {if(!ReferenceEquals(camera,null))ReleaseID(camera.GetEntityId());}
     static void ReleaseID(EntityId id)
-    {if(!views.TryGetValue(id,out var v))return;foreach(var p in v.pages){p.texture.Release();Dispose(p.texture);}views.Remove(id);}
+    {if(!views.TryGetValue(id,out var v))return;CoreGuardianBodyMaskCache.Flush(v.camera);foreach(var p in v.pages){CoreGuardianMaskProducerBatch.ReleasePage(p.texture);p.texture.Release();Dispose(p.texture);}views.Remove(id);if(views.Count==0)CoreGuardianMaskProducerBatch.ReleaseAll();}
     static void Unload(Scene scene)
     {stale.Clear();foreach(var pair in views)if(pair.Value.camera==null||pair.Value.camera.gameObject.scene==scene)stale.Add(pair.Key);foreach(var id in stale)ReleaseID(id);}
     static void Prune(ScriptableRenderContext context,Camera[] cameras)
     {stale.Clear();foreach(var pair in views)if(pair.Value.camera==null||(pair.Value.enabled&&!pair.Value.camera.enabled))stale.Add(pair.Key);foreach(var id in stale)ReleaseID(id);}
-    static void ReleaseAll(){foreach(var v in views.Values)foreach(var p in v.pages){p.texture.Release();Dispose(p.texture);}views.Clear();}
+    static void ReleaseAll(){CoreGuardianMaskProducerBatch.ReleaseAll();foreach(var v in views.Values)foreach(var p in v.pages){p.texture.Release();Dispose(p.texture);}views.Clear();}
     static void Dispose(Object value){if(Application.isPlaying)Object.Destroy(value);else Object.DestroyImmediate(value);}
 }

@@ -1,0 +1,1523 @@
+{
+  "saved": true,
+  "first": 0,
+  "last": 178,
+  "events": [
+    "P|1|11|Tower:1",
+    "P|2|35|Tower:1",
+    "P|3|59|Tower:1",
+    "P|4|11|Tower:2",
+    "P|5|35|Tower:2",
+    "P|6|59|Tower:2",
+    "P|7|19|Tower:3",
+    "P|8|43|Tower:3",
+    "P|9|67|Tower:3",
+    "P|10|19|Tower:4",
+    "P|11|43|Tower:4",
+    "P|12|67|Tower:4",
+    "P|13|11|Tower:6",
+    "P|14|35|Tower:6",
+    "P|15|59|Tower:6",
+    "P|16|19|Tower:7",
+    "P|17|43|Tower:7",
+    "P|18|67|Tower:7",
+    "P|19|19|Tower:8",
+    "P|20|43|Tower:8",
+    "P|21|67|Tower:8",
+    "P|22|3|Tower:9",
+    "P|23|27|Tower:9",
+    "P|24|51|Tower:9",
+    "P|25|19|Tower:11",
+    "P|26|43|Tower:11",
+    "P|27|67|Tower:11",
+    "P|28|19|Tower:12",
+    "P|29|43|Tower:12",
+    "P|30|67|Tower:12",
+    "P|31|11|Tower:13",
+    "P|32|35|Tower:13",
+    "P|33|59|Tower:13",
+    "P|34|11|Tower:14",
+    "P|35|35|Tower:14",
+    "P|36|59|Tower:14",
+    "D|11|11",
+    "D|35|11",
+    "D|59|11",
+    "D|19|11",
+    "D|43|11",
+    "D|67|11",
+    "D|19|11",
+    "D|43|11",
+    "D|67|11",
+    "D|3|11",
+    "D|27|11",
+    "D|51|11",
+    "D|11|13",
+    "D|35|13",
+    "D|59|13",
+    "D|11|11",
+    "D|35|11",
+    "D|59|11",
+    "D|19|11",
+    "D|43|11",
+    "D|67|11",
+    "D|19|13",
+    "D|43|13",
+    "D|67|13",
+    "D|3|99989",
+    "D|4|100000",
+    "D|5|100000",
+    "D|6|100000",
+    "D|7|100000",
+    "D|8|100000",
+    "D|9|100000",
+    "D|10|100000",
+    "D|11|13",
+    "D|35|13",
+    "D|59|13",
+    "D|11|11",
+    "D|35|11",
+    "D|59|11",
+    "D|19|11",
+    "D|43|11",
+    "D|67|11",
+    "D|19|11",
+    "D|43|11",
+    "D|67|11",
+    "D|11|99941",
+    "D|12|100000",
+    "D|13|100000",
+    "D|14|100000",
+    "D|15|100000",
+    "D|16|100000",
+    "D|17|100000",
+    "D|18|100000",
+    "D|19|99932",
+    "D|20|100000",
+    "D|21|100000",
+    "D|22|100000",
+    "D|23|100000",
+    "D|24|100000",
+    "D|25|100000",
+    "D|26|100000",
+    "P|37|27|Tower:1",
+    "P|38|51|Tower:1",
+    "P|39|75|Tower:1",
+    "P|40|27|Tower:2",
+    "P|41|51|Tower:2",
+    "P|42|75|Tower:2",
+    "P|43|131|Tower:3",
+    "P|44|139|Tower:3",
+    "P|45|147|Tower:3",
+    "P|46|131|Tower:4",
+    "P|47|139|Tower:4",
+    "P|48|147|Tower:4",
+    "P|49|43|Tower:6",
+    "P|50|67|Tower:6",
+    "P|51|27|Tower:6",
+    "P|52|27|Tower:7",
+    "P|53|51|Tower:7",
+    "P|54|75|Tower:7",
+    "P|55|27|Tower:8",
+    "P|56|51|Tower:8",
+    "P|57|75|Tower:8",
+    "P|58|139|Tower:9",
+    "P|59|147|Tower:9",
+    "P|60|149|Tower:9",
+    "P|61|139|Tower:11",
+    "P|62|147|Tower:11",
+    "P|63|140|Tower:11",
+    "P|64|139|Tower:12",
+    "P|65|147|Tower:12",
+    "P|66|140|Tower:12",
+    "P|67|43|Tower:13",
+    "P|68|67|Tower:13",
+    "P|69|27|Tower:13",
+    "P|70|43|Tower:14",
+    "P|71|67|Tower:14",
+    "P|72|27|Tower:14",
+    "D|27|11",
+    "D|147|11",
+    "D|147|13",
+    "D|27|99978",
+    "D|28|100000",
+    "D|29|100000",
+    "D|30|100000",
+    "D|31|100000",
+    "D|32|100000",
+    "D|33|100000",
+    "D|34|100000",
+    "D|139|11",
+    "D|139|13",
+    "D|147|11",
+    "D|147|11",
+    "D|51|13",
+    "D|75|13",
+    "D|51|11",
+    "D|75|11",
+    "D|43|11",
+    "D|67|11",
+    "D|147|11",
+    "D|131|11",
+    "D|131|13",
+    "D|139|11",
+    "D|139|11",
+    "D|51|11",
+    "D|75|11",
+    "D|51|11",
+    "D|75|11",
+    "D|140|11",
+    "D|140|11",
+    "D|43|13",
+    "D|67|13",
+    "D|43|11",
+    "D|67|11",
+    "D|139|11",
+    "D|149|11",
+    "D|35|99941",
+    "D|36|100000",
+    "D|37|100000",
+    "D|38|100000",
+    "D|39|100000",
+    "D|40|100000",
+    "D|41|100000",
+    "D|42|100000",
+    "D|43|99897",
+    "D|44|100000",
+    "D|45|100000",
+    "D|46|100000",
+    "D|47|100000",
+    "D|48|100000",
+    "D|49|100000",
+    "D|50|100000",
+    "P|73|139|Tower:1",
+    "P|74|147|Tower:1",
+    "P|75|155|Tower:1",
+    "P|76|139|Tower:2",
+    "P|77|147|Tower:2",
+    "P|78|155|Tower:2",
+    "P|79|155|Tower:3",
+    "P|80|163|Tower:3",
+    "P|81|171|Tower:3",
+    "P|82|155|Tower:4",
+    "P|83|163|Tower:4",
+    "P|84|171|Tower:4",
+    "P|85|139|Tower:6",
+    "P|86|147|Tower:6",
+    "P|87|131|Tower:6",
+    "P|88|147|Tower:7",
+    "P|89|155|Tower:7",
+    "P|90|163|Tower:7",
+    "P|91|147|Tower:8",
+    "P|92|155|Tower:8",
+    "P|93|163|Tower:8",
+    "P|94|171|Tower:9",
+    "P|95|172|Tower:9",
+    "P|96|163|Tower:11",
+    "P|97|171|Tower:11",
+    "P|98|173|Tower:11",
+    "P|99|163|Tower:12",
+    "P|100|171|Tower:12",
+    "P|101|173|Tower:12",
+    "P|102|139|Tower:13",
+    "P|103|147|Tower:13",
+    "P|104|155|Tower:13",
+    "P|105|139|Tower:14",
+    "P|106|147|Tower:14",
+    "P|107|155|Tower:14",
+    "D|51|99943",
+    "D|52|100000",
+    "D|53|100000",
+    "D|54|100000",
+    "D|55|100000",
+    "D|56|100000",
+    "D|57|100000",
+    "D|58|100000",
+    "D|147|11",
+    "D|171|11",
+    "D|171|13",
+    "D|155|13",
+    "D|155|11",
+    "D|155|13",
+    "D|155|11",
+    "D|139|11",
+    "D|163|11",
+    "D|163|11",
+    "D|147|13",
+    "D|147|11",
+    "D|163|11",
+    "D|163|13",
+    "D|171|11",
+    "D|171|11",
+    "D|147|13",
+    "D|147|11",
+    "D|155|11",
+    "D|155|11",
+    "D|131|11",
+    "D|171|11",
+    "D|139|13",
+    "D|139|11",
+    "D|163|11",
+    "D|173|11",
+    "D|163|11",
+    "D|173|11",
+    "D|155|11",
+    "D|155|13",
+    "D|147|11",
+    "D|147|11",
+    "D|172|11",
+    "D|139|13",
+    "D|139|11"
+  ],
+  "CoreEnergy": 20,
+  "Gold": 1000,
+  "Crystals": 55,
+  "phase": "Combat",
+  "enemies": [
+    {
+      "Id": 59,
+      "kind": "Buff",
+      "Health": 99941,
+      "x": 21.20011,
+      "y": 16.0,
+      "PathTravelled": 27.20011,
+      "PathRemaining": 51.79989
+    },
+    {
+      "Id": 60,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.50011,
+      "y": 16.0,
+      "PathTravelled": 27.50011,
+      "PathRemaining": 51.49989
+    },
+    {
+      "Id": 61,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.80011,
+      "y": 16.0,
+      "PathTravelled": 27.80011,
+      "PathRemaining": 51.19989
+    },
+    {
+      "Id": 62,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 22.10011,
+      "y": 16.0,
+      "PathTravelled": 28.10011,
+      "PathRemaining": 50.89989
+    },
+    {
+      "Id": 63,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.80011,
+      "y": 16.0,
+      "PathTravelled": 24.80011,
+      "PathRemaining": 54.19989
+    },
+    {
+      "Id": 64,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.10011,
+      "y": 16.0,
+      "PathTravelled": 25.10011,
+      "PathRemaining": 53.89989
+    },
+    {
+      "Id": 65,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.40011,
+      "y": 16.0,
+      "PathTravelled": 25.40011,
+      "PathRemaining": 53.59989
+    },
+    {
+      "Id": 66,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.70011,
+      "y": 16.0,
+      "PathTravelled": 25.70011,
+      "PathRemaining": 53.29989
+    },
+    {
+      "Id": 67,
+      "kind": "Buff",
+      "Health": 99897,
+      "x": 20.00011,
+      "y": 16.0,
+      "PathTravelled": 26.00011,
+      "PathRemaining": 52.99989
+    },
+    {
+      "Id": 68,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.30011,
+      "y": 16.0,
+      "PathTravelled": 26.30011,
+      "PathRemaining": 52.69989
+    },
+    {
+      "Id": 69,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.60011,
+      "y": 16.0,
+      "PathTravelled": 26.60011,
+      "PathRemaining": 52.39989
+    },
+    {
+      "Id": 70,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.90011,
+      "y": 16.0,
+      "PathTravelled": 26.90011,
+      "PathRemaining": 52.09989
+    },
+    {
+      "Id": 71,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.20011,
+      "y": 16.0,
+      "PathTravelled": 27.20011,
+      "PathRemaining": 51.79989
+    },
+    {
+      "Id": 72,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.50011,
+      "y": 16.0,
+      "PathTravelled": 27.50011,
+      "PathRemaining": 51.49989
+    },
+    {
+      "Id": 73,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.80011,
+      "y": 16.0,
+      "PathTravelled": 27.80011,
+      "PathRemaining": 51.19989
+    },
+    {
+      "Id": 74,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 22.10011,
+      "y": 16.0,
+      "PathTravelled": 28.10011,
+      "PathRemaining": 50.89989
+    },
+    {
+      "Id": 75,
+      "kind": "Buff",
+      "Health": 99954,
+      "x": 18.80011,
+      "y": 16.0,
+      "PathTravelled": 24.80011,
+      "PathRemaining": 54.19989
+    },
+    {
+      "Id": 76,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.10011,
+      "y": 16.0,
+      "PathTravelled": 25.10011,
+      "PathRemaining": 53.89989
+    },
+    {
+      "Id": 77,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.40011,
+      "y": 16.0,
+      "PathTravelled": 25.40011,
+      "PathRemaining": 53.59989
+    },
+    {
+      "Id": 78,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.70011,
+      "y": 16.0,
+      "PathTravelled": 25.70011,
+      "PathRemaining": 53.29989
+    },
+    {
+      "Id": 79,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.00011,
+      "y": 16.0,
+      "PathTravelled": 26.00011,
+      "PathRemaining": 52.99989
+    },
+    {
+      "Id": 80,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.30011,
+      "y": 16.0,
+      "PathTravelled": 26.30011,
+      "PathRemaining": 52.69989
+    },
+    {
+      "Id": 81,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.60011,
+      "y": 16.0,
+      "PathTravelled": 26.60011,
+      "PathRemaining": 52.39989
+    },
+    {
+      "Id": 82,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.90011,
+      "y": 16.0,
+      "PathTravelled": 26.90011,
+      "PathRemaining": 52.09989
+    },
+    {
+      "Id": 83,
+      "kind": "Buff",
+      "Health": 100000,
+      "x": 21.20011,
+      "y": 16.0,
+      "PathTravelled": 27.20011,
+      "PathRemaining": 51.79989
+    },
+    {
+      "Id": 84,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.50011,
+      "y": 16.0,
+      "PathTravelled": 27.50011,
+      "PathRemaining": 51.49989
+    },
+    {
+      "Id": 85,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.80011,
+      "y": 16.0,
+      "PathTravelled": 27.80011,
+      "PathRemaining": 51.19989
+    },
+    {
+      "Id": 86,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 22.10011,
+      "y": 16.0,
+      "PathTravelled": 28.10011,
+      "PathRemaining": 50.89989
+    },
+    {
+      "Id": 87,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.80011,
+      "y": 16.0,
+      "PathTravelled": 24.80011,
+      "PathRemaining": 54.19989
+    },
+    {
+      "Id": 88,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.10011,
+      "y": 16.0,
+      "PathTravelled": 25.10011,
+      "PathRemaining": 53.89989
+    },
+    {
+      "Id": 89,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.40011,
+      "y": 16.0,
+      "PathTravelled": 25.40011,
+      "PathRemaining": 53.59989
+    },
+    {
+      "Id": 90,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.70011,
+      "y": 16.0,
+      "PathTravelled": 25.70011,
+      "PathRemaining": 53.29989
+    },
+    {
+      "Id": 91,
+      "kind": "Buff",
+      "Health": 100000,
+      "x": 20.00011,
+      "y": 16.0,
+      "PathTravelled": 26.00011,
+      "PathRemaining": 52.99989
+    },
+    {
+      "Id": 92,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.30011,
+      "y": 16.0,
+      "PathTravelled": 26.30011,
+      "PathRemaining": 52.69989
+    },
+    {
+      "Id": 93,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.60011,
+      "y": 16.0,
+      "PathTravelled": 26.60011,
+      "PathRemaining": 52.39989
+    },
+    {
+      "Id": 94,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.90011,
+      "y": 16.0,
+      "PathTravelled": 26.90011,
+      "PathRemaining": 52.09989
+    },
+    {
+      "Id": 95,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.20011,
+      "y": 16.0,
+      "PathTravelled": 27.20011,
+      "PathRemaining": 51.79989
+    },
+    {
+      "Id": 96,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.50011,
+      "y": 16.0,
+      "PathTravelled": 27.50011,
+      "PathRemaining": 51.49989
+    },
+    {
+      "Id": 97,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.80011,
+      "y": 16.0,
+      "PathTravelled": 27.80011,
+      "PathRemaining": 51.19989
+    },
+    {
+      "Id": 98,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 22.10011,
+      "y": 16.0,
+      "PathTravelled": 28.10011,
+      "PathRemaining": 50.89989
+    },
+    {
+      "Id": 99,
+      "kind": "Buff",
+      "Health": 100000,
+      "x": 18.80011,
+      "y": 16.0,
+      "PathTravelled": 24.80011,
+      "PathRemaining": 54.19989
+    },
+    {
+      "Id": 100,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.10011,
+      "y": 16.0,
+      "PathTravelled": 25.10011,
+      "PathRemaining": 53.89989
+    },
+    {
+      "Id": 101,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.40011,
+      "y": 16.0,
+      "PathTravelled": 25.40011,
+      "PathRemaining": 53.59989
+    },
+    {
+      "Id": 102,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.70011,
+      "y": 16.0,
+      "PathTravelled": 25.70011,
+      "PathRemaining": 53.29989
+    },
+    {
+      "Id": 103,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.00011,
+      "y": 16.0,
+      "PathTravelled": 26.00011,
+      "PathRemaining": 52.99989
+    },
+    {
+      "Id": 104,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.30011,
+      "y": 16.0,
+      "PathTravelled": 26.30011,
+      "PathRemaining": 52.69989
+    },
+    {
+      "Id": 105,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.60011,
+      "y": 16.0,
+      "PathTravelled": 26.60011,
+      "PathRemaining": 52.39989
+    },
+    {
+      "Id": 106,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.90011,
+      "y": 16.0,
+      "PathTravelled": 26.90011,
+      "PathRemaining": 52.09989
+    },
+    {
+      "Id": 107,
+      "kind": "Buff",
+      "Health": 100000,
+      "x": 21.20011,
+      "y": 16.0,
+      "PathTravelled": 27.20011,
+      "PathRemaining": 51.79989
+    },
+    {
+      "Id": 108,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.50011,
+      "y": 16.0,
+      "PathTravelled": 27.50011,
+      "PathRemaining": 51.49989
+    },
+    {
+      "Id": 109,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.80011,
+      "y": 16.0,
+      "PathTravelled": 27.80011,
+      "PathRemaining": 51.19989
+    },
+    {
+      "Id": 110,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 22.10011,
+      "y": 16.0,
+      "PathTravelled": 28.10011,
+      "PathRemaining": 50.89989
+    },
+    {
+      "Id": 111,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.80011,
+      "y": 16.0,
+      "PathTravelled": 24.80011,
+      "PathRemaining": 54.19989
+    },
+    {
+      "Id": 112,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.10011,
+      "y": 16.0,
+      "PathTravelled": 25.10011,
+      "PathRemaining": 53.89989
+    },
+    {
+      "Id": 113,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.40011,
+      "y": 16.0,
+      "PathTravelled": 25.40011,
+      "PathRemaining": 53.59989
+    },
+    {
+      "Id": 114,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.70011,
+      "y": 16.0,
+      "PathTravelled": 25.70011,
+      "PathRemaining": 53.29989
+    },
+    {
+      "Id": 115,
+      "kind": "Buff",
+      "Health": 100000,
+      "x": 20.00011,
+      "y": 16.0,
+      "PathTravelled": 26.00011,
+      "PathRemaining": 52.99989
+    },
+    {
+      "Id": 116,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.30011,
+      "y": 16.0,
+      "PathTravelled": 26.30011,
+      "PathRemaining": 52.69989
+    },
+    {
+      "Id": 117,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.60011,
+      "y": 16.0,
+      "PathTravelled": 26.60011,
+      "PathRemaining": 52.39989
+    },
+    {
+      "Id": 118,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.90011,
+      "y": 16.0,
+      "PathTravelled": 26.90011,
+      "PathRemaining": 52.09989
+    },
+    {
+      "Id": 119,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.20011,
+      "y": 16.0,
+      "PathTravelled": 27.20011,
+      "PathRemaining": 51.79989
+    },
+    {
+      "Id": 120,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.50011,
+      "y": 16.0,
+      "PathTravelled": 27.50011,
+      "PathRemaining": 51.49989
+    },
+    {
+      "Id": 121,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 21.80011,
+      "y": 16.0,
+      "PathTravelled": 27.80011,
+      "PathRemaining": 51.19989
+    },
+    {
+      "Id": 122,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 22.10011,
+      "y": 16.0,
+      "PathTravelled": 28.10011,
+      "PathRemaining": 50.89989
+    },
+    {
+      "Id": 123,
+      "kind": "Buff",
+      "Health": 100000,
+      "x": 18.80011,
+      "y": 16.0,
+      "PathTravelled": 24.80011,
+      "PathRemaining": 54.19989
+    },
+    {
+      "Id": 124,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.10011,
+      "y": 16.0,
+      "PathTravelled": 25.10011,
+      "PathRemaining": 53.89989
+    },
+    {
+      "Id": 125,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.40011,
+      "y": 16.0,
+      "PathTravelled": 25.40011,
+      "PathRemaining": 53.59989
+    },
+    {
+      "Id": 126,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.70011,
+      "y": 16.0,
+      "PathTravelled": 25.70011,
+      "PathRemaining": 53.29989
+    },
+    {
+      "Id": 127,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.00011,
+      "y": 16.0,
+      "PathTravelled": 26.00011,
+      "PathRemaining": 52.99989
+    },
+    {
+      "Id": 128,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.30011,
+      "y": 16.0,
+      "PathTravelled": 26.30011,
+      "PathRemaining": 52.69989
+    },
+    {
+      "Id": 129,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.60011,
+      "y": 16.0,
+      "PathTravelled": 26.60011,
+      "PathRemaining": 52.39989
+    },
+    {
+      "Id": 130,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.90011,
+      "y": 16.0,
+      "PathTravelled": 26.90011,
+      "PathRemaining": 52.09989
+    },
+    {
+      "Id": 131,
+      "kind": "Buff",
+      "Health": 99965,
+      "x": 18.1800957,
+      "y": 16.0,
+      "PathTravelled": 24.1800957,
+      "PathRemaining": 54.8199043
+    },
+    {
+      "Id": 132,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.4800949,
+      "y": 16.0,
+      "PathTravelled": 24.4800949,
+      "PathRemaining": 54.5199051
+    },
+    {
+      "Id": 133,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.7800961,
+      "y": 16.0,
+      "PathTravelled": 24.7800961,
+      "PathRemaining": 54.219902
+    },
+    {
+      "Id": 134,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.0800953,
+      "y": 16.0,
+      "PathTravelled": 25.0800953,
+      "PathRemaining": 53.9199066
+    },
+    {
+      "Id": 135,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.3800964,
+      "y": 16.0,
+      "PathTravelled": 25.3800964,
+      "PathRemaining": 53.6199036
+    },
+    {
+      "Id": 136,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.6800957,
+      "y": 16.0,
+      "PathTravelled": 25.6800957,
+      "PathRemaining": 53.3199043
+    },
+    {
+      "Id": 137,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.9800949,
+      "y": 16.0,
+      "PathTravelled": 25.9800949,
+      "PathRemaining": 53.0199051
+    },
+    {
+      "Id": 138,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 20.2800961,
+      "y": 16.0,
+      "PathTravelled": 26.2800961,
+      "PathRemaining": 52.719902
+    },
+    {
+      "Id": 139,
+      "kind": "Buff",
+      "Health": 99884,
+      "x": 17.5800819,
+      "y": 16.0,
+      "PathTravelled": 23.5800819,
+      "PathRemaining": 55.4199181
+    },
+    {
+      "Id": 140,
+      "kind": "Attack",
+      "Health": 99978,
+      "x": 17.8800812,
+      "y": 16.0,
+      "PathTravelled": 23.8800812,
+      "PathRemaining": 55.11992
+    },
+    {
+      "Id": 141,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.1800823,
+      "y": 16.0,
+      "PathTravelled": 24.1800823,
+      "PathRemaining": 54.8199158
+    },
+    {
+      "Id": 142,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.4800816,
+      "y": 16.0,
+      "PathTravelled": 24.4800816,
+      "PathRemaining": 54.51992
+    },
+    {
+      "Id": 143,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.7800827,
+      "y": 16.0,
+      "PathTravelled": 24.7800827,
+      "PathRemaining": 54.2199173
+    },
+    {
+      "Id": 144,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.0800819,
+      "y": 16.0,
+      "PathTravelled": 25.0800819,
+      "PathRemaining": 53.9199181
+    },
+    {
+      "Id": 145,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.3800812,
+      "y": 16.0,
+      "PathTravelled": 25.3800812,
+      "PathRemaining": 53.61992
+    },
+    {
+      "Id": 146,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.6800823,
+      "y": 16.0,
+      "PathTravelled": 25.6800823,
+      "PathRemaining": 53.3199158
+    },
+    {
+      "Id": 147,
+      "kind": "Buff",
+      "Health": 99862,
+      "x": 16.9800682,
+      "y": 16.0,
+      "PathTravelled": 22.9800682,
+      "PathRemaining": 56.01993
+    },
+    {
+      "Id": 148,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.2800674,
+      "y": 16.0,
+      "PathTravelled": 23.2800674,
+      "PathRemaining": 55.7199326
+    },
+    {
+      "Id": 149,
+      "kind": "Attack",
+      "Health": 99989,
+      "x": 17.5800686,
+      "y": 16.0,
+      "PathTravelled": 23.5800686,
+      "PathRemaining": 55.41993
+    },
+    {
+      "Id": 150,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.8800678,
+      "y": 16.0,
+      "PathTravelled": 23.8800678,
+      "PathRemaining": 55.1199341
+    },
+    {
+      "Id": 151,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.180069,
+      "y": 16.0,
+      "PathTravelled": 24.180069,
+      "PathRemaining": 54.81993
+    },
+    {
+      "Id": 152,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.4800682,
+      "y": 16.0,
+      "PathTravelled": 24.4800682,
+      "PathRemaining": 54.51993
+    },
+    {
+      "Id": 153,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.7800674,
+      "y": 16.0,
+      "PathTravelled": 24.7800674,
+      "PathRemaining": 54.2199326
+    },
+    {
+      "Id": 154,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 19.0800686,
+      "y": 16.0,
+      "PathTravelled": 25.0800686,
+      "PathRemaining": 53.91993
+    },
+    {
+      "Id": 155,
+      "kind": "Buff",
+      "Health": 99906,
+      "x": 16.3800545,
+      "y": 16.0,
+      "PathTravelled": 22.3800545,
+      "PathRemaining": 56.6199455
+    },
+    {
+      "Id": 156,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.6800537,
+      "y": 16.0,
+      "PathTravelled": 22.6800537,
+      "PathRemaining": 56.3199463
+    },
+    {
+      "Id": 157,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.9800549,
+      "y": 16.0,
+      "PathTravelled": 22.9800549,
+      "PathRemaining": 56.0199432
+    },
+    {
+      "Id": 158,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.2800541,
+      "y": 16.0,
+      "PathTravelled": 23.2800541,
+      "PathRemaining": 55.7199478
+    },
+    {
+      "Id": 159,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.5800552,
+      "y": 16.0,
+      "PathTravelled": 23.5800552,
+      "PathRemaining": 55.4199448
+    },
+    {
+      "Id": 160,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.8800545,
+      "y": 16.0,
+      "PathTravelled": 23.8800545,
+      "PathRemaining": 55.1199455
+    },
+    {
+      "Id": 161,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.1800537,
+      "y": 16.0,
+      "PathTravelled": 24.1800537,
+      "PathRemaining": 54.8199463
+    },
+    {
+      "Id": 162,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 18.4800549,
+      "y": 16.0,
+      "PathTravelled": 24.4800549,
+      "PathRemaining": 54.5199432
+    },
+    {
+      "Id": 163,
+      "kind": "Buff",
+      "Health": 99932,
+      "x": 15.7800407,
+      "y": 16.0,
+      "PathTravelled": 21.78004,
+      "PathRemaining": 57.21996
+    },
+    {
+      "Id": 164,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.08004,
+      "y": 16.0,
+      "PathTravelled": 22.08004,
+      "PathRemaining": 56.91996
+    },
+    {
+      "Id": 165,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.3800411,
+      "y": 16.0,
+      "PathTravelled": 22.3800411,
+      "PathRemaining": 56.619957
+    },
+    {
+      "Id": 166,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.68004,
+      "y": 16.0,
+      "PathTravelled": 22.68004,
+      "PathRemaining": 56.31996
+    },
+    {
+      "Id": 167,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.9800415,
+      "y": 16.0,
+      "PathTravelled": 22.9800415,
+      "PathRemaining": 56.01996
+    },
+    {
+      "Id": 168,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.28004,
+      "y": 16.0,
+      "PathTravelled": 23.28004,
+      "PathRemaining": 55.71996
+    },
+    {
+      "Id": 169,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.58004,
+      "y": 16.0,
+      "PathTravelled": 23.58004,
+      "PathRemaining": 55.41996
+    },
+    {
+      "Id": 170,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.8800411,
+      "y": 16.0,
+      "PathTravelled": 23.8800411,
+      "PathRemaining": 55.119957
+    },
+    {
+      "Id": 171,
+      "kind": "Buff",
+      "Health": 99943,
+      "x": 15.180027,
+      "y": 16.0,
+      "PathTravelled": 21.180027,
+      "PathRemaining": 57.819973
+    },
+    {
+      "Id": 172,
+      "kind": "Attack",
+      "Health": 99989,
+      "x": 15.4800262,
+      "y": 16.0,
+      "PathTravelled": 21.4800262,
+      "PathRemaining": 57.5199738
+    },
+    {
+      "Id": 173,
+      "kind": "Attack",
+      "Health": 99978,
+      "x": 15.7800274,
+      "y": 16.0,
+      "PathTravelled": 21.7800274,
+      "PathRemaining": 57.21997
+    },
+    {
+      "Id": 174,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.0800266,
+      "y": 16.0,
+      "PathTravelled": 22.0800266,
+      "PathRemaining": 56.9199753
+    },
+    {
+      "Id": 175,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.3800278,
+      "y": 16.0,
+      "PathTravelled": 22.3800278,
+      "PathRemaining": 56.6199722
+    },
+    {
+      "Id": 176,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.680027,
+      "y": 16.0,
+      "PathTravelled": 22.680027,
+      "PathRemaining": 56.319973
+    },
+    {
+      "Id": 177,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.9800262,
+      "y": 16.0,
+      "PathTravelled": 22.9800262,
+      "PathRemaining": 56.0199738
+    },
+    {
+      "Id": 178,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 17.2800274,
+      "y": 16.0,
+      "PathTravelled": 23.2800274,
+      "PathRemaining": 55.71997
+    },
+    {
+      "Id": 179,
+      "kind": "Buff",
+      "Health": 100000,
+      "x": 14.5800133,
+      "y": 16.0,
+      "PathTravelled": 20.5800133,
+      "PathRemaining": 58.4199867
+    },
+    {
+      "Id": 180,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 14.8800125,
+      "y": 16.0,
+      "PathTravelled": 20.8800125,
+      "PathRemaining": 58.1199875
+    },
+    {
+      "Id": 181,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 15.1800137,
+      "y": 16.0,
+      "PathTravelled": 21.1800137,
+      "PathRemaining": 57.8199844
+    },
+    {
+      "Id": 182,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 15.4800129,
+      "y": 16.0,
+      "PathTravelled": 21.4800129,
+      "PathRemaining": 57.51999
+    },
+    {
+      "Id": 183,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 15.780014,
+      "y": 16.0,
+      "PathTravelled": 21.780014,
+      "PathRemaining": 57.219986
+    },
+    {
+      "Id": 184,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.0800133,
+      "y": 16.0,
+      "PathTravelled": 22.0800133,
+      "PathRemaining": 56.9199867
+    },
+    {
+      "Id": 185,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.3800125,
+      "y": 16.0,
+      "PathTravelled": 22.3800125,
+      "PathRemaining": 56.6199875
+    },
+    {
+      "Id": 186,
+      "kind": "Attack",
+      "Health": 100000,
+      "x": 16.6800137,
+      "y": 16.0,
+      "PathTravelled": 22.6800137,
+      "PathRemaining": 56.3199844
+    }
+  ],
+  "projectiles": [],
+  "damage": [
+    {
+      "Key": "Tower:1",
+      "Value": 104
+    },
+    {
+      "Key": "Tower:11",
+      "Value": 99
+    },
+    {
+      "Key": "Tower:12",
+      "Value": 99
+    },
+    {
+      "Key": "Tower:13",
+      "Value": 104
+    },
+    {
+      "Key": "Tower:14",
+      "Value": 88
+    },
+    {
+      "Key": "Tower:2",
+      "Value": 88
+    },
+    {
+      "Key": "Tower:3",
+      "Value": 99
+    },
+    {
+      "Key": "Tower:4",
+      "Value": 117
+    },
+    {
+      "Key": "Tower:6",
+      "Value": 99
+    },
+    {
+      "Key": "Tower:7",
+      "Value": 88
+    },
+    {
+      "Key": "Tower:8",
+      "Value": 88
+    },
+    {
+      "Key": "Tower:9",
+      "Value": 88
+    },
+    {
+      "Key": "Validation",
+      "Value": 5599621
+    }
+  ],
+  "poolProperties": {
+    "ProjectilePool": {
+      "Active": 0,
+      "Retained": 36,
+      "PeakActive": 36,
+      "Created": 36,
+      "Reused": 71
+    }
+  },
+  "enemyPools": {
+    "Attack": {
+      "Active": 112,
+      "Retained": 0,
+      "PeakActive": 112,
+      "Created": 112,
+      "Reused": 51
+    },
+    "Defense": {
+      "Active": 0,
+      "Retained": 0,
+      "PeakActive": 0,
+      "Created": 0,
+      "Reused": 0
+    },
+    "Buff": {
+      "Active": 16,
+      "Retained": 0,
+      "PeakActive": 16,
+      "Created": 16,
+      "Reused": 7
+    },
+    "Boss": {
+      "Active": 0,
+      "Retained": 0,
+      "PeakActive": 0,
+      "Created": 0,
+      "Reused": 0
+    }
+  }
+}

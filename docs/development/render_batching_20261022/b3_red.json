@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "command": "command run_tests",
+  "data": {
+    "command": "run_tests",
+    "parameters": {
+      "mode": "editor",
+      "filter": "CoreGuardianMaskProducerTests",
+      "filter_type": "testName"
+    },
+    "result": {
+      "Summary": {
+        "Total": 4,
+        "Passed": 0,
+        "Failed": 4,
+        "Skipped": 0,
+        "Inconclusive": 0
+      },
+      "Results": [
+        {
+          "FullName": "CoreGuardianMaskProducerTests.CameraChangesFlushOnlyItsCommands",
+          "Status": "Failed",
+          "Duration": 0.0198818,
+          "Message": "  Direct shared mask producer is missing\r\n  Expected: not null\r\n  But was:  null\r\n",
+          "StackTrace": "at CoreGuardianMaskProducerTests.get_Queue () [0x0000f] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskProducerTests.cs:11\r\nat CoreGuardianMaskProducerTests.CameraChangesFlushOnlyItsCommands () [0x00000] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskProducerTests.cs:66\r\n"
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.CombinedProducerMatchesEveryIndependentMaskPixel",
+          "Status": "Failed",
+          "Duration": 0.0017453,
+          "Message": "  Direct shared mask producer is missing\r\n  Expected: not null\r\n  But was:  null\r\n",
+          "StackTrace": "at CoreGuardianMaskProducerTests.get_Queue () [0x0000f] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskProducerTests.cs:11\r\nat CoreGuardianMaskProducerTests.CombinedProducerMatchesEveryIndependentMaskPixel () [0x00000] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskProducerTests.cs:49\r\n"
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.DifferentAlphaThresholdsStayIndependent",
+          "Status": "Failed",
+          "Duration": 0.0011465,
+          "Message": "  Direct shared mask producer is missing\r\n  Expected: not null\r\n  But was:  null\r\n",
+          "StackTrace": "at CoreGuardianMaskProducerTests.get_Queue () [0x0000f] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskProducerTests.cs:11\r\nat CoreGuardianMaskProducerTests.DifferentAlphaThresholdsStayIndependent () [0x00000] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskProducerTests.cs:61\r\n"
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.SameFrameReturnAndReuseNeverShowsOldMask",
+          "Status": "Failed",
+          "Duration": 0.000896,
+          "Message": "  Direct shared mask producer is missing\r\n  Expected: not null\r\n  But was:  null\r\n",
+          "StackTrace": "at CoreGuardianMaskProducerTests.get_Queue () [0x0000f] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskProducerTests.cs:11\r\nat CoreGuardianMaskProducerTests.SameFrameReturnAndReuseNeverShowsOldMask () [0x00000] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Game\\Tests\\EditMode\\CoreGuardianMaskProducerTests.cs:72\r\n"
+        }
+      ],
+      "Duration": 5.88,
+      "StatusPath": null,
+      "Mode": "EditMode",
+      "FilterApplied": "testname: CoreGuardianMaskProducerTests",
+      "success": true,
+      "result": null
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

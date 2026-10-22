@@ -11,6 +11,7 @@ public static class CoreGuardianMaskOutputBatch
     {
         public bool contact;
         public bool allowSingle;
+        public bool prepared;
         public Color color;
         public int width;
         public float band;
@@ -76,7 +77,7 @@ public static class CoreGuardianMaskOutputBatch
     {
         if(owner==null||camera==null||source==null||quad==null||!CoreGuardianMaskPage.IsValid(slot))return false;
         if(!entries.TryGetValue(owner,out var entry)){entry=new Entry();entries.Add(owner,entry);}
-        else if(!entry.slot.Equals(slot))CoreGuardianMaskPage.Release(entry.slot);
+        else if(!entry.parameters.prepared&&entry.slot.lease!=slot.lease)CoreGuardianMaskPage.Release(entry.slot);
         source.GetPropertyBlock(properties);var mask=properties.GetTexture("_MainTex") as RenderTexture;
         if(mask==null)return false;
         entry.owner=owner;entry.camera=camera;entry.source=source;entry.quad=quad;entry.slot=slot;entry.parameters=parameters;entry.mask=mask;entry.frame=Time.frameCount;
@@ -89,7 +90,7 @@ public static class CoreGuardianMaskOutputBatch
     public static void Flush(Camera camera)
     {
         using var scope=flushMarker.Auto();
-        LastBatchedOutputs=LastDraws=0;Restore(camera);Prune();
+        LastBatchedOutputs=LastDraws=0;Restore(camera);CoreGuardianBodyMaskCache.Flush(camera);Prune();
         if(camera==null||!views.TryGetValue(camera,out var view)||!camera.orthographic||camera.stereoEnabled)return;
         foreach(var list in groups.Values){list.Clear();groupPool.Push(list);}groups.Clear();
         foreach(var entry in entries.Values)
@@ -124,7 +125,7 @@ public static class CoreGuardianMaskOutputBatch
             foreach(var entry in group)
             {
                 var r=entry.slot.Rect;
-                Graphics.CopyTexture(entry.mask,0,0,0,0,entry.mask.width,entry.mask.height,entry.slot.Texture,0,0,r.x,r.y);
+                if(!entry.parameters.prepared)Graphics.CopyTexture(entry.mask,0,0,0,0,entry.mask.width,entry.mask.height,entry.slot.Texture,0,0,r.x,r.y);
             }
             if(used==view.proxies.Count)view.proxies.Add(Create());
             var proxy=view.proxies[used++];Upload(proxy.mesh,group);
@@ -144,7 +145,7 @@ public static class CoreGuardianMaskOutputBatch
                 material=new Material(shader){name="Shared atlas mask output",hideFlags=HideFlags.DontSave};
             }
             var r=entry.slot.Rect;var p=entry.parameters;
-            Graphics.CopyTexture(entry.mask,0,0,0,0,entry.mask.width,entry.mask.height,entry.slot.Texture,0,0,r.x,r.y);
+            if(!p.prepared)Graphics.CopyTexture(entry.mask,0,0,0,0,entry.mask.width,entry.mask.height,entry.slot.Texture,0,0,r.x,r.y);
             entry.originalMaterial=entry.source.sharedMaterial;entry.source.GetPropertyBlock(entry.savedProperties);
             properties.Clear();properties.SetTexture("_MainTex",entry.slot.Texture);properties.SetFloat("_Single",1);
             properties.SetVector("_Region",new Vector4(r.x,r.y,p.sourceSize.x,p.sourceSize.y));
@@ -200,22 +201,22 @@ public static class CoreGuardianMaskOutputBatch
     }
     public static void Restore(Camera camera)
     {
-        if(camera==null||!views.TryGetValue(camera,out var view))return;
+        if(ReferenceEquals(camera,null)||!views.TryGetValue(camera,out var view))return;
         foreach(var source in view.hidden)if(source!=null)source.forceRenderingOff=false;view.hidden.Clear();
         foreach(var entry in view.single)if(entry.source!=null&&entry.source.sharedMaterial==material){entry.source.sharedMaterial=entry.originalMaterial;entry.source.SetPropertyBlock(entry.savedProperties);}view.single.Clear();
         foreach(var proxy in view.proxies)if(proxy.renderer!=null)proxy.renderer.enabled=false;
     }
     public static void Release(CoreGuardianSelectionOutline owner)
-    {if(ReferenceEquals(owner,null)||!entries.TryGetValue(owner,out var entry))return;CoreGuardianMaskPage.Release(entry.slot);bySource.Remove(entry.source);entries.Remove(owner);if(entries.Count==0)Prune();}
+    {if(ReferenceEquals(owner,null)||!entries.TryGetValue(owner,out var entry))return;if(!entry.parameters.prepared)CoreGuardianMaskPage.Release(entry.slot);bySource.Remove(entry.source);entries.Remove(owner);if(entries.Count==0)Prune();}
     internal static void Invalidate(CoreGuardianSelectionOutline owner)
-    {if(entries.TryGetValue(owner,out var entry)){CoreGuardianMaskPage.Release(entry.slot);entry.frame=-1;}}
+    {if(entries.TryGetValue(owner,out var entry)){if(!entry.parameters.prepared)CoreGuardianMaskPage.Release(entry.slot);entry.frame=-1;}}
     static void Prune()
     {
         stale.Clear();foreach(var pair in entries)if(pair.Key==null||pair.Value.camera==null||pair.Value.source==null)stale.Add(pair.Key);
         foreach(var owner in stale){var entry=entries[owner];CoreGuardianMaskPage.Release(entry.slot);bySource.Remove(entry.source);entries.Remove(owner);}
         staleViews.Clear();foreach(var view in views.Values)
         {bool used=false;foreach(var entry in entries.Values)if(entry.camera==view.camera){used=true;break;}if(!used)staleViews.Add(view.camera);}
-        foreach(var camera in staleViews){var view=views[camera];Restore(camera);foreach(var proxy in view.proxies){Dispose(proxy.mesh);if(proxy.renderer!=null)Dispose(proxy.renderer.gameObject);}CoreGuardianMaskPage.ReleaseCamera(camera);views.Remove(camera);}
+        foreach(var camera in staleViews){var view=views[camera];Restore(camera);foreach(var proxy in view.proxies){Dispose(proxy.mesh);if(proxy.renderer!=null)Dispose(proxy.renderer.gameObject);}if(!CoreGuardianBodyMaskCache.HasPage(camera))CoreGuardianMaskPage.ReleaseCamera(camera);views.Remove(camera);}
         if(views.Count==0){Dispose(material);material=null;}
     }
     static void Clear(){foreach(var view in views.Values){Restore(view.camera);foreach(var p in view.proxies){Dispose(p.mesh);if(p.renderer!=null)Dispose(p.renderer.gameObject);}}views.Clear();entries.Clear();bySource.Clear();Dispose(material);material=null;}

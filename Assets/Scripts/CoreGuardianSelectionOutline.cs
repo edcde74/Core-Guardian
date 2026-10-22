@@ -51,6 +51,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     readonly Vector3[] quadVertices=new Vector3[4];
     readonly Vector2[] quadUV=new Vector2[4];
     Transform artwork,lastTarget;
+    bool pageRasterSupported;
 
     void LateUpdate()
     {
@@ -83,6 +84,10 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         if(target!=lastTarget||artwork==null)
         {
             lastTarget=target;
+            var animation=target.GetComponent<CoreGuardianUnitAnimation>();
+            // These two rigs still show a native-zoom pixel difference under atlas rasterization.
+            // Keep their exact legacy mask production until separately validated.
+            pageRasterSupported=animation==null||(animation.PresentationRole!="Defense"&&animation.PresentationRole!="Boss");
             artwork=target.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite")?.transform;
         }
         if(artwork==null){ReleasePresentation();return;}
@@ -136,10 +141,13 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
                 var b=(maskHi-viewport.position)/viewport.size*2-Vector2.one;
                 var crop=Matrix4x4.identity;crop.m00=2/(b.x-a.x);crop.m11=2/(b.y-a.y);crop.m03=-(b.x+a.x)/(b.x-a.x);crop.m13=-(b.y+a.y)/(b.y-a.y);
                 var vp=GL.GetGPUProjectionMatrix(crop*camera.projectionMatrix,true)*camera.worldToCameraMatrix;
-                commands.Clear();commands.SetRenderTarget(mask);commands.ClearRenderTarget(false,true,Color.clear);
-                commands.SetViewport(new Rect(0,0,maskWidth,maskHeight));DrawMaskParts(vp);
-                using(executeSample.Auto())Graphics.ExecuteCommandBuffer(commands);
-                CoreGuardianBodyMaskCache.Publish(maskBinding);
+                if(!QueuePage(camera,vp,maskWidth,maskHeight))
+                {
+                    commands.Clear();commands.SetRenderTarget(mask);commands.ClearRenderTarget(false,true,Color.clear);
+                    commands.SetViewport(new Rect(0,0,maskWidth,maskHeight));DrawMaskParts(vp);
+                    using(executeSample.Auto())Graphics.ExecuteCommandBuffer(commands);
+                    CoreGuardianBodyMaskCache.Publish(maskBinding);
+                }
             }
         }
         catch{CoreGuardianBodyMaskCache.Abort(maskBinding);mask=null;throw;}
@@ -206,6 +214,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     void RegisterOutput(Camera camera,bool contact,float band)
     {
+        // Runtime savings came from mask production, not output material substitution.
+        // Keep every original output renderer/material/order, including foreign transparent ties.
+        if(Application.isPlaying)return;
         if(output==null||!output.enabled||mask==null||camera==null)return;
         var viewport=camera.pixelRect;
         // Same native camera range already covered by body mask sharing pixel QA.
@@ -213,9 +224,27 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
             ||(camera.orthographicSize!=8.5f&&camera.orthographicSize!=4.25f)||!DefaultProjection(camera)
             ||!camera.transform.rotation.Equals(Quaternion.identity)||Mathf.Abs(camera.transform.position.x)>32
             ||Mathf.Abs(camera.transform.position.y)>32)return;
-        if(!CoreGuardianMaskPage.TryAcquire(camera,Time.frameCount,mask.width,mask.height,out var slot))return;
-        var parameters=new CoreGuardianMaskOutputBatch.OutputParameters{contact=contact,allowSingle=true,color=color,width=Mathf.Clamp(widthPixels,0,8),band=band,maskOriginPx=maskOriginPx,sourceSize=new Vector2(mask.width,mask.height)};
-        if(!CoreGuardianMaskOutputBatch.Register(this,camera,output,quad,slot,parameters))CoreGuardianMaskPage.Release(slot);
+        bool prepared=CoreGuardianBodyMaskCache.PreparedPage(maskBinding,out var slot);
+        if(Application.isPlaying&&!prepared)return; // Unsupported producer keeps the original rendering path.
+        if(!prepared&&!CoreGuardianMaskPage.TryAcquire(camera,Time.frameCount,mask.width,mask.height,out slot))return;
+        var parameters=new CoreGuardianMaskOutputBatch.OutputParameters{contact=contact,allowSingle=true,prepared=prepared,color=color,width=Mathf.Clamp(widthPixels,0,8),band=band,maskOriginPx=maskOriginPx,sourceSize=new Vector2(mask.width,mask.height)};
+        if(!CoreGuardianMaskOutputBatch.Register(this,camera,output,quad,slot,parameters)&&!prepared)CoreGuardianMaskPage.Release(slot);
+    }
+    bool QueuePage(Camera camera,Matrix4x4 vp,int width,int height)
+    {
+        var viewport=camera.pixelRect;
+        if(!Application.isPlaying||!pageRasterSupported||!CoreGuardianMaskProducerBatch.Supported||viewport!=new Rect(0,0,1920,1080)||!camera.orthographic||camera.stereoEnabled||camera.allowDynamicResolution
+            ||(camera.orthographicSize!=8.5f&&camera.orthographicSize!=4.25f)||!DefaultProjection(camera)
+            ||!camera.transform.rotation.Equals(Quaternion.identity)||Mathf.Abs(camera.transform.position.x)>32||Mathf.Abs(camera.transform.position.y)>32
+            ||Mathf.Abs(artwork.position.x)>32||Mathf.Abs(artwork.position.y)>32)return false;
+        if(!CoreGuardianMaskPage.TryAcquire(camera,Time.frameCount,mask.width,mask.height,out var slot))return false;
+        foreach(var source in sources)
+        {
+            var shape=Geometry(source.sprite);
+            if(CoreGuardianMaskPage.QueueShape(slot,shape.batch,maskMaterial,PartMatrix(source),vp,shape.texture,source.color.a,Mathf.Clamp(alphaThreshold,.01f,1),new Vector2(width,height)))continue;
+            CoreGuardianMaskPage.Release(slot);return false;
+        }
+        CoreGuardianBodyMaskCache.MarkPending(maskBinding,slot);return true;
     }
     void SetOutputMask()
     {
@@ -234,6 +263,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     sealed class MaskGeometry
     {
+        public CoreGuardianMaskProducerBatch.Shape batch;
         public Vector3[] vertices;
         public Vector2[] uv;
         public int[] triangles;
@@ -262,6 +292,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
             value.texture=entry.page;value.mapped=true;
             value.atlasRect=new Vector4(entry.layer,0,0,0);
         }
+        value.batch=new CoreGuardianMaskProducerBatch.Shape{vertices=value.vertices,uv=value.uv,triangles=value.triangles,layer=value.atlasRect.x};
         geometry.Add(sprite,value);return value;
     }
     static Matrix4x4 PartMatrix(SpriteRenderer part)=>part.transform.localToWorldMatrix*Matrix4x4.Scale(new Vector3(part.flipX?-1:1,part.flipY?-1:1,1));

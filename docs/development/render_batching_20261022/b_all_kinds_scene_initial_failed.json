@@ -1,0 +1,36 @@
+[
+  {
+    "zoom": 8.5,
+    "changed": 14,
+    "baselineRepeatChanged": 0,
+    "maxChannelDifference": 18,
+    "batched": 282,
+    "draws": 282,
+    "enemies": 132,
+    "towers": 15,
+    "kinds": {
+      "Buff": 17,
+      "Attack": 113,
+      "Defense": 1,
+      "Boss": 1
+    },
+    "hudOverlayIncluded": false
+  },
+  {
+    "zoom": 4.25,
+    "changed": 0,
+    "baselineRepeatChanged": 0,
+    "maxChannelDifference": 0,
+    "batched": 275,
+    "draws": 275,
+    "enemies": 132,
+    "towers": 15,
+    "kinds": {
+      "Buff": 17,
+      "Attack": 113,
+      "Defense": 1,
+      "Boss": 1
+    },
+    "hudOverlayIncluded": false
+  }
+]

@@ -80,6 +80,8 @@
 
 ### Task 5: B3 mask 생산 geometry 병합
 
+최종 실행 범위/검증/설계 변경은 [B_RESULTS.md](B_RESULTS.md)를 따른다. 개별RT 제거와 B2 런타임 출력 교체는 채택하지 않았고, 정상30R 자연 플레이/장시간/GPU·전체 잔류 검증은 미완료다. 아래 체크리스트는 최초 계획이며 완료 목록으로 해석하지 않는다.
+
 **Interfaces:** MaskPage에 `Queue(in Slot slot, Mesh mesh, Material material, Matrix4x4 partMatrix, Matrix4x4 maskVP, Texture source, float opacity, float threshold): bool`, `Flush(Camera camera): void`를 추가한다. 샘플링 전에 해당카메라의page clear/생산이 완료돼야 한다. 기존 `Publish/Abort`는 성공완료/실패fallback을 구분한다.
 **Files:** MaskPage, BodyMaskCache, SelectionOutline.DrawMaskParts, BatchedSelectionMask.shader, MaskPageTests 확장.
 

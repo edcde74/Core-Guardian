@@ -25,6 +25,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     int direction=3,lastShotFrame=-1;
     bool walking,justFired,aiming;
     public int Direction=>direction;
+    internal string PresentationRole=>role;
     // Presented volleys, never a combat or balance metric.
     public int ShotCount {get;private set;}
     public Vector3 MuzzleWorld {get;private set;}

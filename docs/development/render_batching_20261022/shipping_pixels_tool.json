@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/render_batching_20261022/B3ScenePixels.cs",
+      "entry": "CGB3ScenePixels.Run"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 170,
+      "executeMs": 1370,
+      "assemblyName": "PipelineRunScript_B3ScenePixels_63d7510adc7f499bbf23cfb8bb6c43c5",
+      "success": true,
+      "result": [
+        {
+          "zoom": 8.5,
+          "changed": 0,
+          "baselineRepeatChanged": 0,
+          "maxChannelDifference": 0,
+          "preparedMasks": 145,
+          "batched": 0,
+          "draws": 0,
+          "enemies": 128,
+          "towers": 15,
+          "hudOverlayIncluded": false
+        },
+        {
+          "zoom": 4.25,
+          "changed": 0,
+          "baselineRepeatChanged": 0,
+          "maxChannelDifference": 0,
+          "preparedMasks": 138,
+          "batched": 0,
+          "draws": 0,
+          "enemies": 128,
+          "towers": 15,
+          "hudOverlayIncluded": false
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

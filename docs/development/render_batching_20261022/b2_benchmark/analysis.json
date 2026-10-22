@@ -1,0 +1,575 @@
+{
+  "sides": {
+    "baseline": {
+      "runs": [
+        {
+          "fpsMean": 24.758652667210956,
+          "frameMs": {
+            "count": 180,
+            "min": 31.8617,
+            "max": 181.975,
+            "mean": 40.389919978333346,
+            "p95": 48.8616
+          },
+          "invalidFrames": 0,
+          "viewMs": {
+            "count": 180,
+            "min": 1.7583999633789062,
+            "max": 3.379999876022339,
+            "mean": 2.1828466561105517,
+            "p95": 2.839200019836426
+          },
+          "gcBytes": {
+            "count": 180,
+            "min": 111293,
+            "max": 416597,
+            "mean": 119946.05555555556,
+            "p95": 156021
+          },
+          "tickMs": {
+            "count": 180,
+            "min": 0.38280001282691956,
+            "max": 1.8295999765396118,
+            "mean": 0.5285661089751456,
+            "p95": 0.7986000180244446
+          },
+          "tickGC": {
+            "count": 180,
+            "min": 1408,
+            "max": 18022,
+            "mean": 1846.7111111111112,
+            "p95": 2440
+          },
+          "fpsMin": 5.495260337958511,
+          "fpsMax": 31.385644833765934,
+          "extraFramesWithoutTick": 0,
+          "run": 0,
+          "viewGC": {
+            "count": 180,
+            "min": 1504,
+            "max": 28152,
+            "mean": 2032.7666666666667,
+            "p95": 2664
+          },
+          "firstFrameMs": 181.975
+        },
+        {
+          "fpsMean": 26.859496744796694,
+          "frameMs": {
+            "count": 181,
+            "min": 31.5716,
+            "max": 66.1635,
+            "mean": 37.23077947071823,
+            "p95": 43.669
+          },
+          "invalidFrames": 0,
+          "viewMs": {
+            "count": 180,
+            "min": 1.7511999607086182,
+            "max": 3.312700033187866,
+            "mean": 2.0978327724668713,
+            "p95": 2.6916000843048096
+          },
+          "gcBytes": {
+            "count": 181,
+            "min": 107143,
+            "max": 189565,
+            "mean": 118137.58563535912,
+            "p95": 170314
+          },
+          "tickMs": {
+            "count": 180,
+            "min": 0.38350000977516174,
+            "max": 2.6452999114990234,
+            "mean": 0.5033905532624986,
+            "p95": 0.7404000163078308
+          },
+          "tickGC": {
+            "count": 180,
+            "min": 1408,
+            "max": 16218,
+            "mean": 1765.4777777777779,
+            "p95": 2440
+          },
+          "fpsMin": 15.114073469511135,
+          "fpsMax": 31.67403615907968,
+          "extraFramesWithoutTick": 1,
+          "run": 1,
+          "viewGC": {
+            "count": 180,
+            "min": 1504,
+            "max": 29208,
+            "mean": 1998.0111111111112,
+            "p95": 2656
+          },
+          "firstFrameMs": 33.3699
+        },
+        {
+          "fpsMean": 27.304905139465387,
+          "frameMs": {
+            "count": 181,
+            "min": 31.5429,
+            "max": 50.1287,
+            "mean": 36.62345629447513,
+            "p95": 42.5876
+          },
+          "invalidFrames": 0,
+          "viewMs": {
+            "count": 180,
+            "min": 1.7551000118255615,
+            "max": 3.959399938583374,
+            "mean": 2.089699993530909,
+            "p95": 2.5901999473571777
+          },
+          "gcBytes": {
+            "count": 181,
+            "min": 107143,
+            "max": 176556,
+            "mean": 118031.2320441989,
+            "p95": 156057
+          },
+          "tickMs": {
+            "count": 180,
+            "min": 0.367900013923645,
+            "max": 2.2060999870300293,
+            "mean": 0.48763499822881484,
+            "p95": 0.692799985408783
+          },
+          "tickGC": {
+            "count": 180,
+            "min": 1408,
+            "max": 16218,
+            "mean": 1765.4777777777779,
+            "p95": 2440
+          },
+          "fpsMin": 19.94865216931618,
+          "fpsMax": 31.70285547619274,
+          "extraFramesWithoutTick": 1,
+          "run": 2,
+          "viewGC": {
+            "count": 180,
+            "min": 1504,
+            "max": 29208,
+            "mean": 1998.0111111111112,
+            "p95": 2656
+          },
+          "firstFrameMs": 35.4471
+        }
+      ],
+      "frameMs": {
+        "count": 542,
+        "min": 31.5429,
+        "max": 181.975,
+        "mean": 38.07712595867159,
+        "p95": 45.4449
+      },
+      "fpsMean": 26.262486330648667,
+      "fpsMin": 5.495260337958511,
+      "fpsMax": 31.70285547619274,
+      "tickMs": {
+        "count": 540,
+        "min": 0.367900013923645,
+        "max": 2.6452999114990234,
+        "mean": 0.5065305534888197,
+        "p95": 0.7522000074386597
+      },
+      "viewMs": {
+        "count": 540,
+        "min": 1.7511999607086182,
+        "max": 3.959399938583374,
+        "mean": 2.123459807369444,
+        "p95": 2.7542998790740967
+      },
+      "gcBytes": {
+        "count": 542,
+        "min": 107143,
+        "max": 416597,
+        "mean": 118702.66789667896,
+        "p95": 156069
+      },
+      "tickGC": {
+        "count": 540,
+        "min": 1408,
+        "max": 18022,
+        "mean": 1792.5555555555557,
+        "p95": 2440
+      },
+      "viewGC": {
+        "count": 540,
+        "min": 1504,
+        "max": 29208,
+        "mean": 2009.5962962962963,
+        "p95": 2656
+      },
+      "drawCalls": {
+        "count": 540,
+        "min": 2026,
+        "max": 2340,
+        "mean": 2087.501851851852,
+        "p95": 2138
+      },
+      "setPass": {
+        "count": 540,
+        "min": 445,
+        "max": 544,
+        "mean": 459.05185185185184,
+        "p95": 479
+      },
+      "monoUsed": {
+        "count": 540,
+        "min": 163979264,
+        "max": 206508032,
+        "mean": 179762244.26666668,
+        "p95": 202240000
+      },
+      "totalAllocated": {
+        "count": 540,
+        "min": 1433992517,
+        "max": 1859729205,
+        "mean": 1654417455.9666667,
+        "p95": 1837629550
+      }
+    },
+    "b2": {
+      "runs": [
+        {
+          "fpsMean": 20.07225591436992,
+          "frameMs": {
+            "count": 180,
+            "min": 44.0647,
+            "max": 90.3151,
+            "mean": 49.82001047944444,
+            "p95": 56.9232
+          },
+          "invalidFrames": 0,
+          "viewMs": {
+            "count": 180,
+            "min": 1.6668000221252441,
+            "max": 3.2444000244140625,
+            "mean": 1.9876344409253863,
+            "p95": 2.42330002784729
+          },
+          "gcBytes": {
+            "count": 180,
+            "min": 355665,
+            "max": 660757,
+            "mean": 364871.1777777778,
+            "p95": 400600
+          },
+          "tickMs": {
+            "count": 180,
+            "min": 0.36399999260902405,
+            "max": 1.6881999969482422,
+            "mean": 0.4810027766558859,
+            "p95": 0.707099974155426
+          },
+          "tickGC": {
+            "count": 180,
+            "min": 1408,
+            "max": 18022,
+            "mean": 1861.5555555555557,
+            "p95": 2660
+          },
+          "fpsMin": 11.07234559890871,
+          "fpsMax": 22.69390237537076,
+          "extraFramesWithoutTick": 0,
+          "run": 0,
+          "viewGC": {
+            "count": 180,
+            "min": 1504,
+            "max": 28152,
+            "mean": 2032.7666666666667,
+            "p95": 2664
+          },
+          "firstFrameMs": 90.3151
+        },
+        {
+          "fpsMean": 19.89960488205177,
+          "frameMs": {
+            "count": 181,
+            "min": 44.3616,
+            "max": 72.7872,
+            "mean": 50.25225404861878,
+            "p95": 58.3899
+          },
+          "invalidFrames": 0,
+          "viewMs": {
+            "count": 180,
+            "min": 1.7008999586105347,
+            "max": 3.2873001098632812,
+            "mean": 2.024138883749644,
+            "p95": 2.735300064086914
+          },
+          "gcBytes": {
+            "count": 181,
+            "min": 351447,
+            "max": 433272,
+            "mean": 363270.34806629835,
+            "p95": 400165
+          },
+          "tickMs": {
+            "count": 180,
+            "min": 0.3578999936580658,
+            "max": 1.9335999488830566,
+            "mean": 0.47284222079647914,
+            "p95": 0.6797000169754028
+          },
+          "tickGC": {
+            "count": 180,
+            "min": 1408,
+            "max": 16218,
+            "mean": 1780.3222222222223,
+            "p95": 2558
+          },
+          "fpsMin": 13.738679328233536,
+          "fpsMax": 22.54201832215249,
+          "extraFramesWithoutTick": 1,
+          "run": 1,
+          "viewGC": {
+            "count": 180,
+            "min": 1504,
+            "max": 29208,
+            "mean": 1998.0111111111112,
+            "p95": 2656
+          },
+          "firstFrameMs": 46.1939
+        },
+        {
+          "fpsMean": 19.828110660801283,
+          "frameMs": {
+            "count": 181,
+            "min": 44.8047,
+            "max": 80.8935,
+            "mean": 50.433448607734796,
+            "p95": 61.2654
+          },
+          "invalidFrames": 0,
+          "viewMs": {
+            "count": 180,
+            "min": 1.739799976348877,
+            "max": 4.404799938201904,
+            "mean": 2.0494944387012057,
+            "p95": 2.6538000106811523
+          },
+          "gcBytes": {
+            "count": 181,
+            "min": 351447,
+            "max": 417273,
+            "mean": 362960.1049723757,
+            "p95": 400617
+          },
+          "tickMs": {
+            "count": 180,
+            "min": 0.35600000619888306,
+            "max": 1.7275999784469604,
+            "mean": 0.47184388769997493,
+            "p95": 0.6780999898910522
+          },
+          "tickGC": {
+            "count": 180,
+            "min": 1408,
+            "max": 16218,
+            "mean": 1772.9,
+            "p95": 2558
+          },
+          "fpsMin": 12.361932664552775,
+          "fpsMax": 22.3190870600629,
+          "extraFramesWithoutTick": 1,
+          "run": 2,
+          "viewGC": {
+            "count": 180,
+            "min": 1504,
+            "max": 29208,
+            "mean": 1998.0111111111112,
+            "p95": 2656
+          },
+          "firstFrameMs": 48.3031
+        }
+      ],
+      "frameMs": {
+        "count": 542,
+        "min": 44.0647,
+        "max": 90.3151,
+        "mean": 50.16921414594093,
+        "p95": 58.418
+      },
+      "fpsMean": 19.93254263642692,
+      "fpsMin": 11.07234559890871,
+      "fpsMax": 22.69390237537076,
+      "tickMs": {
+        "count": 540,
+        "min": 0.35600000619888306,
+        "max": 1.9335999488830566,
+        "mean": 0.4752296283841133,
+        "p95": 0.6956999897956848
+      },
+      "viewMs": {
+        "count": 540,
+        "min": 1.6668000221252441,
+        "max": 4.404799938201904,
+        "mean": 2.0204225877920785,
+        "p95": 2.6319000720977783
+      },
+      "gcBytes": {
+        "count": 542,
+        "min": 351447,
+        "max": 660757,
+        "mean": 363698.3837638376,
+        "p95": 400617
+      },
+      "tickGC": {
+        "count": 540,
+        "min": 1408,
+        "max": 18022,
+        "mean": 1804.9259259259259,
+        "p95": 2660
+      },
+      "viewGC": {
+        "count": 540,
+        "min": 1504,
+        "max": 29208,
+        "mean": 2009.5962962962963,
+        "p95": 2656
+      },
+      "drawCalls": {
+        "count": 540,
+        "min": 2026,
+        "max": 2296,
+        "mean": 2087.814814814815,
+        "p95": 2138
+      },
+      "setPass": {
+        "count": 540,
+        "min": 445,
+        "max": 524,
+        "mean": 459.10370370370373,
+        "p95": 481
+      },
+      "monoUsed": {
+        "count": 540,
+        "min": 167501824,
+        "max": 212295680,
+        "mean": 186349158.4,
+        "p95": 205074432
+      },
+      "totalAllocated": {
+        "count": 540,
+        "min": 1461742309,
+        "max": 1917264876,
+        "mean": 1694787153.3203704,
+        "p95": 1890576387
+      }
+    }
+  },
+  "equivalence": [
+    {
+      "run": 0,
+      "baselineEvents": 264,
+      "currentEvents": 264,
+      "checks": {
+        "events": false,
+        "CoreEnergy": true,
+        "Gold": true,
+        "Crystals": true,
+        "phase": true,
+        "enemies": false,
+        "projectiles": true,
+        "damage": true
+      },
+      "equal": false
+    },
+    {
+      "run": 1,
+      "baselineEvents": 264,
+      "currentEvents": 264,
+      "checks": {
+        "events": false,
+        "CoreEnergy": true,
+        "Gold": true,
+        "Crystals": true,
+        "phase": true,
+        "enemies": false,
+        "projectiles": true,
+        "damage": true
+      },
+      "equal": false
+    },
+    {
+      "run": 2,
+      "baselineEvents": 264,
+      "currentEvents": 264,
+      "checks": {
+        "events": false,
+        "CoreEnergy": true,
+        "Gold": true,
+        "Crystals": true,
+        "phase": true,
+        "enemies": false,
+        "projectiles": true,
+        "damage": true
+      },
+      "equal": false
+    }
+  ],
+  "costDeltas": {
+    "frameMs": {
+      "before": 38.07712595867159,
+      "after": 50.16921414594093,
+      "saved": -12.09208818726934,
+      "percent": -31.75683007271592
+    },
+    "tickMs": {
+      "before": 0.5065305534888197,
+      "after": 0.4752296283841133,
+      "saved": 0.03130092510470639,
+      "percent": 6.179474246739051
+    },
+    "viewMs": {
+      "before": 2.123459807369444,
+      "after": 2.0204225877920785,
+      "saved": 0.10303721957736567,
+      "percent": 4.8523272830395054
+    },
+    "gcBytes": {
+      "before": 118702.66789667896,
+      "after": 363698.3837638376,
+      "saved": -244995.71586715867,
+      "percent": -206.39444774771832
+    },
+    "tickGC": {
+      "before": 1792.5555555555557,
+      "after": 1804.9259259259259,
+      "saved": -12.37037037037021,
+      "percent": -0.6900969028285618
+    },
+    "viewGC": {
+      "before": 2009.5962962962963,
+      "after": 2009.5962962962963,
+      "saved": 0.0,
+      "percent": 0.0
+    },
+    "drawCalls": {
+      "before": 2087.501851851852,
+      "after": 2087.814814814815,
+      "saved": -0.3129629629629562,
+      "percent": -0.014992224446906356
+    },
+    "setPass": {
+      "before": 459.05185185185184,
+      "after": 459.10370370370373,
+      "saved": -0.051851851851893116,
+      "percent": -0.011295423739762426
+    }
+  },
+  "fpsIncrease": -6.329943694221747,
+  "fpsIncreasePercent": -24.102606335618038,
+  "limits": [
+    "Editor injected workload only",
+    "Fixed simulation delta, FPS uses native frameTimeMs instead of Time.deltaTime",
+    "All observed valid native frames retained per side including profiler-start and two no-Tick boundary frames; marker metrics use 540 actual ticks",
+    "Full GC includes diagnostic observers and frame sampling",
+    "Enemy replacements outside Tick/View markers",
+    "Editor memory includes caches and Profiler buffers; no retained-memory improvement claim",
+    "No matched pixel comparison or normal 30-round performance result"
+  ]
+}

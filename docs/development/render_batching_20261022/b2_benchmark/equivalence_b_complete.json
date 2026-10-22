@@ -1,0 +1,63 @@
+{
+  "kind": "Enemy IDs normalized by a constant per-run offset only; original outcomes and raw comparisons retained. Different normal-play time before Diagnostic caused initial ID offsets. No positions, health, order or event payloads normalized.",
+  "side": "b_complete",
+  "rows": [
+    {
+      "run": 0,
+      "beforeEnemyIdOffset": 59,
+      "afterEnemyIdOffset": 59,
+      "idOffsetDifference": 0,
+      "beforeEvents": 264,
+      "afterEvents": 264,
+      "checks": {
+        "events": true,
+        "CoreEnergy": true,
+        "Gold": true,
+        "Crystals": true,
+        "phase": true,
+        "enemies": true,
+        "projectiles": true,
+        "damage": true
+      },
+      "equal": true
+    },
+    {
+      "run": 1,
+      "beforeEnemyIdOffset": 243,
+      "afterEnemyIdOffset": 243,
+      "idOffsetDifference": 0,
+      "beforeEvents": 264,
+      "afterEvents": 264,
+      "checks": {
+        "events": true,
+        "CoreEnergy": true,
+        "Gold": true,
+        "Crystals": true,
+        "phase": true,
+        "enemies": true,
+        "projectiles": true,
+        "damage": true
+      },
+      "equal": true
+    },
+    {
+      "run": 2,
+      "beforeEnemyIdOffset": 427,
+      "afterEnemyIdOffset": 427,
+      "idOffsetDifference": 0,
+      "beforeEvents": 264,
+      "afterEvents": 264,
+      "checks": {
+        "events": true,
+        "CoreEnergy": true,
+        "Gold": true,
+        "Crystals": true,
+        "phase": true,
+        "enemies": true,
+        "projectiles": true,
+        "damage": true
+      },
+      "equal": true
+    }
+  ]
+}
