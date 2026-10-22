@@ -4,6 +4,8 @@
 
 ## 현재 상태와 승인 범위
 
+- 2026-10-23 SpriteAtlas 공식 문서·현재 코드 조사 완료. 몬스터/타워 지속 추가를 고려한 분류·폴더 등록·페이지/메모리 관리와 포탄/전투효과 우선 적용안을 [조사 보고서](SPRITE_ATLAS_RESEARCH_20261023.md)에 기록했다. 보행의 원본좌표 자르기·B 원본texture 키·저장 길메시 UV 호환이 선행 과제다. 실제 아틀라스 적용/성능 검증은 하지 않았다. 새 Unity 조작/검사/빌드 없음.
+
 - 2026-10-23 디렉터리 구조를 사용자 Notion 기획서 관리 DB의 전용 문서에 반영하고 메인/05. 제작·검증에 연결했다. 세 페이지 재조회로 내용·링크 및 기존 하위페이지/DB 보존 확인. [Notion 동기화 기록](directory_reorganization_20261023/NOTION_SYNC.md). 문서만 변경했으며 추가 Unity 실행/검사 없음.
 
 - 2026-10-23 사용자 정정에 따라 Unity Assets **552개 전체 분류·551개 이동** 완료. Art/Audio/Data/Documentation/Fonts/Prefabs/Scenes/Scripts/Settings9분류와 하위 용도로 통일했다. 복구 기준 `c1203f1`, [위치 색인](directory_reorganization_20261023/DIRECTORY_INDEX.md)·[이전→새 경로](directory_reorganization_20261023/path_map.csv)·[검증 정본](directory_reorganization_20261023/README.md). GUID/meta/의존성552·Resources key227·스크립트assembly102·마스크hash92 유지, 경로 영향 EditMode22/22 통과. 코드10개는 직접 경로 갱신, 길에셋12개는 이름만 변경. 전투씬 bytes·사용자 설정2개 동일/scene clean. 기록·캡처·기존 복구씬 보존, Play/빌드/실행파일/push 없음. 과거 진단 원본의 Assets 경로는 당시 값이므로 재실행 전 이동표로 맞춘다.
