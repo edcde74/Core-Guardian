@@ -3,6 +3,7 @@ using UnityEngine;
 // Original cutout legs on X; separate source-based rear/front frames on Y.
 public sealed class CoreGuardianOriginalWalk
 {
+    internal static void ClearCachedParts()=>VerticalLegPair.ClearCachedParts();
     readonly SpriteRenderer original, body;
     readonly Transform rig;
     readonly SpriteRenderer[] layers;
@@ -168,6 +169,13 @@ public sealed class CoreGuardianOriginalWalk
     {
         static readonly System.Collections.Generic.Dictionary<Sprite,Sprite[]> bodies=new System.Collections.Generic.Dictionary<Sprite,Sprite[]>();
         static readonly System.Collections.Generic.Dictionary<Sprite,Sprite> boots=new System.Collections.Generic.Dictionary<Sprite,Sprite>();
+        internal static void ClearCachedParts()
+        {
+            foreach(var pair in bodies)foreach(var sprite in pair.Value)Release(sprite);
+            foreach(var pair in boots)Release(pair.Value);
+            bodies.Clear();boots.Clear();
+            void Release(Sprite sprite){if(sprite==null)return;if(Application.isPlaying)Object.Destroy(sprite);else Object.DestroyImmediate(sprite);}
+        }
         readonly SpriteRenderer body,leftFoot,rightFoot;
         readonly SpriteRenderer[] bodyParts;
         readonly Rect[][] bodyRects;
@@ -202,7 +210,7 @@ public sealed class CoreGuardianOriginalWalk
                     // Rear and front drawings have different leg columns. The rear leg is
                     // x40..46; x44..50 retained only its thin edge plus part of the bent leg.
                     int height=d==0?(defenseRear?22:23):bootHeight;
-                    boot=Sprite.Create(source.texture,new Rect(source.rect.x+(d==0?(defenseRear?43:40):bootX),source.rect.y,d==0?7:bootWidth,height),new Vector2(.5f,3f/height),source.pixelsPerUnit);
+                    boot=CoreGuardianSpriteAtlasSources.Cut(source,new Rect(d==0?(defenseRear?43:40):bootX,0,d==0?7:bootWidth,height),new Vector2(.5f,3f/height),source.pixelsPerUnit);
                     boot.name=source.name+"_Boot";boot.hideFlags=HideFlags.HideAndDontSave;boots[key]=boot;
                 }
                 templates[d]=boot;
@@ -223,8 +231,7 @@ public sealed class CoreGuardianOriginalWalk
                 // A few source frames raise a fixed knee into the hem. Keep the
                 // resting hip/cloth strip so it cannot appear as a third knee.
                 var art=i==3?rest:source;
-                var rect=rects[i];rect.position+=art.rect.position;
-                sprites[i]=Sprite.Create(art.texture,rect,new Vector2(.5f,0),art.pixelsPerUnit);
+                sprites[i]=CoreGuardianSpriteAtlasSources.Cut(art,rects[i],new Vector2(.5f,0),art.pixelsPerUnit);
                 sprites[i].name=source.name+"_Body"+i;sprites[i].hideFlags=HideFlags.HideAndDontSave;
             }
             bodies[source]=sprites;return sprites;

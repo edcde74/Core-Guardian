@@ -1,0 +1,160 @@
+{
+  "status": "completed",
+  "duration": 0.57,
+  "summary": {
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.AllDirectionsAnimateBothLegs_AndMirroredStopKeepsGroundAnchor(\"Attack\",\"enemy_attack\",3.5f,0.0f,14.0f)",
+      "Status": "Passed",
+      "Duration": 0.0166444,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.AllDirectionsAnimateBothLegs_AndMirroredStopKeepsGroundAnchor(\"Defense\",\"enemy_defense\",5.5f,4.0f,10.0f)",
+      "Status": "Passed",
+      "Duration": 0.0053525,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.AllDirectionsAnimateBothLegs_AndMirroredStopKeepsGroundAnchor(\"Buff\",\"enemy_buff\",-1.75f,1.5f,12.0f)",
+      "Status": "Passed",
+      "Duration": 0.0051023,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.AllDirectionsAnimateBothLegs_AndMirroredStopKeepsGroundAnchor(\"Boss\",\"\",-0.75f,2.0f,18.0f)",
+      "Status": "Passed",
+      "Duration": 0.0046848,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.AttackSourceBootsShareTheGroundLine",
+      "Status": "Passed",
+      "Duration": 0.001181,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.BossFrontTorsoAndHipsUseOneCoherentPose_WithoutAWaistFrameSeam",
+      "Status": "Passed",
+      "Duration": 0.0079508,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.BothFeetUseIdenticalTrajectories_HalfACycleApart_WithContinuousContact",
+      "Status": "Passed",
+      "Duration": 0.2690551,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.PlantedFootCancelsRootTravel_AndLiftOccursOnlyDuringSwing",
+      "Status": "Passed",
+      "Duration": 0.0024075,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.RearAttackBootsKeepTheCompleteSourceWidth_WithoutFixedLegFragments",
+      "Status": "Passed",
+      "Duration": 0.0048874,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.RearDefenseHasSeparatedRearBoots_AndKeepsItsShield",
+      "Status": "Passed",
+      "Duration": 0.0017893,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.VerticalDirectionsHaveFourDistinctFrames_WithFixedGroundPivotAndPixelImport",
+      "Status": "Passed",
+      "Duration": 0.0144409,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.VerticalWalkAlternatesBothVisibleBoots(\"Attack\",\"enemy_attack\",14.0f,1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0049899,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.VerticalWalkAlternatesBothVisibleBoots(\"Attack\",\"enemy_attack\",14.0f,-1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0022914,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.VerticalWalkAlternatesBothVisibleBoots(\"Defense\",\"enemy_defense\",10.0f,-1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0023467,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.VerticalWalkAlternatesBothVisibleBoots(\"Defense\",\"enemy_defense\",10.0f,1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0021536,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.VerticalWalkAlternatesBothVisibleBoots(\"Buff\",\"enemy_buff\",12.0f,-1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0020961,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.VerticalWalkAlternatesBothVisibleBoots(\"Boss\",\"\",18.0f,-1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0021827,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.WaypointTurnSelectsActualRearAndFrontArtwork_ThenRestoresOriginalHorizontalRig(\"Attack\",\"enemy_attack\")",
+      "Status": "Passed",
+      "Duration": 0.0049151,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.WaypointTurnSelectsActualRearAndFrontArtwork_ThenRestoresOriginalHorizontalRig(\"Defense\",\"enemy_defense\")",
+      "Status": "Passed",
+      "Duration": 0.0029681,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.WaypointTurnSelectsActualRearAndFrontArtwork_ThenRestoresOriginalHorizontalRig(\"Buff\",\"enemy_buff\")",
+      "Status": "Passed",
+      "Duration": 0.0026085,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianOriginalGaitTests.WaypointTurnSelectsActualRearAndFrontArtwork_ThenRestoresOriginalHorizontalRig(\"Boss\",\"\")",
+      "Status": "Passed",
+      "Duration": 0.0026924,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

@@ -287,10 +287,17 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     {
         if(geometry.TryGetValue(sprite,out var value))return value;
         value=new MaskGeometry{vertices=sprite.vertices.Select(v=>(Vector3)v).ToArray(),uv=sprite.uv,triangles=sprite.triangles.Select(v=>(int)v).ToArray(),texture=sprite.texture};
-        if(atlas!=null&&atlas.TryGet(sprite.texture,out var entry))
+        if(atlas!=null&&atlas.TryGetSprite(sprite,out var entry,out var uv))
         {
             value.texture=entry.page;value.mapped=true;
             value.atlasRect=new Vector4(entry.layer,0,0,0);
+            for(int i=0;i<value.uv.Length;i++)
+            {
+                var point=new Vector2(value.uv[i].x*uv.x+uv.z,value.uv[i].y*uv.y+uv.w);
+                // FullRect packed parts have integer source-pixel corners. Avoid atlas UV cancellation drift.
+                if(uv!=new Vector4(1,1,0,0))point=new Vector2(Mathf.Round(point.x*entry.page.width)/entry.page.width,Mathf.Round(point.y*entry.page.height)/entry.page.height);
+                value.uv[i]=point;
+            }
         }
         value.batch=new CoreGuardianMaskProducerBatch.Shape{vertices=value.vertices,uv=value.uv,triangles=value.triangles,layer=value.atlasRect.x};
         geometry.Add(sprite,value);return value;

@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "duration": 6.07,
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianSpriteAtlasCompatibilityTests.CroppingAnOffsetSpriteKeepsTheRequestedPixelsAndPivot",
+      "Status": "Passed",
+      "Duration": 0.0329664,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSpriteAtlasCompatibilityTests.ManagedAtlasesKeepFullRectPixelsAndOriginalBMaskLookup",
+      "Status": "Passed",
+      "Duration": 5.5665053,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSpriteAtlasCompatibilityTests.NewManagedCharacterTexturesCannotSilentlyReintroduceTightMeshTrimming",
+      "Status": "Passed",
+      "Duration": 0.2396098,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSpriteAtlasCompatibilityTests.RemappedCutKeepsOriginalMaskCoordinatesInsteadOfLookingUpThePackedPage",
+      "Status": "Passed",
+      "Duration": 0.0193392,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSpriteAtlasCompatibilityTests.SessionResetDisposesCachedWalkCutsBeforeSourceMappingsAreReset",
+      "Status": "Passed",
+      "Duration": 0.0022441,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

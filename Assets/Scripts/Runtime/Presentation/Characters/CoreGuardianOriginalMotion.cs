@@ -39,8 +39,7 @@ public sealed class CoreGuardianOriginalMotion
     }
     Sprite Cut(Sprite source,Rect part,string name)
     {
-        var rect=source.textureRect;part.position+=rect.position;
-        var sprite=Sprite.Create(source.texture,part,Vector2.one*.5f,ppu,0,SpriteMeshType.FullRect);
+        var sprite=CoreGuardianSpriteAtlasSources.Cut(source,part,Vector2.one*.5f,ppu);
         sprite.name=name;ownedSprites.Add(sprite);return sprite;
     }
     SpriteRenderer Layer(string name,Sprite sprite)

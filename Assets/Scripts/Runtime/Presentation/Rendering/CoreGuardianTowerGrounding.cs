@@ -37,12 +37,16 @@ public sealed class CoreGuardianTowerGrounding : IDisposable
         // A separate alpha-masked overlay keeps original PNGs, cutouts and source materials intact.
         var shader=Resources.Load<Shader>("CoreGuardian/TowerBaseShade");
         if(shader==null)throw new InvalidOperationException("Missing tower base shade shader");
-        material=new Material(shader){name="Tower base shade "+role};material.mainTexture=sprite.texture;
-        material.SetFloat("_BottomUV",sprite.textureRect.yMin/sprite.texture.height);
-        material.SetFloat("_TextureHeight",sprite.texture.height);
+        var sourceRect=CoreGuardianSpriteAtlasSources.OriginalRect(sprite,out var sourceTexture);
+        material=new Material(shader){name="Tower base shade "+role};material.mainTexture=sourceTexture;
+        material.SetFloat("_BottomUV",sourceRect.yMin/sourceTexture.height);
+        material.SetFloat("_TextureHeight",sourceTexture.height);
         var vertices=sprite.vertices;var v=new Vector3[vertices.Length];for(int i=0;i<v.Length;i++)v[i]=vertices[i];
         var indices=sprite.triangles;var triangles=new int[indices.Length];for(int i=0;i<triangles.Length;i++)triangles[i]=indices[i];
-        mesh=new Mesh{name="Original base shade mask"};mesh.vertices=v;mesh.uv=sprite.uv;mesh.triangles=triangles;mesh.RecalculateBounds();
+        var uv=sprite.uv;
+        if(sourceTexture!=sprite.texture&&CoreGuardianSpriteAtlasSources.TryGetSource(sprite,out _,out var transform))
+            for(int i=0;i<uv.Length;i++)uv[i]=new Vector2(Mathf.Round((uv[i].x*transform.x+transform.z)*sourceTexture.width)/sourceTexture.width,Mathf.Round((uv[i].y*transform.y+transform.w)*sourceTexture.height)/sourceTexture.height);
+        mesh=new Mesh{name="Original base shade mask"};mesh.vertices=v;mesh.uv=uv;mesh.triangles=triangles;mesh.RecalculateBounds();
         var go=new GameObject("TowerBaseShade");go.transform.SetParent(body.transform.parent,false);go.AddComponent<MeshFilter>().sharedMesh=mesh;
         shade=go.AddComponent<MeshRenderer>();shade.sharedMaterial=material;
         shade.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;shade.receiveShadows=false;

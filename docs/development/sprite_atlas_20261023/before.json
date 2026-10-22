@@ -1,0 +1,727 @@
+{
+  "error": null,
+  "count": 90,
+  "textureBytes": 165436785,
+  "frames": [
+    {
+      "frame": 1705,
+      "ms": 25.034494698047638,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1588,
+      "setpass": 181
+    },
+    {
+      "frame": 1706,
+      "ms": 24.303501471877098,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1573,
+      "setpass": 183
+    },
+    {
+      "frame": 1707,
+      "ms": 25.729598477482796,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1567,
+      "setpass": 183
+    },
+    {
+      "frame": 1708,
+      "ms": 47.539703547954559,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1709,
+      "ms": 26.532901450991631,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1710,
+      "ms": 22.97230064868927,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1711,
+      "ms": 33.072497695684433,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1555,
+      "setpass": 176
+    },
+    {
+      "frame": 1712,
+      "ms": 21.81600034236908,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1555,
+      "setpass": 176
+    },
+    {
+      "frame": 1713,
+      "ms": 22.469798102974892,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1714,
+      "ms": 16.849901527166367,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1715,
+      "ms": 16.938995569944382,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1716,
+      "ms": 16.295500099658966,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1555,
+      "setpass": 176
+    },
+    {
+      "frame": 1717,
+      "ms": 21.941503509879112,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1718,
+      "ms": 16.911996528506279,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1719,
+      "ms": 18.01910437643528,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1720,
+      "ms": 16.104400157928467,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1721,
+      "ms": 17.045896500349045,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1722,
+      "ms": 15.769302845001221,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1723,
+      "ms": 22.748498246073723,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1555,
+      "setpass": 176
+    },
+    {
+      "frame": 1724,
+      "ms": 22.601502016186714,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1725,
+      "ms": 17.409099265933037,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1726,
+      "ms": 16.833800822496414,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1727,
+      "ms": 17.295995727181435,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1563,
+      "setpass": 178
+    },
+    {
+      "frame": 1728,
+      "ms": 22.707901895046234,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1581,
+      "setpass": 190
+    },
+    {
+      "frame": 1729,
+      "ms": 22.195203229784966,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1730,
+      "ms": 16.639498993754387,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1588,
+      "setpass": 197
+    },
+    {
+      "frame": 1731,
+      "ms": 20.093800500035286,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1732,
+      "ms": 19.285097718238831,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1733,
+      "ms": 16.595499590039253,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1734,
+      "ms": 16.244905069470406,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1589,
+      "setpass": 195
+    },
+    {
+      "frame": 1735,
+      "ms": 21.743196994066238,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1736,
+      "ms": 20.450199022889137,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1737,
+      "ms": 18.403103575110435,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1738,
+      "ms": 19.306795671582222,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1739,
+      "ms": 18.135897815227509,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1561,
+      "setpass": 182
+    },
+    {
+      "frame": 1740,
+      "ms": 20.326700061559677,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1741,
+      "ms": 24.524100124835968,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1742,
+      "ms": 19.379300996661186,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1743,
+      "ms": 17.637599259614944,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1554,
+      "setpass": 175
+    },
+    {
+      "frame": 1744,
+      "ms": 22.725701332092285,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1554,
+      "setpass": 175
+    },
+    {
+      "frame": 1745,
+      "ms": 25.340298190712929,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1746,
+      "ms": 19.180804491043091,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1747,
+      "ms": 16.909997910261154,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1748,
+      "ms": 15.55970124900341,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1581,
+      "setpass": 190
+    },
+    {
+      "frame": 1749,
+      "ms": 21.264398470520973,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1750,
+      "ms": 16.467297449707985,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1751,
+      "ms": 16.379499807953835,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1752,
+      "ms": 15.943501144647598,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1554,
+      "setpass": 175
+    },
+    {
+      "frame": 1753,
+      "ms": 21.962499246001244,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1560,
+      "setpass": 181
+    },
+    {
+      "frame": 1754,
+      "ms": 16.49780385196209,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1755,
+      "ms": 18.933694809675217,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1756,
+      "ms": 16.522003337740898,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1757,
+      "ms": 16.8008990585804,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1591,
+      "setpass": 179
+    },
+    {
+      "frame": 1758,
+      "ms": 21.731002256274223,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1759,
+      "ms": 16.780201345682144,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1760,
+      "ms": 16.483893617987633,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1663,
+      "setpass": 193
+    },
+    {
+      "frame": 1761,
+      "ms": 16.015404835343361,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1696,
+      "setpass": 207
+    },
+    {
+      "frame": 1762,
+      "ms": 16.598695889115334,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1763,
+      "ms": 15.611600130796432,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1764,
+      "ms": 16.298504546284676,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1765,
+      "ms": 15.742801129817963,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1591,
+      "setpass": 179
+    },
+    {
+      "frame": 1766,
+      "ms": 21.698497235774994,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1767,
+      "ms": 16.757398843765259,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1768,
+      "ms": 16.73479937016964,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1769,
+      "ms": 16.91410131752491,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1597,
+      "setpass": 185
+    },
+    {
+      "frame": 1770,
+      "ms": 15.686096623539925,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1701,
+      "setpass": 206
+    },
+    {
+      "frame": 1771,
+      "ms": 22.587500512599945,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1575,
+      "setpass": 175
+    },
+    {
+      "frame": 1772,
+      "ms": 24.891305714845657,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1581,
+      "setpass": 181
+    },
+    {
+      "frame": 1773,
+      "ms": 18.560394644737244,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1581,
+      "setpass": 181
+    },
+    {
+      "frame": 1774,
+      "ms": 21.877402439713478,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1581,
+      "setpass": 181
+    },
+    {
+      "frame": 1775,
+      "ms": 16.594402492046356,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1575,
+      "setpass": 175
+    },
+    {
+      "frame": 1776,
+      "ms": 21.769097074866295,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1581,
+      "setpass": 181
+    },
+    {
+      "frame": 1777,
+      "ms": 16.770897433161736,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1581,
+      "setpass": 181
+    },
+    {
+      "frame": 1778,
+      "ms": 16.084106639027596,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1639,
+      "setpass": 181
+    },
+    {
+      "frame": 1779,
+      "ms": 16.085600480437279,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1572,
+      "setpass": 188
+    },
+    {
+      "frame": 1780,
+      "ms": 18.832297995686531,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1572,
+      "setpass": 188
+    },
+    {
+      "frame": 1781,
+      "ms": 16.927599906921387,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1582,
+      "setpass": 213
+    },
+    {
+      "frame": 1782,
+      "ms": 17.812598496675491,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1582,
+      "setpass": 213
+    },
+    {
+      "frame": 1783,
+      "ms": 16.419798135757446,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1582,
+      "setpass": 213
+    },
+    {
+      "frame": 1784,
+      "ms": 16.472902148962021,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1659,
+      "setpass": 223
+    },
+    {
+      "frame": 1785,
+      "ms": 21.100198850035667,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1659,
+      "setpass": 223
+    },
+    {
+      "frame": 1786,
+      "ms": 20.258199423551559,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1582,
+      "setpass": 182
+    },
+    {
+      "frame": 1787,
+      "ms": 20.037401467561722,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1582,
+      "setpass": 182
+    },
+    {
+      "frame": 1788,
+      "ms": 16.581298783421516,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1582,
+      "setpass": 182
+    },
+    {
+      "frame": 1789,
+      "ms": 15.673803165555,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1716,
+      "setpass": 237
+    },
+    {
+      "frame": 1790,
+      "ms": 21.392900496721268,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1576,
+      "setpass": 181
+    },
+    {
+      "frame": 1791,
+      "ms": 19.960097968578339,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1576,
+      "setpass": 181
+    },
+    {
+      "frame": 1792,
+      "ms": 17.398597672581673,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1573,
+      "setpass": 183
+    },
+    {
+      "frame": 1793,
+      "ms": 19.07229982316494,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1573,
+      "setpass": 183
+    },
+    {
+      "frame": 1794,
+      "ms": 17.449900507926941,
+      "enemies": 128,
+      "towers": 15,
+      "draw": 1671,
+      "setpass": 210
+    }
+  ]
+}

@@ -100,7 +100,7 @@ internal static class CoreGuardianBodyMaskCache
         {
             renderer=r;sprite=r.sprite;source=sprite.texture;sourceVersion=source.updateCount;
             mapped=source;layer=-1;
-            if(atlas!=null&&atlas.TryGet(sprite.texture,out var item)){mapped=item.page;layer=item.layer;}
+            if(atlas!=null&&atlas.TryGetSprite(sprite,out var item,out _)){mapped=item.page;layer=item.layer;}
             mappedVersion=mapped.updateCount;alpha=r.color.a;flipX=r.flipX;flipY=r.flipY;matrix=r.transform.localToWorldMatrix;
         }
         public bool Equals(Part b)=>ReferenceEquals(renderer,b.renderer)&&ReferenceEquals(sprite,b.sprite)&&ReferenceEquals(source,b.source)&&ReferenceEquals(mapped,b.mapped)&&sourceVersion==b.sourceVersion&&mappedVersion==b.mappedVersion&&layer==b.layer&&alpha.Equals(b.alpha)&&flipX==b.flipX&&flipY==b.flipY&&matrix.Equals(b.matrix);

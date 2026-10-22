@@ -19,6 +19,11 @@ public sealed class CoreGuardianMaskAtlas : ScriptableObject
     public int Revision {get;private set;}
     public void Invalidate(){lookup=null;Revision++;}
     public void Initialize(Entry[] values,string hash){entries=values;inputHash=hash;Invalidate();}
+    public bool TryGetSprite(Sprite sprite,out Entry entry,out Vector4 uv)
+    {
+        if(CoreGuardianSpriteAtlasSources.TryGetSource(sprite,out var source,out uv))return TryGet(source,out entry);
+        entry=default;return false;
+    }
     public bool TryGet(Texture2D source,out Entry entry)
     {
         if(lookup==null)

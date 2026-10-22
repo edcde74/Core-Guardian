@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "duration": 0.56,
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianSpriteAtlasCompatibilityTests.NewManagedCharacterTexturesCannotSilentlyReintroduceTightMeshTrimming",
+      "Status": "Failed",
+      "Duration": 0.4280575,
+      "Message": "  New character imports must preserve the part-cropping rectangle before Play or build\r\n  Expected: FullRect\r\n  But was:  Tight\r\n",
+      "StackTrace": "at CoreGuardianSpriteAtlasCompatibilityTests.NewManagedCharacterTexturesCannotSilentlyReintroduceTightMeshTrimming () [0x000ab] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Scripts\\Tests\\EditMode\\CoreGuardianSpriteAtlasCompatibilityTests.cs:25\r\n"
+    }
+  ]
+}

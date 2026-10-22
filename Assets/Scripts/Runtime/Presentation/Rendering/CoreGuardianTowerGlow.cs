@@ -26,14 +26,14 @@ public sealed class CoreGuardianTowerGlow : IDisposable
         foreach(var source in artwork.GetComponentsInChildren<SpriteRenderer>(true))
         {
             if(source!=artwork&&source.name!="Fixed"&&source.name!="Moving"&&!source.name.StartsWith("Housing"))continue;
-            var sprite=source.sprite;var rect=sprite.textureRect;var bounds=sprite.bounds;float pad=3/sprite.pixelsPerUnit;
+            var sprite=source.sprite;var rect=CoreGuardianSpriteAtlasSources.OriginalRect(sprite,out var texture);var bounds=sprite.bounds;float pad=3/sprite.pixelsPerUnit;
             var root=new GameObject("TowerGlow");root.transform.SetParent(source.transform,false);
             var mesh=new Mesh{name="Tower original blue-mask glow"};
             mesh.vertices=new[]{new Vector3(bounds.min.x-pad,bounds.min.y-pad),new Vector3(bounds.max.x+pad,bounds.min.y-pad),new Vector3(bounds.max.x+pad,bounds.max.y+pad),new Vector3(bounds.min.x-pad,bounds.max.y+pad)};
-            float w=sprite.texture.width,h=sprite.texture.height;
+            float w=texture.width,h=texture.height;
             mesh.uv=new[]{new Vector2((rect.xMin-3)/w,(rect.yMin-3)/h),new Vector2((rect.xMax+3)/w,(rect.yMin-3)/h),new Vector2((rect.xMax+3)/w,(rect.yMax+3)/h),new Vector2((rect.xMin-3)/w,(rect.yMax+3)/h)};
             mesh.triangles=new[]{0,1,2,0,2,3};mesh.RecalculateBounds();root.AddComponent<MeshFilter>().sharedMesh=mesh;
-            var material=new Material(shader){name="TowerGlow "+role};material.mainTexture=sprite.texture;
+            var material=new Material(shader){name="TowerGlow "+role};material.mainTexture=texture;
             material.SetVector("_UVRect",new Vector4(rect.xMin/w,rect.yMin/h,rect.xMax/w,rect.yMax/h));material.SetFloat("_Role",index);
             var renderer=root.AddComponent<MeshRenderer>();renderer.sharedMaterial=material;
             layers.Add(new Layer{source=source,renderer=renderer,root=root,mesh=mesh,material=material});

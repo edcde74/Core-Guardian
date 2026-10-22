@@ -56,7 +56,11 @@ public class CoreGuardianOriginalGaitTests
             var art=clone.GetComponentsInChildren<SpriteRenderer>().First(r=>r.name=="2D Sprite");var walk=Activator.CreateInstance(Walk,new object[]{art,"Attack"});
             Walk.GetMethod("Move").Invoke(walk,new object[]{Vector2.up,0f});Walk.GetMethod("Present").Invoke(walk,new object[]{.1f});
             var vertical=art.transform.Find("VerticalWalk");
-            ImageConversion.LoadImage(texture,System.IO.File.ReadAllBytes(AssetDatabase.GetAssetPath(vertical.GetComponent<SpriteRenderer>().sprite.texture)));
+            // A packed display texture is not a PNG asset. Read its actual GPU pixels.
+            var display=vertical.GetComponent<SpriteRenderer>().sprite.texture;
+            var previous=RenderTexture.active;var rt=RenderTexture.GetTemporary(display.width,display.height,0,RenderTextureFormat.ARGB32,RenderTextureReadWrite.Linear);
+            try{Graphics.Blit(display,rt);RenderTexture.active=rt;texture.Reinitialize(display.width,display.height);texture.ReadPixels(new Rect(0,0,display.width,display.height),0,0);texture.Apply();}
+            finally{RenderTexture.active=previous;RenderTexture.ReleaseTemporary(rt);}
             foreach(var name in new[]{"LeftFoot","RightFoot"})
             {
                 var boot=vertical.Find(name).GetComponent<SpriteRenderer>().sprite;var rect=boot.rect;
@@ -140,7 +144,7 @@ public class CoreGuardianOriginalGaitTests
             {
                 var sprite=Resources.Load<Sprite>("CoreGuardian/VerticalWalk/"+role+"/"+direction+"_"+frame);Assert.That(sprite,Is.Not.Null);
                 Assert.That(Vector2.Distance(sprite.pivot,new Vector2(48,3)),Is.LessThan(.0001f));Assert.That(sprite.pixelsPerUnit,Is.EqualTo(32));Assert.That(sprite.texture.filterMode,Is.EqualTo(FilterMode.Point));
-                var path=AssetDatabase.GetAssetPath(sprite.texture);var importer=(TextureImporter)AssetImporter.GetAtPath(path);Assert.That(importer.mipmapEnabled,Is.False);Assert.That(importer.textureCompression,Is.EqualTo(TextureImporterCompression.Uncompressed));
+                var path=AssetDatabase.GetAssetPath(sprite);var importer=(TextureImporter)AssetImporter.GetAtPath(path);Assert.That(importer.mipmapEnabled,Is.False);Assert.That(importer.textureCompression,Is.EqualTo(TextureImporterCompression.Uncompressed));
                 images.Add(Convert.ToBase64String(System.IO.File.ReadAllBytes(path)));
             }
             Assert.That(images.Count,Is.EqualTo(4),role+"/"+direction+" actual image content");

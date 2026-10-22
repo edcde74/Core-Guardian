@@ -1,0 +1,69 @@
+{
+  "status": "completed",
+  "duration": 0.04,
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianSingleTowerAimTests.BarrelAndMuzzleFollowTarget_WhileBaseAndHousingStayFixed(1.0f,0.0f)",
+      "Status": "Passed",
+      "Duration": 0.0235597,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSingleTowerAimTests.BarrelAndMuzzleFollowTarget_WhileBaseAndHousingStayFixed(-1.0f,0.0f)",
+      "Status": "Passed",
+      "Duration": 0.0013732,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSingleTowerAimTests.BarrelAndMuzzleFollowTarget_WhileBaseAndHousingStayFixed(0.0f,1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0015597,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSingleTowerAimTests.BarrelAndMuzzleFollowTarget_WhileBaseAndHousingStayFixed(0.0f,-1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0012015,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSingleTowerAimTests.BarrelAndMuzzleFollowTarget_WhileBaseAndHousingStayFixed(1.0f,1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0011577,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSingleTowerAimTests.BarrelAndMuzzleFollowTarget_WhileBaseAndHousingStayFixed(-1.0f,1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0011193,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSingleTowerAimTests.BarrelAndMuzzleFollowTarget_WhileBaseAndHousingStayFixed(1.0f,-1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0010928,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianSingleTowerAimTests.BarrelAndMuzzleFollowTarget_WhileBaseAndHousingStayFixed(-1.0f,-1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0010719,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}
