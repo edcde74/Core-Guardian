@@ -1,0 +1,15 @@
+{
+  "isolationFixtureRerun": "pending scene save approval",
+  "wholeSuiteRepeated": false,
+  "passed": 7,
+  "failed": 0,
+  "total": 7,
+  "initialRed": {
+    "reason": "Combiner missing",
+    "total": 5,
+    "failed": 5,
+    "passed": 0
+  },
+  "phase": "Last executed product tests before preview-fixture isolation change",
+  "isolationFixtureCompiled": true
+}

@@ -1,0 +1,3363 @@
+{
+  "kind": "Stopped Editor Camera.Render pixel comparison; Overlay HUD excluded",
+  "originalDirty": true,
+  "finalDirty": true,
+  "originalZoom": 8.5,
+  "finalZoom": 8.5,
+  "rows": [
+    {
+      "zoom": 8.5,
+      "beforeControl": {
+        "differentPixels": 0,
+        "maxChannelSum": 0,
+        "totalChannelDelta": 0
+      },
+      "beforeAfter": {
+        "differentPixels": 0,
+        "maxChannelSum": 0,
+        "totalChannelDelta": 0
+      },
+      "beforeMeasure": [
+        {
+          "run": 0,
+          "valid": true,
+          "unit": "TimeNanoseconds",
+          "profilerSamples": [
+            {
+              "value": 371500,
+              "count": 1
+            },
+            {
+              "value": 359000,
+              "count": 1
+            },
+            {
+              "value": 298100,
+              "count": 1
+            },
+            {
+              "value": 345500,
+              "count": 1
+            },
+            {
+              "value": 312800,
+              "count": 1
+            },
+            {
+              "value": 281200,
+              "count": 1
+            },
+            {
+              "value": 302200,
+              "count": 1
+            },
+            {
+              "value": 290500,
+              "count": 1
+            },
+            {
+              "value": 265100,
+              "count": 1
+            },
+            {
+              "value": 293000,
+              "count": 1
+            },
+            {
+              "value": 300800,
+              "count": 1
+            },
+            {
+              "value": 263600,
+              "count": 1
+            },
+            {
+              "value": 259500,
+              "count": 1
+            },
+            {
+              "value": 322000,
+              "count": 1
+            },
+            {
+              "value": 313500,
+              "count": 1
+            },
+            {
+              "value": 314600,
+              "count": 1
+            },
+            {
+              "value": 302100,
+              "count": 1
+            },
+            {
+              "value": 337700,
+              "count": 1
+            },
+            {
+              "value": 434500,
+              "count": 1
+            },
+            {
+              "value": 331300,
+              "count": 1
+            },
+            {
+              "value": 345300,
+              "count": 1
+            },
+            {
+              "value": 369300,
+              "count": 1
+            },
+            {
+              "value": 316900,
+              "count": 1
+            },
+            {
+              "value": 408300,
+              "count": 1
+            },
+            {
+              "value": 361200,
+              "count": 1
+            },
+            {
+              "value": 371600,
+              "count": 1
+            },
+            {
+              "value": 307200,
+              "count": 1
+            },
+            {
+              "value": 333200,
+              "count": 1
+            },
+            {
+              "value": 303300,
+              "count": 1
+            },
+            {
+              "value": 340300,
+              "count": 1
+            },
+            {
+              "value": 324500,
+              "count": 1
+            },
+            {
+              "value": 284500,
+              "count": 1
+            },
+            {
+              "value": 291000,
+              "count": 1
+            },
+            {
+              "value": 341200,
+              "count": 1
+            },
+            {
+              "value": 370500,
+              "count": 1
+            },
+            {
+              "value": 329500,
+              "count": 1
+            },
+            {
+              "value": 317300,
+              "count": 1
+            },
+            {
+              "value": 354600,
+              "count": 1
+            },
+            {
+              "value": 422400,
+              "count": 1
+            },
+            {
+              "value": 390500,
+              "count": 1
+            },
+            {
+              "value": 489000,
+              "count": 1
+            },
+            {
+              "value": 476000,
+              "count": 1
+            },
+            {
+              "value": 461700,
+              "count": 1
+            },
+            {
+              "value": 378300,
+              "count": 1
+            },
+            {
+              "value": 385800,
+              "count": 1
+            },
+            {
+              "value": 428200,
+              "count": 1
+            },
+            {
+              "value": 358800,
+              "count": 1
+            },
+            {
+              "value": 394700,
+              "count": 1
+            },
+            {
+              "value": 398600,
+              "count": 1
+            },
+            {
+              "value": 465800,
+              "count": 1
+            },
+            {
+              "value": 444200,
+              "count": 1
+            },
+            {
+              "value": 374000,
+              "count": 1
+            },
+            {
+              "value": 347600,
+              "count": 1
+            },
+            {
+              "value": 378600,
+              "count": 1
+            },
+            {
+              "value": 324600,
+              "count": 1
+            },
+            {
+              "value": 350300,
+              "count": 1
+            },
+            {
+              "value": 357600,
+              "count": 1
+            },
+            {
+              "value": 394400,
+              "count": 1
+            },
+            {
+              "value": 399800,
+              "count": 1
+            },
+            {
+              "value": 423200,
+              "count": 1
+            }
+          ],
+          "samples": [
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            }
+          ]
+        },
+        {
+          "run": 1,
+          "valid": true,
+          "unit": "TimeNanoseconds",
+          "profilerSamples": [
+            {
+              "value": 414500,
+              "count": 1
+            },
+            {
+              "value": 359200,
+              "count": 1
+            },
+            {
+              "value": 330200,
+              "count": 1
+            },
+            {
+              "value": 294900,
+              "count": 1
+            },
+            {
+              "value": 378700,
+              "count": 1
+            },
+            {
+              "value": 384800,
+              "count": 1
+            },
+            {
+              "value": 402800,
+              "count": 1
+            },
+            {
+              "value": 351600,
+              "count": 1
+            },
+            {
+              "value": 399600,
+              "count": 1
+            },
+            {
+              "value": 393900,
+              "count": 1
+            },
+            {
+              "value": 437600,
+              "count": 1
+            },
+            {
+              "value": 359900,
+              "count": 1
+            },
+            {
+              "value": 318500,
+              "count": 1
+            },
+            {
+              "value": 335200,
+              "count": 1
+            },
+            {
+              "value": 355500,
+              "count": 1
+            },
+            {
+              "value": 312600,
+              "count": 1
+            },
+            {
+              "value": 339600,
+              "count": 1
+            },
+            {
+              "value": 387900,
+              "count": 1
+            },
+            {
+              "value": 370000,
+              "count": 1
+            },
+            {
+              "value": 358800,
+              "count": 1
+            },
+            {
+              "value": 484300,
+              "count": 1
+            },
+            {
+              "value": 381000,
+              "count": 1
+            },
+            {
+              "value": 321100,
+              "count": 1
+            },
+            {
+              "value": 295000,
+              "count": 1
+            },
+            {
+              "value": 391900,
+              "count": 1
+            },
+            {
+              "value": 321400,
+              "count": 1
+            },
+            {
+              "value": 357300,
+              "count": 1
+            },
+            {
+              "value": 316400,
+              "count": 1
+            },
+            {
+              "value": 381500,
+              "count": 1
+            },
+            {
+              "value": 382100,
+              "count": 1
+            },
+            {
+              "value": 394500,
+              "count": 1
+            },
+            {
+              "value": 390300,
+              "count": 1
+            },
+            {
+              "value": 364500,
+              "count": 1
+            },
+            {
+              "value": 374200,
+              "count": 1
+            },
+            {
+              "value": 360400,
+              "count": 1
+            },
+            {
+              "value": 329100,
+              "count": 1
+            },
+            {
+              "value": 341400,
+              "count": 1
+            },
+            {
+              "value": 426200,
+              "count": 1
+            },
+            {
+              "value": 409800,
+              "count": 1
+            },
+            {
+              "value": 380100,
+              "count": 1
+            },
+            {
+              "value": 429700,
+              "count": 1
+            },
+            {
+              "value": 387200,
+              "count": 1
+            },
+            {
+              "value": 283200,
+              "count": 1
+            },
+            {
+              "value": 293100,
+              "count": 1
+            },
+            {
+              "value": 390900,
+              "count": 1
+            },
+            {
+              "value": 414200,
+              "count": 1
+            },
+            {
+              "value": 377800,
+              "count": 1
+            },
+            {
+              "value": 333200,
+              "count": 1
+            },
+            {
+              "value": 351900,
+              "count": 1
+            },
+            {
+              "value": 334200,
+              "count": 1
+            },
+            {
+              "value": 474800,
+              "count": 1
+            },
+            {
+              "value": 385300,
+              "count": 1
+            },
+            {
+              "value": 366600,
+              "count": 1
+            },
+            {
+              "value": 284800,
+              "count": 1
+            },
+            {
+              "value": 412700,
+              "count": 1
+            },
+            {
+              "value": 371300,
+              "count": 1
+            },
+            {
+              "value": 408800,
+              "count": 1
+            },
+            {
+              "value": 397200,
+              "count": 1
+            },
+            {
+              "value": 424100,
+              "count": 1
+            },
+            {
+              "value": 495600,
+              "count": 1
+            }
+          ],
+          "samples": [
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            }
+          ]
+        },
+        {
+          "run": 2,
+          "valid": true,
+          "unit": "TimeNanoseconds",
+          "profilerSamples": [
+            {
+              "value": 444500,
+              "count": 1
+            },
+            {
+              "value": 357700,
+              "count": 1
+            },
+            {
+              "value": 326300,
+              "count": 1
+            },
+            {
+              "value": 498300,
+              "count": 1
+            },
+            {
+              "value": 387200,
+              "count": 1
+            },
+            {
+              "value": 406100,
+              "count": 1
+            },
+            {
+              "value": 349700,
+              "count": 1
+            },
+            {
+              "value": 372300,
+              "count": 1
+            },
+            {
+              "value": 354000,
+              "count": 1
+            },
+            {
+              "value": 403400,
+              "count": 1
+            },
+            {
+              "value": 421100,
+              "count": 1
+            },
+            {
+              "value": 364200,
+              "count": 1
+            },
+            {
+              "value": 298800,
+              "count": 1
+            },
+            {
+              "value": 338000,
+              "count": 1
+            },
+            {
+              "value": 336200,
+              "count": 1
+            },
+            {
+              "value": 328100,
+              "count": 1
+            },
+            {
+              "value": 321600,
+              "count": 1
+            },
+            {
+              "value": 318800,
+              "count": 1
+            },
+            {
+              "value": 306700,
+              "count": 1
+            },
+            {
+              "value": 341400,
+              "count": 1
+            },
+            {
+              "value": 454400,
+              "count": 1
+            },
+            {
+              "value": 398300,
+              "count": 1
+            },
+            {
+              "value": 336900,
+              "count": 1
+            },
+            {
+              "value": 353300,
+              "count": 1
+            },
+            {
+              "value": 407400,
+              "count": 1
+            },
+            {
+              "value": 369900,
+              "count": 1
+            },
+            {
+              "value": 376100,
+              "count": 1
+            },
+            {
+              "value": 338800,
+              "count": 1
+            },
+            {
+              "value": 343600,
+              "count": 1
+            },
+            {
+              "value": 398200,
+              "count": 1
+            },
+            {
+              "value": 292200,
+              "count": 1
+            },
+            {
+              "value": 255500,
+              "count": 1
+            },
+            {
+              "value": 275300,
+              "count": 1
+            },
+            {
+              "value": 259600,
+              "count": 1
+            },
+            {
+              "value": 301600,
+              "count": 1
+            },
+            {
+              "value": 338800,
+              "count": 1
+            },
+            {
+              "value": 294300,
+              "count": 1
+            },
+            {
+              "value": 301100,
+              "count": 1
+            },
+            {
+              "value": 301300,
+              "count": 1
+            },
+            {
+              "value": 333400,
+              "count": 1
+            },
+            {
+              "value": 383400,
+              "count": 1
+            },
+            {
+              "value": 295800,
+              "count": 1
+            },
+            {
+              "value": 307800,
+              "count": 1
+            },
+            {
+              "value": 515600,
+              "count": 1
+            },
+            {
+              "value": 343200,
+              "count": 1
+            },
+            {
+              "value": 386600,
+              "count": 1
+            },
+            {
+              "value": 379100,
+              "count": 1
+            },
+            {
+              "value": 339700,
+              "count": 1
+            },
+            {
+              "value": 343500,
+              "count": 1
+            },
+            {
+              "value": 277300,
+              "count": 1
+            },
+            {
+              "value": 278000,
+              "count": 1
+            },
+            {
+              "value": 288300,
+              "count": 1
+            },
+            {
+              "value": 298000,
+              "count": 1
+            },
+            {
+              "value": 306400,
+              "count": 1
+            },
+            {
+              "value": 293800,
+              "count": 1
+            },
+            {
+              "value": 332900,
+              "count": 1
+            },
+            {
+              "value": 322300,
+              "count": 1
+            },
+            {
+              "value": 297000,
+              "count": 1
+            },
+            {
+              "value": 298800,
+              "count": 1
+            },
+            {
+              "value": 309700,
+              "count": 1
+            }
+          ],
+          "samples": [
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            }
+          ]
+        }
+      ],
+      "afterMeasure": [
+        {
+          "run": 0,
+          "valid": true,
+          "unit": "TimeNanoseconds",
+          "profilerSamples": [
+            {
+              "value": 265200,
+              "count": 1
+            },
+            {
+              "value": 250500,
+              "count": 1
+            },
+            {
+              "value": 262200,
+              "count": 1
+            },
+            {
+              "value": 246400,
+              "count": 1
+            },
+            {
+              "value": 221500,
+              "count": 1
+            },
+            {
+              "value": 265500,
+              "count": 1
+            },
+            {
+              "value": 248700,
+              "count": 1
+            },
+            {
+              "value": 254100,
+              "count": 1
+            },
+            {
+              "value": 233100,
+              "count": 1
+            },
+            {
+              "value": 227800,
+              "count": 1
+            },
+            {
+              "value": 290000,
+              "count": 1
+            },
+            {
+              "value": 269200,
+              "count": 1
+            },
+            {
+              "value": 274900,
+              "count": 1
+            },
+            {
+              "value": 237300,
+              "count": 1
+            },
+            {
+              "value": 260900,
+              "count": 1
+            },
+            {
+              "value": 218200,
+              "count": 1
+            },
+            {
+              "value": 228300,
+              "count": 1
+            },
+            {
+              "value": 224800,
+              "count": 1
+            },
+            {
+              "value": 229600,
+              "count": 1
+            },
+            {
+              "value": 222700,
+              "count": 1
+            },
+            {
+              "value": 212600,
+              "count": 1
+            },
+            {
+              "value": 209400,
+              "count": 1
+            },
+            {
+              "value": 225800,
+              "count": 1
+            },
+            {
+              "value": 224600,
+              "count": 1
+            },
+            {
+              "value": 214200,
+              "count": 1
+            },
+            {
+              "value": 214200,
+              "count": 1
+            },
+            {
+              "value": 247800,
+              "count": 1
+            },
+            {
+              "value": 216300,
+              "count": 1
+            },
+            {
+              "value": 239800,
+              "count": 1
+            },
+            {
+              "value": 223700,
+              "count": 1
+            },
+            {
+              "value": 223500,
+              "count": 1
+            },
+            {
+              "value": 250300,
+              "count": 1
+            },
+            {
+              "value": 242800,
+              "count": 1
+            },
+            {
+              "value": 245900,
+              "count": 1
+            },
+            {
+              "value": 257400,
+              "count": 1
+            },
+            {
+              "value": 243300,
+              "count": 1
+            },
+            {
+              "value": 223100,
+              "count": 1
+            },
+            {
+              "value": 220800,
+              "count": 1
+            },
+            {
+              "value": 212400,
+              "count": 1
+            },
+            {
+              "value": 251300,
+              "count": 1
+            },
+            {
+              "value": 260700,
+              "count": 1
+            },
+            {
+              "value": 246900,
+              "count": 1
+            },
+            {
+              "value": 256800,
+              "count": 1
+            },
+            {
+              "value": 273000,
+              "count": 1
+            },
+            {
+              "value": 257500,
+              "count": 1
+            },
+            {
+              "value": 249900,
+              "count": 1
+            },
+            {
+              "value": 235600,
+              "count": 1
+            },
+            {
+              "value": 219400,
+              "count": 1
+            },
+            {
+              "value": 209800,
+              "count": 1
+            },
+            {
+              "value": 218500,
+              "count": 1
+            },
+            {
+              "value": 261900,
+              "count": 1
+            },
+            {
+              "value": 289800,
+              "count": 1
+            },
+            {
+              "value": 244400,
+              "count": 1
+            },
+            {
+              "value": 242200,
+              "count": 1
+            },
+            {
+              "value": 235500,
+              "count": 1
+            },
+            {
+              "value": 231100,
+              "count": 1
+            },
+            {
+              "value": 229800,
+              "count": 1
+            },
+            {
+              "value": 248800,
+              "count": 1
+            },
+            {
+              "value": 271800,
+              "count": 1
+            },
+            {
+              "value": 271100,
+              "count": 1
+            }
+          ],
+          "samples": [
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            }
+          ]
+        },
+        {
+          "run": 1,
+          "valid": true,
+          "unit": "TimeNanoseconds",
+          "profilerSamples": [
+            {
+              "value": 365300,
+              "count": 1
+            },
+            {
+              "value": 257900,
+              "count": 1
+            },
+            {
+              "value": 259800,
+              "count": 1
+            },
+            {
+              "value": 257200,
+              "count": 1
+            },
+            {
+              "value": 248800,
+              "count": 1
+            },
+            {
+              "value": 230000,
+              "count": 1
+            },
+            {
+              "value": 302400,
+              "count": 1
+            },
+            {
+              "value": 238700,
+              "count": 1
+            },
+            {
+              "value": 233200,
+              "count": 1
+            },
+            {
+              "value": 288000,
+              "count": 1
+            },
+            {
+              "value": 268400,
+              "count": 1
+            },
+            {
+              "value": 258000,
+              "count": 1
+            },
+            {
+              "value": 269400,
+              "count": 1
+            },
+            {
+              "value": 259000,
+              "count": 1
+            },
+            {
+              "value": 261400,
+              "count": 1
+            },
+            {
+              "value": 264300,
+              "count": 1
+            },
+            {
+              "value": 275000,
+              "count": 1
+            },
+            {
+              "value": 286600,
+              "count": 1
+            },
+            {
+              "value": 231300,
+              "count": 1
+            },
+            {
+              "value": 296900,
+              "count": 1
+            },
+            {
+              "value": 262500,
+              "count": 1
+            },
+            {
+              "value": 264400,
+              "count": 1
+            },
+            {
+              "value": 267200,
+              "count": 1
+            },
+            {
+              "value": 257100,
+              "count": 1
+            },
+            {
+              "value": 274300,
+              "count": 1
+            },
+            {
+              "value": 236200,
+              "count": 1
+            },
+            {
+              "value": 229000,
+              "count": 1
+            },
+            {
+              "value": 208100,
+              "count": 1
+            },
+            {
+              "value": 206200,
+              "count": 1
+            },
+            {
+              "value": 258400,
+              "count": 1
+            },
+            {
+              "value": 245400,
+              "count": 1
+            },
+            {
+              "value": 244400,
+              "count": 1
+            },
+            {
+              "value": 239000,
+              "count": 1
+            },
+            {
+              "value": 243100,
+              "count": 1
+            },
+            {
+              "value": 234500,
+              "count": 1
+            },
+            {
+              "value": 241000,
+              "count": 1
+            },
+            {
+              "value": 224100,
+              "count": 1
+            },
+            {
+              "value": 229900,
+              "count": 1
+            },
+            {
+              "value": 237800,
+              "count": 1
+            },
+            {
+              "value": 245300,
+              "count": 1
+            },
+            {
+              "value": 245600,
+              "count": 1
+            },
+            {
+              "value": 237300,
+              "count": 1
+            },
+            {
+              "value": 270100,
+              "count": 1
+            },
+            {
+              "value": 278800,
+              "count": 1
+            },
+            {
+              "value": 265200,
+              "count": 1
+            },
+            {
+              "value": 366700,
+              "count": 1
+            },
+            {
+              "value": 284600,
+              "count": 1
+            },
+            {
+              "value": 373900,
+              "count": 1
+            },
+            {
+              "value": 238400,
+              "count": 1
+            },
+            {
+              "value": 339600,
+              "count": 1
+            },
+            {
+              "value": 268900,
+              "count": 1
+            },
+            {
+              "value": 263800,
+              "count": 1
+            },
+            {
+              "value": 306100,
+              "count": 1
+            },
+            {
+              "value": 233800,
+              "count": 1
+            },
+            {
+              "value": 229400,
+              "count": 1
+            },
+            {
+              "value": 238000,
+              "count": 1
+            },
+            {
+              "value": 241100,
+              "count": 1
+            },
+            {
+              "value": 285500,
+              "count": 1
+            },
+            {
+              "value": 247800,
+              "count": 1
+            },
+            {
+              "value": 249700,
+              "count": 1
+            }
+          ],
+          "samples": [
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            }
+          ]
+        },
+        {
+          "run": 2,
+          "valid": true,
+          "unit": "TimeNanoseconds",
+          "profilerSamples": [
+            {
+              "value": 276200,
+              "count": 1
+            },
+            {
+              "value": 307400,
+              "count": 1
+            },
+            {
+              "value": 215600,
+              "count": 1
+            },
+            {
+              "value": 302500,
+              "count": 1
+            },
+            {
+              "value": 273900,
+              "count": 1
+            },
+            {
+              "value": 247800,
+              "count": 1
+            },
+            {
+              "value": 245300,
+              "count": 1
+            },
+            {
+              "value": 306300,
+              "count": 1
+            },
+            {
+              "value": 266300,
+              "count": 1
+            },
+            {
+              "value": 257200,
+              "count": 1
+            },
+            {
+              "value": 235800,
+              "count": 1
+            },
+            {
+              "value": 316800,
+              "count": 1
+            },
+            {
+              "value": 301500,
+              "count": 1
+            },
+            {
+              "value": 225000,
+              "count": 1
+            },
+            {
+              "value": 253700,
+              "count": 1
+            },
+            {
+              "value": 261000,
+              "count": 1
+            },
+            {
+              "value": 285600,
+              "count": 1
+            },
+            {
+              "value": 294300,
+              "count": 1
+            },
+            {
+              "value": 263800,
+              "count": 1
+            },
+            {
+              "value": 257600,
+              "count": 1
+            },
+            {
+              "value": 210700,
+              "count": 1
+            },
+            {
+              "value": 255600,
+              "count": 1
+            },
+            {
+              "value": 257600,
+              "count": 1
+            },
+            {
+              "value": 319400,
+              "count": 1
+            },
+            {
+              "value": 309400,
+              "count": 1
+            },
+            {
+              "value": 274000,
+              "count": 1
+            },
+            {
+              "value": 280400,
+              "count": 1
+            },
+            {
+              "value": 293200,
+              "count": 1
+            },
+            {
+              "value": 303500,
+              "count": 1
+            },
+            {
+              "value": 284300,
+              "count": 1
+            },
+            {
+              "value": 243000,
+              "count": 1
+            },
+            {
+              "value": 243200,
+              "count": 1
+            },
+            {
+              "value": 361400,
+              "count": 1
+            },
+            {
+              "value": 278700,
+              "count": 1
+            },
+            {
+              "value": 265700,
+              "count": 1
+            },
+            {
+              "value": 252400,
+              "count": 1
+            },
+            {
+              "value": 271100,
+              "count": 1
+            },
+            {
+              "value": 266300,
+              "count": 1
+            },
+            {
+              "value": 231600,
+              "count": 1
+            },
+            {
+              "value": 268500,
+              "count": 1
+            },
+            {
+              "value": 315600,
+              "count": 1
+            },
+            {
+              "value": 296100,
+              "count": 1
+            },
+            {
+              "value": 256100,
+              "count": 1
+            },
+            {
+              "value": 252600,
+              "count": 1
+            },
+            {
+              "value": 259400,
+              "count": 1
+            },
+            {
+              "value": 229100,
+              "count": 1
+            },
+            {
+              "value": 255500,
+              "count": 1
+            },
+            {
+              "value": 248100,
+              "count": 1
+            },
+            {
+              "value": 286400,
+              "count": 1
+            },
+            {
+              "value": 1224000,
+              "count": 1
+            },
+            {
+              "value": 335700,
+              "count": 1
+            },
+            {
+              "value": 301300,
+              "count": 1
+            },
+            {
+              "value": 272800,
+              "count": 1
+            },
+            {
+              "value": 317600,
+              "count": 1
+            },
+            {
+              "value": 335000,
+              "count": 1
+            },
+            {
+              "value": 306400,
+              "count": 1
+            },
+            {
+              "value": 291000,
+              "count": 1
+            },
+            {
+              "value": 379600,
+              "count": 1
+            },
+            {
+              "value": 313800,
+              "count": 1
+            },
+            {
+              "value": 274500,
+              "count": 1
+            }
+          ],
+          "samples": [
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            },
+            {
+              "draw": 258,
+              "setpass": 2,
+              "triangles": 532
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Route_Order1",
+          "order": 1,
+          "vertices": 308,
+          "triangles": 154
+        },
+        {
+          "name": "Route_Order2",
+          "order": 2,
+          "vertices": 568,
+          "triangles": 284
+        }
+      ]
+    },
+    {
+      "zoom": 4.25,
+      "beforeControl": {
+        "differentPixels": 0,
+        "maxChannelSum": 0,
+        "totalChannelDelta": 0
+      },
+      "beforeAfter": {
+        "differentPixels": 0,
+        "maxChannelSum": 0,
+        "totalChannelDelta": 0
+      },
+      "beforeMeasure": null,
+      "afterMeasure": null,
+      "outputs": [
+        {
+          "name": "Route_Order1",
+          "order": 1,
+          "vertices": 308,
+          "triangles": 154
+        },
+        {
+          "name": "Route_Order2",
+          "order": 2,
+          "vertices": 568,
+          "triangles": 284
+        }
+      ]
+    }
+  ]
+}

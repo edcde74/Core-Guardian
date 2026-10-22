@@ -1,0 +1,63 @@
+{
+  "kind": "Stopped Editor Camera.Render pixel comparison; Overlay HUD excluded",
+  "originalDirty": true,
+  "finalDirty": true,
+  "originalZoom": 8.5,
+  "finalZoom": 8.5,
+  "rows": [
+    {
+      "zoom": 8.5,
+      "beforeControl": {
+        "differentPixels": 0,
+        "maxChannelSum": 0,
+        "totalChannelDelta": 0
+      },
+      "beforeAfter": {
+        "differentPixels": 83,
+        "maxChannelSum": 383,
+        "totalChannelDelta": 13340
+      },
+      "outputs": [
+        {
+          "name": "Route_Order1",
+          "order": 1,
+          "vertices": 320,
+          "triangles": 160
+        },
+        {
+          "name": "Route_Order2",
+          "order": 2,
+          "vertices": 644,
+          "triangles": 322
+        }
+      ]
+    },
+    {
+      "zoom": 4.25,
+      "beforeControl": {
+        "differentPixels": 0,
+        "maxChannelSum": 0,
+        "totalChannelDelta": 0
+      },
+      "beforeAfter": {
+        "differentPixels": 0,
+        "maxChannelSum": 0,
+        "totalChannelDelta": 0
+      },
+      "outputs": [
+        {
+          "name": "Route_Order1",
+          "order": 1,
+          "vertices": 320,
+          "triangles": 160
+        },
+        {
+          "name": "Route_Order2",
+          "order": 2,
+          "vertices": 644,
+          "triangles": 322
+        }
+      ]
+    }
+  ]
+}
