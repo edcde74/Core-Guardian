@@ -4,7 +4,7 @@
 
 ## 현재 상태와 승인 범위
 
-- **사용자가 B안을 다시 진행·계속하도록 승인해 마스크 생성 배칭을 반영했다. A는 보류다.** GPU 공용 페이지에 생산 geometry를 묶되 출력 renderer/material/order와 개별 RT/copyback은 보존한다. 방어형/보스·지원 밖 조건은 원본 생산이다. 상세 구현·적용 제한·실패/결정·후속은 [B 결과 정본](render_batching_20261022/B_RESULTS.md)을 따른다. 아래 A/B 복원 및 06:20 빌드는 이 재개보다 앞선 이력이다.
+- **사용자가 B안을 다시 진행·계속하도록 승인해 마스크 생성 배칭을 반영했다. 구현·검증 커밋 `bc9c847`, A는 보류다.** GPU 공용 페이지에 생산 geometry를 묶되 출력 renderer/material/order와 개별 RT/copyback은 보존한다. 방어형/보스·지원 밖 조건은 원본 생산이다. 상세 구현·적용 제한·실패/결정·후속은 [B 결과 정본](render_batching_20261022/B_RESULTS.md)을 따른다. 아래 A/B 복원 및 06:20 빌드는 이 재개보다 앞선 이력이다.
 - 최종 같은128적/실제15포탑·고정dt·3회: Draw2087.311→1948.954(**−6.628%**), SetPass458.993→319.426(**−30.407%**), native 평균36.217→30.169ms, 평균FPS27.612→33.147(**+20.047%**). 각 조건542native/540실제Tick, 이벤트/최종 상태3회 일치. Editor 주입 조건의 부분 개선이며 정상30R/장시간/GPU 개선이나 당초70%/50% 목표 달성은 아니다. [최종 분석](render_batching_20261022/b2_benchmark/analysis_shipping.json).
 - 신규24+관련기존47+실제씬30R·재시작1 = **대상72개 통과**. 기존169개 전체를 반복하지 않았다. 4종132적/15포탑 화면은 줌8.5/4.25에서 원본 대비 차이0(Overlay HUD 미포함). 최종 씬 clean/Play stopped/compiling false, 자체 마스크GPU 객체0, 사용자 씬·설정6파일 해시 동일. 콘솔에는 자체 빈 Profiler 백업 로드 실패2건이 남아 있으며 삭제하지 않았다. 빈 버퍼로 복원했고 제품 오류로 집계하지 않는다. [종료](render_batching_20261022/shipping_final_state.json), [Profiler 복원](render_batching_20261022/shipping_profiler_restore.json), [해시](render_batching_20261022/shipping_user_hashes.json).
 - B는 페이지당16MiB 추가 GPU 저장공간 및 개별RT 복사 비용을 사용한다. 메모리 절감·전체 잔류 검증 완료가 아니다. 최종 독립 검토는 서비스 제한으로 전체 완료되지 않았으며 지적된 결함은 RED→GREEN으로 수정했다. 이번 B 재개 후 새 빌드·실행파일 실행·push는 하지 않았다. 기존 빌드는 B 반영 전이다.
