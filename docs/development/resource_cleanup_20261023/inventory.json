@@ -1,0 +1,4214 @@
+{
+  "utc": "2026-10-22T17:53:34.3185745Z",
+  "scenes": [
+    {
+      "path": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "isDirty": false
+    }
+  ],
+  "images": [
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_2.png",
+      "guid": "1019b37f4cbf2e14ca92a45688989d0b",
+      "bytes": 3264,
+      "sha256": "746DC54C98DE8D08EEA0C9B4A02ABB4D99B9EA8FC1E81353DA7B9A331AE0050E",
+      "metaHash": "5026FBEB50CC2C2453953199F091A4EDD28F1356E1A8E424C8C6CE54CF9FB599",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/docs/development/natural_rounds_20261010_screen.png",
+      "guid": "20f8fde48fb4b2949a0db8dbe8fcd5ff",
+      "bytes": 212742,
+      "sha256": "5123E31C8FE394510844CCB5854D78486775D74920C99E9C3EFFB6FFE40DA1CB",
+      "metaHash": "7E681D6EA29A758AFC2A808C62FA51AA61697AA2C08779CF3B9863BE113E1104",
+      "spriteMode": 2,
+      "sprites": [
+        "natural_rounds_20261010_screen_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Gold.png",
+      "guid": "501cc510f4457e44fb5ed73c750e2fec",
+      "bytes": 5808,
+      "sha256": "2F10F4B9AAE706D96C51A7E0EC3D6C9C885E3B26160AAF6E208B25F01D332072",
+      "metaHash": "250ECAAC74067EF1A7ABC76E38CD7BB505351843BE361CD0B64A6ED91886EBF2",
+      "spriteMode": 1,
+      "sprites": [
+        "Gold"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/tower_multi.png",
+      "guid": "603cb0fede19af44d82ab1c36fe51c27",
+      "bytes": 1095221,
+      "sha256": "9488DB2EA14757E235427447BF9AB249802FE1BB9A6CEE29A88B74046C365CBB",
+      "metaHash": "0D6951EE934A3982352DDE6EAF45459EA628436D2F05BC37C6D054D6E62D4B58",
+      "spriteMode": 2,
+      "sprites": [
+        "tower_multi_0",
+        "tower_multi_1",
+        "tower_multi_2"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rays_2.png",
+      "guid": "70592c1e0cbdb48329ec1b5aeaac2ee9",
+      "bytes": 1729075,
+      "sha256": "0C0A53A5FD66B53026CE3D69EC18F5CAE320F21503BF85D2A23C4064A4A377E1",
+      "metaHash": "343A379355D1BC057C4FBD5BD38CDAC73E6230F29F5D075A229999FA0A6EC921",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rays.mat"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalMotion/Multi/Moving.png",
+      "guid": "90a63fad7f84cbd4abfdfa653e447263",
+      "bytes": 3473,
+      "sha256": "67F829BF0E140406A7E8C01359ABE91563DA1DA10C9610C639B38C72ECF99101",
+      "metaHash": "C0071A9E69D23C2A35354D957C63CD528CB718C364C0F8F33EA2010D13D26F7F",
+      "spriteMode": 1,
+      "sprites": [
+        "Moving"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Circles/Magic_Circle_1.png",
+      "guid": "90cc6544d68264765a9346ad77fac6a2",
+      "bytes": 515634,
+      "sha256": "D407F1D167D8BE5F4EB6BFC37B4924655D2D49B04F4460CD76E43656D44556A0",
+      "metaHash": "1F7213E84647A567D0808C3634B4711415440EABED3256F7039506B7EB1D8BF1",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png",
+      "guid": "c057fe2befadb6b4fb2d791a4706ff33",
+      "bytes": 2772143,
+      "sha256": "810AEE8ABDEE593A187FA2380393383B58BB64C4F8D0CFC77A7241F17616DEDC",
+      "metaHash": "43DB8D9456FC52DC5EF45E89807C24B93456B0223A6ED8EB2753764828200182",
+      "spriteMode": 2,
+      "sprites": [
+        "MagitechFortress_03",
+        "MagitechFortress_04",
+        "MagitechFortress_07",
+        "MagitechFortress_08",
+        "MagitechFortress_11",
+        "MagitechFortress_12",
+        "MagitechFortress_01",
+        "MagitechFortress_02",
+        "MagitechFortress_05",
+        "MagitechFortress_06",
+        "MagitechFortress_09",
+        "MagitechFortress_10"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_05.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_11.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_07.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_02.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_10.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_12.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_04.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_03.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_01.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_08.asset",
+        "Assets/Art/MagitechFortress/TilePalettes/MagitechFortress_Base.prefab",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_09.asset",
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_06.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Animation/Defense/atlas.png",
+      "guid": "c02b6a92c7d7f8f4795cad058b802c48",
+      "bytes": 34553,
+      "sha256": "4C0843E179ABD4C24422F0DFBE66FAFE9DDC56617C34A69230B3BFAB2461D3C7",
+      "metaHash": "8DCC78ED32E42C3ADBA9DDA4AE237144ADCA4B2CFE7532AE2D277B9F9B2B910A",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Hud/20261013/CardBackSource.png",
+      "guid": "c09b6ccd90501ed49a0973bbf979911d",
+      "bytes": 1316467,
+      "sha256": "92F7BB1A0DF5CBE5F854D64C20F99705BDCA0AC149627D1AB0ED35187D4AA613",
+      "metaHash": "80F02517F70A15A630BD3B4FFA84DCF5848871D4FE1B7B1E08F7B5A5757F929F",
+      "spriteMode": 2,
+      "sprites": [
+        "CardBackSource_2",
+        "CardBackSource_5",
+        "CardBackSource_6",
+        "CardBackSource_9",
+        "CardBackSource_10",
+        "CardBackSource_11",
+        "CardBackSource_14",
+        "CardBackSource_15",
+        "CardBackSource_18",
+        "CardBackSource_19",
+        "CardBackSource_20",
+        "CardBackSource_3",
+        "CardBackSource_4",
+        "CardBackSource_7",
+        "CardBackSource_8",
+        "CardBackSource_12",
+        "CardBackSource_13",
+        "CardBackSource_16",
+        "CardBackSource_17",
+        "CardBackSource_21",
+        "CardBackSource_22",
+        "CardBackSource_0",
+        "CardBackSource_1"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_0.png",
+      "guid": "d0d07849d72c6554093ddb5575cddce8",
+      "bytes": 5525,
+      "sha256": "D351FB6A0E6F0EA38C85C79CD72A1525987FDF0309BBCEFD0B82A58606717CF1",
+      "metaHash": "AB2EF72F71E5803E28E6F62B0943563198A105F0C76B4FF789265160C45E3820",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/docs/art/path_contrast_B_20261008.png",
+      "guid": "e0cba5af0dee95c47bc72a51da01e4f5",
+      "bytes": 228122,
+      "sha256": "09A14A57F8984B247D903952D9496EA44F0A4B5CD9390BA40C8C9FADF7BFDCE3",
+      "metaHash": "1BBD676FB8C27D335B934C9887C06A39348D7C79785FE60B3C30B15AEFC8B7D6",
+      "spriteMode": 2,
+      "sprites": [
+        "path_contrast_B_20261008_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Enemies/Source/BiologicalBeasts_Concept_v1.png",
+      "guid": "f06cef03c6357eb409f583f5222ae35f",
+      "bytes": 1200248,
+      "sha256": "24AA41DAC1DD3B0432CD30A5B12204D8A3CE81B6CFC447E11B312AD1182DECD1",
+      "metaHash": "289EF8DFC60FAB672878D61B24EFDD9675D8F4102E6D2515CEADD56D5B3AF499",
+      "spriteMode": 2,
+      "sprites": [
+        "BiologicalBeasts_Concept_v1_2",
+        "BiologicalBeasts_Concept_v1_3",
+        "BiologicalBeasts_Concept_v1_4",
+        "BiologicalBeasts_Concept_v1_7",
+        "BiologicalBeasts_Concept_v1_8",
+        "BiologicalBeasts_Concept_v1_11",
+        "BiologicalBeasts_Concept_v1_12",
+        "BiologicalBeasts_Concept_v1_13",
+        "BiologicalBeasts_Concept_v1_16",
+        "BiologicalBeasts_Concept_v1_17",
+        "BiologicalBeasts_Concept_v1_20",
+        "BiologicalBeasts_Concept_v1_21",
+        "BiologicalBeasts_Concept_v1_0",
+        "BiologicalBeasts_Concept_v1_1",
+        "BiologicalBeasts_Concept_v1_5",
+        "BiologicalBeasts_Concept_v1_6",
+        "BiologicalBeasts_Concept_v1_9",
+        "BiologicalBeasts_Concept_v1_10",
+        "BiologicalBeasts_Concept_v1_14",
+        "BiologicalBeasts_Concept_v1_15",
+        "BiologicalBeasts_Concept_v1_18",
+        "BiologicalBeasts_Concept_v1_19"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_3.png",
+      "guid": "01df9ed1484ea4a4aae37266197c6b7f",
+      "bytes": 410703,
+      "sha256": "2399AA6CD32260004664F4687EA0AFB7C6C0E607A0715460FFFF1D98A2370D59",
+      "metaHash": "9A0763B11BB61FBCFC0B92981609ACA3DD6ACAFA604044D4F48095AE9060A179",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PhotoShadows/Buff.png",
+      "guid": "31145b88d4773d640ad54556792c9d2e",
+      "bytes": 235,
+      "sha256": "78D6C3FDD170D47023C4821981B6C8E33221D8CBC5809D69BFC67E472773EEF9",
+      "metaHash": "3B7BE462CF30AE3A997FB5020FBD4309E2A7CE628030BA8E9B674C6FF1100DF9",
+      "spriteMode": 1,
+      "sprites": [
+        "Buff"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/docs/art/path_contrast_A_20261008.png",
+      "guid": "318c085810a2c694dacaa080a9f5f0c2",
+      "bytes": 237872,
+      "sha256": "BBD62812B5FE8BACC4292D01C7A0A68675D6AE177B237F3C9C632821F03F78DB",
+      "metaHash": "8EC025428CA2171CC1BD9118C1969B040F5FF678ADC67BECF930E5B3A6ED2048",
+      "spriteMode": 2,
+      "sprites": [
+        "path_contrast_A_20261008_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/AbilityUpgrade.png",
+      "guid": "418240f6d6edc4f46acd2b7ced43aaed",
+      "bytes": 1538,
+      "sha256": "8D0A8335C333C5A3EC36F91870DEA912A5224C8BAB0D6C332F5984AFE41B289B",
+      "metaHash": "A0E45129C26387F79F130CD6B4538034A84CE76370EB3AA825F2ED3911DDBCD4",
+      "spriteMode": 1,
+      "sprites": [
+        "AbilityUpgrade"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalMotion/Player/Fixed.png",
+      "guid": "413e0cc99c8f64143b17868ee2de079d",
+      "bytes": 4534,
+      "sha256": "36D7135BF1EBBA04B5DFCA67A905BC6A200588A63394922DF3D072674B98A838",
+      "metaHash": "D09DF41B0D77D3610623E6815081C9731915222EF1FEF3229A46C28F31664DEF",
+      "spriteMode": 1,
+      "sprites": [
+        "Fixed"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Source/ground_slab_v2.png",
+      "guid": "518ad79b9da565b49aa93632c023ff78",
+      "bytes": 903047,
+      "sha256": "B319883D3FF9BADFF4B1464155853D24220CEFCFFDBDB01EA03AEC031D6EE01B",
+      "metaHash": "7004E393161003FCF96F13BADEE72CBB56AC5ACA6DC00BA5D50BC0AC959BC31B",
+      "spriteMode": 2,
+      "sprites": [
+        "ground_slab_v2_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_5.png",
+      "guid": "61f3b13a211544cc791161937176117e",
+      "bytes": 906457,
+      "sha256": "F0E53E8CF8D31351CD137C35C8E20479E10EA2A1BAF5253132351A81DE895E4A",
+      "metaHash": "8361D913B0C5B85345F2C19F5C675110E4BA08F9187ED9B1CC50E3A92168B80A",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_buff_v2.png",
+      "guid": "71043c1d47a3cc74d8375d3a61b1a743",
+      "bytes": 7075,
+      "sha256": "65DA6494DED3E72FB78FDEBA6ECFA1107B06E429A8D5AAD47E392F39FCE23EC9",
+      "metaHash": "0342460AD326F539B443C540F1D9CCCECABF4804C1476AD176C6138764ED37DD",
+      "spriteMode": 1,
+      "sprites": [
+        "enemy_buff_v2"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_buff.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_buff.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightLower.png",
+      "guid": "71a8a324af1d093419d0727f628ad644",
+      "bytes": 793,
+      "sha256": "E125630C7099CD6652FCFB28357B5B70151432E849C1D94732DF716E01C6B35E",
+      "metaHash": "67A0367F2B204BC944B91FCF94D9B243E7E4DC354FCD451E9C09855F6B778056",
+      "spriteMode": 1,
+      "sprites": [
+        "RightLower"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_1.png",
+      "guid": "b18c6fa6ca6dc734e902ccc1e94d4823",
+      "bytes": 3730,
+      "sha256": "FC5D1A72181724AC174E3A6DA997DC8722A6ECC6D876891C2F0F620310FC71E9",
+      "metaHash": "AEC9B1A913593853F9399C5B8E275B7E0100D567A5669E9AEB786E1831C428EB",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/LeftUpper.png",
+      "guid": "d1f2a12382c368c4180db41e863f3888",
+      "bytes": 492,
+      "sha256": "D35623E9D34500951669B06F485A2E1C096B504282F22B54AF34A1FB1228EE53",
+      "metaHash": "192AD99A973F465549E0256B1C70AC90F5CFFE207430DC64F54E12EEE9EB8BE9",
+      "spriteMode": 1,
+      "sprites": [
+        "LeftUpper"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_Body.png",
+      "guid": "e1f99028cf89e3a46a902ab2e3f44256",
+      "bytes": 1832,
+      "sha256": "81E38ED70A540EA2DD32BB3DC308045E3D15C0513A232B0E89881A07AF8241E7",
+      "metaHash": "8F24BA7FF21633729C16234D3CAEC48385E61C8794CB77EDA0E3B83CD18EA472",
+      "spriteMode": 1,
+      "sprites": [
+        "D2_Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Circles/Magic_Circle_4.png",
+      "guid": "f1dd36ae44d7d4beca104d6864664b76",
+      "bytes": 567743,
+      "sha256": "7F66963E027A4D6E570F069C113028CFDDE4B64EC529FBBDAD5DDA4199719A63",
+      "metaHash": "DF8CA5B741677A2169422867475B2BF470C4220A7B4633573A4BED27A01C36F1",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/FX/Spiral_Doodle_1.png",
+      "guid": "027309a4ba30d4f70b92cab02eb29198",
+      "bytes": 472031,
+      "sha256": "1B0EA14A17534226911F44EAE66D1AA86435B6EEB0B24189F4B281C55D009BDB",
+      "metaHash": "DD58CB586FD4D832FC6A8E1DC7DF30929EF7ED8C9C7FAF9AB682CC972C82BA5A",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/CardBackPlatinum.png",
+      "guid": "22bb76525286ada438207648bc9ee561",
+      "bytes": 91397,
+      "sha256": "C9F5E78165DBAB9A141CBE9105371C4EA37D09E4D3C4EEA54FCD9E492893E59A",
+      "metaHash": "F3127E38E7CFB4CC8924CDF327019E40BAA5F00BE11FAED23DF8ED7E650EC952",
+      "spriteMode": 1,
+      "sprites": [
+        "CardBackPlatinum"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/enemy_defense.png",
+      "guid": "22cfd1f7ee89de64485500a3885e3c28",
+      "bytes": 1673966,
+      "sha256": "D826116D70313DA176711104EA06C7A000417A5A7A8E3FCA58D1234F1BC396F9",
+      "metaHash": "7C329649468D59550D64E796DC270E1DA1A244F968BFCD61E123F97CF7CC9AE3",
+      "spriteMode": 2,
+      "sprites": [
+        "enemy_defense_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PhotoShadows/Multi.png",
+      "guid": "32ca5c642f0a7ee43ab1855d86b76daf",
+      "bytes": 438,
+      "sha256": "28097169965B9183A2B19365D167F49E606A18200622BE18CD8A8920C76DF9A8",
+      "metaHash": "1ED2F3E4F7CD51CC26D4632F0EF2DB62335AD8F785C019A9B0009E441055D491",
+      "spriteMode": 1,
+      "sprites": [
+        "Multi"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png",
+      "guid": "62e8b4aed8b30784489a4c9ccd0f2f33",
+      "bytes": 2646270,
+      "sha256": "DA5D4700BF9141788EC1EEDED9D8EE269BEB210259CF6877435122A497C173E9",
+      "metaHash": "31C779F740984ABA659D4985B1F791F1951FA8974A5261B4574995936DF145E2",
+      "spriteMode": 2,
+      "sprites": [
+        "Route01_Stone2",
+        "Route01_Stone0",
+        "Route01_Curb",
+        "Route01_Stone1"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 5.mat",
+        "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 1.mat",
+        "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 3.mat",
+        "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 4.mat",
+        "Assets/_Recovery/0 (1).unity",
+        "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 2.mat",
+        "Assets/_Recovery/0.unity",
+        "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial.mat",
+        "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_attack_v2.png",
+      "guid": "62c98fe4c0fe6b54d8e9a020e09efd5a",
+      "bytes": 6253,
+      "sha256": "9500E7BA3BFE589451E06BE35394BCDBB0E5C65DB35AF5CD77F5FD77B2C4BA71",
+      "metaHash": "70B073E75E4BDEDB2F36850EA77555E117719C92594DB367C1E45A1898926CBC",
+      "spriteMode": 1,
+      "sprites": [
+        "enemy_attack_v2"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_attack.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_attack.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightUpper.png",
+      "guid": "d23e8684615c3074e868e04513076483",
+      "bytes": 583,
+      "sha256": "F6234D15D42FCDFE2867C5EBBF0C2891667C2D2E5680491900F953667431CB2E",
+      "metaHash": "B8B5B19BE90140921DE34C492E753FC87500274FA70C373B6E4BAEAE5F020037",
+      "spriteMode": 1,
+      "sprites": [
+        "RightUpper"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_0.png",
+      "guid": "e2f7570ef049b454fbdf9e1949d5ce05",
+      "bytes": 3141,
+      "sha256": "3870D2C81549BBC423DCE16BD960BBA6F6E3FC44F58876F0B95133B582646CAF",
+      "metaHash": "4836BDF9FC39C4483CA44CD68FD7749D9BEA9411181D70BEAB86D6DCDD466339",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Particles/Particle_4.png",
+      "guid": "f2a73be4a5867496ca3fed38d4822bc3",
+      "bytes": 222199,
+      "sha256": "89DAB3E86F17292883DCCB138C9888D585EA1DABBFBB11F300048AF6396309B7",
+      "metaHash": "E6F9F324FA724BB78CE6699DEF8F6ABAF070BB9A2A0F63B9C515B5CAFE091BE3",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/docs/development/natural_rounds_20261010_coverage.png",
+      "guid": "0337a835ff9cb314d8628a44d8078d97",
+      "bytes": 215248,
+      "sha256": "A2FEE3116AD155CA1CAAFF96E5D6E009A8324FE6EFC9A46D0E010E7F02FD6BF9",
+      "metaHash": "C5D9529CF1DBA9DD09E473A8C0D3ABD2030360624F018598155E42C3A9434920",
+      "spriteMode": 2,
+      "sprites": [
+        "natural_rounds_20261010_coverage_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Glyphs/Glyph_2.png",
+      "guid": "039ee57a964c1439884d6687bc36f049",
+      "bytes": 182495,
+      "sha256": "EF277182B48096581E88B68204B2C1F25F00C2D1691B1D85DF301D7F9F2158B2",
+      "metaHash": "D2EF86C41A19D0678876B992A7FD8B32CF32D2CEFFCB64EFA532BC251B65EAB6",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/path_tile.png",
+      "guid": "13900443727addc4fb2350518a248821",
+      "bytes": 2642,
+      "sha256": "ED81238C0EEA8E88F8D8A025B679C117887DFE0C22C4C27581A0564618972B13",
+      "metaHash": "E5DEF77CDB37BB32718965C61815E9190889BF38C08BEA6CEABA4A8209594929",
+      "spriteMode": 1,
+      "sprites": [
+        "path_tile"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20260930/Tiles/path_tile.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_LeftLeg.png",
+      "guid": "131844a3f40aa8f48980d3f2a0844a5c",
+      "bytes": 489,
+      "sha256": "D5C91734580FC4C29A5B7E68A7D8D7D3AC15A0B699C617FA9151D03C8DF5326C",
+      "metaHash": "F26BE0AA78E21BA5E09CCA3A02FD331FE65CEAEF4963F8D0FFD839E00411C2A2",
+      "spriteMode": 1,
+      "sprites": [
+        "D2_LeftLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_Arm.png",
+      "guid": "23a1881905033d44aa3759da12a7d6d1",
+      "bytes": 489,
+      "sha256": "EA1C6C276046DF7DE3BEEA862EC84352E89FA6FFAB47253B7989139EF610EAF1",
+      "metaHash": "436DF6EC2057CDD21730B8631290C88F1EB641DDE6BF37A288CB9A3A4D1402CC",
+      "spriteMode": 1,
+      "sprites": [
+        "D1_Arm"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/TowerSupport.png",
+      "guid": "236afbff0f7c2bc4fac5f1ac3c74c051",
+      "bytes": 4226,
+      "sha256": "54751C2C325FC04A052C8F9146D329BDA9E5D23013D5BC0727816BA1D68A478E",
+      "metaHash": "3F395D447E303CBF01EA8613C7993C64650CB62379750B42A8DDBA6D5EA1DA9C",
+      "spriteMode": 1,
+      "sprites": [
+        "TowerSupport"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_Arm.png",
+      "guid": "338b6b0ffba12b745bfd884c58bffd98",
+      "bytes": 494,
+      "sha256": "A05680E574629D26AFC38799AC1722A6904CC7A84B93113DFA45E65D39D155D6",
+      "metaHash": "76924412E47190671121C19D45153C6B666897EE5B4D93CC2CCA08C939BEB597",
+      "spriteMode": 1,
+      "sprites": [
+        "D4_Arm"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_RightLeg.png",
+      "guid": "4357beda494860a468eceab0c4e6ca36",
+      "bytes": 568,
+      "sha256": "8A46E10CB7174751307AA17BE0F75626944BF2D4A44193EBAF04740C1F7C70A2",
+      "metaHash": "E77175D60D565A5A42C95F15548B8C10DADD73C13AD000BE27C3DBBB5E29157C",
+      "spriteMode": 1,
+      "sprites": [
+        "D1_RightLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Particles/Particle_1.png",
+      "guid": "433dc99a7560b4f599ae5fdc56664126",
+      "bytes": 171680,
+      "sha256": "FB6DA0BC6865604F45BAFF87FC2993679E776D80804CB402640272843EE29ABE",
+      "metaHash": "71C997D1B039C5792E3FC119D2E64B6D584170D71C0D633E5386D89CA56A4778",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/path_tile.png",
+      "guid": "53360346c365493488b962de4919cac1",
+      "bytes": 1122818,
+      "sha256": "F5F26F12D8FD68D04A4D32962B22C69683C3B4C250208A250BFA65B7C6318675",
+      "metaHash": "1DFD8A8E7FDFF44214DE632014CA19B6471D7B69AD5DC8ED349B37C86EE8DDE5",
+      "spriteMode": 2,
+      "sprites": [
+        "path_tile_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Cancel.png",
+      "guid": "7380e59687815a44facb6c77b5cc4fb7",
+      "bytes": 5490,
+      "sha256": "3267126C2E11E0F251676EC75DB2AD3C4F167D974CA01347FA2F0E0EBD5DE5B1",
+      "metaHash": "3C01426CDF16ADA3313F82DA5378923DF5358DAA6D5A54F4AE2A64E043B8AD29",
+      "spriteMode": 1,
+      "sprites": [
+        "Cancel"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Environment/AbandonedFortressB/NaturalCourtyard_01_ClearBorder.png",
+      "guid": "73133471def78714fab975213be73303",
+      "bytes": 2603651,
+      "sha256": "80537A3C5FDDDABB926AE8D2DCF64259ACE5DF966370962BDEEC078AF99BA14E",
+      "metaHash": "B0EB7F7BC154237EB4B4AB08740E73B0FF4B49947D55E756F4BB4FB9AF7CA4A5",
+      "spriteMode": 1,
+      "sprites": [
+        "NaturalCourtyard_01_ClearBorder"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/_Recovery/0 (1).unity",
+        "Assets/_Recovery/0.unity",
+        "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/TowerIdentity.png",
+      "guid": "a3d877b6f06efed44964a5180921c6ff",
+      "bytes": 1741,
+      "sha256": "F2F7BFCB975432B6965E19E38D473CD2DBEC29DEC4916B9B38484004585DC99D",
+      "metaHash": "6D36090056CD2042B1709B66B0A4A2CD2BB026182544C01E4AAAA7A2EC82C6EA",
+      "spriteMode": 1,
+      "sprites": [
+        "TowerIdentity"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20261008_5x5/Ground_Countable.png",
+      "guid": "b3daa0b11029e924984d3e2d3daa01f0",
+      "bytes": 164,
+      "sha256": "189044E3109BE3558F48793CE4DC23D747723E909E0D6C41C5408E8958FAE2AA",
+      "metaHash": "EA9092E6BA139507A343275DCA36AC14FC7C1AE2C574084B301F0012FAD88908",
+      "spriteMode": 1,
+      "sprites": [
+        "Ground_Countable"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_5x5/Floor_Small.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalMotion/Player/Moving.png",
+      "guid": "c372d1b44652b0549a842415a7c6e9b0",
+      "bytes": 619,
+      "sha256": "1A8410EA43DD0F43593C43BBC91618D01FC12F60AC38A91FE1A7F7AE459B6B3D",
+      "metaHash": "E7F0F2630F5E9733BB3C0430E8D9CCEF9DF6FFFDA7533D8FFB8A78D7E6FFA359",
+      "spriteMode": 1,
+      "sprites": [
+        "Moving"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Damage.png",
+      "guid": "e32b8cc1bdf8a5b44942ec7553c79a18",
+      "bytes": 5847,
+      "sha256": "603AF4E270915F98615259BF585DA59247D8B0E93DD32D58BF15A57281B41865",
+      "metaHash": "851F8F08F645B0B0C19E92F0499520473F7EAB348A406D5D973BF2C4FF291AEE",
+      "spriteMode": 1,
+      "sprites": [
+        "Damage"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_3.png",
+      "guid": "14ee55cbae32f9f43a4a1049bc285ed8",
+      "bytes": 5445,
+      "sha256": "26F290E6E5119FA3E9F8D79C9A2085BC964667BF29017236290AADDBAA532D33",
+      "metaHash": "882C928B43834C9516D36ED112A4F2A45CD21D80681C6CA5936460F81466C83A",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_3"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Restart.png",
+      "guid": "54290cafdf443044f990f49b6d26cbc3",
+      "bytes": 6086,
+      "sha256": "38138C661F23DFEF2E283AD91A5BA4031750A20AAFA25B0D8ED0F02E8740B995",
+      "metaHash": "9BDD667485ED3246CC4C63218356E59C95027FD6DD0C049B8CABE3997B3608DF",
+      "spriteMode": 1,
+      "sprites": [
+        "Restart"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalIdle/Player/Feet.png",
+      "guid": "745c1c67e2acde44cbd70fad8086de8e",
+      "bytes": 1509,
+      "sha256": "7ECD30EA2BC5716121E6F44C61421D7ECDA1DF77B42B9812C8D359AA5B3FFC6B",
+      "metaHash": "08480E8170E9531B1E95E08F58186C17972DB8174C447FA64BB872FAE046E912",
+      "spriteMode": 1,
+      "sprites": [
+        "Feet"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/tower_support.png",
+      "guid": "84fbbcd90a5f5ff46bc832cc0bda8997",
+      "bytes": 922145,
+      "sha256": "DB7CDD7069E0FF5393B81CD5B5C98839D6DF326FBF5947F3D33DAB8A8A88950D",
+      "metaHash": "4BB14C7B16D7A366ABFB3049A0B312CE07E9881777CD80A28D1ED97B608693FC",
+      "spriteMode": 2,
+      "sprites": [
+        "tower_support_0",
+        "tower_support_1",
+        "tower_support_4",
+        "tower_support_2",
+        "tower_support_3"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftUpper.png",
+      "guid": "b43c693a18339da4baa4da73511af498",
+      "bytes": 583,
+      "sha256": "3B124BEDB15DDACAD457CFF674141D25DA7C9E9DC234D962BB7546A3542CEB1A",
+      "metaHash": "75CFDE6DD8B72870642DFAD6990D4E4EC042948890F62B33CEE7D2C47E8CEA3A",
+      "spriteMode": 1,
+      "sprites": [
+        "LeftUpper"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_LeftLeg.png",
+      "guid": "b47ca0b6dc30f7b4ba03bea7d0b04ebf",
+      "bytes": 604,
+      "sha256": "33D2E225356F062DAA3A416CA161C9CAAA772759B47D2B54B6BEA64CBB6D3691",
+      "metaHash": "E000690B049BE9BE483C24E0A7110D8E8C8EB3C63A7EFB6663E88FD6DF7310FA",
+      "spriteMode": 1,
+      "sprites": [
+        "D1_LeftLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/tower_multi.png",
+      "guid": "d4a1b759f588e3743b47312b560ae29e",
+      "bytes": 6198,
+      "sha256": "586352699F30FCC56DFE49253324BDB619743DFFD937082DF13E2C9D050B34F3",
+      "metaHash": "DFC0299C16D8AD7FC4E8A4169508A7AC35F01DF0224B2000BCCB99A9EC7FC96B",
+      "spriteMode": 1,
+      "sprites": [
+        "tower_multi"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_multi.asset",
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_multi.prefab"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_9.png",
+      "guid": "f4b1e6fa0d005425487858e1fe2b1128",
+      "bytes": 923623,
+      "sha256": "FD298FF968D81F969B674F2E228B73448210E9CE136310B5149CD288B8CA5CB8",
+      "metaHash": "61F451A0D9DF87B725D0F6436CB2B192FBEF5606583342CD994AEF141947916C",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_1.png",
+      "guid": "f476d2a168ad941ce955acbb3522c455",
+      "bytes": 822965,
+      "sha256": "17CB8F0219F6D790B12B51A3B6A296A7E98A6C652EBC66427F54549E41C035E8",
+      "metaHash": "7FA87353692039339C9A115B7C0D4ED51D0CB95A8F23EFF6DA2E8F92AA8D2756",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_2.png",
+      "guid": "f48735f74ddce714ba0229b0aaeb9b77",
+      "bytes": 3580,
+      "sha256": "2AA06527ED4748D180C3BA586AC242C094742EE865CD061B063F74FC74789152",
+      "metaHash": "7AF7E3FF70961362FE886E825F2F4CF79E5A4487815AADDB532269DC77520916",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_Body.png",
+      "guid": "f4e77cba97e650b4b968d0731239f0ca",
+      "bytes": 2276,
+      "sha256": "9806DB06345B83CE24D75CEC90F943D1E18513F79F882D369B12D802E945B743",
+      "metaHash": "72BFF48B30DBA2885955B493B81F324C15FED76951BEC9E1C74914468DB65DCB",
+      "spriteMode": 1,
+      "sprites": [
+        "D1_Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/ground_tile.png",
+      "guid": "f45b41a5b9dbf674da70b2e99ff889c2",
+      "bytes": 2043,
+      "sha256": "68B5F40E828BA67F4801126BA4E772D5429FD78E65E1739774CA1037D6123F8F",
+      "metaHash": "D15341E5B3BAACB95116EC12DA724807DC98F503D3FD805584F421858D254BFA",
+      "spriteMode": 1,
+      "sprites": [
+        "ground_tile"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20260930/Tiles/ground_tile.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/StatDamage.png",
+      "guid": "257c0898c012eb743817fae4fb9d763e",
+      "bytes": 2039,
+      "sha256": "E245A7617702D66BB447B81C524ED17D925CFAADC691D31F482BAF3457E986FB",
+      "metaHash": "C6A21D72814FBA5555FD232ACA88EFD88B2F64EBA31D5BF423DA75340884873A",
+      "spriteMode": 1,
+      "sprites": [
+        "StatDamage"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_4.png",
+      "guid": "25de142cce63a4513b03edb34831a88e",
+      "bytes": 840266,
+      "sha256": "33314DA8301B78C303EF4ED47583AC7DDD86BE66F1642951EBECF5069689FBF7",
+      "metaHash": "3D4A7D4A44A4E06AC63CA1A16D8AC9CD83B5463B7A944551CA5EF28F0C413369",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/CardBack.png",
+      "guid": "355557028d298c44e8633c62f09d715c",
+      "bytes": 75061,
+      "sha256": "15CE3A5FF4F106478FD89B04AFEE468D945306365390734B0FE3D48DA2EF9043",
+      "metaHash": "0907ED76411BD9B11C120FE2A37924EFF2C33C37627A6AF13EC1B2A46187B60E",
+      "spriteMode": 1,
+      "sprites": [
+        "CardBack"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Glyphs/Glyph_3.png",
+      "guid": "35f68a1c8ceae479c9186899e7e1e143",
+      "bytes": 307719,
+      "sha256": "223665C0D6488C97922E867CE94836E2DA881F05409A0104A938CE07EDCF6492",
+      "metaHash": "3B0A23DE31206656BD25CEDC1C3157C7FAD7A7C540CA803385E134B875BD58DC",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalMotion/Single/Moving.png",
+      "guid": "4575a3515622fb640bc7e6d2dbcb4532",
+      "bytes": 2197,
+      "sha256": "8C7A6327D92A0CCAA9F961151A58A4EF99746602FF4D13F6495278B5C9A53FE6",
+      "metaHash": "91D27C936301CAE050032021461ACC84E5A468FCE33484D3E58800D65A3E8166",
+      "spriteMode": 1,
+      "sprites": [
+        "Moving"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/tower_single.png",
+      "guid": "554a4151686cc7e4faa6e0d0eb290b5f",
+      "bytes": 771975,
+      "sha256": "DCFEFE06E3E9AEA4C014483C52EDC7BA425CFE5B4DFC1037E34E32F0EFC3B480",
+      "metaHash": "B9E7A7A81236AB5AA1E2702AD1C59FE7ADF7BD5A16233C081F1E661AACD02B8A",
+      "spriteMode": 2,
+      "sprites": [
+        "tower_single_1",
+        "tower_single_2",
+        "tower_single_0",
+        "tower_single_3"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_1.png",
+      "guid": "65c1e067d7bdb564c969c9dbeadbc874",
+      "bytes": 5748,
+      "sha256": "A31612D80F98211B76E8EE7F68FE87F8C2ECF36A2E18A9CA435FBD488DF132C0",
+      "metaHash": "8864E17AB8079361FC0CE11C0C7687CAEFFB0F798A9C600FD6445B7920FC4C6E",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/enemy_attack.png",
+      "guid": "7591b3c9af29cbd4f952b02134a727d7",
+      "bytes": 5626,
+      "sha256": "11170E05B93B761CD34086F8C6373148CCD01EAC525239ECDFDD442D2117A9A7",
+      "metaHash": "2725FB9D12538F60520F327888D443DAA92C8515121A694980CBD27BF39B80C3",
+      "spriteMode": 1,
+      "sprites": [
+        "enemy_attack"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_0.png",
+      "guid": "85e39cdb18f8aab47887e3a626adff0e",
+      "bytes": 3823,
+      "sha256": "8AB02B7A9D2EE8501A09DC09CF9357B7CE1BEF62FCD7CBE169578A959C76E450",
+      "metaHash": "86CB7518B427FA35EA16D1426E58C9BCC402D84AD75A3B66804717A82061D64D",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_3.png",
+      "guid": "b5684cd1af2af0d4c8c8390b35e83b32",
+      "bytes": 5754,
+      "sha256": "31EBFD3DD4415BBF3FFD8FED894AF876B5DCEF11D6638F3A28D63E75D885A966",
+      "metaHash": "FA2F0EBE3E05E9467D523A55408E6CC2BF4464A4EFE99370A0976425501A712B",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_3"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PhotoShadows/Player.png",
+      "guid": "b57d815e57fcd8640a9d1269f2706a19",
+      "bytes": 209,
+      "sha256": "8939D7651DC2749E261A2D2F8B073078EDCA9F9C47F43EC05534872957343A62",
+      "metaHash": "A9A79AA3F5C3CE7A8298DBC5ED62E8B48D10C2D7F4F7873FCC3CA094E9237292",
+      "spriteMode": 1,
+      "sprites": [
+        "Player"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/StatProjectile.png",
+      "guid": "d5717ad785791d34495a7899edc157d2",
+      "bytes": 928,
+      "sha256": "3FCB1881F6C781A441DFBCEAD4F82627EAA937D96BBCEE0C6C66497C5C677239",
+      "metaHash": "9BE927F2FFB87CD8AA4BEC3EC334754E1E51A4058826F29D8CF2E5CE6D61CDD2",
+      "spriteMode": 1,
+      "sprites": [
+        "StatProjectile"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalMotion/Single/Fixed.png",
+      "guid": "d5ceacd036b102c4a89ebc5d03187f48",
+      "bytes": 3770,
+      "sha256": "7854C4B217B9E809556A65262E2FFE0521E64234BA1F8428F89E431B16572807",
+      "metaHash": "50B0FC833F3B70ABFB6250FE0992B457695C67CAC5C563136BCDE83476D59691",
+      "spriteMode": 1,
+      "sprites": [
+        "Fixed"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/ground_tile.png",
+      "guid": "f5bbfe3fcccf55c418aae4bfce331f4c",
+      "bytes": 929156,
+      "sha256": "B25EA98B61FE2EB265EC5985D14480A3A3CDC517E9E3C23CEA0988E3C45A6256",
+      "metaHash": "5D1FE34D1076087317236659BF7F7C910DB609C759BBE6B40A7FE84FD14B5C0F",
+      "spriteMode": 2,
+      "sprites": [
+        "ground_tile_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Animation/Attack/atlas.png",
+      "guid": "066451b96d1ec8f44947458c616d1e40",
+      "bytes": 46155,
+      "sha256": "2F393293BDF63C0B948949C5BD41A98E8B3BAFACE49A6C79ABCE30FD4C6E16C9",
+      "metaHash": "880EE7B1FCC45180FE182D7FF20363002B02271D470746FF5B46B5A881ED9C5C",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Circles/Magic_Circle_2.png",
+      "guid": "169cc9dc838ef4ef0abafc9488af0198",
+      "bytes": 534224,
+      "sha256": "E70D94571D06AEBEF2B59266DA3151BC6EE207EFDF34A977BF5D7C4E6118C609",
+      "metaHash": "4B709505ECA4199A5FE42FA436EA2FE11547BAE1EB774506DFDC60E215460F9C",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_LeftLeg.png",
+      "guid": "26267b2643330a24bb7a6bbcd492df47",
+      "bytes": 604,
+      "sha256": "33D2E225356F062DAA3A416CA161C9CAAA772759B47D2B54B6BEA64CBB6D3691",
+      "metaHash": "0EEF4B26D4B88319FF8AE0DB90C38873B542EEDB8E478285B1AF6A12B525D3B5",
+      "spriteMode": 1,
+      "sprites": [
+        "D7_LeftLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Augment.png",
+      "guid": "36024e370f105f14d8671856a75f2c85",
+      "bytes": 6363,
+      "sha256": "0022D85D69CB5B8C9B15CBDB5C1B20DFFD04353745E857BBB39DAD6CFD4435E6",
+      "metaHash": "C0C04B0132296B8BBBE40BA03D5A22C4AB0B13CE997B1124B5D850BD516A53A4",
+      "spriteMode": 1,
+      "sprites": [
+        "Augment"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Spiral_Doodle_1.png",
+      "guid": "36d92653c7f364164be726549e9f2e3a",
+      "bytes": 472031,
+      "sha256": "1B0EA14A17534226911F44EAE66D1AA86435B6EEB0B24189F4B281C55D009BDB",
+      "metaHash": "C4F41595DD98793D0D979220D1F318BC310AEBEDB320B4924784F7662703EF37",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Spiral.mat"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_RightLeg.png",
+      "guid": "36ed2899088f6254a9aa70c2ed344be7",
+      "bytes": 568,
+      "sha256": "8A46E10CB7174751307AA17BE0F75626944BF2D4A44193EBAF04740C1F7C70A2",
+      "metaHash": "6E47EDC1C5B352C4901D7D9BA536C1213C326D128257EDA8F389F156F94CB8E0",
+      "spriteMode": 1,
+      "sprites": [
+        "D0_RightLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Crystal.png",
+      "guid": "5626699532f0af844b61530362f30e21",
+      "bytes": 5241,
+      "sha256": "CD9BC2BEC117AB59DFC7183FBDC0CC5E25D74A7ADF7AAF5FB96DD724ABCEA8B2",
+      "metaHash": "550C300652E1CE0E230C620EE3AE0C6A73DA206D882853A2132BC01DACAE8469",
+      "spriteMode": 1,
+      "sprites": [
+        "Crystal"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_Arm.png",
+      "guid": "6665ab0f81b25004ca053357f9b3c8ce",
+      "bytes": 489,
+      "sha256": "EA1C6C276046DF7DE3BEEA862EC84352E89FA6FFAB47253B7989139EF610EAF1",
+      "metaHash": "370932E2AB1FEF1CCD9D35252578DE3DB64D3CBABA65DC6D98F258D5BFB3BCFB",
+      "spriteMode": 1,
+      "sprites": [
+        "D0_Arm"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_1.png",
+      "guid": "7601829eeff04ce4991ac85f7aee50d0",
+      "bytes": 3276,
+      "sha256": "824816D13AEAE9483CFD7FAC3FBD5AE2A4F7E9FA585732AFBF567186F4AB2FF1",
+      "metaHash": "478A1DDF1648BBB53479A2BADC9596F93D75E3AF263EB09CAC3AB5435746D6D3",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Animation/Boss/atlas.png",
+      "guid": "a644939bf3966964cb7c8e6fd7ec5da4",
+      "bytes": 46458,
+      "sha256": "BA0CA22D104AB3542C153797F44BACF5C43A47A2FFF864853A7D0AB5F2E45C77",
+      "metaHash": "B73DD95C1BD9A55410C0C8CA1EBCEBC352135E0E46A217056DC30CFAB8A87280",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/HybridDecoration_Transparent.png",
+      "guid": "b6557107c81651b46b72ac016110d21b",
+      "bytes": 874749,
+      "sha256": "F0E15FC329C42F283075BC7FF0E4187BCFAC2BF2735F3556B60FA1158070D725",
+      "metaHash": "47DE6138799E56EB001E989BCF534D0998E2B263854E7ACC350860C4F565777D",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/HybridDecoration_Unlit.mat"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png",
+      "guid": "b6581a4eb0990d34fa69014ca0be04ca",
+      "bytes": 433,
+      "sha256": "D996E56F91C069975E299B57ACCB074AF4E8EFBA783F64603E5E0DFD86A57751",
+      "metaHash": "E59296297D9971574B4604CDC151ACD6FDEDBAFC69A5AC003A9D8A4375CE3758",
+      "spriteMode": 2,
+      "sprites": [
+        "ShadowEllipse_0"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_attack.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_support.prefab",
+        "Assets/Resources/CoreGuardian/Art/BossEye/BossEyePrefab.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_buff.prefab",
+        "Assets/Resources/CoreGuardian/Animation/Boss/BossAnimated.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_multi.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/Player.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/core.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_defense.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_single.prefab"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Play.png",
+      "guid": "e6e24eab33fac2f48973809a138c3a81",
+      "bytes": 5241,
+      "sha256": "86E87D801DCFF77C05AC75E9C29D522B56598549B26FE4C310F128DC3D7D20AA",
+      "metaHash": "34DA628118EABB7372A26C537CFF71DDCB61C58D90971506FFC847EE2DC68D01",
+      "spriteMode": 1,
+      "sprites": [
+        "Play"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_LeftLeg.png",
+      "guid": "e69416e282a26dc4b80697320ffdfd32",
+      "bytes": 571,
+      "sha256": "BED471CF0C76C714026BC02A598CA95551CA2541C83887163020BD70A4A59154",
+      "metaHash": "1CA7F547F897BB6BCF9B978B180AB8704F13F9395346ACAFD76EE27BF9382403",
+      "spriteMode": 1,
+      "sprites": [
+        "D5_LeftLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/Enemies/Source/BiologicalBeasts_Concept_v2_Shadow.png",
+      "guid": "f657e296467e81f488b38dedcfd51fb4",
+      "bytes": 1231329,
+      "sha256": "3CE7FED3181E855B17BF211EC93939C179E86876B8088A65A2ABB6A90ACB2638",
+      "metaHash": "0BC6DA1C3EEEC01C857549610911A481B976887F6EE8979910DE19362B97E805",
+      "spriteMode": 2,
+      "sprites": [
+        "BiologicalBeasts_Concept_v2_Shadow_1",
+        "BiologicalBeasts_Concept_v2_Shadow_2",
+        "BiologicalBeasts_Concept_v2_Shadow_5",
+        "BiologicalBeasts_Concept_v2_Shadow_6",
+        "BiologicalBeasts_Concept_v2_Shadow_9",
+        "BiologicalBeasts_Concept_v2_Shadow_10",
+        "BiologicalBeasts_Concept_v2_Shadow_13",
+        "BiologicalBeasts_Concept_v2_Shadow_14",
+        "BiologicalBeasts_Concept_v2_Shadow_15",
+        "BiologicalBeasts_Concept_v2_Shadow_18",
+        "BiologicalBeasts_Concept_v2_Shadow_19",
+        "BiologicalBeasts_Concept_v2_Shadow_0",
+        "BiologicalBeasts_Concept_v2_Shadow_3",
+        "BiologicalBeasts_Concept_v2_Shadow_4",
+        "BiologicalBeasts_Concept_v2_Shadow_7",
+        "BiologicalBeasts_Concept_v2_Shadow_8",
+        "BiologicalBeasts_Concept_v2_Shadow_11",
+        "BiologicalBeasts_Concept_v2_Shadow_12",
+        "BiologicalBeasts_Concept_v2_Shadow_16",
+        "BiologicalBeasts_Concept_v2_Shadow_17",
+        "BiologicalBeasts_Concept_v2_Shadow_20",
+        "BiologicalBeasts_Concept_v2_Shadow_21"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/StatRate.png",
+      "guid": "f65d419ee1eb0f6458c9b2447a384ac8",
+      "bytes": 1942,
+      "sha256": "442CA0B52BF531D1602DF78EC875EEBF5B058C77CB0712242FA93D48189DE99F",
+      "metaHash": "2AFBAB3294D62408A9092DA8DA5903BFB7C825F47C3DDB862C443B43DC97188C",
+      "spriteMode": 1,
+      "sprites": [
+        "StatRate"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Environment/AbandonedFortressB/SpawnTunnel02_Approved.png",
+      "guid": "07dc08807dbc6a1438edf42d45f8eec6",
+      "bytes": 2651162,
+      "sha256": "F7AB7876ABB662E79F71416D8D22BAEB2AEDFCD9839B21B9D7659D577C99E32D",
+      "metaHash": "3A1A7A73BE52ED80C52C2CA482575ADB90E64DC82C7B6935C02FBDAAE7713FF8",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/Environment/AbandonedFortressB/SpawnTunnel02_Selected.mat"
+      ]
+    },
+    {
+      "path": "Assets/docs/development/combat_art_applied_20261010.png",
+      "guid": "075fc0e6d733b234d8b6ec6e33600383",
+      "bytes": 279836,
+      "sha256": "5BC2331517B4C13D4E96DF2D2110C794C9A340BE682858C8385568CBFA45FF28",
+      "metaHash": "B725839B09600194F30C7EF17043D7C38032F153B2F0D205E6A9809B1F0A470C",
+      "spriteMode": 2,
+      "sprites": [
+        "combat_art_applied_20261010_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_RightLeg.png",
+      "guid": "17ee7195bf9bfde40802549bcdb57946",
+      "bytes": 605,
+      "sha256": "5EE00CA661DF60EF56722132E76BEE6A11CDF5336AFAF203F13FB54915FE7973",
+      "metaHash": "E2C1C6C7BCBE6360083C0BCFE559865A4ECE19B527DF2B557743609BEAF4BECE",
+      "spriteMode": 1,
+      "sprites": [
+        "D4_RightLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/Body.png",
+      "guid": "17ffcd26d5e22654cad0813ab00d01e4",
+      "bytes": 5158,
+      "sha256": "E6D21DC0DC188C0F81508A57678AC81CE2E6C70E1612C4109E7414B422135097",
+      "metaHash": "6A029E589CFC578E40F38FCD88F93F1B2867DCC0FE6D1BA6887ED52BF7A0B3BD",
+      "spriteMode": 1,
+      "sprites": [
+        "Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/core.png",
+      "guid": "270042d6c08fab642ba4536cd06cbf41",
+      "bytes": 1392494,
+      "sha256": "8C40C534876496C8D061619B7B00A7AECA80EF395F5F6F77670DE4D2DCC52732",
+      "metaHash": "4BCE101947B823348E1D6853CAD3FBD9F90A1C1BC7D824C480691C62E8EB90CF",
+      "spriteMode": 2,
+      "sprites": [
+        "core_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/player.png",
+      "guid": "27910640dc62ab3409d571c49b75d708",
+      "bytes": 1165565,
+      "sha256": "09E3BA0B10D183B11E66AD9331B132B57ACB48DB9C2D33A6590E60DB69867623",
+      "metaHash": "B0DDEEFDB78D4F96B03A9B223F02AAE83D93DB45F9C0BEF96662919D38617A34",
+      "spriteMode": 2,
+      "sprites": [
+        "player_0",
+        "player_1",
+        "player_2"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/MagitechFortress/Source/MagitechFortress_DarkPathCorner_L_final_362.png",
+      "guid": "275b4de1f5a6d2949bf9edfb94a62c73",
+      "bytes": 255762,
+      "sha256": "BD10A8142CFF0AEFBD83E1331D5CDE0A99FA4BC068166726D9A701D7CECB3764",
+      "metaHash": "7BF0D288F30303EEBA4C4060AB5B56316BD3B75A8AF7EA628515111749097A61",
+      "spriteMode": 1,
+      "sprites": [
+        "MagitechFortress_DarkPathCorner_L_final_362"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Art/MagitechFortress/Tiles/MagitechFortress_DarkPathCorner_L.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/LeftUpper.png",
+      "guid": "37a009a02caa87b4ea3db341016b586a",
+      "bytes": 303,
+      "sha256": "2F858277019949E706B44020147F016BB64C3884E481C72B075AD58FD1BCC289",
+      "metaHash": "A6CCE4F9791D1E77A55B3D8B45135412C73D127278246D75A62FD91CEE5B89D4",
+      "spriteMode": 1,
+      "sprites": [
+        "LeftUpper"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Welcome/2d-template.png",
+      "guid": "474ce57d7c1704418af05d72d996ae5e",
+      "bytes": 816464,
+      "sha256": "D10E43955A1FF62F420C2E82ED9BAE4481C75A4559522196BE77CDE49070EB25",
+      "metaHash": "09276C6728F70195DF623AA96D40FCCBB327FD6B7D650390B43B72E76579561E",
+      "spriteMode": 2,
+      "sprites": [
+        "2d-template_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Welcome/NewWelcomePage.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/LeftLower.png",
+      "guid": "478df1508a9a55340b7bef6e2851fc86",
+      "bytes": 373,
+      "sha256": "CAB679CC4247A3C520D9C63E09910B99F6A0BBE8E2D3AA6A1406B4477695C39B",
+      "metaHash": "7FF381F460649AC4CA6A6A243EDA931FD020806A765E5B8F16EF5AAE1DF29B6A",
+      "spriteMode": 1,
+      "sprites": [
+        "LeftLower"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_2.png",
+      "guid": "47ad151336aa5644884e61e12c3d4089",
+      "bytes": 3881,
+      "sha256": "A8A96803E827481D135D74A15829148BF0143233CE8AF80296CC776106702031",
+      "metaHash": "237AA7C1D5A50E94784E025D17471B4C48F5277DED5006AC286668B61759B990",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_3.png",
+      "guid": "57c477f61a7e28248901a33426d46afb",
+      "bytes": 3616,
+      "sha256": "929D6414EDAE004D17BDDC437A5AC0DE1B9D7BAEB5AC11A9D200C93D388608D5",
+      "metaHash": "89052FEDD05BC45CC81988481CF57D9B8C3DFFF48226738650FEADCC4EF8FC44",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_3"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png",
+      "guid": "6754e956afb05874b81017007380fd25",
+      "bytes": 1252748,
+      "sha256": "199B3189875B5E6E75917EE8F02C81F8D4793E1EDCFCC423D306BAE5D69308C8",
+      "metaHash": "8D4972ED7251AD6A3AABC0475C9E57632BD157FA4917AF9A3F2FFDE4CB80128C",
+      "spriteMode": 2,
+      "sprites": [
+        "Stone_B_2",
+        "Stone_B_0",
+        "Stone_B_1",
+        "Stone_B_3"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/Environment/AbandonedFortressB/Stone_B_2.asset",
+        "Assets/_Recovery/0 (1).unity",
+        "Assets/_Recovery/0.unity",
+        "Assets/Art/Environment/AbandonedFortressB/Stone_B_0.asset",
+        "Assets/Art/Environment/AbandonedFortressB/Stone_B_3.asset",
+        "Assets/Art/Environment/AbandonedFortressB/Stone_B_1.asset",
+        "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_Arm.png",
+      "guid": "770a6c7cca809484a94e2cc308f55c37",
+      "bytes": 494,
+      "sha256": "A05680E574629D26AFC38799AC1722A6904CC7A84B93113DFA45E65D39D155D6",
+      "metaHash": "4FB4935DBBC246A9B4F4F8FA2C7FB62F85EE3BB0CB04C1E9610CF2ACD2032DB7",
+      "spriteMode": 1,
+      "sprites": [
+        "D6_Arm"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Wave.png",
+      "guid": "77ceb33e107d4bd468d178395e8d8ec8",
+      "bytes": 4350,
+      "sha256": "E66E85CB83E2DE64068EB8E6BFA02069F90D525910068F61CD1B1D6016A3A7CC",
+      "metaHash": "6CDCF10FB0CC82D6A8267582403B08997AF441A5263BD16D70DAA35E0F1B17DB",
+      "spriteMode": 1,
+      "sprites": [
+        "Wave"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_RightLeg.png",
+      "guid": "9731d38ee53ec904da27220f134fb976",
+      "bytes": 568,
+      "sha256": "8A46E10CB7174751307AA17BE0F75626944BF2D4A44193EBAF04740C1F7C70A2",
+      "metaHash": "84E96B8D9D8946CBF9CF324270287794D531798332D0BC0F51B4B0BC55357D27",
+      "spriteMode": 1,
+      "sprites": [
+        "D7_RightLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Art/CombatB.png",
+      "guid": "978c63a910d4f8e4e9d288c4e934e92c",
+      "bytes": 689425,
+      "sha256": "FD91EF15EA99A2A9ED0E4D48CE2026401F1C2A68772C1359B95EDA16AC42F7AA",
+      "metaHash": "F8BCA8F2C23C0CD14C7FF464A9F843DABB0318E5D71DCEE90114BAA7E7D41741",
+      "spriteMode": 2,
+      "sprites": [
+        "CoreHit",
+        "EnemyDeath",
+        "EnemyHit",
+        "EnemySpeedBuff",
+        "EngineerChip",
+        "GoldGain",
+        "MultiBolt",
+        "SingleBolt",
+        "TowerDamageBuff"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Glyphs/Glyph_1.png",
+      "guid": "97fc7b7ef09154ce29b4d2cbb29f8712",
+      "bytes": 316364,
+      "sha256": "B23A1915AFF6AA49C841F5DCABEED892F3DD74F93399B0760050149F3B1D73AF",
+      "metaHash": "BF33F7873A992D596CA126BBCCA00ABC686CCCCC2DBE215747A3F144A08C1CB4",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/FX/Blast_Electric.png",
+      "guid": "970d6cf2ffe2247be9c6c8b59ddaca7b",
+      "bytes": 1224957,
+      "sha256": "B993361C77D93A470B90E7FEE6837FE385D90EBE2034BC83F08826D3620CD8E8",
+      "metaHash": "D19BB0C3E10693D73C17091E930710BEDC84C6C93F6CBBF8E73FF0E1823D233E",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_defense_v2.png",
+      "guid": "a7bb228611eb64b40bc9ef649b48c2ed",
+      "bytes": 4321,
+      "sha256": "785F3AC6EBBDB77BD932D3A855ED3C278290FA04B324334ACF6EEBE8FAE38B0E",
+      "metaHash": "C2FFB8FC1EBC28708342088500ACCE62F2823C32F8B4BA31FBADF554924DCC91",
+      "spriteMode": 1,
+      "sprites": [
+        "enemy_defense_v2"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_defense.asset",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_defense.prefab"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/enemy_buff.png",
+      "guid": "b7c8417fbd4d10040991e8507a131c39",
+      "bytes": 1319433,
+      "sha256": "C027AD4D40DD3D91B3A96E7781300ECBEEC2B24229364964F0B88F2A3042447F",
+      "metaHash": "DF6E5D6F02659A1DB1FABB76BF601B08FC7D150DAE52A3B8701F0D8ACC83D967",
+      "spriteMode": 2,
+      "sprites": [
+        "enemy_buff_1",
+        "enemy_buff_2",
+        "enemy_buff_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_8.png",
+      "guid": "c77ffddaec289450d8293a82f0bf0423",
+      "bytes": 633141,
+      "sha256": "D8924E9EBC22E7B35DA850592E356D23C11D500CB0D71DBD5D00EB7387F3B32E",
+      "metaHash": "13445EF82C47E73EA8E9CA424C9AF2F69221425CCD61E5D272F6D333CE545F54",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_1.png",
+      "guid": "d760183d605ef5240b03e1b162c632a3",
+      "bytes": 3209,
+      "sha256": "AAA2F6C4F67633AAA2B1F86A61BEF808A1108108360370DF7E2E57F04561AA25",
+      "metaHash": "D4CD11B058154082CADF9449113694A304D8FE6025B4914F6F3B35645255AD26",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Upgrade.png",
+      "guid": "d76f25d4b0a2049408dfb0ea94bff360",
+      "bytes": 5185,
+      "sha256": "D2D24EA2F85D6AB34DCDEB1BAE7E41AC99BECD4B340298F6B81F0D79D1E79158",
+      "metaHash": "E8C3171552AF9259D3AEFEF2993DC224B141558635D56096CEEAF1DD3A96DB24",
+      "spriteMode": 1,
+      "sprites": [
+        "Upgrade"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_2.png",
+      "guid": "d78fdaf629fbf8042b63fced9c083b62",
+      "bytes": 3323,
+      "sha256": "A51EF8D8236DB8E9A690CA1BEA5E06C6BAE62EE54FF4C20B339A6A63865D9200",
+      "metaHash": "3DA7D61AA273733967785D55DEE02B2BEE7F1D3F7BC230077D0F196851FE98D0",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/PlayerIdentity.png",
+      "guid": "e776f16bff4504a48aa3e6b73c01d7cd",
+      "bytes": 1880,
+      "sha256": "C63AA85467B7BA42A740FEF2318DF50C2B3DD3CE978C7384DE761B3E34961CF7",
+      "metaHash": "2221CF63564FAEB03187DCDECFC1346094E065BD5A1F00582D4316928C4AA536",
+      "spriteMode": 1,
+      "sprites": [
+        "PlayerIdentity"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/RightLower.png",
+      "guid": "f760dc203c9676e4e8b5b4c313e00f9a",
+      "bytes": 640,
+      "sha256": "8842619F5EEFE3E62D66DEA0FA10ED4FD6B86E19237C20096A2F5CFF93266F14",
+      "metaHash": "14E8A18286BC66A988D83AFA4A5C137446CF16E85C9714488CD209E081928BC9",
+      "spriteMode": 1,
+      "sprites": [
+        "RightLower"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Magic_Circle_1.png",
+      "guid": "f7fd4fc8d3b144b3888af43c1fd5a2f8",
+      "bytes": 515634,
+      "sha256": "D407F1D167D8BE5F4EB6BFC37B4924655D2D49B04F4460CD76E43656D44556A0",
+      "metaHash": "BC2D310C8E076BD83927CA623F60165A040638885977410B157056C05B4A1A65",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Magic Circle.mat"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/path_straight_v2.png",
+      "guid": "28f6c670b15f580428eb6975dee3d9dc",
+      "bytes": 3254,
+      "sha256": "F10BC17B1C002890CA34425013CACC63DADDEEDC76A0F17D4BFB57BE9C2AA7DE",
+      "metaHash": "72D7E42B5F220731604241BC159AC8949105FF4F5DFE74AAF8F2C7ADB870DEAD",
+      "spriteMode": 1,
+      "sprites": [
+        "path_straight_v2"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Tiles/PathStraight_B.asset",
+        "Assets/Art/ScreenTests/20261008_5x5/Path_Straight_Small.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_LeftLeg.png",
+      "guid": "48a44b5b27b69c344827d85ce422bf40",
+      "bytes": 571,
+      "sha256": "BED471CF0C76C714026BC02A598CA95551CA2541C83887163020BD70A4A59154",
+      "metaHash": "7EEDAFCB714047A4A00961929168C825D693E6A673A8C75AAB107D33D3B55152",
+      "spriteMode": 1,
+      "sprites": [
+        "D6_LeftLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_Arm.png",
+      "guid": "5853a2fb23c89b843aab25ce23012a6b",
+      "bytes": 494,
+      "sha256": "A05680E574629D26AFC38799AC1722A6904CC7A84B93113DFA45E65D39D155D6",
+      "metaHash": "6AC16C6208B20470249D8FC18366D23A38F8688D6B0674BF45B6248EBE4B829A",
+      "spriteMode": 1,
+      "sprites": [
+        "D3_Arm"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/RejectedAnimations/20261015/Multi/atlas.png",
+      "guid": "5805df1c370143e4aa55cb8b61a3c714",
+      "bytes": 19144,
+      "sha256": "75FF79A210C6FC97503BC391548FE83FCE0E6CD2497570C03CEABA10ECEE34E2",
+      "metaHash": "758A2959CAEE4515E65FC2D238782244FB6EFB215A66CECCAF390485BFBEAA1C",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Core.png",
+      "guid": "5816efcbbca691549a5b8d2c6a3483c9",
+      "bytes": 5337,
+      "sha256": "8D9A4CDC7AD7F630A04E505C67B6502FC41EE6E143ED4FC1421079B591D5E203",
+      "metaHash": "0ED710AB47E579190F9E2F4C6568309400F8C4E32A117332DC4C79970DF1354C",
+      "spriteMode": 1,
+      "sprites": [
+        "Core"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Circles/Magic_Circle_3.png",
+      "guid": "6885cc5ccd99a4fcc94f86bcd03d9a2b",
+      "bytes": 501760,
+      "sha256": "984ED7AAE921C393D4D65A74F359D80BDF46DDACC910587B2653D9B4D0859C96",
+      "metaHash": "A9697CB99562BE94C01B17FD7E6822DE68DD7AC71AB9D4C8B83D354A44CB20CC",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/docs/art/path_contrast_A_detail_20261008.png",
+      "guid": "78db67a98ebda2346882fa2c2c1d5d64",
+      "bytes": 65045,
+      "sha256": "6666B5DE91FAF1F587C0D59AA3BC71F59288EBDB9821FA386AADB354903E50AF",
+      "metaHash": "4C3C04A420ABC89CA2B857A126C63318D1A3C418AEACDAAB3C6C116B4FC996A9",
+      "spriteMode": 2,
+      "sprites": [
+        "path_contrast_A_detail_20261008_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalMotion/Support/Moving.png",
+      "guid": "88ee46ed7d6e9e94fa0e1c74205f150b",
+      "bytes": 578,
+      "sha256": "46867BD7611D44A373810E56116B3BFC45EE4DC10E57D1750187599AC995D205",
+      "metaHash": "8734ED1554C5D811CA38B01B5175FC37F114D3F8BC024609D212E55C435491F4",
+      "spriteMode": 1,
+      "sprites": [
+        "Moving"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Glyph_2.png",
+      "guid": "a89df11735ab543a2a9fb581eec08097",
+      "bytes": 182495,
+      "sha256": "EF277182B48096581E88B68204B2C1F25F00C2D1691B1D85DF301D7F9F2158B2",
+      "metaHash": "974C630B74908B8D4CFC47F8B69BDFF420EEB814F405C39D0E58117064CA68E1",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Glyph.mat"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Art/BossEye/BossEye.png",
+      "guid": "d8c4843ad16c0804c8c6c4d20483b955",
+      "bytes": 1822,
+      "sha256": "4DB84E1C87CE3F89E5839E501E759B56D2A52E78E2ED1DEFE5241A6724C34045",
+      "metaHash": "B0E6E1645FF1686C76C5E6A3AC94AE5379C340AD7E649D93786800B08A55C300",
+      "spriteMode": 1,
+      "sprites": [
+        "BossEye"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/Art/BossEye/BossEyePrefab.prefab",
+        "Assets/Resources/CoreGuardian/Animation/Boss/BossFeetCenteredV2.asset",
+        "Assets/Resources/CoreGuardian/Art/BossEye/BossEyeContact.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_Body.png",
+      "guid": "19928b2343ed9a4498d0f3a14e44283e",
+      "bytes": 2814,
+      "sha256": "EF54291C59FAFFA4C8C8B5348A8F0E9DB40B2D4A26C19A8897386E36A1D6B239",
+      "metaHash": "8CA61373810A8F97268FEB24478F48BB1BE377F009EDC29D0A1B74E7D82B38F6",
+      "spriteMode": 1,
+      "sprites": [
+        "D7_Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/RightLower.png",
+      "guid": "2915ae459ea59db47b3a9402a12d407a",
+      "bytes": 579,
+      "sha256": "0EA0E8BE8F11D029F67CA19B5688E4506BFCCD4195B1D9B997DE3F08EB1EE936",
+      "metaHash": "B142F476D0971DE3D225C45588B1231C0FC7081972A6E1CA930E3BB2FD152A21",
+      "spriteMode": 1,
+      "sprites": [
+        "RightLower"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_Body.png",
+      "guid": "29c5cccef18f48e40bb292f1bb9091a0",
+      "bytes": 2258,
+      "sha256": "CCC775B4F337CD78E90FE864B03FFF0987E272D552079B6F9EE39E574ED9B19D",
+      "metaHash": "643ECEC050C41E842423A3FF2BD3BEA1ED0D922C0ACC1B4A64737D36A1BB131C",
+      "spriteMode": 1,
+      "sprites": [
+        "D3_Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_0.png",
+      "guid": "293c27abe6e6cba4b92c7e777efb6a19",
+      "bytes": 3225,
+      "sha256": "EF89F8C0BB2DDD9AB91FA536FA5DA4C65405907E8789EFCF2E9F2677E3FA2F02",
+      "metaHash": "FE02EBB5074E5F287A6E373EBFE90A14533519D89840540A313D9AF15F86C0F3",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Particle_5.png",
+      "guid": "291fa2ba53548438eb775f95053100b7",
+      "bytes": 233496,
+      "sha256": "016A04F2BAFEF9BAFD6C5F311725AF13BEC76B9CC4FD6751011865373524A0EA",
+      "metaHash": "21FCF60D8688AA308272151CF64C65C3BCB9C5DFD19E9778A08AAF3870730976",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Particle.mat"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/DamageRoles.png",
+      "guid": "490c83575495f6d4c99d7d25c7af44f5",
+      "bytes": 544427,
+      "sha256": "2A3D3068FF2FF6E9735A9F5AE40BEEF7ED51D21485E6FC46DEFBACCA3BFAB215",
+      "metaHash": "9750F536BB9DEABCD4F08C593037A7E44FD1960C69329986AB2A7FD88C05F5C0",
+      "spriteMode": 2,
+      "sprites": [
+        "DamageEngineer",
+        "DamageHandle",
+        "DamageRange",
+        "DamageSingle"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/enemy_defense.png",
+      "guid": "59dde577ad18ae940958029035c100c5",
+      "bytes": 4912,
+      "sha256": "D7239CD95A1569DDD74A52014049BC364DB248B7F4BEFC8C7081FDD1B107FAF1",
+      "metaHash": "FDBCC8F6001B6939F50280FD79C0352D144BE6C24237E451A8E1389DBA0573DE",
+      "spriteMode": 1,
+      "sprites": [
+        "enemy_defense"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/path_corner_v2.png",
+      "guid": "69840b335d9eb7f4284eca901053cc37",
+      "bytes": 4121,
+      "sha256": "853FDF9D3BDFAB0F0223D576A77F5186F3E042BAA3C3F23DC85E236B46435F51",
+      "metaHash": "7386D88BB29152782679ED85ABB1796E95979DD1E486DD723C4493BCE653B33C",
+      "spriteMode": 1,
+      "sprites": [
+        "path_corner_v2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Tiles/PathCorner_NorthEast_B.asset",
+        "Assets/Art/ScreenTests/20261008_5x5/Path_Corner_Small.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalIdle/Player/Upper.png",
+      "guid": "692e29edf4f4de644b7320126b7380c3",
+      "bytes": 3602,
+      "sha256": "2DF76AA09CD76A0395FDA181DEB545A092A6EC30F13F6ACE38DF5EDC84A272AA",
+      "metaHash": "FB068FCD30025400BD23C4A9A9A866BF682A7FA886BE3B75710AA12CF0A7DD2D",
+      "spriteMode": 1,
+      "sprites": [
+        "Upper"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_Arm.png",
+      "guid": "69fe4d6a22be8fc40bde20f85b1ad6ee",
+      "bytes": 489,
+      "sha256": "EA1C6C276046DF7DE3BEEA862EC84352E89FA6FFAB47253B7989139EF610EAF1",
+      "metaHash": "41E12A353E01919F67DAE01AA2EE849ED754846644A889A07C7423C0542395D9",
+      "spriteMode": 1,
+      "sprites": [
+        "D7_Arm"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_Body.png",
+      "guid": "a953a8f0bbe54d1478dafca5f5a48dcd",
+      "bytes": 2649,
+      "sha256": "2412FAD8A2A65C6676EC3A5997EE6E4D57E12B183D743979191D695202AE02C7",
+      "metaHash": "92F2B1CAE280371808870F0259E7CE285DF0E1F23ECFD03AC15E7C41065C2A1E",
+      "spriteMode": 1,
+      "sprites": [
+        "D4_Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_2.png",
+      "guid": "b9741068d21168c48940cf625180ddb8",
+      "bytes": 5742,
+      "sha256": "1A7F4F987433AB11B811FA2B3CAC5DDE6D73A41AFF98D7F01167E783BE915CAA",
+      "metaHash": "5AAC70747D136DA728C7FC24E24DA358ECED853C8A62C4AF8CD282127947ABF0",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/player.png",
+      "guid": "b92e343d2ee9863468352ac2cee568c0",
+      "bytes": 4835,
+      "sha256": "4AF7ABC22E50834381367F04C8E9ADD3517D5831C9B6BF29F989EB14A4AE61E3",
+      "metaHash": "A5694A39E9C67D040E9D8EE3322C25727D25F153C922013C16250EDBA9D7177B",
+      "spriteMode": 1,
+      "sprites": [
+        "player"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/_Recovery/0 (1).unity",
+        "Assets/_Recovery/0.unity",
+        "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/Player.asset",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/Player.prefab",
+        "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/core.png",
+      "guid": "c973787b77038394eb50bb7519bea051",
+      "bytes": 17239,
+      "sha256": "213D5A73BA10BCC728F3AEFF314B5B53A786490A28704CE8E2C5F3423C0E2B2A",
+      "metaHash": "AE3B698CB53CD4A366DE643DAD35B55A99B63AD2ACD065840154BC5C664304B4",
+      "spriteMode": 1,
+      "sprites": [
+        "core"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/core.asset",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/core.prefab"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalMotion/Support/Fixed.png",
+      "guid": "c9aa33d0ce36ae94ba767343ce3f0b02",
+      "bytes": 5687,
+      "sha256": "975CE6DF2C06482F218C763A65BF19D09EB6F0E01D976602C1748824D9E442E2",
+      "metaHash": "70B44122001B719FF29B35717A61090717BEB7F82BF8B992C659B23C66876FA5",
+      "spriteMode": 1,
+      "sprites": [
+        "Fixed"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/Hud/20261013/HudAtlasSource.png",
+      "guid": "c97bb292cfd605d499658714a9011736",
+      "bytes": 1306455,
+      "sha256": "20FE53C5581CC5D0B717BFF1304A232F056989939FC9538152D5E6398A8206BE",
+      "metaHash": "09F975691688D263375D86EB1C859646C1911DE79DD40115FD263E73F6F4C6FD",
+      "spriteMode": 2,
+      "sprites": [
+        "HudAtlasSource_0",
+        "HudAtlasSource_3",
+        "HudAtlasSource_4",
+        "HudAtlasSource_7",
+        "HudAtlasSource_8",
+        "HudAtlasSource_9",
+        "HudAtlasSource_12",
+        "HudAtlasSource_13",
+        "HudAtlasSource_16",
+        "HudAtlasSource_17",
+        "HudAtlasSource_20",
+        "HudAtlasSource_21",
+        "HudAtlasSource_24",
+        "HudAtlasSource_25",
+        "HudAtlasSource_28",
+        "HudAtlasSource_29",
+        "HudAtlasSource_32",
+        "HudAtlasSource_33",
+        "HudAtlasSource_36",
+        "HudAtlasSource_37",
+        "HudAtlasSource_38",
+        "HudAtlasSource_41",
+        "HudAtlasSource_42",
+        "HudAtlasSource_45",
+        "HudAtlasSource_46",
+        "HudAtlasSource_47",
+        "HudAtlasSource_50",
+        "HudAtlasSource_51",
+        "HudAtlasSource_1",
+        "HudAtlasSource_2",
+        "HudAtlasSource_5",
+        "HudAtlasSource_6",
+        "HudAtlasSource_10",
+        "HudAtlasSource_11",
+        "HudAtlasSource_14",
+        "HudAtlasSource_15",
+        "HudAtlasSource_18",
+        "HudAtlasSource_19",
+        "HudAtlasSource_22",
+        "HudAtlasSource_23",
+        "HudAtlasSource_26",
+        "HudAtlasSource_27",
+        "HudAtlasSource_30",
+        "HudAtlasSource_31",
+        "HudAtlasSource_34",
+        "HudAtlasSource_35",
+        "HudAtlasSource_39",
+        "HudAtlasSource_40",
+        "HudAtlasSource_43",
+        "HudAtlasSource_44",
+        "HudAtlasSource_48",
+        "HudAtlasSource_49"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Rune_3.png",
+      "guid": "d9e37a0acf3ad461f98379291737416b",
+      "bytes": 410703,
+      "sha256": "2399AA6CD32260004664F4687EA0AFB7C6C0E607A0715460FFFF1D98A2370D59",
+      "metaHash": "B96D56E87B59B4AF0CEC1EE3354F43602F87D10EC07B19D2CED66D8E66FB730E",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Rune.mat"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/LeftUpper.png",
+      "guid": "2a24a9d4da74c734b85070d81ab13085",
+      "bytes": 457,
+      "sha256": "41EBEAB3261E5F3A47B7AC7AFB52B35A0D55CCAE4C9237ACDFBC7027BB3B9252",
+      "metaHash": "FFEAAAC8BD72C6B63C4BA0531E7371B09288C2F0FB71C003E8E0F03787F3DED4",
+      "spriteMode": 1,
+      "sprites": [
+        "LeftUpper"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/Hud/20261013/CardBackTiersSource.png",
+      "guid": "3a1eb1c84ebdead4ca6519dac3b9a695",
+      "bytes": 1758378,
+      "sha256": "CB0D57A5C842F2EEB4D8A856C22D038ABFA48E9D2471F55D578B2F13005F4A4C",
+      "metaHash": "F6D6E2F52FE6BF736AE2C4A3077A5B13DF18E1356F829A68C43B9A930B1E6570",
+      "spriteMode": 2,
+      "sprites": [
+        "CardBackTiersSource_0",
+        "CardBackTiersSource_3",
+        "CardBackTiersSource_4",
+        "CardBackTiersSource_5",
+        "CardBackTiersSource_8",
+        "CardBackTiersSource_9",
+        "CardBackTiersSource_10",
+        "CardBackTiersSource_13",
+        "CardBackTiersSource_14",
+        "CardBackTiersSource_17",
+        "CardBackTiersSource_18",
+        "CardBackTiersSource_19",
+        "CardBackTiersSource_22",
+        "CardBackTiersSource_1",
+        "CardBackTiersSource_2",
+        "CardBackTiersSource_6",
+        "CardBackTiersSource_7",
+        "CardBackTiersSource_11",
+        "CardBackTiersSource_12",
+        "CardBackTiersSource_15",
+        "CardBackTiersSource_16",
+        "CardBackTiersSource_20",
+        "CardBackTiersSource_21"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_LeftLeg.png",
+      "guid": "5ab414144e1fe204aafc80e493279656",
+      "bytes": 571,
+      "sha256": "BED471CF0C76C714026BC02A598CA95551CA2541C83887163020BD70A4A59154",
+      "metaHash": "2C4C731BC9DF9C2C8801D947D384981EB67B9A731F90A854DEAA90E47384AF02",
+      "spriteMode": 1,
+      "sprites": [
+        "D4_LeftLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_LeftLeg.png",
+      "guid": "6ac02d08c5f03f14ab3c2295ed6fd466",
+      "bytes": 604,
+      "sha256": "33D2E225356F062DAA3A416CA161C9CAAA772759B47D2B54B6BEA64CBB6D3691",
+      "metaHash": "74EE1ED73FA86E28665D9E8E6EC4A2E289526914D18A997B8E2B3DF5A4588378",
+      "spriteMode": 1,
+      "sprites": [
+        "D0_LeftLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/docs/art/path_contrast_original_20261008.png",
+      "guid": "7a891a4617ba1734eb01b6b12ca102cc",
+      "bytes": 230519,
+      "sha256": "BFEF0D8DBEEC1FD5B4270996E73807A8FC78C02D84FAC4F855CA3C08D7311C7E",
+      "metaHash": "40A4A41C172427A421E096C0F6903A5DCAE96EFB50D0A21D6E875AFB0E7BD431",
+      "spriteMode": 2,
+      "sprites": [
+        "path_contrast_original_20261008_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_0.png",
+      "guid": "7a0a41e2553f78a4a811297cdd5c33b4",
+      "bytes": 3590,
+      "sha256": "7075328565C7E965D609D50BBF82517F0898BC4A4DCEEF983F6DEC038AD777CD",
+      "metaHash": "2DACEDE37B8FCEE1FDA6FAFA4AB2F294DB5B8F7F9EEC82A77364706A0BA6FC16",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Smoke_1.png",
+      "guid": "8abf852b5c6ec4a18ac67fac66f65030",
+      "bytes": 384849,
+      "sha256": "C9BA720E9D0DBBE638BED5B6BDAF6E320F3239EF2D2CDB7CDE91DA8B12BF0F90",
+      "metaHash": "129115A136E9B95A7677BEEAC918379BC8DA682D0D02FCE723328CFD47E835A9",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Smoke.mat"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PhotoShadows/Support.png",
+      "guid": "9a5d2af94e455e84390eb9437ebafd56",
+      "bytes": 383,
+      "sha256": "272A8E7D4B44ABAD970057A4C7964BC04C68B4FECFD1A94AC0ED6F9411D41C60",
+      "metaHash": "6EF3C920364025761BB104179C02D5FB913E49A914F795C7DF25ACAFC7B03B1E",
+      "spriteMode": 1,
+      "sprites": [
+        "Support"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Button.png",
+      "guid": "9a6fa4bfb76fc2141a6a9b6ace61811b",
+      "bytes": 22552,
+      "sha256": "DCA6EC9CC3D7F3A833FDCE9EBCF60EE566DD480BC4A97F330CC4C8B614B5E165",
+      "metaHash": "01271E2CC879670D372E5C7CB4B7F903B5971BD3401E88AF7BEA5B58381032BB",
+      "spriteMode": 1,
+      "sprites": [
+        "Button"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_2.png",
+      "guid": "aa39399883ba14669a7ab4747c8e5f29",
+      "bytes": 436804,
+      "sha256": "CC6EBAB7B18E03F585A6FE9D821C29C02E0E633488A78D9C73A2FCDD1B14A5ED",
+      "metaHash": "A3A49246E75889EBE2656A59A2A768808C3366F3B64C84F9008995CDEF5619DC",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Environment/AbandonedFortressB/NaturalCourtyard_01.png",
+      "guid": "aa5c47c080edb004d812c0eaaa1fae79",
+      "bytes": 2646666,
+      "sha256": "49CE03977C867C1AF4874774DDFBD548C5399B3705255E92CB11CD5690EAEED7",
+      "metaHash": "AB2C7FAC0AE1CC25ABD8528F63C313859C451C3378DD3E0796E3506D0138DE90",
+      "spriteMode": 1,
+      "sprites": [
+        "NaturalCourtyard_01"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/_Icon.png",
+      "guid": "ba410e66d86d04fa08db560ec201dd6e",
+      "bytes": 30823,
+      "sha256": "C9AAB306C4F77102A5AE70E8EF48605A2F78E3FCC6CDB5E53DA1CAC751680B39",
+      "metaHash": "0E7F0521181758F29E809DDD5FBF65A00FA1FF2E374A18BE39329C1F31A19A30",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_RightLeg.png",
+      "guid": "cad366d31ad54bf4c96707bdad0d8ab5",
+      "bytes": 487,
+      "sha256": "B1AD6160861F3947F10349B28054C7B86129DD93C2BD5F9B464F9B5B5921D124",
+      "metaHash": "E668BB992A2DB4167A5AAE1E564A119C0074A3DA31CBFAEE79DD27D1E0D895FA",
+      "spriteMode": 1,
+      "sprites": [
+        "D2_RightLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/TowerMulti.png",
+      "guid": "dacb0159286337344b7f2b356474498b",
+      "bytes": 4434,
+      "sha256": "C6E58BF16F740C858DB9522E4A017A2871859A46BA5FE70C91A94A622DAE87BC",
+      "metaHash": "07C7EC5EC8CF1F60D98FE92CF27640F7CC8CCAA3D2CE08A9D99BE348C7B97322",
+      "spriteMode": 1,
+      "sprites": [
+        "TowerMulti"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Particle_1.png",
+      "guid": "eaf769bc3745348ed909d27ad2053f7f",
+      "bytes": 171680,
+      "sha256": "FB6DA0BC6865604F45BAFF87FC2993679E776D80804CB402640272843EE29ABE",
+      "metaHash": "B5DA45450C4345D829189AD04A6A57FEBA1F9CA332FDF925648802F73B4433BD",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Particle.mat"
+      ]
+    },
+    {
+      "path": "Assets/docs/art/path_contrast_original_detail_20261008.png",
+      "guid": "fa447cddbe8f2e843b479df840d45e0d",
+      "bytes": 63048,
+      "sha256": "2E4F8C46A26C148E355949C9E287C97F6F87EE1ABE252CF317B869853AA12210",
+      "metaHash": "879659D6A1DCBE69B7E656F15A9997C8EC28A69CF06474459DB36067C37459A8",
+      "spriteMode": 2,
+      "sprites": [
+        "path_contrast_original_detail_20261008_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_1.png",
+      "guid": "0b2a53fdd4994114abc031edbb33a9ea",
+      "bytes": 5598,
+      "sha256": "1FB2F7ABB6F01DDF2EE671F9A15BDC4136A545721A2038BBEC10020C5800D538",
+      "metaHash": "836A3A409826E3340614FCD4250AF5456F2029D52D30C482F44491F6ABC8A2BF",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/docs/development/combat_damage_20261010.png",
+      "guid": "1bbb3e59457cbfa44a48f42cd7146442",
+      "bytes": 275943,
+      "sha256": "E5246218CE64BADB216B743CB9A88DE0844B6EF089A581682F999EFDB90D7382",
+      "metaHash": "63044CC8FD612C6859CD41A106CA5CC3CBCD3E0CD7B8CA108723D230E5DD4AE3",
+      "spriteMode": 2,
+      "sprites": [
+        "combat_damage_20261010_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Speed.png",
+      "guid": "1b0d68bae4fd91c4fba94f5cf64de6f2",
+      "bytes": 5842,
+      "sha256": "A8188FC2674B7EC0A5BC8C8EC376F5D29FA8923F5E2AFD6648E20E0C0AB10079",
+      "metaHash": "84B75620759DEB7C5B90545461B75BE8D556249AFF57573E7F8555BDD38A63CA",
+      "spriteMode": 1,
+      "sprites": [
+        "Speed"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Disabled.png",
+      "guid": "1bde7efa1cfcadb40a16127752ff09db",
+      "bytes": 22021,
+      "sha256": "551CC3BC4121653034280BCB09DF3A5C7E46718CE536C88D7D366AF4B65C0156",
+      "metaHash": "D954D67450EAFE889C35B2A5B2EED2391CF95A8F41ABFF8446230EC85333BDD8",
+      "spriteMode": 1,
+      "sprites": [
+        "Disabled"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/docs/development/gold_feedback_before_20261010.png",
+      "guid": "3b91ac94de46834499c58bfa4f62cd64",
+      "bytes": 210472,
+      "sha256": "402ADB70CF120BC6DEB5AEACE74ABB2C66ECCE7B468FC1EF547D0ACE4EBDE069",
+      "metaHash": "BE7FD9223604F442A0681BD01287E5F1DF8167DF84C57C2D451CDAB1DB775A18",
+      "spriteMode": 2,
+      "sprites": [
+        "gold_feedback_before_20261010_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/TowerSingle.png",
+      "guid": "3ba6297a8ce29a74cad0e402a85875b1",
+      "bytes": 3714,
+      "sha256": "EE1D8F295F6BF2AD34FC37B1CF6A0D00EA91397334A47FAFFD54F847F835957C",
+      "metaHash": "E99F1CBFAC24790BCCA8D5E7038083051C22E164F86B6BD44FEFE7FEB979FE7A",
+      "spriteMode": 1,
+      "sprites": [
+        "TowerSingle"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PhotoShadows/Single.png",
+      "guid": "3b08fe04391350445b063fa3cad5388e",
+      "bytes": 243,
+      "sha256": "5703FF55526D4B0E6C6B4C71427DE59D0B1DA6EBB786D2DB6DFE29393E8E048D",
+      "metaHash": "773ACE4F528F0E6189B10AA9A69113D13ED87DFAAC655B863CED80B95FAA8E3F",
+      "spriteMode": 1,
+      "sprites": [
+        "Single"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_10.png",
+      "guid": "4b000fd91053f4129a0d41af854f093c",
+      "bytes": 466390,
+      "sha256": "11EC27449061C7A18E8E51C8B2A2273D54D6A5B3DDA3EF8CC77E9309CDC1F900",
+      "metaHash": "AD7D3B86AC63E576C6A8A7411ED493D9C9C8D9395D338DDE5B63CB8063DB3E6F",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Animation/Buff/atlas.png",
+      "guid": "4b54489d1b7afe643a3ff38f562d2bd1",
+      "bytes": 58835,
+      "sha256": "C8280B68EB59940FF39BE52AE51E1FD0BA21C0D9650984F20CD0FD1EDBBAB807",
+      "metaHash": "3F93A513224F94085B36D9A1E01033A4A3CE20FC1C6F41970399F70EB7959A12",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Glyphs/Glyph_4.png",
+      "guid": "5b9af9896def2495c933e7037a4fc351",
+      "bytes": 356686,
+      "sha256": "5B946181F9286D485F2510BB840B7029DC99FDC4E92E2D83080D7603209C3271",
+      "metaHash": "29D4C4E4FA6899753035FD4FC363578646F0DBCD3EECAD1D62194145DEDD2CD0",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rune_1.png",
+      "guid": "5bdd410ff4076415e960811c8a8b95ed",
+      "bytes": 822965,
+      "sha256": "17CB8F0219F6D790B12B51A3B6A296A7E98A6C652EBC66427F54549E41C035E8",
+      "metaHash": "70C4629399982D8B3D18FBA0056454FE03085390BFDF157A1E322E6E1F88367B",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rune.mat"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Source/path_straight_v2.png",
+      "guid": "7bb73d8733e0b004f934459781290d55",
+      "bytes": 977571,
+      "sha256": "94F21084C50A8F7CAE634C559FA29A4E04FAE781AD83A727E1661B9606A2328F",
+      "metaHash": "25B732D4ED8737E856011F52C047477D2164E9339D47EC36BB3D7210A30A4D41",
+      "spriteMode": 2,
+      "sprites": [
+        "path_straight_v2_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_7.png",
+      "guid": "ab19a59545b1949f3a52a3dfdc26b7da",
+      "bytes": 648384,
+      "sha256": "E04C364B0415F3D44D04FCE5E367FE860C6AE8EC11A75F2C5843455A7D31D973",
+      "metaHash": "000EFF77A1D624F209333632C538770D51267A3434820C9BBE0D6D2579507CA1",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/TowerAttackCategory.png",
+      "guid": "bb366e5a90df22a4fa26e25cb1606cab",
+      "bytes": 3265,
+      "sha256": "B6AF1C259654CE13EF4B4D169BEA6ECD6155A8C0774B89893FCD8DB20002C2BE",
+      "metaHash": "BA02CA1E799F99AE7E355FC58579D708A006F3B4F0750CA36C3319FC67689582",
+      "spriteMode": 1,
+      "sprites": [
+        "TowerAttackCategory"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/docs/art/path_contrast_B_detail_20261008.png",
+      "guid": "bb58a38b62e63b34ab4f393be3f2b439",
+      "bytes": 62587,
+      "sha256": "57884B3D435A052D36520CC670C0459D07521C5B474B8F125110FF7EAC7E74F5",
+      "metaHash": "C75359181F5DA2A634295124F44730996B540DDA7ADD46D509FC2F5773A3918A",
+      "spriteMode": 2,
+      "sprites": [
+        "path_contrast_B_detail_20261008_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/RightUpper.png",
+      "guid": "cb0a920c2b2856d48a288ffe8c1509ce",
+      "bytes": 544,
+      "sha256": "59F7D57111BE55EFB9BD974540F183006D86562BC9EA7AE096DE9275A2A303EB",
+      "metaHash": "C6819510F2045BAD60A04EB615AC7214F8F5027A674D16B9920314D519AE1009",
+      "spriteMode": 1,
+      "sprites": [
+        "RightUpper"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_RightLeg.png",
+      "guid": "db4c60610381e9449a9ca28ebd951b79",
+      "bytes": 605,
+      "sha256": "5EE00CA661DF60EF56722132E76BEE6A11CDF5336AFAF203F13FB54915FE7973",
+      "metaHash": "E36CC94C051FD3CA8CB0C329138DA0A2E425347CD046072B74DC08F33A4941DD",
+      "spriteMode": 1,
+      "sprites": [
+        "D6_RightLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_2.png",
+      "guid": "dbbe47f5b480c5d41bd2317db2544422",
+      "bytes": 3565,
+      "sha256": "C84EEA422C7679CC669431913401CB19C354AF3F774B38C70DEB419D0239B4C4",
+      "metaHash": "44AE6D69BCD1F862098AFEA2F9BD9B94D0B8AA58F49F1F6F2C30EA4CD481AC5C",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/Body.png",
+      "guid": "eb24525b00257c940a3dfba570980981",
+      "bytes": 6256,
+      "sha256": "16E32B67BCF06FE159466AD14581594D4D00442E0A321D27F75E977B45C45A50",
+      "metaHash": "9F3F673C480A196F26C14427ACB7FC2B6096732C2EFCA1A0F7D54F6AAF584143",
+      "spriteMode": 1,
+      "sprites": [
+        "Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Buff/LeftLower.png",
+      "guid": "1c320927c6b324e458d50e19d77ce9d5",
+      "bytes": 741,
+      "sha256": "AC0C768F2177F296A05C82C19B7DC47EAAD9671DFB5A2FB52764CFCF1942A020",
+      "metaHash": "EE51048067E1C87E63F43C72EA25DFADB96C39C2F841821A7CE1515D9F88172B",
+      "spriteMode": 1,
+      "sprites": [
+        "LeftLower"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/CardBackSilver.png",
+      "guid": "1cff4db54c6595146a053fbc35fa8434",
+      "bytes": 78559,
+      "sha256": "64563D933C7702A192CDE91E55DB31660E7CE73E9A277D5BC11C7AAFA68C453C",
+      "metaHash": "2AD0FDFBC89F4B54B417A3B804A454FAC8FA2F8A5A1A561A63AE6A0B458B9991",
+      "spriteMode": 1,
+      "sprites": [
+        "CardBackSilver"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PhotoShadows/Attack.png",
+      "guid": "2c4a50f72cec0b047bcb9560e38fe9c1",
+      "bytes": 211,
+      "sha256": "EA44695F595C64D941F11D7A21102488A14B8C26EDBE031780764092B5CAFA51",
+      "metaHash": "DD3BE86004D76B8FA8A80F8227F2CBF5A72EF8A3D4E6A26782F141CEA1AFA24B",
+      "spriteMode": 1,
+      "sprites": [
+        "Attack"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_2.png",
+      "guid": "3cf0d220d4bf075409f48e75c48bd2c0",
+      "bytes": 5620,
+      "sha256": "297690545792492EAAA318C072C323FBC87CC189837BEBF8434BA68545B17502",
+      "metaHash": "7B0E81F3A4344F13103FCEAB29134FBEEAED9FDEA1ADADA352E98F0265141847",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_3.png",
+      "guid": "3cda62c4790853d4c8090a3804dfb7cb",
+      "bytes": 3593,
+      "sha256": "E85C80301A0D0DE6076E7FC58705D944692C37BC0023D0644958BECFE34641B3",
+      "metaHash": "3FA15EE595DDF0C758D0A439E0216966B4F53984218567439BF51859923913C8",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_3"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Source/path_corner_v2.png",
+      "guid": "4c12187f118c0a54ba2f93ec9d2e6c9e",
+      "bytes": 1100193,
+      "sha256": "9B0687D3F18D361C2DC9F255680781055C04E0693567655130EE0DC485004B1D",
+      "metaHash": "B0D7BD95A0D69B23C96B44F4188EBF8F4A01563091CD33FAD86FA74BCEFCB53F",
+      "spriteMode": 2,
+      "sprites": [
+        "path_corner_v2_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Player/Guardian_Temp_Idle.png",
+      "guid": "5c68804763fe6b14593c8b52cb842823",
+      "bytes": 1743193,
+      "sha256": "F1ED871F9E9449DF6776B65FAA08CD9EDDE3D527B41BFA3E2C7D6429EDBE119B",
+      "metaHash": "0C969695524858C1FCC82784D8852C319C80951CB944FBE650334FECBFA825ED",
+      "spriteMode": 1,
+      "sprites": [
+        "Guardian_Temp_Idle"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Particles/Particle_2.png",
+      "guid": "6c9601a195390475b8b18b93e3154fba",
+      "bytes": 181904,
+      "sha256": "C8A88155AD91599094A33D057396E81AF2120EAE54837D3CF9AF6EDE098AF214",
+      "metaHash": "2728D4267C03E7ADA0D20473F2869E5E5684EA594CAFEB9E5BBD474C0E0344B5",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_0.png",
+      "guid": "7c4b1111bf5156d4493f080a80cc1380",
+      "bytes": 3569,
+      "sha256": "4E99EB121044CBBA35CE613FE197D24D861D942C17E0FD4B432EE1B50034E36E",
+      "metaHash": "8EB6C836B761380EE7C6B10D8B082093A1ADA6D9A16CEC23BFD3738895C4559F",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_1.png",
+      "guid": "8c4232d7fc87add48b5a0a6c29d44448",
+      "bytes": 3498,
+      "sha256": "20AB0410FFB3830AC9CCCEA2E701450D7310E80AF8A0DE20C94DF9437F06AD91",
+      "metaHash": "D76C78573D0E24018BD1A0504AC9E945535AA5EB6067F2BF14381FB5F6F7E96F",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_0.png",
+      "guid": "9c7eb875e26c7664280cf3968639953a",
+      "bytes": 5715,
+      "sha256": "FCFFCA2C4C4A6A1AC2D577180CC939EE85D9277F5E512E2024708341C5EBE15E",
+      "metaHash": "16E897C14429CD637972FBEF70E4C031849CF84698E9ED89BA92B99F347F5EAB",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Panel.png",
+      "guid": "ac6106cbb9bfaf346bd03ddd93afccfc",
+      "bytes": 22776,
+      "sha256": "77650862819C85CD93C2F345D4060F929960E332EDD53116B463ED8B78FEE981",
+      "metaHash": "B4741BD0D2D8BAA33FA11208F51248BFC71C82C0EA5C84B05C18AAA8A37F8A1C",
+      "spriteMode": 1,
+      "sprites": [
+        "Panel"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_0.png",
+      "guid": "ac9822f49e7f25e4f92afc8bdadd184c",
+      "bytes": 3398,
+      "sha256": "9148CF9B85023B33C54226C6C0803E0D085EF4D02E7FC367EE70F9D78B79779A",
+      "metaHash": "4EC769A1CAB00A855A5561483191AD0B58BCB00471023A3F3C76F78F2E3D9065",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_0"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/RightLower.png",
+      "guid": "ac7c5b367886ca848a66d639b96dd684",
+      "bytes": 676,
+      "sha256": "D08BC571A319823B0F0958521C4D74CD7135B9D66216058FC3E17872273FF00F",
+      "metaHash": "595ED28FE1CB4B471B143178C369DAF7E791FB349FCAC674DB966F49BA4F2E31",
+      "spriteMode": 1,
+      "sprites": [
+        "RightLower"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/RightUpper.png",
+      "guid": "ac4f73bd403e2e549b9d8ec94c4baa20",
+      "bytes": 484,
+      "sha256": "44879183D73F9D16B0E4E16BB15BDE8404407ACCDF12A24DB16D140C5A92F272",
+      "metaHash": "59748A5C0DB0627EF6A6BBB33691D49045D1F30AAD436FC2C6D86C24C50B4E8A",
+      "spriteMode": 1,
+      "sprites": [
+        "RightUpper"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_3.png",
+      "guid": "bc587750eb0bab041b9b46c79edeb292",
+      "bytes": 3599,
+      "sha256": "977308EDC507D4EB3A2BC488E72B97129933242CD48979D968CC02BBF6F148BA",
+      "metaHash": "45BE1E8A86CAA3251D544E96885F2ACE005AB0978981E38024F30AD4A54BCDD9",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_3"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_LeftLeg.png",
+      "guid": "eca23be1a607aec4f9e2887deb86752f",
+      "bytes": 571,
+      "sha256": "BED471CF0C76C714026BC02A598CA95551CA2541C83887163020BD70A4A59154",
+      "metaHash": "5C81304148F090002B7E69B6F0AE3A884C8BA032C90B82925AA5CFCDAB17961C",
+      "spriteMode": 1,
+      "sprites": [
+        "D3_LeftLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/FX/Smoke_1.png",
+      "guid": "ecc411d28bdd24af08d6bdc301e57abc",
+      "bytes": 384849,
+      "sha256": "C9BA720E9D0DBBE638BED5B6BDAF6E320F3239EF2D2CDB7CDE91DA8B12BF0F90",
+      "metaHash": "CFFCF1CA65AB45C32FEA9C3173FE675CBEED4E1C20175349C5FAFA716EB796EB",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_Body.png",
+      "guid": "fc89e38e0067ae443b6145a86978a852",
+      "bytes": 2668,
+      "sha256": "2A62906D498D63D19FC3BFC1F70FC08743E99FC692867F91DCEFE699196EECA7",
+      "metaHash": "FB1568FB71CDF65AC983718D38A0F162B59C4CDDE7A113845F2193DEB791A792",
+      "spriteMode": 1,
+      "sprites": [
+        "D0_Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/FX/Rays_2.png",
+      "guid": "fcf9168bdbb8140b08f5f1f9b9830907",
+      "bytes": 1729075,
+      "sha256": "0C0A53A5FD66B53026CE3D69EC18F5CAE320F21503BF85D2A23C4064A4A377E1",
+      "metaHash": "87237F327B362EE62DAB856BC65E802BE9F91446B293546DE12F4630B7F70042",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftLower.png",
+      "guid": "0d0830b44e8d1104ebed4a8edf51ece7",
+      "bytes": 768,
+      "sha256": "5AF8FB79406453ADB796A2E3CE149F35BCA897F73EC0FB249F59B2873239869A",
+      "metaHash": "2C1BDE3C05350A81073277A39F4DA35D38F24C0E5E360C9615BE621472C4E29C",
+      "spriteMode": 1,
+      "sprites": [
+        "LeftLower"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_2.png",
+      "guid": "1dfe08ce2e4770e4ab460b47c43a2361",
+      "bytes": 3384,
+      "sha256": "384110EFEC78C27CF53B0E616533ECFE20011C98E846819FF07B54545BF125B4",
+      "metaHash": "C2EA224025A54D6C013AEEBE499548D13675F5D5A30168D096C330CAEB9BB961",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_2"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Particles/Particle_3.png",
+      "guid": "2dc7f4fb221384b6182a7c1112718f01",
+      "bytes": 224406,
+      "sha256": "15DADC3611122E190FEB085355AC17C5CE4B7287A4EB2CAA54C14325ECDE835D",
+      "metaHash": "3BF671FE3DADB0A775669B27544F2D9EC374F82D171A47CDA31F17856D17933F",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalMotion/Multi/Fixed.png",
+      "guid": "3de2199068c6c0a439cc2e83cedc3c47",
+      "bytes": 2960,
+      "sha256": "2033A88F1F3589E32A79942434B25162FF21DB844CCC36AE073A64C0255056A8",
+      "metaHash": "F39892FFECC2565A0B01E376705978131803BAE5137A2D1D8E3B3AA8DC0250A1",
+      "spriteMode": 1,
+      "sprites": [
+        "Fixed"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Glyphs/Glyph_5.png",
+      "guid": "3d8beae91332f4c13b4b2e41b1b0cec8",
+      "bytes": 269694,
+      "sha256": "C2CFB31B25B09A0CFA9D994CCCCA0BFB54240B388547CF791C5D86C5851D5230",
+      "metaHash": "1EA83F3F70098A4867C2A01E3637B8B49F0E75D677046F5C650A685EC02DE96E",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/docs/development/combat_roles_20261008.png",
+      "guid": "3dcce647d132c40448148a57159dd985",
+      "bytes": 273180,
+      "sha256": "FC1A2B10D53E6F100560079C2A293475BFA95F47530A052176CB71FD0CA59842",
+      "metaHash": "4CB8195080C4060EAE5B408A56A47E2622749BBAED36AB569FDC600BA34F6D60",
+      "spriteMode": 2,
+      "sprites": [
+        "combat_roles_20261008_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/AbilityList.png",
+      "guid": "6d31679adc95ea64aa3d879f972b3d31",
+      "bytes": 1838,
+      "sha256": "048675FE4487FFB231C2907E730B850BA127CDB34F43EF9523BBDEA87427492B",
+      "metaHash": "B6BE11E3B6F758FB8C61CA8E16129EB5786A38F67D872EE16886D2C4CCFDBB02",
+      "spriteMode": 1,
+      "sprites": [
+        "AbilityList"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/FX/Spiral_1.png",
+      "guid": "7d698cacca8194db88d71e84f10a3707",
+      "bytes": 1239712,
+      "sha256": "52C24C87478C0A0F66227A7440206A723FA50B43DE216BDAB791DE09D5FA1D3F",
+      "metaHash": "161857027A08D59942D8CCEC8EB15F936C69ABF81DE4913C2753CD644A3BFB54",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/Body.png",
+      "guid": "7deab8ccc94c278419a899d07dd17c4d",
+      "bytes": 3758,
+      "sha256": "F4DB96EC23CA6BF1A4F25A0F3FAB4A37FEEFCAE5B21758A7B2839348EF9D3933",
+      "metaHash": "780031638C15BEB10E69D60B18F3619D3F1967A0CAA99CC8C5B5EFE64A9FC60D",
+      "spriteMode": 1,
+      "sprites": [
+        "Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_RightLeg.png",
+      "guid": "adc818ddde9b57741bdf858ef0b42f08",
+      "bytes": 605,
+      "sha256": "5EE00CA661DF60EF56722132E76BEE6A11CDF5336AFAF203F13FB54915FE7973",
+      "metaHash": "1F0406208ACFBAE4E8056A2CE739ECB00B687B8AA14CF366C6C77243166411D6",
+      "spriteMode": 1,
+      "sprites": [
+        "D5_RightLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/Body.png",
+      "guid": "bd7950c16a724dd4daa1df1904c2b672",
+      "bytes": 3045,
+      "sha256": "F199EFF9B2EFFF10B887294D378FD4B4447045D102A9D8D3B740C07D1F81A2AB",
+      "metaHash": "F78C9FB3AEA1A33AD389402013E32CC385776E310AF2A60B43DB7FA463518D9B",
+      "spriteMode": 1,
+      "sprites": [
+        "Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_3.png",
+      "guid": "cd955e15ecb37a846a7c749d337c045e",
+      "bytes": 3036,
+      "sha256": "72C27EA02540483EED2D83ED48680F97DD6BE8C76BB2AB4AFEE6A314AFBFA07A",
+      "metaHash": "F91B6E04E378C19B06F0E7D284DB10B4BA8CE9A044CA4658EC40B5C36DB8DCE5",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_3"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/FX/Rays_1.png",
+      "guid": "dda26367d17774a8ba9fc5a452f96143",
+      "bytes": 1889973,
+      "sha256": "B1298A72FA486013D7D36200DEEC91EF091CA09C504035856C6B270E34E5C07B",
+      "metaHash": "E2E179CC1D9EF695B882B6469C1D9AD67C36785ED2E90CB06BC6C19D5AB548C2",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_RightLeg.png",
+      "guid": "dd434f3f5692ab2449ca8bee4ca88132",
+      "bytes": 605,
+      "sha256": "5EE00CA661DF60EF56722132E76BEE6A11CDF5336AFAF203F13FB54915FE7973",
+      "metaHash": "3433CF809353F560EBE829C00FCB313C49F46D7CA69FB0BB353767946698E020",
+      "spriteMode": 1,
+      "sprites": [
+        "D3_RightLeg"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_Body.png",
+      "guid": "dd46f937a4e2b8e429d773d472679f6a",
+      "bytes": 2298,
+      "sha256": "09DAC1F219C4DBECAD2FFC6441767BBED84413172787A5B84E18776528B7C808",
+      "metaHash": "DB3F01AED705A2896DC5231D53DF2EFF583E833C844058B0B4BBCC268ECBAE0C",
+      "spriteMode": 1,
+      "sprites": [
+        "D6_Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Source/enemy_attack.png",
+      "guid": "ed8e1403a75484d4a8089118455a7383",
+      "bytes": 1297696,
+      "sha256": "53DD0615FD07303BAC3F43CBE8CBA9D796EB5AF23CF194399477B4C78CD2C467",
+      "metaHash": "4F7111D5C42FAC537461A94E058016A0D233B23B2817B5692D8ADB5B40A81B48",
+      "spriteMode": 2,
+      "sprites": [
+        "enemy_attack_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_3.png",
+      "guid": "fd2485ec0bdaff841b2e997b3cbc7999",
+      "bytes": 3812,
+      "sha256": "1C21742468B90E683BE467FC2BDD46EBFC0CEF88B942DD8A836C70F4196C4A09",
+      "metaHash": "D50D2BA9CD854CE67210D43C6633119AF7AE2CA76C6F7216CD55F4BBB6D0F9D3",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_3"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Particles/Particle_5.png",
+      "guid": "fd3fcf33c070e427e8e0450c335713d3",
+      "bytes": 233496,
+      "sha256": "016A04F2BAFEF9BAFD6C5F311725AF13BEC76B9CC4FD6751011865373524A0EA",
+      "metaHash": "0853D1343E12C136D05C15A4D9E50840DB5BBD071BFC8CF597B5F96DA97420E0",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_Arm.png",
+      "guid": "0ed5243902d96a54aaa5ffc8c53da048",
+      "bytes": 494,
+      "sha256": "A05680E574629D26AFC38799AC1722A6904CC7A84B93113DFA45E65D39D155D6",
+      "metaHash": "D188F5C5D9E1F3A86F3674BB369ADEC9AAB710C78D34A5812F6C5CC1A2765A10",
+      "spriteMode": 1,
+      "sprites": [
+        "D5_Arm"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/RejectedAnimations/20261015/Player/atlas.png",
+      "guid": "1ec8fcdc289e4024d86f2823fd9ec532",
+      "bytes": 74954,
+      "sha256": "7D2A8D30ECD39C3E869094865BBA65CD3D018BDA9A41C81D57D3DAB8F778325D",
+      "metaHash": "EBD6D063A5AA5F820B596677588597F5DFA4EC131CCCAEE1C4333A4EFF2E90C9",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/CardBackGold.png",
+      "guid": "2e29a6d3f78a8834cb77c0a34a8f9afd",
+      "bytes": 84720,
+      "sha256": "9EB87BA32030CE83EBF1E7605B17502BD264E2A134387205B96B96B2BF1FD2C3",
+      "metaHash": "EE13AA0B75F916446FBE10960423088284650D01B0C0895ABD38BEE7A8039E3A",
+      "spriteMode": 1,
+      "sprites": [
+        "CardBackGold"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_Body.png",
+      "guid": "3e7bf832bbb859f4bbb702676f907af5",
+      "bytes": 2792,
+      "sha256": "D9539EED5C08EA370503263A667D990065E2D0B99C3247474602885EBF7CC445",
+      "metaHash": "80A0CD7B076F05E8DA90CABE5E0444BF4C84F97D29CD878D9B9FAC1565ECC059",
+      "spriteMode": 1,
+      "sprites": [
+        "D5_Body"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Defense/RightUpper.png",
+      "guid": "4e749f986ae04954ba0595354746d1e1",
+      "bytes": 420,
+      "sha256": "800199C16A360016C305011DAF78526425706D759D470A94AE6EE6A877918221",
+      "metaHash": "32CC810D290B87FCB168D1F484E99C8FD65BAF22A14DCA33BF62D5E062524870",
+      "spriteMode": 1,
+      "sprites": [
+        "RightUpper"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Install.png",
+      "guid": "6e61b4d2d4ec8124dab7aa4eb7aacafd",
+      "bytes": 6158,
+      "sha256": "ADBCFE4B3142F3E52BBF4FD2EB87F90C59CA7732CF2E23898035EF27D5AA6595",
+      "metaHash": "0D6A03873575B1E20995C142AD93851F077E2234E1D07CC04EB74CCEBC08A422",
+      "spriteMode": 1,
+      "sprites": [
+        "Install"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_1.png",
+      "guid": "6eb69f58e123edb4482973b3dff6ce8c",
+      "bytes": 3635,
+      "sha256": "BB19AE7A5FE7F0F4A9F3319251194E8C604F528FF7E8347DB927FE59A5CF3787",
+      "metaHash": "5F9EA15AD4EED51221CBDB2C3C950AEE92EC564C00D844FF0EACF5C16B5823FE",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Art/MagitechFortress/Source/MagitechFortress_DarkPathCorner_L_v3_362.png",
+      "guid": "7e84e2506e8422443a9668aa06c2fd45",
+      "bytes": 317547,
+      "sha256": "84084DC6EE13EC065B43F397C90EFBB037B8782C4808F70B126C649BA12F17CE",
+      "metaHash": "C53D137C81C2F3008655A022D15A6779DA339737FD721C7143255D6AA9530603",
+      "spriteMode": 2,
+      "sprites": [
+        "MagitechFortress_DarkPathCorner_L_v3_362_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PhotoShadows/Core.png",
+      "guid": "7ead70284c43b3f439d754ee3ca1b319",
+      "bytes": 566,
+      "sha256": "15325C1F9508096F17795801A1C647929F32BC3B92F8A322E90DF8D4AB3AF7C6",
+      "metaHash": "4F1DC21443E4157F4582098EE1A816D8B3561C130D04BC95E4B9A471B129A45F",
+      "spriteMode": 1,
+      "sprites": [
+        "Core"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/tower_support.png",
+      "guid": "8e8201d8e7ac4f34380fe1d4ce114cb0",
+      "bytes": 6050,
+      "sha256": "E6FD5DFBCAC9FF4DD1ADDEF800DEB3EB6035F8011BD729792FB609DF1E609330",
+      "metaHash": "DE1E00AB31941A9A91A6534867FF63B7FFDBC46D21E79F58C8693018D7B0BEF5",
+      "spriteMode": 1,
+      "sprites": [
+        "tower_support"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_support.prefab",
+        "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_support.asset",
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/FX/Sonic_Pulse_1.png",
+      "guid": "9efe9f05d41df4cbc9166b0d0c9bbc63",
+      "bytes": 863724,
+      "sha256": "524C74232590017ADE018679E7FC5583934C10770927A6FA08479BCCAAC0D115",
+      "metaHash": "F34503A52242C5AF3D9F6D81E324A8070F933F9F0880848EF60F940D4C7BF222",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/tower_single.png",
+      "guid": "de08fbe5115a3634ba737c889f278788",
+      "bytes": 5685,
+      "sha256": "9D0D11AC45DCBEFD0D94EB9E2F14807658D67D7F538FE8CFF13113499E7A15A0",
+      "metaHash": "F9192CF8E9E73D721D34615D6F4AD244D5C80669C4E5454F3A6203CC8152AFA1",
+      "spriteMode": 1,
+      "sprites": [
+        "tower_single"
+      ],
+      "live": true,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_single.asset",
+        "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_single.prefab"
+      ]
+    },
+    {
+      "path": "Assets/Art/RejectedAnimations/20261015/Support/atlas.png",
+      "guid": "deee74d37a1def34e80d3d521f75010b",
+      "bytes": 45426,
+      "sha256": "15B1102264A1F185072664D35821C9D4B400D51BF196F4DFE9D04F9E0C2558EE",
+      "metaHash": "7D8A97D27962D9A8AF7AB73AD3C817D787E1FA4980E02BEC5997CBD6F09172DE",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_1.png",
+      "guid": "ee91454ff5e695b4dafcf9caf18be60e",
+      "bytes": 3562,
+      "sha256": "C9845F16E3245C07F06A409BDD6A27448429A5C6CD94EB32E4BDCF832D0A3802",
+      "metaHash": "40D1391D1AA76F16AB537BB3919D2EAE2AD850A009FA79E2B37CD064E10DD829",
+      "spriteMode": 1,
+      "sprites": [
+        "Up_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_3.png",
+      "guid": "fe5d8cddd8593c04c9d38140fcfad138",
+      "bytes": 3207,
+      "sha256": "DE874AE8765F82EB9231C899D6C6A8008C130E8BAB9DF3703E0828A0B47085C9",
+      "metaHash": "B3DD62B7D90BCA173C8C4B9C26C7FA67731BF6FD07EDFBDC49344F50E0D8D54F",
+      "spriteMode": 1,
+      "sprites": [
+        "Down_3"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_Arm.png",
+      "guid": "0fbee56209460a04d8ec5a44dfe09e59",
+      "bytes": 489,
+      "sha256": "EA1C6C276046DF7DE3BEEA862EC84352E89FA6FFAB47253B7989139EF610EAF1",
+      "metaHash": "2F8205B6B3BA0C7622A084A9F9310E8475D360342C9E0C1DFEE4D8E2B4D6981E",
+      "spriteMode": 1,
+      "sprites": [
+        "D2_Arm"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Magic_Circle_2.png",
+      "guid": "2f65fe06bec9a4e44b226445a3f9d1bd",
+      "bytes": 534224,
+      "sha256": "E70D94571D06AEBEF2B59266DA3151BC6EE207EFDF34A977BF5D7C4E6118C609",
+      "metaHash": "97E6113F6716785AD83F98AFB1169976E52A5A87842AB51D09C851894576EE27",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Magic Circle.mat"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/PhotoShadows/Defense.png",
+      "guid": "2f5b23398b7a69e4ab834fbc7fbdc1d4",
+      "bytes": 422,
+      "sha256": "69B0BF8A149CBD0E83C7F67262A6D8A40CC4CBA40561D1E18DCEE99A287B8F57",
+      "metaHash": "C9E57A49074277D51B143C657BF57693F012806DF7A359247F39D35EADF84BC3",
+      "spriteMode": 1,
+      "sprites": [
+        "Defense"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/MagitechFortress/Source/MagitechFortress_DarkPathCorner_L_v4_362.png",
+      "guid": "2f4d774bc14d955448002c02b07984ec",
+      "bytes": 259615,
+      "sha256": "ABBE273E23435927EB2167791B64EF8DA23EDCF459BB885F4E91870B928CAD95",
+      "metaHash": "19FF1FFDF2CDB921AD9467B3BDE02EF9E4777E59A9CB905803AFCE0FD0E350F8",
+      "spriteMode": 2,
+      "sprites": [
+        "MagitechFortress_DarkPathCorner_L_v4_362_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/Environment/AbandonedFortressB/CourtyardBackground_B.png",
+      "guid": "3f030b47a4bf32f478e1007bf19742ed",
+      "bytes": 2280096,
+      "sha256": "87D8B16FB7998CFED75AB529B13BD3E5E3C8C7A7348B464BFACF40A36CD6FBD0",
+      "metaHash": "72FAF5DD340C016FB00D935F7E78BD92A91D99498BE6343B5C8DBE090889A9C0",
+      "spriteMode": 1,
+      "sprites": [
+        "CourtyardBackground_B"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Source/enemy_buff_v2.png",
+      "guid": "3f4d174f2ea76f14f81b6f26cb9309f9",
+      "bytes": 1108836,
+      "sha256": "C2ECDD5082F56B8F90A311CEFEBF4886197C6FAD42DAF178D1141F978E47C779",
+      "metaHash": "CEBF912FDDEC2E859168200F3F0BEB80C687DAA5DB72C1FC32642E3DE1291313",
+      "spriteMode": 2,
+      "sprites": [
+        "enemy_buff_v2_0",
+        "enemy_buff_v2_1",
+        "enemy_buff_v2_2"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/RejectedAnimations/20261015/Single/atlas.png",
+      "guid": "4f73dcf5bfcbab54ab6bee4ab883b4c6",
+      "bytes": 21216,
+      "sha256": "1CD427C5CE9EC27E58A6C0AC5BAAEDB24B2023B5221B68B15A6A8FD38743AAFA",
+      "metaHash": "83A960A99829C3F5688B497FC714C58E4E26B4232E6AFDF74890396B76DE5D54",
+      "spriteMode": 2,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Sprites/ground_slab_v2.png",
+      "guid": "4f1e8ad5e6fe46747ac5c31b77e5f57d",
+      "bytes": 5911,
+      "sha256": "92AB8860AC4FD9952D7CE7580F1D94CDFA47298CBD12AD32BF1415A223F876B2",
+      "metaHash": "E88EAC2A0ED6E6872729C16288C1FB3B317D8B613CA73719AADC506A35A3A36A",
+      "spriteMode": 2,
+      "sprites": [
+        "slab_0_0",
+        "slab_0_1",
+        "slab_1_0",
+        "slab_1_1"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_1_1.asset",
+        "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_1_0.asset",
+        "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_0_1.asset",
+        "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_0_0.asset"
+      ]
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/StatRange.png",
+      "guid": "5f8312147b554494aaa6df69725df4cb",
+      "bytes": 1355,
+      "sha256": "0ECE44DC148B9C91325B50B496C9B554DF2DEBC5A8E1EED8F6E5A9F66C41581F",
+      "metaHash": "0DA250B7CF5B4BF7780F78F5A1A4B4E0109E5D88B54231A670EA4AAB154181C3",
+      "spriteMode": 1,
+      "sprites": [
+        "StatRange"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Runes/Rune_6.png",
+      "guid": "8ff0dc9270bbb42f9bb20bb13fb106f3",
+      "bytes": 842409,
+      "sha256": "25FBA96C22B2B9E0A016544FCA3DAFC6BA1B7636F9C09725B6FCFD713D17CFFA",
+      "metaHash": "B497B70AA32CEB441B6577CADF54A69EBAD06FB94E0FF72AEC4347C1874AD7B2",
+      "spriteMode": 0,
+      "sprites": [],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Source/enemy_defense_v2.png",
+      "guid": "8f7c1860745ebd84bb00454b480b49a2",
+      "bytes": 1240146,
+      "sha256": "0477474CF3E9E48BA7B3F5DEC4C9AD569361CF533F668E653939796CFB05CA56",
+      "metaHash": "BF69DA84DB5FE67971D1C8EE076F798A1600102582B3C4615C1ACB57DD685139",
+      "spriteMode": 2,
+      "sprites": [
+        "enemy_defense_v2_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/OriginalWalk/Boss/LeftLower.png",
+      "guid": "bf9c7ac49316ce44da30410d05988b00",
+      "bytes": 449,
+      "sha256": "569D4C797EEDA062F8EF105DFDD9BA9A3BE4768D5DE5F4C28BA5E5F5D41D4C28",
+      "metaHash": "78770B62A8B07D2762B537EE8874D441D01707EC1FCB9A27ACC147C0454725AC",
+      "spriteMode": 1,
+      "sprites": [
+        "LeftLower"
+      ],
+      "live": false,
+      "referencedBy": [
+        "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+      ]
+    },
+    {
+      "path": "Assets/docs/development/gold_feedback_after_20261010.png",
+      "guid": "bfeda4e63fd1d0744a779520b3b9c34a",
+      "bytes": 211722,
+      "sha256": "F8C47B2B0536989F598C70C2649F4BA5D535CCFC0A440973C8C1CFCCB7B3B704",
+      "metaHash": "F8429CF8BEE4F8DCC314922A238EB4656CC45E2BE487562745FA0612FBD8F4DC",
+      "spriteMode": 2,
+      "sprites": [
+        "gold_feedback_after_20261010_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Revision2/Source/enemy_attack_v2.png",
+      "guid": "df44e1c3f5bb8394db8c10db6494f277",
+      "bytes": 1144152,
+      "sha256": "D7C122FAA9D9DAFFAFD039785A053BC22BF547D897B030BFD3193A6ADCA387B8",
+      "metaHash": "9E50E971772E3A30683FE94CE9BAAE0730DDD321CC66B334E8CB159A83B96B92",
+      "spriteMode": 2,
+      "sprites": [
+        "enemy_attack_v2_0"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Art/ScreenTests/20260930/Sprites/enemy_buff.png",
+      "guid": "df2d193a4d10bdb42a55e320dde7c16f",
+      "bytes": 9906,
+      "sha256": "14171E82FA09EA76ED9BFFFD1A017E540503F64F52570456C9F15FF1B376EEEC",
+      "metaHash": "3B69D0FA1C3D06DE40E776573D0596650ABC7578F56B48576DFDD7BBAB43B966",
+      "spriteMode": 1,
+      "sprites": [
+        "enemy_buff"
+      ],
+      "live": false,
+      "referencedBy": []
+    },
+    {
+      "path": "Assets/Resources/CoreGuardian/Hud/Hover.png",
+      "guid": "ef987cc38c4d98949957b78f6eccabbe",
+      "bytes": 23656,
+      "sha256": "A05E4BA626A997F7BCC368D77A286E33C0F447C6CCBD939BC79D4602077C2522",
+      "metaHash": "35D6D6F44583279973565916A2D737E9AEBAED7B0EEED5D79E56C716007C40B1",
+      "spriteMode": 1,
+      "sprites": [
+        "Hover"
+      ],
+      "live": false,
+      "referencedBy": []
+    }
+  ],
+  "edges": [
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 5.mat",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20260930/Tiles/path_tile.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/path_tile.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_05.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_11.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/Stone_B_2.asset",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 1.mat",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_07.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 3.mat",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_02.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_10.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_1_1.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/ground_slab_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_1_0.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/ground_slab_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 4.mat",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Rune.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Rune_3.png"
+      ]
+    },
+    {
+      "asset": "Assets/_Recovery/0 (1).unity",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png",
+        "Assets/Art/ScreenTests/20260930/Sprites/player.png",
+        "Assets/Art/Environment/AbandonedFortressB/NaturalCourtyard_01_ClearBorder.png",
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Magic Circle.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Magic_Circle_2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_12.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Glyph.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Glyph_2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_defense.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_defense_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20260930/Tiles/ground_tile.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/ground_tile.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_5x5/Floor_Small.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20261008_5x5/Ground_Countable.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_attack.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png",
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_attack_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_04.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_support.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/tower_support.png",
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/core.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/core.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_03.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial 2.mat",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/HybridDecoration_Unlit.mat",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/DecorationHybrid_20261018/HybridDecoration_Transparent.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rays.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rays_2.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Smoke.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Smoke_1.png"
+      ]
+    },
+    {
+      "asset": "Assets/Resources/CoreGuardian/Art/BossEye/BossEyePrefab.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png",
+        "Assets/Resources/CoreGuardian/Art/BossEye/BossEye.png"
+      ]
+    },
+    {
+      "asset": "Assets/_Recovery/0.unity",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/player.png",
+        "Assets/Art/Environment/AbandonedFortressB/NaturalCourtyard_01_ClearBorder.png",
+        "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png",
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Particle.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Particle_5.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/SpawnTunnel02_Selected.mat",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/SpawnTunnel02_Approved.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/Stone_B_0.asset",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_01.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_DarkPathCorner_L.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_DarkPathCorner_L_final_362.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_08.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Welcome/NewWelcomePage.asset",
+      "images": [
+        "Assets/Welcome/2d-template.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/PathStraight_B.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/path_straight_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_0_1.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/ground_slab_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_multi.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/tower_multi.png"
+      ]
+    },
+    {
+      "asset": "Assets/Resources/CoreGuardian/Animation/Boss/BossFeetCenteredV2.asset",
+      "images": [
+        "Assets/Resources/CoreGuardian/Art/BossEye/BossEye.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_support.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/tower_support.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/CombinedRoute/RouteMaterial.mat",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/Resources/CoreGuardian/MaskAtlas/Manifest.asset",
+      "images": [
+        "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_2.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_LeftLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_LeftLeg.png",
+        "Assets/Resources/CoreGuardian/OriginalMotion/Multi/Fixed.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_3.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_Arm.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Buff/LeftLower.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_0.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_2.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_1.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_RightLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_RightLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_LeftLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_Arm.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Buff/LeftUpper.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_1.png",
+        "Assets/Resources/CoreGuardian/OriginalMotion/Support/Moving.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_1.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_Body.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_0.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_2.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Defense/LeftUpper.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Defense/RightUpper.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_Body.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_0.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftUpper.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightLower.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_Body.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_Body.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Boss/RightLower.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_RightLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_Arm.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_1.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_Arm.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Attack/RightUpper.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_Body.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_0.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Attack/LeftLower.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_Arm.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_1.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_0.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_2.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_RightLeg.png",
+        "Assets/Resources/CoreGuardian/OriginalMotion/Support/Fixed.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_0.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_Arm.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Down_3.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Buff/RightUpper.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_Arm.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_3.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D0/D0_LeftLeg.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Boss/LeftLower.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_RightLeg.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_3.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Buff/Body.png",
+        "Assets/Resources/CoreGuardian/OriginalMotion/Multi/Moving.png",
+        "Assets/Resources/CoreGuardian/OriginalMotion/Single/Moving.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Defense/LeftLower.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_Body.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_LeftLeg.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Attack/Body.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_2.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D2/D2_RightLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_LeftLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D3/D3_LeftLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D6/D6_Body.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_3.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D5/D5_RightLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D1/D1_LeftLeg.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_Arm.png",
+        "Assets/Art/ScreenTests/20260930/Sprites/tower_multi.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_1.png",
+        "Assets/Resources/CoreGuardian/OriginalMotion/Single/Fixed.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Up_2.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_1.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Down_3.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Boss/RightUpper.png",
+        "Assets/Art/ScreenTests/20260930/Sprites/tower_support.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_0.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Down_2.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D7/D7_Body.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Boss/Body.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Buff/Up_0.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Buff/RightLower.png",
+        "Assets/Resources/CoreGuardian/PlayerFacing/D4/D4_RightLeg.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Boss/LeftUpper.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Attack/Down_3.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_1.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Boss/Up_2.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Defense/RightLower.png",
+        "Assets/Resources/CoreGuardian/OriginalWalk/Defense/Body.png",
+        "Assets/Resources/CoreGuardian/VerticalWalk/Defense/Up_3.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/Stone_B_3.asset",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/TilePalettes/MagitechFortress_Base.prefab",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/Player.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/player.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/tower_single.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/tower_single.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_attack.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_attack_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Particle.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Particle_1.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Magic Circle.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Magic_Circle_1.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Spiral.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_1/Spiral_Doodle_1.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_buff.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png",
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_buff_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Resources/CoreGuardian/Animation/Boss/BossAnimated.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png"
+      ]
+    },
+    {
+      "asset": "Assets/Resources/CoreGuardian/Art/BossEye/BossEyeContact.asset",
+      "images": [
+        "Assets/Resources/CoreGuardian/Art/BossEye/BossEye.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/PathCorner_NorthEast_B.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/path_corner_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20260930/Revision2/Tiles/slab_0_0.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/ground_slab_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/Environment/AbandonedFortressB/Stone_B_1.asset",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/ContactShapes/enemy_buff.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_buff_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_5x5/Path_Corner_Small.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/path_corner_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_5x5/Path_Straight_Small.asset",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/path_straight_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_multi.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/tower_multi.png",
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_09.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/Player.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20260930/Sprites/player.png",
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/core.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png",
+        "Assets/Art/ScreenTests/20260930/Sprites/core.png"
+      ]
+    },
+    {
+      "asset": "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rune.mat",
+      "images": [
+        "Assets/AS_Magic_Aura_Construction_Kit_FREE/Demo Scene/Materials/Aura_2/Rune_1.png"
+      ]
+    },
+    {
+      "asset": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "images": [
+        "Assets/Art/Environment/AbandonedFortressB/StoneSlabs_B_2x2.png",
+        "Assets/Art/ScreenTests/20260930/Sprites/player.png",
+        "Assets/Art/Environment/AbandonedFortressB/NaturalCourtyard_01_ClearBorder.png",
+        "Assets/Art/Environment/AbandonedFortressB/Route01_FlagstoneSource.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_defense.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png",
+        "Assets/Art/ScreenTests/20260930/Revision2/Sprites/enemy_defense_v2.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/ScreenTests/20261008_Depth/Prefabs/tower_single.prefab",
+      "images": [
+        "Assets/Art/ScreenTests/20261008_Depth/ShadowEllipse.png",
+        "Assets/Art/ScreenTests/20260930/Sprites/tower_single.png"
+      ]
+    },
+    {
+      "asset": "Assets/Art/MagitechFortress/Tiles/MagitechFortress_06.asset",
+      "images": [
+        "Assets/Art/MagitechFortress/Source/MagitechFortress_BaseTiles.png"
+      ]
+    }
+  ]
+}
