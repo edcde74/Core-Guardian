@@ -1,5 +1,5 @@
 {
-  "isolationFixtureRerun": "pending scene save approval",
+  "isolationFixtureRerun": "7/7 passed; see saved_tests.json",
   "wholeSuiteRepeated": false,
   "passed": 7,
   "failed": 0,
@@ -10,6 +10,6 @@
     "failed": 5,
     "passed": 0
   },
-  "phase": "Last executed product tests before preview-fixture isolation change",
+  "phase": "Final preview-scene fixture after authorized scene save",
   "isolationFixtureCompiled": true
 }

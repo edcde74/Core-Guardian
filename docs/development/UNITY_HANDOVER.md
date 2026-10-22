@@ -5,7 +5,7 @@
 ## 현재 상태와 승인 범위
 
 - 2026-10-22 후속: 사용자가 공식 `Mesh.CombineMeshes()`로 고정 길 배경 병합을 승인했다. 현재 에디터 메모리에는 길219개→메시2개 + 원본23개 보존, Game View Draw258→41/SetPass2→5/Triangles532 유지, 최종 적용 직전·직후 두 줌 픽셀 차이0. 도구·한계·원복/Undo·전체 프레임 미측정은 [길 메시 정본](route_mesh_20261022/README.md)을 따른다. A 보류/B 제한은 유지한다.
-- **씬 저장 승인 대기:** 공식 EditMode runner/Undo가 자체 빈 테스트 루트를 남겨 일부를 씬 파일에 저장했다. 현재 Hierarchy에서는 자체 루트를 제거했고 원래7루트만 유지한다. 격리용 PreviewScene fixture 수정은 컴파일 확인, 기존 대상7개 통과 후 격리 수정 재실행은 보류다. 이미 dirty인 사용자 씬 전체 저장을 자동 승인 검토가 거절했으므로 우회하지 않았다. 현재 씬 저장(기존 사용자 변경+병합+자체 루트 제거)에 사용자 승인이 필요하다. 자세한 해시·현재 상태는 길 정본과 shipping_state.json을 따른다.
+- **씬 저장 완료:** 자동 승인 검토가 처음 거절한 뒤, 사용자가 기존 사용자 변경을 포함한 저장을 명시 승인했다. 병합+자체 빈 테스트 루트 제거 상태를 Unity API로 저장하고 PreviewScene 격리 fixture에서 대상7/7 통과. 최종 scene clean/원래7루트/테스트루트0/persistent 메시·재질 참조 정상/Draw41/SetPass5, 설정2파일 기존 해시 동일. 저장된 씬은 사용자 기존 변경과 섞여 로컬 도구·기록 커밋에는 포함하지 않는다. 자세한 상태는 [저장 후 상태](route_mesh_20261022/saved_final_state.json)와 길 정본을 따른다.
 
 - 경로 `C:\Users\edcde\OneDrive\Desktop\CD`, 브랜치 `codex/shared-body-mask`. B 구현·검증 `bc9c847`, 구현 커밋 기록 `3c4ecb7`, Notion 동기화 기록 `48dc7d5`가 이번 인수인계 전 HEAD다. 제품 소스/리소스/검사의 추가 미커밋 변경은 없다. 사용자 씬·설정 M3, 폰트 도구 접근불가 D369 및 미추적 자료는 보존한다.
 - 사용자가 B안 재개·계속을 승인해 **공용 GPU 페이지 마스크 생성 배칭**을 반영했다. A는 보류·미채택이다. B의 출력 renderer/material/order와 개별 RT/copyback은 원본을 유지한다. 방어형·보스와 지원 밖 조건은 원본 마스크 생성이다. 적용 범위·실패·결정은 [B 결과 정본](render_batching_20261022/B_RESULTS.md)을 따른다. 과거 [A/B 복원 기록](render_batching_20261022/ROLLBACK.md)은 B 재개 전 이력이다.
