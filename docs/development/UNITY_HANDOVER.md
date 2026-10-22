@@ -4,6 +4,8 @@
 
 ## 현재 상태와 승인 범위
 
+- 2026-10-22 사용자 요청으로 Notion [대량 전투 성능·최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4), [플레이테스트 및 변경 이력](https://www.notion.so/3df389dbfc6881fc9f1bd004adfc5999), 프로젝트 메인·후속 제작 순서를 동기화했다. RT 재사용/동일 본체 공유/CPU·GC 누적/B 생성 배칭의 조건별 전후·최소/최대/평균FPS·실패/악화·메모리 절충·미완료를 구분했다. 저장 후 4페이지 수치·상태·기존 하위7페이지/DB 연결 유지 확인. 상세 수치 정본은 기존 로컬 결과와 Notion 검사 이력이며 이번 문서 작업에서 새 Unity 조회·Play·테스트·빌드·실행은 하지 않았다.
+
 - **사용자가 B안을 다시 진행·계속하도록 승인해 마스크 생성 배칭을 반영했다. 구현·검증 커밋 `bc9c847`, A는 보류다.** GPU 공용 페이지에 생산 geometry를 묶되 출력 renderer/material/order와 개별 RT/copyback은 보존한다. 방어형/보스·지원 밖 조건은 원본 생산이다. 상세 구현·적용 제한·실패/결정·후속은 [B 결과 정본](render_batching_20261022/B_RESULTS.md)을 따른다. 아래 A/B 복원 및 06:20 빌드는 이 재개보다 앞선 이력이다.
 - 최종 같은128적/실제15포탑·고정dt·3회: Draw2087.311→1948.954(**−6.628%**), SetPass458.993→319.426(**−30.407%**), native 평균36.217→30.169ms, 평균FPS27.612→33.147(**+20.047%**). 각 조건542native/540실제Tick, 이벤트/최종 상태3회 일치. Editor 주입 조건의 부분 개선이며 정상30R/장시간/GPU 개선이나 당초70%/50% 목표 달성은 아니다. [최종 분석](render_batching_20261022/b2_benchmark/analysis_shipping.json).
 - 신규24+관련기존47+실제씬30R·재시작1 = **대상72개 통과**. 기존169개 전체를 반복하지 않았다. 4종132적/15포탑 화면은 줌8.5/4.25에서 원본 대비 차이0(Overlay HUD 미포함). 최종 씬 clean/Play stopped/compiling false, 자체 마스크GPU 객체0, 사용자 씬·설정6파일 해시 동일. 콘솔에는 자체 빈 Profiler 백업 로드 실패2건이 남아 있으며 삭제하지 않았다. 빈 버퍼로 복원했고 제품 오류로 집계하지 않는다. [종료](render_batching_20261022/shipping_final_state.json), [Profiler 복원](render_batching_20261022/shipping_profiler_restore.json), [해시](render_batching_20261022/shipping_user_hashes.json).
