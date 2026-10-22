@@ -70,10 +70,12 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     public void Present(Transform target,Camera camera)
     {
         PresentMask(target,camera,true);
+        RegisterOutput(camera,false,0);
     }
     void PresentMask(Transform target,Camera camera,bool writeOutlineProperties,bool compactContact=false)
     {
         using var presentScope=presentSample.Auto();
+        CoreGuardianMaskOutputBatch.Invalidate(this);
         lastMaskDrawCalls=0;lastAtlasMisses=0;
         CurrentTarget=target;
         if(output!=null)output.enabled=false;
@@ -175,8 +177,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     // Always-on readability sits below inspection (+4) and the success scan (+5).
     public void PresentAtOrder(Transform target,Camera camera,int offset)
     {
-        Present(target,camera);
+        PresentMask(target,camera,true);
         if(output!=null&&output.enabled)output.sortingOrder+=offset-4;
+        RegisterOutput(camera,false,0);
     }
     // A separate owner uses the current body mask for floor contact, below all bodies.
     public void PresentGroundContact(Transform target,Camera camera,Material material)
@@ -199,6 +202,20 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         if(!IsVisible||material==null)return;
         SetOutputMask();if(band.HasValue)outputProperties.SetFloat("_Band",band.Value);
         output.SetPropertyBlock(outputProperties);output.sharedMaterial=material;output.sortingOrder=43;
+        if(compact)RegisterOutput(camera,true,band??material.GetFloat("_Band"));
+    }
+    void RegisterOutput(Camera camera,bool contact,float band)
+    {
+        if(output==null||!output.enabled||mask==null||camera==null)return;
+        var viewport=camera.pixelRect;
+        // Same native camera range already covered by body mask sharing pixel QA.
+        if(viewport!=new Rect(0,0,1920,1080)||!camera.orthographic||camera.stereoEnabled||camera.allowDynamicResolution
+            ||(camera.orthographicSize!=8.5f&&camera.orthographicSize!=4.25f)||!DefaultProjection(camera)
+            ||!camera.transform.rotation.Equals(Quaternion.identity)||Mathf.Abs(camera.transform.position.x)>32
+            ||Mathf.Abs(camera.transform.position.y)>32)return;
+        if(!CoreGuardianMaskPage.TryAcquire(camera,Time.frameCount,mask.width,mask.height,out var slot))return;
+        var parameters=new CoreGuardianMaskOutputBatch.OutputParameters{contact=contact,allowSingle=true,color=color,width=Mathf.Clamp(widthPixels,0,8),band=band,maskOriginPx=maskOriginPx,sourceSize=new Vector2(mask.width,mask.height)};
+        if(!CoreGuardianMaskOutputBatch.Register(this,camera,output,quad,slot,parameters))CoreGuardianMaskPage.Release(slot);
     }
     void SetOutputMask()
     {
@@ -340,7 +357,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     // New/reparented/destroyed children are detected automatically, including inactive rigs.
     public void InvalidateSources(){CoreGuardianBodyMaskCache.Invalidate(artwork);bodySources.Invalidate();ClearGeometry();maskGeometryEpoch=-1;lastTarget=null;artwork=null;}
     void ClearGeometry(){foreach(var mesh in meshes.Values)DisposeObject(mesh);meshes.Clear();geometry.Clear();}
-    internal void ReleasePresentation(){if(output!=null)output.enabled=false;CurrentTarget=null;CoreGuardianBodyMaskCache.Release(maskBinding);mask=null;maskOriginPx=Vector2.zero;}
+    internal void ReleasePresentation(){CoreGuardianMaskOutputBatch.Release(this);if(output!=null)output.enabled=false;CurrentTarget=null;CoreGuardianBodyMaskCache.Release(maskBinding);mask=null;maskOriginPx=Vector2.zero;}
     void OnDisable(){ReleasePresentation();}
     void OnDestroy(){ReleaseResources();}
     internal void ReleaseResources()
