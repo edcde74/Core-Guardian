@@ -1,8 +1,11 @@
 # 코어 가디언 인수인계
 
-갱신: 2026-10-22 Asia/Seoul. 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다.
+갱신: 2026-10-23 Asia/Seoul. 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다.
 
 ## 현재 상태와 승인 범위
+
+- 2026-10-23 설치 표시 최적화: 사용자 승인으로 칸별858개 sprite 생성/삭제를 재사용 메시1개로 변경했다. 기존색·alpha·간격·정렬·CanInstall 및 default Lit 유지. 두 줌 Camera.Render 차이0, 신규 EditMode4+기존 설치 PlayMode4 통과. 고정 설치 비교에서 draw 중앙값915→58, 관측 frame 평균5.246→3.766ms. 정상 전투/저사양 성능 통과는 아니며 raw 범위·spike·한계는 [설치 표시 정본](placement_overlay_20261023/README.md)에 있다.
+- 설치 검증 종료: Play stopped/scene clean/원래7루트/자체 overlay mesh·material0/compiling false. background false/time1/capture0/paused false/Profiler OFF/driver true, 기존 auto-tick true16 유지. 씬과 사용자 설정2파일 hash3/3 동일. 추가 씬 저장·빌드·실행파일·push 없음. A 보류/B 적용 제한은 그대로다.
 
 - 2026-10-22 후속: 사용자가 공식 `Mesh.CombineMeshes()`로 고정 길 배경 병합을 승인했다. 현재 에디터 메모리에는 길219개→메시2개 + 원본23개 보존, Game View Draw258→41/SetPass2→5/Triangles532 유지, 최종 적용 직전·직후 두 줌 픽셀 차이0. 도구·한계·원복/Undo·전체 프레임 미측정은 [길 메시 정본](route_mesh_20261022/README.md)을 따른다. A 보류/B 제한은 유지한다.
 - **씬 저장 완료:** 자동 승인 검토가 처음 거절한 뒤, 사용자가 기존 사용자 변경을 포함한 저장을 명시 승인했다. 병합+자체 빈 테스트 루트 제거 상태를 Unity API로 저장하고 PreviewScene 격리 fixture에서 대상7/7 통과. 최종 scene clean/원래7루트/테스트루트0/persistent 메시·재질 참조 정상/Draw41/SetPass5, 설정2파일 기존 해시 동일. 저장된 씬은 사용자 기존 변경과 섞여 로컬 도구·기록 커밋에는 포함하지 않는다. 자세한 상태는 [저장 후 상태](route_mesh_20261022/saved_final_state.json)와 길 정본을 따른다.

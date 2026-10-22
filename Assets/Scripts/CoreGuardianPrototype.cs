@@ -53,7 +53,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     readonly Dictionary<int,EnemyBodyView> enemyBodies=new Dictionary<int,EnemyBodyView>();
     readonly Dictionary<EnemyKind,Stack<EnemyBodyView>> enemyBodyPools=new Dictionary<EnemyKind,Stack<EnemyBodyView>>();
     Transform enemyPoolRoot;
-    readonly List<GameObject> highlights = new List<GameObject>();
+    CoreGuardianPlacementOverlay placementOverlay;
     GameObject ghost;
     Sprite square, dot;
     Tile occupiedTile;
@@ -217,20 +217,16 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         var shadow=ghost.transform.Find("그림자");if(shadow!=null)shadow.gameObject.SetActive(false);
         foreach(var sr in ghost.GetComponentsInChildren<SpriteRenderer>())sr.sortingOrder=1800;
         foreach(var d in ghost.GetComponentsInChildren<ArtDepthSorting>())d.enabled=false;
-        foreach(var p in ground.cellBounds.allPositionsWithin)
-        {
-            if(!ground.HasTile(p))continue;
-            var h=CreateSprite("InstallationTile",square,ground.GetCellCenterWorld(p),CanInstall(new Vector2Int(p.x,p.y))?new Color(.1f,1f,.35f,.13f):new Color(1f,.15f,.1f,.2f),3);
-            var cellSize=ground.layoutGrid.cellSize;
-            h.transform.localScale=new Vector3(cellSize.x*(.55f/.6f),cellSize.y*(.55f/.6f),1);highlights.Add(h);
-        }
+        if(placementOverlay==null)
+            placementOverlay=new CoreGuardianPlacementOverlay(transform,square,UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline.default2DMaterial);
+        placementOverlay.Show(ground,CanInstall);
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);Changed?.Invoke();
     }
     public void CancelInstall()
     {
         bool wasInstalling=Installing.HasValue;
         Installing=null;if(ghost!=null)Destroy(ghost);
-        foreach(var h in highlights)if(h!=null)Destroy(h);highlights.Clear();
+        placementOverlay?.Hide();
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
         Cursor.visible=true;
         if(wasInstalling)Changed?.Invoke();
@@ -462,6 +458,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     }
     void OnDestroy()
     {
+        placementOverlay?.Dispose();placementOverlay=null;
         Session?.Dispose();
         if(TestSpeed!=1)Time.timeScale=1;
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
