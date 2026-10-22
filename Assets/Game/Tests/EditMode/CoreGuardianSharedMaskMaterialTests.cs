@@ -67,30 +67,22 @@ public class CoreGuardianSharedMaskMaterialTests
         Assert.That(Native(),Is.EqualTo(before),"Last release must dispose our native materials");
     }
     [Test]
-    public void PhotoContactsShareMaterial_ButRetainEachUnitsBandAndTexture()
+    public void PhotoShadowsDoNotAllocateContactMaskMaterials()
     {
         int before=Native();
         using(var f=new Fixture())
         {
-            var camera=f.Camera();var shadows=new Component[2];var contacts=new Component[2];
+            var camera=f.Camera();
             for(int i=0;i<2;i++)
             {
                 var root=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/ScreenTests/20261008_Depth/Prefabs/enemy_attack.prefab"));f.roots.Add(root);
-                root.transform.position=new Vector3(10000+i*2,10000,0);root.transform.localScale*=i==0?1:1.4f;
-                shadows[i]=(Component)Type("CoreGuardianPhotoShadow").GetMethod("Attach").Invoke(null,new object[]{root,"Attack"});
-                shadows[i].GetType().GetMethod("Present").Invoke(shadows[i],new object[]{camera});
-                contacts[i]=Field<Component>(shadows[i],"contact");
+                root.transform.position=new Vector3(10000+i*2,10000,0);
+                var shadow=(Component)Type("CoreGuardianPhotoShadow").GetMethod("Attach").Invoke(null,new object[]{root,"Attack"});
+                shadow.GetType().GetMethod("Present").Invoke(shadow,new object[]{camera});
+                Assert.That(root.transform.Find("PhotoDynamicContact"),Is.Null);
+                Assert.That(root.GetComponentsInChildren<SpriteRenderer>(true).Single(r=>r.name=="PhotoCastShadow").sprite,Is.Not.Null);
             }
-            Assert.That(Field<Material>(shadows[0],"contactMaterial"),Is.SameAs(Field<Material>(shadows[1],"contactMaterial")));
-            var blocks=new[]{new MaterialPropertyBlock(),new MaterialPropertyBlock()};
-            for(int i=0;i<2;i++)
-            {
-                Field<MeshRenderer>(contacts[i],"output").GetPropertyBlock(blocks[i]);
-                float expected=16*camera.pixelHeight/(2*camera.orthographicSize)/63.52941f*Field<float>(shadows[i],"size");
-                Assert.That(blocks[i].GetFloat("_Band"),Is.EqualTo(expected).Within(.001));
-                Assert.That(blocks[i].GetTexture("_MainTex"),Is.SameAs(Field<RenderTexture>(contacts[i],"mask")));
-            }
-            Assert.That(blocks[0].GetFloat("_Band"),Is.Not.EqualTo(blocks[1].GetFloat("_Band")));
+            Assert.That(Native(),Is.EqualTo(before),"Broad sprite shadows must not acquire mask materials");
         }
         Assert.That(Native(),Is.EqualTo(before));
     }

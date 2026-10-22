@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"output\": null,\n  \"diagnostics\": [],\n  \"success\": true,\n  \"result\": {\n    \"frame\": 1421,\n    \"contacts\": 0,\n    \"shadows\": [\n      {\n        \"name\": \"core\",\n        \"castVisible\": true\n      },\n      {\n        \"name\": \"PlayerStart_Prototype\",\n        \"castVisible\": true\n      }\n    ]\n  }\n}"
+    }
+  ]
+}

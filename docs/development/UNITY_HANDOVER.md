@@ -4,6 +4,8 @@
 
 ## 현재 상태와 승인 범위
 
+- 2026-10-23 사용자 전후 미리보기 승인으로 발밑 동적 접촉 그림자 생성·전용 마스크 계산 제거. 넓은 PhotoCastShadow 유지. 그림자10+공유재질2 테스트 통과, 실제 Play 접촉0/플레이어·코어 cast 유지, 종료 scene clean·자체 상태 복구. FPS/CPU 절감량은 이번에 재측정하지 않았다. [변경·검증 정본](contact_shadow_removed_20261023/README.md).
+
 - 2026-10-23 설치 표시 최적화: 사용자 승인으로 칸별858개 sprite 생성/삭제를 재사용 메시1개로 변경했다. 기존색·alpha·간격·정렬·CanInstall 및 default Lit 유지. 두 줌 Camera.Render 차이0, 신규 EditMode4+기존 설치 PlayMode4 통과. 고정 설치 비교에서 draw 중앙값915→58, 관측 frame 평균5.246→3.766ms. 정상 전투/저사양 성능 통과는 아니며 raw 범위·spike·한계는 [설치 표시 정본](placement_overlay_20261023/README.md)에 있다.
 - 설치 검증 종료: Play stopped/scene clean/원래7루트/자체 overlay mesh·material0/compiling false. background false/time1/capture0/paused false/Profiler OFF/driver true, 기존 auto-tick true16 유지. 씬과 사용자 설정2파일 hash3/3 동일. 추가 씬 저장·빌드·실행파일·push 없음. A 보류/B 적용 제한은 그대로다.
 

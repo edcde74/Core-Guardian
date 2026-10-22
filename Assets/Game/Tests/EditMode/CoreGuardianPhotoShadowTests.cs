@@ -30,6 +30,7 @@ public class CoreGuardianPhotoShadowTests
             var shadow=root.GetComponent(type);Assert.That(shadow,Is.Not.Null,"Every real spawn/install must attach the approved shadow");
             type.GetMethod("Present").Invoke(shadow,new object[]{null});
             var cast=root.GetComponentsInChildren<SpriteRenderer>(true).Single(r=>r.name=="PhotoCastShadow");
+            Assert.That(root.transform.Find("PhotoDynamicContact"),Is.Null,"Approved removal must skip contact-mask creation entirely");
             Assert.That(cast.sprite,Is.Not.Null);Assert.That(cast.transform.IsChildOf(body.transform),Is.False);
             var offset=cast.transform.position-root.transform.position;root.transform.position+=new Vector3(1,2);
             Type("CoreGuardianUnitAnimation").GetMethod("Move").Invoke(unit,new object[]{Vector2.up,.1f});
@@ -64,7 +65,7 @@ public class CoreGuardianPhotoShadowTests
             Assert.That(root.GetComponent(type),Is.Not.Null);Assert.That(art.sprite,Is.SameAs(sprite));
             Assert.That(root.GetComponentsInChildren<SpriteRenderer>(true).Single(r=>r.name=="PhotoCastShadow").sprite,Is.Not.Null);
             if(role=="Core")Assert.That(root.GetComponentsInChildren<SpriteRenderer>(true).Where(r=>r.name=="바닥 수정빛").All(r=>!r.enabled),Is.True);
-            else Assert.That(root.transform.Find("PhotoDynamicContact"),Is.Not.Null,"Moving feet must use current animation contact, not a frozen sole copy");
+            Assert.That(root.transform.Find("PhotoDynamicContact"),Is.Null,"Approved removal keeps only the broad photo shadow");
         } finally {DestroyOwned(root);}
     }
 }
