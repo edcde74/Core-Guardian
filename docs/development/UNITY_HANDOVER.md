@@ -2,63 +2,41 @@
 
 갱신: 2026-10-23 Asia/Seoul. 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다.
 
-## 현재 상태와 승인 범위
+## 현재 위치·승인 범위
 
-- 2026-10-23 사용자 요청으로 Notion 담당7페이지를 최신화·재조회했다. SpriteAtlas 호환 준비와 실제 패킹 보류/원본 표시 복구, 최종 비교/실패/55개 검사/한계, 리소스·캡처 보존과 신규 파일 위치·후속 우선순위를 담당별로 반영했다. 기존 하위페이지/DB 보존. [동기화 대상·확인](sprite_atlas_20261023/NOTION_SYNC.md). 문서만 변경했으며 새 Unity 조작/Play/검사/빌드 없음.
+- 프로젝트 `C:\Users\edcde\OneDrive\Desktop\CD`, 브랜치 `codex/shared-body-mask`. 이번 문서 정리 시작 HEAD `87490f2`(Notion 최신화), 최신 게임/호환 코드 `bca9dd8`. 작업별 복구 기준은 담당 정본을 따른다. 이번 인수인계는 문서만 변경하며 Unity 연결/Play 상태를 새로 조회하지 않았다.
+- 목표는 GTX750Ti·RAM4~8GB급 안정적60FPS. 현재30R 성장/물량·밸런스와 승인 원본·방향/보행·넓은 그림자·강조/HUD·효과 수/수명·사운드·입력 반응을 유지한다. 사용자 관심은 **적128·타워15에서 실제로 가장 비싼 처리, 특히 포탄/효과**다. 임의120초 측정이나 끝난 검사를 반복하지 않는다.
+- **SpriteAtlas 호환/제작 기반은 준비했지만 실제 패킹은 보류·원본 표시로 복구했다.** A 보류와 B 제한·원본 출력/개별RT·방어형/보스 fallback을 유지한다. 현재 게임에 표시용 아틀라스가 적용됐다고 설명하지 않는다. 이번 인수인계 자체는 추가 실행 권한이 아니다.
 
-- 2026-10-23 사용자 승인으로 SpriteAtlas 부위 자르기/B 원본 키·UV 호환과 신규 입력 FullRect/제작 파이프라인을 준비했으나 **기본 패킹은 성능 악화 방향으로 보류·원본 표시 복구**했다. 후보는 적 기본/앞뒤/BossEye36+타워9의2개였고 옆 보행20개는 픽셀 회귀로 제외, 타워 발광/음영 원본 유지. Domain Reload OFF의 캐시/매핑 불일치도 RED→GREEN 수정. 대상55/55·후보 격리 렌더24쌍 차이0·B92/92 유효. 적128·타워15/90프레임 각1회 최종 코드 비교: 원본52.30FPS vs 후보43.33FPS, Editor Texture2D 후보+약4.50MiB. 확정 인과 절감률/60FPS 통과로 쓰지 않는다. 초기 좋은 후보52.85 표본만 채택하지 않았다. 현재2개 관리 아틀라스 include OFF/packables0, 빌드 hook도 보류 유지. [결과/원본/실패/추가 규칙/검토](sprite_atlas_20261023/README.md). Play stopped/scene clean/원래7루트, 사용자 씬/설정·EditorSettings hash4개 동일. 빌드/실행파일/push 없음. 범위 밖 ProjectWelcome meta 직렬화 차이는 설정2개와 함께 unstaged 보존.
+## 최신 구현·실제 검증
 
-- 2026-10-23 SpriteAtlas 공식 문서·현재 코드 조사 완료. 몬스터/타워 지속 추가를 고려한 분류·폴더 등록·페이지/메모리 관리와 포탄/전투효과 우선 적용안을 [조사 보고서](SPRITE_ATLAS_RESEARCH_20261023.md)에 기록했다. 보행의 원본좌표 자르기·B 원본texture 키·저장 길메시 UV 호환이 선행 과제다. 실제 아틀라스 적용/성능 검증은 하지 않았다. 새 Unity 조작/검사/빌드 없음.
+- 부위 좌표/원본 UV·B 원본 키 연결, 신규 입력 FullRect, 폴더 기반 제작/빌드 전 동기화, Domain Reload OFF의 보행 캐시/매핑 초기화 불일치를 수정했다. 후보는 적 기본/앞뒤/BossEye36개와 타워9개였다. 옆 보행 OriginalWalk20개는 픽셀 회귀로 제외, 타워 발광/음영도 원본 샘플링 유지. 현재 관리 후보2개는 Include in Build OFF/packables0이고 빌드 hook도 보류 유지. 기존 사용자 `CG_Enemies`는 별도 보존한다.
+- **포탄·피격9종은 이미 CombatB.png1텍스처 공유.** 단순 재포장으로 현재 Draw가 줄지 않아 추가 아틀라스는 생성하지 않았다. 포탄 이동/충돌/탐색의 실제 병목은 이번에 확정하지 않았다.
+- 적128·타워15 고정,1920×1080/ortho8.5/time1·warm15/sample90 각1회 최종 코드 비교: **원본 평균52.30FPS / 후보43.33FPS**, 후보 Editor Texture2D 약4.50MiB 증가·Draw/SetPass 소폭 증가 방향으로 보류. 동적 전투/Editor 변동을 분리하지 못해 확정 인과 효과·목표기기60FPS 판정으로 쓰지 않는다. 초기 좋은 후보52.85 표본만 채택하지 않았고 모든 실패/원본을 보존했다.
+- 대상55/55 통과·후보 격리 렌더24쌍 차이0(256×256/ortho2/단일 위상)·기존 B manifest92/92 유효. 모든 방향/위상·정상 조작·전체 HUD/native 줌 전수·아트 승인과 구분한다. [결과/구현/실패/추가 규칙](sprite_atlas_20261023/README.md), [최종 수치](sprite_atlas_20261023/final_comparison.json), [검토](sprite_atlas_20261023/REVIEW.md).
+- 마지막 실제 실행은 후보 해제 후 **원본 표시 적128·타워15/90프레임**이며 error=null·현재 콘솔 오류0을 확인했다. 이후 대상 검사/최종 조회: Play stopped/compiling false/scene clean/원래7루트/자체 mask RT0·Profiler OFF/driver true/background false, 씬·사용자 설정2개·EditorSettings hash4개 동일. 당시 종료 상태이며 재개 시 현재로 가정하지 않는다. [최종 상태](sprite_atlas_20261023/held_final_state.json).
 
-- 2026-10-23 디렉터리 구조를 사용자 Notion 기획서 관리 DB의 전용 문서에 반영하고 메인/05. 제작·검증에 연결했다. 세 페이지 재조회로 내용·링크 및 기존 하위페이지/DB 보존 확인. [Notion 동기화 기록](directory_reorganization_20261023/NOTION_SYNC.md). 문서만 변경했으며 추가 Unity 실행/검사 없음.
+## 리소스·디렉터리·Notion
 
-- 2026-10-23 사용자 정정에 따라 Unity Assets **552개 전체 분류·551개 이동** 완료. Art/Audio/Data/Documentation/Fonts/Prefabs/Scenes/Scripts/Settings9분류와 하위 용도로 통일했다. 복구 기준 `c1203f1`, [위치 색인](directory_reorganization_20261023/DIRECTORY_INDEX.md)·[이전→새 경로](directory_reorganization_20261023/path_map.csv)·[검증 정본](directory_reorganization_20261023/README.md). GUID/meta/의존성552·Resources key227·스크립트assembly102·마스크hash92 유지, 경로 영향 EditMode22/22 통과. 코드10개는 직접 경로 갱신, 길에셋12개는 이름만 변경. 전투씬 bytes·사용자 설정2개 동일/scene clean. 기록·캡처·기존 복구씬 보존, Play/빌드/실행파일/push 없음. 과거 진단 원본의 Assets 경로는 당시 값이므로 재실행 전 이동표로 맞춘다.
+- 미사용 게임 이미지69개 제거·연결170개 보존, 기록 캡처13개는 삭제하지 않고 문서 폴더로 이동/동일 hash 확인. 삭제 전 씬 저장은 사용자 명시 승인, 복구 `5ae39a1`/정리 `4281424`. 소리·폰트·코드·설정·프리팹·씬 삭제가 아니다. [정리/복구](resource_cleanup_20261023/README.md), [재사용 후보](resource_cleanup_20261023/REUSE_CANDIDATES.md).
+- 기존 Assets552개 분류·551개 이동, Art/Audio/Data/Documentation/Fonts/Prefabs/Scenes/Scripts/Settings9분류. 복구 `c1203f1`/완료 `babac77`. GUID/meta/의존성·Resources key·assembly 보존과 대상22개 검증 완료. 당시 안내 포함553개, 이번 신규6개 이후559개(.meta 제외). [위치 색인](directory_reorganization_20261023/DIRECTORY_INDEX.md), [이동표](directory_reorganization_20261023/path_map.csv), [검증 정본](directory_reorganization_20261023/README.md). 과거 진단 코드는 재실행 전 이동표로 경로를 확인한다.
+- Notion 담당7페이지 최신화·재조회 완료(`87490f2`). 호환 준비/패킹 보류·최종 수치/실패/한계·리소스 보존·파일 위치·후속 순서를 담당별로 반영하고 기존 하위페이지/DB 보존. [동기화 대상/확인](sprite_atlas_20261023/NOTION_SYNC.md). [최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4), [검증 이력](https://www.notion.so/3df389dbfc6881fc9f1bd004adfc5999), [디렉터리](https://www.notion.so/401389dbfc6881c0b3dbec4c2050a56f), [후속 순서](https://www.notion.so/3f4389dbfc688171b84dc19b138925f4).
 
-- 2026-10-23 사용자 요청으로 Unity 미사용 이미지 정리 완료: **리소스69개 제거·현재 연결170개 보존·기록 캡처13개는 문서 폴더로 이동 보존**. dirty 씬 저장을 명시 승인받아 같은 전투씬을 저장한 뒤 복구 커밋 `5ae39a1`을 먼저 만들고 원본/meta164개 존재 확인 후 제거했다. 보존 hash170/170·동적 Sprite136경로·의존성181개·live15개 유지, 사용자 설정2/저장씬/아틀라스 hash5/5 동일·scene clean. 새 Play/성능 측정/빌드/실행파일/push 없음. [정리·복구·검증 정본](resource_cleanup_20261023/README.md), [재사용 후보 별도 보고](resource_cleanup_20261023/REUSE_CANDIDATES.md). 현재 새 `CG_Enemies`는 유지했으며 packables는 비어 있다.
+## 앞선 채택 작업 — 상세는 담당 정본
 
-- 2026-10-23 후속 제한 관측(시작 HEAD `4f2516a`): 게임 변경 없이 정상1배속120초·2R 완료/3R Combat까지 관측했다. 최초 진단 종료의 ProfilerRecorder.ToArray 네이티브 충돌로 해당 원본은 무효; 재연결 뒤 배열 복사를 제거해 종료 성공.120초의 고정 카운터값은 무효 처리하고 옵션 수정15초에서 CPU/GC/SetPass 변동만 확인했다. 자체 Play 종료 후 대상mask RT/페이지 메시/공유재질0, 사용자 씬·설정 hash3/3·CSV 동일·scene clean/상태 복구. 전체 할당 메모리 증가·max347.669ms 스파이크가 남아 정상30R/장시간/GPU/전체 잔류/목표기기60FPS 통과 아님. 실패·원본·조건·다음 범위는 [정상 초반 관측 정본](normal_probe_20261023/README.md). A/B 제한 유지, 빌드/실행파일/push 없음.
-
-- 2026-10-23 추가 요청으로 Notion7페이지 동기화·재조회 완료: 길/설치 메시·접촉 제거 승인·짧은 성능 비교/한계·저사양60FPS 목표·후속 검증과 그림자/셰이더 정본 충돌 수정. 기존 하위페이지/DB 보존. [동기화 대상·검증](contact_shadow_removed_20261023/NOTION_SYNC.md). 새 Unity 실행/검사 없음.
-
-- 2026-10-23 사용자 전후 미리보기 승인으로 발밑 동적 접촉 그림자 생성·전용 마스크 계산 제거. 넓은 PhotoCastShadow 유지. 그림자10+공유재질2 테스트 통과, 실제 Play 접촉0/플레이어·코어 cast 유지, 종료 scene clean·자체 상태 복구. 후속 사용자 요청으로 기존60프레임 원본과 같은 진단 코드의 신규60프레임 비교: 평균40.35→45.00FPS, frame24.785→22.221ms(10.34% 감소), 그림자CPU6.480→1.682ms. 각1회 예비 비교이며 정상30R/저사양60FPS 검증 아님. 사용자 씬·설정2파일 hash3/3 동일. [변경·검증 정본](contact_shadow_removed_20261023/README.md).
-
-- 2026-10-23 설치 표시 최적화: 사용자 승인으로 칸별858개 sprite 생성/삭제를 재사용 메시1개로 변경했다. 기존색·alpha·간격·정렬·CanInstall 및 default Lit 유지. 두 줌 Camera.Render 차이0, 신규 EditMode4+기존 설치 PlayMode4 통과. 고정 설치 비교에서 draw 중앙값915→58, 관측 frame 평균5.246→3.766ms. 정상 전투/저사양 성능 통과는 아니며 raw 범위·spike·한계는 [설치 표시 정본](placement_overlay_20261023/README.md)에 있다.
-- 설치 검증 종료: Play stopped/scene clean/원래7루트/자체 overlay mesh·material0/compiling false. background false/time1/capture0/paused false/Profiler OFF/driver true, 기존 auto-tick true16 유지. 씬과 사용자 설정2파일 hash3/3 동일. 추가 씬 저장·빌드·실행파일·push 없음. A 보류/B 적용 제한은 그대로다.
-
-- 2026-10-22 후속: 사용자가 공식 `Mesh.CombineMeshes()`로 고정 길 배경 병합을 승인했다. 현재 에디터 메모리에는 길219개→메시2개 + 원본23개 보존, Game View Draw258→41/SetPass2→5/Triangles532 유지, 최종 적용 직전·직후 두 줌 픽셀 차이0. 도구·한계·원복/Undo·전체 프레임 미측정은 [길 메시 정본](route_mesh_20261022/README.md)을 따른다. A 보류/B 제한은 유지한다.
-- **씬 저장 완료:** 자동 승인 검토가 처음 거절한 뒤, 사용자가 기존 사용자 변경을 포함한 저장을 명시 승인했다. 병합+자체 빈 테스트 루트 제거 상태를 Unity API로 저장하고 PreviewScene 격리 fixture에서 대상7/7 통과. 최종 scene clean/원래7루트/테스트루트0/persistent 메시·재질 참조 정상/Draw41/SetPass5, 설정2파일 기존 해시 동일. 저장된 씬은 사용자 기존 변경과 섞여 로컬 도구·기록 커밋에는 포함하지 않는다. 자세한 상태는 [저장 후 상태](route_mesh_20261022/saved_final_state.json)와 길 정본을 따른다.
-
-- 경로 `C:\Users\edcde\OneDrive\Desktop\CD`, 브랜치 `codex/shared-body-mask`. 인수인계 시작 HEAD `6f8cc8d`, 최신 게임 구현 `0fa0f47`(접촉 제거), 설치 메시 `1588b60`, 길 병합 `4d9d3c9`/저장 기록 `257d91d`, B `bc9c847`. 이번 인수인계는 문서만 갱신하며 사용자 씬·설정·미추적 자료 및 폰트 도구 접근오류 표시는 보존한다. 과거 상태/삭제 개수를 현재로 가정하지 않는다.
-- 사용자가 B안 재개·계속을 승인해 **공용 GPU 페이지 마스크 생성 배칭**을 반영했다. A는 보류·미채택이다. B의 출력 renderer/material/order와 개별 RT/copyback은 원본을 유지한다. 방어형·보스와 지원 밖 조건은 원본 마스크 생성이다. 적용 범위·실패·결정은 [B 결과 정본](render_batching_20261022/B_RESULTS.md)을 따른다. 과거 [A/B 복원 기록](render_batching_20261022/ROLLBACK.md)은 B 재개 전 이력이다.
-- HUD/표시·적 본체·모델 풀링, Session 버퍼/탐색/타깃/탄환 정리·캐시 최적화는 앞선 `5943523`에서 구현·누적 검증했다. 현재30R 성장/물량·밸런스, 아트·방향/보행·넓은 그림자·강조·HUD·효과 수/수명·사운드·입력 반응을 보존한다. 발밑 동적 접촉 제거는 별도 사용자 승인 예외이며 임의 복구하지 않는다. 전투 우선순위와 최초/현재 대상 유지 계약을 보존한다.
-- 사용자 요청으로 Notion 4페이지를 갱신·읽기 검증했다: [최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4), [플레이테스트 및 변경 이력](https://www.notion.so/3df389dbfc6881fc9f1bd004adfc5999), [프로젝트 메인](https://www.notion.so/3df389dbfc6881bc858bce200d1bb742), [후속 제작·검증 순서](https://www.notion.so/3f4389dbfc688171b84dc19b138925f4). RT 재사용/동일 본체 공유/CPU·GC 누적/B의 조건별 성과·실패·비용·미완료를 구분했다. 기존 하위7페이지와 DB 연결을 유지했다. 현재 ‘구현 미착수’ 표시는 수정했고 과거 날짜별 이력은 보존했다.
-
-## 실제 검증 결과
-
-- 2026-10-23 접촉 제거 전 병목 조회(과거 기준): 자체 진단 전투 적128~129/포탑15, warm10+60프레임1회. Main Thread inclusive 평균 LateUpdate11.000ms, CG.Mask.Present7.329ms, PhotoShadow.Present6.480ms(그 안 Contact4.579/Cast1.844), 일반 Update2.379ms, Mask.Output1.771/CacheLookup1.656/OutputBatch1.311/PageProducer0.443ms. 상하위·공유 경로라 합산 금지. GPU 미측정·최적화 전후 판정 아님. [원본](../../Logs/CG_QuickCost_20261023/result.json). 제품 변경/테스트/빌드 없음. 자체 Play 종료 후 scene clean/compiling false/background false/Profiler OFF/driver true 복원.
-
-- 최신 B: 같은128적/실제15포탑·고정dt·3회에서 Draw2087.311→1948.954(**−6.628%**), SetPass458.993→319.426(**−30.407%**), native 평균36.217→30.169ms, 평균FPS27.612→33.147(**+20.047%**). 조건당542native/540실제Tick, 이벤트/최종 상태3회 일치. Editor 주입 조건의 부분 개선이며 정상30R/장시간/Player/GPU 성능 통과나 당초70%/50% 목표 달성은 아니다. [최종 분석](render_batching_20261022/b2_benchmark/analysis_shipping.json).
-- 최신 B 대상검사 **신규24+관련기존47+실제씬30R·재시작1=72개 통과**. 4종132적/15포탑·줌8.5/4.25 정지 화면은 원본 대비 차이0(Overlay HUD 미포함). 기존169개 전체를 반복하지 않았으며 검사 수를 합산해 새 전체 통과 수로 쓰지 않는다. [검사 집계](render_batching_20261022/shipping_test_summary.json), [4종 화면](render_batching_20261022/b_all_kinds_scene_pixels.json).
-- 앞선 CPU/GC 누적: Tick−38.616%·View−9.599%·Main Thread GC.Alloc/frame−61.504%, 평균FPS30.169→30.026(−0.476%)로 FPS 개선은 확인되지 않았다. EditMode127+PlayMode42=169개 통과. 보스 미존재 기본 handle의 HUD 오류도 수정했다. [누적 결과](runtime_validation_20261021/RESULTS.md). B와 조건/비교 기준이 달라 개선율을 합산하지 않는다. 최초 RT 재사용 및 동일 본체 공유의 별도 성과는 각 담당 문서와 Notion 검사 이력에 둔다.
-- B 페이지당16MiB 추가 GPU 저장공간 및 개별RT 복사 비용이 있다. 메모리 절감·전체 잔류 검증 완료가 아니다. 최종 독립 검토는 서비스 제한으로 전체 완료되지 않았으며 지적된 결함은 RED→GREEN으로 수정했다. 상세 한계는 B 정본에 보존한다.
-- 과거 B 실행 검증 종료 시 scene clean/Play stopped/compiling false, 자체 마스크GPU 객체0, 사용자 씬·설정6파일 해시 동일. Profiler driver true/Profiler OFF/background false/time1/capture0/paused false. 빈 Profiler 백업 LoadProfile의 자체 진단 오류2건은 삭제하지 않았고, 저장본4바이트를 확인해 빈 버퍼(first/last−1)로 복원했다. [종료 상태](render_batching_20261022/shipping_final_state.json), [복원](render_batching_20261022/shipping_profiler_restore.json), [사용자 해시](render_batching_20261022/shipping_user_hashes.json).
-- 최신 실제 실행은 [정상 초반120초·카운터15초 관측](normal_probe_20261023/README.md)이다. 종료 Play stopped/scene clean/compiling false·Profiler OFF/driver true/background false, 사용자 씬·설정2파일 hash3/3 동일. 재개 시 이를 현재 상태로 가정하지 말고 확인한다. 이전 `7483ff0` 인수인계 자체는 문서만 수행한 기록이다.
-- 기존 Windows64 일반 빌드 `Builds/CoreGuardian_Windows_20261022_062018/CoreGuardian.exe`는 사용자 요청으로 생성, Succeeded/오류0/경고499/35.383초이며 실행하지 않았다. **B 반영 전 빌드**다. ZIP 및 폴더 모두 보존한다. 이후 새 빌드·실행파일 실행·push는 하지 않았다. Unity CLI는 사용자 요청으로 1.0.0-beta.14 업데이트·버전 확인을 완료했으며 MCP의 beta.13 안내만 보고 다시 업데이트하지 않는다.
+- 길219개→메시2개+픽셀 민감 원본23개, 설치 표시858개→재사용 메시1개 적용. 사용자 미리보기 승인으로 동적 발밑 접촉만 제거하고 넓은 PhotoCastShadow 유지. 과거 접촉 제거60프레임 비교40.35→45.00FPS는 별도 예비 결과이며 최신 표본과 합산하지 않는다. [길](route_mesh_20261022/README.md), [설치](placement_overlay_20261023/README.md), [접촉 제거](contact_shadow_removed_20261023/README.md).
+- 마스크 RT/참조 재사용·동일 본체 공유·HUD/표시/적 본체/모델 풀링·Session 반복 비용과 B 생성 배칭은 이미 구현했다. 누적169개/당시 B 대상72개 등 충분한 검사는 새 변경/실패 없이 반복하지 않는다. B 페이지당16MiB·copyback 비용이 있어 메모리 절감/전체 잔류 통과가 아니다. [B 결과/제한](render_batching_20261022/B_RESULTS.md), [누적 CPU/GC](runtime_validation_20261021/RESULTS.md), [RT 재사용](mask_reuse_20261020/RESULTS.md), [동일 본체 공유](shared_body_mask_20261021/RESULTS.md).
+- 과거 정상 초반120초/카운터15초 관측은 최신 실행이 아니다. ToArray 충돌·고정 카운터 무효·메모리 증가/스파이크 한계를 보존한다. ProfilerRecorder.ToArray/CopyTo 충돌 경로와 capacity1 덮어쓰기 없는 옛 도구를 재사용하지 않는다. [당시 관측](normal_probe_20261023/README.md).
+- 기존 Windows64 일반 빌드 `Builds/CoreGuardian_Windows_20261022_062018/CoreGuardian.exe`와 ZIP은 **B 반영 전**, 보존한다. 당시 빌드 성공만 확인했고 실행하지 않았다. 이후 새 빌드/실행/push 없음. Unity CLI1.0.0-beta.14는 이미 설치·확인했으므로 옛 MCP 안내만 보고 재설치하지 않는다.
 
 ## 미완료와 다음 행동
 
-- 비용을 작게 끊어 진행한다. 접촉 제거의 1회60프레임 예비 개선을 정상30R·저사양60FPS 완료로 확대하지 않는다. 다음 성능 원인을 판단할 때 제거 전 Contact4.579ms를 현재 병목으로 다시 제시하지 않는다. 이미 승인된 제거·길/설치 메시를 재구현하거나 기존 검사를 이유 없이 반복하지 않는다.
+1. 실제 HEAD/diff·사용자 파일·현재 Unity 연결/씬/dirty/Play/컴파일·다른 검사부터 확인한다. 사용자 Play/다른 검사를 중단·중복하지 않는다.
+2. **원본 표시/보류 유지 상태에서 적128·타워15의 실제 비용 구분**부터 작게 진행한다. 포탄 이동/충돌/타깃 탐색, 렌더 제출·재질 전환·마스크 중 무엇이 비싼지 유효한 같은 조건의 근거를 확인한다. 최소/최대/평균FPS·frame ms·원본·한계를 보고한다. 제거 전 Contact4.579ms를 현재 병목으로 다시 제시하지 않는다. CombatB 재포장이나 기존 pooling/cache를 중복 구현하지 않는다.
+3. SpriteAtlas 재활성화·옆 보행 직접 표시 배칭은 품질/비용 근거 확보 전 보류. A·B 출력 직접 배칭/개별RT 제거도 자동 확대하지 않는다. 신규 종류/방향/부품은 소유 폴더/Resources 계약을 유지하고 별도 품질을 확인한다. 현재 코드 검사는 새 아트 승인까지 뜻하지 않는다.
+4. 정상30R 자연 플레이·장시간 부하, 유효 GPU/순수 Render Thread·Memory Profiler peak/전체 잔류, 반복 재시작·전 방향/위상/중첩/재등장·정상 조작/청취는 별도 미완료다. [기존 보스 합성 미확정9건](mask_validation_20261021/README.md)도 유지한다. D3D12 GPU Profiler 미지원/Memory Profiler package 미검출을 무효0 성과로 쓰지 않고 설치/API 변경을 자동 수행하지 않는다. 구체 CPU·해상도·배속/최대 부하 예산도 확정 전이다.
+5. 사용자 씬·설정·미추적·개인정보/분석 설정·폰트 도구 접근오류 표시는 보존한다. 현재 unstaged는 `ProjectSettings/PackageManagerSettings.asset`, `ProjectSettings/TimeManager.asset`, 범위 밖 Unity 직렬화 차이 `Assets/Art/Editor/ProjectWelcome/2d-template.png.meta`의3개이며 임의 복원/삭제/포괄 커밋하지 않는다. 전투씬 `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity` 하나 유지, YAML 직접수정 금지. 빌드·실행파일 실행·push는 별도 명시 요청 때만 한다.
 
-1. 실제 HEAD/diff·사용자 파일·연결/씬/dirty/Play/컴파일·다른 검사부터 확인한다. 사용자 Play/다른 검사를 중단·중복하지 않는다. 충분한 기존169개/최신72개 검사는 새 변경·실패·불확실성 없이 반복하지 않는다. 이번 인수인계 자체는 추가 실행 권한이 아니다.
-2. **남은 정상30R 자연 플레이·장시간 실제 부하, GPU/순수 Render Thread·Memory Profiler peak/전체 잔류 검증부터** 이어간다. 사용자 목표는 GTX750Ti·RAM4~8GB·약8~9년 전 CPU급에서 안정적60FPS다. 구체 CPU/최종 해상도·배속 예산은 확정 전이며, 현재 Ryzen5600X/RTX3070 Editor 결과를 목표기기 통과로 쓰지 않는다. 현 D3D12 Editor는 GPU Profiler 미지원, Memory Profiler package 미검출이다. 무효0을 절감으로 해석하거나 패키지 설치/그래픽 API 변경을 자동 수행하지 않는다.
-   - 초반120초는 새 변경/실패 없이 반복하지 않는다. 후속은 정상 후반30R/긴 구간을 작은 단위로 진행하고, [최신 관측](normal_probe_20261023/README.md)의 실패/계측 조건을 먼저 확인한다. ToArray/CopyTo 충돌 경로와 capacity1 덮어쓰기 없는 옛 Observe.cs를 재사용하지 않는다. 대상 객체0은 전체 메모리 잔류 통과가 아니다.
-3. 모든 방향/보행 위상·선택/피격/강화·앞뒤 중첩·재등장 효과, 실제 조작·청취, 모델 풀링 직전 버전 단독 효과는 남아 있다. 기존 보스 전체 합성 미확정9건과 원래 순간 지연도 별도 미완료다. 사용자 본 범위의 깜박임·잘림·방향 이상 없음 보고를 전체 전수 통과로 확대하지 않는다.
-4. B의 현재 제한·원본 출력·개별RT와 방어형/보스 fallback을 유지한다. **A 재검토·출력 직접 배칭·RT 제거는 미채택/후속**이며 임의 확대하지 않는다. 이미 구현한 pooling/cache를 중복 구현하지 않는다.
-5. 사용자 씬·설정·미커밋/미추적·개인정보/분석 설정·폰트 도구 접근오류 표시를 임의 복원/삭제하지 않는다. 전투씬은 `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity` 하나 유지, 씬 YAML 직접수정 금지. 빌드·실행파일 실행·push는 별도 명시 요청 때만 한다.
+## 공통 진입 문서
 
-## 필요한 정본
-
-- [최적화 규칙](OPTIMIZATION_RULES.md), [대상 QA](TARGETED_QA.md), [로컬 Git](LOCAL_GIT.md), [작업 흐름](WORKFLOW.md).
-- [최신 B 구현·실측·품질·실패/한계](render_batching_20261022/B_RESULTS.md), [CPU/GC 누적 결과](runtime_validation_20261021/RESULTS.md), [RT 재사용](mask_reuse_20261020/RESULTS.md), [동일 본체 공유·적용 제한](shared_body_mask_20261021/RESULTS.md).
-- [모델 풀/API 수명](model_pooling_20261021/README.md), [적 본체 풀](enemy_body_pool_20261021/README.md), [표시/Session 재사용](runtime_reuse_20261021/README.md), [HUD 갱신](hud_refresh_reuse_20261021/README.md), [남은 런타임 구현](remaining_runtime_20261021/README.md).
-- [기존 보스 등 미확정](mask_validation_20261021/README.md), [현재30R 기준](aggressive_30r_20261020/README.md). 원본 native `.data`·비교 소스/해시·씬 백업은 각 정본이 가리키는 `Logs/`에 보존한다. 예전 소스 교체 manifest는 중간 버전이므로 현재 파일에 무조건 복원 스크립트를 적용하지 않는다.
+[최적화 규칙](OPTIMIZATION_RULES.md), [대상 QA](TARGETED_QA.md), [로컬 Git](LOCAL_GIT.md), [작업 흐름](WORKFLOW.md), [현재30R 기준](aggressive_30r_20261020/README.md). 밸런스·아트/HUD·사운드를 실제로 다룰 때만 해당 보호 규칙을 추가로 읽는다. 상세 이력/원본은 담당 정본에 두며 옛 소스 교체 manifest를 현재 파일에 무조건 복원하지 않는다.
