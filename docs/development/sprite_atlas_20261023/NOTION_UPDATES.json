@@ -1,0 +1,105 @@
+[
+  {
+    "key": "main",
+    "id": "3df389dbfc6881bc858bce200d1bb742",
+    "command": "update_content",
+    "content_updates": [
+      {
+        "old_str": "(최신 게임 구현0fa0f47)",
+        "new_str": "(해당 변경0fa0f47)"
+      },
+      {
+        "old_str": "# 물량 성능 후속",
+        "new_str": "# 물량 성능 후속\n\n최신 게임 커밋은 `bca9dd8`입니다. SpriteAtlas 부위/마스크 호환과 추가 리소스 제작 기반은 준비했으나 **실제 패킹은 성능 악화 방향으로 보류하고 원본 표시를 유지**합니다. 적128·타워15의 짧은 최종 코드 비교는 원본 평균52.30FPS/후보43.33FPS이며 각1회 표본입니다. 상세 검사·메모리 증가·실패와 해석 한계는 <mention url=\"https://app.notion.com/p/3df389dbfc6881fc9f1bd004adfc5999\" />, 현재 채택 기준은 <mention url=\"https://app.notion.com/p/3ff389dbfc6881779abdeb5eeeb1cda4\" />에서 관리합니다."
+      }
+    ]
+  },
+  {
+    "key": "optimization",
+    "id": "3ff389dbfc6881779abdeb5eeeb1cda4",
+    "command": "update_content",
+    "content_updates": [
+      {
+        "old_str": "현재 게임 구현 0fa0f47, 로컬 인수인계 7483ff0입니다.",
+        "new_str": "이 길·설치·접촉 변경 당시 구현은0fa0f47, 당시 인수인계는7483ff0입니다. 이후 최신 게임 커밋은bca9dd8이며 현재 SpriteAtlas 판단은 위 최신 절을 따릅니다."
+      },
+      {
+        "old_str": "# 최신 반영 — <date start=\"2026-10-23\" />",
+        "new_str": "# SpriteAtlas 현재 판단 — <date start=\"2026-10-23\" />\n\n**부위/마스크 호환·제작 파이프라인은 준비했고 실제 패킹은 기본 보류했습니다.** 최신 게임 커밋은 `bca9dd8`입니다. 후보를 기본 활성으로 남기지 않고 원본 표시로 복구했으며,2개 관리 아틀라스는 Include in Build OFF/packables0입니다. 빌드 hook도 보류를 유지합니다. 같은 최종 런타임 코드의 적128·타워15/90프레임 각1회 비교에서 후보가 FPS 악화·Editor 텍스처 메모리 증가 방향을 보여 활성 근거가 부족했습니다. 단독 인과 악화율·목표기기60FPS 판정으로 확대하지 않으며 수치·원본·실패 이력은 <mention url=\"https://app.notion.com/p/3df389dbfc6881fc9f1bd004adfc5999\" />가 담당합니다.\n\n- 준비한 범위: 런타임 부위 좌표와 원본 UV 연결, 기존 B 원본 마스크 키 보존, Domain Reload OFF의 보행 캐시 초기화, 신규 적/타워 FullRect import와 폴더 기반 제작/빌드 전 동기화.\n- 품질 제한: 회전하는 옆 보행20개는 픽셀 회귀로 패킹 제외, 타워 발광/음영은 원본 샘플링 유지. 원본 PNG·넓은 그림자·효과 수/수명·사운드를 축소하지 않습니다.\n- 포탄/피격9종은 이미 CombatB.png1텍스처이므로 재포장만으로 현재 Draw가 줄지 않습니다. 스프라이트 공유와 탄환 이동/충돌/타깃 탐색 비용을 구분합니다.\n- 현재 A 보류·B 제한/원본 출력·방어형/보스 fallback 유지. 표시용 SpriteAtlas와 기존 B Texture2DArray를 혼동하지 않습니다.\n- 다음 비용 판단은 사용자가 지정한 적128·타워15의 동일 부하에서 실제 CPU/렌더 병목을 작은 범위로 확인하는 것입니다. 이미 충분한 검사를 반복하거나 임의120초 측정·품질 축소·새 빌드로 확대하지 않습니다. 정상30R·장시간·GPU/전체 잔류 검증은 별도 미완료로 유지합니다.\n- 신규 리소스 위치와 경로 계약은 <mention url=\"https://app.notion.com/p/401389dbfc6881c0b3dbec4c2050a56f\" />를 따릅니다. 이번 후보는 새 몬스터/타워 아트의 승인이나 전체 애니메이션 완성을 뜻하지 않습니다.\n\n# 길·설치 메시 및 접촉 제거 반영 — <date start=\"2026-10-23\" />"
+      },
+      {
+        "old_str": "B 구현·검증 커밋 <code>bc9c847</code>, 인수인계 <code>3c4ecb7</code>.",
+        "new_str": "B 구현·검증 기준은 <code>bc9c847</code>이며 최신 게임/아틀라스 호환·보류 기록은 <code>bca9dd8</code>입니다. 현재 재개 상태는 최신 인수인계 문서를 확인합니다."
+      }
+    ]
+  },
+  {
+    "key": "production",
+    "id": "3df389dbfc68814c9660c48290e90c78",
+    "command": "update_content",
+    "content_updates": [
+      {
+        "old_str": "대량 전투의 사전계측·최적화 후보·동등성 검증 계약. 현재 구현은 시작 전이며 사용자 결정 대기입니다.",
+        "new_str": "대량 전투의 목표·채택/보류·동등성 계약. CPU/GC와 B 등은 구현·부분 검증됐으며 최신 SpriteAtlas는 호환 기반 준비/실제 패킹 보류 상태입니다. 세부 계측과 검사 이력은 플레이테스트 및 변경 이력에서 관리합니다."
+      }
+    ]
+  },
+  {
+    "key": "directory",
+    "id": "401389dbfc6881c0b3dbec4c2050a56f",
+    "command": "update_content",
+    "content_updates": [
+      {
+        "old_str": "안내 문서1개를 추가해 현재 관리 파일은553개입니다.",
+        "new_str": "안내 문서1개를 추가한 정리 완료 당시 관리 파일은553개였습니다. 이후 아틀라스 후보2개·런타임/에디터/검사 코드3개·원본 매핑 데이터1개를 추가해,2026-10-23 최신 파일 확인은559개입니다(.meta 제외)."
+      },
+      {
+        "old_str": "현재227개 key를 보존했습니다.",
+        "new_str": "디렉터리 정리 당시 기존227개 key를 보존했습니다. 이후 신규 원본 매핑 key `CoreGuardian/SpriteAtlases/Sources`는 별도로 추가했습니다."
+      },
+      {
+        "old_str": "# 이름·경로 관리 원칙",
+        "new_str": "# 아틀라스 준비 파일 위치 — <date start=\"2026-10-23\" />\n\n- 후보 정의: `Assets/Art/Atlases/Sprites/CG_Enemies_Common_01.spriteatlasv2`, `Assets/Art/Atlases/Sprites/CG_Towers_Common_01.spriteatlasv2`.\n- 원본 매핑 데이터: `Assets/Data/Presentation/Resources/CoreGuardian/SpriteAtlases/Sources.asset`.\n- 런타임 좌표/원본 연결: `Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSpriteAtlasSources.cs`.\n- 제작/임포트/빌드 전 동기화: `Assets/Scripts/Editor/Rendering/CoreGuardianSpriteAtlasPipeline.cs`.\n- 대상 검사: `Assets/Scripts/Tests/EditMode/CoreGuardianSpriteAtlasCompatibilityTests.cs`.\n- 현재 후보2개는 Include in Build OFF/packables0입니다. 파일 존재가 실제 인게임 패킹 적용을 뜻하지 않습니다. 채택 기준은 <mention url=\"https://app.notion.com/p/3ff389dbfc6881779abdeb5eeeb1cda4\" />, 성능·검사 결과는 <mention url=\"https://app.notion.com/p/3df389dbfc6881fc9f1bd004adfc5999\" />를 따릅니다.\n- 원래 사용자 `CG_Enemies.spriteatlasv2`는 별도 보존합니다. `OriginalWalk` 옆 보행은 원본 표시를 유지하며 기존 Resources 경로/이름을 임의로 변경하지 않습니다.\n\n# 이름·경로 관리 원칙"
+      }
+    ]
+  },
+  {
+    "key": "next",
+    "id": "3f4389dbfc688171b84dc19b138925f4",
+    "command": "update_content",
+    "content_updates": [
+      {
+        "old_str": "# 현재 역할·재개 — <date start=\"2026-10-22\" />",
+        "new_str": "# 현재 역할·재개 — <date start=\"2026-10-23\" />"
+      },
+      {
+        "old_str": "최신 게임 구현0fa0f47, 인수인계7483ff0입니다.",
+        "new_str": "길·설치·접촉 변경 당시 구현은0fa0f47이며, 최신 게임 커밋은bca9dd8입니다. SpriteAtlas 호환/제작 기반은 준비했지만 후보 성능 악화 방향으로 기본 패킹은 보류하고 원본 표시로 복구했습니다. 후보를 자동 재활성화하지 않습니다."
+      },
+      {
+        "old_str": "1. <mention url=\"https://app.notion.com/p/3ff389dbfc6881779abdeb5eeeb1cda4\" />의 최신 적용 제한과 검증 결과를 기준으로 정상30R 자연 플레이·장시간 실제 적/효과 부하의 프레임 분포·최소/최대/평균FPS·CPU/GC를 확인합니다. 기존 주입 기능QA를 사람30R 완료로 해석하지 않습니다.",
+        "new_str": "1. 우선 사용자가 지정한 적128·타워15 조건에서 포탄/효과·렌더 제출·마스크 등 실제 비용을 작은 범위로 구분합니다. 이미1텍스처인 CombatB의 단순 재포장이나 보류 아틀라스를 자동 적용하지 않습니다. <mention url=\"https://app.notion.com/p/3ff389dbfc6881779abdeb5eeeb1cda4\" />의 채택 조건을 지키고, 전체 정상30R·장시간 분포 검증은 별도 단계로 유지합니다. 기존 주입 기능QA를 사람30R 완료로 해석하지 않습니다."
+      }
+    ]
+  },
+  {
+    "key": "art_detail",
+    "id": "3f3389dbfc6881d2a70be916ded8ddb7",
+    "command": "update_content",
+    "content_updates": [
+      {
+        "old_str": "# 상세 표현 기준",
+        "new_str": "# 아틀라스와 신규 리소스 제작 연결 — <date start=\"2026-10-23\" />\n\n- 원본 부위 자르기·B 마스크 연결 및 반복 Play 캐시 호환을 준비했으나 실제 아틀라스 패킹은 보류입니다. 기존 외형·방향·보행·효과 수/수명·넓은 그림자를 유지하며, 이번 코드 검사를 파생 아트 승인으로 보지 않습니다.\n- 신규 적/타워의 본체·방향 프레임·가동부는 소유 폴더에 함께 관리합니다. FullRect 입력 규칙을 유지하고 옆 보행 OriginalWalk20개는 현재 원본 표시를 유지합니다. 새 종류는 해당 방향/위상·부품을 따로 확인합니다.\n- 포탄·피격9종은 이미 CombatB.png 한 장에서 사용합니다. 기존 아트를 최적화 명목으로 재제작하거나 효과 개수/수명을 줄이지 않습니다.\n- 파일 위치와 경로 계약은 <mention url=\"https://app.notion.com/p/401389dbfc6881c0b3dbec4c2050a56f\" />, 적용/보류 판단은 <mention url=\"https://app.notion.com/p/3ff389dbfc6881779abdeb5eeeb1cda4\" />, 실제 비용·품질 검사 이력은 <mention url=\"https://app.notion.com/p/3df389dbfc6881fc9f1bd004adfc5999\" />에서 관리합니다. 이 아트 목록에는 성능 수치를 중복 관리하지 않습니다.\n\n# 상세 표현 기준"
+      }
+    ]
+  },
+  {
+    "key": "history",
+    "id": "3df389dbfc6881fc9f1bd004adfc5999",
+    "command": "insert_content",
+    "content": "# SpriteAtlas 호환 처리·후보 패킹 보류 — <date start=\"2026-10-23\" />\n\n## 현재 상태와 후보 범위\n\n로컬 게임 커밋은 `bca9dd8`, 작업 전 복구 기준은 `bf76436`입니다. 부위 자르기·B 원본 텍스처 키/UV 연결·Domain Reload OFF의 반복 Play 캐시 초기화·신규 입력 FullRect·폴더 기반 제작/빌드 전 동기화 코드는 반영했습니다. **현재 실제 패킹은 보류이며 게임은 원본 텍스처 표시입니다.** 두 관리 후보 아틀라스는 Include in Build OFF·packables0이고, 빌드 hook도 자동으로 켜지 않습니다. 적용 제한은 <mention url=\"https://app.notion.com/p/3ff389dbfc6881779abdeb5eeeb1cda4\" />, 파일 위치는 <mention url=\"https://app.notion.com/p/401389dbfc6881c0b3dbec4c2050a56f\" />가 담당합니다.\n\n- 검증한 적 후보: 기본/앞뒤 보행/BossEye36개, 1페이지1024×512. 타워 후보: 본체·고정/가동부9개, 1페이지256×256. 이 크기는 활성 후보의 검증 당시 결과이며 현재 패킹 완료 상태를 뜻하지 않습니다.\n- 회전하는 옆 보행 OriginalWalk20개는 실제4~57픽셀 차이로 제외했습니다. 타워 발광·바닥 음영도 원본 샘플링을 유지했습니다. 원본 PNG·피벗·기존 보행·넓은 그림자·효과 수/수명·사운드는 임의 축소하지 않았습니다.\n- 포탄·피격 등9종은 이미 CombatB.png 한 텍스처를 공유합니다. 재포장만으로 Draw가 감소하지 않아 추가 아틀라스를 만들지 않았습니다. 신규 전투 효과 텍스처가 늘 때의 등록 경로만 준비했습니다.\n- B의 기존 원본 배열과 방어형/보스 fallback 제한 유지. 후보45개 중40개는 기존 B 입력·5개는 기존 미지원 fallback입니다. 원본 알파와 기존 배열을 대조한 입력만 의존성 hash를 갱신했으며, 최종 전체92/92 입력 유효를 확인했습니다.\n\n## 같은 최종 런타임 코드의 짧은 비교\n\nUnity6000.6.2f1/URP Editor·1920×1080·ortho8.5·time1. 적128·실제 타워15를 모든 관측 표본에서 유지했고 warm15 뒤90프레임씩 각1회 수집했습니다. 캐시 수정 후 후보 측정, 이후 패킹만 해제한 원본 표시를 비교했습니다. 평균 FPS=표본수×1000/프레임ms합이며 spike 제외 없음.\n\n<table header-row=\"true\">\n<tr><td>지표</td><td>원본 표시 — 최종 유지</td><td>패킹 후보 — 보류</td></tr>\n<tr><td>평균 FPS</td><td>52.303</td><td>43.326</td></tr>\n<tr><td>최소 / 최대 FPS</td><td>24.173 / 62.873</td><td>25.881 / 57.703</td></tr>\n<tr><td>평균 frame ms</td><td>19.119</td><td>23.081</td></tr>\n<tr><td>Draw 평균</td><td>1577.422</td><td>1581.267</td></tr>\n<tr><td>SetPass 평균</td><td>186.111</td><td>188.556</td></tr>\n<tr><td>Editor 로드 Texture2D bytes</td><td>165110913</td><td>169825431</td></tr>\n</table>\n\n후보는 평균−8.976FPS/−17.16%, frame+3.961ms/+20.72%, Editor Texture2D+4714518bytes/약4.50MiB의 악화 방향을 관측했습니다. 동적 전투 위상·포탄 수·Editor 스케줄 변동을 분리하지 못한 각1회 표본이므로 이를 확정적인 단독 인과 효과로 표현하지 않습니다. 다만 기본 활성의 근거가 부족해 보류했습니다. GPU/순수 Render Thread 세부 비용·Player/목표기기 메모리·전체 잔류는 미측정이며 GTX750Ti 안정적60FPS 통과가 아닙니다. 이전 접촉 제거/B 실험과 FPS·절감률을 합산하지 않습니다.\n\n## 검사·실패·복구\n\n- 대상55/55 통과: 신규 호환5 + 보행21 + 타워 조준8/발광3/접지3 + 마스크2 + 아웃라인3 + 넓은 그림자10. 좌표/신규 import/반복 Play 캐시는 RED→GREEN을 확인했습니다. 전체 게임 회귀 suite가 아닙니다.\n- 후보 격리 PreviewScene Camera.Render: 적3종·타워3종×4방향24쌍,256×256/ortho2/동작 .12초에서 원본 참조 표시 대비 픽셀 차이0. 유효 렌더 픽셀을 확인했습니다. 모든 위상·정상 키 입력·전체 HUD·native 줌 전수 통과로 확대하지 않습니다.\n- 초기 Tight 입력의 투명 여백 잘림으로 보행10건 실패를 확인하고 FullRect로 수정했습니다. 옆 보행의 회전 샘플링 차이는 원본 유지로 해소했습니다.\n- 최초 적125~126 표본은 조건 불일치로 제외했습니다. 초기51.43FPS 기준·캐시 검토 전 후보52.85FPS도 보존했으며, 좋은 표본만 골라 최종 성과로 사용하지 않았습니다.\n- 후보 해제 첫 시도의 Include in Build OFF만으로는 패킹 소유권이 남아 런타임 texture 부재/부위 생성 오류가 났습니다. 자체 Play를 종료하고 packables까지 해제·입력 재임포트하는 방식으로 수정했습니다. 실패 구간은 성능 표본이 없으며, 최종 원본 표시 실행은90표본/error=null·현재 콘솔 오류0을 확인했습니다.\n- 종료 Play stopped·컴파일 완료·scene clean·원래7루트·자체 mask RT0·Profiler OFF/driver true/background false. 씬·사용자 설정2개·EditorSettings의4개 SHA256 동일. 빌드/실행파일/push 없음.\n\n## 리소스 정리와 보존 이력\n\n아틀라스 작업 전에 미사용 게임 이미지69개(약49.54MiB)를 제거하고 연결 이미지170개를 보존했습니다. 삭제 전 복구 커밋5ae39a1, 정리 완료4281424입니다. 게임 기록 캡처13개는 삭제하지 않고 문서 폴더로 이동·SHA25613/13 동일을 확인했습니다. 소리·폰트·코드·설정·프리팹·씬 삭제가 아닙니다. 이후 Assets552개 분류·551개 이동 및 디렉터리 검증은 <mention url=\"https://app.notion.com/p/401389dbfc6881c0b3dbec4c2050a56f\" />를 따릅니다. 이 정리는 FPS 개선 실험이 아닙니다.\n\n## 로컬 원본과 후속\n\n프로젝트 루트 `C:/Users/edcde/OneDrive/Desktop/CD` 아래 `docs/development/sprite_atlas_20261023/README.md`가 상세 정본입니다. 비교 원본은 `final_unpacked.json`·`after.json`, 계산은 `final_comparison.json`, 후보 픽셀은 `quality.json`, 종료 상태는 `held_final_state.json`입니다. 과거 실패·초기 표본도 같은 폴더에 보존합니다. 리소스 정리 원본은 `docs/development/resource_cleanup_20261023/README.md`와 `REUSE_CANDIDATES.md`에 있습니다. 웹 업로드된 파일로 표현하지 않습니다.\n\n후속은 <mention url=\"https://app.notion.com/p/3ff389dbfc6881779abdeb5eeeb1cda4\" />와 <mention url=\"https://app.notion.com/p/3f4389dbfc688171b84dc19b138925f4\" />를 따릅니다. 이번 Notion 최신화는 저장된 결과의 문서 반영이며 새 Unity 조작·Play·테스트·빌드·실행파일·push를 수행하지 않습니다.\n",
+    "position": {
+      "type": "start"
+    }
+  }
+]
