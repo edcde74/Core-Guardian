@@ -1,0 +1,68 @@
+[
+  {
+    "file": "01_Fortress_March.wav",
+    "seconds": 43.63635416666666,
+    "frames": 2094545,
+    "sample_rate": 48000,
+    "channels": 2,
+    "bit_depth": 16,
+    "peak_dbfs": -11.350526302559832,
+    "rms_dbfs": -21.999998972390937,
+    "clipping_samples": 0,
+    "dc_offset": [
+      -2.4448506044868934e-08,
+      -9.907618659422453e-09
+    ],
+    "seam_max_step": 0.001190185546875,
+    "seam_max_step_dbfs": -58.48770655866438,
+    "internal_step_p999": 0.008453369140625,
+    "boundary_50ms_rms_before": 0.03448655590472049,
+    "boundary_50ms_rms_after": 0.08561635098963469,
+    "sha256": "1e3047234c8ce13ff888b4bc2ed6e4308430807d3bec718a6b6ec5a6fca2e87b",
+    "passed": true
+  },
+  {
+    "file": "02_Crystal_Engine.wav",
+    "seconds": 36.92308333333333,
+    "frames": 1772308,
+    "sample_rate": 48000,
+    "channels": 2,
+    "bit_depth": 16,
+    "peak_dbfs": -9.756299383643478,
+    "rms_dbfs": -21.999999227974044,
+    "clipping_samples": 0,
+    "dc_offset": [
+      1.635816078173207e-09,
+      -7.834698058619044e-09
+    ],
+    "seam_max_step": 0.001068115234375,
+    "seam_max_step_dbfs": -59.42763781218885,
+    "internal_step_p999": 0.01287841796875,
+    "boundary_50ms_rms_before": 0.027382630789833412,
+    "boundary_50ms_rms_after": 0.11929043662837792,
+    "sha256": "24c0f19267d16858edf5359b235dece9f3fa904c997a345b067834043a19629a",
+    "passed": true
+  },
+  {
+    "file": "03_Watchline_Embers.wav",
+    "seconds": 34.28570833333333,
+    "frames": 1645714,
+    "sample_rate": 48000,
+    "channels": 2,
+    "bit_depth": 16,
+    "peak_dbfs": -10.9974395409838,
+    "rms_dbfs": -21.999999503288667,
+    "clipping_samples": 0,
+    "dc_offset": [
+      -1.1256007983085153e-08,
+      1.2850763644609574e-08
+    ],
+    "seam_max_step": 0.00042724609375,
+    "seam_max_step_dbfs": -67.3864379856296,
+    "internal_step_p999": 0.00909423828125,
+    "boundary_50ms_rms_before": 0.03679872317877735,
+    "boundary_50ms_rms_after": 0.0889970187107057,
+    "sha256": "c0b6ec082f16c2223f8adef6ec4512a153c21898da81be2955565f17382291cf",
+    "passed": true
+  }
+]

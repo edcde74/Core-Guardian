@@ -1,0 +1,2333 @@
+{
+  "title": "성채의 행진",
+  "bpm": 88,
+  "meter": "4/4",
+  "key": "D Dorian",
+  "bars": 16,
+  "loop_frames": 2094545,
+  "sample_rate": 48000,
+  "events": [
+    {
+      "bar": 1,
+      "beat": 0,
+      "midi_note": 57,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 1,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 1,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 1,
+      "beat": 0,
+      "midi_note": 38,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 1,
+      "beat": 2,
+      "midi_note": 38,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 1,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 1,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 1,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 1,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 1,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 1,
+      "beat": 0.25,
+      "midi_note": 57,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 1,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 1,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 1,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 1,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 1.25,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 1,
+      "beat": 1.5,
+      "midi_note": 65,
+      "duration_beats": 0.75,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 1,
+      "beat": 2.5,
+      "midi_note": 69,
+      "duration_beats": 1,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 2,
+      "beat": 0,
+      "midi_note": 55,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 2,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 2,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 2,
+      "beat": 0,
+      "midi_note": 36,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 2,
+      "beat": 2,
+      "midi_note": 36,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 2,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 2,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 2,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 2,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 2,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 2,
+      "beat": 0.25,
+      "midi_note": 55,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 2,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 2,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 2,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 2,
+      "beat": 0,
+      "midi_note": 67,
+      "duration_beats": 1.5,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 2,
+      "beat": 2,
+      "midi_note": 64,
+      "duration_beats": 1.25,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 3,
+      "beat": 0,
+      "midi_note": 55,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 3,
+      "beat": 0,
+      "midi_note": 59,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 3,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 3,
+      "beat": 0,
+      "midi_note": 31,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 3,
+      "beat": 2,
+      "midi_note": 31,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 3,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 3,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 3,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 3,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 3,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 3,
+      "beat": 0.25,
+      "midi_note": 55,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 3,
+      "beat": 1.25,
+      "midi_note": 59,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 3,
+      "beat": 2.25,
+      "midi_note": 62,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 3,
+      "beat": 3.25,
+      "midi_note": 59,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 3,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 0.75,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 3,
+      "beat": 1,
+      "midi_note": 64,
+      "duration_beats": 0.75,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 3,
+      "beat": 2,
+      "midi_note": 67,
+      "duration_beats": 1.5,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 4,
+      "beat": 0,
+      "midi_note": 57,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 4,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 4,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 4,
+      "beat": 0,
+      "midi_note": 38,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 4,
+      "beat": 2,
+      "midi_note": 38,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 4,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 4,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 4,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 4,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 4,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 4,
+      "beat": 0.25,
+      "midi_note": 57,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 4,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 4,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 4,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 4,
+      "beat": 0,
+      "midi_note": 65,
+      "duration_beats": 1.5,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 4,
+      "beat": 2,
+      "midi_note": 64,
+      "duration_beats": 0.75,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 4,
+      "beat": 3,
+      "midi_note": 62,
+      "duration_beats": 0.65,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 5,
+      "beat": 0,
+      "midi_note": 57,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 5,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 5,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 5,
+      "beat": 0,
+      "midi_note": 41,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 5,
+      "beat": 2,
+      "midi_note": 41,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 5,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 5,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 5,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 5,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 5,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 5,
+      "beat": 0.25,
+      "midi_note": 57,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 5,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 5,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 5,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 6,
+      "beat": 0,
+      "midi_note": 55,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 6,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 6,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 6,
+      "beat": 0,
+      "midi_note": 36,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 6,
+      "beat": 2,
+      "midi_note": 36,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 6,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 6,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 6,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 6,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 6,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 6,
+      "beat": 0.25,
+      "midi_note": 55,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 6,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 6,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 6,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 6,
+      "beat": 0,
+      "midi_note": 67,
+      "duration_beats": 1.5,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 6,
+      "beat": 2,
+      "midi_note": 64,
+      "duration_beats": 1.25,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 7,
+      "beat": 0,
+      "midi_note": 55,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 7,
+      "beat": 0,
+      "midi_note": 59,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 7,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 7,
+      "beat": 0,
+      "midi_note": 31,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 7,
+      "beat": 2,
+      "midi_note": 31,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 7,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 7,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 7,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 7,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 7,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 7,
+      "beat": 0.25,
+      "midi_note": 55,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 7,
+      "beat": 1.25,
+      "midi_note": 59,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 7,
+      "beat": 2.25,
+      "midi_note": 62,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 7,
+      "beat": 3.25,
+      "midi_note": 59,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 7,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 0.75,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 7,
+      "beat": 1,
+      "midi_note": 64,
+      "duration_beats": 0.75,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 7,
+      "beat": 2,
+      "midi_note": 67,
+      "duration_beats": 1.5,
+      "instrument": "horn",
+      "gain": 0.105,
+      "pan": 0.12
+    },
+    {
+      "bar": 7,
+      "beat": 3,
+      "midi_note": 69,
+      "duration_beats": 0.5,
+      "instrument": "crystal",
+      "gain": 0.038,
+      "pan": 0.4
+    },
+    {
+      "bar": 8,
+      "beat": 0,
+      "midi_note": 57,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 8,
+      "beat": 0,
+      "midi_note": 61,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 8,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 8,
+      "beat": 0,
+      "midi_note": 33,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 8,
+      "beat": 2,
+      "midi_note": 33,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 8,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 8,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 8,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 8,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 8,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 8,
+      "beat": 0.25,
+      "midi_note": 57,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 8,
+      "beat": 1.25,
+      "midi_note": 61,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 8,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 8,
+      "beat": 3.25,
+      "midi_note": 61,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 9,
+      "beat": 0,
+      "midi_note": 57,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 9,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 9,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 9,
+      "beat": 0,
+      "midi_note": 38,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 9,
+      "beat": 2,
+      "midi_note": 38,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 9,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 9,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 9,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 9,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 9,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 9,
+      "beat": 0.25,
+      "midi_note": 57,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 9,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 9,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 9,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 9,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 1.25,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 9,
+      "beat": 1.5,
+      "midi_note": 65,
+      "duration_beats": 0.75,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 9,
+      "beat": 2.5,
+      "midi_note": 69,
+      "duration_beats": 1,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 10,
+      "beat": 0,
+      "midi_note": 55,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 10,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 10,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 10,
+      "beat": 0,
+      "midi_note": 36,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 10,
+      "beat": 2,
+      "midi_note": 36,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 10,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 10,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 10,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 10,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 10,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 10,
+      "beat": 0.25,
+      "midi_note": 55,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 10,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 10,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 10,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 10,
+      "beat": 0,
+      "midi_note": 67,
+      "duration_beats": 1.5,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 10,
+      "beat": 2,
+      "midi_note": 64,
+      "duration_beats": 1.25,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 11,
+      "beat": 0,
+      "midi_note": 55,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 11,
+      "beat": 0,
+      "midi_note": 59,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 11,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 11,
+      "beat": 0,
+      "midi_note": 31,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 11,
+      "beat": 2,
+      "midi_note": 31,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 11,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 11,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 11,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 11,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 11,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 11,
+      "beat": 0.25,
+      "midi_note": 55,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 11,
+      "beat": 1.25,
+      "midi_note": 59,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 11,
+      "beat": 2.25,
+      "midi_note": 62,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 11,
+      "beat": 3.25,
+      "midi_note": 59,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 11,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 0.75,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 11,
+      "beat": 1,
+      "midi_note": 64,
+      "duration_beats": 0.75,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 11,
+      "beat": 2,
+      "midi_note": 67,
+      "duration_beats": 1.5,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 12,
+      "beat": 0,
+      "midi_note": 57,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 12,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 12,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 12,
+      "beat": 0,
+      "midi_note": 38,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 12,
+      "beat": 2,
+      "midi_note": 38,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 12,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 12,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 12,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 12,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 12,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 12,
+      "beat": 0.25,
+      "midi_note": 57,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 12,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 12,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 12,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 12,
+      "beat": 0,
+      "midi_note": 65,
+      "duration_beats": 1.5,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 12,
+      "beat": 2,
+      "midi_note": 64,
+      "duration_beats": 0.75,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 12,
+      "beat": 3,
+      "midi_note": 62,
+      "duration_beats": 0.65,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 13,
+      "beat": 0,
+      "midi_note": 57,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 13,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 13,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 13,
+      "beat": 0,
+      "midi_note": 41,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 13,
+      "beat": 2,
+      "midi_note": 41,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 13,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 13,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 13,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 13,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 13,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 13,
+      "beat": 0.25,
+      "midi_note": 57,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 13,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 13,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 13,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 14,
+      "beat": 0,
+      "midi_note": 55,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 14,
+      "beat": 0,
+      "midi_note": 60,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 14,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 14,
+      "beat": 0,
+      "midi_note": 36,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 14,
+      "beat": 2,
+      "midi_note": 36,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 14,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 14,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 14,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 14,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 14,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 14,
+      "beat": 0.25,
+      "midi_note": 55,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 14,
+      "beat": 1.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 14,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 14,
+      "beat": 3.25,
+      "midi_note": 60,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 14,
+      "beat": 0,
+      "midi_note": 67,
+      "duration_beats": 1.5,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 14,
+      "beat": 2,
+      "midi_note": 64,
+      "duration_beats": 1.25,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 15,
+      "beat": 0,
+      "midi_note": 55,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 15,
+      "beat": 0,
+      "midi_note": 59,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 15,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 15,
+      "beat": 0,
+      "midi_note": 31,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 15,
+      "beat": 2,
+      "midi_note": 31,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 15,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 15,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 15,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 15,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 15,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 15,
+      "beat": 0.25,
+      "midi_note": 55,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 15,
+      "beat": 1.25,
+      "midi_note": 59,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 15,
+      "beat": 2.25,
+      "midi_note": 62,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 15,
+      "beat": 3.25,
+      "midi_note": 59,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 15,
+      "beat": 0,
+      "midi_note": 62,
+      "duration_beats": 0.75,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 15,
+      "beat": 1,
+      "midi_note": 64,
+      "duration_beats": 0.75,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 15,
+      "beat": 2,
+      "midi_note": 67,
+      "duration_beats": 1.5,
+      "instrument": "flute",
+      "gain": 0.095,
+      "pan": 0.12
+    },
+    {
+      "bar": 15,
+      "beat": 3,
+      "midi_note": 69,
+      "duration_beats": 0.5,
+      "instrument": "crystal",
+      "gain": 0.038,
+      "pan": 0.4
+    },
+    {
+      "bar": 16,
+      "beat": 0,
+      "midi_note": 57,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": -0.45
+    },
+    {
+      "bar": 16,
+      "beat": 0,
+      "midi_note": 61,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.35
+    },
+    {
+      "bar": 16,
+      "beat": 0,
+      "midi_note": 64,
+      "duration_beats": 3.7,
+      "instrument": "pad",
+      "gain": 0.072,
+      "pan": 0.05
+    },
+    {
+      "bar": 16,
+      "beat": 0,
+      "midi_note": 33,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 16,
+      "beat": 2,
+      "midi_note": 33,
+      "duration_beats": 1.45,
+      "instrument": "bass",
+      "gain": 0.17,
+      "pan": 0
+    },
+    {
+      "bar": 16,
+      "beat": 0,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.105,
+      "pan": -0.08
+    },
+    {
+      "bar": 16,
+      "beat": 1.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 16,
+      "beat": 2.5,
+      "midi_note": 0,
+      "duration_beats": 0.12,
+      "instrument": "tom",
+      "gain": 0.058,
+      "pan": -0.08
+    },
+    {
+      "bar": 16,
+      "beat": 1,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 16,
+      "beat": 3,
+      "midi_note": 0,
+      "duration_beats": 0.1,
+      "instrument": "snare",
+      "gain": 0.042,
+      "pan": 0.1
+    },
+    {
+      "bar": 16,
+      "beat": 0.25,
+      "midi_note": 57,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 16,
+      "beat": 1.25,
+      "midi_note": 61,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 16,
+      "beat": 2.25,
+      "midi_note": 64,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    },
+    {
+      "bar": 16,
+      "beat": 3.25,
+      "midi_note": 61,
+      "duration_beats": 0.6,
+      "instrument": "pluck",
+      "gain": 0.048,
+      "pan": -0.35
+    }
+  ]
+}

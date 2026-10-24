@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"Summary\": {\n    \"Total\": 4,\n    \"Passed\": 4,\n    \"Failed\": 0,\n    \"Skipped\": 0,\n    \"Inconclusive\": 0\n  },\n  \"Results\": [\n    {\n      \"FullName\": \"CoreGuardianSpriteBatchingTests.HitFlashThenRestoreRetainsBatchingMaterialAndPropertyBlock\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0290296,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteBatchingTests.ReleaseDoesNotOverwriteNewOwnerMaterial\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.001071,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteBatchingTests.SupportedUnlitUsesOneSharedMapping_PreservesSourceProperties\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0027106,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteBatchingTests.UnknownOrLitMaterialReturnsOriginal\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.001508,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ],\n  \"Duration\": 3.71,\n  \"StatusPath\": null,\n  \"Mode\": \"EditMode\",\n  \"FilterApplied\": \"testname: CoreGuardianSpriteBatchingTests\",\n  \"success\": true,\n  \"result\": null\n}"
+    }
+  ]
+}

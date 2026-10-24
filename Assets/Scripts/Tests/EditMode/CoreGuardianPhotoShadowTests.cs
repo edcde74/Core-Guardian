@@ -3,9 +3,49 @@ using System.Linq;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.TestTools.Constraints;
+using Is = UnityEngine.TestTools.Constraints.Is;
 
 public class CoreGuardianPhotoShadowTests
 {
+    [TestCase("Attack","enemy_attack")][TestCase("Defense","enemy_defense")]
+    public void WarmStableShadowPresentationDoesNotAllocate(string role,string prefab)
+    {
+        var root=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Gameplay/Units/"+prefab+".prefab"));
+        try
+        {
+            var type=Type("CoreGuardianPhotoShadow");var shadow=type.GetMethod("Attach").Invoke(null,new object[]{root,role});
+            var present=(Action<Camera>)Delegate.CreateDelegate(typeof(Action<Camera>),shadow,type.GetMethod("Present"));
+            for(int i=0;i<3;i++)present(null);
+            Assert.That((TestDelegate)(()=>present(null)),Is.Not.AllocatingGCMemory());
+        }
+        finally{DestroyOwned(root);}
+    }
+    [Test]
+    public void SuppressionRefreshesForStructureInvalidationAndReuse()
+    {
+        var root=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Gameplay/Units/enemy_defense.prefab"));
+        var outside=new GameObject("Outside owner");
+        try
+        {
+            var type=Type("CoreGuardianPhotoShadow");var shadow=(Behaviour)type.GetMethod("Attach").Invoke(null,new object[]{root,"Defense"});
+            var present=(Action<Camera>)Delegate.CreateDelegate(typeof(Action<Camera>),shadow,type.GetMethod("Present"));
+            var invalidate=(Action)Delegate.CreateDelegate(typeof(Action),shadow,type.GetMethod("InvalidateSources"));
+            var added=new GameObject("접촉 그림자").AddComponent<SpriteRenderer>();added.transform.SetParent(root.transform,false);
+            present(null);Assert.That(added.enabled,Is.False,"New child must be classified automatically");
+            added.enabled=true;added.gameObject.SetActive(false);present(null);Assert.That(added.enabled,Is.False,"Inactive old shadows must also stay suppressed");
+            added.gameObject.SetActive(true);added.transform.SetParent(outside.transform,false);added.enabled=true;present(null);Assert.That(added.enabled,Is.True,"Removed renderer belongs to another owner");
+            var renamed=new GameObject("Not a shadow").AddComponent<SpriteRenderer>();renamed.transform.SetParent(root.transform,false);present(null);Assert.That(renamed.enabled,Is.True);
+            renamed.name="바깥 그림자";invalidate();present(null);Assert.That(renamed.enabled,Is.False,"Explicit invalidation refreshes name classification");
+            renamed.name="Body detail";renamed.enabled=true;invalidate();present(null);Assert.That(renamed.enabled,Is.True);
+            // Non-ExecuteAlways EditMode objects need explicit lifecycle delivery, like DestroyOwned below.
+            var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
+            shadow.enabled=false;type.GetMethod("OnDisable",flags).Invoke(shadow,null);
+            renamed.name="짧은 투사 그림자";shadow.enabled=true;type.GetMethod("OnEnable",flags).Invoke(shadow,null);
+            present(null);Assert.That(renamed.enabled,Is.False,"Reused owner must refresh names");
+        }
+        finally{DestroyOwned(root);UnityEngine.Object.DestroyImmediate(outside);}
+    }
     static void DestroyOwned(GameObject root)
     {
         // EditMode-created, non-ExecuteAlways components need explicit native cleanup.

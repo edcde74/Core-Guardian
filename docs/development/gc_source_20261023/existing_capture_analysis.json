@@ -1,0 +1,113 @@
+[
+  {
+    "label": "baseline",
+    "samples": 90,
+    "allocatedTotalBytes": 23703158,
+    "allocatedMeanBytes": 263368.4222222222,
+    "allocatedMedianBytes": 127104.5,
+    "over1MBFrames": [
+      {
+        "index": 0,
+        "frame": 17,
+        "allocatedBytes": 3937089,
+        "wallMs": 22.6714999998876,
+        "projectiles": 36,
+        "emphasisPresentMs": 6.0775
+      },
+      {
+        "index": 1,
+        "frame": 18,
+        "allocatedBytes": 3896493,
+        "wallMs": 46.415100000558596,
+        "projectiles": 36,
+        "emphasisPresentMs": 9.2296
+      }
+    ],
+    "over1MBTotalBytes": 7833582,
+    "over1MBSharePercent": 33.0486849051928,
+    "remainingMeanBytes": 180336.0909090909,
+    "note": "Threshold only groups the distribution; no samples removed from original FPS or allocation averages. Not GC pause evidence."
+  },
+  {
+    "label": "candidate",
+    "samples": 90,
+    "allocatedTotalBytes": 31689361,
+    "allocatedMeanBytes": 352104.0111111111,
+    "allocatedMedianBytes": 127151.5,
+    "over1MBFrames": [
+      {
+        "index": 63,
+        "frame": 80,
+        "allocatedBytes": 3674593,
+        "wallMs": 30.816499999673397,
+        "projectiles": 0,
+        "emphasisPresentMs": 7.5699
+      },
+      {
+        "index": 64,
+        "frame": 81,
+        "allocatedBytes": 6220777,
+        "wallMs": 67.75920000018232,
+        "projectiles": 0,
+        "emphasisPresentMs": 6.3098
+      },
+      {
+        "index": 65,
+        "frame": 82,
+        "allocatedBytes": 7386844,
+        "wallMs": 27.530100000149105,
+        "projectiles": 0,
+        "emphasisPresentMs": 5.2196
+      }
+    ],
+    "over1MBTotalBytes": 17282214,
+    "over1MBSharePercent": 54.53632845420897,
+    "remainingMeanBytes": 165599.3908045977,
+    "note": "Threshold only groups the distribution; no samples removed from original FPS or allocation averages. Not GC pause evidence."
+  },
+  {
+    "label": "candidate_active",
+    "samples": 90,
+    "allocatedTotalBytes": 31582809,
+    "allocatedMeanBytes": 350920.1,
+    "allocatedMedianBytes": 126910.0,
+    "over1MBFrames": [
+      {
+        "index": 32,
+        "frame": 49,
+        "allocatedBytes": 5665830,
+        "wallMs": 18.198599999777798,
+        "projectiles": 0,
+        "emphasisPresentMs": 4.6879
+      },
+      {
+        "index": 35,
+        "frame": 52,
+        "allocatedBytes": 5515382,
+        "wallMs": 23.2679000000644,
+        "projectiles": 0,
+        "emphasisPresentMs": 7.9806
+      },
+      {
+        "index": 37,
+        "frame": 54,
+        "allocatedBytes": 4152630,
+        "wallMs": 48.25979999986885,
+        "projectiles": 0,
+        "emphasisPresentMs": 5.0338
+      },
+      {
+        "index": 38,
+        "frame": 55,
+        "allocatedBytes": 1672995,
+        "wallMs": 18.822000000000116,
+        "projectiles": 0,
+        "emphasisPresentMs": 4.8653
+      }
+    ],
+    "over1MBTotalBytes": 17006837,
+    "over1MBSharePercent": 53.84839898186384,
+    "remainingMeanBytes": 169488.0465116279,
+    "note": "Threshold only groups the distribution; no samples removed from original FPS or allocation averages. Not GC pause evidence."
+  }
+]

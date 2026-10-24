@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"status\": \"completed\",\n  \"duration\": 0.7,\n  \"summary\": {\n    \"total\": 3,\n    \"passed\": 3,\n    \"failed\": 0,\n    \"skipped\": 0,\n    \"inconclusive\": 0\n  },\n  \"results\": [\n    {\n      \"FullName\": \"CoreGuardianSelectionOutlineTests.CachedPartsIncludeInactiveDirections_AndRefreshWhenHierarchyChanges\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0271537,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSelectionOutlineTests.GpuMaskUnitesOverlappingParts_AndOutlineLeavesInteriorClear(False)\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.2484517,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSelectionOutlineTests.GpuMaskUnitesOverlappingParts_AndOutlineLeavesInteriorClear(True)\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.2505313,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ]\n}"
+    }
+  ]
+}

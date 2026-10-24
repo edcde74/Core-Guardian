@@ -1,0 +1,5315 @@
+{
+  "label": "baseline",
+  "frames": [
+    {
+      "frame": 17,
+      "gap": 1,
+      "ms": 22.041600000193284,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1620,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 21820000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125749
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 169
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1445
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 176
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 6223500
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1116100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1679200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1638500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 7484800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 909100
+        }
+      }
+    },
+    {
+      "frame": 18,
+      "gap": 1,
+      "ms": 22.223699999813107,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1620,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22410600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127732
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 175
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1445
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4127800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1005600
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1622800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1584000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5109700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 906800
+        }
+      }
+    },
+    {
+      "frame": 19,
+      "gap": 1,
+      "ms": 24.205200000324112,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1592,
+      "setpass": 180,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19103700
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 135569
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 175
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1445
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4288800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1015900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1621600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1583800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5263400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 917400
+        }
+      }
+    },
+    {
+      "frame": 20,
+      "gap": 1,
+      "ms": 25.857800000267162,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1592,
+      "setpass": 180,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 31003000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 219959
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 175
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1417
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4443800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1342600
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 2649800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 2598600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5497000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1064600
+        }
+      }
+    },
+    {
+      "frame": 21,
+      "gap": 1,
+      "ms": 16.946099999586295,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1592,
+      "setpass": 180,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 16992400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126617
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 175
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1417
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3810100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 957700
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1638900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1602600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4683300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 739000
+        }
+      }
+    },
+    {
+      "frame": 22,
+      "gap": 1,
+      "ms": 114.83510000016395,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1729,
+      "setpass": 241,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 111234600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 473215
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 175
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1417
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4038500
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1024100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1658600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1620100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4991800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1102700
+        }
+      }
+    },
+    {
+      "frame": 23,
+      "gap": 1,
+      "ms": 36.024799999722745,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1729,
+      "setpass": 241,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 37867600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 292736
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 226
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1503
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 241
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4065200
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 998900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1612900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1576200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5002800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 891800
+        }
+      }
+    },
+    {
+      "frame": 24,
+      "gap": 1,
+      "ms": 27.081700000053388,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1581,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 28730900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 132615
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1402
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 6356100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1036000
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1681800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1641200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 7391900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 756200
+        }
+      }
+    },
+    {
+      "frame": 25,
+      "gap": 1,
+      "ms": 27.372999999897729,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1683,
+      "setpass": 199,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 27246500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 132947
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 190
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1493
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 199
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 6893500
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 933000
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1499400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1467700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 7947500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 900600
+        }
+      }
+    },
+    {
+      "frame": 26,
+      "gap": 1,
+      "ms": 44.5041000002675,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1587,
+      "setpass": 187,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 44618400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 130158
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1402
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 187
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 6603600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1024400
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1602300
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1565100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 7683400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 885600
+        }
+      }
+    },
+    {
+      "frame": 27,
+      "gap": 1,
+      "ms": 42.038300000058371,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1790,
+      "setpass": 298,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 41763700
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127581
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 287
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1503
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 298
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4292700
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1110500
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 2026800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1984500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5204900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1008100
+        }
+      }
+    },
+    {
+      "frame": 28,
+      "gap": 1,
+      "ms": 32.889799999793468,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 27,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1587,
+      "setpass": 187,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 29404800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 219131
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 228
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1503
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 239
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4251000
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1003700
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1623100
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1586800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5242200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 903600
+        }
+      }
+    },
+    {
+      "frame": 29,
+      "gap": 1,
+      "ms": 37.607600000228558,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 24,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1591,
+      "setpass": 206,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 38177100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 466055
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1402
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 187
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 5302100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1123600
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1742900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1701400
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 6488500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 948800
+        }
+      }
+    },
+    {
+      "frame": 30,
+      "gap": 1,
+      "ms": 31.547499999760475,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 18,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1591,
+      "setpass": 221,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 31469200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 313434
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 204
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1387
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 206
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3946700
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1013200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1737900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1701400
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4867200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 990500
+        }
+      }
+    },
+    {
+      "frame": 31,
+      "gap": 1,
+      "ms": 30.717300000105752,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 12,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1591,
+      "setpass": 221,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 30903900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 304948
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 219
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1372
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 221
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3858600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1023900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1807200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1767000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4740700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 945600
+        }
+      }
+    },
+    {
+      "frame": 32,
+      "gap": 1,
+      "ms": 25.343899999825226,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 12,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1591,
+      "setpass": 221,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 28462900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 221482
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 219
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1372
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 221
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4014700
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 964100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1575400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1536600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4871700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 770900
+        }
+      }
+    },
+    {
+      "frame": 33,
+      "gap": 1,
+      "ms": 17.282900000282098,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 12,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1597,
+      "setpass": 227,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17249700
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126819
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 219
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1372
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 221
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3776200
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 926800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1557200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1523700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4652900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 704000
+        }
+      }
+    },
+    {
+      "frame": 34,
+      "gap": 1,
+      "ms": 24.06059999975696,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 6,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1594,
+      "setpass": 212,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 20774800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 212446
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 225
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1372
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 227
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4030600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 944300
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1495800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1460100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4971800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 758300
+        }
+      }
+    },
+    {
+      "frame": 35,
+      "gap": 1,
+      "ms": 25.175499999932072,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 6,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1578,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 28412900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 219627
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 210
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1384
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 212
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3830500
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 953100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1543500
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1508900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4694300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 905500
+        }
+      }
+    },
+    {
+      "frame": 36,
+      "gap": 1,
+      "ms": 18.167000000175904,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 6,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1594,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18158000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127174
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3936600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 973100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1648000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1611900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4846400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 732200
+        }
+      }
+    },
+    {
+      "frame": 37,
+      "gap": 1,
+      "ms": 28.797900000427035,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1584,
+      "setpass": 187,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 25679900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 713157
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1414
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4019900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 988800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1574200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1538500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4980200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 882800
+        }
+      }
+    },
+    {
+      "frame": 38,
+      "gap": 1,
+      "ms": 26.020099999186641,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1584,
+      "setpass": 187,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 29194000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 220101
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 187
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3921600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 954600
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1652700
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1612200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4765200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 769000
+        }
+      }
+    },
+    {
+      "frame": 39,
+      "gap": 1,
+      "ms": 16.849400000864989,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1584,
+      "setpass": 187,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 16790800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126635
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3878100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 948600
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1579600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1542500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4765300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 711000
+        }
+      }
+    },
+    {
+      "frame": 40,
+      "gap": 1,
+      "ms": 23.658599999180296,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1578,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 23662600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126871
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 187
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4078600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 950800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1553600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1518100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4991000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 809200
+        }
+      }
+    },
+    {
+      "frame": 41,
+      "gap": 1,
+      "ms": 20.88610000009794,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1575,
+      "setpass": 187,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17741200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127790
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3844600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 924400
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1529200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1496700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4739600
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 727600
+        }
+      }
+    },
+    {
+      "frame": 42,
+      "gap": 1,
+      "ms": 22.555100000317907,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1569,
+      "setpass": 188,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22396400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 221587
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1390
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 187
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3946300
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 926100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1520500
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1487100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4805700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 701800
+        }
+      }
+    },
+    {
+      "frame": 43,
+      "gap": 1,
+      "ms": 19.615299999713898,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1569,
+      "setpass": 188,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22921100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 219944
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1384
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 188
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3808100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 979000
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1661200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1621000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4652300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 802200
+        }
+      }
+    },
+    {
+      "frame": 44,
+      "gap": 1,
+      "ms": 21.287800000209245,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1573,
+      "setpass": 183,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17647400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126818
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3830100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 921900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1543500
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1508000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4677900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 699300
+        }
+      }
+    },
+    {
+      "frame": 45,
+      "gap": 1,
+      "ms": 23.006499999610242,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1573,
+      "setpass": 183,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 26671900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 220851
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1393
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 183
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4839300
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 921500
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1499200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1464200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5714000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 800800
+        }
+      }
+    },
+    {
+      "frame": 46,
+      "gap": 1,
+      "ms": 18.067000000883127,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1573,
+      "setpass": 183,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17980200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 134962
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1393
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 183
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3979000
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1009200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1638200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1597800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4915400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 843600
+        }
+      }
+    },
+    {
+      "frame": 47,
+      "gap": 1,
+      "ms": 26.243799999974726,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1672,
+      "setpass": 217,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22953400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127190
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1393
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 183
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3768800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 898300
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1521900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1487500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4622300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 803200
+        }
+      }
+    },
+    {
+      "frame": 48,
+      "gap": 1,
+      "ms": 26.0653999994247,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 177,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 29319600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 219363
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 205
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1467
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 217
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3832900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 907600
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1510700
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1476400
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4663100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 952800
+        }
+      }
+    },
+    {
+      "frame": 49,
+      "gap": 1,
+      "ms": 21.258200000374927,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1567,
+      "setpass": 183,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 21263500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126623
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 174
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1387
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 177
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4329100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1066100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1690600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1650600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5363900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1086400
+        }
+      }
+    },
+    {
+      "frame": 50,
+      "gap": 1,
+      "ms": 23.310900000069523,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 20087600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127610
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1387
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 183
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4182600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1137800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1787500
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1744800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5247800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 964600
+        }
+      }
+    },
+    {
+      "frame": 51,
+      "gap": 1,
+      "ms": 21.670499999345338,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 24928600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 219686
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4170900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1028900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1618700
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1581100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5157300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 950400
+        }
+      }
+    },
+    {
+      "frame": 52,
+      "gap": 1,
+      "ms": 19.886300000507617,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1589,
+      "setpass": 198,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19700300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127335
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3936900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1125400
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1980700
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1935600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4887200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 948400
+        }
+      }
+    },
+    {
+      "frame": 53,
+      "gap": 1,
+      "ms": 20.04419999957463,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1606,
+      "setpass": 203,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 20182100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126571
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 190
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 198
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4193100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 975700
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1559500
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1525700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5150000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1244100
+        }
+      }
+    },
+    {
+      "frame": 54,
+      "gap": 1,
+      "ms": 19.882399999914924,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19701100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126627
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 192
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1414
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 203
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4128700
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1062300
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1715400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1676500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5142000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 921500
+        }
+      }
+    },
+    {
+      "frame": 55,
+      "gap": 1,
+      "ms": 20.839800000430841,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 20955600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126755
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4112100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1013800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1632800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1596000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5104300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 907600
+        }
+      }
+    },
+    {
+      "frame": 56,
+      "gap": 1,
+      "ms": 19.189900000128546,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19291000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 134598
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4226600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1068000
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1851000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1811500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5193400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 770700
+        }
+      }
+    },
+    {
+      "frame": 57,
+      "gap": 1,
+      "ms": 24.972299999717507,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1674,
+      "setpass": 259,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 24978500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127331
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4346300
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1052700
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1669900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1629300
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5378900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1060600
+        }
+      }
+    },
+    {
+      "frame": 58,
+      "gap": 1,
+      "ms": 18.768799999634211,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18620100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126971
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 241
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1433
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 259
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4069200
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 952000
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1533200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1500900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5016400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 795600
+        }
+      }
+    },
+    {
+      "frame": 59,
+      "gap": 1,
+      "ms": 18.387200000688608,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1689,
+      "setpass": 286,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18504400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126431
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4010000
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 913100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1529100
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1494700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4913600
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 924800
+        }
+      }
+    },
+    {
+      "frame": 60,
+      "gap": 1,
+      "ms": 18.831599999430182,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1567,
+      "setpass": 186,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18818500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126571
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 275
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1414
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 286
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4024900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 998400
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1699800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1659900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4941700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 728400
+        }
+      }
+    },
+    {
+      "frame": 61,
+      "gap": 1,
+      "ms": 18.25009999993199,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18145200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126571
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1385
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 186
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3760900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 933200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1550900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1514300
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4627400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 780300
+        }
+      }
+    },
+    {
+      "frame": 62,
+      "gap": 1,
+      "ms": 19.2603000004965,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19401100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 128213
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3958000
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 943600
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1546700
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1512000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4872000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 797200
+        }
+      }
+    },
+    {
+      "frame": 63,
+      "gap": 1,
+      "ms": 20.497399999840127,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 20515500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126302
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4435700
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1091500
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1724400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1684000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5483000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1010600
+        }
+      }
+    },
+    {
+      "frame": 64,
+      "gap": 1,
+      "ms": 27.882700000191107,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 27863300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127611
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 6219200
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1157500
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1749000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1705300
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 7428600
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 955600
+        }
+      }
+    },
+    {
+      "frame": 65,
+      "gap": 1,
+      "ms": 34.43150000020978,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1638,
+      "setpass": 235,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 34400900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125867
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 224
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1414
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 235
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 8121800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 2690800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 2620000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 2553500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 11759800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1275500
+        }
+      }
+    },
+    {
+      "frame": 66,
+      "gap": 1,
+      "ms": 19.557300000087707,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19287500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 134698
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 174
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 176
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3939000
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 998700
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1631800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1593200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4859900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 758600
+        }
+      }
+    },
+    {
+      "frame": 67,
+      "gap": 1,
+      "ms": 19.826599999760219,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 20085300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126059
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3728800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 951900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1586500
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1550600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4592000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 943800
+        }
+      }
+    },
+    {
+      "frame": 68,
+      "gap": 1,
+      "ms": 17.516400000204158,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17543400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126661
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3786600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 944200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1575400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1540100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4663100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 728800
+        }
+      }
+    },
+    {
+      "frame": 69,
+      "gap": 1,
+      "ms": 24.391999999352265,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1602,
+      "setpass": 199,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 24245800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125919
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3981300
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 950300
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1551300
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1516500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4877800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 871800
+        }
+      }
+    },
+    {
+      "frame": 70,
+      "gap": 1,
+      "ms": 20.559300000059011,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 20603200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126147
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 188
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1414
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 199
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3785700
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1066600
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1865100
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1825200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4654300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 827100
+        }
+      }
+    },
+    {
+      "frame": 71,
+      "gap": 1,
+      "ms": 19.843500000206404,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1564,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19873400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126984
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4674000
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1055000
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1814100
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1776300
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5679000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 885000
+        }
+      }
+    },
+    {
+      "frame": 72,
+      "gap": 1,
+      "ms": 19.240599999648111,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18842300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126155
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1384
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3977800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 970900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1553600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1516200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4915700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 898900
+        }
+      }
+    },
+    {
+      "frame": 73,
+      "gap": 1,
+      "ms": 26.427300000250398,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 23312900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127494
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4429100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1115800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1743200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1701300
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5520800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1180300
+        }
+      }
+    },
+    {
+      "frame": 74,
+      "gap": 1,
+      "ms": 22.090100000241364,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 25403000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 218650
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4217500
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1053400
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1678100
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1637700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5216600
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 907700
+        }
+      }
+    },
+    {
+      "frame": 75,
+      "gap": 1,
+      "ms": 26.971600000251783,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 27182500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126214
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4624800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1044800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1625700
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1587000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5685600
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 945300
+        }
+      }
+    },
+    {
+      "frame": 76,
+      "gap": 1,
+      "ms": 27.059999999437423,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1581,
+      "setpass": 190,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 27042400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 134103
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 190
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1414
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 201
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4925900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1089700
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1702000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1662000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 6028000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1100300
+        }
+      }
+    },
+    {
+      "frame": 77,
+      "gap": 1,
+      "ms": 21.127200000591984,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 20978200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 127054
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 190
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4326300
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1141300
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1868400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1827200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5371100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1006100
+        }
+      }
+    },
+    {
+      "frame": 78,
+      "gap": 1,
+      "ms": 18.679299999348586,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1582,
+      "setpass": 193,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18801400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126167
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3910400
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1003800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1637400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1600200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4823400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 779700
+        }
+      }
+    },
+    {
+      "frame": 79,
+      "gap": 1,
+      "ms": 19.0628000000288,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18996700
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126372
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 186
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1396
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 193
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3793300
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 987100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1640500
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1604000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4667700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 820600
+        }
+      }
+    },
+    {
+      "frame": 80,
+      "gap": 1,
+      "ms": 21.856800000023213,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18657500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126332
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4114900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 951300
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1536300
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1501900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5067700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 765700
+        }
+      }
+    },
+    {
+      "frame": 81,
+      "gap": 1,
+      "ms": 23.043899999720452,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 23403300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 218987
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3996600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1037400
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1802400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1764200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4882300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 921700
+        }
+      }
+    },
+    {
+      "frame": 82,
+      "gap": 1,
+      "ms": 22.399700000278244,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22197800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 220598
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4104100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 946200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1515600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1481800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4982700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 749200
+        }
+      }
+    },
+    {
+      "frame": 83,
+      "gap": 1,
+      "ms": 18.829800000276009,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 21950200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 218699
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3800100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 901200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1505000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1471200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4625300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 799300
+        }
+      }
+    },
+    {
+      "frame": 84,
+      "gap": 1,
+      "ms": 24.783699999716191,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 24578900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126214
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4043900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1014800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1591200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1554700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5007500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 896200
+        }
+      }
+    },
+    {
+      "frame": 85,
+      "gap": 1,
+      "ms": 24.213600000621227,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1565,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 24349900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126309
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 177
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1388
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3903700
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 979800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1565900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1529600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4844500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 887100
+        }
+      }
+    },
+    {
+      "frame": 86,
+      "gap": 1,
+      "ms": 21.306599999661557,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18375100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 134721
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 174
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 176
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3901800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 952300
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1580400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1543700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4777100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 863800
+        }
+      }
+    },
+    {
+      "frame": 87,
+      "gap": 1,
+      "ms": 19.143200000144134,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1561,
+      "setpass": 182,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22016100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 219291
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3778800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 894100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1502600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1468400
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4587400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 773700
+        }
+      }
+    },
+    {
+      "frame": 88,
+      "gap": 1,
+      "ms": 20.5630000000383,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1587,
+      "setpass": 196,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17516000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126463
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 180
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 182
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3725200
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 968300
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1638800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1601100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4567200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 827200
+        }
+      }
+    },
+    {
+      "frame": 89,
+      "gap": 1,
+      "ms": 22.568599999431171,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 25682400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 219206
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 188
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1399
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 196
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4089500
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1062200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1796800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1756100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5006100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 840900
+        }
+      }
+    },
+    {
+      "frame": 90,
+      "gap": 1,
+      "ms": 17.894800000249234,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17882400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126115
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3914000
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 926800
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1523000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1488300
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4787300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 972500
+        }
+      }
+    },
+    {
+      "frame": 91,
+      "gap": 1,
+      "ms": 16.529200000150013,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1575,
+      "setpass": 190,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 16551100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125867
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3699600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 891400
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1525600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1491600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4529700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 707400
+        }
+      }
+    },
+    {
+      "frame": 92,
+      "gap": 1,
+      "ms": 18.06269999997312,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1575,
+      "setpass": 190,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18085100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126389
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1390
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 190
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3906100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 981200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1639900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1602100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4780900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 983600
+        }
+      }
+    },
+    {
+      "frame": 93,
+      "gap": 1,
+      "ms": 17.062500000065484,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 16937800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126003
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1390
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 190
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3821500
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 918700
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1472400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1439700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4727500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 869700
+        }
+      }
+    },
+    {
+      "frame": 94,
+      "gap": 1,
+      "ms": 18.02270000007411,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18089900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126134
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4203300
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 964000
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1512500
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1475900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5136700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 758400
+        }
+      }
+    },
+    {
+      "frame": 95,
+      "gap": 1,
+      "ms": 16.811200000120152,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 16881600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125355
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3811900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 954100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1568000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1533800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4696700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 693200
+        }
+      }
+    },
+    {
+      "frame": 96,
+      "gap": 1,
+      "ms": 22.920099999282684,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22826300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125355
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3858200
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1112100
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1917600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1877000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4765700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 792000
+        }
+      }
+    },
+    {
+      "frame": 97,
+      "gap": 1,
+      "ms": 23.562600000332168,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1626,
+      "setpass": 223,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 23521100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 133591
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 212
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1414
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 223
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3938100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 920200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1507300
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1470500
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4811200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 884800
+        }
+      }
+    },
+    {
+      "frame": 98,
+      "gap": 1,
+      "ms": 17.367600000397942,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17225400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 128069
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 199
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1414
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 210
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3819000
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 859700
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1647000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1612700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4572100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 739100
+        }
+      }
+    },
+    {
+      "frame": 99,
+      "gap": 1,
+      "ms": 19.210899999961839,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19298000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126410
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4162600
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 987200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1565400
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1528400
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5136500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 858200
+        }
+      }
+    },
+    {
+      "frame": 100,
+      "gap": 1,
+      "ms": 19.08000000003085,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19088900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125613
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3968800
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 983500
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1700800
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1661600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4866900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 870600
+        }
+      }
+    },
+    {
+      "frame": 101,
+      "gap": 1,
+      "ms": 18.473899999662535,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1560,
+      "setpass": 181,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 18470300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125891
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 4040100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1061200
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1693600
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1657000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 5024500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 767000
+        }
+      }
+    },
+    {
+      "frame": 102,
+      "gap": 1,
+      "ms": 21.271300000080373,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 21,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1597,
+      "setpass": 185,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19378300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 145491
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1381
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 181
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3969100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1033500
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 2020900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1982900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4944200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 818000
+        }
+      }
+    },
+    {
+      "frame": 103,
+      "gap": 1,
+      "ms": 17.981099999815342,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 21,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1597,
+      "setpass": 185,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 19928000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125491
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1418
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3878900
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 908000
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1489000
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1454200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4718600
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 742200
+        }
+      }
+    },
+    {
+      "frame": 104,
+      "gap": 1,
+      "ms": 17.464300000028743,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 21,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1597,
+      "setpass": 185,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 17530200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 126064
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1418
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3983200
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 963500
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1575200
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1538700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4877800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 849400
+        }
+      }
+    },
+    {
+      "frame": 105,
+      "gap": 1,
+      "ms": 22.91849999983242,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 21,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1597,
+      "setpass": 185,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22858000
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125795
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1418
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 185
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3918100
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 918900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1485900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1437600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4818700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 877500
+        }
+      }
+    },
+    {
+      "frame": 106,
+      "gap": 1,
+      "ms": 22.799400000621972,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 21,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 1591,
+      "setpass": 179,
+      "counters": {
+        "Main Thread": {
+          "valid": true,
+          "value": 22750800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 125331
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 173
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 1418
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 179
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3982200
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1012900
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1679900
+        },
+        "CG.PhotoShadow.Cast": {
+          "valid": true,
+          "value": 1640800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4883800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 760300
+        }
+      }
+    }
+  ]
+}

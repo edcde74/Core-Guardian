@@ -6,10 +6,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 using TMPro;
+using Unity.Profiling;
 
 // Runtime HUD with shared sprite frames and live Korean labels.
 public sealed partial class CoreGuardianHud : MonoBehaviour
 {
+    static readonly ProfilerMarker prepareDamageNumbersSample=new ProfilerMarker("CG.HUD.PrepareDamageNumbers");
+    static readonly ProfilerMarker createDamageNumberSample=new ProfilerMarker("CG.HUD.CreateDamageNumber");
     CoreGuardianPrototype game;
     Font font, titleFont;
     TMP_FontAsset damageFont;
@@ -103,6 +106,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         worldFeedback.anchorMin=Vector2.zero;worldFeedback.anchorMax=Vector2.one;worldFeedback.sizeDelta=Vector2.zero;
         // Floating combat feedback always renders before every HUD panel and modal.
         worldFeedback.SetAsFirstSibling();
+        PrepareDamageNumbers();
         Build();game.Changed+=Refresh;game.Session.DamageApplied+=ShowDamageNumber;
         BuildAugmentationSelection();
     }
@@ -375,8 +379,25 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         damageNumbers.Add(number);return number;
     }
     Stack<DamageNumber> NumberPool(string kind)=>kind=="GoldNumber"?goldNumberPool:kind=="CoreDamageNumber"?coreNumberPool:hitNumberPool;
+    void PrepareDamageNumbers()
+    {
+        using var scope=prepareDamageNumbersSample.Auto();
+        // Resolve TMP's synchronous first-use settings load before combat callbacks.
+        if(TMP_Settings.instance==null)throw new InvalidOperationException("TMP Settings missing");
+        // The observed first volley creates three numbers. This only warms that initial
+        // demand; FloatingNumber retains its unrestricted expansion and existing lifetime.
+        for(int i=hitNumberPool.Count;i<3;i++)
+        {
+            var number=CreateFloatingNumber("HitDamage");
+            number.Text.color=Color.clear;
+            number.Text.text="0123456789";
+            number.Text.ForceMeshUpdate();
+            ReturnNumber(number);
+        }
+    }
     DamageNumber CreateFloatingNumber(string name)
     {
+        using var scope=createDamageNumberSample.Auto();
         var rect=Box(name,worldFeedback,new Vector2(.5f,.5f),Vector2.zero,new Vector2(200,52),false);
         var text=rect.gameObject.AddComponent<TextMeshProUGUI>();
         text.font=damageFont;text.fontSharedMaterial=damageMaterial;text.fontSize=32;

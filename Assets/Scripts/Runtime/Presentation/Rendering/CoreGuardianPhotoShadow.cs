@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Unity.Profiling;
@@ -18,6 +19,8 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
     bool replace;
     float size=1;
     readonly CoreGuardianSpriteReferences shadowSources=new CoreGuardianSpriteReferences();
+    readonly List<SpriteRenderer> suppressedSources=new List<SpriteRenderer>();
+    int classifiedRevision=-1;
     public static CoreGuardianPhotoShadow Attach(GameObject root,string role)
     {
         var shadow=root.GetComponent<CoreGuardianPhotoShadow>();
@@ -46,8 +49,18 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
         if(cast==null||art==null)return;
         using(castSample.Auto())
         {
-            foreach(var r in shadowSources.Read(transform))
-                if(r.name=="바닥 밀착선"||(replace&&(r.name=="바깥 그림자"||r.name=="접촉 그림자"||r.name=="짧은 투사 그림자"||r.name=="바닥 수정빛")))r.enabled=false;
+            var sources=shadowSources.Read(transform);
+            if(classifiedRevision!=shadowSources.Revision)
+            {
+                suppressedSources.Clear();
+                foreach(var renderer in sources)
+                {
+                    string name=renderer.name;
+                    if(name=="바닥 밀착선"||(replace&&(name=="바깥 그림자"||name=="접촉 그림자"||name=="짧은 투사 그림자"||name=="바닥 수정빛")))suppressedSources.Add(renderer);
+                }
+                classifiedRevision=shadowSources.Revision;
+            }
+            foreach(var renderer in suppressedSources)if(renderer!=null&&renderer.enabled)renderer.enabled=false;
             cast.transform.position=transform.position+offset;
             cast.transform.rotation=Quaternion.identity;
             cast.transform.localScale=new Vector3(size/Mathf.Abs(transform.lossyScale.x),size/Mathf.Abs(transform.lossyScale.y),1);
@@ -55,7 +68,8 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
         }
     }
     void LateUpdate(){Present(null);}
-    public void InvalidateSources(){shadowSources.Invalidate();}
+    // Names are classified on structural refresh; callers renaming an existing part must invalidate explicitly.
+    public void InvalidateSources(){shadowSources.Invalidate();classifiedRevision=-1;}
     void OnDisable(){if(cast!=null)cast.enabled=false;}
-    void OnEnable(){if(cast!=null)cast.enabled=true;}
+    void OnEnable(){InvalidateSources();if(cast!=null)cast.enabled=true;}
 }

@@ -1,0 +1,397 @@
+{
+  "runs": [
+    {
+      "label": "baseline",
+      "samples": 90,
+      "invalidTimes": 0,
+      "gapCount": 0,
+      "frameMs": {
+        "n": 90,
+        "min": 16.95410000047559,
+        "max": 108.8739999995596,
+        "mean": 24.75384999999935,
+        "median": 21.955549999802315,
+        "p95NearestRank": 47.12590000053751,
+        "p99": null
+      },
+      "fps": {
+        "min": 9.184929367930314,
+        "max": 58.98278292400943,
+        "avg": 40.39775630861568
+      },
+      "enemies": {
+        "n": 90,
+        "min": 128,
+        "max": 128,
+        "mean": 128,
+        "median": 128.0,
+        "p95NearestRank": 128,
+        "p99": null
+      },
+      "towers": {
+        "n": 90,
+        "min": 15,
+        "max": 15,
+        "mean": 15,
+        "median": 15.0,
+        "p95NearestRank": 15,
+        "p99": null
+      },
+      "projectiles": {
+        "n": 90,
+        "min": 0,
+        "max": 36,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "p95NearestRank": 36,
+        "p99": null
+      },
+      "sources": {
+        "n": 90,
+        "min": 0,
+        "max": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95NearestRank": 0,
+        "p99": null
+      },
+      "unityStatsDraw": {
+        "n": 90,
+        "min": 1554,
+        "max": 1712,
+        "mean": 1575.2,
+        "median": 1561.0,
+        "p95NearestRank": 1620,
+        "p99": null
+      },
+      "nativeTotalDraw": {
+        "n": 90,
+        "min": 1554,
+        "max": 2137,
+        "mean": 1581.1555555555556,
+        "median": 1563.0,
+        "p95NearestRank": 1620,
+        "p99": null
+      },
+      "counters": {
+        "Standard Draw Calls Count": {
+          "n": 90,
+          "min": 173,
+          "max": 285,
+          "mean": 183.13333333333333,
+          "median": 180.0,
+          "p95NearestRank": 219,
+          "p99": null
+        },
+        "SRP Batcher Draw Calls Count": {
+          "n": 90,
+          "min": 1372,
+          "max": 1852,
+          "mean": 1398.0222222222221,
+          "median": 1381.0,
+          "p95NearestRank": 1445,
+          "p99": null
+        },
+        "SetPass Calls Count": {
+          "n": 90,
+          "min": 175,
+          "max": 302,
+          "mean": 186.33333333333334,
+          "median": 182.0,
+          "p95NearestRank": 221,
+          "p99": null
+        },
+        "Main Thread": {
+          "n": 90,
+          "min": 16958700,
+          "max": 105636400,
+          "mean": 24749753.333333332,
+          "median": 22015350.0,
+          "p95NearestRank": 49251000,
+          "p99": null
+        },
+        "CG.Emphasis.Present": {
+          "n": 90,
+          "min": 5047000,
+          "max": 10454300,
+          "mean": 5701112.222222222,
+          "median": 5424950.0,
+          "p95NearestRank": 8345600,
+          "p99": null
+        },
+        "CG.Emphasis.Tint": {
+          "n": 90,
+          "min": 582700,
+          "max": 1177800,
+          "mean": 797538.8888888889,
+          "median": 768950.0,
+          "p95NearestRank": 1099200,
+          "p99": null
+        },
+        "CG.Mask.Present": {
+          "n": 90,
+          "min": 4033900,
+          "max": 8432900,
+          "mean": 4515637.777777778,
+          "median": 4275950.0,
+          "p95NearestRank": 6973500,
+          "p99": null
+        },
+        "CG.SpriteReferences.Read": {
+          "n": 90,
+          "min": 1055800,
+          "max": 1757300,
+          "mean": 1194813.3333333333,
+          "median": 1172350.0,
+          "p95NearestRank": 1412100,
+          "p99": null
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "min": 125275,
+          "max": 3937089,
+          "mean": 263368.4222222222,
+          "median": 127104.5,
+          "p95NearestRank": 504795,
+          "p99": null
+        }
+      },
+      "textureBytesMax": 0,
+      "bufferBytesMax": 0
+    },
+    {
+      "label": "candidate_active",
+      "samples": 90,
+      "invalidTimes": 0,
+      "gapCount": 0,
+      "frameMs": {
+        "n": 90,
+        "min": 16.27199999984441,
+        "max": 111.97189999984403,
+        "mean": 22.44105222222667,
+        "median": 19.378749999759748,
+        "p95NearestRank": 36.371799999869836,
+        "p99": null
+      },
+      "fps": {
+        "min": 8.930812105549633,
+        "max": 61.45526057089244,
+        "avg": 44.56119036207907
+      },
+      "enemies": {
+        "n": 90,
+        "min": 128,
+        "max": 128,
+        "mean": 128,
+        "median": 128.0,
+        "p95NearestRank": 128,
+        "p99": null
+      },
+      "towers": {
+        "n": 90,
+        "min": 15,
+        "max": 15,
+        "mean": 15,
+        "median": 15.0,
+        "p95NearestRank": 15,
+        "p99": null
+      },
+      "projectiles": {
+        "n": 90,
+        "min": 0,
+        "max": 36,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "p95NearestRank": 36,
+        "p99": null
+      },
+      "sources": {
+        "n": 90,
+        "min": 0,
+        "max": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95NearestRank": 0,
+        "p99": null
+      },
+      "unityStatsDraw": {
+        "n": 90,
+        "min": 1555,
+        "max": 1794,
+        "mean": 1590.5222222222221,
+        "median": 1576.0,
+        "p95NearestRank": 1676,
+        "p99": null
+      },
+      "nativeTotalDraw": {
+        "n": 90,
+        "min": 1555,
+        "max": 1900,
+        "mean": 1593.8777777777777,
+        "median": 1576.0,
+        "p95NearestRank": 1689,
+        "p99": null
+      },
+      "counters": {
+        "Standard Draw Calls Count": {
+          "n": 90,
+          "min": 169,
+          "max": 291,
+          "mean": 190.4111111111111,
+          "median": 180.0,
+          "p95NearestRank": 259,
+          "p99": null
+        },
+        "SRP Batcher Draw Calls Count": {
+          "n": 90,
+          "min": 1372,
+          "max": 1634,
+          "mean": 1403.4666666666667,
+          "median": 1387.0,
+          "p95NearestRank": 1496,
+          "p99": null
+        },
+        "SetPass Calls Count": {
+          "n": 90,
+          "min": 174,
+          "max": 301,
+          "mean": 194.9777777777778,
+          "median": 183.0,
+          "p95NearestRank": 270,
+          "p99": null
+        },
+        "Main Thread": {
+          "n": 90,
+          "min": 16116900,
+          "max": 108611400,
+          "mean": 22435321.111111112,
+          "median": 19195400.0,
+          "p95NearestRank": 36901300,
+          "p99": null
+        },
+        "CG.Emphasis.Present": {
+          "n": 90,
+          "min": 4348800,
+          "max": 9931000,
+          "mean": 5017137.777777778,
+          "median": 4710850.0,
+          "p95NearestRank": 7360300,
+          "p99": null
+        },
+        "CG.Emphasis.Tint": {
+          "n": 90,
+          "min": 602400,
+          "max": 1239400,
+          "mean": 773120,
+          "median": 733900.0,
+          "p95NearestRank": 995400,
+          "p99": null
+        },
+        "CG.Mask.Present": {
+          "n": 90,
+          "min": 3680700,
+          "max": 8430700,
+          "mean": 4122360,
+          "median": 3832000.0,
+          "p95NearestRank": 6401500,
+          "p99": null
+        },
+        "CG.SpriteReferences.Read": {
+          "n": 90,
+          "min": 685600,
+          "max": 1365800,
+          "mean": 928334.4444444445,
+          "median": 920250.0,
+          "p95NearestRank": 1094700,
+          "p99": null
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "min": 125371,
+          "max": 5665830,
+          "mean": 350920.1,
+          "median": 126910.0,
+          "p95NearestRank": 621649,
+          "p99": null
+        }
+      },
+      "textureBytesMax": 0,
+      "bufferBytesMax": 0
+    }
+  ],
+  "limits": "One 90-frame pair in current Editor; fixed dt1/60; real wall frame intervals; diagnostic allocation included; no Deep/raw capture; not target-device certification.",
+  "comparison": {
+    "nativeDraw": {
+      "before": 1581.1555555555556,
+      "after": 1593.8777777777777,
+      "saved": -12.722222222222172,
+      "savedPercent": -0.8046154711041119
+    },
+    "unityDraw": {
+      "before": 1575.2,
+      "after": 1590.5222222222221,
+      "saved": -15.32222222222208,
+      "savedPercent": -0.9727159866824581
+    },
+    "frameMs": {
+      "before": 24.75384999999935,
+      "after": 22.44105222222667,
+      "saved": 2.31279777777268,
+      "savedPercent": 9.34318410175686
+    },
+    "Standard Draw Calls Count": {
+      "before": 183.13333333333333,
+      "after": 190.4111111111111,
+      "saved": -7.2777777777777715,
+      "savedPercent": -3.974032277636206
+    },
+    "SRP Batcher Draw Calls Count": {
+      "before": 1398.0222222222221,
+      "after": 1403.4666666666667,
+      "saved": -5.444444444444571,
+      "savedPercent": -0.3894390488150017
+    },
+    "SetPass Calls Count": {
+      "before": 186.33333333333334,
+      "after": 194.9777777777778,
+      "saved": -8.644444444444446,
+      "savedPercent": -4.639236732259988
+    },
+    "Main Thread": {
+      "before": 24749753.333333332,
+      "after": 22435321.111111112,
+      "saved": 2314432.22222222,
+      "savedPercent": 9.351334500393218
+    },
+    "CG.Emphasis.Present": {
+      "before": 5701112.222222222,
+      "after": 5017137.777777778,
+      "saved": 683974.444444444,
+      "savedPercent": 11.997210680722917
+    },
+    "CG.Emphasis.Tint": {
+      "before": 797538.8888888889,
+      "after": 773120,
+      "saved": 24418.888888888876,
+      "savedPercent": 3.061780338123531
+    },
+    "CG.Mask.Present": {
+      "before": 4515637.777777778,
+      "after": 4122360,
+      "saved": 393277.777777778,
+      "savedPercent": 8.709241022678233
+    },
+    "CG.SpriteReferences.Read": {
+      "before": 1194813.3333333333,
+      "after": 928334.4444444445,
+      "saved": 266478.88888888876,
+      "savedPercent": 22.302972477337224
+    },
+    "GC Allocated In Frame": {
+      "before": 263368.4222222222,
+      "after": 350920.1,
+      "saved": -87551.67777777778,
+      "savedPercent": -33.24304297342996
+    }
+  }
+}

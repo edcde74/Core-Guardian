@@ -1,0 +1,92 @@
+{
+  "success": true,
+  "command": "command run_tests",
+  "data": {
+    "command": "run_tests",
+    "parameters": {
+      "mode": "editor",
+      "filter": "CoreGuardianMaskProducerTests",
+      "filter_type": "testName"
+    },
+    "result": {
+      "Summary": {
+        "Total": 8,
+        "Passed": 8,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      },
+      "Results": [
+        {
+          "FullName": "CoreGuardianMaskProducerTests.CameraChangesFlushOnlyItsCommands",
+          "Status": "Passed",
+          "Duration": 0.1372443,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.CombinedProducerMatchesEveryIndependentMaskPixel",
+          "Status": "Passed",
+          "Duration": 0.0693922,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.DifferentAlphaThresholdsStayIndependent",
+          "Status": "Passed",
+          "Duration": 0.0652016,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.PendingMaskIsNotPublishedUntilProducerFlush(False)",
+          "Status": "Passed",
+          "Duration": 0.1628115,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.PendingMaskIsNotPublishedUntilProducerFlush(True)",
+          "Status": "Passed",
+          "Duration": 0.0098218,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.QueuedGeometrySurvivesProducerMeshDestruction",
+          "Status": "Passed",
+          "Duration": 0.0324379,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.SameFrameReturnAndReuseNeverShowsOldMask",
+          "Status": "Passed",
+          "Duration": 0.0483994,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreGuardianMaskProducerTests.SecondFlushInSameFramePreservesCompletedMask",
+          "Status": "Passed",
+          "Duration": 0.0613241,
+          "Message": null,
+          "StackTrace": null
+        }
+      ],
+      "Duration": 8.42,
+      "StatusPath": null,
+      "Mode": "EditMode",
+      "FilterApplied": "testname: CoreGuardianMaskProducerTests",
+      "success": true,
+      "result": null
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,1092 @@
+{
+  "frame": 3,
+  "deepCapture": true,
+  "playing": false,
+  "buildMs": 39,
+  "visited": 120,
+  "traverseMs": 32,
+  "unexpanded": 381,
+  "limits": "single native aggregated hierarchy, at most120 visited items, six children each, no raw sample traversal",
+  "rows": [
+    {
+      "path": "Main Thread",
+      "name": "Main Thread",
+      "depth": 0,
+      "totalMs": 174.208608,
+      "selfMs": 0.036128,
+      "calls": 1.0,
+      "gcBytes": 25841.0
+    },
+    {
+      "path": "Main Thread > EditorLoop",
+      "name": "EditorLoop",
+      "depth": 1,
+      "totalMs": 173.66579199999998,
+      "selfMs": 0.008704,
+      "calls": 1.0,
+      "gcBytes": 25841.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick",
+      "name": "Application.Tick",
+      "depth": 2,
+      "totalMs": 161.492096,
+      "selfMs": 0.02448,
+      "calls": 1.0,
+      "gcBytes": 25841.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene",
+      "name": "Application.UpdateScene",
+      "depth": 3,
+      "totalMs": 157.42239999999998,
+      "selfMs": 0.001104,
+      "calls": 1.0,
+      "gcBytes": 23158.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded",
+      "name": "UpdateSceneIfNeeded",
+      "depth": 4,
+      "totalMs": 157.42129599999998,
+      "selfMs": 0.001008,
+      "calls": 1.0,
+      "gcBytes": 23158.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene",
+      "name": "UpdateScene",
+      "depth": 5,
+      "totalMs": 157.418496,
+      "selfMs": 0.003792,
+      "calls": 1.0,
+      "gcBytes": 23158.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop",
+      "name": "PlayerLoop",
+      "depth": 6,
+      "totalMs": 109.4504,
+      "selfMs": 0.00030399999999999996,
+      "calls": 1.0,
+      "gcBytes": 4852.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene",
+      "name": "UpdateScene",
+      "depth": 7,
+      "totalMs": 109.450096,
+      "selfMs": 0.08681599999999999,
+      "calls": 1.0,
+      "gcBytes": 4852.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate",
+      "name": "PreLateUpdate.ScriptRunBehaviourLateUpdate",
+      "depth": 8,
+      "totalMs": 75.564095999999992,
+      "selfMs": 0.000896,
+      "calls": 1.0,
+      "gcBytes": 72.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate",
+      "name": "LateBehaviourUpdate",
+      "depth": 9,
+      "totalMs": 75.5632,
+      "selfMs": 0.296496,
+      "calls": 1.0,
+      "gcBytes": 72.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate()",
+      "depth": 10,
+      "totalMs": 61.7266,
+      "selfMs": 0.0025,
+      "calls": 1.0,
+      "gcBytes": 40.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.PresentTargets()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.PresentTargets()",
+      "depth": 11,
+      "totalMs": 61.2329,
+      "selfMs": 0.0010999999999999998,
+      "calls": 1.0,
+      "gcBytes": 40.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.PresentTargets() > CG.Emphasis.Present",
+      "name": "CG.Emphasis.Present",
+      "depth": 12,
+      "totalMs": 61.2317,
+      "selfMs": 0.6523,
+      "calls": 1.0,
+      "gcBytes": 40.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController",
+      "name": "GUIView.RepaintAll.PlayerLoopController",
+      "depth": 6,
+      "totalMs": 47.5528,
+      "selfMs": 0.013099999999999999,
+      "calls": 1.0,
+      "gcBytes": 18306.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate",
+      "name": "Update.ScriptRunBehaviourUpdate",
+      "depth": 8,
+      "totalMs": 33.0233,
+      "selfMs": 0.00079999999999999993,
+      "calls": 1.0,
+      "gcBytes": 4282.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate",
+      "name": "BehaviourUpdate",
+      "depth": 9,
+      "totalMs": 33.0225,
+      "selfMs": 0.0289,
+      "calls": 1.0,
+      "gcBytes": 4282.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update()",
+      "depth": 10,
+      "totalMs": 32.6219,
+      "selfMs": 0.0097,
+      "calls": 1.0,
+      "gcBytes": 3136.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint",
+      "name": "GameView.Paint",
+      "depth": 7,
+      "totalMs": 28.5963,
+      "selfMs": 0.023799999999999998,
+      "calls": 1.0,
+      "gcBytes": 9930.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint",
+      "name": "GameView.Repaint",
+      "depth": 8,
+      "totalMs": 28.5721,
+      "selfMs": 0.0249,
+      "calls": 1.0,
+      "gcBytes": 9930.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent()",
+      "name": "UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent()",
+      "depth": 9,
+      "totalMs": 28.528699999999997,
+      "selfMs": 0.0036999999999999997,
+      "calls": 1.0,
+      "gcBytes": 9930.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent()",
+      "name": "UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent()",
+      "depth": 10,
+      "totalMs": 28.5198,
+      "selfMs": 0.0007,
+      "calls": 1.0,
+      "gcBytes": 9930.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch()",
+      "name": "UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch()",
+      "depth": 11,
+      "totalMs": 28.5187,
+      "selfMs": 0.0021,
+      "calls": 1.0,
+      "gcBytes": 9930.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event)",
+      "name": "UIElementsUtility.DoDispatch(Repaint Event)",
+      "depth": 12,
+      "totalMs": 28.508799999999997,
+      "selfMs": 0.0006,
+      "calls": 1.0,
+      "gcBytes": 9930.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render()",
+      "depth": 13,
+      "totalMs": 24.948,
+      "selfMs": 0.0021,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render",
+      "name": "GameView.Render",
+      "depth": 14,
+      "totalMs": 24.9451,
+      "selfMs": 0.0010999999999999998,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render()",
+      "depth": 15,
+      "totalMs": 24.944,
+      "selfMs": 0.00039999999999999996,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render()",
+      "depth": 16,
+      "totalMs": 24.9436,
+      "selfMs": 0.0006,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree()",
+      "depth": 17,
+      "totalMs": 24.942999999999998,
+      "selfMs": 0.002,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree()",
+      "depth": 18,
+      "totalMs": 24.9358,
+      "selfMs": 0.0040999999999999995,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain()",
+      "depth": 19,
+      "totalMs": 24.924999999999997,
+      "selfMs": 0.0009,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin()",
+      "depth": 20,
+      "totalMs": 24.9068,
+      "selfMs": 0.0533,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "depth": 21,
+      "totalMs": 24.475199999999997,
+      "selfMs": 0.0025,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "depth": 22,
+      "totalMs": 24.438299999999998,
+      "selfMs": 0.00039999999999999996,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer",
+      "name": "IMGUIContainer",
+      "depth": 23,
+      "totalMs": 24.4378,
+      "selfMs": 0.0021999999999999997,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > GameView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "depth": 24,
+      "totalMs": 24.4254,
+      "selfMs": 0.003,
+      "calls": 1.0,
+      "gcBytes": 8266.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews()",
+      "depth": 11,
+      "totalMs": 24.1007,
+      "selfMs": 0.355,
+      "calls": 1.0,
+      "gcBytes": 1600.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint",
+      "name": "SceneView.Paint",
+      "depth": 7,
+      "totalMs": 17.397199999999998,
+      "selfMs": 0.0356,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint",
+      "name": "SceneView.Repaint",
+      "depth": 8,
+      "totalMs": 17.360799999999998,
+      "selfMs": 0.0389,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent()",
+      "name": "UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent()",
+      "depth": 9,
+      "totalMs": 17.3023,
+      "selfMs": 0.0053,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent()",
+      "name": "UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent()",
+      "depth": 10,
+      "totalMs": 17.2886,
+      "selfMs": 0.0018,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch()",
+      "name": "UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch()",
+      "depth": 11,
+      "totalMs": 17.2862,
+      "selfMs": 0.0023,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event)",
+      "name": "UIElementsUtility.DoDispatch(Repaint Event)",
+      "depth": 12,
+      "totalMs": 17.2728,
+      "selfMs": 0.00079999999999999993,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render()",
+      "depth": 13,
+      "totalMs": 17.0377,
+      "selfMs": 0.0024,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render",
+      "name": "SceneView.Render",
+      "depth": 14,
+      "totalMs": 17.034599999999998,
+      "selfMs": 0.0006,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render()",
+      "depth": 15,
+      "totalMs": 17.0339,
+      "selfMs": 0.0005,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render()",
+      "depth": 16,
+      "totalMs": 17.0334,
+      "selfMs": 0.0006,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree()",
+      "depth": 17,
+      "totalMs": 17.032799999999998,
+      "selfMs": 0.0021,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree()",
+      "depth": 18,
+      "totalMs": 17.0278,
+      "selfMs": 0.0056,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain()",
+      "depth": 19,
+      "totalMs": 17.0122,
+      "selfMs": 0.0010999999999999998,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin()",
+      "depth": 20,
+      "totalMs": 16.9913,
+      "selfMs": 0.0773,
+      "calls": 1.0,
+      "gcBytes": 5200.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Profiler.IntegrateSessionData",
+      "name": "Profiler.IntegrateSessionData",
+      "depth": 2,
+      "totalMs": 12.1593,
+      "selfMs": 0.0121,
+      "calls": 1.0,
+      "gcBytes": 0.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Profiler.IntegrateSessionData > Profiler.AddFrameDataAndTransferOwnership",
+      "name": "Profiler.AddFrameDataAndTransferOwnership",
+      "depth": 3,
+      "totalMs": 12.1383,
+      "selfMs": 0.013099999999999999,
+      "calls": 1.0,
+      "gcBytes": 0.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Profiler.IntegrateSessionData > Profiler.AddFrameDataAndTransferOwnership > Profiler.GatherChartInformation",
+      "name": "Profiler.GatherChartInformation",
+      "depth": 4,
+      "totalMs": 12.1154,
+      "selfMs": 12.1154,
+      "calls": 1.0,
+      "gcBytes": 0.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "depth": 21,
+      "totalMs": 9.3697,
+      "selfMs": 0.0013,
+      "calls": 1.0,
+      "gcBytes": 648.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "depth": 22,
+      "totalMs": 9.34,
+      "selfMs": 0.0003,
+      "calls": 1.0,
+      "gcBytes": 648.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer",
+      "name": "IMGUIContainer",
+      "depth": 23,
+      "totalMs": 9.339599999999999,
+      "selfMs": 0.0018,
+      "calls": 1.0,
+      "gcBytes": 648.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "depth": 24,
+      "totalMs": 9.3329,
+      "selfMs": 0.0031,
+      "calls": 1.0,
+      "gcBytes": 648.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Fortress.Game.dll!CoreGuardian::Session.Tick()",
+      "name": "Fortress.Game.dll!CoreGuardian::Session.Tick()",
+      "depth": 11,
+      "totalMs": 8.4482,
+      "selfMs": 0.0021,
+      "calls": 1.0,
+      "gcBytes": 1536.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Fortress.Game.dll!CoreGuardian::Session.Tick() > Fortress.Game.dll!CoreGuardian::Session.StepTick()",
+      "name": "Fortress.Game.dll!CoreGuardian::Session.StepTick()",
+      "depth": 12,
+      "totalMs": 8.4405,
+      "selfMs": 1.1593,
+      "calls": 1.0,
+      "gcBytes": 1536.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "depth": 21,
+      "totalMs": 5.1204,
+      "selfMs": 0.0007,
+      "calls": 1.0,
+      "gcBytes": 2264.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "depth": 22,
+      "totalMs": 5.0954,
+      "selfMs": 0.00079999999999999993,
+      "calls": 1.0,
+      "gcBytes": 2264.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer",
+      "name": "IMGUIContainer",
+      "depth": 23,
+      "totalMs": 5.0946,
+      "selfMs": 0.0006,
+      "calls": 1.0,
+      "gcBytes": 2264.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "depth": 24,
+      "totalMs": 5.0892,
+      "selfMs": 0.0019,
+      "calls": 1.0,
+      "gcBytes": 2264.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint()",
+      "depth": 13,
+      "totalMs": 3.5601,
+      "selfMs": 0.0026999999999999997,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint",
+      "name": "GameView.PrepareRepaint",
+      "depth": 14,
+      "totalMs": 3.5517999999999996,
+      "selfMs": 0.00039999999999999996,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint()",
+      "name": "UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint()",
+      "depth": 15,
+      "totalMs": 3.5513999999999997,
+      "selfMs": 0.0010999999999999998,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint()",
+      "depth": 16,
+      "totalMs": 3.5385,
+      "selfMs": 0.0012,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick",
+      "name": "Scheduler.Tick",
+      "depth": 3,
+      "totalMs": 2.8569,
+      "selfMs": 0.0042,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick > UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers()",
+      "name": "UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers()",
+      "depth": 4,
+      "totalMs": 2.8527,
+      "selfMs": 0.0003,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick > UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIElementsUtility.UpdateSchedulers()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIElementsUtility.UpdateSchedulers()",
+      "depth": 5,
+      "totalMs": 2.8524,
+      "selfMs": 0.007899999999999999,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick > UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIElementsUtility.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.TickSchedulingUpdaters()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.TickSchedulingUpdaters()",
+      "depth": 6,
+      "totalMs": 2.3350999999999997,
+      "selfMs": 0.0005,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick > UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIElementsUtility.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.TickSchedulingUpdaters() > GameView.TickScheduledActions",
+      "name": "GameView.TickScheduledActions",
+      "depth": 7,
+      "totalMs": 2.3339,
+      "selfMs": 0.0015,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick > UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIElementsUtility.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.TickSchedulingUpdaters() > GameView.TickScheduledActions > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateDataBinding()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateDataBinding()",
+      "depth": 8,
+      "totalMs": 2.2649999999999997,
+      "selfMs": 9.9999999999999991E-05,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick > UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIElementsUtility.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.TickSchedulingUpdaters() > GameView.TickScheduledActions > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateDataBinding() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase()",
+      "depth": 9,
+      "totalMs": 2.2649,
+      "selfMs": 0.00039999999999999996,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick > UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIElementsUtility.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.TickSchedulingUpdaters() > GameView.TickScheduledActions > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateDataBinding() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRuntimeBindings",
+      "name": "UIElements.UpdateRuntimeBindings",
+      "depth": 10,
+      "totalMs": 2.2638,
+      "selfMs": 0.00079999999999999993,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Scheduler.Tick > UnityEditor.UIElementsModule.dll!UnityEditor::RetainedMode.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIElementsUtility.UpdateSchedulers() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.TickSchedulingUpdaters() > GameView.TickScheduledActions > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateDataBinding() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRuntimeBindings > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeDataBindingsUpdater.Update()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeDataBindingsUpdater.Update()",
+      "depth": 11,
+      "totalMs": 2.2624999999999997,
+      "selfMs": 0.024,
+      "calls": 1.0,
+      "gcBytes": 784.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase()",
+      "depth": 17,
+      "totalMs": 1.9799,
+      "selfMs": 0.0017,
+      "calls": 1.0,
+      "gcBytes": 0.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateLayout",
+      "name": "UIElements.UpdateLayout",
+      "depth": 18,
+      "totalMs": 1.9779,
+      "selfMs": 0.0010999999999999998,
+      "calls": 1.0,
+      "gcBytes": 0.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateLayout > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeLayoutUpdater.Update()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeLayoutUpdater.Update()",
+      "depth": 19,
+      "totalMs": 1.9767,
+      "selfMs": 0.0046,
+      "calls": 1.0,
+      "gcBytes": 0.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "depth": 21,
+      "totalMs": 1.5602,
+      "selfMs": 0.00079999999999999993,
+      "calls": 1.0,
+      "gcBytes": 1920.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint",
+      "name": "AppStatusBar.Paint",
+      "depth": 7,
+      "totalMs": 1.5462,
+      "selfMs": 0.0332,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase()",
+      "depth": 17,
+      "totalMs": 1.5433,
+      "selfMs": 0.0013,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRenderData",
+      "name": "UIElements.UpdateRenderData",
+      "depth": 18,
+      "totalMs": 1.5417999999999998,
+      "selfMs": 0.0009,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRenderData > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Update()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Update()",
+      "depth": 19,
+      "totalMs": 1.5408,
+      "selfMs": 0.0014,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRenderData > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Update() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.ProcessChanges()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.ProcessChanges()",
+      "depth": 20,
+      "totalMs": 1.5391,
+      "selfMs": 0.0005,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRenderData > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Update() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.ProcessChanges() > RenderTreeManager.Process",
+      "name": "RenderTreeManager.Process",
+      "depth": 21,
+      "totalMs": 1.5385,
+      "selfMs": 0.0059,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "depth": 22,
+      "totalMs": 1.5315999999999999,
+      "selfMs": 0.00039999999999999996,
+      "calls": 1.0,
+      "gcBytes": 1920.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer",
+      "name": "IMGUIContainer",
+      "depth": 23,
+      "totalMs": 1.5311,
+      "selfMs": 0.0024,
+      "calls": 1.0,
+      "gcBytes": 1920.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > SceneView.Paint > SceneView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > SceneView.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "depth": 24,
+      "totalMs": 1.521,
+      "selfMs": 0.0028,
+      "calls": 1.0,
+      "gcBytes": 1920.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint",
+      "name": "AppStatusBar.Repaint",
+      "depth": 8,
+      "totalMs": 1.513,
+      "selfMs": 0.0305,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent()",
+      "name": "UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent()",
+      "depth": 9,
+      "totalMs": 1.4678,
+      "selfMs": 0.005,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent()",
+      "name": "UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent()",
+      "depth": 10,
+      "totalMs": 1.4544,
+      "selfMs": 0.001,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch()",
+      "name": "UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch()",
+      "depth": 11,
+      "totalMs": 1.4526999999999999,
+      "selfMs": 0.0025,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event)",
+      "name": "UIElementsUtility.DoDispatch(Repaint Event)",
+      "depth": 12,
+      "totalMs": 1.4426999999999999,
+      "selfMs": 0.0007,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRenderData > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Update() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.ProcessChanges() > RenderTreeManager.Process > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.DepthFirstProcessChanges()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.DepthFirstProcessChanges()",
+      "depth": 22,
+      "totalMs": 1.3626,
+      "selfMs": 0.0006,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRenderData > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Update() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.ProcessChanges() > RenderTreeManager.Process > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.DepthFirstProcessChanges() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTree.ProcessChanges()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTree.ProcessChanges()",
+      "depth": 23,
+      "totalMs": 1.3619999999999999,
+      "selfMs": 0.0015999999999999999,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > GameView.Paint > GameView.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Repaint() > GameView.PrepareRepaint > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorPanel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.UpdateForRepaint() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::VisualTreeUpdater.UpdateVisualTreePhase() > UIElements.UpdateRenderData > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Update() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.ProcessChanges() > RenderTreeManager.Process > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.DepthFirstProcessChanges() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTree.ProcessChanges() > RenderTree.UpdateVisuals",
+      "name": "RenderTree.UpdateVisuals",
+      "depth": 24,
+      "totalMs": 1.3201,
+      "selfMs": 0.0060999999999999995,
+      "calls": 1.0,
+      "gcBytes": 1664.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render()",
+      "depth": 13,
+      "totalMs": 1.2869,
+      "selfMs": 0.0012,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render",
+      "name": "AppStatusBar.Render",
+      "depth": 14,
+      "totalMs": 1.2851,
+      "selfMs": 0.0003,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render()",
+      "depth": 15,
+      "totalMs": 1.2847,
+      "selfMs": 0.00039999999999999996,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render()",
+      "depth": 16,
+      "totalMs": 1.2843,
+      "selfMs": 0.0006,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree()",
+      "depth": 17,
+      "totalMs": 1.2835999999999999,
+      "selfMs": 0.0018,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree()",
+      "depth": 18,
+      "totalMs": 1.2785,
+      "selfMs": 0.0046,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain()",
+      "depth": 19,
+      "totalMs": 1.2638,
+      "selfMs": 0.0010999999999999998,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin()",
+      "depth": 20,
+      "totalMs": 1.2603,
+      "selfMs": 0.005,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh()",
+      "depth": 21,
+      "totalMs": 1.2256,
+      "selfMs": 0.0012,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint()",
+      "depth": 22,
+      "totalMs": 1.1965,
+      "selfMs": 0.0007,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer",
+      "name": "IMGUIContainer",
+      "depth": 23,
+      "totalMs": 1.1958,
+      "selfMs": 0.0029,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > GUIView.RepaintAll.PlayerLoopController > AppStatusBar.Paint > AppStatusBar.Repaint > UnityEditor.CoreModule.dll!UnityEditor::GUIView.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::DefaultWindowBackend.ProcessEvent() > UnityEditor.UIElementsModule.dll!UnityEditor.UIElements::EditorEventDispatchUtility.DoDispatch() > UIElementsUtility.DoDispatch(Repaint Event) > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::Panel.Render() > AppStatusBar.Render > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::BaseVisualElementPanel.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::UIRRepaintUpdater.Render() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderRootTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderTreeManager.RenderSingleTree() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::UIRenderDevice.EvaluateChain() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::Utility.ProfileDrawChainBegin() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements.UIR::RenderChainCommand.ExecuteNonDrawMesh() > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.DoIMGUIRepaint() > IMGUIContainer > UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "name": "UnityEngine.UIElementsModule.dll!UnityEngine.UIElements::IMGUIContainer.HandleIMGUIEvent()",
+      "depth": 24,
+      "totalMs": 1.1848999999999998,
+      "selfMs": 0.0031,
+      "calls": 1.0,
+      "gcBytes": 3176.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "depth": 12,
+      "totalMs": 1.1361999999999999,
+      "selfMs": 0.0010999999999999998,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower() > Fortress.Game.dll!CoreGuardian::Session.TowerTargetForView()",
+      "name": "Fortress.Game.dll!CoreGuardian::Session.TowerTargetForView()",
+      "depth": 13,
+      "totalMs": 1.064,
+      "selfMs": 0.0006,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower() > Fortress.Game.dll!CoreGuardian::Session.TowerTargetForView() > Fortress.Game.dll!CoreGuardian::Session.TowerTarget()",
+      "name": "Fortress.Game.dll!CoreGuardian::Session.TowerTarget()",
+      "depth": 14,
+      "totalMs": 1.0475999999999999,
+      "selfMs": 0.0363,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "depth": 12,
+      "totalMs": 0.81719999999999993,
+      "selfMs": 0.0013,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.TickSceneTracker",
+      "name": "Application.TickSceneTracker",
+      "depth": 3,
+      "totalMs": 0.7187,
+      "selfMs": 0.008,
+      "calls": 1.0,
+      "gcBytes": 1437.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower() > Fortress.Game.dll!CoreGuardian::Session.TowerTargetForView()",
+      "name": "Fortress.Game.dll!CoreGuardian::Session.TowerTargetForView()",
+      "depth": 13,
+      "totalMs": 0.7171,
+      "selfMs": 0.0003,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower() > Fortress.Game.dll!CoreGuardian::Session.TowerTargetForView() > Fortress.Game.dll!CoreGuardian::Session.TowerTarget()",
+      "name": "Fortress.Game.dll!CoreGuardian::Session.TowerTarget()",
+      "depth": 14,
+      "totalMs": 0.7088,
+      "selfMs": 0.0123,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower() > Fortress.Game.dll!CoreGuardian::Session.TowerTargetForView() > Fortress.Game.dll!CoreGuardian::Session.TowerTarget() > Fortress.Game.dll!::EnemyRangeIndex.TryCollect()",
+      "name": "Fortress.Game.dll!::EnemyRangeIndex.TryCollect()",
+      "depth": 15,
+      "totalMs": 0.7058,
+      "selfMs": 0.076,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "depth": 12,
+      "totalMs": 0.702,
+      "selfMs": 0.0007,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "depth": 12,
+      "totalMs": 0.67409999999999992,
+      "selfMs": 0.0018,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    },
+    {
+      "path": "Main Thread > EditorLoop > Application.Tick > Application.UpdateScene > UpdateSceneIfNeeded > UpdateScene > PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() > Assembly-CSharp.dll!::CoreGuardianPrototype.SynchronizeViews() > Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "name": "Assembly-CSharp.dll!::CoreGuardianCombatAnimation.Tower()",
+      "depth": 12,
+      "totalMs": 0.6635,
+      "selfMs": 0.00079999999999999993,
+      "calls": 1.0,
+      "gcBytes": 128.0
+    }
+  ]
+}

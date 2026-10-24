@@ -1,0 +1,57 @@
+diff --git a/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs b/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs
+index d3638bf..70dd4dd 100644
+--- a/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs
++++ b/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs
+@@ -73,7 +73,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+         PresentMask(target,camera,true);
+         RegisterOutput(camera,false,0);
+     }
+-    void PresentMask(Transform target,Camera camera,bool writeOutlineProperties,bool compactContact=false)
++    void PresentMask(Transform target,Camera camera,bool writeOutlineProperties,bool compactContact=false,Transform sourceRoot=null,List<SpriteRenderer> sourceRenderers=null)
+     {
+         using var presentScope=presentSample.Auto();
+         CoreGuardianMaskOutputBatch.Invalidate(this);
+@@ -88,11 +88,11 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+             // These two rigs still show a native-zoom pixel difference under atlas rasterization.
+             // Keep their exact legacy mask production until separately validated.
+             pageRasterSupported=animation==null||(animation.PresentationRole!="Defense"&&animation.PresentationRole!="Boss");
+-            artwork=target.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite")?.transform;
++            artwork=sourceRoot!=null?sourceRoot:target.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite")?.transform;
+         }
+         if(artwork==null){ReleasePresentation();return;}
+         sources.Clear();
+-        foreach(var r in bodySources.Read(artwork))
++        foreach(var r in sourceRenderers??bodySources.Read(artwork))
+             if(r!=null&&r.enabled&&r.sprite!=null&&r.color.a>=alphaThreshold&&r.gameObject.activeInHierarchy)sources.Add(r);
+         if(sources.Count==0){ReleasePresentation();return;}
+         EnsureResources();
+@@ -189,6 +189,13 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+         if(output!=null&&output.enabled)output.sortingOrder+=offset-4;
+         RegisterOutput(camera,false,0);
+     }
++    // Only the emphasis owner supplies references; standalone selection/upgrade consumers keep their own validation.
++    internal void PresentAtOrderWithSources(Transform target,Camera camera,int offset,Transform sourceRoot,List<SpriteRenderer> sourceRenderers)
++    {
++        PresentMask(target,camera,true,sourceRoot:sourceRoot,sourceRenderers:sourceRenderers);
++        if(output!=null&&output.enabled)output.sortingOrder+=offset-4;
++        RegisterOutput(camera,false,0);
++    }
+     // A separate owner uses the current body mask for floor contact, below all bodies.
+     public void PresentGroundContact(Transform target,Camera camera,Material material)
+     {
+@@ -444,6 +451,7 @@ internal sealed class CoreGuardianSpriteReferences
+     static readonly ProfilerMarker readSample=new ProfilerMarker("CG.SpriteReferences.Read");
+     Transform root;
+     bool dirty=true;
++    public int Revision {get;private set;}
+     readonly List<SpriteRenderer> renderers=new List<SpriteRenderer>();
+     readonly List<Transform> nodes=new List<Transform>();
+     readonly List<int> childCounts=new List<int>();
+@@ -461,6 +469,7 @@ internal sealed class CoreGuardianSpriteReferences
+         }
+         if(refresh)
+         {
++            Revision++;
+             root=target;dirty=false;renderers.Clear();nodes.Clear();childCounts.Clear();parents.Clear();
+             if(root!=null)
+             {

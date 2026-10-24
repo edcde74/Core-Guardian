@@ -1,0 +1,66 @@
+{
+  "Summary": {
+    "Total": 7,
+    "Passed": 7,
+    "Failed": 0,
+    "Skipped": 0,
+    "Inconclusive": 0
+  },
+  "Results": [
+    {
+      "FullName": "CoreGuardianAttackBodyBatchTests.BuffWalkAndPropertyOverridesKeepOriginalRendering",
+      "Status": "Passed",
+      "Duration": 0.0849755,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAttackBodyBatchTests.CandidateStartsOff_OriginalSourcesStayVisible",
+      "Status": "Passed",
+      "Duration": 0.0045214,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAttackBodyBatchTests.FivePartsShareCarrierAndMaterial_KeepNativeRenderersAndRestoreInputs",
+      "Status": "Passed",
+      "Duration": 0.0142763,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAttackBodyBatchTests.ForeignRendererKeepsItsInputsAtSameSortKey",
+      "Status": "Passed",
+      "Duration": 0.0048318,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAttackBodyBatchTests.SideLegOverlapsMatchOriginalPixelsAtNativePartOrder(1.0f,1.0f,1.0f)",
+      "Status": "Passed",
+      "Duration": 0.0212006,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAttackBodyBatchTests.SideLegOverlapsMatchOriginalPixelsAtNativePartOrder(0.8f,1.0f,0.9f)",
+      "Status": "Passed",
+      "Duration": 0.0171805,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianAttackBodyBatchTests.SideLegOverlapsMatchOriginalPixelsAtNativePartOrder(1.15f,1.15f,1.15f)",
+      "Status": "Passed",
+      "Duration": 0.0177748,
+      "Message": null,
+      "StackTrace": null
+    }
+  ],
+  "Duration": 6.3,
+  "StatusPath": null,
+  "Mode": "EditMode",
+  "FilterApplied": "testname: CoreGuardianAttackBodyBatchTests",
+  "success": true,
+  "result": null
+}

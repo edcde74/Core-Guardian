@@ -1,0 +1,22 @@
+[
+  {
+    "id": 320,
+    "maskEqual": true,
+    "geometryEqual": true,
+    "rectEqual": true,
+    "differentOutputPixels": 720,
+    "maxChannelDelta": 99,
+    "expectedActive": 1,
+    "actualActive": 1
+  },
+  {
+    "id": 321,
+    "maskEqual": true,
+    "geometryEqual": true,
+    "rectEqual": true,
+    "differentOutputPixels": 1118,
+    "maxChannelDelta": 100,
+    "expectedActive": 2,
+    "actualActive": 2
+  }
+]

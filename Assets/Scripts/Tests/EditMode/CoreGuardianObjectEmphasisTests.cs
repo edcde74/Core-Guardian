@@ -6,6 +6,36 @@ using UnityEngine;
 
 public class CoreGuardianObjectEmphasisTests
 {
+    [Test]
+    public void SuppliedBodySourcesMatchIndependentOutlineAcrossVisibilityChanges()
+    {
+        var type=Find("CoreGuardianSelectionOutline");
+        var shared=type.GetMethod("PresentAtOrderWithSources",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
+        Assert.That(shared,Is.Not.Null,"Emphasis must reuse its validated body references for the mask consumer");
+        var actor=new GameObject("Shared body");var host=new GameObject("Shared outline");var legacy=new GameObject("Independent outline");var cameraGo=new GameObject("Camera");
+        var texture=new Texture2D(2,2);texture.SetPixels(Enumerable.Repeat(Color.white,4).ToArray());texture.Apply();
+        var sprite=Sprite.Create(texture,new Rect(0,0,2,2),Vector2.one*.5f,4);
+        try
+        {
+            var body=new GameObject("2D Sprite").AddComponent<SpriteRenderer>();body.transform.SetParent(actor.transform,false);body.sprite=sprite;
+            var child=new GameObject("Moving part").AddComponent<SpriteRenderer>();child.transform.SetParent(body.transform,false);child.transform.localPosition=Vector3.right;child.sprite=sprite;
+            var camera=cameraGo.AddComponent<Camera>();camera.enabled=false;camera.orthographic=true;camera.transform.position=Vector3.back*10;
+            var supplied=host.AddComponent(type);var independent=legacy.AddComponent(type);
+            var sources=new List<SpriteRenderer>{body,child};
+            for(int state=0;state<4;state++)
+            {
+                body.enabled=state!=1;child.gameObject.SetActive(state!=2);
+                if(state==3){child.transform.SetParent(actor.transform,false);sources.Remove(child);}
+                shared.Invoke(supplied,new object[]{actor.transform,camera,3,body.transform,sources});
+                type.GetMethod("PresentAtOrder").Invoke(independent,new object[]{actor.transform,camera,3});
+                Assert.That(type.GetProperty("TargetBounds").GetValue(supplied),Is.EqualTo(type.GetProperty("TargetBounds").GetValue(independent)),"state "+state);
+                var a=host.GetComponentInChildren<MeshRenderer>();var b=legacy.GetComponentInChildren<MeshRenderer>();
+                Assert.That(a.enabled,Is.EqualTo(b.enabled));Assert.That(a.sortingOrder,Is.EqualTo(b.sortingOrder));
+                CollectionAssert.AreEqual(a.GetComponent<MeshFilter>().sharedMesh.vertices,b.GetComponent<MeshFilter>().sharedMesh.vertices);
+            }
+        }
+        finally{DestroyOwned(host);DestroyOwned(legacy);UnityEngine.Object.DestroyImmediate(actor);UnityEngine.Object.DestroyImmediate(cameraGo);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
+    }
     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).FirstOrDefault(t=>t!=null);
     static void DestroyOwned(GameObject root)
     {

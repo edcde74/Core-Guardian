@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "duration": 0.66,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "CoreGuardianDamageNumberPoolPlayModeTests.PreparedHitNumbersStayHidden_ReuseWithoutCreating_AndKeepOverflowAndLifetime",
+      "Status": "Passed",
+      "Duration": 0.6166534,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

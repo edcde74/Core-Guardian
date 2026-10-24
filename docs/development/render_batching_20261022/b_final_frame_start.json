@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/render_batching_20261022/BFinalFrameProbe.cs",
+      "entry": "CGBFinalFrameProbe.Start"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 108,
+      "executeMs": 208,
+      "assemblyName": "PipelineRunScript_BFinalFrameProbe_d7de0796b6c148449a75fd762d8e5521",
+      "success": true,
+      "result": {
+        "started": true,
+        "enemies": 128,
+        "towers": 15
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

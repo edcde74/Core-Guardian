@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"Summary\": {\n    \"Total\": 5,\n    \"Passed\": 5,\n    \"Failed\": 0,\n    \"Skipped\": 0,\n    \"Inconclusive\": 0\n  },\n  \"Results\": [\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.AtlasPointSamplingHasNoNeighbourBleed\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.1610288,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.CutoutRectAndFlipRenderExactly\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.1350682,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.SharedHealthStatesKeepAllFillPixels\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.5616289,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.UnmappedSpriteRetainsOriginal\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0018732,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.UnsupportedTextureFormatFallsBackWithoutBreakingCameraRendering\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0014416,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ],\n  \"Duration\": 6.63,\n  \"StatusPath\": null,\n  \"Mode\": \"EditMode\",\n  \"FilterApplied\": \"testname: CoreGuardianSpriteAtlasTests\",\n  \"success\": true,\n  \"result\": null\n}"
+    }
+  ]
+}

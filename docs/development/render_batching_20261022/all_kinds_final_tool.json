@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "docs/development/render_batching_20261022/BAllKindsPixels.cs",
+      "entry": "CGBAllKindsPixels.Run"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 160,
+      "executeMs": 1266,
+      "assemblyName": "PipelineRunScript_BAllKindsPixels_048e2c60cc604b2db5a97aee374c8c10",
+      "success": true,
+      "result": [
+        {
+          "zoom": 8.5,
+          "changed": 0,
+          "baselineRepeatChanged": 0,
+          "maxChannelDifference": 0,
+          "batched": 278,
+          "draws": 278,
+          "enemies": 132,
+          "towers": 15,
+          "kinds": {
+            "Buff": 17,
+            "Attack": 113,
+            "Defense": 1,
+            "Boss": 1
+          },
+          "hudOverlayIncluded": false
+        },
+        {
+          "zoom": 4.25,
+          "changed": 0,
+          "baselineRepeatChanged": 0,
+          "maxChannelDifference": 0,
+          "batched": 271,
+          "draws": 271,
+          "enemies": 132,
+          "towers": 15,
+          "kinds": {
+            "Buff": 17,
+            "Attack": 113,
+            "Defense": 1,
+            "Boss": 1
+          },
+          "hudOverlayIncluded": false
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

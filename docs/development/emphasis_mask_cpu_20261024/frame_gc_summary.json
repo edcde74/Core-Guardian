@@ -1,0 +1,68 @@
+[
+  {
+    "condition": "before",
+    "rep": 1,
+    "frameMs": 24.92089333334459,
+    "fps": 40.126972441312226,
+    "fpsMin": 14.444020753072294,
+    "fpsMax": 55.51422828488473,
+    "gcMean": 387351.3222222222,
+    "gcMedian": 22114.5,
+    "collections": 1.0
+  },
+  {
+    "condition": "before",
+    "rep": 2,
+    "frameMs": 25.021558888854795,
+    "fps": 39.96553549848663,
+    "fpsMin": 17.944783899137203,
+    "fpsMax": 55.744156623972536,
+    "gcMean": 242851.7888888889,
+    "gcMedian": 21911.5,
+    "collections": 1.0
+  },
+  {
+    "condition": "before",
+    "rep": 3,
+    "frameMs": 25.107437777801856,
+    "fps": 39.828835138411705,
+    "fpsMin": 17.55864587529482,
+    "fpsMax": 52.509701163601605,
+    "gcMean": 57323.566666666666,
+    "gcMedian": 22015.5,
+    "collections": 1.0
+  },
+  {
+    "condition": "after",
+    "rep": 1,
+    "frameMs": 23.74421777777671,
+    "fps": 42.115516685327286,
+    "fpsMin": 20.439113922865626,
+    "fpsMax": 59.80825473394405,
+    "gcMean": 70430.75555555556,
+    "gcMedian": 22671,
+    "collections": 1.0
+  },
+  {
+    "condition": "after",
+    "rep": 2,
+    "frameMs": 22.63884111113536,
+    "fps": 44.171872362677185,
+    "fpsMin": 19.417098699201553,
+    "fpsMax": 58.62523816124501,
+    "gcMean": 178708.0,
+    "gcMedian": 21724,
+    "collections": 0.0
+  },
+  {
+    "condition": "after",
+    "rep": 3,
+    "frameMs": 23.235389999980626,
+    "fps": 43.03779708456944,
+    "fpsMin": 21.250597673087942,
+    "fpsMax": 59.30564947290786,
+    "gcMean": 56116.97777777778,
+    "gcMedian": 21649,
+    "collections": 1.0
+  }
+]

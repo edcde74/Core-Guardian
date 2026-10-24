@@ -1,0 +1,10 @@
+{
+  "baselineCases": 512,
+  "candidateCases": 512,
+  "baselineError": null,
+  "candidateError": null,
+  "differences": [],
+  "unexpectedIsolation": [],
+  "blankCandidateOutputs": [],
+  "scope": "8 roles x4 directions x4 phases x2 zooms x2 overlap; isolated original outline output; no body composite or Overlay HUD"
+}

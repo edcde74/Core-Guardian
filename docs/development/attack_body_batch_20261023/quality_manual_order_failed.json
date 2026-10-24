@@ -1,0 +1,28 @@
+{
+  "pairs": 2,
+  "failures": 1,
+  "width": 256,
+  "height": 256,
+  "ortho": 2,
+  "scope": "isolated Attack side phases/overlap; no HUD or whole-game approval",
+  "rows": [
+    {
+      "direction": -1.0,
+      "phaseTime": 0.025,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 0,
+      "maxChannel": 0
+    },
+    {
+      "direction": -1.0,
+      "phaseTime": 0.025,
+      "overlap": true,
+      "sources": 10,
+      "draws": 2,
+      "differences": 1679,
+      "maxChannel": 134
+    }
+  ]
+}

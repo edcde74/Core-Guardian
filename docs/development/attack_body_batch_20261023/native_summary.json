@@ -1,0 +1,237 @@
+{
+  "runs": [
+    {
+      "label": "native_baseline",
+      "samples": 90,
+      "invalidTimes": 0,
+      "gapCount": 0,
+      "frameMs": {
+        "n": 90,
+        "min": 19.484299999930954,
+        "max": 147.57090000011885,
+        "mean": 30.233661111110955,
+        "median": 25.039399999968737
+      },
+      "fps": {
+        "min": 6.776403748972152,
+        "max": 51.32337317756058,
+        "avg": 33.07571637867229
+      },
+      "enemies": {
+        "n": 90,
+        "min": 128,
+        "max": 128,
+        "mean": 128,
+        "median": 128.0
+      },
+      "towers": {
+        "n": 90,
+        "min": 15,
+        "max": 15,
+        "mean": 15,
+        "median": 15.0
+      },
+      "projectiles": {
+        "n": 90,
+        "min": 0,
+        "max": 36,
+        "mean": 6.733333333333333,
+        "median": 0.0
+      },
+      "sources": {
+        "n": 90,
+        "min": 0,
+        "max": 0,
+        "mean": 0,
+        "median": 0.0
+      },
+      "unityStatsDraw": {
+        "n": 90,
+        "min": 1555,
+        "max": 1787,
+        "mean": 1579.888888888889,
+        "median": 1567.0
+      },
+      "nativeTotalDraw": {
+        "n": 90,
+        "min": 1554,
+        "max": 1787,
+        "mean": 1579.5222222222221,
+        "median": 1568.0
+      },
+      "counters": {
+        "Standard Draw Calls Count": {
+          "n": 90,
+          "min": 169,
+          "max": 319,
+          "mean": 184.93333333333334,
+          "median": 180.0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "n": 90,
+          "min": 1372,
+          "max": 1497,
+          "mean": 1394.588888888889,
+          "median": 1382.5
+        },
+        "SetPass Calls Count": {
+          "n": 90,
+          "min": 175,
+          "max": 333,
+          "mean": 188.43333333333334,
+          "median": 182.0
+        },
+        "Main Thread": {
+          "n": 90,
+          "min": 17655700,
+          "max": 143721800,
+          "mean": 30212806.666666668,
+          "median": 25138100.0
+        },
+        "CG.AttackBodyBatch": {
+          "n": 90,
+          "min": 800,
+          "max": 3700,
+          "mean": 1812.2222222222222,
+          "median": 1700.0
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "min": 125131,
+          "max": 669583,
+          "mean": 172414.82222222222,
+          "median": 127007.5
+        }
+      },
+      "textureBytesMax": 0,
+      "bufferBytesMax": 0
+    },
+    {
+      "label": "native_candidate",
+      "samples": 90,
+      "invalidTimes": 0,
+      "gapCount": 0,
+      "frameMs": {
+        "n": 90,
+        "min": 23.15290000024106,
+        "max": 72.47699999970791,
+        "mean": 28.667274444443237,
+        "median": 27.429149999989022
+      },
+      "fps": {
+        "min": 13.797480580101688,
+        "max": 43.19113372361943,
+        "avg": 34.88298135694712
+      },
+      "enemies": {
+        "n": 90,
+        "min": 128,
+        "max": 128,
+        "mean": 128,
+        "median": 128.0
+      },
+      "towers": {
+        "n": 90,
+        "min": 15,
+        "max": 15,
+        "mean": 15,
+        "median": 15.0
+      },
+      "projectiles": {
+        "n": 90,
+        "min": 0,
+        "max": 36,
+        "mean": 6.733333333333333,
+        "median": 0.0
+      },
+      "sources": {
+        "n": 90,
+        "min": 560,
+        "max": 560,
+        "mean": 560,
+        "median": 560.0
+      },
+      "unityStatsDraw": {
+        "n": 90,
+        "min": 998,
+        "max": 1276,
+        "mean": 1020.1333333333333,
+        "median": 1005.0
+      },
+      "nativeTotalDraw": {
+        "n": 90,
+        "min": 998,
+        "max": 1276,
+        "mean": 1020.4333333333333,
+        "median": 1005.0
+      },
+      "counters": {
+        "Standard Draw Calls Count": {
+          "n": 90,
+          "min": 173,
+          "max": 305,
+          "mean": 188.5,
+          "median": 184.0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "n": 90,
+          "min": 812,
+          "max": 974,
+          "mean": 831.9333333333333,
+          "median": 821.0
+        },
+        "SetPass Calls Count": {
+          "n": 90,
+          "min": 178,
+          "max": 312,
+          "mean": 189.9777777777778,
+          "median": 185.0
+        },
+        "Main Thread": {
+          "n": 90,
+          "min": 23098400,
+          "max": 76186600,
+          "mean": 28663111.111111112,
+          "median": 27577000.0
+        },
+        "CG.AttackBodyBatch": {
+          "n": 90,
+          "min": 3481200,
+          "max": 5408300,
+          "mean": 3812286.6666666665,
+          "median": 3719250.0
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "min": 259415,
+          "max": 5840955,
+          "mean": 410615.13333333336,
+          "median": 261440.0
+        }
+      },
+      "textureBytesMax": 140032,
+      "bufferBytesMax": 4080
+    }
+  ],
+  "limits": "One 90-frame pair in current Editor; fixed dt1/60; real wall frame intervals; diagnostic allocation included; no Deep/raw capture; not target-device certification.",
+  "comparison": {
+    "nativeDraw": {
+      "before": 1579.5222222222221,
+      "after": 1020.4333333333333,
+      "saved": 559.0888888888888,
+      "savedPercent": 35.396076169305765
+    },
+    "unityDraw": {
+      "before": 1579.888888888889,
+      "after": 1020.1333333333333,
+      "saved": 559.7555555555556,
+      "savedPercent": 35.430058372600044
+    },
+    "frameMs": {
+      "before": 30.233661111110955,
+      "after": 28.667274444443237,
+      "saved": 1.566386666667718,
+      "savedPercent": 5.180936112603533
+    }
+  }
+}

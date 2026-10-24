@@ -1,0 +1,62 @@
+    static bool priorSaved;
+    static int priorFirst,priorLast;
+    static void PreserveProfileBuffer()
+    {
+        if(Profiler.enableAllocationCallstacks||ProfilerDriver.profileEditor)throw new Exception("Callstacks/profileEditor must already be OFF");
+        priorFirst=ProfilerDriver.firstFrameIndex;priorLast=ProfilerDriver.lastFrameIndex;priorSaved=false;
+        if(priorFirst>=0&&priorLast>=priorFirst)
+        {
+            string path=Path.GetFullPath(Root+"prior_profile.data");
+            if(!ProfilerDriver.SaveProfile(path)||!File.Exists(path)||new FileInfo(path).Length<=4)throw new Exception("Cannot preserve prior Profiler buffer");
+            priorSaved=true;
+        }
+        File.WriteAllText(Root+"prior_profile.json",JsonConvert.SerializeObject(new{priorFirst,priorLast,priorSaved},Formatting.Indented));
+    }
+    static void FinishTraceAndRestoreBuffer()
+    {
+        try
+        {
+            if(error==null)
+            {
+                bool saved=ProfilerDriver.SaveProfile(Path.GetFullPath(Root+"diagnostic_profile.data"));
+                File.WriteAllText(Root+"diagnostic_profile_saved.json",JsonConvert.SerializeObject(new{saved,first=ProfilerDriver.firstFrameIndex,last=ProfilerDriver.lastFrameIndex}));
+                TraceFixedFrames();
+            }
+        }
+        catch(Exception e){File.WriteAllText(Root+"diagnostic_extract_error.json",JsonConvert.SerializeObject(new{error=e.ToString()},Formatting.Indented));}
+        finally
+        {
+            ProfilerDriver.ClearAllFrames();bool restored=!priorSaved||ProfilerDriver.LoadProfile(Path.GetFullPath(Root+"prior_profile.data"),false);
+            File.WriteAllText(Root+"profiler_buffer_restored.json",JsonConvert.SerializeObject(new{restored,priorFirst,priorLast,actualFirst=ProfilerDriver.firstFrameIndex,actualLast=ProfilerDriver.lastFrameIndex},Formatting.Indented));
+        }
+    }
+    static void TraceFixedFrames()
+    {
+        var rows=Newtonsoft.Json.Linq.JArray.FromObject(frames);
+        var selected=rows.OrderByDescending(f=>(long?)f["counters"]?["CG.Mask.Present"]?["value"]??0).Select(f=>(int)f["profilerFrame"]).Distinct().Take(2).ToArray();
+        var output=new List<object>();
+        foreach(int frame in selected)
+        {
+            using var raw=ProfilerDriver.GetRawFrameDataView(frame,0);
+            if(!raw.valid||raw.threadName!="Main Thread")throw new Exception("Selected Main Thread unavailable: "+frame);
+            if(raw.sampleCount>20000)throw new Exception("20000 sample cap: "+raw.sampleCount);
+            var watch=System.Diagnostics.Stopwatch.StartNew();int count=raw.sampleCount;
+            var names=new string[count];var times=new double[count];var children=new double[count];var parent=new int[count];var ends=new int[count];var stack=new List<int>();
+            var bytes=new long[count];
+            for(int i=0;i<count;i++)
+            {
+                if((i&255)==0&&watch.ElapsedMilliseconds>1000)throw new Exception("1000ms extraction bound");
+                while(stack.Count>0&&i>=ends[stack[stack.Count-1]])stack.RemoveAt(stack.Count-1);
+                parent[i]=stack.Count>0?stack[stack.Count-1]:-1;
+                names[i]=raw.GetSampleName(i)??"<root>";times[i]=raw.GetSampleTimeMs(i);
+                if(parent[i]>=0)children[parent[i]]+=times[i];
+                if(names[i]=="GC.Alloc"&&raw.GetSampleMetadataCount(i)>0)bytes[i]=raw.GetSampleMetadataAsLong(i,0);
+                ends[i]=i+raw.GetSampleChildrenCountRecursive(i)+1;if(ends[i]>i+1)stack.Add(i);
+            }
+            var groups=Enumerable.Range(0,count).GroupBy(i=>names[i]).Select(g=>new{name=g.Key,calls=g.Count(),inclusiveMs=g.Sum(i=>times[i]),selfMs=g.Sum(i=>Math.Max(0,times[i]-children[i])),gcBytes=g.Sum(i=>bytes[i])}).ToArray();
+            var allocationParents=new Dictionary<string,long>();
+            for(int i=0;i<count;i++)if(bytes[i]>0){string key=parent[i]>=0?names[parent[i]]:"<root>";allocationParents.TryGetValue(key,out long old);allocationParents[key]=old+bytes[i];}
+            output.Add(new{frame,raw.threadName,raw.sampleCount,raw.frameTimeMs,elapsedMs=watch.ElapsedMilliseconds,targets=groups.Where(g=>g.name.StartsWith("CG.")).ToArray(),topSelf=groups.OrderByDescending(g=>g.selfMs).Take(25).ToArray(),allocationParents=allocationParents.OrderByDescending(p=>p.Value).Take(10).Select(p=>new{name=p.Key,bytes=p.Value}).ToArray()});
+        }
+        File.WriteAllText(Root+"diagnostic_frames.json",JsonConvert.SerializeObject(new{frameLimit=2,sampleLimitPerFrame=20000,extractionScanTimeLimitMs=1000,selection="top CG.Mask.Present observed counters; recording ON diagnostic only",output},Formatting.Indented));
+    }

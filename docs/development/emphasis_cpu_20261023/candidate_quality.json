@@ -1,0 +1,21 @@
+{
+  "pairs": 2,
+  "failures": 1,
+  "width": 256,
+  "height": 256,
+  "ortho": 2,
+  "rows": [
+    {
+      "direction": -1.0,
+      "phase": 0.025,
+      "overlap": false,
+      "differences": 0
+    },
+    {
+      "direction": -1.0,
+      "phase": 0.025,
+      "overlap": true,
+      "differences": 16
+    }
+  ]
+}

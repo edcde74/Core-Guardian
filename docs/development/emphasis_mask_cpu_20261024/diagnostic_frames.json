@@ -1,0 +1,796 @@
+{
+  "frameLimit": 2,
+  "sampleLimitPerFrame": 20000,
+  "extractionScanTimeLimitMs": 1000,
+  "selection": "top CG.Mask.Present observed counters; recording ON diagnostic only",
+  "output": [
+    {
+      "frame": -1,
+      "threadName": "Main Thread",
+      "sampleCount": 5141,
+      "frameTimeMs": 21.4716,
+      "elapsedMs": 10,
+      "targets": [
+        {
+          "name": "CG.PhotoShadow.Present",
+          "calls": 145,
+          "inclusiveMs": 0.85859999200329185,
+          "selfMs": 0.0359999961219728,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.PhotoShadow.Cast",
+          "calls": 145,
+          "inclusiveMs": 0.822599995881319,
+          "selfMs": 0.25009999750182033,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.SpriteReferences.Read",
+          "calls": 290,
+          "inclusiveMs": 1.0247999964049086,
+          "selfMs": 1.0247999964049086,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Present",
+          "calls": 1,
+          "inclusiveMs": 6.4200000762939453,
+          "selfMs": 0.2444001171097625,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Restore",
+          "calls": 2,
+          "inclusiveMs": 0.13709999281854834,
+          "selfMs": 0.13709999281854834,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Structure",
+          "calls": 145,
+          "inclusiveMs": 0.99649999639950693,
+          "selfMs": 0.544199998374097,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.Present",
+          "calls": 146,
+          "inclusiveMs": 5.1792999627650715,
+          "selfMs": 0.44230000184325036,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.SourceFilter",
+          "calls": 145,
+          "inclusiveMs": 0.28649999905610457,
+          "selfMs": 0.28649999905610457,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.Resources",
+          "calls": 145,
+          "inclusiveMs": 0.015599999707774259,
+          "selfMs": 0.015599999707774259,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.BoundsCrop",
+          "calls": 145,
+          "inclusiveMs": 1.4436999885365367,
+          "selfMs": 0.0408999981591478,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.CaptureSources",
+          "calls": 145,
+          "inclusiveMs": 0.83039999462198466,
+          "selfMs": 0.83039999462198466,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.ProjectionCrop",
+          "calls": 145,
+          "inclusiveMs": 0.57239999575540423,
+          "selfMs": 0.57239999575540423,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.RequestInput",
+          "calls": 145,
+          "inclusiveMs": 0.12719999736873433,
+          "selfMs": 0.12719999736873433,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.CacheLookup",
+          "calls": 145,
+          "inclusiveMs": 0.585199996130541,
+          "selfMs": 0.585199996130541,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.QueueInputs",
+          "calls": 145,
+          "inclusiveMs": 0.79339999193325639,
+          "selfMs": 0.79339999193325639,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.Output",
+          "calls": 145,
+          "inclusiveMs": 1.4541999888606369,
+          "selfMs": 0.058799993043066934,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputGeometry",
+          "calls": 145,
+          "inclusiveMs": 0.714600000763312,
+          "selfMs": 0.41570000395586248,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.QuadUpload",
+          "calls": 290,
+          "inclusiveMs": 0.2988999968074495,
+          "selfMs": 0.2988999968074495,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputSorting",
+          "calls": 145,
+          "inclusiveMs": 0.098599998716963455,
+          "selfMs": 0.098599998716963455,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputBinding",
+          "calls": 145,
+          "inclusiveMs": 0.58219999633729458,
+          "selfMs": 0.52839999800198711,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Tint",
+          "calls": 1,
+          "inclusiveMs": 0.57239997386932373,
+          "selfMs": 0.57169997389428318,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.AttackBodyBatch",
+          "calls": 1,
+          "inclusiveMs": 0.000699999975040555,
+          "selfMs": 0.000699999975040555,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputBatch",
+          "calls": 1,
+          "inclusiveMs": 0.77350002527236938,
+          "selfMs": 0.17640001396648586,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.PageProducer",
+          "calls": 1,
+          "inclusiveMs": 0.54030001163482666,
+          "selfMs": 0.51330001272435766,
+          "gcBytes": 0
+        }
+      ],
+      "topSelf": [
+        {
+          "name": "EditorLoop",
+          "calls": 4,
+          "inclusiveMs": 6.897099994122982,
+          "selfMs": 6.897099994122982,
+          "gcBytes": 0
+        },
+        {
+          "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+          "calls": 1,
+          "inclusiveMs": 2.5808000564575195,
+          "selfMs": 2.5747000566188945,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.SpriteReferences.Read",
+          "calls": 290,
+          "inclusiveMs": 1.0247999964049086,
+          "selfMs": 1.0247999964049086,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.CaptureSources",
+          "calls": 145,
+          "inclusiveMs": 0.83039999462198466,
+          "selfMs": 0.83039999462198466,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.QueueInputs",
+          "calls": 145,
+          "inclusiveMs": 0.79339999193325639,
+          "selfMs": 0.79339999193325639,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.CacheLookup",
+          "calls": 145,
+          "inclusiveMs": 0.585199996130541,
+          "selfMs": 0.585199996130541,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.ProjectionCrop",
+          "calls": 145,
+          "inclusiveMs": 0.57239999575540423,
+          "selfMs": 0.57239999575540423,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Tint",
+          "calls": 1,
+          "inclusiveMs": 0.57239997386932373,
+          "selfMs": 0.57169997389428318,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Structure",
+          "calls": 145,
+          "inclusiveMs": 0.99649999639950693,
+          "selfMs": 0.544199998374097,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputBinding",
+          "calls": 145,
+          "inclusiveMs": 0.58219999633729458,
+          "selfMs": 0.52839999800198711,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.PageProducer",
+          "calls": 1,
+          "inclusiveMs": 0.54030001163482666,
+          "selfMs": 0.51330001272435766,
+          "gcBytes": 0
+        },
+        {
+          "name": "Profiler.FlushMemoryCounters",
+          "calls": 1,
+          "inclusiveMs": 0.50309997797012329,
+          "selfMs": 0.50309997797012329,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.Present",
+          "calls": 146,
+          "inclusiveMs": 5.1792999627650715,
+          "selfMs": 0.44230000184325036,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputGeometry",
+          "calls": 145,
+          "inclusiveMs": 0.714600000763312,
+          "selfMs": 0.41570000395586248,
+          "gcBytes": 0
+        },
+        {
+          "name": "Idle",
+          "calls": 2,
+          "inclusiveMs": 0.33860000967979431,
+          "selfMs": 0.33860000967979431,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.QuadUpload",
+          "calls": 290,
+          "inclusiveMs": 0.2988999968074495,
+          "selfMs": 0.2988999968074495,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.SourceFilter",
+          "calls": 145,
+          "inclusiveMs": 0.28649999905610457,
+          "selfMs": 0.28649999905610457,
+          "gcBytes": 0
+        },
+        {
+          "name": "WaitForJobGroupID",
+          "calls": 8,
+          "inclusiveMs": 0.75300000794231892,
+          "selfMs": 0.26219999579916475,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.PhotoShadow.Cast",
+          "calls": 145,
+          "inclusiveMs": 0.822599995881319,
+          "selfMs": 0.25009999750182033,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Present",
+          "calls": 1,
+          "inclusiveMs": 6.4200000762939453,
+          "selfMs": 0.2444001171097625,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputBatch",
+          "calls": 1,
+          "inclusiveMs": 0.77350002527236938,
+          "selfMs": 0.17640001396648586,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Restore",
+          "calls": 2,
+          "inclusiveMs": 0.13709999281854834,
+          "selfMs": 0.13709999281854834,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.RequestInput",
+          "calls": 145,
+          "inclusiveMs": 0.12719999736873433,
+          "selfMs": 0.12719999736873433,
+          "gcBytes": 0
+        },
+        {
+          "name": "SpriteRenderer.PrepareNode",
+          "calls": 8,
+          "inclusiveMs": 0.11239999561803415,
+          "selfMs": 0.11239999561803415,
+          "gcBytes": 0
+        },
+        {
+          "name": "LateBehaviourUpdate",
+          "calls": 1,
+          "inclusiveMs": 7.5468997955322266,
+          "selfMs": 0.1116998770085047,
+          "gcBytes": 0
+        }
+      ],
+      "allocationParents": [
+        {
+          "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+          "bytes": 1856
+        },
+        {
+          "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+          "bytes": 760
+        },
+        {
+          "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+          "bytes": 380
+        },
+        {
+          "name": "CG.Mask.OutputBatch",
+          "bytes": 152
+        },
+        {
+          "name": "UnityEngine.InputModule.dll!UnityEngineInternal.Input::NativeInputSystem.NotifyBeforeUpdate() [Invoke]",
+          "bytes": 51
+        },
+        {
+          "name": "Inl_On Record Render Graph",
+          "bytes": 48
+        },
+        {
+          "name": "CG.Emphasis.Present",
+          "bytes": 40
+        },
+        {
+          "name": "Inl_RenderPipeline.BeginContextRendering",
+          "bytes": 40
+        },
+        {
+          "name": "DeformationManager.LateUpdate",
+          "bytes": 32
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "threadName": "Main Thread",
+      "sampleCount": 6739,
+      "frameTimeMs": 35.1225,
+      "elapsedMs": 3,
+      "targets": [
+        {
+          "name": "CG.PhotoShadow.Present",
+          "calls": 145,
+          "inclusiveMs": 1.0549999969080091,
+          "selfMs": 0.046300005633383989,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.PhotoShadow.Cast",
+          "calls": 145,
+          "inclusiveMs": 1.0086999912746251,
+          "selfMs": 0.29149999376386404,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.SpriteReferences.Read",
+          "calls": 290,
+          "inclusiveMs": 1.23519999650307,
+          "selfMs": 1.23519999650307,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Present",
+          "calls": 1,
+          "inclusiveMs": 9.6985998153686523,
+          "selfMs": 0.29229986606515013,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Restore",
+          "calls": 2,
+          "inclusiveMs": 0.13790000131120905,
+          "selfMs": 0.13790000131120905,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Structure",
+          "calls": 145,
+          "inclusiveMs": 1.0820999937132,
+          "selfMs": 0.56409999472089112,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.Present",
+          "calls": 146,
+          "inclusiveMs": 8.3239999555516988,
+          "selfMs": 0.5283999853709247,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.SourceFilter",
+          "calls": 145,
+          "inclusiveMs": 0.30819999967934564,
+          "selfMs": 0.30819999967934564,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.Resources",
+          "calls": 145,
+          "inclusiveMs": 0.014699999657750595,
+          "selfMs": 0.014699999657750595,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.BoundsCrop",
+          "calls": 145,
+          "inclusiveMs": 1.5187999899499118,
+          "selfMs": 0.041399994515813887,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.CaptureSources",
+          "calls": 145,
+          "inclusiveMs": 0.89979999710340053,
+          "selfMs": 0.89979999710340053,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.ProjectionCrop",
+          "calls": 145,
+          "inclusiveMs": 0.57759999833069742,
+          "selfMs": 0.57759999833069742,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.RequestInput",
+          "calls": 145,
+          "inclusiveMs": 0.15119999967282638,
+          "selfMs": 0.15119999967282638,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.CacheLookup",
+          "calls": 145,
+          "inclusiveMs": 2.5817999991122633,
+          "selfMs": 2.5582999997059233,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.QueueInputs",
+          "calls": 145,
+          "inclusiveMs": 0.945999993244186,
+          "selfMs": 0.945999993244186,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.Output",
+          "calls": 145,
+          "inclusiveMs": 2.2328999899327755,
+          "selfMs": 0.062999999121529981,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputGeometry",
+          "calls": 145,
+          "inclusiveMs": 1.2259999932721257,
+          "selfMs": 0.42579999318695627,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.QuadUpload",
+          "calls": 290,
+          "inclusiveMs": 0.80020000008516945,
+          "selfMs": 0.80020000008516945,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputSorting",
+          "calls": 145,
+          "inclusiveMs": 0.11839999703806825,
+          "selfMs": 0.11839999703806825,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputBinding",
+          "calls": 145,
+          "inclusiveMs": 0.82550000050105155,
+          "selfMs": 0.77220000211673323,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Tint",
+          "calls": 1,
+          "inclusiveMs": 0.578000009059906,
+          "selfMs": 0.57720000908011571,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.AttackBodyBatch",
+          "calls": 1,
+          "inclusiveMs": 0.00079999997979030013,
+          "selfMs": 0.00079999997979030013,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputBatch",
+          "calls": 1,
+          "inclusiveMs": 0.85100001096725464,
+          "selfMs": 0.20600002531136852,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.PageProducer",
+          "calls": 1,
+          "inclusiveMs": 0.55629998445510864,
+          "selfMs": 0.52909998440009076,
+          "gcBytes": 0
+        }
+      ],
+      "topSelf": [
+        {
+          "name": "Semaphore.WaitForSignal",
+          "calls": 1,
+          "inclusiveMs": 9.3660001754760742,
+          "selfMs": 9.3660001754760742,
+          "gcBytes": 0
+        },
+        {
+          "name": "EditorLoop",
+          "calls": 4,
+          "inclusiveMs": 6.7232999252155423,
+          "selfMs": 6.7232999252155423,
+          "gcBytes": 0
+        },
+        {
+          "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+          "calls": 1,
+          "inclusiveMs": 2.6712000370025635,
+          "selfMs": 2.6608000371124945,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.CacheLookup",
+          "calls": 145,
+          "inclusiveMs": 2.5817999991122633,
+          "selfMs": 2.5582999997059233,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.SpriteReferences.Read",
+          "calls": 290,
+          "inclusiveMs": 1.23519999650307,
+          "selfMs": 1.23519999650307,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.QueueInputs",
+          "calls": 145,
+          "inclusiveMs": 0.945999993244186,
+          "selfMs": 0.945999993244186,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.CaptureSources",
+          "calls": 145,
+          "inclusiveMs": 0.89979999710340053,
+          "selfMs": 0.89979999710340053,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.QuadUpload",
+          "calls": 290,
+          "inclusiveMs": 0.80020000008516945,
+          "selfMs": 0.80020000008516945,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputBinding",
+          "calls": 145,
+          "inclusiveMs": 0.82550000050105155,
+          "selfMs": 0.77220000211673323,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.ProjectionCrop",
+          "calls": 145,
+          "inclusiveMs": 0.57759999833069742,
+          "selfMs": 0.57759999833069742,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Tint",
+          "calls": 1,
+          "inclusiveMs": 0.578000009059906,
+          "selfMs": 0.57720000908011571,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Structure",
+          "calls": 145,
+          "inclusiveMs": 1.0820999937132,
+          "selfMs": 0.56409999472089112,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.PageProducer",
+          "calls": 1,
+          "inclusiveMs": 0.55629998445510864,
+          "selfMs": 0.52909998440009076,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.Present",
+          "calls": 146,
+          "inclusiveMs": 8.3239999555516988,
+          "selfMs": 0.5283999853709247,
+          "gcBytes": 0
+        },
+        {
+          "name": "Profiler.FlushMemoryCounters",
+          "calls": 1,
+          "inclusiveMs": 0.47749999165534973,
+          "selfMs": 0.47749999165534973,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputGeometry",
+          "calls": 145,
+          "inclusiveMs": 1.2259999932721257,
+          "selfMs": 0.42579999318695627,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.SourceFilter",
+          "calls": 145,
+          "inclusiveMs": 0.30819999967934564,
+          "selfMs": 0.30819999967934564,
+          "gcBytes": 0
+        },
+        {
+          "name": "WaitForJobGroupID",
+          "calls": 9,
+          "inclusiveMs": 0.71859999792650342,
+          "selfMs": 0.29380000226228731,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Emphasis.Present",
+          "calls": 1,
+          "inclusiveMs": 9.6985998153686523,
+          "selfMs": 0.29229986606515013,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.PhotoShadow.Cast",
+          "calls": 145,
+          "inclusiveMs": 1.0086999912746251,
+          "selfMs": 0.29149999376386404,
+          "gcBytes": 0
+        },
+        {
+          "name": "SpriteRenderer.PrepareNode",
+          "calls": 23,
+          "inclusiveMs": 0.21629999729339033,
+          "selfMs": 0.21629999729339033,
+          "gcBytes": 0
+        },
+        {
+          "name": "Destroy",
+          "calls": 112,
+          "inclusiveMs": 0.20789999875705689,
+          "selfMs": 0.20789999875705689,
+          "gcBytes": 0
+        },
+        {
+          "name": "QueuePrepareIntegrateMainThreadObjects",
+          "calls": 1,
+          "inclusiveMs": 0.31830000877380371,
+          "selfMs": 0.20660001093347091,
+          "gcBytes": 0
+        },
+        {
+          "name": "CG.Mask.OutputBatch",
+          "calls": 1,
+          "inclusiveMs": 0.85100001096725464,
+          "selfMs": 0.20600002531136852,
+          "gcBytes": 0
+        },
+        {
+          "name": "Idle",
+          "calls": 3,
+          "inclusiveMs": 0.19730000197887421,
+          "selfMs": 0.19730000197887421,
+          "gcBytes": 0
+        }
+      ],
+      "allocationParents": [
+        {
+          "name": "CG.Mask.CacheLookup",
+          "bytes": 4480
+        },
+        {
+          "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+          "bytes": 3136
+        },
+        {
+          "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+          "bytes": 772
+        },
+        {
+          "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+          "bytes": 380
+        },
+        {
+          "name": "CG.Mask.OutputBatch",
+          "bytes": 152
+        },
+        {
+          "name": "UnityEngine.InputModule.dll!UnityEngineInternal.Input::NativeInputSystem.NotifyBeforeUpdate() [Invoke]",
+          "bytes": 51
+        },
+        {
+          "name": "Inl_On Record Render Graph",
+          "bytes": 48
+        },
+        {
+          "name": "CG.Emphasis.Present",
+          "bytes": 40
+        },
+        {
+          "name": "Inl_RenderPipeline.BeginContextRendering",
+          "bytes": 40
+        },
+        {
+          "name": "DeformationManager.LateUpdate",
+          "bytes": 32
+        }
+      ]
+    }
+  ]
+}

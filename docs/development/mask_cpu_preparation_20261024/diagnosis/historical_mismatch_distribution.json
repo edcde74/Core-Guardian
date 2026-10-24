@@ -1,0 +1,20 @@
+[
+  {
+    "role": "Multi",
+    "failures": 14,
+    "single": 0,
+    "overlap": 14
+  },
+  {
+    "role": "Single",
+    "failures": 49,
+    "single": 18,
+    "overlap": 31
+  },
+  {
+    "role": "Support",
+    "failures": 11,
+    "single": 0,
+    "overlap": 11
+  }
+]

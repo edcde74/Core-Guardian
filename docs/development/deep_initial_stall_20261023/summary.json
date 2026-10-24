@@ -1,0 +1,49 @@
+{
+  "samples": 12,
+  "warmFrames": 15,
+  "mode": "Deep Profile plus profileEditor; diagnostic only",
+  "wallFrameMs": {
+    "mean": 223.72594999999743,
+    "median": 201.46129999994855,
+    "min": 174.08870000008392,
+    "max": 330.37689999991926
+  },
+  "fps": {
+    "avg": 4.469754179164337,
+    "min": 3.0268460052753214,
+    "max": 5.744198216193917
+  },
+  "collectionCount0Delta": 1,
+  "gcCollectMaxMs": 10.2225,
+  "incrementalMarkerMaxMs": 3.018,
+  "confirmedPath": "Session.MoveProjectiles -> ApplyDamage -> HUD.ShowDamageNumber -> FloatingNumber -> CreateFloatingNumber -> AddComponent<TextMeshProUGUI> -> TMP_Settings.instance -> Resources.Load(TMP Settings)",
+  "deepFrame4": {
+    "mainThreadMs": 301.107104,
+    "sessionStepMs": 76.6948,
+    "createFloatingNumberMs": 62.959,
+    "createFloatingNumberCalls": 3,
+    "tmpAwakeMs": 49.22,
+    "tmpSettingsGetterMs": 42.787,
+    "settingsResourcesLoadMs": 42.573,
+    "settingsResourcesLoadCalls": 1,
+    "settingsResourcesLoadManagedBytes": 130850,
+    "emphasisPresentMs": 56.8749,
+    "synchronizeViewsMs": 24.7325,
+    "editorViewsRepaintMs": 55.8166
+  },
+  "deepFrame5": {
+    "mainThreadMs": 304.9096,
+    "sessionStepMs": 8.1645,
+    "emphasisPresentMs": 58.8323,
+    "synchronizeViewsMs": 25.6369,
+    "editorViewsRepaintMs": 150.0472,
+    "profilerIntegrateMs": 10.7556
+  },
+  "limits": [
+    "Deep absolute times are inflated; not normal FPS or GPU proof",
+    "Live Profiler frame-index arrival lag observed; selected finalized profiler frames4/5 instead of blindly using captured lastFrameIndex3",
+    "Original normal 100ms hitch attribution fraction requires normal-mode comparison after targeted fix",
+    "Earlier 4-6MB transient allocation not identified by this capture",
+    "No product code changes, no new benchmark repetitions"
+  ]
+}

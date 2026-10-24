@@ -1,0 +1,32 @@
+[
+  {
+    "name": "CG.Mask.Present",
+    "samples": 15,
+    "meanMs": 6.453993333333333
+  },
+  {
+    "name": "CG.Mask.Regenerate",
+    "samples": 15,
+    "meanMs": 1.1601066666666668
+  },
+  {
+    "name": "CG.Mask.EligibleRegenerate",
+    "samples": 15,
+    "meanMs": 0.07630666666666668
+  },
+  {
+    "name": "CG.Mask.CacheFlush",
+    "samples": 15,
+    "meanMs": 3.3457333333333334
+  },
+  {
+    "name": "CG.Mask.CopyBack",
+    "samples": 15,
+    "meanMs": 0.07333333333333333
+  },
+  {
+    "name": "CG.Mask.PageProducer",
+    "samples": 15,
+    "meanMs": 0.4234133333333333
+  }
+]

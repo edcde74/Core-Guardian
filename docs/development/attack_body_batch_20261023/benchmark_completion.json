@@ -1,0 +1,14 @@
+{
+  "error": null,
+  "runs": [
+    {
+      "label": "native_baseline",
+      "samples": 90
+    },
+    {
+      "label": "native_candidate",
+      "samples": 90
+    }
+  ],
+  "stopRequested": true
+}

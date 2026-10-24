@@ -1,0 +1,82 @@
+{
+  "pairs": 8,
+  "failures": 8,
+  "width": 256,
+  "height": 256,
+  "ortho": 2,
+  "scope": "isolated Attack side phases/overlap; no HUD or whole-game approval",
+  "rows": [
+    {
+      "direction": -1.0,
+      "phaseTime": 0.025,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 45,
+      "maxChannel": 141
+    },
+    {
+      "direction": -1.0,
+      "phaseTime": 0.08,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 80,
+      "maxChannel": 173
+    },
+    {
+      "direction": -1.0,
+      "phaseTime": 0.14,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 61,
+      "maxChannel": 144
+    },
+    {
+      "direction": -1.0,
+      "phaseTime": 0.22,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 67,
+      "maxChannel": 141
+    },
+    {
+      "direction": 1.0,
+      "phaseTime": 0.025,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 45,
+      "maxChannel": 141
+    },
+    {
+      "direction": 1.0,
+      "phaseTime": 0.08,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 80,
+      "maxChannel": 173
+    },
+    {
+      "direction": 1.0,
+      "phaseTime": 0.14,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 61,
+      "maxChannel": 144
+    },
+    {
+      "direction": 1.0,
+      "phaseTime": 0.22,
+      "overlap": false,
+      "sources": 4,
+      "draws": 1,
+      "differences": 67,
+      "maxChannel": 141
+    }
+  ]
+}

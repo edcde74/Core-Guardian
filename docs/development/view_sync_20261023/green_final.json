@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"status\": \"completed\",\n  \"duration\": 1.24,\n  \"summary\": {\n    \"total\": 3,\n    \"passed\": 3,\n    \"failed\": 0,\n    \"skipped\": 0,\n    \"inconclusive\": 0\n  },\n  \"results\": [\n    {\n      \"FullName\": \"CoreGuardianViewSynchronizationTests.AuraActivationRecomputesPositionAfterExternalGridMutation\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.4628387,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianViewSynchronizationTests.AuraCreationRecomputesPositionAfterHierarchyCallback\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.3829526,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianViewSynchronizationTests.CachedWorldMatchesLegacyMotion_AcrossGridChangesZeroDtAndReleasedBodies\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.3594244,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ]\n}"
+    }
+  ]
+}

@@ -1,0 +1,1258 @@
+{
+  "runs": {
+    "before_1": {
+      "samples": 90,
+      "nonUnitGaps": 0,
+      "invalidMs": 0,
+      "frameMs": {
+        "n": 90,
+        "mean": 25.42151222221744,
+        "median": 24.193300000206364,
+        "min": 17.878100000416453,
+        "max": 51.30899999949179,
+        "p95": 39.10309999992023,
+        "p99": null
+      },
+      "fps": {
+        "min": 19.489758132294625,
+        "max": 55.93435543915215,
+        "average": 39.33676294544106
+      },
+      "counters": {
+        "CG.Views.All": {
+          "n": 90,
+          "mean": 2.1865511111111107,
+          "median": 2.1033999999999997,
+          "min": 1.6643,
+          "max": 3.8743,
+          "p95": 2.9549,
+          "p99": null
+        },
+        "CG.Views.Enemies": {
+          "n": 90,
+          "mean": 1.613016666666666,
+          "median": 1.536,
+          "min": 1.2463,
+          "max": 2.2919,
+          "p95": 2.1444,
+          "p99": null
+        },
+        "CG.Views.Towers": {
+          "n": 90,
+          "mean": 0.515191111111111,
+          "median": 0.47855000000000003,
+          "min": 0.3666,
+          "max": 0.9906,
+          "p95": 0.7797,
+          "p99": null
+        },
+        "CG.Views.Projectiles": {
+          "n": 90,
+          "mean": 0.030094444444444448,
+          "median": 0.0013,
+          "min": 0.0008,
+          "max": 0.6831,
+          "p95": 0.1023,
+          "p99": null
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "mean": 386739.6666666667,
+          "median": 21667.5,
+          "min": 19477.0,
+          "max": 3854800.0,
+          "p95": 3088820.0,
+          "p99": null
+        },
+        "GC.Collect": {
+          "n": 90,
+          "mean": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "p95": 0.0,
+          "p99": null
+        },
+        "GarbageCollector.CollectIncremental": {
+          "n": 90,
+          "mean": 0.034298888888888886,
+          "median": 0.0005,
+          "min": 0.0003,
+          "max": 3.0376,
+          "p95": 0.001,
+          "p99": null
+        },
+        "Main Thread": {
+          "n": 90,
+          "mean": 25.41432444444445,
+          "median": 24.15475,
+          "min": 18.0543,
+          "max": 51.4158,
+          "p95": 40.035,
+          "p99": null
+        },
+        "PlayerLoop": {
+          "n": 90,
+          "mean": 14.595601111111112,
+          "median": 13.616299999999999,
+          "min": 10.7809,
+          "max": 41.2837,
+          "p95": 20.4966,
+          "p99": null
+        },
+        "CG.Emphasis.Present": {
+          "n": 90,
+          "mean": 5.941093333333333,
+          "median": 5.5725,
+          "min": 4.8296,
+          "max": 15.2475,
+          "p95": 8.6897,
+          "p99": null
+        },
+        "CG.Mask.Present": {
+          "n": 90,
+          "mean": 4.87695888888889,
+          "median": 4.54585,
+          "min": 3.9753,
+          "max": 13.7819,
+          "p95": 7.2096,
+          "p99": null
+        }
+      },
+      "draw": {
+        "n": 90,
+        "mean": 1582.2555555555555,
+        "median": 1569.0,
+        "min": 1554.0,
+        "max": 1717.0,
+        "p95": 1678.0,
+        "p99": null
+      },
+      "setPass": {
+        "n": 90,
+        "mean": 189.35555555555555,
+        "median": 182.0,
+        "min": 175.0,
+        "max": 276.0,
+        "p95": 227.0,
+        "p99": null
+      },
+      "projectiles": {
+        "n": 90,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 36.0,
+        "p95": 36.0,
+        "p99": null
+      },
+      "observedCollectionDeltasExcludingFirst": 1.0,
+      "firstCollectionDeltaIncludesWarmup": 4
+    },
+    "before_2": {
+      "samples": 90,
+      "nonUnitGaps": 0,
+      "invalidMs": 0,
+      "frameMs": {
+        "n": 90,
+        "mean": 25.711522222223316,
+        "median": 23.371649999717192,
+        "min": 18.11379999981,
+        "max": 60.337900000376976,
+        "p95": 37.97420000046259,
+        "p99": null
+      },
+      "fps": {
+        "min": 16.57333118974562,
+        "max": 55.20652762040485,
+        "average": 38.89306869336841
+      },
+      "counters": {
+        "CG.Views.All": {
+          "n": 90,
+          "mean": 2.174313333333334,
+          "median": 2.03505,
+          "min": 1.6677,
+          "max": 8.3828,
+          "p95": 2.7235,
+          "p99": null
+        },
+        "CG.Views.Enemies": {
+          "n": 90,
+          "mean": 1.6423344444444439,
+          "median": 1.53405,
+          "min": 1.2204,
+          "max": 7.4346,
+          "p95": 2.0777,
+          "p99": null
+        },
+        "CG.Views.Towers": {
+          "n": 90,
+          "mean": 0.492901111111111,
+          "median": 0.4665,
+          "min": 0.3743,
+          "max": 0.8933,
+          "p95": 0.6772,
+          "p99": null
+        },
+        "CG.Views.Projectiles": {
+          "n": 90,
+          "mean": 0.01808111111111111,
+          "median": 0.0013,
+          "min": 0.0008,
+          "max": 0.2288,
+          "p95": 0.0686,
+          "p99": null
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "mean": 366398.3333333333,
+          "median": 21765.0,
+          "min": 19484.0,
+          "max": 5685829.0,
+          "p95": 4326823.0,
+          "p99": null
+        },
+        "GC.Collect": {
+          "n": 90,
+          "mean": 0.25590444444444443,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 10.252,
+          "p95": 0.0,
+          "p99": null
+        },
+        "GarbageCollector.CollectIncremental": {
+          "n": 90,
+          "mean": 0.5556988888888889,
+          "median": 0.0005,
+          "min": 0.0003,
+          "max": 14.8208,
+          "p95": 3.0329,
+          "p99": null
+        },
+        "Main Thread": {
+          "n": 90,
+          "mean": 25.70481444444445,
+          "median": 24.0321,
+          "min": 18.0737,
+          "max": 60.2533,
+          "p95": 37.0446,
+          "p99": null
+        },
+        "PlayerLoop": {
+          "n": 90,
+          "mean": 15.04679111111111,
+          "median": 13.6699,
+          "min": 11.2683,
+          "max": 41.7289,
+          "p95": 26.0768,
+          "p99": null
+        },
+        "CG.Emphasis.Present": {
+          "n": 90,
+          "mean": 5.833894444444444,
+          "median": 5.5896,
+          "min": 4.7143,
+          "max": 9.4529,
+          "p95": 7.6744,
+          "p99": null
+        },
+        "CG.Mask.Present": {
+          "n": 90,
+          "mean": 4.778452222222219,
+          "median": 4.5388,
+          "min": 3.9409,
+          "max": 8.2654,
+          "p95": 6.2994,
+          "p99": null
+        }
+      },
+      "draw": {
+        "n": 90,
+        "mean": 1578.6555555555556,
+        "median": 1564.0,
+        "min": 1554.0,
+        "max": 1989.0,
+        "p95": 1598.0,
+        "p99": null
+      },
+      "setPass": {
+        "n": 90,
+        "mean": 187.48888888888888,
+        "median": 182.0,
+        "min": 175.0,
+        "max": 310.0,
+        "p95": 221.0,
+        "p99": null
+      },
+      "projectiles": {
+        "n": 90,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 36.0,
+        "p95": 36.0,
+        "p99": null
+      },
+      "observedCollectionDeltasExcludingFirst": 2.0,
+      "firstCollectionDeltaIncludesWarmup": 0
+    },
+    "before_3": {
+      "samples": 90,
+      "nonUnitGaps": 0,
+      "invalidMs": 0,
+      "frameMs": {
+        "n": 90,
+        "mean": 24.49497222222716,
+        "median": 21.28835000030449,
+        "min": 18.19329999943875,
+        "max": 51.080199999887554,
+        "p95": 39.579999999659776,
+        "p99": null
+      },
+      "fps": {
+        "min": 19.577057255104744,
+        "max": 54.96528942142708,
+        "average": 40.82470438944131
+      },
+      "counters": {
+        "CG.Views.All": {
+          "n": 90,
+          "mean": 2.0780800000000004,
+          "median": 2.028,
+          "min": 1.6438,
+          "max": 3.1037,
+          "p95": 2.6594,
+          "p99": null
+        },
+        "CG.Views.Enemies": {
+          "n": 90,
+          "mean": 1.5598488888888886,
+          "median": 1.52,
+          "min": 1.2222,
+          "max": 2.3244,
+          "p95": 2.097,
+          "p99": null
+        },
+        "CG.Views.Towers": {
+          "n": 90,
+          "mean": 0.4775677777777779,
+          "median": 0.45515,
+          "min": 0.3681,
+          "max": 0.8589,
+          "p95": 0.6444,
+          "p99": null
+        },
+        "CG.Views.Projectiles": {
+          "n": 90,
+          "mean": 0.01989888888888889,
+          "median": 0.0012,
+          "min": 0.0008,
+          "max": 0.3723,
+          "p95": 0.0727,
+          "p99": null
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "mean": 180275.98888888888,
+          "median": 21129.0,
+          "min": 19477.0,
+          "max": 5744940.0,
+          "p95": 365770.0,
+          "p99": null
+        },
+        "GC.Collect": {
+          "n": 90,
+          "mean": 0.15465222222222225,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 10.8283,
+          "p95": 0.0,
+          "p99": null
+        },
+        "GarbageCollector.CollectIncremental": {
+          "n": 90,
+          "mean": 0.26113,
+          "median": 0.0005,
+          "min": 0.0003,
+          "max": 14.4143,
+          "p95": 0.0013,
+          "p99": null
+        },
+        "Main Thread": {
+          "n": 90,
+          "mean": 24.48557777777778,
+          "median": 21.12565,
+          "min": 17.495,
+          "max": 52.215,
+          "p95": 39.1315,
+          "p99": null
+        },
+        "PlayerLoop": {
+          "n": 90,
+          "mean": 14.543858888888881,
+          "median": 13.27575,
+          "min": 11.0529,
+          "max": 33.0697,
+          "p95": 24.0689,
+          "p99": null
+        },
+        "CG.Emphasis.Present": {
+          "n": 90,
+          "mean": 5.798613333333333,
+          "median": 5.47565,
+          "min": 4.8429,
+          "max": 10.6241,
+          "p95": 8.2952,
+          "p99": null
+        },
+        "CG.Mask.Present": {
+          "n": 90,
+          "mean": 4.733930000000001,
+          "median": 4.4426000000000005,
+          "min": 3.9491,
+          "max": 9.2276,
+          "p95": 6.749,
+          "p99": null
+        }
+      },
+      "draw": {
+        "n": 90,
+        "mean": 1585.0444444444445,
+        "median": 1573.0,
+        "min": 1555.0,
+        "max": 1781.0,
+        "p95": 1674.0,
+        "p99": null
+      },
+      "setPass": {
+        "n": 90,
+        "mean": 190.4111111111111,
+        "median": 182.0,
+        "min": 176.0,
+        "max": 288.0,
+        "p95": 221.0,
+        "p99": null
+      },
+      "projectiles": {
+        "n": 90,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 36.0,
+        "p95": 36.0,
+        "p99": null
+      },
+      "observedCollectionDeltasExcludingFirst": 1.0,
+      "firstCollectionDeltaIncludesWarmup": 0
+    },
+    "after_1": {
+      "samples": 90,
+      "nonUnitGaps": 0,
+      "invalidMs": 0,
+      "frameMs": {
+        "n": 90,
+        "mean": 25.388980000004974,
+        "median": 24.175049999030307,
+        "min": 18.222899998363573,
+        "max": 53.00500000157626,
+        "p95": 38.604499997745734,
+        "p99": null
+      },
+      "fps": {
+        "min": 18.866144702768832,
+        "max": 54.876007665618566,
+        "average": 39.38716718827634
+      },
+      "counters": {
+        "CG.Views.All": {
+          "n": 90,
+          "mean": 2.077993333333333,
+          "median": 1.9675500000000001,
+          "min": 1.6338,
+          "max": 4.5658,
+          "p95": 2.7379,
+          "p99": null
+        },
+        "CG.Views.Enemies": {
+          "n": 90,
+          "mean": 1.5480377777777774,
+          "median": 1.47545,
+          "min": 1.1511,
+          "max": 2.3377,
+          "p95": 2.1478,
+          "p99": null
+        },
+        "CG.Views.Towers": {
+          "n": 90,
+          "mean": 0.47275555555555526,
+          "median": 0.44595,
+          "min": 0.3124,
+          "max": 1.3285,
+          "p95": 0.6703,
+          "p99": null
+        },
+        "CG.Views.Projectiles": {
+          "n": 90,
+          "mean": 0.023393333333333332,
+          "median": 0.0011,
+          "min": 0.0007,
+          "max": 0.464,
+          "p95": 0.0719,
+          "p99": null
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "mean": 223215.25555555554,
+          "median": 21471.0,
+          "min": 19477.0,
+          "max": 4351420.0,
+          "p95": 1379821.0,
+          "p99": null
+        },
+        "GC.Collect": {
+          "n": 90,
+          "mean": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "p95": 0.0,
+          "p99": null
+        },
+        "GarbageCollector.CollectIncremental": {
+          "n": 90,
+          "mean": 0.03393,
+          "median": 0.0005,
+          "min": 0.0002,
+          "max": 3.0053,
+          "p95": 0.001,
+          "p99": null
+        },
+        "Main Thread": {
+          "n": 90,
+          "mean": 25.382334444444446,
+          "median": 23.77045,
+          "min": 17.8739,
+          "max": 59.2806,
+          "p95": 33.6982,
+          "p99": null
+        },
+        "PlayerLoop": {
+          "n": 90,
+          "mean": 14.216715555555558,
+          "median": 13.0774,
+          "min": 10.6396,
+          "max": 38.2919,
+          "p95": 22.202,
+          "p99": null
+        },
+        "CG.Emphasis.Present": {
+          "n": 90,
+          "mean": 5.7563911111111095,
+          "median": 5.3883,
+          "min": 4.6667,
+          "max": 16.7294,
+          "p95": 7.7237,
+          "p99": null
+        },
+        "CG.Mask.Present": {
+          "n": 90,
+          "mean": 4.722781111111108,
+          "median": 4.3768,
+          "min": 3.8463,
+          "max": 15.5352,
+          "p95": 6.5031,
+          "p99": null
+        }
+      },
+      "draw": {
+        "n": 90,
+        "mean": 1581.8555555555556,
+        "median": 1561.0,
+        "min": 1554.0,
+        "max": 2012.0,
+        "p95": 1650.0,
+        "p99": null
+      },
+      "setPass": {
+        "n": 90,
+        "mean": 187.33333333333334,
+        "median": 182.0,
+        "min": 174.0,
+        "max": 315.0,
+        "p95": 221.0,
+        "p99": null
+      },
+      "projectiles": {
+        "n": 90,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 36.0,
+        "p95": 36.0,
+        "p99": null
+      },
+      "observedCollectionDeltasExcludingFirst": 1.0,
+      "firstCollectionDeltaIncludesWarmup": 4
+    },
+    "after_2": {
+      "samples": 90,
+      "nonUnitGaps": 0,
+      "invalidMs": 0,
+      "frameMs": {
+        "n": 90,
+        "mean": 24.593797777763232,
+        "median": 22.33880000130739,
+        "min": 17.26990000315709,
+        "max": 49.67380000016419,
+        "p95": 37.01590000127908,
+        "p99": null
+      },
+      "fps": {
+        "min": 20.13133684148776,
+        "max": 57.90421483721337,
+        "average": 40.66065798524869
+      },
+      "counters": {
+        "CG.Views.All": {
+          "n": 90,
+          "mean": 2.0412222222222223,
+          "median": 1.98,
+          "min": 1.6133,
+          "max": 3.4514,
+          "p95": 2.5038,
+          "p99": null
+        },
+        "CG.Views.Enemies": {
+          "n": 90,
+          "mean": 1.5093611111111114,
+          "median": 1.46105,
+          "min": 1.149,
+          "max": 2.553,
+          "p95": 1.9767,
+          "p99": null
+        },
+        "CG.Views.Towers": {
+          "n": 90,
+          "mean": 0.48930777777777773,
+          "median": 0.4579,
+          "min": 0.3729,
+          "max": 0.8177,
+          "p95": 0.7161,
+          "p99": null
+        },
+        "CG.Views.Projectiles": {
+          "n": 90,
+          "mean": 0.02051222222222222,
+          "median": 0.0011,
+          "min": 0.0008,
+          "max": 0.3396,
+          "p95": 0.0804,
+          "p99": null
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "mean": 180268.4111111111,
+          "median": 21384.5,
+          "min": 19477.0,
+          "max": 5003921.0,
+          "p95": 368298.0,
+          "p99": null
+        },
+        "GC.Collect": {
+          "n": 90,
+          "mean": 0.0,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "p95": 0.0,
+          "p99": null
+        },
+        "GarbageCollector.CollectIncremental": {
+          "n": 90,
+          "mean": 0.0005044444444444447,
+          "median": 0.0005,
+          "min": 0.0003,
+          "max": 0.001,
+          "p95": 0.0009,
+          "p99": null
+        },
+        "Main Thread": {
+          "n": 90,
+          "mean": 24.58836555555555,
+          "median": 23.0409,
+          "min": 17.1957,
+          "max": 51.7391,
+          "p95": 37.2549,
+          "p99": null
+        },
+        "PlayerLoop": {
+          "n": 90,
+          "mean": 14.23640555555556,
+          "median": 13.222999999999999,
+          "min": 11.3149,
+          "max": 37.6822,
+          "p95": 19.7941,
+          "p99": null
+        },
+        "CG.Emphasis.Present": {
+          "n": 90,
+          "mean": 5.801953333333334,
+          "median": 5.49225,
+          "min": 4.7506,
+          "max": 11.455,
+          "p95": 7.6052,
+          "p99": null
+        },
+        "CG.Mask.Present": {
+          "n": 90,
+          "mean": 4.767884444444443,
+          "median": 4.4711,
+          "min": 3.9051,
+          "max": 9.9823,
+          "p95": 6.2505,
+          "p99": null
+        }
+      },
+      "draw": {
+        "n": 90,
+        "mean": 1588.4666666666667,
+        "median": 1577.0,
+        "min": 1554.0,
+        "max": 1786.0,
+        "p95": 1653.0,
+        "p99": null
+      },
+      "setPass": {
+        "n": 90,
+        "mean": 192.25555555555556,
+        "median": 182.0,
+        "min": 174.0,
+        "max": 293.0,
+        "p95": 227.0,
+        "p99": null
+      },
+      "projectiles": {
+        "n": 90,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 36.0,
+        "p95": 36.0,
+        "p99": null
+      },
+      "observedCollectionDeltasExcludingFirst": 0.0,
+      "firstCollectionDeltaIncludesWarmup": 1
+    },
+    "after_3": {
+      "samples": 90,
+      "nonUnitGaps": 0,
+      "invalidMs": 0,
+      "frameMs": {
+        "n": 90,
+        "mean": 25.769257777816772,
+        "median": 24.005499999475433,
+        "min": 18.970500001159962,
+        "max": 60.797100006311666,
+        "p95": 37.06399999646237,
+        "p99": null
+      },
+      "fps": {
+        "min": 16.448152952956388,
+        "max": 52.71342347006428,
+        "average": 38.80592947697705
+      },
+      "counters": {
+        "CG.Views.All": {
+          "n": 90,
+          "mean": 2.135997777777777,
+          "median": 2.02115,
+          "min": 1.634,
+          "max": 5.7029,
+          "p95": 2.6987,
+          "p99": null
+        },
+        "CG.Views.Enemies": {
+          "n": 90,
+          "mean": 1.5685477777777777,
+          "median": 1.48915,
+          "min": 1.2273,
+          "max": 3.4513,
+          "p95": 2.0635,
+          "p99": null
+        },
+        "CG.Views.Towers": {
+          "n": 90,
+          "mean": 0.5260166666666666,
+          "median": 0.48605,
+          "min": 0.3357,
+          "max": 2.0945,
+          "p95": 0.7063,
+          "p99": null
+        },
+        "CG.Views.Projectiles": {
+          "n": 90,
+          "mean": 0.01856222222222222,
+          "median": 0.0012,
+          "min": 0.0008,
+          "max": 0.2147,
+          "p95": 0.0799,
+          "p99": null
+        },
+        "GC Allocated In Frame": {
+          "n": 90,
+          "mean": 242620.36666666667,
+          "median": 21633.5,
+          "min": 18783.0,
+          "max": 5592737.0,
+          "p95": 453770.0,
+          "p99": null
+        },
+        "GC.Collect": {
+          "n": 90,
+          "mean": 0.14550444444444444,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 10.0476,
+          "p95": 0.0,
+          "p99": null
+        },
+        "GarbageCollector.CollectIncremental": {
+          "n": 90,
+          "mean": 0.2858922222222222,
+          "median": 0.0005,
+          "min": 0.0001,
+          "max": 13.3825,
+          "p95": 3.0033,
+          "p99": null
+        },
+        "Main Thread": {
+          "n": 90,
+          "mean": 25.7619188888889,
+          "median": 23.991349999999997,
+          "min": 18.8907,
+          "max": 60.7462,
+          "p95": 35.6224,
+          "p99": null
+        },
+        "PlayerLoop": {
+          "n": 90,
+          "mean": 15.129252222222224,
+          "median": 13.955200000000001,
+          "min": 11.1844,
+          "max": 42.732,
+          "p95": 24.9173,
+          "p99": null
+        },
+        "CG.Emphasis.Present": {
+          "n": 90,
+          "mean": 6.028343333333333,
+          "median": 5.6293500000000005,
+          "min": 4.8729,
+          "max": 11.2544,
+          "p95": 8.6774,
+          "p99": null
+        },
+        "CG.Mask.Present": {
+          "n": 90,
+          "mean": 4.961915555555556,
+          "median": 4.57135,
+          "min": 3.9611,
+          "max": 9.865,
+          "p95": 7.206,
+          "p99": null
+        }
+      },
+      "draw": {
+        "n": 90,
+        "mean": 1598.611111111111,
+        "median": 1577.0,
+        "min": 1554.0,
+        "max": 2320.0,
+        "p95": 1683.0,
+        "p99": null
+      },
+      "setPass": {
+        "n": 90,
+        "mean": 193.37777777777777,
+        "median": 182.5,
+        "min": 175.0,
+        "max": 328.0,
+        "p95": 228.0,
+        "p99": null
+      },
+      "projectiles": {
+        "n": 90,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 36.0,
+        "p95": 36.0,
+        "p99": null
+      },
+      "observedCollectionDeltasExcludingFirst": 1.0,
+      "firstCollectionDeltaIncludesWarmup": 0
+    }
+  },
+  "groups": {
+    "before": {
+      "samples": 270,
+      "nonUnitGaps": 0,
+      "invalidMs": 0,
+      "frameMs": {
+        "n": 270,
+        "mean": 25.209335555555974,
+        "median": 22.859150000385853,
+        "min": 17.878100000416453,
+        "max": 60.337900000376976,
+        "p95": 39.10309999992023,
+        "p99": 51.172200000110024
+      },
+      "fps": {
+        "min": 16.57333118974562,
+        "max": 55.93435543915215,
+        "average": 39.66784439027416
+      },
+      "counters": {
+        "CG.Views.All": {
+          "n": 270,
+          "mean": 2.146314814814815,
+          "median": 2.037,
+          "min": 1.6438,
+          "max": 8.3828,
+          "p95": 2.8135,
+          "p99": 3.2533
+        },
+        "CG.Views.Enemies": {
+          "n": 270,
+          "mean": 1.6050666666666669,
+          "median": 1.5309499999999998,
+          "min": 1.2204,
+          "max": 7.4346,
+          "p95": 2.097,
+          "p99": 2.2919
+        },
+        "CG.Views.Towers": {
+          "n": 270,
+          "mean": 0.49521999999999994,
+          "median": 0.4648,
+          "min": 0.3666,
+          "max": 0.9906,
+          "p95": 0.7284,
+          "p99": 0.8589
+        },
+        "CG.Views.Projectiles": {
+          "n": 270,
+          "mean": 0.02269148148148148,
+          "median": 0.0013,
+          "min": 0.0008,
+          "max": 0.6831,
+          "p95": 0.0814,
+          "p99": 0.3723
+        },
+        "GC Allocated In Frame": {
+          "n": 270,
+          "mean": 311137.9962962963,
+          "median": 21512.0,
+          "min": 19477.0,
+          "max": 5744940.0,
+          "p95": 2806789.0,
+          "p99": 5684581.0
+        },
+        "GC.Collect": {
+          "n": 270,
+          "mean": 0.1368522222222222,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 10.8283,
+          "p95": 0.0,
+          "p99": 9.7017
+        },
+        "GarbageCollector.CollectIncremental": {
+          "n": 270,
+          "mean": 0.2837092592592593,
+          "median": 0.0005,
+          "min": 0.0003,
+          "max": 14.8208,
+          "p95": 3.0032,
+          "p99": 13.5794
+        },
+        "Main Thread": {
+          "n": 270,
+          "mean": 25.201572222222218,
+          "median": 23.4879,
+          "min": 17.495,
+          "max": 60.2533,
+          "p95": 39.1315,
+          "p99": 51.4158
+        },
+        "PlayerLoop": {
+          "n": 270,
+          "mean": 14.728750370370374,
+          "median": 13.59675,
+          "min": 10.7809,
+          "max": 41.7289,
+          "p95": 24.4777,
+          "p99": 33.0697
+        },
+        "CG.Emphasis.Present": {
+          "n": 270,
+          "mean": 5.857867037037034,
+          "median": 5.5418,
+          "min": 4.7143,
+          "max": 15.2475,
+          "p95": 8.2658,
+          "p99": 10.4206
+        },
+        "CG.Mask.Present": {
+          "n": 270,
+          "mean": 4.796447037037038,
+          "median": 4.497999999999999,
+          "min": 3.9409,
+          "max": 13.7819,
+          "p95": 6.749,
+          "p99": 9.0151
+        }
+      },
+      "draw": {
+        "n": 270,
+        "mean": 1581.9851851851852,
+        "median": 1569.0,
+        "min": 1554.0,
+        "max": 1989.0,
+        "p95": 1649.0,
+        "p99": 1766.0
+      },
+      "setPass": {
+        "n": 270,
+        "mean": 189.0851851851852,
+        "median": 182.0,
+        "min": 175.0,
+        "max": 310.0,
+        "p95": 221.0,
+        "p99": 276.0
+      },
+      "projectiles": {
+        "n": 270,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 36.0,
+        "p95": 36.0,
+        "p99": 36.0
+      },
+      "observedCollectionDeltasExcludingFirst": 4.0,
+      "firstCollectionDeltaIncludesWarmup": [
+        4,
+        0,
+        0
+      ]
+    },
+    "after": {
+      "samples": 270,
+      "nonUnitGaps": 0,
+      "invalidMs": 0,
+      "frameMs": {
+        "n": 270,
+        "mean": 25.250678518528325,
+        "median": 23.752799999783747,
+        "min": 17.26990000315709,
+        "max": 60.797100006311666,
+        "p95": 37.06399999646237,
+        "p99": 49.67380000016419
+      },
+      "fps": {
+        "min": 16.448152952956388,
+        "max": 57.90421483721337,
+        "average": 39.602896186184644
+      },
+      "counters": {
+        "CG.Views.All": {
+          "n": 270,
+          "mean": 2.085071111111113,
+          "median": 1.99425,
+          "min": 1.6133,
+          "max": 5.7029,
+          "p95": 2.6929,
+          "p99": 3.4514
+        },
+        "CG.Views.Enemies": {
+          "n": 270,
+          "mean": 1.5419822222222226,
+          "median": 1.4752999999999998,
+          "min": 1.149,
+          "max": 3.4513,
+          "p95": 2.0553,
+          "p99": 2.3377
+        },
+        "CG.Views.Towers": {
+          "n": 270,
+          "mean": 0.49602666666666667,
+          "median": 0.4579,
+          "min": 0.3124,
+          "max": 2.0945,
+          "p95": 0.7101,
+          "p99": 0.8649
+        },
+        "CG.Views.Projectiles": {
+          "n": 270,
+          "mean": 0.02082259259259259,
+          "median": 0.0011,
+          "min": 0.0007,
+          "max": 0.464,
+          "p95": 0.0799,
+          "p99": 0.226
+        },
+        "GC Allocated In Frame": {
+          "n": 270,
+          "mean": 215368.01111111112,
+          "median": 21506.5,
+          "min": 18783.0,
+          "max": 5592737.0,
+          "p95": 659051.0,
+          "p99": 5003921.0
+        },
+        "GC.Collect": {
+          "n": 270,
+          "mean": 0.04850148148148148,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 10.0476,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "n": 270,
+          "mean": 0.10677555555555555,
+          "median": 0.0005,
+          "min": 0.0001,
+          "max": 13.3825,
+          "p95": 0.001,
+          "p99": 3.0116
+        },
+        "Main Thread": {
+          "n": 270,
+          "mean": 25.244206296296294,
+          "median": 23.63975,
+          "min": 17.1957,
+          "max": 60.7462,
+          "p95": 36.1059,
+          "p99": 53.0421
+        },
+        "PlayerLoop": {
+          "n": 270,
+          "mean": 14.527457777777778,
+          "median": 13.418099999999999,
+          "min": 10.6396,
+          "max": 42.732,
+          "p95": 22.202,
+          "p99": 37.6822
+        },
+        "CG.Emphasis.Present": {
+          "n": 270,
+          "mean": 5.862229259259263,
+          "median": 5.4718,
+          "min": 4.6667,
+          "max": 16.7294,
+          "p95": 7.9371,
+          "p99": 11.2544
+        },
+        "CG.Mask.Present": {
+          "n": 270,
+          "mean": 4.817527037037038,
+          "median": 4.4494,
+          "min": 3.8463,
+          "max": 15.5352,
+          "p95": 6.689,
+          "p99": 9.865
+        }
+      },
+      "draw": {
+        "n": 270,
+        "mean": 1589.6444444444444,
+        "median": 1573.0,
+        "min": 1554.0,
+        "max": 2320.0,
+        "p95": 1675.0,
+        "p99": 1786.0
+      },
+      "setPass": {
+        "n": 270,
+        "mean": 190.98888888888888,
+        "median": 182.0,
+        "min": 174.0,
+        "max": 328.0,
+        "p95": 226.0,
+        "p99": 293.0
+      },
+      "projectiles": {
+        "n": 270,
+        "mean": 6.733333333333333,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 36.0,
+        "p95": 36.0,
+        "p99": 36.0
+      },
+      "observedCollectionDeltasExcludingFirst": 2.0,
+      "firstCollectionDeltaIncludesWarmup": [
+        4,
+        1,
+        0
+      ]
+    }
+  },
+  "comparison": {
+    "CG.Views.All": {
+      "before": 2.146314814814815,
+      "after": 2.085071111111113,
+      "saved": 0.061243703703702135,
+      "savedPercent": 2.8534352594023478
+    },
+    "CG.Views.Enemies": {
+      "before": 1.6050666666666669,
+      "after": 1.5419822222222226,
+      "saved": 0.06308444444444428,
+      "savedPercent": 3.930331727307958
+    },
+    "CG.Views.Towers": {
+      "before": 0.49521999999999994,
+      "after": 0.49602666666666667,
+      "saved": -0.0008066666666667333,
+      "savedPercent": -0.16289056715535183
+    },
+    "CG.Views.Projectiles": {
+      "before": 0.02269148148148148,
+      "after": 0.02082259259259259,
+      "saved": 0.0018688888888888887,
+      "savedPercent": 8.236081414138118
+    },
+    "GC Allocated In Frame": {
+      "before": 311137.9962962963,
+      "after": 215368.01111111112,
+      "saved": 95769.98518518519,
+      "savedPercent": 30.7805495713174
+    },
+    "frameMs": {
+      "before": 25.209335555555974,
+      "after": 25.250678518528325,
+      "saved": -0.04134296297235096,
+      "savedPercent": -0.16399862218200845
+    },
+    "fps": {
+      "before": 39.66784439027416,
+      "after": 39.602896186184644,
+      "gain": -0.06494820408951796,
+      "gainPercent": -0.1637301070623391
+    }
+  },
+  "limitations": [
+    "Before collected Oct23, candidate completed Oct24 after interruption; temporal/system confound.",
+    "No rows excluded. Nonunit frame gaps must invalidate per-frame correspondence.",
+    "First collection delta includes warm15; use subsequent deltas only and disclose first-frame uncertainty.",
+    "Current-thread ProfilerRecorder values; engine recording OFF in both; no GPU or player/target-device claim.",
+    "Frame GC allocations include benchmark observer and Editor, not just views.",
+    "First run initialization and later steady frames remain distinguishable in raw data."
+  ]
+}

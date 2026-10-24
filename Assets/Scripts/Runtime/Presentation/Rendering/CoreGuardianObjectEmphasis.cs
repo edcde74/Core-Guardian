@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Unity.Profiling;
 
 // Selected B2: original body tint plus a separate union silhouette, below inspection and upgrades.
 [DisallowMultipleComponent]
 [DefaultExecutionOrder(450)]
 public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
 {
+    static readonly ProfilerMarker presentSample=new ProfilerMarker("CG.Emphasis.Present");
+    static readonly ProfilerMarker tintSample=new ProfilerMarker("CG.Emphasis.Tint");
     [Header("개체 강조 B2 · 상시 윤곽")]
     [Tooltip("상시 윤곽의 색과 불투명도. 초록색 선택 아웃라인과 별도입니다.")]
     public Color outlineColor=new Color(.06f,.065f,.075f,.90f);
@@ -48,6 +51,7 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
     readonly Dictionary<Transform,Body> states=new Dictionary<Transform,Body>();
     readonly HashSet<Transform> live=new HashSet<Transform>();
     readonly List<Transform> targets=new List<Transform>(),removed=new List<Transform>();
+    readonly List<KeyValuePair<SpriteRenderer,Tint>> appliedTints=new List<KeyValuePair<SpriteRenderer,Tint>>();
     CoreGuardianPrototype game;
     Transform core;
     Camera presentedCamera;
@@ -60,19 +64,23 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
     void BeginCameraRendering(ScriptableRenderContext context,Camera camera)
     {
         if(!isActiveAndEnabled||camera!=presentedCamera)return;
+        using var tintScope=tintSample.Auto();
+        float brightness=Mathf.Clamp(bodyBrightness,1,1.5f);
         foreach(var state in states.Values)
             foreach(var renderer in state.sources)
                 if(renderer!=null&&renderer.enabled&&renderer.gameObject.activeInHierarchy&&renderer.sprite!=null)
                 {
                     if(!state.tints.TryGetValue(renderer,out var tint)){tint=new Tint();state.tints.Add(renderer,tint);}
-                    tint.Apply(renderer,Mathf.Clamp(bodyBrightness,1,1.5f));
+                    if(!tint.applied)appliedTints.Add(new KeyValuePair<SpriteRenderer,Tint>(renderer,tint));
+                    tint.Apply(renderer,brightness);
                 }
+        CoreGuardianAttackBodyBatch.Flush(camera);
     }
     void EndCameraRendering(ScriptableRenderContext context,Camera camera)
     {
-        if(camera==presentedCamera)RestoreBodyTints();
+        if(camera==presentedCamera){CoreGuardianAttackBodyBatch.Restore();RestoreBodyTints();}
     }
-    void RestoreBodyTints(){foreach(var state in states.Values)foreach(var pair in state.tints)pair.Value.Restore(pair.Key);}
+    void RestoreBodyTints(){foreach(var pair in appliedTints)pair.Value.Restore(pair.Key);appliedTints.Clear();}
 
     void LateUpdate()
     {
@@ -87,6 +95,7 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
     }
     public void PresentTargets(IEnumerable<Transform> bodyTargets,Camera camera)
     {
+        using var presentScope=presentSample.Auto();
         // Keep animation inputs unmodified between renders, including whole-sprite -> cutout transitions.
         RestoreBodyTints();presentedCamera=camera;
         live.Clear();
@@ -104,17 +113,13 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
                 state=new Body{host=host,union=union,art=art};states.Add(target,state);
             }
             if(state.art==null)continue;
+            // Both consumers validate visibility when they use this same, structurally checked list.
             state.sources.Clear();
-            foreach(var r in state.references.Read(state.art))
-                if(r!=null&&r.gameObject.activeInHierarchy)state.sources.Add(r);
-            foreach(var renderer in state.sources)
-            {
-                if(!renderer.enabled||renderer.sprite==null)continue;
-                if(!state.tints.TryGetValue(renderer,out var tint)){tint=new Tint();state.tints.Add(renderer,tint);}
-            }
+            foreach(var renderer in state.references.Read(state.art))
+                if(renderer!=null&&renderer.gameObject.activeInHierarchy)state.sources.Add(renderer);
             state.union.widthPixels=Mathf.Clamp(outlineWidthPixels,0,8);state.union.color=outlineColor;
             state.union.alphaThreshold=Mathf.Clamp(alphaThreshold,.01f,1);
-            state.union.PresentAtOrder(target,camera,3);
+            state.union.PresentAtOrderWithSources(target,camera,3,state.art,state.sources);
         }
         removed.Clear();foreach(var pair in states)if(pair.Key==null||!live.Contains(pair.Key))removed.Add(pair.Key);
         foreach(var target in removed){Release(states[target]);states.Remove(target);}
@@ -138,7 +143,7 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
         if(target==null||!states.TryGetValue(target,out var state))return;
         Release(state);states.Remove(target);live.Remove(target);
     }
-    void Clear(){foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;}
+    void Clear(){RestoreBodyTints();foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;}
     void OnDisable()
     {
         RenderPipelineManager.beginCameraRendering-=BeginCameraRendering;

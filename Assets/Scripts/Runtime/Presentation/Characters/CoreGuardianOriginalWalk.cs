@@ -38,6 +38,7 @@ public sealed class CoreGuardianOriginalWalk
         rig=new GameObject("OriginalWalk").transform;rig.SetParent(artwork.transform,false);
         body=Layer("Body",role);var lu=Layer("LeftUpper",role);var ll=Layer("LeftLower",role);var ru=Layer("RightUpper",role);var rl=Layer("RightLower",role);
         layers=new[]{body,lu,ll,ru,rl};
+        CoreGuardianAttackBodyBatch.Register(role,layers);
         if(role=="Attack") {left=Bone(lu,ll,18,43,19,49,17,61);right=Bone(ru,rl,30,43,31,51,35,60);cyclePixels=14;lift=1.8f;}
         else if(role=="Defense") {left=Bone(lu,ll,17,31,17,36,17,42);right=Bone(ru,rl,24,29,24,36,27,44);cyclePixels=10;lift=1.4f;}
         else if(role=="Buff") {left=Bone(lu,ll,13,61,12,67,9,74);right=Bone(ru,rl,22,60,24,69,24,77);cyclePixels=12;lift=1.6f;}

@@ -1,0 +1,668 @@
+[
+  {
+    "condition": "before",
+    "rep": 1,
+    "samples": 90,
+    "nonunitGaps": 0,
+    "loadMismatch": 0,
+    "frameMeanMs": 22.971776666721173,
+    "frameMedianMs": 20.40225000018836,
+    "frameP95Ms": 36.087699998461176,
+    "frameMaxMs": 53.256000006513204,
+    "fpsMean": 43.531678655429516,
+    "fpsMin": 18.777226976823272,
+    "fpsMax": 58.35701655095082,
+    "drawMean": 1581.388888888889,
+    "setpassMean": 189.86666666666667,
+    "collections": 2.0,
+    "gcMeanBytes": 366084.5111111111,
+    "gcMedianBytes": 22511,
+    "metrics": {
+      "CG.Emphasis.Present": {
+        "medianMs": 5.2085,
+        "meanMs": 5.431734444444444,
+        "valid": 90
+      },
+      "CG.Mask.Present": {
+        "medianMs": 4.2612000000000005,
+        "meanMs": 4.4596044444444445,
+        "valid": 90
+      },
+      "CG.Mask.CacheFlush": {
+        "medianMs": 0.82985,
+        "meanMs": 2.4055422222222225,
+        "valid": 90
+      },
+      "CG.Mask.CopyBack": {
+        "medianMs": 0.08979999999999999,
+        "meanMs": 0.07662888888888886,
+        "valid": 90
+      },
+      "CG.Mask.Regenerate": {
+        "medianMs": 0.9185,
+        "meanMs": 0.941642222222222,
+        "valid": 90
+      },
+      "CG.Mask.SourceFilter": {
+        "medianMs": 0.2233,
+        "meanMs": 0.2277666666666667,
+        "valid": 90
+      },
+      "CG.Mask.BoundsCrop": {
+        "medianMs": 0.7717499999999999,
+        "meanMs": 0.7848955555555557,
+        "valid": 90
+      },
+      "CG.Mask.CacheLookup": {
+        "medianMs": 0.8079000000000001,
+        "meanMs": 0.8947666666666668,
+        "valid": 90
+      },
+      "CG.Mask.Output": {
+        "medianMs": 1.1709,
+        "meanMs": 1.2163522222222223,
+        "valid": 90
+      },
+      "CG.Mask.QuadUpload": {
+        "medianMs": 0.2445,
+        "meanMs": 0.26637555555555553,
+        "valid": 90
+      },
+      "CG.Mask.PageProducer": {
+        "medianMs": 0.48595,
+        "meanMs": 0.43423666666666655,
+        "valid": 90
+      },
+      "CG.SpriteReferences.Read": {
+        "medianMs": 0.9473499999999999,
+        "meanMs": 0.9690633333333332,
+        "valid": 90
+      },
+      "CG.Emphasis.Tint": {
+        "medianMs": 0.8733500000000001,
+        "meanMs": 0.9037344444444446,
+        "valid": 90
+      },
+      "CG.PhotoShadow.Present": {
+        "medianMs": 0.82465,
+        "meanMs": 0.8701611111111115,
+        "valid": 90
+      },
+      "Main Thread": {
+        "medianMs": 20.567700000000002,
+        "meanMs": 22.96425777777777,
+        "valid": 90
+      },
+      "PlayerLoop": {
+        "medianMs": 12.43245,
+        "meanMs": 13.671465555555557,
+        "valid": 90
+      },
+      "GC.Collect": {
+        "medianMs": 0.0,
+        "meanMs": 0.13634666666666667,
+        "valid": 90
+      },
+      "GarbageCollector.CollectIncremental": {
+        "medianMs": 0.0005,
+        "meanMs": 0.3387466666666667,
+        "valid": 90
+      }
+    }
+  },
+  {
+    "condition": "before",
+    "rep": 2,
+    "samples": 90,
+    "nonunitGaps": 0,
+    "loadMismatch": 0,
+    "frameMeanMs": 22.67360111113198,
+    "frameMedianMs": 20.434649999515386,
+    "frameP95Ms": 31.339700006355997,
+    "frameMaxMs": 49.44690000411356,
+    "fpsMean": 44.104154214349016,
+    "fpsMin": 20.223714730687032,
+    "fpsMax": 58.25808329293057,
+    "drawMean": 1586.7444444444445,
+    "setpassMean": 192.2,
+    "collections": 1.0,
+    "gcMeanBytes": 55763.822222222225,
+    "gcMedianBytes": 22200.5,
+    "metrics": {
+      "CG.Emphasis.Present": {
+        "medianMs": 5.21585,
+        "meanMs": 5.363545555555554,
+        "valid": 90
+      },
+      "CG.Mask.Present": {
+        "medianMs": 4.282500000000001,
+        "meanMs": 4.405745555555556,
+        "valid": 90
+      },
+      "CG.Mask.CacheFlush": {
+        "medianMs": 0.82795,
+        "meanMs": 2.3972199999999995,
+        "valid": 90
+      },
+      "CG.Mask.CopyBack": {
+        "medianMs": 0.08695,
+        "meanMs": 0.06916444444444446,
+        "valid": 90
+      },
+      "CG.Mask.Regenerate": {
+        "medianMs": 0.9250499999999999,
+        "meanMs": 0.9355666666666665,
+        "valid": 90
+      },
+      "CG.Mask.SourceFilter": {
+        "medianMs": 0.2296,
+        "meanMs": 0.2303766666666667,
+        "valid": 90
+      },
+      "CG.Mask.BoundsCrop": {
+        "medianMs": 0.77305,
+        "meanMs": 0.7810411111111111,
+        "valid": 90
+      },
+      "CG.Mask.CacheLookup": {
+        "medianMs": 0.8079000000000001,
+        "meanMs": 0.8817255555555552,
+        "valid": 90
+      },
+      "CG.Mask.Output": {
+        "medianMs": 1.15855,
+        "meanMs": 1.1874911111111115,
+        "valid": 90
+      },
+      "CG.Mask.QuadUpload": {
+        "medianMs": 0.24035,
+        "meanMs": 0.25404888888888894,
+        "valid": 90
+      },
+      "CG.Mask.PageProducer": {
+        "medianMs": 0.48595,
+        "meanMs": 0.4122644444444444,
+        "valid": 90
+      },
+      "CG.SpriteReferences.Read": {
+        "medianMs": 0.9657,
+        "meanMs": 0.9664422222222225,
+        "valid": 90
+      },
+      "CG.Emphasis.Tint": {
+        "medianMs": 0.8443,
+        "meanMs": 0.869782222222222,
+        "valid": 90
+      },
+      "CG.PhotoShadow.Present": {
+        "medianMs": 0.8568,
+        "meanMs": 0.8777800000000001,
+        "valid": 90
+      },
+      "Main Thread": {
+        "medianMs": 20.13125,
+        "meanMs": 22.663455555555554,
+        "valid": 90
+      },
+      "PlayerLoop": {
+        "medianMs": 12.3677,
+        "meanMs": 13.426051111111105,
+        "valid": 90
+      },
+      "GC.Collect": {
+        "medianMs": 0.0,
+        "meanMs": 0.14642222222222223,
+        "valid": 90
+      },
+      "GarbageCollector.CollectIncremental": {
+        "medianMs": 0.0005,
+        "meanMs": 0.30201555555555554,
+        "valid": 90
+      }
+    }
+  },
+  {
+    "condition": "before",
+    "rep": 3,
+    "samples": 90,
+    "nonunitGaps": 0,
+    "loadMismatch": 0,
+    "frameMeanMs": 24.06051999997645,
+    "frameMedianMs": 21.70989999649464,
+    "frameP95Ms": 35.33659999811789,
+    "frameMaxMs": 52.72100000001956,
+    "fpsMean": 41.56186150594329,
+    "fpsMin": 18.967773752387647,
+    "fpsMax": 58.15407340744725,
+    "drawMean": 1582.6666666666667,
+    "setpassMean": 188.23333333333332,
+    "collections": 1.0,
+    "gcMeanBytes": 367305.1666666667,
+    "gcMedianBytes": 23000.5,
+    "metrics": {
+      "CG.Emphasis.Present": {
+        "medianMs": 5.4073,
+        "meanMs": 5.702379999999999,
+        "valid": 90
+      },
+      "CG.Mask.Present": {
+        "medianMs": 4.4084,
+        "meanMs": 4.6617122222222225,
+        "valid": 90
+      },
+      "CG.Mask.CacheFlush": {
+        "medianMs": 0.88185,
+        "meanMs": 2.676297777777778,
+        "valid": 90
+      },
+      "CG.Mask.CopyBack": {
+        "medianMs": 0.0871,
+        "meanMs": 0.07101222222222223,
+        "valid": 90
+      },
+      "CG.Mask.Regenerate": {
+        "medianMs": 0.95465,
+        "meanMs": 0.9919722222222219,
+        "valid": 90
+      },
+      "CG.Mask.SourceFilter": {
+        "medianMs": 0.23505,
+        "meanMs": 0.2418466666666667,
+        "valid": 90
+      },
+      "CG.Mask.BoundsCrop": {
+        "medianMs": 0.7883,
+        "meanMs": 0.8063733333333338,
+        "valid": 90
+      },
+      "CG.Mask.CacheLookup": {
+        "medianMs": 0.8336,
+        "meanMs": 0.9356233333333333,
+        "valid": 90
+      },
+      "CG.Mask.Output": {
+        "medianMs": 1.20435,
+        "meanMs": 1.2703244444444444,
+        "valid": 90
+      },
+      "CG.Mask.QuadUpload": {
+        "medianMs": 0.25375000000000003,
+        "meanMs": 0.2770244444444445,
+        "valid": 90
+      },
+      "CG.Mask.PageProducer": {
+        "medianMs": 0.4894,
+        "meanMs": 0.4168622222222223,
+        "valid": 90
+      },
+      "CG.SpriteReferences.Read": {
+        "medianMs": 1.026,
+        "meanMs": 1.053893333333333,
+        "valid": 90
+      },
+      "CG.Emphasis.Tint": {
+        "medianMs": 0.93125,
+        "meanMs": 0.978496666666667,
+        "valid": 90
+      },
+      "CG.PhotoShadow.Present": {
+        "medianMs": 0.87595,
+        "meanMs": 0.934548888888889,
+        "valid": 90
+      },
+      "Main Thread": {
+        "medianMs": 23.28395,
+        "meanMs": 24.058186666666664,
+        "valid": 90
+      },
+      "PlayerLoop": {
+        "medianMs": 12.64855,
+        "meanMs": 14.004210000000008,
+        "valid": 90
+      },
+      "GC.Collect": {
+        "medianMs": 0.0,
+        "meanMs": 0.14897666666666667,
+        "valid": 90
+      },
+      "GarbageCollector.CollectIncremental": {
+        "medianMs": 0.0005,
+        "meanMs": 0.1928422222222222,
+        "valid": 90
+      }
+    }
+  },
+  {
+    "condition": "after",
+    "rep": 1,
+    "samples": 90,
+    "nonunitGaps": 0,
+    "loadMismatch": 0,
+    "frameMeanMs": 22.331854444443405,
+    "frameMedianMs": 20.2610000014829,
+    "frameP95Ms": 36.61429999920074,
+    "frameMaxMs": 49.080899996624794,
+    "fpsMean": 44.77908462495909,
+    "fpsMin": 20.37452451093538,
+    "fpsMax": 61.45790439817845,
+    "drawMean": 1580.911111111111,
+    "setpassMean": 189.4111111111111,
+    "collections": 1.0,
+    "gcMeanBytes": 243379.43333333332,
+    "gcMedianBytes": 22285,
+    "metrics": {
+      "CG.Emphasis.Present": {
+        "medianMs": 5.0635,
+        "meanMs": 5.262171111111112,
+        "valid": 90
+      },
+      "CG.Mask.Present": {
+        "medianMs": 4.2185500000000005,
+        "meanMs": 4.404011111111111,
+        "valid": 90
+      },
+      "CG.Mask.CacheFlush": {
+        "medianMs": 0.7961,
+        "meanMs": 2.190741111111111,
+        "valid": 90
+      },
+      "CG.Mask.CopyBack": {
+        "medianMs": 0.0849,
+        "meanMs": 0.07498777777777776,
+        "valid": 90
+      },
+      "CG.Mask.Regenerate": {
+        "medianMs": 0.75755,
+        "meanMs": 0.804848888888889,
+        "valid": 90
+      },
+      "CG.Mask.SourceFilter": {
+        "medianMs": 0.2281,
+        "meanMs": 0.23101111111111103,
+        "valid": 90
+      },
+      "CG.Mask.BoundsCrop": {
+        "medianMs": 0.7702,
+        "meanMs": 0.7782144444444448,
+        "valid": 90
+      },
+      "CG.Mask.CacheLookup": {
+        "medianMs": 0.81,
+        "meanMs": 0.8907655555555555,
+        "valid": 90
+      },
+      "CG.Mask.Output": {
+        "medianMs": 1.14395,
+        "meanMs": 1.1825744444444444,
+        "valid": 90
+      },
+      "CG.Mask.QuadUpload": {
+        "medianMs": 0.24275,
+        "meanMs": 0.2597344444444443,
+        "valid": 90
+      },
+      "CG.Mask.PageProducer": {
+        "medianMs": 0.45930000000000004,
+        "meanMs": 0.41171888888888886,
+        "valid": 90
+      },
+      "CG.SpriteReferences.Read": {
+        "medianMs": 0.7677,
+        "meanMs": 0.7988311111111108,
+        "valid": 90
+      },
+      "CG.Emphasis.Tint": {
+        "medianMs": 0.8162499999999999,
+        "meanMs": 0.8485044444444445,
+        "valid": 90
+      },
+      "CG.PhotoShadow.Present": {
+        "medianMs": 0.72385,
+        "meanMs": 0.7592611111111109,
+        "valid": 90
+      },
+      "Main Thread": {
+        "medianMs": 19.694,
+        "meanMs": 22.32635666666667,
+        "valid": 90
+      },
+      "PlayerLoop": {
+        "medianMs": 12.02345,
+        "meanMs": 13.307261111111117,
+        "valid": 90
+      },
+      "GC.Collect": {
+        "medianMs": 0.0,
+        "meanMs": 0.11578222222222223,
+        "valid": 90
+      },
+      "GarbageCollector.CollectIncremental": {
+        "medianMs": 0.0004,
+        "meanMs": 0.25592444444444445,
+        "valid": 90
+      }
+    }
+  },
+  {
+    "condition": "after",
+    "rep": 2,
+    "samples": 90,
+    "nonunitGaps": 0,
+    "loadMismatch": 0,
+    "frameMeanMs": 21.910836666615474,
+    "frameMedianMs": 19.900700001016958,
+    "frameP95Ms": 35.550300002796575,
+    "frameMaxMs": 42.768299994349945,
+    "fpsMean": 45.639516884521974,
+    "fpsMin": 23.381803815725863,
+    "fpsMax": 60.38720273618397,
+    "drawMean": 1582.7777777777778,
+    "setpassMean": 189.88888888888889,
+    "collections": 0.0,
+    "gcMeanBytes": 242157.55555555556,
+    "gcMedianBytes": 22094,
+    "metrics": {
+      "CG.Emphasis.Present": {
+        "medianMs": 5.09615,
+        "meanMs": 5.328351111111108,
+        "valid": 90
+      },
+      "CG.Mask.Present": {
+        "medianMs": 4.1977,
+        "meanMs": 4.408435555555556,
+        "valid": 90
+      },
+      "CG.Mask.CacheFlush": {
+        "medianMs": 0.74085,
+        "meanMs": 2.121542222222222,
+        "valid": 90
+      },
+      "CG.Mask.CopyBack": {
+        "medianMs": 0.0848,
+        "meanMs": 0.06931666666666667,
+        "valid": 90
+      },
+      "CG.Mask.Regenerate": {
+        "medianMs": 0.7692,
+        "meanMs": 0.7932522222222222,
+        "valid": 90
+      },
+      "CG.Mask.SourceFilter": {
+        "medianMs": 0.23085,
+        "meanMs": 0.23665999999999998,
+        "valid": 90
+      },
+      "CG.Mask.BoundsCrop": {
+        "medianMs": 0.7739,
+        "meanMs": 0.7885211111111109,
+        "valid": 90
+      },
+      "CG.Mask.CacheLookup": {
+        "medianMs": 0.79175,
+        "meanMs": 0.8826877777777776,
+        "valid": 90
+      },
+      "CG.Mask.Output": {
+        "medianMs": 1.12995,
+        "meanMs": 1.18682,
+        "valid": 90
+      },
+      "CG.Mask.QuadUpload": {
+        "medianMs": 0.24025000000000002,
+        "meanMs": 0.2610877777777777,
+        "valid": 90
+      },
+      "CG.Mask.PageProducer": {
+        "medianMs": 0.45830000000000004,
+        "meanMs": 0.3869855555555555,
+        "valid": 90
+      },
+      "CG.SpriteReferences.Read": {
+        "medianMs": 0.8733,
+        "meanMs": 0.8953455555555556,
+        "valid": 90
+      },
+      "CG.Emphasis.Tint": {
+        "medianMs": 0.8651,
+        "meanMs": 0.8836144444444445,
+        "valid": 90
+      },
+      "CG.PhotoShadow.Present": {
+        "medianMs": 0.80715,
+        "meanMs": 0.8451511111111107,
+        "valid": 90
+      },
+      "Main Thread": {
+        "medianMs": 19.649,
+        "meanMs": 21.90243666666667,
+        "valid": 90
+      },
+      "PlayerLoop": {
+        "medianMs": 12.032800000000002,
+        "meanMs": 12.949292222222217,
+        "valid": 90
+      },
+      "GC.Collect": {
+        "medianMs": 0.0,
+        "meanMs": 0.0,
+        "valid": 90
+      },
+      "GarbageCollector.CollectIncremental": {
+        "medianMs": 0.0004,
+        "meanMs": 0.00045333333333333353,
+        "valid": 90
+      }
+    }
+  },
+  {
+    "condition": "after",
+    "rep": 3,
+    "samples": 90,
+    "nonunitGaps": 0,
+    "loadMismatch": 0,
+    "frameMeanMs": 22.735361111133695,
+    "frameMedianMs": 21.677799995813984,
+    "frameP95Ms": 32.574700002442114,
+    "frameMaxMs": 46.234400004323106,
+    "fpsMean": 43.98434645976622,
+    "fpsMin": 21.62891699484574,
+    "fpsMax": 60.137715363171225,
+    "drawMean": 1585.6333333333334,
+    "setpassMean": 190.2,
+    "collections": 1.0,
+    "gcMeanBytes": 56547.92222222222,
+    "gcMedianBytes": 22176.5,
+    "metrics": {
+      "CG.Emphasis.Present": {
+        "medianMs": 5.1354500000000005,
+        "meanMs": 5.3390788888888885,
+        "valid": 90
+      },
+      "CG.Mask.Present": {
+        "medianMs": 4.24705,
+        "meanMs": 4.431962222222222,
+        "valid": 90
+      },
+      "CG.Mask.CacheFlush": {
+        "medianMs": 0.76325,
+        "meanMs": 2.347588888888888,
+        "valid": 90
+      },
+      "CG.Mask.CopyBack": {
+        "medianMs": 0.08505,
+        "meanMs": 0.06810666666666665,
+        "valid": 90
+      },
+      "CG.Mask.Regenerate": {
+        "medianMs": 0.7639,
+        "meanMs": 0.7907344444444443,
+        "valid": 90
+      },
+      "CG.Mask.SourceFilter": {
+        "medianMs": 0.2314,
+        "meanMs": 0.2380577777777777,
+        "valid": 90
+      },
+      "CG.Mask.BoundsCrop": {
+        "medianMs": 0.7853,
+        "meanMs": 0.7901444444444441,
+        "valid": 90
+      },
+      "CG.Mask.CacheLookup": {
+        "medianMs": 0.8008500000000001,
+        "meanMs": 0.8901333333333336,
+        "valid": 90
+      },
+      "CG.Mask.Output": {
+        "medianMs": 1.1536499999999998,
+        "meanMs": 1.1970833333333337,
+        "valid": 90
+      },
+      "CG.Mask.QuadUpload": {
+        "medianMs": 0.24765,
+        "meanMs": 0.26561777777777784,
+        "valid": 90
+      },
+      "CG.Mask.PageProducer": {
+        "medianMs": 0.45155,
+        "meanMs": 0.38201666666666667,
+        "valid": 90
+      },
+      "CG.SpriteReferences.Read": {
+        "medianMs": 0.8427,
+        "meanMs": 0.864273333333333,
+        "valid": 90
+      },
+      "CG.Emphasis.Tint": {
+        "medianMs": 0.8697999999999999,
+        "meanMs": 0.8890977777777774,
+        "valid": 90
+      },
+      "CG.PhotoShadow.Present": {
+        "medianMs": 0.80245,
+        "meanMs": 0.8236011111111111,
+        "valid": 90
+      },
+      "Main Thread": {
+        "medianMs": 21.585700000000003,
+        "meanMs": 22.731098888888884,
+        "valid": 90
+      },
+      "PlayerLoop": {
+        "medianMs": 12.3219,
+        "meanMs": 13.412764444444447,
+        "valid": 90
+      },
+      "GC.Collect": {
+        "medianMs": 0.0,
+        "meanMs": 0.14097777777777776,
+        "valid": 90
+      },
+      "GarbageCollector.CollectIncremental": {
+        "medianMs": 0.0004,
+        "meanMs": 0.33761555555555556,
+        "valid": 90
+      }
+    }
+  }
+]

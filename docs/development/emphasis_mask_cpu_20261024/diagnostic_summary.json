@@ -1,0 +1,212 @@
+[
+  {
+    "name": "Semaphore.WaitForSignal",
+    "valid": 90,
+    "meanMs": 0.5572611111111117
+  },
+  {
+    "name": "WaitForJobGroupID",
+    "valid": 90,
+    "meanMs": 1.8430199999999997
+  },
+  {
+    "name": "Camera.Render",
+    "valid": 90,
+    "meanMs": 0.0005499999999999999
+  },
+  {
+    "name": "WaitForLastPresentation",
+    "valid": 90,
+    "meanMs": 0.5478533333333334
+  },
+  {
+    "name": "WaitForTargetFPS",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "PlayerLoop",
+    "valid": 90,
+    "meanMs": 15.666621111111114
+  },
+  {
+    "name": "Main Thread",
+    "valid": 90,
+    "meanMs": 28.17283
+  },
+  {
+    "name": "Shader.EditorCompileVariant",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "Shader.DynamicLoadGPUProgram",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "Shader.CreateGPUPrograms",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "Shader.CompileGPUProgram",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "Texture.WaitForAsyncUpload",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "GC.Collect",
+    "valid": 90,
+    "meanMs": 0.12218
+  },
+  {
+    "name": "GarbageCollector.CollectIncremental",
+    "valid": 90,
+    "meanMs": 0.16739555555555563
+  },
+  {
+    "name": "EditorLoop",
+    "valid": 90,
+    "meanMs": 9.816443333333336
+  },
+  {
+    "name": "GC Allocated In Frame",
+    "valid": 90,
+    "meanMs": 0.3075436333333333
+  },
+  {
+    "name": "Standard Draw Calls Count",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "SRP Batcher Draw Calls Count",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "CG.Mask.Present",
+    "valid": 90,
+    "meanMs": 5.0185288888888895
+  },
+  {
+    "name": "CG.Mask.Resources",
+    "valid": 90,
+    "meanMs": 0.022282222222222224
+  },
+  {
+    "name": "CG.Mask.Parts",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "CG.Mask.MeshUpload",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "CG.Mask.Execute",
+    "valid": 90,
+    "meanMs": 0.0
+  },
+  {
+    "name": "CG.Mask.Output",
+    "valid": 90,
+    "meanMs": 1.3796922222222228
+  },
+  {
+    "name": "CG.SpriteReferences.Read",
+    "valid": 90,
+    "meanMs": 1.0704544444444442
+  },
+  {
+    "name": "CG.Emphasis.Present",
+    "valid": 90,
+    "meanMs": 6.116014444444443
+  },
+  {
+    "name": "CG.Emphasis.Tint",
+    "valid": 90,
+    "meanMs": 1.043501111111111
+  },
+  {
+    "name": "CG.Mask.CacheLookup",
+    "valid": 90,
+    "meanMs": 0.6536022222222222
+  },
+  {
+    "name": "CG.PhotoShadow.Present",
+    "valid": 90,
+    "meanMs": 0.9932711111111112
+  },
+  {
+    "name": "CG.Mask.PageProducer",
+    "valid": 90,
+    "meanMs": 0.45639777777777746
+  },
+  {
+    "name": "CG.Mask.SourceFilter",
+    "valid": 90,
+    "meanMs": 0.27101333333333333
+  },
+  {
+    "name": "CG.Mask.BoundsCrop",
+    "valid": 90,
+    "meanMs": 1.3844222222222224
+  },
+  {
+    "name": "CG.Mask.QuadUpload",
+    "valid": 90,
+    "meanMs": 0.30493
+  },
+  {
+    "name": "CG.Mask.CaptureSources",
+    "valid": 90,
+    "meanMs": 0.7876188888888889
+  },
+  {
+    "name": "CG.Mask.ProjectionCrop",
+    "valid": 90,
+    "meanMs": 0.5667500000000001
+  },
+  {
+    "name": "CG.Mask.RequestInput",
+    "valid": 90,
+    "meanMs": 0.1369022222222223
+  },
+  {
+    "name": "CG.Mask.QueueInputs",
+    "valid": 90,
+    "meanMs": 0.7785611111111113
+  },
+  {
+    "name": "CG.Mask.OutputGeometry",
+    "valid": 90,
+    "meanMs": 0.6894811111111113
+  },
+  {
+    "name": "CG.Mask.OutputSorting",
+    "valid": 90,
+    "meanMs": 0.10185000000000001
+  },
+  {
+    "name": "CG.Mask.OutputBinding",
+    "valid": 90,
+    "meanMs": 0.5496255555555555
+  },
+  {
+    "name": "CG.Emphasis.Structure",
+    "valid": 90,
+    "meanMs": 0.8902922222222224
+  },
+  {
+    "name": "CG.Emphasis.Restore",
+    "valid": 90,
+    "meanMs": 0.2942066666666666
+  }
+]

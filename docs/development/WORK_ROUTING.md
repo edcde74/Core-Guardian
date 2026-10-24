@@ -4,7 +4,7 @@
 
 |작업|먼저 읽을 문서|기존 스킬/검증|
 |---|---|---|
-|게임 성능|[최적화 규칙](OPTIMIZATION_RULES.md), 인수인계가 가리키는 최신 실험|공식 Unity 해당 스킬, [대상 QA](TARGETED_QA.md)|
+|게임 성능|[최적화 규칙](OPTIMIZATION_RULES.md), [작업 주의점·실패 방지](OPTIMIZATION_PITFALLS.md), 인수인계가 가리키는 최신 실험|공식 Unity 해당 스킬, [대상 QA](TARGETED_QA.md)|
 |전투/경제/라운드/증강|[밸런스 주의](task_rules/BALANCE.md)|core-guardian-balance + headless-game-balance|
 |몬스터/보행/방향/그림자/체력바|[아트 보호](task_rules/ART.md)|공식 Unity 해당 스킬; 생성은 imagegen|
 |HUD/입력/포탑 발광|[HUD 보호](task_rules/HUD.md)|core-guardian-hud-ux, 공식 Unity UI 해당 스킬|

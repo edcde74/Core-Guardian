@@ -1,0 +1,108 @@
+{
+  "Summary": {
+    "Total": 13,
+    "Passed": 11,
+    "Failed": 2,
+    "Skipped": 0,
+    "Inconclusive": 0
+  },
+  "Results": [
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.AllEightPhotoMasksAreDistinctPointFilteredResources",
+      "Status": "Passed",
+      "Duration": 0.0208437,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.PlayerCoreAndBossKeepTheirOwnOriginalAndUsePhotoShadows(\"Player\",\"Assets/Prefabs/Gameplay/Units/Player.prefab\")",
+      "Status": "Passed",
+      "Duration": 0.033788,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.PlayerCoreAndBossKeepTheirOwnOriginalAndUsePhotoShadows(\"Core\",\"Assets/Prefabs/Gameplay/Units/core.prefab\")",
+      "Status": "Passed",
+      "Duration": 0.0038112,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.PlayerCoreAndBossKeepTheirOwnOriginalAndUsePhotoShadows(\"Boss\",\"Assets/Prefabs/Characters/Enemies/Resources/CoreGuardian/Animation/Boss/BossAnimated.prefab\")",
+      "Status": "Passed",
+      "Duration": 0.0252565,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Attack\",\"enemy_attack\")",
+      "Status": "Passed",
+      "Duration": 0.0183169,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Defense\",\"enemy_defense\")",
+      "Status": "Passed",
+      "Duration": 0.0053989,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Buff\",\"enemy_buff\")",
+      "Status": "Passed",
+      "Duration": 0.0044998,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Single\",\"tower_single\")",
+      "Status": "Passed",
+      "Duration": 0.0128557,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Multi\",\"tower_multi\")",
+      "Status": "Passed",
+      "Duration": 0.0036548,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.RealCreationAttachesSeparatePhotoLayerAndKeepsBody(\"Support\",\"tower_support\")",
+      "Status": "Passed",
+      "Duration": 0.0025962,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.SuppressionRefreshesForStructureInvalidationAndReuse",
+      "Status": "Passed",
+      "Duration": 0.0021703,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.WarmStableShadowPresentationDoesNotAllocate(\"Attack\",\"enemy_attack\")",
+      "Status": "Failed",
+      "Duration": 0.0080868,
+      "Message": "System.ArgumentException : The actual value must be a TestDelegate but was System.Action",
+      "StackTrace": "  at UnityEngine.TestTools.Constraints.AllocatingGCMemoryConstraint.ApplyTo (System.Object obj) [0x00039] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\Assertions\\AllocatingGCMemoryConstraint.cs:100 \r\n  at NUnit.Framework.Constraints.NotConstraint.ApplyTo (System.Object actual) [0x00007] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x0000e] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression) [0x00001] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at CoreGuardianPhotoShadowTests.WarmStableShadowPresentationDoesNotAllocate (System.String role, System.String prefab) [0x0008e] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Scripts\\Tests\\EditMode\\CoreGuardianPhotoShadowTests.cs:20 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 "
+    },
+    {
+      "FullName": "CoreGuardianPhotoShadowTests.WarmStableShadowPresentationDoesNotAllocate(\"Defense\",\"enemy_defense\")",
+      "Status": "Failed",
+      "Duration": 0.0018326,
+      "Message": "System.ArgumentException : The actual value must be a TestDelegate but was System.Action",
+      "StackTrace": "  at UnityEngine.TestTools.Constraints.AllocatingGCMemoryConstraint.ApplyTo (System.Object obj) [0x00039] in .\\Library\\PackageCache\\com.unity.test-framework@7a3849e09bd0\\UnityEngine.TestRunner\\Assertions\\AllocatingGCMemoryConstraint.cs:100 \r\n  at NUnit.Framework.Constraints.NotConstraint.ApplyTo (System.Object actual) [0x00007] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x0000e] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression) [0x00001] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at CoreGuardianPhotoShadowTests.WarmStableShadowPresentationDoesNotAllocate (System.String role, System.String prefab) [0x0008e] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\Assets\\Scripts\\Tests\\EditMode\\CoreGuardianPhotoShadowTests.cs:20 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 "
+    }
+  ],
+  "Duration": 6.11,
+  "StatusPath": null,
+  "Mode": "EditMode",
+  "FilterApplied": "testname: CoreGuardianPhotoShadowTests",
+  "success": true,
+  "result": null
+}

@@ -1,0 +1,2207 @@
+{
+  "side": "a2",
+  "run": 1,
+  "rows": [
+    {
+      "frame": 0,
+      "frameTimeMs": 32.8122,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 1,
+      "frameTimeMs": 39.2915,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 2,
+      "frameTimeMs": 46.2825,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 3,
+      "frameTimeMs": 41.9551,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 4,
+      "frameTimeMs": 47.1359,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 5,
+      "frameTimeMs": 40.9781,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 6,
+      "frameTimeMs": 34.4216,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 7,
+      "frameTimeMs": 35.6094,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 8,
+      "frameTimeMs": 34.7362,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 9,
+      "frameTimeMs": 33.614,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 10,
+      "frameTimeMs": 37.8469,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 11,
+      "frameTimeMs": 37.6809,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 12,
+      "frameTimeMs": 37.5732,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 13,
+      "frameTimeMs": 37.1613,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 14,
+      "frameTimeMs": 36.3685,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 15,
+      "frameTimeMs": 36.4557,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 16,
+      "frameTimeMs": 34.5006,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 17,
+      "frameTimeMs": 37.0526,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 18,
+      "frameTimeMs": 37.841,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 19,
+      "frameTimeMs": 38.4065,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 20,
+      "frameTimeMs": 34.9948,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 21,
+      "frameTimeMs": 37.8882,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 22,
+      "frameTimeMs": 43.8005,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 23,
+      "frameTimeMs": 35.2759,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 24,
+      "frameTimeMs": 33.5715,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 25,
+      "frameTimeMs": 37.306,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 26,
+      "frameTimeMs": 37.2193,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 27,
+      "frameTimeMs": 36.5958,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 28,
+      "frameTimeMs": 50.4286,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 29,
+      "frameTimeMs": 58.7576,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 30,
+      "frameTimeMs": 34.2382,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 31,
+      "frameTimeMs": 43.0463,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 32,
+      "frameTimeMs": 45.0064,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 33,
+      "frameTimeMs": 38.1004,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 34,
+      "frameTimeMs": 38.2815,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 35,
+      "frameTimeMs": 35.8166,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 36,
+      "frameTimeMs": 33.3624,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 37,
+      "frameTimeMs": 33.9099,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 38,
+      "frameTimeMs": 33.1218,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 39,
+      "frameTimeMs": 35.3066,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 40,
+      "frameTimeMs": 33.6858,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 41,
+      "frameTimeMs": 39.4534,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 42,
+      "frameTimeMs": 34.9613,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 43,
+      "frameTimeMs": 34.1996,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 44,
+      "frameTimeMs": 37.0655,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 45,
+      "frameTimeMs": 38.9235,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 46,
+      "frameTimeMs": 34.4036,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 47,
+      "frameTimeMs": 33.353,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 48,
+      "frameTimeMs": 33.9446,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 49,
+      "frameTimeMs": 33.7355,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 50,
+      "frameTimeMs": 34.7314,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 51,
+      "frameTimeMs": 36.0782,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 52,
+      "frameTimeMs": 37.2279,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 53,
+      "frameTimeMs": 35.5843,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 54,
+      "frameTimeMs": 34.9289,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 55,
+      "frameTimeMs": 34.3047,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 56,
+      "frameTimeMs": 34.0999,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 57,
+      "frameTimeMs": 37.3994,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 58,
+      "frameTimeMs": 36.2342,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 59,
+      "frameTimeMs": 37.5532,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 60,
+      "frameTimeMs": 34.3076,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 61,
+      "frameTimeMs": 41.5938,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 62,
+      "frameTimeMs": 42.4729,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 63,
+      "frameTimeMs": 39.8256,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 64,
+      "frameTimeMs": 42.4283,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 65,
+      "frameTimeMs": 38.897,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 66,
+      "frameTimeMs": 33.6772,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 67,
+      "frameTimeMs": 43.0836,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 68,
+      "frameTimeMs": 43.024498,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 69,
+      "frameTimeMs": 42.8865,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 70,
+      "frameTimeMs": 47.9638,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 71,
+      "frameTimeMs": 48.2868,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 72,
+      "frameTimeMs": 55.7119,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 73,
+      "frameTimeMs": 35.0259,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 74,
+      "frameTimeMs": 40.1965,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 75,
+      "frameTimeMs": 37.4243,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 76,
+      "frameTimeMs": 36.0738,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 77,
+      "frameTimeMs": 35.6083,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 78,
+      "frameTimeMs": 36.5795,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 79,
+      "frameTimeMs": 35.2445,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 80,
+      "frameTimeMs": 40.3296,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 81,
+      "frameTimeMs": 39.7877,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 82,
+      "frameTimeMs": 39.6015,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 83,
+      "frameTimeMs": 37.9152,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 84,
+      "frameTimeMs": 34.1907,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 85,
+      "frameTimeMs": 35.1282,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 86,
+      "frameTimeMs": 38.392,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 87,
+      "frameTimeMs": 37.3692,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 88,
+      "frameTimeMs": 37.2691,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 89,
+      "frameTimeMs": 40.4875,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 90,
+      "frameTimeMs": 37.6784,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 91,
+      "frameTimeMs": 41.9419,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 92,
+      "frameTimeMs": 43.6636,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 93,
+      "frameTimeMs": 35.5592,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 94,
+      "frameTimeMs": 35.9954,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 95,
+      "frameTimeMs": 35.4315,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 96,
+      "frameTimeMs": 32.4999,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 97,
+      "frameTimeMs": 33.1784,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 98,
+      "frameTimeMs": 34.4074,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 99,
+      "frameTimeMs": 33.0797,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 100,
+      "frameTimeMs": 32.0888,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 101,
+      "frameTimeMs": 32.4748,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 102,
+      "frameTimeMs": 33.4631,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 103,
+      "frameTimeMs": 33.2005,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 104,
+      "frameTimeMs": 36.3718,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 105,
+      "frameTimeMs": 37.2874,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 106,
+      "frameTimeMs": 33.0656,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 107,
+      "frameTimeMs": 32.4749,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 108,
+      "frameTimeMs": 34.8942,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 109,
+      "frameTimeMs": 34.3237,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 110,
+      "frameTimeMs": 34.5991,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 111,
+      "frameTimeMs": 34.8347,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 112,
+      "frameTimeMs": 35.0137,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 113,
+      "frameTimeMs": 33.763,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 114,
+      "frameTimeMs": 33.186,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 115,
+      "frameTimeMs": 32.3212,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 116,
+      "frameTimeMs": 35.405,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 117,
+      "frameTimeMs": 35.4606,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 118,
+      "frameTimeMs": 32.2088,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 119,
+      "frameTimeMs": 35.2264,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 120,
+      "frameTimeMs": 37.291,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 121,
+      "frameTimeMs": 41.3089,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 122,
+      "frameTimeMs": 43.2451,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 123,
+      "frameTimeMs": 40.5626,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 124,
+      "frameTimeMs": 38.0127,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 125,
+      "frameTimeMs": 36.8712,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 126,
+      "frameTimeMs": 34.6326,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 127,
+      "frameTimeMs": 35.8181,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 128,
+      "frameTimeMs": 45.2153,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 129,
+      "frameTimeMs": 46.8432,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 130,
+      "frameTimeMs": 42.2206,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 131,
+      "frameTimeMs": 47.8678,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 132,
+      "frameTimeMs": 32.065,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 133,
+      "frameTimeMs": 33.5474,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 134,
+      "frameTimeMs": 37.1683,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 135,
+      "frameTimeMs": 34.6534,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 136,
+      "frameTimeMs": 32.2808,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 137,
+      "frameTimeMs": 31.8557,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 138,
+      "frameTimeMs": 31.8227,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 139,
+      "frameTimeMs": 31.4275,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 140,
+      "frameTimeMs": 31.3658,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 141,
+      "frameTimeMs": 36.3861,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 142,
+      "frameTimeMs": 36.6831,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 143,
+      "frameTimeMs": 35.1072,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 144,
+      "frameTimeMs": 31.656,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 145,
+      "frameTimeMs": 32.2562,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 146,
+      "frameTimeMs": 31.9316,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 147,
+      "frameTimeMs": 34.3366,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 148,
+      "frameTimeMs": 31.6221,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 149,
+      "frameTimeMs": 33.8770981,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 150,
+      "frameTimeMs": 33.0818,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 151,
+      "frameTimeMs": 40.586,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 152,
+      "frameTimeMs": 42.4749,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 153,
+      "frameTimeMs": 37.6526,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 154,
+      "frameTimeMs": 38.8166,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 155,
+      "frameTimeMs": 35.3177,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 156,
+      "frameTimeMs": 32.2818,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 157,
+      "frameTimeMs": 33.1501,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 158,
+      "frameTimeMs": 35.8668,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 159,
+      "frameTimeMs": 38.2566,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 160,
+      "frameTimeMs": 35.8078,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 161,
+      "frameTimeMs": 34.418,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 162,
+      "frameTimeMs": 31.964,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 163,
+      "frameTimeMs": 34.3943,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 164,
+      "frameTimeMs": 36.3433,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 165,
+      "frameTimeMs": 37.2559,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 166,
+      "frameTimeMs": 35.3136,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 167,
+      "frameTimeMs": 33.7598,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 168,
+      "frameTimeMs": 33.2342,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 169,
+      "frameTimeMs": 35.5749,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 170,
+      "frameTimeMs": 38.5117,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 171,
+      "frameTimeMs": 33.263,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 172,
+      "frameTimeMs": 34.9361,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 173,
+      "frameTimeMs": 34.173,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 174,
+      "frameTimeMs": 37.9278,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 175,
+      "frameTimeMs": 35.2752,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 176,
+      "frameTimeMs": 35.6702,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 177,
+      "frameTimeMs": 36.037,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 178,
+      "frameTimeMs": 40.2833,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 179,
+      "frameTimeMs": 39.0911,
+      "values": {
+        "Standard Draw Calls Count": 145,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 145,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    },
+    {
+      "frame": 180,
+      "frameTimeMs": 46.8267,
+      "values": {
+        "Standard Draw Calls Count": 146,
+        "SRP Batcher Draw Calls Count": 0,
+        "SetPass Calls Count": 146,
+        "Dynamic Batches Count": 0,
+        "Standard Instanced Draw Calls Count": 0,
+        "BRG Draw Calls Count": 0
+      }
+    }
+  ],
+  "allocations": {
+    "DeformationManager.LateUpdate": 5792,
+    "CG.PhotoShadow.Cast": 19327786,
+    "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]": 89800,
+    "UnityEngine.InputModule.dll!UnityEngineInternal.Input::NativeInputSystem.NotifyBeforeUpdate() [Invoke]": 8687,
+    "Inl_RenderCameraStack": 31856,
+    "Inl_RenderPipeline.BeginCameraRendering": 284170,
+    "UnityEngine.CoreModule.dll!UnityEngine::StackTraceUtility.ExtractStackTrace() [Invoke]": 1699952,
+    "LogStringToConsole": 1267000,
+    "UnityEngine.CoreModule.dll!UnityEngine::Application.CallLogCallback() [Invoke]": 40544,
+    "UnityEngine.CoreModule.dll!UnityEngine::Debug.CallOverridenDebugHandler() [Invoke]": 3077,
+    "UnityEngine.CoreModule.dll!UnityEngine::Debug.IsLoggingEnabled() [Invoke]": 3077,
+    "UnityEngine.CoreModule.dll!UnityEngine::StackTraceUtility.ExtractStringFromExceptionInternal() [Invoke]": 22147884,
+    "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": 141900,
+    "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]": 68400,
+    "PipelineRunScript_RuntimeProbe_5fd11be6889e4619aa2d7e0a3f8096f1.dll!::CGRenderRuntimeProbe.LateUpdate() [Invoke]": 35640,
+    "CG.Validation.Tick": 317786,
+    "CG.Validation.SynchronizeViews": 359642,
+    "GameObject.AddComponent": 18048,
+    "Assembly-CSharp.dll!::CoreGuardianSelectionOutline..ctor() [Invoke]": 29184,
+    "CG.SpriteReferences.Read": 76224,
+    "CG.Mask.Present": 30816,
+    "CG.Mask.Resources": 27648,
+    "CG.Mask.CacheLookup": 250136,
+    "CG.Mask.Parts": 199344,
+    "TMP.SetArraySizes": 25920,
+    "UnityEngine.CoreModule.dll!UnityEngine::UnitySynchronizationContext.ExecuteTasks() [Invoke]": 26912,
+    "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": 333052
+  }
+}

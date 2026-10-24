@@ -1,0 +1,100 @@
+{
+  "pairs": 18,
+  "failures": 0,
+  "width": 256,
+  "height": 256,
+  "ortho": 2,
+  "scope": "same original actors and cast renderer, nine roles two poses, no HUD/full game approval",
+  "rows": [
+    {
+      "role": "Attack",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "variant": 1,
+      "differences": 0
+    },
+    {
+      "role": "Defense",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Defense",
+      "variant": 1,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "variant": 1,
+      "differences": 0
+    },
+    {
+      "role": "Single",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Single",
+      "variant": 1,
+      "differences": 0
+    },
+    {
+      "role": "Multi",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Multi",
+      "variant": 1,
+      "differences": 0
+    },
+    {
+      "role": "Support",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Support",
+      "variant": 1,
+      "differences": 0
+    },
+    {
+      "role": "Player",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Player",
+      "variant": 1,
+      "differences": 0
+    },
+    {
+      "role": "Core",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Core",
+      "variant": 1,
+      "differences": 0
+    },
+    {
+      "role": "Boss",
+      "variant": 0,
+      "differences": 0
+    },
+    {
+      "role": "Boss",
+      "variant": 1,
+      "differences": 0
+    }
+  ]
+}

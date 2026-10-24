@@ -1,0 +1,826 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 82ddc70..c56dda3 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -1,5 +1,15 @@
+ # 코어 가디언 핵심 작업 지침
+ 
++## 최우선: 사용자 명시 승인 후 실행
++
++- 작업을 시작하기 전에 할 일·대상·실행 범위·예상 부하와 시간을 짧게 설명하고 사용자의 명시적 허락을 기다린다. 답변이 없으면 진행하지 않는다. "이어가자", 목표 제시, 과거 승인만으로 구체적인 실행 방법까지 승인됐다고 해석하지 않는다. 사용자가 구체적으로 지시한 작업은 그 범위만 승인된 것으로 본다.
++- 승인된 범위를 넘는 추가 조사·검사·수정·측정·도구 실행은 먼저 묻는다. 필요해 보인다는 이유로 자동 확대하지 않는다. 이미 승인된 동일 작업은 다시 묻지 않되, 방법·대상·시간·부하가 달라지면 별도 승인을 받는다.
++- Unity Play 진입/종료, Profiler·Deep Profile·Frame Debugger 활성화, 스크립트 재로딩, 설정 변경은 실행 전에 해당 조작의 허락을 받는다. 비용 확인 요청을 Deep Profile·대량 호출 추출·장시간 측정 승인으로 확대하지 않는다. 종료·복원 방법이 확인되지 않은 무거운 진단은 시작하지 않는다.
++- 타임아웃·응답 지연·예상 밖 부하가 발생하면 추가 명령·재시도·대체 검사를 멈추고 현재 상태와 복구 방법을 설명한 뒤 허락을 받는다. 종료 요청 전송을 실제 종료나 복원 완료로 보고하지 않는다. 강제 종료는 별도 명시 승인 없이는 하지 않는다.
++- 사용자가 중단하거나 직접 정리했다고 하면 추가 조회·복원·문서 갱신·커밋도 임의 진행하지 않는다. 문서 수정 요청은 지정 문서 수정과 그 diff 확인까지만 승인한 것으로 보며, Unity 조작·다른 문서 수정·Git 커밋은 별도 허락을 받는다. 이 승인 규칙은 아래의 자동 진행·검증·커밋·종료 시 인수인계 절차보다 우선한다.
++
++## 기존 프로젝트 규칙
++
+ - 먼저 `docs/development/UNITY_HANDOVER.md`를 읽고 현재 목표·승인·미완료를 확인한다. `docs/development/WORK_ROUTING.md`에서 해당 작업 경로만 따라간다. 현재 사용자 지시·최신 담당 Notion이 우선이며 과거 기록을 현재로 가정하지 않는다.
+ - 정확성·프로젝트 안정성을 토큰 절약보다 우선한다. 현30R 성장/물량·밸런스와 승인된 원본/방향/그림자/강조/HUD·효과 수/수명·사운드를 임의 변경하지 않는다. 아트/HUD/밸런스 작업은 색인의 해당 보호 규칙을 먼저 읽는다.
+ - 게임 최적화 전 `docs/development/OPTIMIZATION_RULES.md`를 읽는다. 같은 조건의 전후 비용·절감량/율·원본·최소/최대/평균 FPS·품질 회귀를 기록한다. 측정 실패/악화를 숨기지 않는다.
+diff --git a/Assets/Art/Editor/ProjectWelcome/2d-template.png.meta b/Assets/Art/Editor/ProjectWelcome/2d-template.png.meta
+index 03bb0a8..635be1b 100644
+--- a/Assets/Art/Editor/ProjectWelcome/2d-template.png.meta
++++ b/Assets/Art/Editor/ProjectWelcome/2d-template.png.meta
+@@ -98,6 +98,19 @@ TextureImporter:
+     ignorePlatformSupport: 0
+     androidETC2FallbackOverride: 0
+     forceMaximumCompressionQuality_BC6H_BC7: 0
++  - serializedVersion: 4
++    buildTarget: Android
++    maxTextureSize: 2048
++    resizeAlgorithm: 0
++    textureFormat: -1
++    textureCompression: 1
++    compressionQuality: 50
++    crunchedCompression: 0
++    allowsAlphaSplitting: 0
++    overridden: 0
++    ignorePlatformSupport: 0
++    androidETC2FallbackOverride: 0
++    forceMaximumCompressionQuality_BC6H_BC7: 0
+   spriteSheet:
+     serializedVersion: 2
+     sprites:
+diff --git a/Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalWalk.cs b/Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalWalk.cs
+index 11d33a6..b659e0e 100644
+--- a/Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalWalk.cs
++++ b/Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalWalk.cs
+@@ -38,6 +38,7 @@ public sealed class CoreGuardianOriginalWalk
+         rig=new GameObject("OriginalWalk").transform;rig.SetParent(artwork.transform,false);
+         body=Layer("Body",role);var lu=Layer("LeftUpper",role);var ll=Layer("LeftLower",role);var ru=Layer("RightUpper",role);var rl=Layer("RightLower",role);
+         layers=new[]{body,lu,ll,ru,rl};
++        CoreGuardianAttackBodyBatch.Register(role,layers);
+         if(role=="Attack") {left=Bone(lu,ll,18,43,19,49,17,61);right=Bone(ru,rl,30,43,31,51,35,60);cyclePixels=14;lift=1.8f;}
+         else if(role=="Defense") {left=Bone(lu,ll,17,31,17,36,17,42);right=Bone(ru,rl,24,29,24,36,27,44);cyclePixels=10;lift=1.4f;}
+         else if(role=="Buff") {left=Bone(lu,ll,13,61,12,67,9,74);right=Bone(ru,rl,22,60,24,69,24,77);cyclePixels=12;lift=1.6f;}
+diff --git a/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianObjectEmphasis.cs b/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianObjectEmphasis.cs
+index ed62386..60c02e1 100644
+--- a/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianObjectEmphasis.cs
++++ b/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianObjectEmphasis.cs
+@@ -1,150 +1,155 @@
+-using System.Collections.Generic;
+-using UnityEngine;
+-using UnityEngine.Rendering;
+-
+-// Selected B2: original body tint plus a separate union silhouette, below inspection and upgrades.
+-[DisallowMultipleComponent]
+-[DefaultExecutionOrder(450)]
+-public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
+-{
+-    [Header("개체 강조 B2 · 상시 윤곽")]
+-    [Tooltip("상시 윤곽의 색과 불투명도. 초록색 선택 아웃라인과 별도입니다.")]
+-    public Color outlineColor=new Color(.06f,.065f,.075f,.90f);
+-    [Range(0,8),Tooltip("게임 화면 기준 픽셀 두께. 0이면 윤곽만 숨깁니다. Edit/Play에서 조절 가능합니다.")]
+-    public int outlineWidthPixels=1;
+-    [Range(1,1.5f),Tooltip("원본 본체 RGB 배율. 1이면 원래 밝기, 선택 시안은 1.15입니다. 그림자·체력바·별도 발광에는 적용하지 않습니다.")]
+-    public float bodyBrightness=1.15f;
+-    [Range(.01f,1),Tooltip("윤곽 마스크에 포함할 본체 알파 기준입니다.")]
+-    public float alphaThreshold=.1f;
+-    public int ActiveTargetCount=>states.Count;
+-
+-    sealed class Tint
+-    {
+-        public Color baseline,last;
+-        public bool applied;
+-        public void Apply(SpriteRenderer renderer,float brightness)
+-        {
+-            var current=renderer.color;
+-            if(!applied||current!=last)baseline=current;
+-            last=new Color(baseline.r*brightness,baseline.g*brightness,baseline.b*brightness,baseline.a);
+-            renderer.color=last;applied=true;
+-        }
+-        public void Restore(SpriteRenderer renderer)
+-        {
+-            // Another presentation system may have supplied a newer tint; never overwrite it.
+-            if(renderer!=null&&applied&&renderer.color==last)renderer.color=baseline;
+-            applied=false;
+-        }
+-    }
+-    sealed class Body
+-    {
+-        public GameObject host;
+-        public CoreGuardianSelectionOutline union;
+-        public Transform art;
+-        public readonly Dictionary<SpriteRenderer,Tint> tints=new Dictionary<SpriteRenderer,Tint>();
+-        public readonly List<SpriteRenderer> sources=new List<SpriteRenderer>();
+-        public readonly CoreGuardianSpriteReferences references=new CoreGuardianSpriteReferences();
+-    }
+-    readonly Dictionary<Transform,Body> states=new Dictionary<Transform,Body>();
+-    readonly HashSet<Transform> live=new HashSet<Transform>();
+-    readonly List<Transform> targets=new List<Transform>(),removed=new List<Transform>();
+-    CoreGuardianPrototype game;
+-    Transform core;
+-    Camera presentedCamera;
+-
+-    void OnEnable()
+-    {
+-        RenderPipelineManager.beginCameraRendering+=BeginCameraRendering;
+-        RenderPipelineManager.endCameraRendering+=EndCameraRendering;
+-    }
+-    void BeginCameraRendering(ScriptableRenderContext context,Camera camera)
+-    {
+-        if(!isActiveAndEnabled||camera!=presentedCamera)return;
+-        foreach(var state in states.Values)
+-            foreach(var renderer in state.sources)
+-                if(renderer!=null&&renderer.enabled&&renderer.gameObject.activeInHierarchy&&renderer.sprite!=null)
+-                {
+-                    if(!state.tints.TryGetValue(renderer,out var tint)){tint=new Tint();state.tints.Add(renderer,tint);}
+-                    tint.Apply(renderer,Mathf.Clamp(bodyBrightness,1,1.5f));
+-                }
+-    }
+-    void EndCameraRendering(ScriptableRenderContext context,Camera camera)
+-    {
+-        if(camera==presentedCamera)RestoreBodyTints();
+-    }
+-    void RestoreBodyTints(){foreach(var state in states.Values)foreach(var pair in state.tints)pair.Value.Restore(pair.Key);}
+-
+-    void LateUpdate()
+-    {
+-        if(game==null)game=GetComponent<CoreGuardianPrototype>();
+-        if(game==null||!game.Ready)return;
+-        targets.Clear();game.GetCombatBodyTargets(targets);
+-        if(core==null)
+-            foreach(var r in FindObjectsByType<SpriteRenderer>())
+-                if(r.gameObject.scene==gameObject.scene&&r.name=="2D Sprite"&&r.sprite!=null&&r.sprite.name=="core"){core=r.transform.parent;break;}
+-        if(core!=null&&core.gameObject.activeInHierarchy)targets.Add(core);
+-        PresentTargets(targets,Camera.main);
+-    }
+-    public void PresentTargets(IEnumerable<Transform> bodyTargets,Camera camera)
+-    {
+-        // Keep animation inputs unmodified between renders, including whole-sprite -> cutout transitions.
+-        RestoreBodyTints();presentedCamera=camera;
+-        live.Clear();
+-        if(camera!=null&&bodyTargets!=null)
+-        foreach(var target in bodyTargets)
+-        {
+-            if(target==null||!target.gameObject.activeInHierarchy||!live.Add(target))continue;
+-            if(!states.TryGetValue(target,out var state))
+-            {
+-                Transform art=null;
+-                foreach(var r in target.GetComponentsInChildren<SpriteRenderer>(true))if(r.name=="2D Sprite"){art=r.transform;break;}
+-                if(art==null)continue;
+-                var host=new GameObject("ObjectEmphasis_B2_"+target.name){hideFlags=HideFlags.DontSave};host.transform.SetParent(transform,false);
+-                var union=host.AddComponent<CoreGuardianSelectionOutline>();union.enabled=false;
+-                state=new Body{host=host,union=union,art=art};states.Add(target,state);
+-            }
+-            if(state.art==null)continue;
+-            state.sources.Clear();
+-            foreach(var r in state.references.Read(state.art))
+-                if(r!=null&&r.gameObject.activeInHierarchy)state.sources.Add(r);
+-            foreach(var renderer in state.sources)
+-            {
+-                if(!renderer.enabled||renderer.sprite==null)continue;
+-                if(!state.tints.TryGetValue(renderer,out var tint)){tint=new Tint();state.tints.Add(renderer,tint);}
+-            }
+-            state.union.widthPixels=Mathf.Clamp(outlineWidthPixels,0,8);state.union.color=outlineColor;
+-            state.union.alphaThreshold=Mathf.Clamp(alphaThreshold,.01f,1);
+-            state.union.PresentAtOrder(target,camera,3);
+-        }
+-        removed.Clear();foreach(var pair in states)if(pair.Key==null||!live.Contains(pair.Key))removed.Add(pair.Key);
+-        foreach(var target in removed){Release(states[target]);states.Remove(target);}
+-    }
+-    static void Release(Body state)
+-    {
+-        foreach(var pair in state.tints)pair.Value.Restore(pair.Key);
+-        if(state.host==null)return;
+-        if(state.union!=null)state.union.ReleasePresentation();
+-        // Non-ExecuteAlways EditMode consumers may never receive OnDestroy.
+-        if(!Application.isPlaying&&state.union!=null)state.union.ReleaseResources();
+-        state.host.SetActive(false);
+-        if(Application.isPlaying)Destroy(state.host);else DestroyImmediate(state.host);
+-    }
+-    public void InvalidateSources()
+-    {
+-        foreach(var state in states.Values){state.references.Invalidate();state.union.InvalidateSources();}
+-    }
+-    public void ReleaseTarget(Transform target)
+-    {
+-        if(target==null||!states.TryGetValue(target,out var state))return;
+-        Release(state);states.Remove(target);live.Remove(target);
+-    }
+-    void Clear(){foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;}
+-    void OnDisable()
+-    {
+-        RenderPipelineManager.beginCameraRendering-=BeginCameraRendering;
+-        RenderPipelineManager.endCameraRendering-=EndCameraRendering;
+-        Clear();
+-    }
+-    void OnDestroy(){Clear();}
+-    void OnValidate(){outlineWidthPixels=Mathf.Clamp(outlineWidthPixels,0,8);bodyBrightness=Mathf.Clamp(bodyBrightness,1,1.5f);alphaThreshold=Mathf.Clamp(alphaThreshold,.01f,1);}
+-}
++using System.Collections.Generic;
++using UnityEngine;
++using UnityEngine.Rendering;
++using Unity.Profiling;
++
++// Selected B2: original body tint plus a separate union silhouette, below inspection and upgrades.
++[DisallowMultipleComponent]
++[DefaultExecutionOrder(450)]
++public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
++{
++    static readonly ProfilerMarker presentSample=new ProfilerMarker("CG.Emphasis.Present");
++    static readonly ProfilerMarker tintSample=new ProfilerMarker("CG.Emphasis.Tint");
++    [Header("개체 강조 B2 · 상시 윤곽")]
++    [Tooltip("상시 윤곽의 색과 불투명도. 초록색 선택 아웃라인과 별도입니다.")]
++    public Color outlineColor=new Color(.06f,.065f,.075f,.90f);
++    [Range(0,8),Tooltip("게임 화면 기준 픽셀 두께. 0이면 윤곽만 숨깁니다. Edit/Play에서 조절 가능합니다.")]
++    public int outlineWidthPixels=1;
++    [Range(1,1.5f),Tooltip("원본 본체 RGB 배율. 1이면 원래 밝기, 선택 시안은 1.15입니다. 그림자·체력바·별도 발광에는 적용하지 않습니다.")]
++    public float bodyBrightness=1.15f;
++    [Range(.01f,1),Tooltip("윤곽 마스크에 포함할 본체 알파 기준입니다.")]
++    public float alphaThreshold=.1f;
++    public int ActiveTargetCount=>states.Count;
++
++    sealed class Tint
++    {
++        public Color baseline,last;
++        public bool applied;
++        public void Apply(SpriteRenderer renderer,float brightness)
++        {
++            var current=renderer.color;
++            if(!applied||current!=last)baseline=current;
++            last=new Color(baseline.r*brightness,baseline.g*brightness,baseline.b*brightness,baseline.a);
++            renderer.color=last;applied=true;
++        }
++        public void Restore(SpriteRenderer renderer)
++        {
++            // Another presentation system may have supplied a newer tint; never overwrite it.
++            if(renderer!=null&&applied&&renderer.color==last)renderer.color=baseline;
++            applied=false;
++        }
++    }
++    sealed class Body
++    {
++        public GameObject host;
++        public CoreGuardianSelectionOutline union;
++        public Transform art;
++        public readonly Dictionary<SpriteRenderer,Tint> tints=new Dictionary<SpriteRenderer,Tint>();
++        public readonly List<SpriteRenderer> sources=new List<SpriteRenderer>();
++        public readonly CoreGuardianSpriteReferences references=new CoreGuardianSpriteReferences();
++    }
++    readonly Dictionary<Transform,Body> states=new Dictionary<Transform,Body>();
++    readonly HashSet<Transform> live=new HashSet<Transform>();
++    readonly List<Transform> targets=new List<Transform>(),removed=new List<Transform>();
++    readonly List<KeyValuePair<SpriteRenderer,Tint>> appliedTints=new List<KeyValuePair<SpriteRenderer,Tint>>();
++    CoreGuardianPrototype game;
++    Transform core;
++    Camera presentedCamera;
++
++    void OnEnable()
++    {
++        RenderPipelineManager.beginCameraRendering+=BeginCameraRendering;
++        RenderPipelineManager.endCameraRendering+=EndCameraRendering;
++    }
++    void BeginCameraRendering(ScriptableRenderContext context,Camera camera)
++    {
++        if(!isActiveAndEnabled||camera!=presentedCamera)return;
++        using var tintScope=tintSample.Auto();
++        float brightness=Mathf.Clamp(bodyBrightness,1,1.5f);
++        foreach(var state in states.Values)
++            foreach(var renderer in state.sources)
++                if(renderer!=null&&renderer.enabled&&renderer.gameObject.activeInHierarchy&&renderer.sprite!=null)
++                {
++                    if(!state.tints.TryGetValue(renderer,out var tint)){tint=new Tint();state.tints.Add(renderer,tint);}
++                    if(!tint.applied)appliedTints.Add(new KeyValuePair<SpriteRenderer,Tint>(renderer,tint));
++                    tint.Apply(renderer,brightness);
++                }
++        CoreGuardianAttackBodyBatch.Flush(camera);
++    }
++    void EndCameraRendering(ScriptableRenderContext context,Camera camera)
++    {
++        if(camera==presentedCamera){CoreGuardianAttackBodyBatch.Restore();RestoreBodyTints();}
++    }
++    void RestoreBodyTints(){foreach(var pair in appliedTints)pair.Value.Restore(pair.Key);appliedTints.Clear();}
++
++    void LateUpdate()
++    {
++        if(game==null)game=GetComponent<CoreGuardianPrototype>();
++        if(game==null||!game.Ready)return;
++        targets.Clear();game.GetCombatBodyTargets(targets);
++        if(core==null)
++            foreach(var r in FindObjectsByType<SpriteRenderer>())
++                if(r.gameObject.scene==gameObject.scene&&r.name=="2D Sprite"&&r.sprite!=null&&r.sprite.name=="core"){core=r.transform.parent;break;}
++        if(core!=null&&core.gameObject.activeInHierarchy)targets.Add(core);
++        PresentTargets(targets,Camera.main);
++    }
++    public void PresentTargets(IEnumerable<Transform> bodyTargets,Camera camera)
++    {
++        using var presentScope=presentSample.Auto();
++        // Keep animation inputs unmodified between renders, including whole-sprite -> cutout transitions.
++        RestoreBodyTints();presentedCamera=camera;
++        live.Clear();
++        if(camera!=null&&bodyTargets!=null)
++        foreach(var target in bodyTargets)
++        {
++            if(target==null||!target.gameObject.activeInHierarchy||!live.Add(target))continue;
++            if(!states.TryGetValue(target,out var state))
++            {
++                Transform art=null;
++                foreach(var r in target.GetComponentsInChildren<SpriteRenderer>(true))if(r.name=="2D Sprite"){art=r.transform;break;}
++                if(art==null)continue;
++                var host=new GameObject("ObjectEmphasis_B2_"+target.name){hideFlags=HideFlags.DontSave};host.transform.SetParent(transform,false);
++                var union=host.AddComponent<CoreGuardianSelectionOutline>();union.enabled=false;
++                state=new Body{host=host,union=union,art=art};states.Add(target,state);
++            }
++            if(state.art==null)continue;
++            // Both consumers validate visibility when they use this same, structurally checked list.
++            state.sources.Clear();
++            foreach(var renderer in state.references.Read(state.art))
++                if(renderer!=null&&renderer.gameObject.activeInHierarchy)state.sources.Add(renderer);
++            state.union.widthPixels=Mathf.Clamp(outlineWidthPixels,0,8);state.union.color=outlineColor;
++            state.union.alphaThreshold=Mathf.Clamp(alphaThreshold,.01f,1);
++            state.union.PresentAtOrderWithSources(target,camera,3,state.art,state.sources);
++        }
++        removed.Clear();foreach(var pair in states)if(pair.Key==null||!live.Contains(pair.Key))removed.Add(pair.Key);
++        foreach(var target in removed){Release(states[target]);states.Remove(target);}
++    }
++    static void Release(Body state)
++    {
++        foreach(var pair in state.tints)pair.Value.Restore(pair.Key);
++        if(state.host==null)return;
++        if(state.union!=null)state.union.ReleasePresentation();
++        // Non-ExecuteAlways EditMode consumers may never receive OnDestroy.
++        if(!Application.isPlaying&&state.union!=null)state.union.ReleaseResources();
++        state.host.SetActive(false);
++        if(Application.isPlaying)Destroy(state.host);else DestroyImmediate(state.host);
++    }
++    public void InvalidateSources()
++    {
++        foreach(var state in states.Values){state.references.Invalidate();state.union.InvalidateSources();}
++    }
++    public void ReleaseTarget(Transform target)
++    {
++        if(target==null||!states.TryGetValue(target,out var state))return;
++        Release(state);states.Remove(target);live.Remove(target);
++    }
++    void Clear(){RestoreBodyTints();foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;}
++    void OnDisable()
++    {
++        RenderPipelineManager.beginCameraRendering-=BeginCameraRendering;
++        RenderPipelineManager.endCameraRendering-=EndCameraRendering;
++        Clear();
++    }
++    void OnDestroy(){Clear();}
++    void OnValidate(){outlineWidthPixels=Mathf.Clamp(outlineWidthPixels,0,8);bodyBrightness=Mathf.Clamp(bodyBrightness,1,1.5f);alphaThreshold=Mathf.Clamp(alphaThreshold,.01f,1);}
++}
+diff --git a/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianPhotoShadow.cs b/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianPhotoShadow.cs
+index accf916..4de0279 100644
+--- a/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianPhotoShadow.cs
++++ b/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianPhotoShadow.cs
+@@ -1,4 +1,5 @@
+ using System;
++using System.Collections.Generic;
+ using System.Linq;
+ using UnityEngine;
+ using Unity.Profiling;
+@@ -18,6 +19,8 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
+     bool replace;
+     float size=1;
+     readonly CoreGuardianSpriteReferences shadowSources=new CoreGuardianSpriteReferences();
++    readonly List<SpriteRenderer> suppressedSources=new List<SpriteRenderer>();
++    int classifiedRevision=-1;
+     public static CoreGuardianPhotoShadow Attach(GameObject root,string role)
+     {
+         var shadow=root.GetComponent<CoreGuardianPhotoShadow>();
+@@ -46,8 +49,18 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
+         if(cast==null||art==null)return;
+         using(castSample.Auto())
+         {
+-            foreach(var r in shadowSources.Read(transform))
+-                if(r.name=="바닥 밀착선"||(replace&&(r.name=="바깥 그림자"||r.name=="접촉 그림자"||r.name=="짧은 투사 그림자"||r.name=="바닥 수정빛")))r.enabled=false;
++            var sources=shadowSources.Read(transform);
++            if(classifiedRevision!=shadowSources.Revision)
++            {
++                suppressedSources.Clear();
++                foreach(var renderer in sources)
++                {
++                    string name=renderer.name;
++                    if(name=="바닥 밀착선"||(replace&&(name=="바깥 그림자"||name=="접촉 그림자"||name=="짧은 투사 그림자"||name=="바닥 수정빛")))suppressedSources.Add(renderer);
++                }
++                classifiedRevision=shadowSources.Revision;
++            }
++            foreach(var renderer in suppressedSources)if(renderer!=null&&renderer.enabled)renderer.enabled=false;
+             cast.transform.position=transform.position+offset;
+             cast.transform.rotation=Quaternion.identity;
+             cast.transform.localScale=new Vector3(size/Mathf.Abs(transform.lossyScale.x),size/Mathf.Abs(transform.lossyScale.y),1);
+@@ -55,7 +68,8 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
+         }
+     }
+     void LateUpdate(){Present(null);}
+-    public void InvalidateSources(){shadowSources.Invalidate();}
++    // Names are classified on structural refresh; callers renaming an existing part must invalidate explicitly.
++    public void InvalidateSources(){shadowSources.Invalidate();classifiedRevision=-1;}
+     void OnDisable(){if(cast!=null)cast.enabled=false;}
+-    void OnEnable(){if(cast!=null)cast.enabled=true;}
++    void OnEnable(){InvalidateSources();if(cast!=null)cast.enabled=true;}
+ }
+diff --git a/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs b/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs
+index d3638bf..70dd4dd 100644
+--- a/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs
++++ b/Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs
+@@ -73,7 +73,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+         PresentMask(target,camera,true);
+         RegisterOutput(camera,false,0);
+     }
+-    void PresentMask(Transform target,Camera camera,bool writeOutlineProperties,bool compactContact=false)
++    void PresentMask(Transform target,Camera camera,bool writeOutlineProperties,bool compactContact=false,Transform sourceRoot=null,List<SpriteRenderer> sourceRenderers=null)
+     {
+         using var presentScope=presentSample.Auto();
+         CoreGuardianMaskOutputBatch.Invalidate(this);
+@@ -88,11 +88,11 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+             // These two rigs still show a native-zoom pixel difference under atlas rasterization.
+             // Keep their exact legacy mask production until separately validated.
+             pageRasterSupported=animation==null||(animation.PresentationRole!="Defense"&&animation.PresentationRole!="Boss");
+-            artwork=target.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite")?.transform;
++            artwork=sourceRoot!=null?sourceRoot:target.GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite")?.transform;
+         }
+         if(artwork==null){ReleasePresentation();return;}
+         sources.Clear();
+-        foreach(var r in bodySources.Read(artwork))
++        foreach(var r in sourceRenderers??bodySources.Read(artwork))
+             if(r!=null&&r.enabled&&r.sprite!=null&&r.color.a>=alphaThreshold&&r.gameObject.activeInHierarchy)sources.Add(r);
+         if(sources.Count==0){ReleasePresentation();return;}
+         EnsureResources();
+@@ -189,6 +189,13 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
+         if(output!=null&&output.enabled)output.sortingOrder+=offset-4;
+         RegisterOutput(camera,false,0);
+     }
++    // Only the emphasis owner supplies references; standalone selection/upgrade consumers keep their own validation.
++    internal void PresentAtOrderWithSources(Transform target,Camera camera,int offset,Transform sourceRoot,List<SpriteRenderer> sourceRenderers)
++    {
++        PresentMask(target,camera,true,sourceRoot:sourceRoot,sourceRenderers:sourceRenderers);
++        if(output!=null&&output.enabled)output.sortingOrder+=offset-4;
++        RegisterOutput(camera,false,0);
++    }
+     // A separate owner uses the current body mask for floor contact, below all bodies.
+     public void PresentGroundContact(Transform target,Camera camera,Material material)
+     {
+@@ -444,6 +451,7 @@ internal sealed class CoreGuardianSpriteReferences
+     static readonly ProfilerMarker readSample=new ProfilerMarker("CG.SpriteReferences.Read");
+     Transform root;
+     bool dirty=true;
++    public int Revision {get;private set;}
+     readonly List<SpriteRenderer> renderers=new List<SpriteRenderer>();
+     readonly List<Transform> nodes=new List<Transform>();
+     readonly List<int> childCounts=new List<int>();
+@@ -461,6 +469,7 @@ internal sealed class CoreGuardianSpriteReferences
+         }
+         if(refresh)
+         {
++            Revision++;
+             root=target;dirty=false;renderers.Clear();nodes.Clear();childCounts.Clear();parents.Clear();
+             if(root!=null)
+             {
+diff --git a/Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.cs b/Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.cs
+index 789d8c5..60dbd81 100644
+--- a/Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.cs
++++ b/Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.cs
+@@ -6,10 +6,13 @@ using UnityEngine;
+ using UnityEngine.EventSystems;
+ using UnityEngine.InputSystem.UI;
+ using TMPro;
++using Unity.Profiling;
+ 
+ // Runtime HUD with shared sprite frames and live Korean labels.
+ public sealed partial class CoreGuardianHud : MonoBehaviour
+ {
++    static readonly ProfilerMarker prepareDamageNumbersSample=new ProfilerMarker("CG.HUD.PrepareDamageNumbers");
++    static readonly ProfilerMarker createDamageNumberSample=new ProfilerMarker("CG.HUD.CreateDamageNumber");
+     CoreGuardianPrototype game;
+     Font font, titleFont;
+     TMP_FontAsset damageFont;
+@@ -103,6 +106,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
+         worldFeedback.anchorMin=Vector2.zero;worldFeedback.anchorMax=Vector2.one;worldFeedback.sizeDelta=Vector2.zero;
+         // Floating combat feedback always renders before every HUD panel and modal.
+         worldFeedback.SetAsFirstSibling();
++        PrepareDamageNumbers();
+         Build();game.Changed+=Refresh;game.Session.DamageApplied+=ShowDamageNumber;
+         BuildAugmentationSelection();
+     }
+@@ -375,8 +379,25 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
+         damageNumbers.Add(number);return number;
+     }
+     Stack<DamageNumber> NumberPool(string kind)=>kind=="GoldNumber"?goldNumberPool:kind=="CoreDamageNumber"?coreNumberPool:hitNumberPool;
++    void PrepareDamageNumbers()
++    {
++        using var scope=prepareDamageNumbersSample.Auto();
++        // Resolve TMP's synchronous first-use settings load before combat callbacks.
++        if(TMP_Settings.instance==null)throw new InvalidOperationException("TMP Settings missing");
++        // The observed first volley creates three numbers. This only warms that initial
++        // demand; FloatingNumber retains its unrestricted expansion and existing lifetime.
++        for(int i=hitNumberPool.Count;i<3;i++)
++        {
++            var number=CreateFloatingNumber("HitDamage");
++            number.Text.color=Color.clear;
++            number.Text.text="0123456789";
++            number.Text.ForceMeshUpdate();
++            ReturnNumber(number);
++        }
++    }
+     DamageNumber CreateFloatingNumber(string name)
+     {
++        using var scope=createDamageNumberSample.Auto();
+         var rect=Box(name,worldFeedback,new Vector2(.5f,.5f),Vector2.zero,new Vector2(200,52),false);
+         var text=rect.gameObject.AddComponent<TextMeshProUGUI>();
+         text.font=damageFont;text.fontSharedMaterial=damageMaterial;text.fontSize=32;
+diff --git a/Assets/Scripts/Tests/EditMode/CoreGuardianObjectEmphasisTests.cs b/Assets/Scripts/Tests/EditMode/CoreGuardianObjectEmphasisTests.cs
+index ab81909..797052d 100644
+--- a/Assets/Scripts/Tests/EditMode/CoreGuardianObjectEmphasisTests.cs
++++ b/Assets/Scripts/Tests/EditMode/CoreGuardianObjectEmphasisTests.cs
+@@ -6,6 +6,36 @@ using UnityEngine;
+ 
+ public class CoreGuardianObjectEmphasisTests
+ {
++    [Test]
++    public void SuppliedBodySourcesMatchIndependentOutlineAcrossVisibilityChanges()
++    {
++        var type=Find("CoreGuardianSelectionOutline");
++        var shared=type.GetMethod("PresentAtOrderWithSources",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic);
++        Assert.That(shared,Is.Not.Null,"Emphasis must reuse its validated body references for the mask consumer");
++        var actor=new GameObject("Shared body");var host=new GameObject("Shared outline");var legacy=new GameObject("Independent outline");var cameraGo=new GameObject("Camera");
++        var texture=new Texture2D(2,2);texture.SetPixels(Enumerable.Repeat(Color.white,4).ToArray());texture.Apply();
++        var sprite=Sprite.Create(texture,new Rect(0,0,2,2),Vector2.one*.5f,4);
++        try
++        {
++            var body=new GameObject("2D Sprite").AddComponent<SpriteRenderer>();body.transform.SetParent(actor.transform,false);body.sprite=sprite;
++            var child=new GameObject("Moving part").AddComponent<SpriteRenderer>();child.transform.SetParent(body.transform,false);child.transform.localPosition=Vector3.right;child.sprite=sprite;
++            var camera=cameraGo.AddComponent<Camera>();camera.enabled=false;camera.orthographic=true;camera.transform.position=Vector3.back*10;
++            var supplied=host.AddComponent(type);var independent=legacy.AddComponent(type);
++            var sources=new List<SpriteRenderer>{body,child};
++            for(int state=0;state<4;state++)
++            {
++                body.enabled=state!=1;child.gameObject.SetActive(state!=2);
++                if(state==3){child.transform.SetParent(actor.transform,false);sources.Remove(child);}
++                shared.Invoke(supplied,new object[]{actor.transform,camera,3,body.transform,sources});
++                type.GetMethod("PresentAtOrder").Invoke(independent,new object[]{actor.transform,camera,3});
++                Assert.That(type.GetProperty("TargetBounds").GetValue(supplied),Is.EqualTo(type.GetProperty("TargetBounds").GetValue(independent)),"state "+state);
++                var a=host.GetComponentInChildren<MeshRenderer>();var b=legacy.GetComponentInChildren<MeshRenderer>();
++                Assert.That(a.enabled,Is.EqualTo(b.enabled));Assert.That(a.sortingOrder,Is.EqualTo(b.sortingOrder));
++                CollectionAssert.AreEqual(a.GetComponent<MeshFilter>().sharedMesh.vertices,b.GetComponent<MeshFilter>().sharedMesh.vertices);
++            }
++        }
++        finally{DestroyOwned(host);DestroyOwned(legacy);UnityEngine.Object.DestroyImmediate(actor);UnityEngine.Object.DestroyImmediate(cameraGo);UnityEngine.Object.DestroyImmediate(sprite);UnityEngine.Object.DestroyImmediate(texture);}
++    }
+     static Type Find(string name)=>AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name)).FirstOrDefault(t=>t!=null);
+     static void DestroyOwned(GameObject root)
+     {
+diff --git a/Assets/Scripts/Tests/EditMode/CoreGuardianPhotoShadowTests.cs b/Assets/Scripts/Tests/EditMode/CoreGuardianPhotoShadowTests.cs
+index 2c3b5f9..f7a9b55 100644
+--- a/Assets/Scripts/Tests/EditMode/CoreGuardianPhotoShadowTests.cs
++++ b/Assets/Scripts/Tests/EditMode/CoreGuardianPhotoShadowTests.cs
+@@ -3,9 +3,49 @@ using System.Linq;
+ using NUnit.Framework;
+ using UnityEditor;
+ using UnityEngine;
++using UnityEngine.TestTools.Constraints;
++using Is = UnityEngine.TestTools.Constraints.Is;
+ 
+ public class CoreGuardianPhotoShadowTests
+ {
++    [TestCase("Attack","enemy_attack")][TestCase("Defense","enemy_defense")]
++    public void WarmStableShadowPresentationDoesNotAllocate(string role,string prefab)
++    {
++        var root=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Gameplay/Units/"+prefab+".prefab"));
++        try
++        {
++            var type=Type("CoreGuardianPhotoShadow");var shadow=type.GetMethod("Attach").Invoke(null,new object[]{root,role});
++            var present=(Action<Camera>)Delegate.CreateDelegate(typeof(Action<Camera>),shadow,type.GetMethod("Present"));
++            for(int i=0;i<3;i++)present(null);
++            Assert.That((TestDelegate)(()=>present(null)),Is.Not.AllocatingGCMemory());
++        }
++        finally{DestroyOwned(root);}
++    }
++    [Test]
++    public void SuppressionRefreshesForStructureInvalidationAndReuse()
++    {
++        var root=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Gameplay/Units/enemy_defense.prefab"));
++        var outside=new GameObject("Outside owner");
++        try
++        {
++            var type=Type("CoreGuardianPhotoShadow");var shadow=(Behaviour)type.GetMethod("Attach").Invoke(null,new object[]{root,"Defense"});
++            var present=(Action<Camera>)Delegate.CreateDelegate(typeof(Action<Camera>),shadow,type.GetMethod("Present"));
++            var invalidate=(Action)Delegate.CreateDelegate(typeof(Action),shadow,type.GetMethod("InvalidateSources"));
++            var added=new GameObject("접촉 그림자").AddComponent<SpriteRenderer>();added.transform.SetParent(root.transform,false);
++            present(null);Assert.That(added.enabled,Is.False,"New child must be classified automatically");
++            added.enabled=true;added.gameObject.SetActive(false);present(null);Assert.That(added.enabled,Is.False,"Inactive old shadows must also stay suppressed");
++            added.gameObject.SetActive(true);added.transform.SetParent(outside.transform,false);added.enabled=true;present(null);Assert.That(added.enabled,Is.True,"Removed renderer belongs to another owner");
++            var renamed=new GameObject("Not a shadow").AddComponent<SpriteRenderer>();renamed.transform.SetParent(root.transform,false);present(null);Assert.That(renamed.enabled,Is.True);
++            renamed.name="바깥 그림자";invalidate();present(null);Assert.That(renamed.enabled,Is.False,"Explicit invalidation refreshes name classification");
++            renamed.name="Body detail";renamed.enabled=true;invalidate();present(null);Assert.That(renamed.enabled,Is.True);
++            // Non-ExecuteAlways EditMode objects need explicit lifecycle delivery, like DestroyOwned below.
++            var flags=System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic;
++            shadow.enabled=false;type.GetMethod("OnDisable",flags).Invoke(shadow,null);
++            renamed.name="짧은 투사 그림자";shadow.enabled=true;type.GetMethod("OnEnable",flags).Invoke(shadow,null);
++            present(null);Assert.That(renamed.enabled,Is.False,"Reused owner must refresh names");
++        }
++        finally{DestroyOwned(root);UnityEngine.Object.DestroyImmediate(outside);}
++    }
+     static void DestroyOwned(GameObject root)
+     {
+         // EditMode-created, non-ExecuteAlways components need explicit native cleanup.
+diff --git a/ProjectSettings/PackageManagerSettings.asset b/ProjectSettings/PackageManagerSettings.asset
+index 1653029..5d6f366 100644
+--- a/ProjectSettings/PackageManagerSettings.asset
++++ b/ProjectSettings/PackageManagerSettings.asset
+@@ -38,7 +38,7 @@ MonoBehaviour:
+     m_Modified: 0
+     m_ErrorMessage: 
+     m_UserModificationsEntityId:
+-      m_rawData: 1099511629230
++      m_rawData: 1099511639695
+     m_OriginalEntityId:
+-      m_rawData: 1099511629231
+-  m_LoadAssets: 0
++      m_rawData: 1099511639696
++  m_LoadAssets: -1
+diff --git a/ProjectSettings/TimeManager.asset b/ProjectSettings/TimeManager.asset
+index 558a017..2e23a1f 100644
+--- a/ProjectSettings/TimeManager.asset
++++ b/ProjectSettings/TimeManager.asset
+@@ -3,7 +3,12 @@
+ --- !u!5 &1
+ TimeManager:
+   m_ObjectHideFlags: 0
+-  Fixed Timestep: 0.02
++  serializedVersion: 2
++  Fixed Timestep:
++    m_Count: 2822399
++    m_Rate:
++      m_Denominator: 1
++      m_Numerator: 141120000
+   Maximum Allowed Timestep: 0.33333334
+   m_TimeScale: 1
+   Maximum Particle Timestep: 0.03
+diff --git a/docs/development/UNITY_HANDOVER.md b/docs/development/UNITY_HANDOVER.md
+index 7138a04..47cf832 100644
+--- a/docs/development/UNITY_HANDOVER.md
++++ b/docs/development/UNITY_HANDOVER.md
+@@ -1,42 +1,125 @@
+-# 코어 가디언 인수인계
+-
+-갱신: 2026-10-23 Asia/Seoul. 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다.
+-
+-## 현재 위치·승인 범위
+-
+-- 프로젝트 `C:\Users\edcde\OneDrive\Desktop\CD`, 브랜치 `codex/shared-body-mask`. 이번 문서 정리 시작 HEAD `87490f2`(Notion 최신화), 최신 게임/호환 코드 `bca9dd8`. 작업별 복구 기준은 담당 정본을 따른다. 이번 인수인계는 문서만 변경하며 Unity 연결/Play 상태를 새로 조회하지 않았다.
+-- 목표는 GTX750Ti·RAM4~8GB급 안정적60FPS. 현재30R 성장/물량·밸런스와 승인 원본·방향/보행·넓은 그림자·강조/HUD·효과 수/수명·사운드·입력 반응을 유지한다. 사용자 관심은 **적128·타워15에서 실제로 가장 비싼 처리, 특히 포탄/효과**다. 임의120초 측정이나 끝난 검사를 반복하지 않는다.
+-- **SpriteAtlas 호환/제작 기반은 준비했지만 실제 패킹은 보류·원본 표시로 복구했다.** A 보류와 B 제한·원본 출력/개별RT·방어형/보스 fallback을 유지한다. 현재 게임에 표시용 아틀라스가 적용됐다고 설명하지 않는다. 이번 인수인계 자체는 추가 실행 권한이 아니다.
+-
+-## 최신 구현·실제 검증
+-
+-- 부위 좌표/원본 UV·B 원본 키 연결, 신규 입력 FullRect, 폴더 기반 제작/빌드 전 동기화, Domain Reload OFF의 보행 캐시/매핑 초기화 불일치를 수정했다. 후보는 적 기본/앞뒤/BossEye36개와 타워9개였다. 옆 보행 OriginalWalk20개는 픽셀 회귀로 제외, 타워 발광/음영도 원본 샘플링 유지. 현재 관리 후보2개는 Include in Build OFF/packables0이고 빌드 hook도 보류 유지. 기존 사용자 `CG_Enemies`는 별도 보존한다.
+-- **포탄·피격9종은 이미 CombatB.png1텍스처 공유.** 단순 재포장으로 현재 Draw가 줄지 않아 추가 아틀라스는 생성하지 않았다. 포탄 이동/충돌/탐색의 실제 병목은 이번에 확정하지 않았다.
+-- 적128·타워15 고정,1920×1080/ortho8.5/time1·warm15/sample90 각1회 최종 코드 비교: **원본 평균52.30FPS / 후보43.33FPS**, 후보 Editor Texture2D 약4.50MiB 증가·Draw/SetPass 소폭 증가 방향으로 보류. 동적 전투/Editor 변동을 분리하지 못해 확정 인과 효과·목표기기60FPS 판정으로 쓰지 않는다. 초기 좋은 후보52.85 표본만 채택하지 않았고 모든 실패/원본을 보존했다.
+-- 대상55/55 통과·후보 격리 렌더24쌍 차이0(256×256/ortho2/단일 위상)·기존 B manifest92/92 유효. 모든 방향/위상·정상 조작·전체 HUD/native 줌 전수·아트 승인과 구분한다. [결과/구현/실패/추가 규칙](sprite_atlas_20261023/README.md), [최종 수치](sprite_atlas_20261023/final_comparison.json), [검토](sprite_atlas_20261023/REVIEW.md).
+-- 마지막 실제 실행은 후보 해제 후 **원본 표시 적128·타워15/90프레임**이며 error=null·현재 콘솔 오류0을 확인했다. 이후 대상 검사/최종 조회: Play stopped/compiling false/scene clean/원래7루트/자체 mask RT0·Profiler OFF/driver true/background false, 씬·사용자 설정2개·EditorSettings hash4개 동일. 당시 종료 상태이며 재개 시 현재로 가정하지 않는다. [최종 상태](sprite_atlas_20261023/held_final_state.json).
+-
+-## 리소스·디렉터리·Notion
+-
+-- 미사용 게임 이미지69개 제거·연결170개 보존, 기록 캡처13개는 삭제하지 않고 문서 폴더로 이동/동일 hash 확인. 삭제 전 씬 저장은 사용자 명시 승인, 복구 `5ae39a1`/정리 `4281424`. 소리·폰트·코드·설정·프리팹·씬 삭제가 아니다. [정리/복구](resource_cleanup_20261023/README.md), [재사용 후보](resource_cleanup_20261023/REUSE_CANDIDATES.md).
+-- 기존 Assets552개 분류·551개 이동, Art/Audio/Data/Documentation/Fonts/Prefabs/Scenes/Scripts/Settings9분류. 복구 `c1203f1`/완료 `babac77`. GUID/meta/의존성·Resources key·assembly 보존과 대상22개 검증 완료. 당시 안내 포함553개, 이번 신규6개 이후559개(.meta 제외). [위치 색인](directory_reorganization_20261023/DIRECTORY_INDEX.md), [이동표](directory_reorganization_20261023/path_map.csv), [검증 정본](directory_reorganization_20261023/README.md). 과거 진단 코드는 재실행 전 이동표로 경로를 확인한다.
+-- Notion 담당7페이지 최신화·재조회 완료(`87490f2`). 호환 준비/패킹 보류·최종 수치/실패/한계·리소스 보존·파일 위치·후속 순서를 담당별로 반영하고 기존 하위페이지/DB 보존. [동기화 대상/확인](sprite_atlas_20261023/NOTION_SYNC.md). [최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4), [검증 이력](https://www.notion.so/3df389dbfc6881fc9f1bd004adfc5999), [디렉터리](https://www.notion.so/401389dbfc6881c0b3dbec4c2050a56f), [후속 순서](https://www.notion.so/3f4389dbfc688171b84dc19b138925f4).
+-
+-## 앞선 채택 작업 — 상세는 담당 정본
+-
+-- 길219개→메시2개+픽셀 민감 원본23개, 설치 표시858개→재사용 메시1개 적용. 사용자 미리보기 승인으로 동적 발밑 접촉만 제거하고 넓은 PhotoCastShadow 유지. 과거 접촉 제거60프레임 비교40.35→45.00FPS는 별도 예비 결과이며 최신 표본과 합산하지 않는다. [길](route_mesh_20261022/README.md), [설치](placement_overlay_20261023/README.md), [접촉 제거](contact_shadow_removed_20261023/README.md).
+-- 마스크 RT/참조 재사용·동일 본체 공유·HUD/표시/적 본체/모델 풀링·Session 반복 비용과 B 생성 배칭은 이미 구현했다. 누적169개/당시 B 대상72개 등 충분한 검사는 새 변경/실패 없이 반복하지 않는다. B 페이지당16MiB·copyback 비용이 있어 메모리 절감/전체 잔류 통과가 아니다. [B 결과/제한](render_batching_20261022/B_RESULTS.md), [누적 CPU/GC](runtime_validation_20261021/RESULTS.md), [RT 재사용](mask_reuse_20261020/RESULTS.md), [동일 본체 공유](shared_body_mask_20261021/RESULTS.md).
+-- 과거 정상 초반120초/카운터15초 관측은 최신 실행이 아니다. ToArray 충돌·고정 카운터 무효·메모리 증가/스파이크 한계를 보존한다. ProfilerRecorder.ToArray/CopyTo 충돌 경로와 capacity1 덮어쓰기 없는 옛 도구를 재사용하지 않는다. [당시 관측](normal_probe_20261023/README.md).
+-- 기존 Windows64 일반 빌드 `Builds/CoreGuardian_Windows_20261022_062018/CoreGuardian.exe`와 ZIP은 **B 반영 전**, 보존한다. 당시 빌드 성공만 확인했고 실행하지 않았다. 이후 새 빌드/실행/push 없음. Unity CLI1.0.0-beta.14는 이미 설치·확인했으므로 옛 MCP 안내만 보고 재설치하지 않는다.
+-
+-## 미완료와 다음 행동
+-
+-1. 실제 HEAD/diff·사용자 파일·현재 Unity 연결/씬/dirty/Play/컴파일·다른 검사부터 확인한다. 사용자 Play/다른 검사를 중단·중복하지 않는다.
+-2. **원본 표시/보류 유지 상태에서 적128·타워15의 실제 비용 구분**부터 작게 진행한다. 포탄 이동/충돌/타깃 탐색, 렌더 제출·재질 전환·마스크 중 무엇이 비싼지 유효한 같은 조건의 근거를 확인한다. 최소/최대/평균FPS·frame ms·원본·한계를 보고한다. 제거 전 Contact4.579ms를 현재 병목으로 다시 제시하지 않는다. CombatB 재포장이나 기존 pooling/cache를 중복 구현하지 않는다.
+-3. SpriteAtlas 재활성화·옆 보행 직접 표시 배칭은 품질/비용 근거 확보 전 보류. A·B 출력 직접 배칭/개별RT 제거도 자동 확대하지 않는다. 신규 종류/방향/부품은 소유 폴더/Resources 계약을 유지하고 별도 품질을 확인한다. 현재 코드 검사는 새 아트 승인까지 뜻하지 않는다.
+-4. 정상30R 자연 플레이·장시간 부하, 유효 GPU/순수 Render Thread·Memory Profiler peak/전체 잔류, 반복 재시작·전 방향/위상/중첩/재등장·정상 조작/청취는 별도 미완료다. [기존 보스 합성 미확정9건](mask_validation_20261021/README.md)도 유지한다. D3D12 GPU Profiler 미지원/Memory Profiler package 미검출을 무효0 성과로 쓰지 않고 설치/API 변경을 자동 수행하지 않는다. 구체 CPU·해상도·배속/최대 부하 예산도 확정 전이다.
+-5. 사용자 씬·설정·미추적·개인정보/분석 설정·폰트 도구 접근오류 표시는 보존한다. 현재 unstaged는 `ProjectSettings/PackageManagerSettings.asset`, `ProjectSettings/TimeManager.asset`, 범위 밖 Unity 직렬화 차이 `Assets/Art/Editor/ProjectWelcome/2d-template.png.meta`의3개이며 임의 복원/삭제/포괄 커밋하지 않는다. 전투씬 `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity` 하나 유지, YAML 직접수정 금지. 빌드·실행파일 실행·push는 별도 명시 요청 때만 한다.
+-
+-## 공통 진입 문서
+-
+-[최적화 규칙](OPTIMIZATION_RULES.md), [대상 QA](TARGETED_QA.md), [로컬 Git](LOCAL_GIT.md), [작업 흐름](WORKFLOW.md), [현재30R 기준](aggressive_30r_20261020/README.md). 밸런스·아트/HUD·사운드를 실제로 다룰 때만 해당 보호 규칙을 추가로 읽는다. 상세 이력/원본은 담당 정본에 두며 옛 소스 교체 manifest를 현재 파일에 무조건 복원하지 않는다.
++# 코어 가디언 인수인계
++
++갱신: 2026-10-23 Asia/Seoul. 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다.
++
++## 현재 재개 — C# 뷰 동기화 계획 완료 / 구현 승인 대기
++
++- 사용자 요청으로 [C# 뷰 동기화 중복 축소 계획](../superpowers/plans/2026-10-23-view-synchronization.md)을 작성했다. 현재 HEAD는 `1de8ced`(이번 인수인계에서 재확인), 후속 변경은 미커밋이다. **계획 작성·Notion 최신화만 완료했으며 뷰 동기화 제품 수정·새 테스트/측정·Unity 조작은 하지 않았다.**
++- 다음 제안은 `SynchronizeViews`의 적/포탑/포탄 CPU 비용을 구분하고, 같은 개체의 현재 world 좌표를 본체·애니메이션·버프 표시에 재사용하는 후보 하나부터 검증하는 것이다. 안정 적 처리의 World 호출3~4→2회는 소스상 예상이며 절감ms/FPS는 미측정이다. 이전 tile을 현재 Grid로 변환하는 의미·풀 재사용·dt0·콜백 변화·보행/조준을 보존한다.
++- 포탑 `FindTower`/타깃 공간 인덱스/지원 목록의 반복 검증은 별도 후속 후보다. 공개 live API의 중간 변이 감지·재진입 계약을 무작정 제거하지 않는다. 실제 비용과 안전한 준비/소비 경계를 확인한 뒤 별도 설계/구현 승인을 받는다. 좌표 후보와 마스크/렌더/셰이더·포탄 판정·목록 공유를 한꺼번에 바꾸지 않는다.
++- **승인 범위:** 현재 새 구현/계측 승인은 없다. 다음 실행 전에 대상·방법·부하·시간을 설명하고 명시 허락을 기다린다. 계획의 조건당warm15/sample90×3은 제안일 뿐 승인/실행 결과가 아니며 과거 단회90프레임 승인을 재사용하지 않는다. 재로딩·Play/종료·Profiler/설정 조작도 구체 승인 범위에 포함돼야 한다. 불명확한 결과를 승인 없이 반복하지 않는다.
++- 사용자에게 윤곽 후보 악화 관측과 단회/GC 차이의 한계를 보고했다. GPU 시간이 유효하지 않은 shader 미세 후보보다 직접 CPU 비용을 확인할 뷰 동기화를 다음으로 계획했다. 호출 수·Draw 감소만으로 성공이라 하지 않고 대상 CPU ms·GC·전체 프레임·동작 동등성으로 판단한다. 목표기기60FPS·정상30R·장시간/GPU·별도MB 급증 출처는 미완료다.
++- 사용자 요청으로 Notion 담당3페이지를 갱신하고 fetch로 반영을 확인했다: [최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4), [플레이테스트·변경 이력](https://www.notion.so/3df389dbfc6881fc9f1bd004adfc5999), [후속 작업 순서](https://www.notion.so/3f4389dbfc688171b84dc19b138925f4). 적용된 강조/그림자/TMP와 보류 native batch·윤곽 원본 복구, C#/shader 조사, 최신 뷰 계획/승인 대기를 구분했다. 기존 링크·이력 보존, 나머지 무관한 기획서 수정 없음.
++- 현재 Unity 상태는 이번 계획/Notion/인수인계 작업에서 조회하지 않았다. 아래 윤곽 실험의 종료 상태는 당시 실제 기록이며 현재라고 단정하지 않는다. 사용자 씬·설정·미추적 파일 보존, A 보류/B 제한·아틀라스 패킹 보류·원본 출력/fallback·native body batch OFF 유지. 후보 자동 재활성화·불필요한 재검사·임의120초·자동 빌드/실행파일 실행/커밋/push 금지.
++- 재개 행동: AGENTS→이 문서→위 계획을 읽고 현재 승인 대기를 유지한다. 사용자가 계획 실행을 구체 승인하면 그 범위만 진행하며 사용자 Play/다른 검사는 중단·중복하지 않는다. 이 인수인계 요청 자체는 추가 검사/Unity 조작 권한이 아니다.
++
++## 직전 실험 — 윤곽 중복 조회 축소 후보 보류 / 원본 복구
++
++- 사용자 “진행해” 승인으로 SelectionOutline 중앙 재사용→조기 종료+명시LOD0 후보를 순차 구현/검증했다. **일반 프레임 비교가 악화돼 제품shader는 시작 원본으로 바이트복구/diff0.** 후보는 고유 Hidden 이름의 EditMode fixture와 docs 소스로 격리했다. [실제 결과·원본·실패/한계](outline_sampling_20261023/README.md), [검토](outline_sampling_20261023/REVIEW.md). HEAD1de8ced·미커밋, 이번 새 제품 최적화 적용0.
++- 대상 원본2pass2fail→중앙3pass1fail→조기종료4/4pass. 검토 후 고립float neighbor경계 보강한 최종 격리후보5/5pass, 기존 실제union렌더2/2pass. 실제Attack/Buff4방향·4위상·단독/겹침·강조1px+검사2px64쌍차이0. 테스트계측판의8031출력픽셀 논리 호출10→9→2~9(평균4.884)는 하드웨어texture요청/GPU시간/FPS성과가 아니다.
++- 적128/타워15·1920×1080/ortho8.5·각warm15/sample90 단회: 평균frame23.053→24.653ms(+6.94%), FPS최소/최대/평균18.11/59.79/43.38→17.09/57.66/40.56(평균-6.49%). 후보에GC수거1회/3.49MB급증, 원본수거0으로 shader의 인과악화로 확정하지 않지만 채택 근거도 없어 복구했다. D3D12 GPUProfiler supported=false로 GPUms미검증. 중앙-only 실전 비교·추가반복/추적은 하지 않았다.
++- 실제 최종상태: Play stopped/compilingfalse/scene clean7roots/Deep·recording·profileEditor·GPU·callstacks OFF/backgroundfalse/capture0/scale1/nativebatchOFF/mask entries·bindings·pages0. 보호파일/hash는 정본verification. 사용자 씬/설정·기존C#변경·미추적 보존, A보류/B제한·아틀라스보류·원본표시 유지. 빌드/실행파일/커밋/push 없음.
++- 악화/보류 결과는 사용자에게 보고 완료했다. 다음 CPU 뷰 계획과 승인 상태는 위 최신 절을 따른다. 추가측정·GPU환경변경·중앙-only채택·다른CPU/Shader수정은 새 구체 승인 전 대기한다.
++
++## 직전 조사 — C# / 셰이더 분리 보고
++
++- 사용자 승인으로 셰이더 관련38파일(shader29/hlsl1/cginc4/Graph4: custom11/TMP27)을 정적 조사하고 C# 연결/재질 참조를 대조했다. 기존 C#108개는 이전 조사 hash와 변경/추가0개여서 분석을 재사용했다. [통합 진입](script_shader_audit_20261023/README.md), [C# 보고](script_shader_audit_20261023/CSHARP_REPORT.md), [셰이더 보고](script_shader_audit_20261023/SHADER_REPORT.md).
++- 활성 SelectionOutline은 폭1의 본체 밖 fragment에서 코드상 최대10회 mask 읽기, TowerGlow5회/CoreAmbient 발광9회. 실제 피해 숫자는 TMP Mobile SDF1Pass/OUTLINE_ON/atlas1회 경로다. custom11개는 모두 소스 Pass1개. BatchedMaskOutput은 Play 등록 건너뜀/AttackBodyBatch 기본OFF/contact 런타임 호출자 없음으로 현재 병목에서 분리했다. GPU 비용/실행 Pass 수를 소스 토큰 개수로 확정하지 않는다.
++- CPU는 뷰/타깃/World·마스크 준비 중복, shader는 같은 윤곽 판정의 반복 읽기를 각각 후속 후보로 보고했다. 기존 마스크 CPU4.672ms를 GPU시간으로 부르지 않는다. 후보 수정/성과 없음. 다음 실행·수정은 구체 승인 전 보류.
++- 이번에는 Unity 연결/Play/Profiler/재로딩·제품/씬/설정 수정·테스트/빌드/실행파일/커밋/push를 하지 않았다. 보고서와 파일별 정적 색인만 생성·보존검사했다. 현재 Unity 상태는 조회하지 않았으며 이전 종료 상태를 현재로 단정하지 않는다. 사용자 파일·원본 출력·A 보류/B 제한/아틀라스 보류/native batch OFF 정책 유지.
++
++## 직전 작업 — 최초 피해 숫자 준비 / 전체 스크립트 정적 조사
++
++- 사용자 승인으로 TMP 설정과 HitDamage3개를 HUD 초기화에서 투명 glyph 메시까지 준비해 기존 풀로 반환한다. 출력·수명 .85초·초과 생성·Gold/Core·효과 수 유지. 제품 변경은 HUD1파일, 신규 회귀 테스트1개. HEAD `1de8ced`·미커밋. [구현/원본/수치/실패/한계](damage_number_prewarm_20261023/README.md).
++- 대상 테스트 RED1/1실패→GREEN1/1통과, 최종1/1통과: 숨김·3개 재사용·4번째 확장·수명/반환·원본 fallback 대비 glyph 정점/UV/색상·공유 재질 일치. 독립 소스 검토 지적 없음. 전체 HUD 픽셀/모든 기기/언어·재시작 전수 통과 아님.
++- 일반 적128·타워15/각warm15/sample90 단회: frame평균27.077→23.728ms, 최대128.742→48.105ms, FPS최소/최대/평균7.77/57.89/36.93→20.79/55.82/42.14. 기존 지연위치 engine22는128.742→36.357ms·후보 CreateNumber0. 후속28~37프레임에 추가 생성0.56~1.04ms가 남아 모든 생성 제거 아님. 전의14.55MB 할당 급증 출처·Editor 변동을 분리 못해 차이 전체를 수정의 인과 효과/목표기기60FPS 통과로 보지 않는다.
++- 준비 관측0.5832ms, 비활성3개·직접 소유객체/컴포넌트/메시 합19,599B. 공유 리소스/managed TMP buffers 제외이며 앞선 테스트로 데워진 Editor일 수 있어 cold 초기 비용/전체 메모리는 미검증이다.
++- Assets C#108개(시작107+이번 테스트1): 런타임54/Editor4/테스트50 정적 색인·패턴/호출경로 조사. [후보13개·소스 위치·구현 위험·기존 풀/캐시/비활성 경로](damage_number_prewarm_20261023/SCRIPT_AUDIT.md), 파일별 hash/범위는 같은 폴더 inventory. 포탄 명중 삭제·뷰 타깃/캐시 재검증·격자 World 변환·버프 aura 전수검사·오디오 enum/key/clip조회·HUD 반복생성·보행 상수/임시배열을 후보로 기록했다. 추가 제품 수정/측정 승인으로 확대하지 않았다. 지속 Emphasis5.611ms/내부Mask4.672ms가 실제 남은 CPU 비용이며 중첩 합산 금지.
++- 시작 Recording ON은 사용자가 사용 중이 아니라고 확인하고 끄도록 승인했다. 후보 첫 비교는 화면 조건guard에서 표본0 종료·복원; 사용자 추가 승인 후 현재1920×1080/index3 유지·단회 재실행90개 완료·동일 화면 선택 복원. 최종 실제 상태와 보호5파일 해시는 담당 폴더 final_state/protected_after가 담당한다. 사용자 파일 보존·A 보류/B 제한·SpriteAtlas 보류·원본 표시/native batch OFF·빌드/실행파일/push/커밋 없음.
++- 다음 행동은 이 조사 결과를 사용자에게 보고하고 다음 한 단위 수정 범위를 정하는 것이다. 후보 ms/할당 기여와14.55MB 출처는 미확정. 추가 Play/프로파일링/다른 후보 수정은 별도 구체 승인 전 보류한다.
++
++## 직전 조사 — 승인된 초기 전투 Deep Profile 1회
++
++- 사용자 명시 승인으로 Deep/profileEditor ON·재로딩 후 적128/타워15·warm15/sample12 1회 캡처했다. 이후 자체 Play 종료·Deep/profileEditor OFF·재로딩 및 실제 복원 확인. 제품 수정 없음. [호출 경로·원본·한계](deep_initial_stall_20261023/README.md).
++- 초기 피격의 `MoveProjectiles→ApplyDamage→HUD.ShowDamageNumber→CreateFloatingNumber→TMP.Awake→TMP_Settings.instance→Resources.Load`를 확인했다. Profiler4에서 새 숫자3개 생성62.959ms(포함된 TMP Settings 최초 로드1회42.573ms), Session.StepTick76.695ms. 다음 프레임 StepTick8.165ms. Deep 시간이며 기존 일반100ms 스톨 전체 기여율/절감량으로 확정하지 않는다. 기존 일반 UI.Text 피해 목록 확장과 구분한다.
++- 강조/마스크·SynchronizeViews가 지속 비용으로 남고, Deep 프레임에는 Editor 뷰 재그리기55.8~150.0ms와 Profiler 통합도 포함됐다. 전체를 게임/GPU 비용으로 보지 않는다. Deep 구간 GC 수거1회·최대10.223ms는 일반 모드 결과와 구분한다. 4~6MB 별도 급증 출처는 미확정.
++- raw175만 이상 안전 상한으로 자동 raw 추출은 건너뛰고, 이미 저장된 native 병합 Hierarchy만 제한 조회했다(각180항목·native build43/57ms·탐색89/105ms). 프로파일러 수신 지연을 확인해 확정된 프레임 시간으로 대응했다. 새 Play/추가 캡처 없음.
++- 다음 수정 제안은 기존 숫자 풀을 초기화/준비 단계에서 예열하고 TMP 최초 로드를 전투 전에 끝내는 것이다. 표시 수/수명/아트 유지, 준비 비용/메모리와 일반 모드 초기 피격 전후 확인 필요. 이번 승인은 진단/보고이며 제품 수정은 하지 않았다.
++- 최종 실제 상태: Play stopped/compiling false/Deep·recording·profileEditor·callstacks OFF/driver true/background false/captureDeltaTime0/timeScale1/scene clean. 보호5파일 해시 동일·사용자 파일 보존. A/B 제한·SpriteAtlas 보류·네이티브 배칭 OFF, 빌드/실행파일/push/커밋 없음.
++
++## 직전 작업 — 넓은 그림자 이름 조회 캐시
++
++- 사용자 승인으로 PhotoShadow의 반복 renderer.name 조회를 구조 Revision 기반 분류 캐시로 바꾸고 OnEnable/명시 무효화 때 갱신한다. 넓은 그림자·원본/숨김 규칙 유지. 이름만 바꾸는 호출자는 InvalidateSources 필요. 소스 반영·HEAD `1de8ced`·미커밋, A/B 제한·SpriteAtlas 보류·네이티브 본체 배칭 OFF 유지.
++- 그림자13/13(안정 Present 무할당2개 포함)·공유 윤곽3/3 통과. 같은 원본 개체9종·18쌍 픽셀 차이0. EditMode 수명주기 테스트 오류/실패도 보존했다. [원본/결과/한계](shadow_name_cache_20261023/README.md).
++- 적128/타워15·각warm15/sample90: 그림자Present1.659→0.850ms(-0.809ms/-48.78%), 전체 GC 중앙127182→20402B/frame(-83.96%), 평균165149→121456B/frame(-26.46%). 평균FPS42.16→43.62 단회 관측, 목표기기 통과/전체 성능 개선 확정 아님.
++- 수정본106프레임에서4.82MB 단발 할당이 남았다. recording OFF라 출처 미확정, 반복 이름 할당 감소와 MB 급증 해결을 구분한다. 다음은 남은 급증/HUD 생성 비용 구분이며 추가 검사/수정은 새 구체 승인 전 보류.
++- 자동 종료·실제 복원: Play stopped/compiling false/Deep·recording·callstacks·profileEditor OFF/driver true/background false/captureDeltaTime0/timeScale1/scene clean/native batch OFF. 보호5파일 해시 동일. 사용자 파일 보존, 빌드/실행파일/push/커밋 없음.
++
++## 직전 조사 — GC 할당 급증 출처
++
++- 사용자 승인으로 일반 Profiler warm15/sample90 1회, 상위2프레임 Main Thread만 추적했다. Deep/할당스택 OFF·재로딩/제품 수정 없음. 각9345/8561샘플·19/14ms로 상한 이내 완료. [추적/원본/미확정](gc_source_20261023/README.md).
++- 상위2프레임 HUD.Update 경로426612/249978B, PhotoShadow.Cast는각106966B. HUD는 Text 생성/OnEnable 집중, 피해 행은 이미 재사용되므로 초기 확장과 상시 생성을 구분한다. 그림자는 renderer.name 반복 조회가 확인된 지속 할당 경로다.
++- 이번 최대560836B로 **앞선5~6MB 급증은 재현되지 않아 출처 미확정**. CollectionCount(0)1879→1879·GC.Collect0ms·증분 마커 최대0.0018ms로 큰 수거 정지 근거 없음. 앞선 평균 증가를 GC 수거 정지로 부르지 않는다. Thread 할당 API의0은 무효로 기록했다.
++- 자동 종료·실제 복원: Play stopped/compiling false/Deep·recording·callstacks·profileEditor OFF/driver true/background false/captureDeltaTime0/timeScale1/scene clean/native batch OFF. 보호5파일 해시 동일. 빌드/실행파일/push/커밋 없음.
++- 다음 제안은 PhotoShadow 이름 분류 캐시로 반복 getter 할당을 줄이고 원본 그림자/숨김/동적 구조 회귀·같은 짧은 비교를 확인하는 것이다. 새 수정/검사는 구체 범위 승인 전 보류. HUD/미재현5~6MB 문제까지 해결됐다고 하지 않는다.
++
++## 직전 작업 — 강조 CPU 중복 처리 축소
++
++- 사용자 승인으로 강조의 본체 참조를 윤곽 마스크에 전달해 중복 구조 검사·색상 사전 조회를 줄이고 실제 적용한 tint만 복원하도록 변경했다. 활성 부품 규칙·밝기/윤곽/원본/정렬 유지. 소스 반영·HEAD `1de8ced`·미커밋. 네이티브 본체 배칭은 OFF, A/B 제한·SpriteAtlas 보류 유지.
++- 최종 강조4/4·독립 윤곽3/3 통과, 같은 원본 개체의 좌우/4위상/단일·겹침16쌍 픽셀 차이0. 별도 재생성 개체 캡처의 겹침 차이는 원인 미확정으로 보존. [결과/원본/검사 한계](emphasis_cpu_20261023/README.md).
++- 적128·타워15/조건별warm15/sample90: 준비5.701→5.017ms, 색상 적용0.798→0.773ms, 두 구간 합0.708ms/10.90% 절감 관측. 전체 강조 수명주기/중첩 마스크 합이 아님. 평균FPS40.40→44.56이나 단회 Editor 관측. GC 평균263368→350920B/frame·SetPass 증가 관측으로 전체 성능 통과 판정 보류, GC 원인 미확정. 첫 후보의 비활성 부품 순회 악화도 보존했으며 해당 수정본에만 추가90프레임 비교했다.
++- 자동 종료/실제 복원 확인: Play stopped/compiling false/Deep·recording OFF/driver true/background false/captureDeltaTime0/timeScale1/scene clean/native batch OFF. 보호5파일 해시 동일. 사용자 파일 보존, 빌드/실행파일/push/커밋 없음.
++- 다음 제안은 GC 스파이크 출처 확인이다. 추가 수정·Play/프로파일링·다른 시스템 확대는 새 승인 전 진행하지 않는다. 목표기기60FPS·정상 장기 플레이·전체 메모리 검증은 미완료.
++
++## 직전 작업 — 공격형 옆 보행 네이티브 배칭 후보
++
++- 사용자 승인으로 Attack 옆 보행5부품을 원본 Sprite/SpriteRenderer·정렬 유지 + 공통 Texture2DArray/재질 방식으로 구현했다. 이전 수동 메시 후보는 픽셀/순서 실패로 폐기. 기본 OFF·원본 출력·A/B 제한·SpriteAtlas 패킹 보류 유지. 복구 HEAD `1de8ced`, 미커밋.
++- 실제 대상7/7 통과·격리 좌우/4위상/단일 및 겹침16쌍 차이0. 적128(Attack112/Buff16)·타워15, 고정 simulation dt1/60·warm15/sample90 각1회: Draw 평균1579.52→1020.43(-559.09/-35.40%). FPS 최소/최대/평균 원본6.78/51.32/33.08 → 후보13.80/43.19/34.88. 단회 Editor 관측이며 FPS 개선 확정·목표기기60FPS 검증이 아니다.
++- 후보 marker 평균3.812ms·GC 평균+238200B/frame로 부담이 크다. 소스 검토에서 초기화 예외 시 부분 리소스 정리, 외부 material 교체/중간 비활성화 시 임시 alpha/MPB 복원 문제도 확인해 채택 보류. [상세 결과·원본·미해결](attack_body_batch_20261023/README.md).
++- 측정 자동 종료/실제 복원 확인: Play stopped/compiling false/Deep·recording OFF/driver true/background false/captureDeltaTime0/timeScale1/scene clean/candidate OFF. 보호5파일 해시 동일. 사용자 파일·설정·미추적 보존, 빌드/실행파일/push/커밋 없음.
++- 다음 제안은 후보의 반복 shader 조회·material/MPB 연결 비용 축소와 복원/초기화 안전성 보완, 대상 회귀 검사·같은 짧은 비교다. **사용자 승인 전 추가 수정·재검사·활성화하지 않는다.** 남은 다른 종류/그림자/마스크로 확대하지 않는다.
++
++## 앞선 재개 중단 기록 — 2026-10-23 10:35 KST
++
++- 시작 HEAD `1de8ced`. 제품 코드/씬/설정 변경 없이 `combat_cost_20261023/`에 진단 기록을 생성했다. 일반90프레임/유효 PlayerLoop89개에서 적128·타워15 유지, 강조5.630ms·넓은 그림자1.856ms·Prototype.Update2.355ms·CombatArt.Update0.0106ms 평균 inclusive 관측. 중첩 시간 합산 금지, 개선 전후/목표기기 검증 아님.
++- 불필요한 작업을 중단하라는 사용자 지시로 추가 진단·압축 작업 중단. Deep30프레임 원본은 저장됐지만 세부 호출 추출이 Unity 메인 스레드를 오래 점유 중이다. 자체 Play 종료/Profiler·Deep OFF/배경 false 복원 요청은 2초 timeout으로 **실행·복원 미확인**. 강제 종료하지 않았다. 다음 작업은 추가 검사가 아니라 현재 추출 종료 여부와 자체 상태 복원 확인부터다. 아래 이전 종료 상태를 현재로 가정하지 않는다.
++- `combat_cost_20261023/`는 미완료·미커밋. 원본 `.data`는 유지하며 압축은 검증 실패 상태이므로 유효 아카이브로 쓰지 않는다. 기존 사용자 파일·후보 보류 유지. 빌드/실행파일/push 없음.
++
++## 현재 위치·승인 범위
++
++- 프로젝트 `C:\Users\edcde\OneDrive\Desktop\CD`, 브랜치 `codex/shared-body-mask`. 이번 문서 정리 시작 HEAD `87490f2`(Notion 최신화), 최신 게임/호환 코드 `bca9dd8`. 작업별 복구 기준은 담당 정본을 따른다. 이번 인수인계는 문서만 변경하며 Unity 연결/Play 상태를 새로 조회하지 않았다.
++- 목표는 GTX750Ti·RAM4~8GB급 안정적60FPS. 현재30R 성장/물량·밸런스와 승인 원본·방향/보행·넓은 그림자·강조/HUD·효과 수/수명·사운드·입력 반응을 유지한다. 사용자 관심은 **적128·타워15에서 실제로 가장 비싼 처리, 특히 포탄/효과**다. 임의120초 측정이나 끝난 검사를 반복하지 않는다.
++- **SpriteAtlas 호환/제작 기반은 준비했지만 실제 패킹은 보류·원본 표시로 복구했다.** A 보류와 B 제한·원본 출력/개별RT·방어형/보스 fallback을 유지한다. 현재 게임에 표시용 아틀라스가 적용됐다고 설명하지 않는다. 이번 인수인계 자체는 추가 실행 권한이 아니다.
++
++## 최신 구현·실제 검증
++
++- 부위 좌표/원본 UV·B 원본 키 연결, 신규 입력 FullRect, 폴더 기반 제작/빌드 전 동기화, Domain Reload OFF의 보행 캐시/매핑 초기화 불일치를 수정했다. 후보는 적 기본/앞뒤/BossEye36개와 타워9개였다. 옆 보행 OriginalWalk20개는 픽셀 회귀로 제외, 타워 발광/음영도 원본 샘플링 유지. 현재 관리 후보2개는 Include in Build OFF/packables0이고 빌드 hook도 보류 유지. 기존 사용자 `CG_Enemies`는 별도 보존한다.
++- **포탄·피격9종은 이미 CombatB.png1텍스처 공유.** 단순 재포장으로 현재 Draw가 줄지 않아 추가 아틀라스는 생성하지 않았다. 포탄 이동/충돌/탐색의 실제 병목은 이번에 확정하지 않았다.
++- 적128·타워15 고정,1920×1080/ortho8.5/time1·warm15/sample90 각1회 최종 코드 비교: **원본 평균52.30FPS / 후보43.33FPS**, 후보 Editor Texture2D 약4.50MiB 증가·Draw/SetPass 소폭 증가 방향으로 보류. 동적 전투/Editor 변동을 분리하지 못해 확정 인과 효과·목표기기60FPS 판정으로 쓰지 않는다. 초기 좋은 후보52.85 표본만 채택하지 않았고 모든 실패/원본을 보존했다.
++- 대상55/55 통과·후보 격리 렌더24쌍 차이0(256×256/ortho2/단일 위상)·기존 B manifest92/92 유효. 모든 방향/위상·정상 조작·전체 HUD/native 줌 전수·아트 승인과 구분한다. [결과/구현/실패/추가 규칙](sprite_atlas_20261023/README.md), [최종 수치](sprite_atlas_20261023/final_comparison.json), [검토](sprite_atlas_20261023/REVIEW.md).
++- 마지막 실제 실행은 후보 해제 후 **원본 표시 적128·타워15/90프레임**이며 error=null·현재 콘솔 오류0을 확인했다. 이후 대상 검사/최종 조회: Play stopped/compiling false/scene clean/원래7루트/자체 mask RT0·Profiler OFF/driver true/background false, 씬·사용자 설정2개·EditorSettings hash4개 동일. 당시 종료 상태이며 재개 시 현재로 가정하지 않는다. [최종 상태](sprite_atlas_20261023/held_final_state.json).
++
++## 리소스·디렉터리·Notion
++
++- 미사용 게임 이미지69개 제거·연결170개 보존, 기록 캡처13개는 삭제하지 않고 문서 폴더로 이동/동일 hash 확인. 삭제 전 씬 저장은 사용자 명시 승인, 복구 `5ae39a1`/정리 `4281424`. 소리·폰트·코드·설정·프리팹·씬 삭제가 아니다. [정리/복구](resource_cleanup_20261023/README.md), [재사용 후보](resource_cleanup_20261023/REUSE_CANDIDATES.md).
++- 기존 Assets552개 분류·551개 이동, Art/Audio/Data/Documentation/Fonts/Prefabs/Scenes/Scripts/Settings9분류. 복구 `c1203f1`/완료 `babac77`. GUID/meta/의존성·Resources key·assembly 보존과 대상22개 검증 완료. 당시 안내 포함553개, 이번 신규6개 이후559개(.meta 제외). [위치 색인](directory_reorganization_20261023/DIRECTORY_INDEX.md), [이동표](directory_reorganization_20261023/path_map.csv), [검증 정본](directory_reorganization_20261023/README.md). 과거 진단 코드는 재실행 전 이동표로 경로를 확인한다.
++- Notion 담당7페이지 최신화·재조회 완료(`87490f2`). 호환 준비/패킹 보류·최종 수치/실패/한계·리소스 보존·파일 위치·후속 순서를 담당별로 반영하고 기존 하위페이지/DB 보존. [동기화 대상/확인](sprite_atlas_20261023/NOTION_SYNC.md). [최적화 계획](https://www.notion.so/3ff389dbfc6881779abdeb5eeeb1cda4), [검증 이력](https://www.notion.so/3df389dbfc6881fc9f1bd004adfc5999), [디렉터리](https://www.notion.so/401389dbfc6881c0b3dbec4c2050a56f), [후속 순서](https://www.notion.so/3f4389dbfc688171b84dc19b138925f4).
++
++## 앞선 채택 작업 — 상세는 담당 정본
++
++- 길219개→메시2개+픽셀 민감 원본23개, 설치 표시858개→재사용 메시1개 적용. 사용자 미리보기 승인으로 동적 발밑 접촉만 제거하고 넓은 PhotoCastShadow 유지. 과거 접촉 제거60프레임 비교40.35→45.00FPS는 별도 예비 결과이며 최신 표본과 합산하지 않는다. [길](route_mesh_20261022/README.md), [설치](placement_overlay_20261023/README.md), [접촉 제거](contact_shadow_removed_20261023/README.md).
++- 마스크 RT/참조 재사용·동일 본체 공유·HUD/표시/적 본체/모델 풀링·Session 반복 비용과 B 생성 배칭은 이미 구현했다. 누적169개/당시 B 대상72개 등 충분한 검사는 새 변경/실패 없이 반복하지 않는다. B 페이지당16MiB·copyback 비용이 있어 메모리 절감/전체 잔류 통과가 아니다. [B 결과/제한](render_batching_20261022/B_RESULTS.md), [누적 CPU/GC](runtime_validation_20261021/RESULTS.md), [RT 재사용](mask_reuse_20261020/RESULTS.md), [동일 본체 공유](shared_body_mask_20261021/RESULTS.md).
++- 과거 정상 초반120초/카운터15초 관측은 최신 실행이 아니다. ToArray 충돌·고정 카운터 무효·메모리 증가/스파이크 한계를 보존한다. ProfilerRecorder.ToArray/CopyTo 충돌 경로와 capacity1 덮어쓰기 없는 옛 도구를 재사용하지 않는다. [당시 관측](normal_probe_20261023/README.md).
++- 기존 Windows64 일반 빌드 `Builds/CoreGuardian_Windows_20261022_062018/CoreGuardian.exe`와 ZIP은 **B 반영 전**, 보존한다. 당시 빌드 성공만 확인했고 실행하지 않았다. 이후 새 빌드/실행/push 없음. Unity CLI1.0.0-beta.14는 이미 설치·확인했으므로 옛 MCP 안내만 보고 재설치하지 않는다.
++
++## 미완료와 다음 행동
++
++1. 실제 HEAD/diff·사용자 파일·현재 Unity 연결/씬/dirty/Play/컴파일·다른 검사부터 확인한다. 사용자 Play/다른 검사를 중단·중복하지 않는다.
++2. **원본 표시/보류 유지 상태에서 적128·타워15의 실제 비용 구분**부터 작게 진행한다. 포탄 이동/충돌/타깃 탐색, 렌더 제출·재질 전환·마스크 중 무엇이 비싼지 유효한 같은 조건의 근거를 확인한다. 최소/최대/평균FPS·frame ms·원본·한계를 보고한다. 제거 전 Contact4.579ms를 현재 병목으로 다시 제시하지 않는다. CombatB 재포장이나 기존 pooling/cache를 중복 구현하지 않는다.
++3. SpriteAtlas 재활성화·옆 보행 직접 표시 배칭은 품질/비용 근거 확보 전 보류. A·B 출력 직접 배칭/개별RT 제거도 자동 확대하지 않는다. 신규 종류/방향/부품은 소유 폴더/Resources 계약을 유지하고 별도 품질을 확인한다. 현재 코드 검사는 새 아트 승인까지 뜻하지 않는다.
++4. 정상30R 자연 플레이·장시간 부하, 유효 GPU/순수 Render Thread·Memory Profiler peak/전체 잔류, 반복 재시작·전 방향/위상/중첩/재등장·정상 조작/청취는 별도 미완료다. [기존 보스 합성 미확정9건](mask_validation_20261021/README.md)도 유지한다. D3D12 GPU Profiler 미지원/Memory Profiler package 미검출을 무효0 성과로 쓰지 않고 설치/API 변경을 자동 수행하지 않는다. 구체 CPU·해상도·배속/최대 부하 예산도 확정 전이다.
++5. 사용자 씬·설정·미추적·개인정보/분석 설정·폰트 도구 접근오류 표시는 보존한다. 현재 unstaged는 `ProjectSettings/PackageManagerSettings.asset`, `ProjectSettings/TimeManager.asset`, 범위 밖 Unity 직렬화 차이 `Assets/Art/Editor/ProjectWelcome/2d-template.png.meta`의3개이며 임의 복원/삭제/포괄 커밋하지 않는다. 전투씬 `Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity` 하나 유지, YAML 직접수정 금지. 빌드·실행파일 실행·push는 별도 명시 요청 때만 한다.
++
++## 공통 진입 문서
++
++[최적화 규칙](OPTIMIZATION_RULES.md), [대상 QA](TARGETED_QA.md), [로컬 Git](LOCAL_GIT.md), [작업 흐름](WORKFLOW.md), [현재30R 기준](aggressive_30r_20261020/README.md). 밸런스·아트/HUD·사운드를 실제로 다룰 때만 해당 보호 규칙을 추가로 읽는다. 상세 이력/원본은 담당 정본에 두며 옛 소스 교체 manifest를 현재 파일에 무조건 복원하지 않는다.

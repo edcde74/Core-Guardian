@@ -1,0 +1,586 @@
+{
+  "phase": "early",
+  "pairs": 64,
+  "failures": 0,
+  "width": 256,
+  "height": 256,
+  "scope": "same original Attack/Buff, four directions/four poses, single/overlap, emphasis width1 plus inspection width2; not full HUD/native zoom QA",
+  "rows": [
+    {
+      "role": "Attack",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.025,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.025,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.08,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.08,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.14,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.14,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.22,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.22,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.025,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.025,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.08,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.08,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.14,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.14,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.22,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.22,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.025,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.025,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.08,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.08,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.14,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.14,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.22,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.22,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.025,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.025,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.08,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.08,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.14,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.14,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.22,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Attack",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.22,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.025,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.025,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.08,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.08,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.14,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.14,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.22,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": -1.0,
+      "directionY": 0.0,
+      "step": 0.22,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.025,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.025,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.08,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.08,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.14,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.14,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.22,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 1.0,
+      "directionY": 0.0,
+      "step": 0.22,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.025,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.025,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.08,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.08,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.14,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.14,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.22,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": 1.0,
+      "step": 0.22,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.025,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.025,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.08,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.08,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.14,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.14,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.22,
+      "overlap": false,
+      "outputs": 2,
+      "differences": 0
+    },
+    {
+      "role": "Buff",
+      "directionX": 0.0,
+      "directionY": -1.0,
+      "step": 0.22,
+      "overlap": true,
+      "outputs": 3,
+      "differences": 0
+    }
+  ]
+}

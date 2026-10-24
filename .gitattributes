@@ -8,3 +8,7 @@
 /docs/development/shared_mask_materials_20261021/profiler_raw.zip filter=lfs diff=lfs merge=lfs -text
 /docs/development/shared_body_mask_20261021/profiler_containment_candidate.zip filter=lfs diff=lfs merge=lfs -text
 /docs/development/shared_body_mask_20261021/profiler_raw.zip filter=lfs diff=lfs merge=lfs -text
+/docs/development/combat_cost_20261023/deep/deep_0_n128.data filter=lfs diff=lfs merge=lfs -text
+/docs/development/combat_cost_20261023/normal/normal_0_n128.data filter=lfs diff=lfs merge=lfs -text
+/docs/development/combat_cost_20261023/profiler_raw.zip filter=lfs diff=lfs merge=lfs -text
+/docs/development/emphasis_mask_cpu_20261024/prior_profile.data filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,446 @@
+{
+  "before": {
+    "samples": 90,
+    "gaps": 0,
+    "frame_ms": {
+      "mean": 27.076565555555337,
+      "median": 24.43560000006073,
+      "min": 17.27470000014364,
+      "max": 128.7422999998853
+    },
+    "fps": {
+      "min": 7.767454830315219,
+      "max": 57.888125408353545,
+      "average": 36.93230583281374
+    },
+    "gc_B_frame": {
+      "mean": 486275.77777777775,
+      "median": 23016.5,
+      "max": 14553605
+    },
+    "collections": 5,
+    "top_frames": [
+      {
+        "frame": 22,
+        "ms": 128.7422999998853,
+        "projectiles": 33,
+        "gc": {
+          "valid": true,
+          "value": 14553605
+        },
+        "main": {
+          "valid": true,
+          "value": 125539500
+        },
+        "create": null
+      },
+      {
+        "frame": 23,
+        "ms": 60.76050000001487,
+        "projectiles": 33,
+        "gc": {
+          "valid": true,
+          "value": 5228742
+        },
+        "main": {
+          "valid": true,
+          "value": 62274000
+        },
+        "create": null
+      },
+      {
+        "frame": 26,
+        "ms": 47.91309999995974,
+        "projectiles": 33,
+        "gc": {
+          "valid": true,
+          "value": 181299
+        },
+        "main": {
+          "valid": true,
+          "value": 47895400
+        },
+        "create": null
+      },
+      {
+        "frame": 65,
+        "ms": 44.285400000035224,
+        "projectiles": 0,
+        "gc": {
+          "valid": true,
+          "value": 20120
+        },
+        "main": {
+          "valid": true,
+          "value": 44055500
+        },
+        "create": null
+      },
+      {
+        "frame": 54,
+        "ms": 44.08899999998539,
+        "projectiles": 0,
+        "gc": {
+          "valid": true,
+          "value": 356526
+        },
+        "main": {
+          "valid": true,
+          "value": 44033900
+        },
+        "create": null
+      }
+    ],
+    "first_engine22": [
+      {
+        "frame": 22,
+        "gap": 1,
+        "ms": 128.7422999998853,
+        "collectionCount0": 386,
+        "collectionsSincePrevious": 0,
+        "enemies": 128,
+        "towers": 15,
+        "projectiles": 33,
+        "sources": 0,
+        "textureBytes": 0,
+        "bufferBytes": 0,
+        "draw": 1583,
+        "setpass": 187,
+        "counters": {
+          "Semaphore.WaitForSignal": {
+            "valid": true,
+            "value": 400
+          },
+          "WaitForJobGroupID": {
+            "valid": true,
+            "value": 2017200
+          },
+          "Camera.Render": {
+            "valid": true,
+            "value": 400
+          },
+          "WaitForLastPresentation": {
+            "valid": true,
+            "value": 1400
+          },
+          "WaitForTargetFPS": {
+            "valid": true,
+            "value": 0
+          },
+          "PlayerLoop": {
+            "valid": true,
+            "value": 113889100
+          },
+          "Main Thread": {
+            "valid": true,
+            "value": 125539500
+          },
+          "Shader.EditorCompileVariant": {
+            "valid": true,
+            "value": 0
+          },
+          "Shader.DynamicLoadGPUProgram": {
+            "valid": true,
+            "value": 0
+          },
+          "Shader.CreateGPUPrograms": {
+            "valid": true,
+            "value": 0
+          },
+          "Shader.CompileGPUProgram": {
+            "valid": true,
+            "value": 0
+          },
+          "Texture.WaitForAsyncUpload": {
+            "valid": true,
+            "value": 0
+          },
+          "GC.Collect": {
+            "valid": true,
+            "value": 0
+          },
+          "GarbageCollector.CollectIncremental": {
+            "valid": true,
+            "value": 600
+          },
+          "EditorLoop": {
+            "valid": true,
+            "value": 0
+          },
+          "GC Allocated In Frame": {
+            "valid": true,
+            "value": 14553605
+          },
+          "Standard Draw Calls Count": {
+            "valid": true,
+            "value": 0
+          },
+          "SRP Batcher Draw Calls Count": {
+            "valid": true,
+            "value": 0
+          },
+          "CG.Mask.Present": {
+            "valid": true,
+            "value": 6138900
+          },
+          "CG.Emphasis.Present": {
+            "valid": true,
+            "value": 7464000
+          },
+          "CG.Emphasis.Tint": {
+            "valid": true,
+            "value": 1202500
+          },
+          "CG.PhotoShadow.Present": {
+            "valid": true,
+            "value": 1184300
+          }
+        }
+      }
+    ],
+    "markers_mean_ms": {
+      "Main Thread": 27.070112222222225,
+      "CG.Emphasis.Present": 6.253655555555556,
+      "CG.PhotoShadow.Present": 0.9050355555555555
+    }
+  },
+  "after": {
+    "samples": 90,
+    "gaps": 0,
+    "frame_ms": {
+      "mean": 23.72806777777896,
+      "median": 21.7309000000796,
+      "min": 17.913800000087576,
+      "max": 48.10459999998784
+    },
+    "fps": {
+      "min": 20.788032745314435,
+      "max": 55.822885149723184,
+      "average": 42.1441817077279
+    },
+    "gc_B_frame": {
+      "mean": 56263.188888888886,
+      "median": 21108.0,
+      "max": 515458
+    },
+    "collections": 1,
+    "top_frames": [
+      {
+        "frame": 31,
+        "ms": 48.10459999998784,
+        "projectiles": 12,
+        "gc": {
+          "valid": true,
+          "value": 199500
+        },
+        "main": {
+          "valid": true,
+          "value": 47911400
+        },
+        "create": {
+          "valid": true,
+          "value": 1044200
+        }
+      },
+      {
+        "frame": 27,
+        "ms": 43.82110000005923,
+        "projectiles": 33,
+        "gc": {
+          "valid": true,
+          "value": 22199
+        },
+        "main": {
+          "valid": true,
+          "value": 43620900
+        },
+        "create": {
+          "valid": true,
+          "value": 0
+        }
+      },
+      {
+        "frame": 30,
+        "ms": 42.317099999991115,
+        "projectiles": 18,
+        "gc": {
+          "valid": true,
+          "value": 515458
+        },
+        "main": {
+          "valid": true,
+          "value": 43310700
+        },
+        "create": {
+          "valid": true,
+          "value": 950400
+        }
+      },
+      {
+        "frame": 26,
+        "ms": 41.186100000004444,
+        "projectiles": 33,
+        "gc": {
+          "valid": true,
+          "value": 24288
+        },
+        "main": {
+          "valid": true,
+          "value": 41221200
+        },
+        "create": {
+          "valid": true,
+          "value": 0
+        }
+      },
+      {
+        "frame": 22,
+        "ms": 36.357100000032005,
+        "projectiles": 33,
+        "gc": {
+          "valid": true,
+          "value": 26091
+        },
+        "main": {
+          "valid": true,
+          "value": 32614100
+        },
+        "create": {
+          "valid": true,
+          "value": 0
+        }
+      }
+    ],
+    "first_engine22": [
+      {
+        "frame": 22,
+        "gap": 1,
+        "ms": 36.357100000032005,
+        "collectionCount0": 505,
+        "collectionsSincePrevious": 0,
+        "enemies": 128,
+        "towers": 15,
+        "projectiles": 33,
+        "sources": 0,
+        "textureBytes": 0,
+        "bufferBytes": 0,
+        "draw": 1698,
+        "setpass": 210,
+        "counters": {
+          "Semaphore.WaitForSignal": {
+            "valid": true,
+            "value": 200
+          },
+          "WaitForJobGroupID": {
+            "valid": true,
+            "value": 1946800
+          },
+          "Camera.Render": {
+            "valid": true,
+            "value": 500
+          },
+          "WaitForLastPresentation": {
+            "valid": true,
+            "value": 1500
+          },
+          "WaitForTargetFPS": {
+            "valid": true,
+            "value": 0
+          },
+          "PlayerLoop": {
+            "valid": true,
+            "value": 16799400
+          },
+          "Main Thread": {
+            "valid": true,
+            "value": 32614100
+          },
+          "Shader.EditorCompileVariant": {
+            "valid": true,
+            "value": 0
+          },
+          "Shader.DynamicLoadGPUProgram": {
+            "valid": true,
+            "value": 0
+          },
+          "Shader.CreateGPUPrograms": {
+            "valid": true,
+            "value": 0
+          },
+          "Shader.CompileGPUProgram": {
+            "valid": true,
+            "value": 0
+          },
+          "Texture.WaitForAsyncUpload": {
+            "valid": true,
+            "value": 0
+          },
+          "GC.Collect": {
+            "valid": true,
+            "value": 0
+          },
+          "GarbageCollector.CollectIncremental": {
+            "valid": true,
+            "value": 800
+          },
+          "EditorLoop": {
+            "valid": true,
+            "value": 0
+          },
+          "GC Allocated In Frame": {
+            "valid": true,
+            "value": 26091
+          },
+          "Standard Draw Calls Count": {
+            "valid": true,
+            "value": 0
+          },
+          "SRP Batcher Draw Calls Count": {
+            "valid": true,
+            "value": 0
+          },
+          "CG.Mask.Present": {
+            "valid": true,
+            "value": 4737700
+          },
+          "CG.Emphasis.Present": {
+            "valid": true,
+            "value": 5714100
+          },
+          "CG.Emphasis.Tint": {
+            "valid": true,
+            "value": 1150300
+          },
+          "CG.PhotoShadow.Present": {
+            "valid": true,
+            "value": 777700
+          },
+          "CG.HUD.CreateDamageNumber": {
+            "valid": true,
+            "value": 0
+          }
+        }
+      }
+    ],
+    "markers_mean_ms": {
+      "Main Thread": 23.720487777777777,
+      "CG.Emphasis.Present": 5.611084444444444,
+      "CG.PhotoShadow.Present": 0.8456088888888889,
+      "CG.HUD.CreateDamageNumber": 0.060365555555555554
+    }
+  },
+  "deltas": {
+    "frame_ms_mean": {
+      "saved": 3.3484977777763767,
+      "saved_percent": 12.366774400933432
+    },
+    "frame_ms_median": {
+      "saved": 2.7046999999811305,
+      "saved_percent": 11.068686670163238
+    },
+    "frame_ms_max": {
+      "saved": 80.63769999989745,
+      "saved_percent": 62.634969236971294
+    }
+  }
+}

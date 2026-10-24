@@ -1,0 +1,180 @@
+{
+  "unity": "6000.6.2f1",
+  "cpu": "AMD Ryzen 5 5600X 6-Core Processor ",
+  "gpu": "NVIDIA GeForce RTX 3070",
+  "ramMB": 32681,
+  "width": 1920,
+  "height": 1080,
+  "vSyncCount": 1,
+  "targetFrameRate": -1,
+  "camera": 8.5,
+  "captureDeltaTime": 0.0166666675,
+  "policy": "fixed simulation dt1/60; wall frame intervals from realtimeSinceStartup; standard/SRP Rendering counters; 15 warm + 90 observed each; each run warm15/sample90; 3 runs per condition; current-thread marker sums; recording OFF",
+  "counters": [
+    {
+      "Name": "Semaphore.WaitForSignal",
+      "category": "Internal",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "WaitForJobGroupID",
+      "category": "Jobs",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "Camera.Render",
+      "category": "Render",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "WaitForLastPresentation",
+      "category": "Render",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "WaitForTargetFPS",
+      "category": "VSync",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "PlayerLoop",
+      "category": "PlayerLoop",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "Main Thread",
+      "category": "Internal",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "Shader.EditorCompileVariant",
+      "category": "Render",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "Shader.DynamicLoadGPUProgram",
+      "category": "Render",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "Shader.CreateGPUPrograms",
+      "category": "Render",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "Shader.CompileGPUProgram",
+      "category": "Render",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "Texture.WaitForAsyncUpload",
+      "category": "Loading",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "GC.Collect",
+      "category": "GC",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "GarbageCollector.CollectIncremental",
+      "category": "GC",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "EditorLoop",
+      "category": "Internal",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "GC Allocated In Frame",
+      "category": "Memory",
+      "unit": "Bytes"
+    },
+    {
+      "Name": "Standard Draw Calls Count",
+      "category": "Render",
+      "unit": "Undefined"
+    },
+    {
+      "Name": "SRP Batcher Draw Calls Count",
+      "category": "Render",
+      "unit": "Undefined"
+    },
+    {
+      "Name": "CG.Mask.Present",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.Resources",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.Parts",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.MeshUpload",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.Execute",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.Output",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.SpriteReferences.Read",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Emphasis.Present",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Emphasis.Tint",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.CacheLookup",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.PhotoShadow.Present",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.PageProducer",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.SourceFilter",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.BoundsCrop",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Mask.QuadUpload",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    }
+  ]
+}

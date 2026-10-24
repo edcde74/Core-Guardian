@@ -1,0 +1,45 @@
+{
+  "Summary": {
+    "Total": 4,
+    "Passed": 4,
+    "Failed": 0,
+    "Skipped": 0,
+    "Inconclusive": 0
+  },
+  "Results": [
+    {
+      "FullName": "CoreGuardianObjectEmphasisTests.BodyBoostDoesNotAccumulate_RespectsNewTint_AndRestoresOnRemoval",
+      "Status": "Passed",
+      "Duration": 0.1074503,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianObjectEmphasisTests.InspectorOutlineChangesApplyLive_ZeroHidesOnlyEmphasis_SelectionRendersAboveIt",
+      "Status": "Passed",
+      "Duration": 0.0100655,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianObjectEmphasisTests.RenderScopedBrightnessDoesNotFeedBackIntoIdleToAttackCutouts",
+      "Status": "Passed",
+      "Duration": 0.0038924,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "CoreGuardianObjectEmphasisTests.SuppliedBodySourcesMatchIndependentOutlineAcrossVisibilityChanges",
+      "Status": "Passed",
+      "Duration": 0.009638,
+      "Message": null,
+      "StackTrace": null
+    }
+  ],
+  "Duration": 6.12,
+  "StatusPath": null,
+  "Mode": "EditMode",
+  "FilterApplied": "testname: CoreGuardianObjectEmphasisTests",
+  "success": true,
+  "result": null
+}

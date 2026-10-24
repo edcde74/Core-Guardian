@@ -1,0 +1,39 @@
+﻿path,lines,shader_name,explicit_passes,surface_program,sample_call_sites,loops,serialized_ref_count,sha256
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/AttackBodyBatch.shader,45,CoreGuardian/AttackBodyBatch,1,False,1,0,0,d769e5a6921629d8210cfa2092bfca6391a2fa46dc71061ab8be8cf9d005df52
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/BatchedMaskOutput.shader,44,CoreGuardian/BatchedMaskOutput,1,False,1,2,0,66693e79be027ff3b572b1ce9a67c8b2220ceb5e3282da863bb72a74245b8cfa
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/BatchedSelectionMask.shader,50,CoreGuardian/BatchedSelectionMask,1,False,2,0,0,a0212ef28c17bea6f3ff92a212edf96e62cfe1cf968896847b8aa3176d3827f3
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/BodyHitFlash.shader,51,CoreGuardian/BodyHitFlash,1,False,0,0,0,6cb6664d669940b293243c445ed22f540c6660806ced4036ed76d734d1a4e28d
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/CoreAmbient.shader,55,CoreGuardian/CoreAmbient,1,False,1,0,0,0016874701a09a095810b69e27b44ff6872034336bfebae4b5638874b4200459
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/PhotoShadowContact.shader,33,CoreGuardian/PhotoShadowContact,1,False,3,0,0,d3e31aabf75581d466fb432a4ba5dc9860983d964e9bcaa194063ccb6efcae2f
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/SelectionMask.shader,44,CoreGuardian/SelectionMask,1,False,2,0,0,ecd95e8a75828fb146512997d4fb2aa01c0a00d2cb5d21592990a6b34b7628e7
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/SelectionOutline.shader,34,CoreGuardian/SelectionOutline,1,False,2,2,0,3847017d8bd1ff086377cb1548299e98dec92686c0582c6e10f3466dfa096ffd
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/TowerBaseShade.shader,38,CoreGuardian/TowerBaseShade,1,False,1,0,0,6f2b4aafedac2b56bc91062dd7269cad54f007db98a21e5705251039f4ca5696
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/TowerGlow.shader,56,CoreGuardian/TowerGlow,1,False,1,0,0,a133b76d8c38ef7e719f18f76d01b2e30e84f7e13ceb9f6a382a93758ce38911
+Assets/Art/Rendering/Shaders/Resources/CoreGuardian/UpgradeScan.shader,29,CoreGuardian/UpgradeScan,1,False,1,0,0,a64b19e95f8a7e924407635d9106cce10fbbc24c81ddd1622d6fc03c3d9d5a9c
+Assets/Art/Rendering/Shaders/TextMeshPro/SDFFunctions.hlsl,178,,0,False,4,0,0,88cf0f62e4000b71750c059d0886b19504cd1cf10f39bb61ddc11b77a882d417
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_Bitmap-Custom-Atlas.shader,145,TextMeshPro/Bitmap Custom Atlas,1,False,2,0,0,42892a52f22bdde6d482cf2da5f35e4b813063fc6fe42189eee5562080079494
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_Bitmap-Mobile.shader,155,TextMeshPro/Mobile/Bitmap,2,False,1,0,0,b50afc7edc8a710f8b4159149b2391e7238b5e4076cc0ea2119090ed29e13b4a
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_Bitmap.shader,145,TextMeshPro/Bitmap,1,False,2,0,0,1d32f34c71276c1321aa0540a2410e15808743a38b2026923045a4dec4a79b58
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF Overlay.shader,326,TextMeshPro/Distance Field Overlay,1,False,7,0,0,a0d318756cba0f95a7052c387e629d0add3e9a4125c8333f1d1ed591af5f17cb
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF SpaceWarp.shader,523,TextMeshPro/Distance Field - SpaceWarp,2,False,10,0,0,cdc87d1df815b00e49cb2fd3010e872fdf740f89f81c915fd1a3d974bd8a596e
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF SSD SpaceWarp.shader,491,TextMeshPro/Distance Field SSD - SpaceWarp,2,False,10,0,0,40f4d9f424e2b72cb80af23439f383bc9502582780436222d84806cedbb8797b
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF SSD.shader,321,TextMeshPro/Distance Field SSD,1,False,7,0,0,2a991951b00b0c052363a1025f655450054325437b3d13c2623a987c8ec77c30
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-HDRP LIT.shadergraph,12074,,0,False,0,0,0,bf68062f68b38b588abd1c354f64e905f824d9a2c47f92ebdd70a32989eb2097
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-HDRP UNLIT.shadergraph,11759,,0,False,0,0,0,8a969c2d775079cce4e1c45d5eb6d3964b27d44dc884178363050c74fd5e9742
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile Masking.shader,258,TextMeshPro/Mobile/Distance Field - Masking,1,False,4,0,0,41cff58473557bf760d03513a8c098f43a24e4eeb4c8ccd7d828c045a338a9ed
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile Overlay.shader,252,TextMeshPro/Mobile/Distance Field Overlay,1,False,3,0,0,fb286386d0592ce6d63eb736f180b4b0f638ec538b0855aa54767a438ebd1173
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile SpaceWarp.shader,450,TextMeshPro/Mobile/Distance Field - SpaceWarp,2,False,6,0,0,d28725953a5b116c5c2e141bd7fdb8f7fbd3c0157f9dccf5c88d96b488c969bb
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile SSD SpaceWarp.shader,485,TextMeshPro/Mobile/Distance Field SSD - SpaceWarp,2,False,8,0,0,a9d58993803f78a3288bda17903c20b3e5eeaf947993f5f9d3c2b783458d668c
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile SSD.shader,106,TextMeshPro/Mobile/Distance Field SSD,1,False,0,0,0,8b30c140f6af9134392fe6ecf4c0676db73f873489ac52adfb47bbd288cb51b8
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile-2-Pass.shader,388,TextMeshPro/Mobile/Distance Field - 2 Pass,2,False,4,0,0,dd92066fccff4ce3c49eaa1e13c9fa1a9427e864b2fcb57e1e010c5e47459ac1
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Mobile.shader,250,TextMeshPro/Mobile/Distance Field,1,False,3,0,6,44c39aabc7e88e7e1feffc1880df754f4adf86b62e9512aa89e9d2d65171aff4
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Surface-Mobile.shader,139,TextMeshPro/Mobile/Distance Field (Surface),1,True,1,0,0,f9fae5906dd37d89298338953294459975de58a5421e68dd9e82a79794b95509
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-Surface.shader,159,TextMeshPro/Distance Field (Surface),1,True,1,0,0,5dadb68b56429547918b392626e9af8fd5173936d20bb43cfca58dfa00947257
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-URP Lit.shadergraph,11932,,0,False,0,0,0,e0148ce8e5904232a4e711376a45b7af2a007fb9690c5a69c1cb4952a696cdbf
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF-URP Unlit.shadergraph,11629,,0,False,0,0,0,dc15b6819ad87a4b34ed888ae2c274624efc0ada902d1a9e7752d87922414dcc
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_SDF.shader,326,TextMeshPro/Distance Field,1,False,7,0,0,10efe6d4728474a09970b857faf37913793e168dc13dbd4d7316b54b37615d97
+Assets/Art/Rendering/Shaders/TextMeshPro/TMP_Sprite.shader,131,TextMeshPro/Sprite,1,False,1,0,0,af669bb9ae136c8099f8e0a94a6933fd2f1e1fb0a6842129939a319fab4b8dbb
+Assets/Art/Rendering/Shaders/TextMeshPro/TMPro.cginc,84,,0,False,4,0,0,14edb7d7b88caf2b82cae68200abe895e5b5b3474c3fffbf0e9b4b09a4e2467e
+Assets/Art/Rendering/Shaders/TextMeshPro/TMPro_Mobile.cginc,165,,0,False,4,0,0,d9d43ddd9810476162f21b42477d9ce2cdc4e6cc7571d354c3253aafc6673ead
+Assets/Art/Rendering/Shaders/TextMeshPro/TMPro_Properties.cginc,80,,0,False,0,0,0,66db1f03e8d7a413eba79bcb6602fdb2de710b586f34a6f2584ed6f68f028e90
+Assets/Art/Rendering/Shaders/TextMeshPro/TMPro_Surface.cginc,99,,0,False,9,0,0,244b442520282a66363d121c8d2aeeb30bb1e72cbbadbf41ce68d9100322ade5

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"Summary\": {\n    \"Total\": 4,\n    \"Passed\": 3,\n    \"Failed\": 1,\n    \"Skipped\": 0,\n    \"Inconclusive\": 0\n  },\n  \"Results\": [\n    {\n      \"FullName\": \"CoreGuardianSpriteBatchingTests.HitFlashThenRestoreRetainsBatchingMaterialAndPropertyBlock\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0220035,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteBatchingTests.ReleaseDoesNotOverwriteNewOwnerMaterial\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0007766,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteBatchingTests.SupportedUnlitUsesOneSharedMapping_PreservesSourceProperties\",\n      \"Status\": \"Failed\",\n      \"Duration\": 0.0070171,\n      \"Message\": \"  Expected: RGBA(0.200, 0.400, 0.600, 0.800)\\r\\n  But was:  RGBA(0.200, 0.400, 0.600, 0.800)\\r\\n\",\n      \"StackTrace\": \"at CoreGuardianSpriteBatchingTests.SupportedUnlitUsesOneSharedMapping_PreservesSourceProperties () [0x000d1] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\Assets\\\\Game\\\\Tests\\\\EditMode\\\\CoreGuardianSpriteBatchingTests.cs:36\\r\\n\"\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteBatchingTests.UnknownOrLitMaterialReturnsOriginal\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0012088,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ],\n  \"Duration\": 5.71,\n  \"StatusPath\": null,\n  \"Mode\": \"EditMode\",\n  \"FilterApplied\": \"testname: CoreGuardianSpriteBatchingTests\",\n  \"success\": true,\n  \"result\": null\n}"
+    }
+  ]
+}

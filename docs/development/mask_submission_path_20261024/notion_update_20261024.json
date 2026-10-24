@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-24",
+  "scope": "Three existing owner pages updated; no Unity actions. Prepend latest dated sections, preserve all prior content. Initial exact replacement no-match made no edit; async queue503 made no edit; verified then synchronous insert succeeded.",
+  "checks": [
+    {
+      "pageId": "3ff389dbfc6881779abdeb5eeeb1cda4",
+      "title": "대량 전투 성능·최적화 계획",
+      "latestHeading": "# 최신 상태·마스크 CPU 후속 방향 — <date start=\"2026-10-24\" />",
+      "latestDate": true,
+      "priorBodyPreserved": true,
+      "kana": false,
+      "numbers": true,
+      "newApprovalPending": true,
+      "lastEdited": "2026-10-24T03:54:27.350Z"
+    },
+    {
+      "pageId": "3df389dbfc6881fc9f1bd004adfc5999",
+      "title": "플레이테스트 및 변경 이력",
+      "latestHeading": "# 뷰·마스크 CPU 후보 실행 결과 — <date start=\"2026-10-24\" />",
+      "latestDate": true,
+      "priorBodyPreserved": true,
+      "kana": false,
+      "numbers": true,
+      "newApprovalPending": true,
+      "lastEdited": "2026-10-24T03:54:38.435Z"
+    },
+    {
+      "pageId": "3f4389dbfc688171b84dc19b138925f4",
+      "title": "후속 제작·검증 작업 순서 — 30R·최적화",
+      "latestHeading": "# 최신 재개 순서 — <date start=\"2026-10-24\" />",
+      "latestDate": true,
+      "priorBodyPreserved": true,
+      "kana": false,
+      "numbers": true,
+      "newApprovalPending": true,
+      "lastEdited": "2026-10-24T03:54:41.411Z"
+    }
+  ]
+}

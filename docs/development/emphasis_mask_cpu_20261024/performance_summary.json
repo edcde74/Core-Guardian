@@ -1,0 +1,112 @@
+[
+  {
+    "name": "CG.Mask.Present",
+    "beforeMs": 4.877386666666666,
+    "afterMs": 4.544639629629629,
+    "savingMs": 0.3327470370370369,
+    "savingPercent": 6.822240264671183,
+    "beforeMin": 4.871868888888889,
+    "beforeMax": 4.882064444444445,
+    "afterMin": 4.525322222222223,
+    "afterMax": 4.569426666666667
+  },
+  {
+    "name": "CG.Emphasis.Present",
+    "beforeMs": 5.923614444444444,
+    "afterMs": 5.549575555555555,
+    "savingMs": 0.37403888888888837,
+    "savingPercent": 6.314369248655045,
+    "beforeMin": 5.90007888888889,
+    "beforeMax": 5.961486666666666,
+    "afterMin": 5.5280700000000005,
+    "afterMax": 5.569949999999998
+  },
+  {
+    "name": "CG.Mask.BoundsCrop",
+    "beforeMs": 0.8482755555555554,
+    "afterMs": 1.2721892592592592,
+    "savingMs": -0.42391370370370374,
+    "savingPercent": -49.97358475408062,
+    "beforeMin": 0.8350144444444447,
+    "beforeMax": 0.8586766666666665,
+    "afterMin": 1.268133333333333,
+    "afterMax": 1.2757511111111113
+  },
+  {
+    "name": "CG.Mask.CacheLookup",
+    "beforeMs": 0.9841192592592592,
+    "afterMs": 0.6056277777777778,
+    "savingMs": 0.3784914814814815,
+    "savingPercent": 38.45992016926584,
+    "beforeMin": 0.9766888888888889,
+    "beforeMax": 0.9881133333333338,
+    "afterMin": 0.6011866666666665,
+    "afterMax": 0.6103377777777779
+  },
+  {
+    "name": "CG.Mask.Output",
+    "beforeMs": 1.3456814814814815,
+    "afterMs": 1.2110711111111112,
+    "savingMs": 0.13461037037037027,
+    "savingPercent": 10.003137608921811,
+    "beforeMin": 1.3381755555555552,
+    "beforeMax": 1.3527466666666672,
+    "afterMin": 1.20748,
+    "afterMax": 1.2129022222222219
+  },
+  {
+    "name": "CG.Mask.SourceFilter",
+    "beforeMs": 0.25895999999999997,
+    "afterMs": 0.2534307407407408,
+    "savingMs": 0.005529259259259178,
+    "savingPercent": 2.1351788922069734,
+    "beforeMin": 0.25740444444444455,
+    "beforeMax": 0.2603844444444444,
+    "afterMin": 0.2513144444444444,
+    "afterMax": 0.25712555555555566
+  },
+  {
+    "name": "CG.Mask.PageProducer",
+    "beforeMs": 0.4844059259259259,
+    "afterMs": 0.43239444444444436,
+    "savingMs": 0.05201148148148155,
+    "savingPercent": 10.73716870454533,
+    "beforeMin": 0.4596022222222222,
+    "beforeMax": 0.4969488888888889,
+    "afterMin": 0.41573777777777765,
+    "afterMax": 0.4454899999999999
+  },
+  {
+    "name": "CG.Emphasis.Tint",
+    "beforeMs": 1.0720096296296295,
+    "afterMs": 0.9282696296296296,
+    "savingMs": 0.14373999999999998,
+    "savingPercent": 13.408461643172084,
+    "beforeMin": 1.02857,
+    "beforeMax": 1.0958022222222221,
+    "afterMin": 0.9183944444444443,
+    "afterMax": 0.940838888888889
+  },
+  {
+    "name": "CG.PhotoShadow.Present",
+    "beforeMs": 0.9133848148148148,
+    "afterMs": 0.8600525925925925,
+    "savingMs": 0.053332222222222336,
+    "savingPercent": 5.838965281356821,
+    "beforeMin": 0.9039199999999997,
+    "beforeMax": 0.92399,
+    "afterMin": 0.8465299999999998,
+    "afterMax": 0.8690100000000001
+  },
+  {
+    "name": "PlayerLoop",
+    "beforeMs": 14.579473333333333,
+    "afterMs": 13.889480740740737,
+    "savingMs": 0.6899925925925956,
+    "savingPercent": 4.732630437445584,
+    "beforeMin": 14.293250000000002,
+    "beforeMax": 14.930396666666667,
+    "afterMin": 13.477953333333332,
+    "afterMax": 14.412914444444441
+  }
+]

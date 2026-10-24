@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"status\": \"completed\",\n  \"duration\": 0.49,\n  \"summary\": {\n    \"total\": 1,\n    \"passed\": 0,\n    \"failed\": 1,\n    \"skipped\": 0,\n    \"inconclusive\": 0\n  },\n  \"results\": [\n    {\n      \"FullName\": \"CoreGuardianViewSynchronizationTests.AuraCreationRecomputesPositionAfterHierarchyCallback\",\n      \"Status\": \"Failed\",\n      \"Duration\": 0.460255,\n      \"Message\": \"  Expected: less than 9.99999975E-06f\\r\\n  But was:  3.60555148f\\r\\n\",\n      \"StackTrace\": \"at CoreGuardianViewSynchronizationTests+<AuraCreationRecomputesPositionAfterHierarchyCallback>d__9.MoveNext () [0x0010d] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\Assets\\\\Scripts\\\\Tests\\\\PlayMode\\\\CoreGuardianViewSynchronizationTests.cs:119\\r\\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__8.MoveNext () [0x0003a] in .\\\\Library\\\\PackageCache\\\\com.unity.test-framework@7a3849e09bd0\\\\UnityEngine.TestRunner\\\\NUnitExtensions\\\\Attributes\\\\TestEnumerator.cs:52\\r\\n\"\n    }\n  ]\n}"
+    }
+  ]
+}

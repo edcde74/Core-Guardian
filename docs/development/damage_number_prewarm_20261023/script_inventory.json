@@ -1,0 +1,5029 @@
+[
+  {
+    "path": "Assets/Scripts/Editor/ProjectWelcome/Welcome2DScript.cs",
+    "scope": "editor",
+    "lines": 13,
+    "sha256": "de8913a7eaa8b8820d49e02d459f376cb7645e234123ee24cfec3932a69d0c10",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [
+      "Assets/Settings/Editor/Welcome2DScript.asset"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Editor/Rendering/CoreGuardianSpriteAtlasPipeline.cs",
+    "scope": "editor",
+    "lines": 124,
+    "sha256": "56f9e64eda7fbffa0332f1d573640f19507f384262678e1a3290ac823c0d3bd5",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        25,
+        32,
+        33,
+        34,
+        35,
+        38,
+        40,
+        51,
+        57,
+        60,
+        62,
+        64,
+        76,
+        83,
+        84,
+        89,
+        97,
+        102,
+        120
+      ],
+      "query": [
+        25,
+        29,
+        35,
+        39,
+        40,
+        44,
+        50,
+        64,
+        80,
+        97,
+        103
+      ],
+      "engine_lookup": [
+        88
+      ],
+      "create_destroy": [
+        75
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Editor/Rendering/MaskAtlasBuilder.cs",
+    "scope": "editor",
+    "lines": 116,
+    "sha256": "3d92319d25c6f02a33991abc934bc420905517b84e571c5806b0fc6aac2bb061",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        20,
+        22,
+        30,
+        33,
+        36,
+        40,
+        47,
+        54,
+        62,
+        66,
+        69,
+        75,
+        77,
+        98,
+        102
+      ],
+      "query": [
+        16,
+        25
+      ],
+      "engine_lookup": [
+        114
+      ],
+      "create_destroy": [
+        29,
+        40,
+        72,
+        76,
+        86,
+        98,
+        104
+      ],
+      "native_upload": [
+        48,
+        50,
+        102
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Editor/Rendering/RouteMeshBuilder.cs",
+    "scope": "editor",
+    "lines": 157,
+    "sha256": "129b7897d0cb3808ba8ed1485e3f8e94fe6503e5e3c0909208bfd3662031eed6",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        20,
+        27,
+        53,
+        54,
+        63,
+        68,
+        69,
+        70,
+        71,
+        72,
+        79,
+        83,
+        87,
+        92,
+        96,
+        100,
+        101,
+        105,
+        106,
+        108,
+        110,
+        111,
+        114,
+        118,
+        121,
+        139,
+        141
+      ],
+      "query": [
+        53,
+        54,
+        71,
+        139
+      ],
+      "engine_lookup": [
+        30,
+        35,
+        53,
+        70,
+        71,
+        78,
+        82,
+        129,
+        138,
+        144
+      ],
+      "create_destroy": [
+        106,
+        110,
+        113,
+        114,
+        118,
+        127,
+        128,
+        129
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Bootstrap/CoreGuardianPrototype.cs",
+    "scope": "runtime",
+    "lines": 475,
+    "sha256": "67b8c5c376c7ffa66e1bf46e7d3d8b15149e26298c349689faefc35a28eb5f1b",
+    "hits": {
+      "update": [
+        121
+      ],
+      "alloc_or_expand": [
+        17,
+        18,
+        19,
+        22,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        40,
+        53,
+        54,
+        88,
+        90,
+        91,
+        92,
+        113,
+        119,
+        139,
+        140,
+        149,
+        176,
+        190,
+        200,
+        201,
+        206,
+        221,
+        239,
+        243,
+        247,
+        277,
+        362,
+        368,
+        394,
+        398,
+        443,
+        448,
+        450,
+        451,
+        455,
+        456,
+        457
+      ],
+      "query": [
+        92,
+        170,
+        187,
+        192,
+        214,
+        246,
+        262,
+        263
+      ],
+      "engine_lookup": [
+        89,
+        94,
+        102,
+        132,
+        149,
+        170,
+        173,
+        212,
+        213,
+        214,
+        218,
+        219,
+        236,
+        238,
+        240,
+        248,
+        253,
+        254,
+        264,
+        266,
+        305,
+        356,
+        398,
+        422,
+        434
+      ],
+      "create_destroy": [
+        97,
+        216,
+        228,
+        323,
+        368,
+        372,
+        374,
+        389,
+        393,
+        424,
+        443,
+        448,
+        450,
+        455,
+        466,
+        467,
+        469,
+        471,
+        472
+      ],
+      "native_upload": [
+        457
+      ]
+    },
+    "serialized_references": [
+      "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Additional.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Original.unity"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Bootstrap/PrototypeGridMovement.cs",
+    "scope": "runtime",
+    "lines": 109,
+    "sha256": "aa0aa07f06e4c7036138b5bf166f2617cfa9b4669765f595bc207d0ce1ab681d",
+    "hits": {
+      "update": [
+        44
+      ],
+      "alloc_or_expand": [
+        11,
+        35,
+        37,
+        76,
+        93,
+        102
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [
+      "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Additional.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Original.unity"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Common/Health.cs",
+    "scope": "runtime",
+    "lines": 38,
+    "sha256": "61eec850c1458111778beaf62fac2615870434a86989fe81fc18403ef5aff82a",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Enemies/EnemyController.cs",
+    "scope": "runtime",
+    "lines": 72,
+    "sha256": "3397446516d70fa00598993027672b7b00fbb48a49c3b1cf25952372193e812f",
+    "hits": {
+      "update": [
+        43
+      ],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [
+        20
+      ],
+      "create_destroy": [
+        70
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Enemies/EnemyDefinition.cs",
+    "scope": "runtime",
+    "lines": 26,
+    "sha256": "cea25b42cac8f4eaf118dec88723fed4f7143672c2726e8d501eb742230658ff",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Enemies/WaypointPath.cs",
+    "scope": "runtime",
+    "lines": 17,
+    "sha256": "fe035031997c0fc77c2e610ee03bbb57cdb08c592dda2a5758da89615eb889e7",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Rules/Augmentations.cs",
+    "scope": "runtime",
+    "lines": 81,
+    "sha256": "36d5935605dec68723cf228c162b5bbeda09d26f79109465575db5fb80ed2ac4",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        33,
+        36,
+        38,
+        43,
+        46,
+        47,
+        51,
+        54,
+        61,
+        62,
+        69
+      ],
+      "query": [
+        46,
+        47
+      ],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Rules/CombatData.cs",
+    "scope": "runtime",
+    "lines": 125,
+    "sha256": "828a7b09fa788f15c6b895f88353f7f01385fe6083f9ba4fa3f5b9439d40ce1e",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        19,
+        20,
+        21,
+        25,
+        26,
+        27,
+        28,
+        29,
+        38,
+        39,
+        42,
+        43,
+        44,
+        49,
+        54,
+        55,
+        56,
+        62,
+        70,
+        72,
+        73,
+        74,
+        77,
+        78,
+        82,
+        83,
+        87,
+        90,
+        101
+      ],
+      "query": [
+        35,
+        42,
+        44,
+        59,
+        73,
+        74,
+        87,
+        111,
+        112
+      ],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Rules/ModelPooling.cs",
+    "scope": "runtime",
+    "lines": 134,
+    "sha256": "556f495bfe38d6d10bf1851be11ce31884eafc65834cd7b434d71c1952fc4a0c",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        30,
+        31,
+        58,
+        59,
+        65,
+        67,
+        86,
+        96,
+        112,
+        118,
+        132
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Rules/SegmentedEnemyHealthBar.cs",
+    "scope": "runtime",
+    "lines": 65,
+    "sha256": "c52f1c9df05e7a320d136f9e0120db5673b8272c012bc061f9f8d8cbd693fadb",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        11,
+        36,
+        37,
+        38,
+        39,
+        46
+      ],
+      "query": [],
+      "engine_lookup": [
+        21,
+        28
+      ],
+      "create_destroy": [
+        36,
+        60
+      ],
+      "native_upload": [
+        45
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Rules/Session.cs",
+    "scope": "runtime",
+    "lines": 549,
+    "sha256": "dfc4e77c07c3388b6ec16445568198ad96e406555f21e45e17bb55cc077ae7ae",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        10,
+        11,
+        12,
+        13,
+        35,
+        45,
+        70,
+        72,
+        75,
+        76,
+        78,
+        87,
+        92,
+        93,
+        94,
+        120,
+        122,
+        123,
+        124,
+        140,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        161,
+        162,
+        163,
+        166,
+        167,
+        169,
+        170,
+        171,
+        181,
+        211,
+        212,
+        229,
+        243,
+        248,
+        252,
+        254,
+        257,
+        258,
+        259,
+        260,
+        279,
+        299,
+        318,
+        319,
+        323,
+        339,
+        347,
+        409,
+        452,
+        469,
+        514,
+        526,
+        542
+      ],
+      "query": [
+        254,
+        272,
+        275,
+        280,
+        287,
+        288,
+        291,
+        295,
+        301,
+        452
+      ],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": [
+        462
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Rules/SessionModels.cs",
+    "scope": "runtime",
+    "lines": 133,
+    "sha256": "bfc9a630d2c0bf7c18438f84f49d7e45a88b708bd14cc9c32c256c8832b41747",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        9,
+        13,
+        14,
+        16,
+        26,
+        37,
+        41,
+        44,
+        46,
+        50,
+        52,
+        57,
+        62,
+        72,
+        73,
+        101,
+        103,
+        112
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Towers/BeanProjectile.cs",
+    "scope": "runtime",
+    "lines": 44,
+    "sha256": "c24348fd60d37e1e7370880c5e46551d8c48919e4db92315f573190e2b512787",
+    "hits": {
+      "update": [
+        18
+      ],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        27,
+        42
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Towers/LightningTower.cs",
+    "scope": "runtime",
+    "lines": 17,
+    "sha256": "f7a3b2a0a1d3c148ccd3f82ebd7a9365071983638fae5cec936286ca40372698",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        16
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Towers/TowerCombatStats.cs",
+    "scope": "runtime",
+    "lines": 21,
+    "sha256": "a47e3c9e20775ad6372869f90b7d896cef6e8dad15e9c7d36e86df3f50ebb01a",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Domain/Towers/TowerTargeting.cs",
+    "scope": "runtime",
+    "lines": 18,
+    "sha256": "147867184f18a343c878cbe3319cdc93e67e44b0d94ef7375bf0a1cd30c00fbe",
+    "hits": {
+      "update": [
+        12
+      ],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [
+        9,
+        16
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianAudioCatalog.cs",
+    "scope": "runtime",
+    "lines": 39,
+    "sha256": "a02ca8ac052c7d221f8e6fd4a28c170b50a113b13baaf3ced2e71d254396319f",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        28,
+        29
+      ],
+      "query": [
+        37
+      ],
+      "engine_lookup": [
+        15,
+        27
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianCombatAudio.cs",
+    "scope": "runtime",
+    "lines": 208,
+    "sha256": "373af073629141ca9686a9694b26418dc9ce1df7d213a309880f0c612d797c38",
+    "hits": {
+      "update": [
+        89
+      ],
+      "alloc_or_expand": [
+        25,
+        26,
+        27,
+        28,
+        52,
+        70
+      ],
+      "query": [
+        48,
+        191,
+        197,
+        198
+      ],
+      "engine_lookup": [],
+      "create_destroy": [
+        52,
+        70
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianHud.Sound.cs",
+    "scope": "runtime",
+    "lines": 48,
+    "sha256": "b6df436a271a1ce87d406618e565f56668b7744cfe9da136813fe3d3852bb99b",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        8,
+        9,
+        10,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        45
+      ],
+      "query": [],
+      "engine_lookup": [
+        26,
+        28,
+        30,
+        44
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianMusicAudio.cs",
+    "scope": "runtime",
+    "lines": 54,
+    "sha256": "31e9af102fe3a8b04f67fb40533c906f2ceea6262f8b3a57a509721ae800e350",
+    "hits": {
+      "update": [
+        35
+      ],
+      "alloc_or_expand": [
+        7,
+        8,
+        9,
+        19
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        19
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Audio/CoreGuardianSoundSettings.cs",
+    "scope": "runtime",
+    "lines": 32,
+    "sha256": "8deebd4976c6c9aea26058e677d5345a0bd6256ea5fd4768e9fd8b12556c53c7",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianCombatAnimation.cs",
+    "scope": "runtime",
+    "lines": 165,
+    "sha256": "d9367fa20343ef4b77b5778dc2b9314b5c8af617ee56c60809b489042d5b73e1",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        22,
+        24,
+        25,
+        108,
+        143
+      ],
+      "query": [
+        33,
+        36
+      ],
+      "engine_lookup": [
+        32,
+        36
+      ],
+      "create_destroy": [
+        104,
+        143,
+        162,
+        163
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalIdle.cs",
+    "scope": "runtime",
+    "lines": 30,
+    "sha256": "2501009eda08674792c39c3d4624feab17980e886f69886a1773c66851b71549",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        12,
+        18,
+        19
+      ],
+      "query": [],
+      "engine_lookup": [
+        17
+      ],
+      "create_destroy": [
+        12,
+        19
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalMotion.cs",
+    "scope": "runtime",
+    "lines": 102,
+    "sha256": "847e386dd4e1915d905135802dc810aef55a540cfada7dc912452ad6c73914d0",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        8,
+        15,
+        22,
+        23,
+        28,
+        29,
+        30,
+        31,
+        32,
+        34,
+        47,
+        66,
+        73,
+        76,
+        77,
+        79,
+        80,
+        91,
+        92,
+        93,
+        94
+      ],
+      "query": [],
+      "engine_lookup": [
+        20,
+        21
+      ],
+      "create_destroy": [
+        23,
+        32,
+        34,
+        47,
+        99
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianOriginalWalk.cs",
+    "scope": "runtime",
+    "lines": 269,
+    "sha256": "3ca0df10858097bbe9e1c7064c4515e43cba54e1ad7cf944f1bd9b70da562197",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        15,
+        38,
+        48,
+        62,
+        68,
+        71,
+        76,
+        77,
+        79,
+        80,
+        126,
+        137,
+        147,
+        156,
+        171,
+        172,
+        183,
+        214,
+        222,
+        224,
+        225,
+        229,
+        235,
+        258,
+        263,
+        264
+      ],
+      "query": [],
+      "engine_lookup": [
+        53,
+        58,
+        67,
+        75
+      ],
+      "create_destroy": [
+        38,
+        62,
+        77,
+        178,
+        222
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianPlayerMotion.cs",
+    "scope": "runtime",
+    "lines": 104,
+    "sha256": "8687d992b2668e657e694c3d5c187f1ad9d30b540114712fcfd443d2297bb5ed",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        13,
+        30,
+        33,
+        37,
+        43,
+        82,
+        83,
+        84,
+        88,
+        100
+      ],
+      "query": [],
+      "engine_lookup": [
+        24,
+        29
+      ],
+      "create_destroy": [
+        37,
+        43
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Characters/CoreGuardianUnitAnimation.cs",
+    "scope": "runtime",
+    "lines": 115,
+    "sha256": "ef2e4cc0c90d84e41a2e3bfeefe33944256e71022388fbbb6946ad78ecc1c4ef",
+    "hits": {
+      "update": [
+        104
+      ],
+      "alloc_or_expand": [
+        45,
+        46,
+        48,
+        49,
+        52,
+        53,
+        54,
+        56,
+        57,
+        94
+      ],
+      "query": [
+        47
+      ],
+      "engine_lookup": [
+        39,
+        47
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Combat/CoreGuardianCombatArt.cs",
+    "scope": "runtime",
+    "lines": 116,
+    "sha256": "57be9890ad0de6a1e7ea18f72997ad1a310ecbcc4755efe2fc0ee9c1cf895bff",
+    "hits": {
+      "update": [
+        94
+      ],
+      "alloc_or_expand": [
+        12,
+        13,
+        15,
+        29,
+        34,
+        35,
+        50,
+        70,
+        79,
+        103
+      ],
+      "query": [
+        29,
+        33,
+        41
+      ],
+      "engine_lookup": [
+        28,
+        32,
+        35
+      ],
+      "create_destroy": [
+        50,
+        92,
+        113
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianAttackBodyBatch.cs",
+    "scope": "runtime",
+    "lines": 126,
+    "sha256": "437aaca2359a44d95b09124f00833f964b7d1cbfa637ea0386eb1231df971d56",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        51,
+        61,
+        63,
+        65,
+        68,
+        69,
+        99,
+        104
+      ],
+      "query": [],
+      "engine_lookup": [
+        50,
+        54
+      ],
+      "create_destroy": [
+        19,
+        51,
+        61,
+        65,
+        68,
+        125
+      ],
+      "native_upload": [
+        64,
+        101,
+        107,
+        116
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianBodyMaskCache.cs",
+    "scope": "runtime",
+    "lines": 245,
+    "sha256": "b488cffe4e2a1af523af0ae2e804102df62e5c99ea5d1609e63373074d977500",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        10,
+        16,
+        17,
+        18,
+        20,
+        32,
+        75,
+        87,
+        143,
+        146,
+        149,
+        153,
+        163,
+        166,
+        167,
+        190
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        163,
+        234
+      ],
+      "native_upload": [
+        193
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianCoreAmbient.cs",
+    "scope": "runtime",
+    "lines": 94,
+    "sha256": "f6eb432b8fa3fdb45d958a721ce790ec1b320e9eb4d145e049695374254a5bff",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        22,
+        24,
+        26,
+        31,
+        32,
+        33,
+        36,
+        37,
+        39,
+        41,
+        45,
+        46,
+        48,
+        50,
+        52,
+        54
+      ],
+      "query": [],
+      "engine_lookup": [
+        23,
+        53
+      ],
+      "create_destroy": [
+        26,
+        31,
+        36,
+        39,
+        54,
+        92
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianCoreFeedback.cs",
+    "scope": "runtime",
+    "lines": 60,
+    "sha256": "8756de36ce41611b7b290ca9cccf60fe791fab0a1b626526890b8e9c5efac6fd",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        14,
+        18,
+        22,
+        24,
+        25
+      ],
+      "query": [],
+      "engine_lookup": [
+        23
+      ],
+      "create_destroy": [
+        14,
+        25,
+        59
+      ],
+      "native_upload": [
+        45,
+        52
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianCoreParticleSettings.cs",
+    "scope": "runtime",
+    "lines": 53,
+    "sha256": "aca130ffa662ca28b5d4fb002b10292abcf73bb8f42bc0eed30de72bef874c05",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        34,
+        43
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [
+      "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Additional.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Original.unity"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianHitFlash.cs",
+    "scope": "runtime",
+    "lines": 65,
+    "sha256": "0d1751f251ee4bd2eb476860bd0ab222abece17b12c3137e99e4ffbe4ceacadb",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        22,
+        23,
+        25,
+        26,
+        27,
+        28,
+        63
+      ],
+      "query": [
+        25
+      ],
+      "engine_lookup": [
+        21,
+        25
+      ],
+      "create_destroy": [
+        23,
+        26,
+        28
+      ],
+      "native_upload": [
+        50,
+        59
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianMaskAtlas.cs",
+    "scope": "runtime",
+    "lines": 49,
+    "sha256": "ef840204bb2ebe27ca5ebdd633bf1af96ba07405e77278077cd1986b316881b3",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        31
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [
+      "Assets/Art/Atlases/MaskData/Resources/CoreGuardian/MaskAtlas/Manifest.asset"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianMaskOutputBatch.cs",
+    "scope": "runtime",
+    "lines": 224,
+    "sha256": "9b29fbe20c8e0d069aa8d4967d7e3483d6b3756ddc81da253682f1ccd8c1bdce",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        32,
+        42,
+        43,
+        44,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        79,
+        85,
+        104,
+        106,
+        123,
+        145,
+        151,
+        152,
+        172,
+        173,
+        178,
+        179,
+        182,
+        194,
+        195
+      ],
+      "query": [],
+      "engine_lookup": [
+        101,
+        111,
+        113,
+        122,
+        144
+      ],
+      "create_destroy": [
+        32,
+        60,
+        123,
+        145,
+        178,
+        179,
+        223
+      ],
+      "native_upload": [
+        134,
+        153,
+        200,
+        206
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianMaskPage.cs",
+    "scope": "runtime",
+    "lines": 115,
+    "sha256": "7c7f5bbbedf3f9b42d6bc7ff74ff7f2b6c3a9bfcb40f1c3a1e3cc6684745353b",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        23,
+        35,
+        36,
+        59,
+        60,
+        88,
+        92,
+        95,
+        99
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        92,
+        114
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianMaskProducerBatch.cs",
+    "scope": "runtime",
+    "lines": 146,
+    "sha256": "d238e280ee3c66b7fb9ac5005c39232a86c14f33e8510cd05ad5456599d03d74",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        29,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        47,
+        48,
+        59,
+        71,
+        74,
+        90,
+        94,
+        101,
+        103,
+        106,
+        108,
+        112,
+        113,
+        126,
+        133,
+        135,
+        137
+      ],
+      "query": [],
+      "engine_lookup": [
+        64,
+        70
+      ],
+      "create_destroy": [
+        47,
+        71,
+        106,
+        133,
+        145
+      ],
+      "native_upload": [
+        107,
+        109,
+        117,
+        135,
+        142
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianObjectEmphasis.cs",
+    "scope": "runtime",
+    "lines": 155,
+    "sha256": "6a8c8d03fcddf545f8d2f8410393703da1e9dab16a2ac0d0758361d7a2f08385",
+    "hits": {
+      "update": [
+        85
+      ],
+      "alloc_or_expand": [
+        11,
+        12,
+        15,
+        32,
+        47,
+        48,
+        49,
+        51,
+        52,
+        53,
+        54,
+        73,
+        74,
+        111,
+        113
+      ],
+      "query": [],
+      "engine_lookup": [
+        87,
+        91,
+        109
+      ],
+      "create_destroy": [
+        111,
+        135
+      ],
+      "native_upload": [
+        75
+      ]
+    },
+    "serialized_references": [
+      "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Additional.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Original.unity"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianPhotoShadow.cs",
+    "scope": "runtime",
+    "lines": 75,
+    "sha256": "980ff67d16ce660acc490338a85a6345bd2927c1425c6558b9697c265d3fde49",
+    "hits": {
+      "update": [
+        70
+      ],
+      "alloc_or_expand": [
+        11,
+        12,
+        21,
+        22,
+        39,
+        40,
+        42,
+        66
+      ],
+      "query": [
+        34,
+        37
+      ],
+      "engine_lookup": [
+        26,
+        34,
+        36,
+        41
+      ],
+      "create_destroy": [
+        40
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSelectionOutline.cs",
+    "scope": "runtime",
+    "lines": 482,
+    "sha256": "a11c0b040626a850008e55f1457badac485caecfa342374f00c05e1b43f95e5c",
+    "hits": {
+      "update": [
+        56
+      ],
+      "alloc_or_expand": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        21,
+        41,
+        42,
+        43,
+        49,
+        50,
+        51,
+        52,
+        101,
+        104,
+        111,
+        112,
+        127,
+        128,
+        132,
+        147,
+        161,
+        162,
+        163,
+        230,
+        237,
+        243,
+        251,
+        259,
+        260,
+        266,
+        268,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290,
+        296,
+        300,
+        303,
+        305,
+        309,
+        312,
+        333,
+        349,
+        388,
+        389,
+        390,
+        393,
+        394,
+        396,
+        423,
+        430,
+        434,
+        451,
+        455,
+        456,
+        457,
+        458
+      ],
+      "query": [
+        91,
+        296
+      ],
+      "engine_lookup": [
+        58,
+        87,
+        91,
+        213,
+        380,
+        430,
+        476
+      ],
+      "create_destroy": [
+        266,
+        349,
+        388,
+        390,
+        394,
+        396,
+        417,
+        430,
+        442
+      ],
+      "native_upload": [
+        67,
+        148,
+        175,
+        219,
+        268,
+        367,
+        368,
+        369,
+        370,
+        371
+      ]
+    },
+    "serialized_references": [
+      "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Additional.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Original.unity"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianSpriteAtlasSources.cs",
+    "scope": "runtime",
+    "lines": 57,
+    "sha256": "dc2780da45319abeb4258c36e043152ad26194a2b789a0b07c4d0e09116b91ba",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        12,
+        13,
+        18,
+        29,
+        31,
+        32,
+        34,
+        40,
+        45,
+        48,
+        55
+      ],
+      "query": [],
+      "engine_lookup": [
+        22
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [
+      "Assets/Data/Presentation/Resources/CoreGuardian/SpriteAtlases/Sources.asset"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianTowerGlow.cs",
+    "scope": "runtime",
+    "lines": 72,
+    "sha256": "12b5792e1f382a359664949accebb2815082e9650a41bda51c1abad039e61751",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        16,
+        23,
+        25,
+        30,
+        31,
+        32,
+        34,
+        36,
+        37,
+        39
+      ],
+      "query": [],
+      "engine_lookup": [
+        24,
+        26
+      ],
+      "create_destroy": [
+        30,
+        31,
+        36,
+        70
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianTowerGrounding.cs",
+    "scope": "runtime",
+    "lines": 70,
+    "sha256": "5144f43afc86d7aebf1f537de52e9c9dfa48ae9ca76b48ee23605d306faadd8a",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        20,
+        25,
+        27,
+        31,
+        34,
+        39,
+        41,
+        44,
+        45,
+        48,
+        49,
+        50,
+        59
+      ],
+      "query": [],
+      "engine_lookup": [
+        25,
+        26,
+        38
+      ],
+      "create_destroy": [
+        31,
+        41,
+        49,
+        50,
+        68,
+        69
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/Rendering/CoreGuardianUpgradeFeedback.cs",
+    "scope": "runtime",
+    "lines": 71,
+    "sha256": "a180af604e65014bbcf09cfd84fc0b75eecdee1cc85a3e93dc7eac252e776373",
+    "hits": {
+      "update": [
+        40
+      ],
+      "alloc_or_expand": [
+        22,
+        33,
+        35
+      ],
+      "query": [],
+      "engine_lookup": [
+        35
+      ],
+      "create_destroy": [
+        33,
+        35,
+        70
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [
+      "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Additional.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Original.unity"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianAugmentationView.cs",
+    "scope": "runtime",
+    "lines": 72,
+    "sha256": "b7cfe32a506d882f670881882755b0766311e250c4a3f562c62986b1c6e01ba7",
+    "hits": {
+      "update": [
+        66
+      ],
+      "alloc_or_expand": [
+        14,
+        18,
+        21,
+        23,
+        25,
+        26,
+        27,
+        28,
+        38,
+        49,
+        55,
+        56,
+        59,
+        66,
+        70,
+        71
+      ],
+      "query": [],
+      "engine_lookup": [
+        17,
+        18,
+        19,
+        26,
+        55,
+        64,
+        70
+      ],
+      "create_destroy": [
+        60,
+        67,
+        70
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.Abilities.cs",
+    "scope": "runtime",
+    "lines": 92,
+    "sha256": "fdf5f80837587f382d3094664abd104743adc2d354e57a16cc53b6a1c71282e4",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        23,
+        36,
+        40,
+        43,
+        47,
+        48,
+        53,
+        54,
+        60,
+        61,
+        62,
+        63,
+        64,
+        76,
+        89,
+        90
+      ],
+      "query": [
+        42
+      ],
+      "engine_lookup": [
+        39,
+        40,
+        41,
+        42,
+        49
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.cs",
+    "scope": "runtime",
+    "lines": 523,
+    "sha256": "b06aaa24afe07a771015a9ae8a58e7059c5cc829881be43da2e6ab2c686929c1",
+    "hits": {
+      "update": [
+        427,
+        448
+      ],
+      "alloc_or_expand": [
+        14,
+        15,
+        22,
+        38,
+        39,
+        49,
+        51,
+        54,
+        61,
+        78,
+        80,
+        81,
+        82,
+        94,
+        97,
+        98,
+        101,
+        102,
+        105,
+        115,
+        116,
+        117,
+        119,
+        120,
+        122,
+        123,
+        125,
+        126,
+        128,
+        129,
+        131,
+        141,
+        144,
+        153,
+        159,
+        164,
+        167,
+        170,
+        173,
+        177,
+        178,
+        180,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        196,
+        198,
+        200,
+        201,
+        202,
+        203,
+        204,
+        207,
+        215,
+        218,
+        228,
+        230,
+        241,
+        244,
+        245,
+        284,
+        293,
+        297,
+        310,
+        341,
+        350,
+        354,
+        357,
+        358,
+        361,
+        364,
+        366,
+        386,
+        401,
+        407,
+        410,
+        411,
+        412,
+        413,
+        415,
+        438,
+        462,
+        464,
+        474,
+        491,
+        500,
+        502,
+        504,
+        505,
+        507,
+        509,
+        510,
+        511
+      ],
+      "query": [
+        139,
+        141,
+        251,
+        259,
+        271,
+        275,
+        311,
+        313,
+        457,
+        458,
+        465
+      ],
+      "engine_lookup": [
+        92,
+        93,
+        95,
+        96,
+        99,
+        100,
+        101,
+        122,
+        132,
+        153,
+        164,
+        165,
+        223,
+        243,
+        263,
+        264,
+        282,
+        314,
+        320,
+        340,
+        361,
+        465,
+        508
+      ],
+      "create_destroy": [
+        98,
+        102,
+        141,
+        153,
+        294,
+        372,
+        425,
+        521
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHud.Inspector.cs",
+    "scope": "runtime",
+    "lines": 203,
+    "sha256": "f0a6196d1a32de888a8eb43ddcfb28d78472f8c022fcaaa7bdc1028e673fbd16",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        19,
+        38,
+        40,
+        53,
+        54,
+        55,
+        66,
+        67,
+        71,
+        73,
+        74,
+        75,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        92,
+        93,
+        97,
+        98,
+        103,
+        110,
+        112,
+        114,
+        116,
+        123,
+        125,
+        163,
+        193,
+        199
+      ],
+      "query": [
+        124,
+        191
+      ],
+      "engine_lookup": [
+        48,
+        71,
+        123,
+        124,
+        136,
+        145,
+        154,
+        161
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHudHandleReaction.cs",
+    "scope": "runtime",
+    "lines": 37,
+    "sha256": "12c929465b7aa3bd6d6ea8f44c539e749cfc7d5c6a5f956fafdc6baf205bd258",
+    "hits": {
+      "update": [
+        29
+      ],
+      "alloc_or_expand": [
+        12,
+        16,
+        17,
+        18,
+        26,
+        27
+      ],
+      "query": [],
+      "engine_lookup": [
+        11,
+        12,
+        13,
+        16,
+        18
+      ],
+      "create_destroy": [
+        12,
+        16
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/UI/CoreGuardianHudSkin.cs",
+    "scope": "runtime",
+    "lines": 84,
+    "sha256": "b17179a9b88769cbbf6e72f4e52fbf36c32b65d517409d9ffe5b7126da599259",
+    "hits": {
+      "update": [
+        64
+      ],
+      "alloc_or_expand": [
+        10,
+        20,
+        22,
+        61,
+        68,
+        73,
+        75
+      ],
+      "query": [],
+      "engine_lookup": [
+        11,
+        21,
+        23,
+        54,
+        55,
+        59
+      ],
+      "create_destroy": [
+        20
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/World/ArtDepthSorting.cs",
+    "scope": "runtime",
+    "lines": 16,
+    "sha256": "5bac8e9d6782ba2ddb51a912c22a4f837d78bd0efb1ef0215b1f94c67517d47a",
+    "hits": {
+      "update": [
+        11
+      ],
+      "alloc_or_expand": [],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [
+      "Assets/Prefabs/Characters/Boss/Resources/CoreGuardian/Art/BossEye/BossEyePrefab.prefab",
+      "Assets/Prefabs/Characters/Enemies/Resources/CoreGuardian/Animation/Boss/BossAnimated.prefab",
+      "Assets/Prefabs/Gameplay/Units/core.prefab",
+      "Assets/Prefabs/Gameplay/Units/enemy_attack.prefab",
+      "Assets/Prefabs/Gameplay/Units/enemy_buff.prefab",
+      "Assets/Prefabs/Gameplay/Units/enemy_defense.prefab",
+      "Assets/Prefabs/Gameplay/Units/Player.prefab",
+      "Assets/Prefabs/Gameplay/Units/tower_multi.prefab",
+      "Assets/Prefabs/Gameplay/Units/tower_single.prefab",
+      "Assets/Prefabs/Gameplay/Units/tower_support.prefab"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/World/CoreGuardianPlacementOverlay.cs",
+    "scope": "runtime",
+    "lines": 68,
+    "sha256": "0adcfee77efbb74d5e697cce0940ead3cc83889fd6d7791f121c8c9930764a05",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        28,
+        30,
+        31,
+        35,
+        36,
+        41,
+        42,
+        44,
+        46,
+        52
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        30,
+        31,
+        35,
+        36,
+        67
+      ],
+      "native_upload": [
+        37,
+        62
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Runtime/Presentation/World/CoreGuardianRouteMeshBake.cs",
+    "scope": "runtime",
+    "lines": 19,
+    "sha256": "0508d6472646b9b289772efbe2fbd5e75284d2020191f141fd230a9f38395f82",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        7,
+        8,
+        13,
+        14
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        8,
+        13
+      ],
+      "native_upload": [
+        17
+      ]
+    },
+    "serialized_references": [
+      "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+      "Assets/Scenes/Recovery/CombatRecovery_Additional.unity"
+    ],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianAnimationTimingTests.cs",
+    "scope": "test",
+    "lines": 60,
+    "sha256": "87753f230fb357dfd2d8b7331286fa39ac1f3918256dd7ba1ff2c17a7595d6f6",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        15,
+        16,
+        28,
+        31,
+        34,
+        37,
+        47,
+        49,
+        52,
+        53,
+        57
+      ],
+      "query": [
+        55
+      ],
+      "engine_lookup": [
+        12
+      ],
+      "create_destroy": [],
+      "native_upload": [
+        47
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianAttackBodyBatchTests.cs",
+    "scope": "test",
+    "lines": 101,
+    "sha256": "179e68cd17275d26704c87c9d6e2a14a35545d5590ea84ee22ae30c002b9f4aa",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        20,
+        21,
+        28,
+        29,
+        46,
+        50,
+        51,
+        54,
+        56,
+        57,
+        61,
+        74,
+        83,
+        85,
+        87,
+        88,
+        89,
+        99
+      ],
+      "query": [
+        10,
+        26,
+        27,
+        46,
+        50,
+        51,
+        52,
+        53,
+        54,
+        56,
+        57,
+        86,
+        93,
+        96
+      ],
+      "engine_lookup": [
+        26,
+        30,
+        82,
+        86
+      ],
+      "create_destroy": [
+        20,
+        25,
+        28,
+        35,
+        36,
+        37,
+        51,
+        61,
+        73,
+        74,
+        88,
+        89,
+        98
+      ],
+      "native_upload": [
+        74,
+        99
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianAudioRoutingTests.cs",
+    "scope": "test",
+    "lines": 56,
+    "sha256": "6a11e560cc6f53842d8314c0571ea38efe7d60264346a8953f57bb9155cb0e66",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        18,
+        19,
+        48,
+        54
+      ],
+      "query": [
+        18,
+        19
+      ],
+      "engine_lookup": [
+        50
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianAugmentationTests.cs",
+    "scope": "test",
+    "lines": 42,
+    "sha256": "034c962f58427eaab0ac381a131cd8a497ab3b062d94106f4ad04cf2791a6000",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        10,
+        13,
+        14,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23,
+        26,
+        27,
+        28,
+        31,
+        39,
+        40,
+        41
+      ],
+      "query": [
+        16,
+        21,
+        22,
+        23,
+        26,
+        40
+      ],
+      "engine_lookup": [
+        12
+      ],
+      "create_destroy": [],
+      "native_upload": [
+        19,
+        39,
+        40,
+        41
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianBodyMaskSharingTests.cs",
+    "scope": "test",
+    "lines": 276,
+    "sha256": "877f6dc7a72fe5e20c7fa452f63a3e3df5288601c4618c0f8326953f0a67aa1c",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        14,
+        23,
+        24,
+        30,
+        31,
+        32,
+        34,
+        37,
+        49,
+        50,
+        56,
+        58,
+        59,
+        73,
+        86,
+        91,
+        96,
+        100,
+        109,
+        114,
+        121,
+        130,
+        132,
+        140,
+        142,
+        150,
+        152,
+        153,
+        154,
+        162,
+        172,
+        181,
+        190,
+        201,
+        210,
+        222,
+        224,
+        232,
+        245,
+        256,
+        267,
+        269
+      ],
+      "query": [
+        11
+      ],
+      "engine_lookup": [
+        58,
+        153
+      ],
+      "create_destroy": [
+        30,
+        32,
+        34,
+        37,
+        43,
+        44,
+        49,
+        51,
+        58,
+        60,
+        79,
+        103,
+        114,
+        153,
+        155,
+        224,
+        226,
+        234,
+        239
+      ],
+      "native_upload": [
+        30,
+        50,
+        94
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianCoreAmbientTests.cs",
+    "scope": "test",
+    "lines": 62,
+    "sha256": "c6c8be3b6791a62318cc914a71aa591f72ffe827e45d3e616bc017e2eca7668b",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        12,
+        13,
+        14,
+        18,
+        20,
+        30,
+        31,
+        32,
+        35,
+        36,
+        38,
+        39,
+        41,
+        45,
+        46,
+        47,
+        49
+      ],
+      "query": [
+        11,
+        28,
+        39
+      ],
+      "engine_lookup": [
+        39
+      ],
+      "create_destroy": [
+        12,
+        14,
+        17,
+        22,
+        30,
+        31,
+        32,
+        38,
+        59
+      ],
+      "native_upload": [
+        36
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianCoreFeedbackTests.cs",
+    "scope": "test",
+    "lines": 39,
+    "sha256": "4ea6a512c6882c64a49ee61cedb71ba9902183f764c55b11f3261b16a25f1360",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        14,
+        18,
+        19,
+        20,
+        21,
+        23,
+        25,
+        29,
+        33
+      ],
+      "query": [
+        12
+      ],
+      "engine_lookup": [
+        19
+      ],
+      "create_destroy": [
+        14,
+        20,
+        21,
+        23,
+        37
+      ],
+      "native_upload": [
+        20
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianCoreParticleSettingsTests.cs",
+    "scope": "test",
+    "lines": 34,
+    "sha256": "e160cbe3bc12294b111aa91f09a40ef39fa47a8658f1aa8fdc32516fb286f14e",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        13,
+        18,
+        20,
+        24,
+        30
+      ],
+      "query": [
+        11
+      ],
+      "engine_lookup": [],
+      "create_destroy": [
+        13,
+        32
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianGridCoordinatesTests.cs",
+    "scope": "test",
+    "lines": 31,
+    "sha256": "a398726bbfcd54b6df16b37f09583c73bb0f8c82fad989833d596f79e00af6c0",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        15,
+        16,
+        17,
+        19,
+        20,
+        25
+      ],
+      "query": [],
+      "engine_lookup": [
+        19,
+        24
+      ],
+      "create_destroy": [
+        15,
+        16,
+        17,
+        20,
+        29
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianHitFlashTests.cs",
+    "scope": "test",
+    "lines": 76,
+    "sha256": "eebf26d55e63dfa614bda61ade143df3052b99020ca3fad5425f807ef83eecc1",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        13,
+        15,
+        16,
+        30,
+        39,
+        43,
+        46,
+        48,
+        59,
+        62,
+        63,
+        65,
+        67,
+        71
+      ],
+      "query": [
+        9,
+        32,
+        40
+      ],
+      "engine_lookup": [
+        26,
+        32,
+        33,
+        34
+      ],
+      "create_destroy": [
+        13,
+        15,
+        16,
+        18,
+        27,
+        43,
+        53,
+        59,
+        62,
+        63,
+        74
+      ],
+      "native_upload": [
+        62
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianMaskAtlasTests.cs",
+    "scope": "test",
+    "lines": 147,
+    "sha256": "2084aad8724f49ed63045e98573a34ab915c9b11aabf6d3948681cff9ab94ea5",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        21,
+        22,
+        32,
+        33,
+        36,
+        38,
+        47,
+        53,
+        54,
+        56,
+        57,
+        58,
+        61,
+        68,
+        69,
+        75,
+        87,
+        89,
+        115,
+        116,
+        124,
+        128,
+        129,
+        134,
+        135,
+        140,
+        143
+      ],
+      "query": [
+        11,
+        33,
+        108,
+        109,
+        110
+      ],
+      "engine_lookup": [
+        95,
+        108,
+        109,
+        110
+      ],
+      "create_destroy": [
+        21,
+        22,
+        32,
+        54,
+        56,
+        57,
+        58,
+        61,
+        64,
+        85,
+        97,
+        98,
+        99,
+        101,
+        102,
+        115,
+        117,
+        124
+      ],
+      "native_upload": [
+        34,
+        116,
+        128,
+        137
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianMaskOutputBatchTests.cs",
+    "scope": "test",
+    "lines": 160,
+    "sha256": "8eedb080e785850756bbe7d5b595145d7c694152a421141d954939d7626561e0",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        18,
+        20,
+        21,
+        27,
+        29,
+        30,
+        31,
+        32,
+        33,
+        36,
+        37,
+        39,
+        44,
+        50,
+        55,
+        56,
+        62,
+        63,
+        70,
+        71,
+        76,
+        78,
+        81,
+        92,
+        96,
+        108,
+        113,
+        116,
+        123,
+        125,
+        133,
+        137,
+        143,
+        145,
+        146,
+        157
+      ],
+      "query": [
+        11,
+        12,
+        13,
+        32,
+        61,
+        71,
+        108,
+        149
+      ],
+      "engine_lookup": [
+        78,
+        125,
+        136,
+        145
+      ],
+      "create_destroy": [
+        18,
+        21,
+        27,
+        30,
+        31,
+        36,
+        37,
+        46,
+        55,
+        57,
+        64,
+        71,
+        78,
+        86,
+        125,
+        136,
+        137,
+        145,
+        151
+      ],
+      "native_upload": [
+        32,
+        56,
+        116
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianMaskPageTests.cs",
+    "scope": "test",
+    "lines": 76,
+    "sha256": "347fe6154f10c1978226fd346c98d8f667c9c3e681986ac238c41bac58f16e88",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        12,
+        15,
+        18,
+        19,
+        25,
+        32,
+        38,
+        48,
+        52,
+        59,
+        64,
+        66
+      ],
+      "query": [
+        10,
+        15
+      ],
+      "engine_lookup": [],
+      "create_destroy": [
+        18,
+        20,
+        66,
+        73
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianMaskProducerTests.cs",
+    "scope": "test",
+    "lines": 119,
+    "sha256": "8cc20af9b06ecf92e46a0d8867c7577a7d48c236592555625b3870bd90c8bf9c",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        12,
+        13,
+        14,
+        24,
+        26,
+        27,
+        28,
+        32,
+        33,
+        37,
+        40,
+        44,
+        51,
+        53,
+        54,
+        57,
+        60,
+        61,
+        62,
+        63,
+        67,
+        68,
+        71,
+        73,
+        83,
+        85,
+        94,
+        99,
+        105,
+        110,
+        116
+      ],
+      "query": [
+        10,
+        26,
+        75,
+        88
+      ],
+      "engine_lookup": [
+        28
+      ],
+      "create_destroy": [
+        24,
+        26,
+        27,
+        28,
+        32,
+        35,
+        37,
+        40,
+        44,
+        45,
+        53,
+        67,
+        77,
+        100
+      ],
+      "native_upload": [
+        26,
+        34,
+        40,
+        60
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianObjectEmphasisTests.cs",
+    "scope": "test",
+    "lines": 115,
+    "sha256": "a44f636fd5f443a5be26fc3e037fcbfb1fe3e4d939177163fc61b234acc460cb",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        15,
+        16,
+        17,
+        20,
+        21,
+        24,
+        29,
+        30,
+        49,
+        56,
+        57,
+        59,
+        60,
+        62,
+        63,
+        66,
+        67,
+        74,
+        75,
+        76,
+        78,
+        79,
+        80,
+        81,
+        83,
+        84,
+        87,
+        88,
+        89,
+        91,
+        92,
+        93,
+        100,
+        101,
+        103,
+        106,
+        107,
+        109,
+        111
+      ],
+      "query": [
+        39
+      ],
+      "engine_lookup": [
+        32,
+        34,
+        44,
+        45,
+        107,
+        110
+      ],
+      "create_destroy": [
+        15,
+        16,
+        20,
+        21,
+        37,
+        47,
+        56,
+        57,
+        59,
+        60,
+        68,
+        74,
+        75,
+        79,
+        80,
+        94,
+        100,
+        101,
+        103,
+        107,
+        113
+      ],
+      "native_upload": [
+        16,
+        57,
+        75,
+        101
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianOriginalGaitTests.cs",
+    "scope": "test",
+    "lines": 232,
+    "sha256": "a73e8c5834dda8bd241ad5ec57bb1657e53da1e5bce30c2e7013af3b02d5d7b4",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        16,
+        20,
+        36,
+        37,
+        48,
+        53,
+        56,
+        57,
+        62,
+        93,
+        94,
+        98,
+        126,
+        127,
+        142,
+        146,
+        156,
+        163,
+        179,
+        184,
+        188,
+        191,
+        197,
+        198
+      ],
+      "query": [
+        16,
+        36,
+        47,
+        56,
+        91,
+        92,
+        125,
+        181,
+        182,
+        183,
+        199
+      ],
+      "engine_lookup": [
+        13,
+        16,
+        17,
+        23,
+        36,
+        42,
+        43,
+        56,
+        60,
+        66,
+        73,
+        87,
+        91,
+        102,
+        121,
+        125,
+        130,
+        131,
+        132,
+        145,
+        175,
+        181,
+        182,
+        192
+      ],
+      "create_destroy": [
+        13,
+        16,
+        28,
+        33,
+        36,
+        45,
+        52,
+        53,
+        56,
+        77,
+        88,
+        113,
+        122,
+        126,
+        135,
+        156,
+        167,
+        176,
+        204
+      ],
+      "native_upload": [
+        62
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianPhotoShadowTests.cs",
+    "scope": "test",
+    "lines": 111,
+    "sha256": "e5da7f78a15a3fcc8bf0f686355e546bce3efff15118a3455b12067adcb09e8e",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        17,
+        28,
+        31,
+        34,
+        38,
+        67,
+        71,
+        75,
+        76,
+        77,
+        78,
+        103,
+        104
+      ],
+      "query": [
+        57,
+        65,
+        83,
+        102,
+        107
+      ],
+      "engine_lookup": [
+        52,
+        65,
+        70,
+        72,
+        83,
+        91,
+        102,
+        105,
+        106,
+        107
+      ],
+      "create_destroy": [
+        14,
+        27,
+        28,
+        34,
+        38,
+        47,
+        55,
+        63,
+        100
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianPlacementOverlayTests.cs",
+    "scope": "test",
+    "lines": 70,
+    "sha256": "fe756a899cca9954e689b974a7d5ffbfc718c206f4dc9a6af91be2601e864d9e",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        30,
+        43,
+        64,
+        66,
+        67
+      ],
+      "query": [
+        18,
+        45,
+        46,
+        68
+      ],
+      "engine_lookup": [],
+      "create_destroy": [
+        22,
+        24,
+        25,
+        26,
+        27,
+        29,
+        34,
+        35,
+        66
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianPlayerFacingTests.cs",
+    "scope": "test",
+    "lines": 124,
+    "sha256": "97836c616cba5aad603f8d1ea3807e493ac108f26c868b6b18ee0c2d96eb85b0",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        16,
+        27,
+        44,
+        53,
+        63,
+        81,
+        84,
+        102,
+        103
+      ],
+      "query": [
+        10,
+        27,
+        44,
+        79,
+        80,
+        102
+      ],
+      "engine_lookup": [
+        44,
+        79,
+        80,
+        87,
+        102,
+        110,
+        115,
+        117
+      ],
+      "create_destroy": [
+        12,
+        16,
+        36,
+        58,
+        63,
+        71,
+        94,
+        122
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianRoundFlowTests.cs",
+    "scope": "test",
+    "lines": 95,
+    "sha256": "efafdf41568884b7d8646ce05376152519496c03e36e51baa2eabcc32a789cb1",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        22,
+        26,
+        33,
+        54,
+        55,
+        56,
+        67,
+        72,
+        78,
+        84
+      ],
+      "query": [
+        17,
+        18,
+        39
+      ],
+      "engine_lookup": [
+        23
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianRouteMeshTests.cs",
+    "scope": "test",
+    "lines": 103,
+    "sha256": "fb513dd4e50b96984e1e281925b88c48daa7eae4f0b208cf751467114009e2f7",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        26,
+        28,
+        29,
+        33,
+        58,
+        59,
+        65,
+        99
+      ],
+      "query": [
+        15,
+        50,
+        54,
+        66,
+        87
+      ],
+      "engine_lookup": [
+        54,
+        60,
+        74,
+        81,
+        87,
+        94
+      ],
+      "create_destroy": [
+        26,
+        29,
+        33,
+        40,
+        42,
+        43
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianRulesTests.cs",
+    "scope": "test",
+    "lines": 22,
+    "sha256": "c6061f2118437f671b141f7dc28d05bfcd5936ef048a7b64897ca04abb9e872d",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        18
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianSelectionOutlineTests.cs",
+    "scope": "test",
+    "lines": 119,
+    "sha256": "ed8e9d841ce7fbe1f75f966f92b85bf1f470d1ac062064d499b0f759505d93b7",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        15,
+        16,
+        17,
+        18,
+        21,
+        25,
+        30,
+        32,
+        33,
+        39,
+        53,
+        54,
+        56,
+        62,
+        66,
+        68,
+        70,
+        71,
+        79,
+        97,
+        98,
+        101,
+        102,
+        103,
+        106,
+        108,
+        110,
+        114
+      ],
+      "query": [
+        14,
+        34,
+        40,
+        96
+      ],
+      "engine_lookup": [
+        66,
+        68,
+        84,
+        117
+      ],
+      "create_destroy": [
+        15,
+        16,
+        18,
+        21,
+        25,
+        32,
+        39,
+        66,
+        68,
+        85,
+        86,
+        87,
+        88,
+        89,
+        97,
+        98,
+        102,
+        103,
+        110,
+        112,
+        114,
+        117
+      ],
+      "native_upload": [
+        16,
+        33,
+        39,
+        56,
+        62,
+        71
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianSessionTests.cs",
+    "scope": "test",
+    "lines": 523,
+    "sha256": "b90bb4687875cb3e9fbc3aa43d1aa02787dc664ead5abf4870adbb8e4a3875eb",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        11,
+        12,
+        18,
+        22,
+        23,
+        26,
+        27,
+        29,
+        31,
+        40,
+        41,
+        53,
+        74,
+        75,
+        87,
+        88,
+        101,
+        102,
+        112,
+        113,
+        121,
+        122,
+        123,
+        129,
+        131,
+        132,
+        134,
+        135,
+        139,
+        143,
+        147,
+        167,
+        176,
+        178,
+        179,
+        188,
+        191,
+        198,
+        207,
+        208,
+        219,
+        220,
+        222,
+        223,
+        235,
+        236,
+        240,
+        241,
+        245,
+        256,
+        266,
+        277,
+        295,
+        307,
+        312,
+        318,
+        321,
+        326,
+        341,
+        342,
+        352,
+        353,
+        370,
+        371,
+        372,
+        383,
+        402,
+        406,
+        407,
+        430,
+        434,
+        436,
+        450,
+        460,
+        467,
+        473,
+        487,
+        488,
+        514,
+        515
+      ],
+      "query": [
+        16,
+        46,
+        79,
+        85,
+        98,
+        131,
+        162,
+        163,
+        167,
+        168,
+        171,
+        176,
+        177,
+        180,
+        183,
+        191,
+        202,
+        222,
+        231,
+        236,
+        241,
+        246,
+        359,
+        360,
+        365,
+        371,
+        408,
+        467,
+        473
+      ],
+      "engine_lookup": [
+        9,
+        21
+      ],
+      "create_destroy": [
+        18,
+        33
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianSharedMaskMaterialTests.cs",
+    "scope": "test",
+    "lines": 89,
+    "sha256": "f63e8bde98ecc4fc5d191516cd39dd989e08b5a8cc883b057e665ec533a725a3",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        15,
+        20,
+        21,
+        22,
+        23,
+        26,
+        27,
+        28,
+        29,
+        44,
+        52,
+        73,
+        79,
+        80,
+        81
+      ],
+      "query": [
+        12,
+        17,
+        34,
+        35
+      ],
+      "engine_lookup": [
+        17,
+        34,
+        35,
+        83
+      ],
+      "create_destroy": [
+        22,
+        27,
+        29,
+        36,
+        37,
+        52,
+        63,
+        78
+      ],
+      "native_upload": [
+        27
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianSingleTowerAimTests.cs",
+    "scope": "test",
+    "lines": 51,
+    "sha256": "d75f2e32b4ddeedb987b2fe7f85ba843ba055220655099f88ffbb44280c2b8fa",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        21,
+        22,
+        23,
+        24,
+        28,
+        32,
+        34,
+        35,
+        36,
+        37,
+        42
+      ],
+      "query": [
+        18,
+        32,
+        34
+      ],
+      "engine_lookup": [
+        19,
+        31,
+        32,
+        46
+      ],
+      "create_destroy": [
+        15,
+        49
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianSoundTests.cs",
+    "scope": "test",
+    "lines": 61,
+    "sha256": "010b5fe4d30a36a91abd95d087746642647a00dd9bf4377b9001eab0fe6f7fba",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        54
+      ],
+      "query": [],
+      "engine_lookup": [
+        17,
+        21,
+        23,
+        49
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianSpriteAtlasCompatibilityTests.cs",
+    "scope": "test",
+    "lines": 135,
+    "sha256": "bde6d508f80f004ccfeba256a166bfaf88757609695593b2cdf2d0b9db7475f6",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        23,
+        36,
+        39,
+        41,
+        54,
+        56,
+        71,
+        73,
+        74,
+        82,
+        85,
+        87,
+        93,
+        100,
+        104,
+        106,
+        107,
+        116,
+        117,
+        120,
+        121,
+        122,
+        128
+      ],
+      "query": [
+        12,
+        17,
+        51,
+        56,
+        59,
+        60,
+        64
+      ],
+      "engine_lookup": [
+        20,
+        61
+      ],
+      "create_destroy": [
+        29,
+        36,
+        45,
+        100,
+        109,
+        116,
+        133
+      ],
+      "native_upload": [
+        39
+      ]
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianThirtyRoundTests.cs",
+    "scope": "test",
+    "lines": 62,
+    "sha256": "e5ab84357be08cbfaefd55112f848ef6ba485f8f31ed9305a9659aa2b4cdfb42",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        11,
+        14,
+        32,
+        41,
+        58,
+        59
+      ],
+      "query": [
+        14,
+        15,
+        27,
+        28,
+        30
+      ],
+      "engine_lookup": [
+        9
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianTowerGlowTests.cs",
+    "scope": "test",
+    "lines": 48,
+    "sha256": "b8707fdb29f2353bd2378f187128948e1597d6b24accb10f7bfc0e59f7da04dd",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        25,
+        26,
+        28,
+        35,
+        36,
+        39
+      ],
+      "query": [
+        18,
+        26
+      ],
+      "engine_lookup": [
+        23,
+        26,
+        31
+      ],
+      "create_destroy": [
+        20,
+        45
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/CoreGuardianTowerGroundingTests.cs",
+    "scope": "test",
+    "lines": 40,
+    "sha256": "d814f880647d21f0577f01d93a0d69a927c7de0653f7ebe02c8e07311421b0ff",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        20,
+        31,
+        32
+      ],
+      "query": [
+        14,
+        27
+      ],
+      "engine_lookup": [
+        18,
+        21,
+        23,
+        27
+      ],
+      "create_destroy": [
+        15,
+        38
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/EditMode/TowerCombatStatsTests.cs",
+    "scope": "test",
+    "lines": 23,
+    "sha256": "8680e66e30bfcfc9f6e78af6ee725a74280c0d5b1c26530c2d1e925181cdf8f7",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        10
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/BeanProjectilePlayModeTests.cs",
+    "scope": "test",
+    "lines": 26,
+    "sha256": "362b6def5c5def4d539a4cfc477e265f9b977edf3ed7341c351af98651cbbdaa",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        13,
+        18,
+        21
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        13,
+        18
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianAnimationPlayModeTests.cs",
+    "scope": "test",
+    "lines": 315,
+    "sha256": "058689e6cbe55c3363e05de99315ac29c0f903c33daf5aa04f914cca61a0d9d2",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        18,
+        42,
+        54,
+        55,
+        56,
+        58,
+        61,
+        79,
+        82,
+        94,
+        104,
+        107,
+        126,
+        162,
+        168,
+        169,
+        174,
+        212,
+        232,
+        244,
+        245,
+        258,
+        270,
+        278,
+        284,
+        291,
+        297,
+        306
+      ],
+      "query": [
+        37,
+        54,
+        58,
+        66,
+        80,
+        108,
+        138,
+        153,
+        182,
+        217,
+        239,
+        268,
+        276,
+        277,
+        292
+      ],
+      "engine_lookup": [
+        44,
+        66,
+        68,
+        69,
+        70,
+        78,
+        80,
+        84,
+        96,
+        108,
+        109,
+        128,
+        138,
+        139,
+        140,
+        143,
+        146,
+        149,
+        152,
+        153,
+        164,
+        182,
+        186,
+        190,
+        214,
+        217,
+        239,
+        242,
+        260,
+        268,
+        273,
+        284,
+        292,
+        307
+      ],
+      "create_destroy": [
+        265,
+        282,
+        288,
+        309
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianCombatAudioPlayModeTests.cs",
+    "scope": "test",
+    "lines": 596,
+    "sha256": "768e9d21aa161091a34dd77044f0242c19c1778f6a082bd8da24d175b87ed5ce",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        20,
+        33,
+        34,
+        36,
+        38,
+        39,
+        42,
+        43,
+        44,
+        45,
+        46,
+        58,
+        71,
+        72,
+        75,
+        76,
+        77,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        97,
+        109,
+        111,
+        115,
+        117,
+        118,
+        120,
+        133,
+        149,
+        151,
+        152,
+        153,
+        154,
+        155,
+        157,
+        158,
+        159,
+        161,
+        162,
+        164,
+        165,
+        166,
+        167,
+        179,
+        194,
+        196,
+        199,
+        201,
+        205,
+        207,
+        210,
+        213,
+        214,
+        215,
+        227,
+        241,
+        243,
+        246,
+        249,
+        250,
+        251,
+        253,
+        256,
+        258,
+        270,
+        284,
+        291,
+        308,
+        323,
+        331,
+        332,
+        335,
+        336,
+        350,
+        362,
+        363,
+        367,
+        377,
+        378,
+        399,
+        412,
+        419,
+        422,
+        424,
+        448,
+        462,
+        464,
+        467,
+        474,
+        475,
+        476,
+        479,
+        482,
+        502,
+        520,
+        521,
+        523,
+        524,
+        525,
+        527,
+        528,
+        534,
+        537,
+        540,
+        543,
+        563,
+        565,
+        582
+      ],
+      "query": [
+        39,
+        41,
+        47,
+        76,
+        79,
+        86,
+        111,
+        113,
+        122,
+        151,
+        157,
+        164,
+        168,
+        199,
+        213,
+        216,
+        249,
+        257,
+        259,
+        284,
+        290,
+        297,
+        323,
+        328,
+        329,
+        338,
+        367,
+        373,
+        388,
+        419,
+        420,
+        437,
+        464,
+        471,
+        484,
+        537,
+        538,
+        545,
+        551,
+        557
+      ],
+      "engine_lookup": [
+        23,
+        26,
+        32,
+        39,
+        41,
+        61,
+        64,
+        70,
+        76,
+        79,
+        100,
+        103,
+        111,
+        113,
+        136,
+        139,
+        147,
+        150,
+        151,
+        182,
+        185,
+        192,
+        198,
+        199,
+        230,
+        233,
+        248,
+        249,
+        273,
+        276,
+        284,
+        289,
+        311,
+        314,
+        323,
+        326,
+        353,
+        356,
+        367,
+        372,
+        402,
+        405,
+        418,
+        419,
+        451,
+        454,
+        464,
+        469,
+        505,
+        508,
+        537,
+        562,
+        571
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianCoreAmbientPlayModeTests.cs",
+    "scope": "test",
+    "lines": 43,
+    "sha256": "91be2852d1e77571e7dc2edc924ab7c973bdb8961e2f7958241c830791fcb0c6",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        18,
+        25,
+        26,
+        27,
+        28,
+        32,
+        36
+      ],
+      "query": [
+        31
+      ],
+      "engine_lookup": [
+        20,
+        21,
+        23,
+        33,
+        34
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianCoreFeedbackPlayModeTests.cs",
+    "scope": "test",
+    "lines": 57,
+    "sha256": "6a3c5646ed9ed2f355b61a9a26796b8e711d63d2de24d34d8b4b561ca1e6ff69",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        19,
+        32,
+        35,
+        44
+      ],
+      "query": [
+        21,
+        31,
+        34,
+        38,
+        39
+      ],
+      "engine_lookup": [
+        22,
+        31,
+        34,
+        38,
+        39,
+        42,
+        43,
+        49
+      ],
+      "create_destroy": [
+        32
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianDamageNumberPoolPlayModeTests.cs",
+    "scope": "test",
+    "lines": 79,
+    "sha256": "b31a13523b257c89fb658c97c7f6861ddc3d7076cfc3f09046bef9592a81642b",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        19,
+        28,
+        43,
+        50,
+        54
+      ],
+      "query": [
+        22,
+        28
+      ],
+      "engine_lookup": [
+        23,
+        25,
+        37,
+        41,
+        48,
+        53
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianHitFlashPlayModeTests.cs",
+    "scope": "test",
+    "lines": 64,
+    "sha256": "bf2d262284025fd6897cec65ce65d89fa2aa47a76b15cb8ed99cb5dd19ea31b0",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        18,
+        52
+      ],
+      "query": [
+        20,
+        49,
+        56
+      ],
+      "engine_lookup": [
+        21,
+        49,
+        50,
+        56
+      ],
+      "create_destroy": [
+        52
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianHudInteractionTests.cs",
+    "scope": "test",
+    "lines": 38,
+    "sha256": "0c6669cd86db63cb42a9c6aa3c3aaba7bf69cbf6790eba6cb70a272cd3d92f6b",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        16,
+        17,
+        18,
+        33,
+        35,
+        36
+      ],
+      "query": [
+        12,
+        25,
+        36
+      ],
+      "engine_lookup": [
+        17,
+        20,
+        21,
+        25,
+        26,
+        27,
+        33,
+        36
+      ],
+      "create_destroy": [
+        16,
+        28,
+        33,
+        36
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianPlacementHudPlayModeTests.cs",
+    "scope": "test",
+    "lines": 113,
+    "sha256": "3b2c478b64287b65e255c2464c912969fd29f180b16093ec9d6174370df535fb",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        28,
+        84,
+        87,
+        88,
+        103,
+        104
+      ],
+      "query": [
+        17,
+        22,
+        87,
+        109
+      ],
+      "engine_lookup": [
+        18,
+        22,
+        23,
+        53,
+        61,
+        64,
+        65,
+        70,
+        109
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianPlayerFacingPlayModeTests.cs",
+    "scope": "test",
+    "lines": 66,
+    "sha256": "32e9fc020b80f9aaf74fa51f4e06967c8cb6480a95564e6d1f7c036819d670fb",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        19,
+        25,
+        29,
+        53,
+        56
+      ],
+      "query": [
+        14,
+        24
+      ],
+      "engine_lookup": [
+        21,
+        23,
+        24,
+        58
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianRuntimePlayModeTests.cs",
+    "scope": "test",
+    "lines": 266,
+    "sha256": "1efacc7ef9489166a399c5c94b4c3fe863efc29c42813ef23a683f5514383b8b",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        14,
+        20,
+        28,
+        35,
+        41,
+        45,
+        48,
+        63,
+        74,
+        84,
+        104,
+        119,
+        124,
+        132,
+        147,
+        158,
+        170,
+        175,
+        185,
+        186,
+        190,
+        195,
+        216,
+        221,
+        223,
+        232,
+        246,
+        258,
+        259,
+        261
+      ],
+      "query": [
+        22,
+        36,
+        42,
+        65,
+        67,
+        84,
+        106,
+        149,
+        172,
+        218,
+        231,
+        243,
+        252
+      ],
+      "engine_lookup": [
+        13,
+        23,
+        42,
+        49,
+        50,
+        66,
+        67,
+        107,
+        150,
+        173,
+        193,
+        195,
+        198,
+        201,
+        219,
+        234,
+        248,
+        253
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianSelectedAudioPlayModeTests.cs",
+    "scope": "test",
+    "lines": 174,
+    "sha256": "6e71703bb5b35fcb4e65032617d73ac528f83e1f702220d8e7a43c14bd644bfd",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        20,
+        28,
+        33,
+        39,
+        45,
+        46,
+        76,
+        77,
+        83,
+        94,
+        97,
+        102,
+        107,
+        111,
+        118,
+        122,
+        133,
+        135,
+        137,
+        145,
+        148,
+        149,
+        152,
+        164,
+        166
+      ],
+      "query": [
+        20,
+        45,
+        46,
+        86,
+        125,
+        126,
+        135,
+        146,
+        148,
+        151,
+        155,
+        170
+      ],
+      "engine_lookup": [
+        20,
+        25,
+        43,
+        67,
+        96,
+        99,
+        153,
+        166
+      ],
+      "create_destroy": [
+        164,
+        171
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianSelectionOutlinePlayModeTests.cs",
+    "scope": "test",
+    "lines": 95,
+    "sha256": "fedaf295ce75e2ac19da5b967eaddb4cdfffa2bfa1c9e738a6d347f2c4e8f1a0",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        24,
+        34,
+        38,
+        49,
+        67,
+        68
+      ],
+      "query": [
+        16
+      ],
+      "engine_lookup": [
+        17,
+        20,
+        51,
+        78,
+        88
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianSingleTowerAimPlayModeTests.cs",
+    "scope": "test",
+    "lines": 49,
+    "sha256": "6880321ec534b6db9c14919bd0bd4c01f6956cc82ca69b3454a6231965a30d3c",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        19,
+        25,
+        26,
+        37,
+        40,
+        44
+      ],
+      "query": [
+        21,
+        31,
+        32
+      ],
+      "engine_lookup": [
+        29,
+        31,
+        32
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianTowerGlowPlayModeTests.cs",
+    "scope": "test",
+    "lines": 66,
+    "sha256": "4313b46f07bdf6e4977b00921914cfbfe704d793ba2770d8bbbb49c4c4ef6438",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        19,
+        27,
+        29,
+        30,
+        31,
+        32,
+        41,
+        52,
+        58,
+        59
+      ],
+      "query": [
+        21,
+        46,
+        57,
+        60
+      ],
+      "engine_lookup": [
+        22,
+        46,
+        57,
+        60
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/CoreGuardianUpgradeFeedbackPlayModeTests.cs",
+    "scope": "test",
+    "lines": 81,
+    "sha256": "5b9a22e0d15d7be31d0a0d9b10f54ad0a852cfd42d05587f0e9670e854626743",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        23,
+        33,
+        35,
+        38,
+        46,
+        60,
+        66,
+        67,
+        71,
+        72,
+        76,
+        77
+      ],
+      "query": [
+        16
+      ],
+      "engine_lookup": [
+        18,
+        25,
+        26,
+        36,
+        48,
+        50
+      ],
+      "create_destroy": [],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/EnemyMovementPlayModeTests.cs",
+    "scope": "test",
+    "lines": 40,
+    "sha256": "95bed8f150d32d760c02be0ee71e4ecb7843f415ed37cd014f7a9330e89a5f11",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        13,
+        17,
+        27,
+        35
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        13,
+        17,
+        20,
+        35
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  },
+  {
+    "path": "Assets/Scripts/Tests/PlayMode/HealthPlayModeTests.cs",
+    "scope": "test",
+    "lines": 26,
+    "sha256": "cdc72d327b77f23c07dadd48207bdc70613fdbbe285f570eef33670e1f7454f1",
+    "hits": {
+      "update": [],
+      "alloc_or_expand": [
+        13
+      ],
+      "query": [],
+      "engine_lookup": [],
+      "create_destroy": [
+        13
+      ],
+      "native_upload": []
+    },
+    "serialized_references": [],
+    "review": "full-file static pattern scan; runtime call-chain review by subsystem; tests/editor excluded from player frame cost"
+  }
+]

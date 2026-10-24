@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var s=UnityEngine.SceneManagement.SceneManager.GetActiveScene(); return new {playing=UnityEditor.EditorApplication.isPlaying,changing=UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode,compiling=UnityEditor.EditorApplication.isCompiling,updating=UnityEditor.EditorApplication.isUpdating,scene=s.path,dirty=s.isDirty,roots=s.rootCount,recording=UnityEngine.Profiling.Profiler.enabled,deep=UnityEditorInternal.ProfilerDriver.deepProfiling,profileEditor=UnityEditorInternal.ProfilerDriver.profileEditor,stacks=UnityEditorInternal.ProfilerDriver.memoryRecordMode.ToString(),frameDebugger=UnityEngine.FrameDebugger.enabled,background=UnityEngine.Application.runInBackground,capture=UnityEngine.Time.captureDeltaTime,scale=UnityEngine.Time.timeScale,width=UnityEngine.Screen.width,height=UnityEngine.Screen.height,native=CoreGuardianAttackBodyBatch.Enabled,first=UnityEditorInternal.ProfilerDriver.firstFrameIndex,last=UnityEditorInternal.ProfilerDriver.lastFrameIndex};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": false,
+        "changing": false,
+        "compiling": false,
+        "updating": false,
+        "scene": "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+        "dirty": false,
+        "roots": 7,
+        "recording": false,
+        "deep": false,
+        "profileEditor": false,
+        "stacks": "None",
+        "frameDebugger": false,
+        "background": false,
+        "capture": 0,
+        "scale": 1,
+        "width": 1920,
+        "height": 1080,
+        "native": false,
+        "first": -1,
+        "last": -1
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\edcde\\OneDrive\\Desktop\\CD"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}
