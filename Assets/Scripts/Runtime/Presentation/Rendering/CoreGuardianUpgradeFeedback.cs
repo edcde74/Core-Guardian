@@ -10,6 +10,7 @@ public sealed class CoreGuardianUpgradeFeedback : MonoBehaviour
     [Min(.05f),Tooltip("스캔 전체 시간(초). 이동과 시작/끝 페이드가 함께 늘어납니다. Play 중에도 조절할 수 있습니다.")]
     public float duration=.8f;
     public float Duration=>Mathf.Max(.05f,duration);
+    static readonly int BandYId=Shader.PropertyToID("_BandY"),OpacityId=Shader.PropertyToID("_Opacity");
     sealed class Scan
     {
         public Transform target;
@@ -49,8 +50,8 @@ public sealed class CoreGuardianUpgradeFeedback : MonoBehaviour
             var bounds=scan.union.TargetBounds;
             // Keep the approved B timing proportions while scaling the entire visible sweep.
             float phase=scan.age/total*.55f;
-            scan.material.SetFloat("_BandY",Mathf.Lerp(bounds.min.y-.06f,bounds.max.y+.06f,Mathf.Clamp01(phase/.48f)));
-            scan.material.SetFloat("_Opacity",Mathf.Clamp01(phase/.06f)*Mathf.Clamp01((.55f-phase)/.08f));
+            scan.material.SetFloat(BandYId,Mathf.Lerp(bounds.min.y-.06f,bounds.max.y+.06f,Mathf.Clamp01(phase/.48f)));
+            scan.material.SetFloat(OpacityId,Mathf.Clamp01(phase/.06f)*Mathf.Clamp01((.55f-phase)/.08f));
         }
     }
     void Remove(int index)

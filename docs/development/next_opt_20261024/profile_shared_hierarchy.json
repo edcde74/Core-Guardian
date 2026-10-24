@@ -1,0 +1,347 @@
+{
+  "framesUsed": 30,
+  "first": 5131,
+  "lastIndex": 7130,
+  "rows": [
+    {
+      "path": "EditorLoop",
+      "avgMs": 17.8822432,
+      "callsPerFrame": 4.0
+    },
+    {
+      "path": "PlayerLoop",
+      "avgMs": 12.317836666666667,
+      "callsPerFrame": 3.0333333333333332
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras",
+      "avgMs": 1.8559166666666664,
+      "callsPerFrame": 1.0333333333333334
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > Gfx.EndAsyncJobFrame",
+      "avgMs": 0.36504000000000009,
+      "callsPerFrame": 1.0333333333333334
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > Gfx.EndAsyncJobFrame > WaitForRenderJobs",
+      "avgMs": 0.3647266666666667,
+      "callsPerFrame": 1.0333333333333334
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > Gfx.EndAsyncJobFrame > WaitForRenderJobs > WaitForJobGroupID",
+      "avgMs": 0.36156333333333313,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > Gfx.EndAsyncJobFrame > WaitForRenderJobs > WaitForJobGroupID > EngineJob",
+      "avgMs": 0.15176333333333331,
+      "callsPerFrame": 1.1333333333333333
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > Gfx.EndAsyncJobFrame > WaitForRenderJobs > WaitForJobGroupID > EngineJob > RenderLoop.Draw",
+      "avgMs": 0.068896666666666662,
+      "callsPerFrame": 1.5333333333333334
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > Gfx.EndAsyncJobFrame > WaitForRenderJobs > WaitForJobGroupID > EngineJob > RenderLoop.DrawSRPBatcher",
+      "avgMs": 0.059233333333333325,
+      "callsPerFrame": 2.1
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > Gfx.EndAsyncJobFrame > WaitForRenderJobs > WaitForJobGroupID > Idle",
+      "avgMs": 0.16493666666666668,
+      "callsPerFrame": 0.66666666666666663
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke]",
+      "avgMs": 1.4442599999999999,
+      "callsPerFrame": 1.0333333333333334
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal",
+      "avgMs": 1.4266066666666666,
+      "callsPerFrame": 1.0333333333333334
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack",
+      "avgMs": 1.3900833333333331,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_RenderPipeline.BeginCameraRendering",
+      "avgMs": 0.43487333333333333,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_RenderPipeline.BeginCameraRendering > CG.Emphasis.Tint",
+      "avgMs": 0.42935333333333331,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_RenderPipeline.EndCameraRendering",
+      "avgMs": 0.13655666666666669,
+      "callsPerFrame": 0.93333333333333335
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_ScriptableRenderContext.Submit",
+      "avgMs": 0.21650333333333333,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_ScriptableRenderContext.Submit > UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera",
+      "avgMs": 0.19896,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_ScriptableRenderContext.Submit > UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera > ExecuteRenderGraph",
+      "avgMs": 0.19228999999999996,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera",
+      "avgMs": 0.52588333333333326,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera > CullScriptable",
+      "avgMs": 0.30840333333333331,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera > CullScriptable > CullResults.CreateSharedRendererScene",
+      "avgMs": 0.18689666666666671,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera > CullScriptable > SceneCulling",
+      "avgMs": 0.09006666666666667,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera > Inl_ExecuteRenderGraph",
+      "avgMs": 0.050833333333333321,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera > Inl_RecordRenderGraph",
+      "avgMs": 0.099199999999999983,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > RenderPlayModeViewCameras > UnityEngine.CoreModule.dll!UnityEngine.Rendering::RenderPipelineManager.DoRenderLoop_Internal() [Invoke] > Inl_UniversalRenderTotal > Inl_RenderCameraStack > Inl_UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera > Inl_RecordRenderGraph > Inl_On Record Render Graph",
+      "avgMs": 0.094626666666666664,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene",
+      "avgMs": 10.460936666666663,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases",
+      "avgMs": 0.47243666666666662,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases > UIEvents.WillRenderCanvases",
+      "avgMs": 0.46745000000000003,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases > UIEvents.WillRenderCanvases > UGUI.Rendering.UpdateBatches",
+      "avgMs": 0.4668,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases > UIEvents.WillRenderCanvases > UGUI.Rendering.UpdateBatches > UnityEngine.UIModule.dll!UnityEngine::Canvas.SendWillRenderCanvases() [Invoke]",
+      "avgMs": 0.38560666666666676,
+      "callsPerFrame": 0.76666666666666672
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases > UIEvents.WillRenderCanvases > UGUI.Rendering.UpdateBatches > UnityEngine.UIModule.dll!UnityEngine::Canvas.SendWillRenderCanvases() [Invoke] > Layout",
+      "avgMs": 0.15945333333333336,
+      "callsPerFrame": 0.23333333333333334
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases > UIEvents.WillRenderCanvases > UGUI.Rendering.UpdateBatches > UnityEngine.UIModule.dll!UnityEngine::Canvas.SendWillRenderCanvases() [Invoke] > Layout > CanvasUpdate.Layout",
+      "avgMs": 0.15511333333333333,
+      "callsPerFrame": 0.2
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases > UIEvents.WillRenderCanvases > UGUI.Rendering.UpdateBatches > UnityEngine.UIModule.dll!UnityEngine::Canvas.SendWillRenderCanvases() [Invoke] > Render",
+      "avgMs": 0.20482333333333327,
+      "callsPerFrame": 0.7
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases > UIEvents.WillRenderCanvases > UGUI.Rendering.UpdateBatches > UnityEngine.UIModule.dll!UnityEngine::Canvas.SendWillRenderCanvases() [Invoke] > Render > CanvasUpdate.PreRender",
+      "avgMs": 0.10821333333333333,
+      "callsPerFrame": 0.43333333333333335
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PostLateUpdate.PlayerUpdateCanvases > UIEvents.WillRenderCanvases > UGUI.Rendering.UpdateBatches > UnityEngine.UIModule.dll!UnityEngine::Canvas.SendWillRenderCanvases() [Invoke] > Render > ClipperRegistry.Cull",
+      "avgMs": 0.091346666666666659,
+      "callsPerFrame": 0.46666666666666667
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate",
+      "avgMs": 5.4502966666666683,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate",
+      "avgMs": 5.4496766666666669,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::ArtDepthSorting.LateUpdate() [Invoke]",
+      "avgMs": 0.083146666666666674,
+      "callsPerFrame": 135.33333333333334
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+      "avgMs": 0.064993333333333334,
+      "callsPerFrame": 0.6333333333333333
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+      "avgMs": 4.03568,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke] > CG.Emphasis.Present",
+      "avgMs": 4.00727,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke] > CG.Emphasis.Present > CG.SharedOutline.Collect",
+      "avgMs": 0.97170333333333336,
+      "callsPerFrame": 135.33333333333334
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke] > CG.Emphasis.Present > CG.SharedOutline.Mask",
+      "avgMs": 1.919073333333333,
+      "callsPerFrame": 0.93333333333333335
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke] > CG.Emphasis.Present > CG.SharedOutline.Mask > CG.SharedOutline.Execute",
+      "avgMs": 1.6722933333333334,
+      "callsPerFrame": 0.93333333333333335
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke] > CG.Emphasis.Present > CG.SharedOutline.Mask > CG.SharedOutline.Record",
+      "avgMs": 0.080146666666666658,
+      "callsPerFrame": 0.93333333333333335
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke] > CG.Emphasis.Present > CG.SharedOutline.Mask > CG.SharedOutline.Sort",
+      "avgMs": 0.15456666666666666,
+      "callsPerFrame": 0.93333333333333335
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke] > CG.Emphasis.Present > CG.SharedOutline.Output",
+      "avgMs": 0.19095666666666666,
+      "callsPerFrame": 0.93333333333333335
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke] > CG.Emphasis.Present > CG.SpriteReferences.Read",
+      "avgMs": 0.35820333333333321,
+      "callsPerFrame": 135.33333333333334
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke]",
+      "avgMs": 1.0338866666666666,
+      "callsPerFrame": 135.86666666666667
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke] > CG.PhotoShadow.Present",
+      "avgMs": 1.00125,
+      "callsPerFrame": 135.86666666666667
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke] > CG.PhotoShadow.Present > CG.PhotoShadow.Cast",
+      "avgMs": 0.96810333333333332,
+      "callsPerFrame": 135.86666666666667
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > PreLateUpdate.ScriptRunBehaviourLateUpdate > LateBehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke] > CG.PhotoShadow.Present > CG.PhotoShadow.Cast > CG.SpriteReferences.Read",
+      "avgMs": 0.69370333333333312,
+      "callsPerFrame": 135.86666666666667
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > TimeUpdate.WaitForLastPresentationAndUpdateTime",
+      "avgMs": 0.30728999999999995,
+      "callsPerFrame": 0.2
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > TimeUpdate.WaitForLastPresentationAndUpdateTime > GarbageCollector.CollectIncremental",
+      "avgMs": 0.30103333333333332,
+      "callsPerFrame": 0.1
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate",
+      "avgMs": 3.7406499999999983,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate",
+      "avgMs": 3.740063333333334,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+      "avgMs": 0.10662333333333336,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+      "avgMs": 0.35465666666666668,
+      "callsPerFrame": 0.1
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke] > GameObject.AddComponent",
+      "avgMs": 0.14272333333333334,
+      "callsPerFrame": 7.2
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke] > TransformHandle.SetParent",
+      "avgMs": 0.051899999999999995,
+      "callsPerFrame": 2.4
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+      "avgMs": 3.1421666666666659,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke] > CG.HUD.CreateDamageNumber",
+      "avgMs": 0.21819999999999998,
+      "callsPerFrame": 1.1
+    },
+    {
+      "path": "PlayerLoop > UpdateScene > Update.ScriptRunBehaviourUpdate > BehaviourUpdate > Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke] > CG.HUD.CreateDamageNumber > GameObject.AddComponent",
+      "avgMs": 0.16426333333333334,
+      "callsPerFrame": 3.3
+    },
+    {
+      "path": "Profiler.FlushCounters",
+      "avgMs": 0.41689666666666658,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "Profiler.FlushCounters > Profiler.CollectLegacyStats",
+      "avgMs": 0.051730000000000012,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "Profiler.FlushCounters > Profiler.FlushMemoryCounters",
+      "avgMs": 0.35459,
+      "callsPerFrame": 1.0
+    },
+    {
+      "path": "Unaccounted time between: Profiler.SessionMetadata and PlayerLoop",
+      "avgMs": 0.089546666666666663,
+      "callsPerFrame": 0.033333333333333333
+    }
+  ]
+}

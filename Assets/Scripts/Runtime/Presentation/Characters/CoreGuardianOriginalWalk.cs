@@ -25,6 +25,15 @@ public sealed class CoreGuardianOriginalWalk
     {
         public Vector2 hip,knee,ankle;
         public Transform upper,lower;
+        // Fixed source joints: lengths, bend side and rest bones never change after creation.
+        public float upperLength,lowerLength,side;
+        public Vector2 upperRest,lowerRest;
+        public Leg Prepare()
+        {
+            upperLength=Vector2.Distance(hip,knee);lowerLength=Vector2.Distance(knee,ankle);
+            var rest=ankle-hip;var kneeRest=knee-hip;side=Mathf.Sign(rest.x*kneeRest.y-rest.y*kneeRest.x);if(side==0)side=1;
+            upperRest=knee-hip;lowerRest=ankle-knee;return this;
+        }
     }
     public float Phase => phase;
     public Vector3 HealthBarWorld => original.transform.parent.TransformPoint(
@@ -38,7 +47,6 @@ public sealed class CoreGuardianOriginalWalk
         rig=new GameObject("OriginalWalk").transform;rig.SetParent(artwork.transform,false);
         body=Layer("Body",role);var lu=Layer("LeftUpper",role);var ll=Layer("LeftLower",role);var ru=Layer("RightUpper",role);var rl=Layer("RightLower",role);
         layers=new[]{body,lu,ll,ru,rl};
-        CoreGuardianAttackBodyBatch.Register(role,layers);
         if(role=="Attack") {left=Bone(lu,ll,18,43,19,49,17,61);right=Bone(ru,rl,30,43,31,51,35,60);cyclePixels=14;lift=1.8f;}
         else if(role=="Defense") {left=Bone(lu,ll,17,31,17,36,17,42);right=Bone(ru,rl,24,29,24,36,27,44);cyclePixels=10;lift=1.4f;}
         else if(role=="Buff") {left=Bone(lu,ll,13,61,12,67,9,74);right=Bone(ru,rl,22,60,24,69,24,77);cyclePixels=12;lift=1.6f;}
@@ -77,7 +85,7 @@ public sealed class CoreGuardianOriginalWalk
         var renderer=new GameObject(name).AddComponent<SpriteRenderer>();renderer.transform.SetParent(rig,false);renderer.sprite=sprite;renderer.sharedMaterial=original.sharedMaterial;return renderer;
     }
     Vector2 Point(float x,float top)=>(new Vector2(x,original.sprite.rect.height-top)-original.sprite.pivot);
-    Leg Bone(SpriteRenderer upper,SpriteRenderer lower,float hx,float hy,float kx,float ky,float ax,float ay)=>new Leg{hip=Point(hx,hy),knee=Point(kx,ky),ankle=Point(ax,ay),upper=upper.transform,lower=lower.transform};
+    Leg Bone(SpriteRenderer upper,SpriteRenderer lower,float hx,float hy,float kx,float ky,float ax,float ay)=>new Leg{hip=Point(hx,hy),knee=Point(kx,ky),ankle=Point(ax,ay),upper=upper.transform,lower=lower.transform}.Prepare();
     public void Move(Vector2 worldVelocity,float delta)
     {
         walking=worldVelocity.sqrMagnitude>.000001f;
@@ -110,7 +118,7 @@ public sealed class CoreGuardianOriginalWalk
     public void Present(float delta)
     {
         weight=Mathf.MoveTowards(weight,walking?1:0,Mathf.Max(0,delta)*8);
-        original.flipX=mirror;
+        if(original.flipX!=mirror)original.flipX=mirror;
         AlignGround();
         vertical.gameObject.SetActive(verticalFacing!=0);
         if(verticalFacing!=0)
@@ -123,15 +131,19 @@ public sealed class CoreGuardianOriginalWalk
         }
         bool active=weight>.0001f;rig.gameObject.SetActive(active);original.enabled=!active;
         if(!active)return;
-        rig.localScale=new Vector3(mirror?-1:1,1,1);
-        foreach(var layer in layers){layer.color=original.color;layer.sortingLayerID=original.sortingLayerID;layer.sortingOrder=original.sortingOrder;}
-        body.sortingOrder=original.sortingOrder+1;
+        var scale=new Vector3(mirror?-1:1,1,1);if(rig.localScale!=scale)rig.localScale=scale;
+        // Write only values that differ: each renderer write re-dirties its draw data. Final state is identical.
+        var color=original.color;int layerId=original.sortingLayerID,order=original.sortingOrder;
+        foreach(var layer in layers){if(!SameColor(layer.color,color))layer.color=color;if(layer.sortingLayerID!=layerId)layer.sortingLayerID=layerId;if(layer.sortingOrder!=order)layer.sortingOrder=order;}
+        if(body.sortingOrder!=order+1)body.sortingOrder=order+1;
         // Two equal weight transfers per cycle, rather than one deep dip on a single leg.
         Vector2 pelvis=Vector2.up*((-.65f+.3f*Mathf.Cos(phase*Mathf.PI*4))*weight);
         body.transform.localPosition=pelvis/ppu;
         Pose(left,WalkingFootOffset(phase,cyclePixels,lift,groundDirection)*weight,pelvis);
         Pose(right,WalkingFootOffset(phase+.5f,cyclePixels,lift,groundDirection)*weight,pelvis);
     }
+    // Exact component comparison (Color == is approximate).
+    static bool SameColor(Color a,Color b)=>a.r==b.r&&a.g==b.g&&a.b==b.b&&a.a==b.a;
     void AlignGround()
     {
         Vector3 anchor=new Vector3((mirror?-1:1)*groundAnchor.x,groundAnchor.y,0)/ppu;
@@ -149,19 +161,19 @@ public sealed class CoreGuardianOriginalWalk
     void Pose(Leg leg,Vector2 offset,Vector2 pelvis)
     {
         Vector2 hip=leg.hip+pelvis,goal=leg.ankle+offset;
-        float upper=Vector2.Distance(leg.hip,leg.knee),lower=Vector2.Distance(leg.knee,leg.ankle);
+        float upper=leg.upperLength,lower=leg.lowerLength;
         Vector2 difference=goal-hip;float distance=Mathf.Clamp(difference.magnitude,Mathf.Abs(upper-lower)+.001f,upper+lower-.001f);
         var direction=difference.normalized;float along=(upper*upper-lower*lower+distance*distance)/(2*distance);
-        var rest=leg.ankle-leg.hip;var kneeRest=leg.knee-leg.hip;float side=Mathf.Sign(rest.x*kneeRest.y-rest.y*kneeRest.x);if(side==0)side=1;
+        float side=leg.side;
         Vector2 knee=hip+direction*along+new Vector2(-direction.y,direction.x)*(side*Mathf.Sqrt(Mathf.Max(0,upper*upper-along*along)));
         Vector2 ankle=hip+direction*distance;
-        Place(leg.upper,leg.hip,hip,Vector2.SignedAngle(leg.knee-leg.hip,knee-hip));
-        Place(leg.lower,leg.knee,knee,Vector2.SignedAngle(leg.ankle-leg.knee,ankle-knee));
+        Place(leg.upper,leg.hip,hip,Vector2.SignedAngle(leg.upperRest,knee-hip));
+        Place(leg.lower,leg.knee,knee,Vector2.SignedAngle(leg.lowerRest,ankle-knee));
     }
     void Place(Transform part,Vector2 sourceJoint,Vector2 destination,float angle)
     {
-        var rotation=Quaternion.Euler(0,0,angle);part.localRotation=rotation;
-        part.localPosition=((Vector3)destination-rotation*(Vector3)sourceJoint)/ppu;
+        var rotation=Quaternion.Euler(0,0,angle);
+        part.SetLocalPositionAndRotation(((Vector3)destination-rotation*(Vector3)sourceJoint)/ppu,rotation);
     }
 
     // The directional drawings held one knee up in every frame. Reuse their existing

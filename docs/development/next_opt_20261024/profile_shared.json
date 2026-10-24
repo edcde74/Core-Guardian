@@ -1,0 +1,6785 @@
+{
+  "label": "profile_shared",
+  "frames": [
+    {
+      "sharedOn": true,
+      "frame": 17,
+      "gap": 1,
+      "ms": 33.453499999268388,
+      "collectionCount0": 1183,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2289,
+      "setpass": 851,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 300
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1793000
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1300
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 21605100
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 28047500
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 9163500
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 12006700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1400
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 55800
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 0
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 0
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 1652565
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 18415400
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 11916100
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1589500
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 560128
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1300
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 828000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3380500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 762000
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6500
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2662100
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4482000
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 867000
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1665400
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 262500
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 0
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 0
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 0
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 0
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 18,
+      "gap": 1,
+      "ms": 19.819500000267,
+      "collectionCount0": 1183,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2289,
+      "setpass": 851,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 300
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1793000
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1300
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 21605100
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 28047500
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 9163500
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 12006700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1400
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 55800
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 0
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 0
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 1652565
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 18415400
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 11916100
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1589500
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 560128
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1300
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 828000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3380500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 762000
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6500
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2662100
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4482000
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 867000
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1665400
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 262500
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 0
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 0
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 0
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 0
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 19,
+      "gap": 1,
+      "ms": 22.668800000246847,
+      "collectionCount0": 1183,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2246,
+      "setpass": 834,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 40700
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 4117600
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 2800
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 25280300
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 129200400
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 1200
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 2700
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 106500
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 0
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 7077400
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 7735543
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 16950300
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 10016100
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1605500
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 568320
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 3000
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 2039900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 7956800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1937500
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 14400
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 5850700
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 11215800
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1957000
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 4164200
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 494800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 5310000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 201500
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 124300
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 13700
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 20,
+      "gap": 1,
+      "ms": 19.6656999996776,
+      "collectionCount0": 1183,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2246,
+      "setpass": 834,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1732200
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1300
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 11167700
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 22854200
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 2200
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 52100
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 0
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 10533600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 5164815
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 18674300
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 12186900
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1599000
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 480256
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1600
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1154700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3783700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 889300
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6800
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3310600
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5186500
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1058900
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1814400
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 193200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3097200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 102900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 8100
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 21,
+      "gap": 1,
+      "ms": 18.4439000004204,
+      "collectionCount0": 1183,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 36,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2246,
+      "setpass": 834,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1901500
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1400
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 10777600
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 19019700
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 0
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 44500
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 0
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 7748600
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 1718168
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 23226200
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 15600800
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1975700
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 651264
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1000
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 855300
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4375400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 793300
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 0
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2996200
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5470400
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 817600
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 2722300
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 191500
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2805600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 93000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 6500
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 22,
+      "gap": 1,
+      "ms": 31.721399999696587,
+      "collectionCount0": 1183,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2237,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 200
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 2132400
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 600
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1400
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 11508000
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 18341600
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1700
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 46600
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 0
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 6390100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 2282689
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 28054400
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 21604300
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 5203100
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 7286784
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1300
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1071000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4284900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 863900
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6600
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2910100
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5760000
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1038700
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 2467900
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 197200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2671000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 97000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 1700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 10600
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 23,
+      "gap": 1,
+      "ms": 22.406600000067556,
+      "collectionCount0": 1183,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2237,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 800
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1889200
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1800
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 20204000
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 31676100
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 2500
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 1518200
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 10500
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 11043200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 5869529
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 54763200
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 25278700
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 2190500
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 3866624
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1400
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1024900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4316300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1237800
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 8100
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 8966000
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 6621100
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 942000
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 2271000
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 380900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 8737900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 96900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 39200
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 24,
+      "gap": 1,
+      "ms": 23.36120000018127,
+      "collectionCount0": 1183,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2237,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 600
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 2126400
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 2200
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1500
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 10460800
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 22391100
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 500
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 2300
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 66700
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 8100
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 11499100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 2859415
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 22861700
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 11167200
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1733000
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 3620864
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 978100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3908200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 913100
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 7100
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2848400
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5065200
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 844800
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1939800
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 200400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2647700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 97200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 10400
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 25,
+      "gap": 1,
+      "ms": 35.013099999559927,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 1,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2237,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 300
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1767400
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 700
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1300
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 14941800
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 23584200
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 3013300
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1800
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 71900
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 9700
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 8251900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 603959
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 19053400
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 10777100
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 2011200
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 4261888
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1400
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1099400
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4478000
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 820100
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6000
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3437100
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5960200
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 978500
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 2405200
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 192600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3114200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 207900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 12200
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 26,
+      "gap": 1,
+      "ms": 27.267000000392727,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2241,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1801500
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 600
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1500
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 14699800
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 34687700
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 3005200
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1900
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 77800
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 10300
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 19522800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 717850
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 18379300
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 11507700
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 2258400
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 4278272
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1000
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1313700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3838900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1169500
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 9400
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3256100
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5687100
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1311900
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1873500
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 181300
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2892500
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 132700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 2200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 17100
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 27,
+      "gap": 1,
+      "ms": 19.528799999534385,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 33,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2241,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1760500
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1700
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 18604800
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 27311400
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 0
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 5200800
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 14800
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 8174500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 2553727
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 31705400
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 20203400
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 2257800
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 8292351
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1053800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3726500
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1122300
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 0
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 5960700
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5048200
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 950900
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1873100
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 204100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2543600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 102300
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 3195400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 16300
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 28,
+      "gap": 1,
+      "ms": 27.342900000803638,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 27,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2241,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 200
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1805000
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1200
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 12104600
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 19390400
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 1100
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1800
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 199700
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 12500
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 6859500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 1299975
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 22418600
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 10459900
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1693600
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 4463616
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1500
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 963200
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4936100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1217600
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6800
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3183600
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 6159600
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 894800
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 3045100
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 310000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2982100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 97000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 1100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 10400
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 29,
+      "gap": 1,
+      "ms": 24.318099999618425,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 24,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2251,
+      "setpass": 866,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 700
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 2270600
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 700
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1300
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 16440800
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 27303800
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 800
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1700
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 392000
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 8100
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 10457800
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 4348087
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 23669600
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 14941000
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 12254300
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 19253248
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1396800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4626200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 846300
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6700
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 6910400
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 6407400
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1284500
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 2066800
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 191400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 6645400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 129400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 1100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 15800
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 30,
+      "gap": 1,
+      "ms": 23.491699999794946,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 18,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2251,
+      "setpass": 881,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1723500
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1400
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 11952600
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 24275100
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 2000
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 323800
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 8300
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 11926500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 3759945
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 34710000
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 14699300
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1562400
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 6518784
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1000
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 942000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3550200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1059200
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6600
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 4610600
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4704900
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 850000
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1784700
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 187900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 4404700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 100800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 16400
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 31,
+      "gap": 1,
+      "ms": 24.860800000169547,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 12,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2251,
+      "setpass": 881,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 2024300
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1200
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 11552800
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 23673000
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1200
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 394300
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 9200
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 11725300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 3552731
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 27348100
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 18603900
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1464600
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 6288384
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 997600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3670400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 902000
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 5700
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 4024700
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4871200
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 882500
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1752000
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 190600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3826700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 95100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 19600
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 32,
+      "gap": 1,
+      "ms": 19.365199999811011,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 12,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2251,
+      "setpass": 881,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 2106800
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 2300
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 11887500
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 24639600
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 2200
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 477000
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 9800
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 12344500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 2803755
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 19417000
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 12104100
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1928200
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 4564992
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1200
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 908600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3507700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 865700
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 7100
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 4158100
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4651900
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 820300
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1756400
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 213200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3944800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 97100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 1000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 24200
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 33,
+      "gap": 1,
+      "ms": 16.323400000146648,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 12,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2252,
+      "setpass": 882,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1870900
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1600
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 11114500
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 19296700
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 0
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 120700
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 8900
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 7794500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 1754614
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 27331700
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 16439800
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 2052000
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 7028736
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1200
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 985900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3880200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 777500
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 0
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3931800
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5077900
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 854000
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1904000
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 222900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3706600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 99000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 30700
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 34,
+      "gap": 1,
+      "ms": 23.268699999789533,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 6,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2248,
+      "setpass": 866,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 300
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1773900
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 700
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1200
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 10528000
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 16316400
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1900
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 120800
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 9900
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 5381700
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 705703
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 24303100
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 11951700
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1375800
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 6148096
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1000
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 944400
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4030400
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 686400
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6400
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2715500
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5275100
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 892200
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 2316500
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 179200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2500700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 97700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 26900
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 35,
+      "gap": 1,
+      "ms": 33.528700000715617,
+      "collectionCount0": 1184,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 6,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2238,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1938300
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1200
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 12374700
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 23265200
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1300
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 394500
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 9300
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 10484200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 3786260
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 23707600
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 11552300
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1355700
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 6192128
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 885600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4035200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 763900
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 9500
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 4504800
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5248300
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 850300
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 2376100
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 184800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3942500
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 82500
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 388500
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 36,
+      "gap": 1,
+      "ms": 33.070099999349623,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 1,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 6,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2238,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 2427300
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1900
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 21106200
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 33571100
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 800
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 2000
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 1884200
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 10800
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 12057200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 3627695
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 24665900
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 11886700
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1331600
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 5460992
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1500
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 3995100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3866100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 819500
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6600
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 8756900
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 8181800
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 3912200
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1938400
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 202600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2468600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 95800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 6079300
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 30700
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 37,
+      "gap": 1,
+      "ms": 22.692100000313076,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2238,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 300
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1735200
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1800
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 26081400
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 33164600
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 3014100
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 2000
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 390000
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 9300
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 6692500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 2004623
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 19322600
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 11114000
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 2169400
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 4043776
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1200
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1030100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 14900800
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 817300
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 7600
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3137000
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 17380500
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 947500
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 4066400
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 187700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2852000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 128400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 35400
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 38,
+      "gap": 1,
+      "ms": 17.705899999782559,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2238,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 300
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1848300
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1200
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 12230200
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 22474000
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1600
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 604100
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 10800
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 9830500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 4166903
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 16341800
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 10527200
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1687800
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 3931136
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1184300
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3883300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 985600
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6500
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3844900
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5423000
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1158800
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 2024200
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 191300
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3618300
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 96900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 30600
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 39,
+      "gap": 1,
+      "ms": 15.51130000007106,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2238,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1926000
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1700
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 9445600
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 17677000
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 0
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 209700
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 7500
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 7821700
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 855601
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 23289600
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 12374100
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1676700
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 6227200
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1600
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1010100
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3416700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 739100
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 0
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2565200
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4776400
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 999600
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1722000
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 186200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2347200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 97100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 33800
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 40,
+      "gap": 1,
+      "ms": 16.558299999815063,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2238,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 200
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1697800
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 1400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1200
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 9480400
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 15475400
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 500
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1800
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 227100
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 11100
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 5592300
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 590256
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 33595800
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 21105600
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1352600
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 5456896
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1000
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 905000
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3322900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 782800
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6600
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2579000
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4498000
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 828700
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1633800
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 187100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2361200
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 94900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 33500
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 41,
+      "gap": 1,
+      "ms": 19.336700000167184,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2229,
+      "setpass": 841,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 300
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1761600
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 800
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1100
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 9897900
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 16540500
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1300
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 226200
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 7600
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 6245900
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 2331722
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 33186999
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 26080300
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1711500
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 3507200
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1300
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 943700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3317200
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1012900
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6300
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2482900
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4554400
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 883900
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1617800
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 183400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2261300
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 99500
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 700
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 32900
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 42,
+      "gap": 1,
+      "ms": 24.027999999816529,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2223,
+      "setpass": 842,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 200
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1776500
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1100
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 9568100
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 19302900
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1200
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 211600
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 7500
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 9342200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 2764364
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 22500200
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 12229300
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1900800
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 4827136
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 901800
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3449300
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 801100
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6000
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2787900
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4640700
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 843300
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1753100
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 186600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2532600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 104000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 59300
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 43,
+      "gap": 1,
+      "ms": 21.509799999876122,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2233,
+      "setpass": 836,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1905600
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 700
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1500
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 9878400
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 24036100
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1400
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 274100
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 11700
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 13750500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 3476707
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 17699100
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 9445100
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1562500
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 3131392
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1200
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 914400
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3426900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 938300
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6600
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 2526000
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4634000
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 864700
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1701100
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 264600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2299800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 96100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 43200
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 44,
+      "gap": 1,
+      "ms": 21.052500000223517,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2227,
+      "setpass": 837,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 800
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1812900
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1600
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 12608800
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 21501400
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 600
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1800
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 227200
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 7700
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 8450500
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 2095984
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 15499500
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 9479600
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1612500
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 6592512
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1200
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1324600
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 4244900
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 1076200
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 6800
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3843400
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 6071900
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1262200
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1820000
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 184400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3539900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 144000
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 1600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 32800
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 45,
+      "gap": 1,
+      "ms": 18.520700000408397,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2227,
+      "setpass": 837,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 200
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1821100
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 400
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 900
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 11458300
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 21196800
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 900
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 0
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 732400
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 8700
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 9327200
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 1678740
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 16564499
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 9897500
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 1563800
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 6665216
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 897900
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3254100
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 813500
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 0
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 4057700
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 4486100
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 863000
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1607200
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 177400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 2466600
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 97800
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 1366100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 39700
+        }
+      }
+    },
+    {
+      "sharedOn": true,
+      "frame": 46,
+      "gap": 1,
+      "ms": 17.65499999964959,
+      "collectionCount0": 1185,
+      "collectionsSincePrevious": 0,
+      "enemies": 128,
+      "towers": 15,
+      "projectiles": 0,
+      "sources": 0,
+      "textureBytes": 0,
+      "bufferBytes": 0,
+      "draw": 2227,
+      "setpass": 837,
+      "counters": {
+        "Semaphore.WaitForSignal": {
+          "valid": true,
+          "value": 300
+        },
+        "WaitForJobGroupID": {
+          "valid": true,
+          "value": 1948200
+        },
+        "Camera.Render": {
+          "valid": true,
+          "value": 500
+        },
+        "WaitForLastPresentation": {
+          "valid": true,
+          "value": 1000
+        },
+        "WaitForTargetFPS": {
+          "valid": true,
+          "value": 0
+        },
+        "PlayerLoop": {
+          "valid": true,
+          "value": 11415900
+        },
+        "Main Thread": {
+          "valid": true,
+          "value": 18487700
+        },
+        "Shader.EditorCompileVariant": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.DynamicLoadGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CreateGPUPrograms": {
+          "valid": true,
+          "value": 0
+        },
+        "Shader.CompileGPUProgram": {
+          "valid": true,
+          "value": 0
+        },
+        "Texture.WaitForAsyncUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "GC.Collect": {
+          "valid": true,
+          "value": 0
+        },
+        "GarbageCollector.CollectIncremental": {
+          "valid": true,
+          "value": 700
+        },
+        "Gfx.WaitForRenderThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForPresentOnGfxThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Gfx.WaitForGfxCommandsFromMainThread": {
+          "valid": true,
+          "value": 0
+        },
+        "Physics2D.Simulate": {
+          "valid": true,
+          "value": 1800
+        },
+        "UGUI.Rendering.UpdateBatches": {
+          "valid": true,
+          "value": 545300
+        },
+        "Canvas.BuildBatch": {
+          "valid": true,
+          "value": 10500
+        },
+        "EditorLoop": {
+          "valid": true,
+          "value": 6515100
+        },
+        "GC Allocated In Frame": {
+          "valid": true,
+          "value": 597869
+        },
+        "Batches Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "Standard Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SRP Batcher Draw Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "SetPass Calls Count": {
+          "valid": true,
+          "value": 0
+        },
+        "CPU Total Frame Time": {
+          "valid": true,
+          "value": 19329000
+        },
+        "CPU Main Thread Frame Time": {
+          "valid": true,
+          "value": 9567600
+        },
+        "CPU Render Thread Frame Time": {
+          "valid": true,
+          "value": 2325000
+        },
+        "GPU Frame Time": {
+          "valid": true,
+          "value": 4391936
+        },
+        "CG.Mask.Present": {
+          "valid": true,
+          "value": 1100
+        },
+        "CG.Mask.Resources": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Parts": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.MeshUpload": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Execute": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.Mask.Output": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SpriteReferences.Read": {
+          "valid": true,
+          "value": 1217700
+        },
+        "CG.Emphasis.Present": {
+          "valid": true,
+          "value": 3355700
+        },
+        "CG.Emphasis.Tint": {
+          "valid": true,
+          "value": 700000
+        },
+        "FixedUpdate.PhysicsFixedUpdate": {
+          "valid": true,
+          "value": 7200
+        },
+        "Update.ScriptRunBehaviourUpdate": {
+          "valid": true,
+          "value": 3721300
+        },
+        "PreLateUpdate.ScriptRunBehaviourLateUpdate": {
+          "valid": true,
+          "value": 5141400
+        },
+        "CG.Mask.CacheLookup": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.PhotoShadow.Present": {
+          "valid": true,
+          "value": 1248400
+        },
+        "CG.Mask.PageProducer": {
+          "valid": true,
+          "value": 0
+        },
+        "CG.SharedOutline.Mask": {
+          "valid": true,
+          "value": 1646400
+        },
+        "CG.SharedOutline.Output": {
+          "valid": true,
+          "value": 180400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]": {
+          "valid": true,
+          "value": 3427900
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]": {
+          "valid": true,
+          "value": 144100
+        },
+        "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]": {
+          "valid": true,
+          "value": 1400
+        },
+        "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]": {
+          "valid": true,
+          "value": 25200
+        }
+      }
+    }
+  ]
+}

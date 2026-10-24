@@ -34,6 +34,10 @@ namespace CoreGuardian
         public bool AugmentationRequiresBoss=true;
         public EnemySpec EnemyForWave(int wave,EnemyKind kind)=>Waves.FirstOrDefault(w=>w.Wave==wave&&w.Kind==kind)?.Enemy??Enemies[kind];
         public float PreparationSeconds, DiagnosticStartDistance, DiagnosticSpacing;
+        // Long preparation: before a boss round and right after an augmentation choice. Missing key keeps the normal length.
+        public float PreparationSecondsLong;
+        public bool IsBossWave(int wave){foreach(var w in Waves)if(w.Wave==wave&&w.Kind==EnemyKind.Boss)return true;return false;}
+        public float PreparationFor(int wave,bool afterAugmentation)=>afterAugmentation||IsBossWave(wave)?PreparationSecondsLong:PreparationSeconds;
         public CombatStats Player;
         static float F(string s) { float v; if(!float.TryParse(s,NumberStyles.Float,CultureInfo.InvariantCulture,out v)||float.IsNaN(v)||float.IsInfinity(v)||v<0) throw new ArgumentException("Invalid non-negative number: "+s);return v; }
         static int I(string s) { float f=F(s);if(f!=Mathf.Floor(f))throw new ArgumentException("Expected integer: "+s);return (int)f; }
@@ -55,7 +59,7 @@ namespace CoreGuardian
             foreach(var r in Rows(enemies,9)) { var kind=Kind<EnemyKind>(r[0]); if(d.Enemies.ContainsKey(kind))throw new ArgumentException("Duplicate enemy kind"); d.Enemies.Add(kind,new EnemySpec {Kind=kind,Health=I(r[1]),Speed=F(r[2]),CoreDamage=I(r[3]),Gold=I(r[4]),Defense=F(r[5]),BuffRadius=F(r[6]),BuffSpeed=F(r[7])}); if(r[8]!="provisional")throw new ArgumentException("Unknown balance status"); }
             foreach(var r in Rows(towers,8)) { var kind=Kind<TowerKind>(r[0]);d.Towers.Add(kind,new TowerSpec{Kind=kind,Cost=I(r[1]),Damage=F(r[2]),Rate=F(r[3]),Range=F(r[4]),ProjectileSpeed=F(r[5]),BuffDamage=F(r[6])});if(r[7]!="provisional")throw new ArgumentException("Unknown balance status"); }
             var settings=Rows(stage,2).ToDictionary(r=>r[0],r=>r[1]);
-            d.CoreEnergy=I(settings["coreEnergy"]);d.StartGold=I(settings["startGold"]);d.StartCrystals=I(settings["startCrystals"]);d.WaveReward=I(settings["waveReward"]);d.PreparationSeconds=F(settings["preparationSeconds"]);
+            d.CoreEnergy=I(settings["coreEnergy"]);d.StartGold=I(settings["startGold"]);d.StartCrystals=I(settings["startCrystals"]);d.WaveReward=I(settings["waveReward"]);d.PreparationSeconds=F(settings["preparationSeconds"]);d.PreparationSecondsLong=settings.TryGetValue("preparationSecondsLong",out var longPreparation)?F(longPreparation):d.PreparationSeconds;
             foreach(var setting in settings.Where(x=>x.Key.StartsWith("waveReward")&&x.Key!="waveReward"))
             {
                 int wave=I(setting.Key.Substring("waveReward".Length));

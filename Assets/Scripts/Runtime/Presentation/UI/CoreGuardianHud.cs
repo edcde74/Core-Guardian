@@ -20,6 +20,9 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     RectTransform canvas, worldFeedback, installPanel, playerPanel, towerPanel, damagePanel, damageContent, topDetails;
     UnityEngine.UI.Text status, center, feedback, towerInfo;
     readonly List<Action> refresh = new List<Action>();
+    readonly List<Action> refreshSnapshot = new List<Action>();
+    readonly List<UnityEngine.UI.Button> modalButtonScratch = new List<UnityEngine.UI.Button>();
+    int refreshDepth;
     float nextRefresh;
     struct DamageTotal
     {
@@ -36,6 +39,8 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         }
     }
     static readonly IComparer<DamageTotal> damageTotalComparer=new DamageTotalComparer();
+    // Cached delegate: List.Sort(IComparer) allocates one per call.
+    static readonly Comparison<DamageTotal> damageTotalCompare=damageTotalComparer.Compare;
     readonly List<DamageTotal> damageTotals=new List<DamageTotal>(),previousDamageTotals=new List<DamageTotal>();
     string damageNegativeSign;
     bool damageTotalsPresented;
@@ -169,7 +174,10 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         float labelX=towerChoice?66:54;
         var t=Text("Label",r,new Vector2(labelX,-verticalInset),size-new Vector2(labelX+16,verticalInset*2),size.y<=48?14:18);
         var reaction=r.gameObject.AddComponent<CoreGuardianHudReaction>();
-        reaction.Selected=()=>name=="Installation"?installOpen:name=="PlayerGrowth"?playerOpen&&purchaseOpen:name=="PlayerSpecs"?playerOpen&&!purchaseOpen:name.EndsWith("SpecTab")?!purchaseOpen:name.EndsWith("BuyTab")?purchaseOpen:name.StartsWith("Install_")&&game.Installing.HasValue&&name=="Install_"+game.Installing.Value;
+        // The button name never changes: classify it once instead of per-frame string tests and concatenation.
+        bool installation=name=="Installation",growth=name=="PlayerGrowth",specs=name=="PlayerSpecs",specTab=name.EndsWith("SpecTab"),buyTab=name.EndsWith("BuyTab"),installChoice=name.StartsWith("Install_");
+        TowerKind? choiceKind=null;if(installChoice)foreach(TowerKind kind in Enum.GetValues(typeof(TowerKind)))if(name=="Install_"+kind){choiceKind=kind;break;}
+        reaction.Selected=()=>installation?installOpen:growth?playerOpen&&purchaseOpen:specs?playerOpen&&!purchaseOpen:specTab?!purchaseOpen:buyTab?purchaseOpen:installChoice&&game.Installing.HasValue&&choiceKind.HasValue&&game.Installing.Value==choiceKind.Value;
         refresh.Add(()=>{t.text=label();b.interactable=enabled==null||enabled();t.color=b.interactable?new Color(1,.95f,.84f):new Color(.78f,.8f,.82f);});return b;
     }
     void Build()
@@ -256,7 +264,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     string StatDisplay(float value,string stat)=>stat=="damage"?Mathf.FloorToInt(value+.5f).ToString():value.ToString("0.##");
     string UpgradeLabel(CombatStats stats,string target,string stat,int cost,string currency)
     {
-        var spec=game.Session.Data.Upgrades.FirstOrDefault(u=>u.Target==target&&u.Stat==stat);float value=StatValue(stats,stat),delta=spec==null?0:spec.Delta;
+        UpgradeSpec spec=null;foreach(var u in game.Session.Data.Upgrades)if(u.Target==target&&u.Stat==stat){spec=u;break;}float value=StatValue(stats,stat),delta=spec==null?0:spec.Delta;
         bool affordable=currency=="골드"?game.Session.Gold>=cost:game.Session.Crystals>=cost;
         return StatName(stat)+" "+StatDisplay(value,stat)+" → "+StatDisplay(value+delta,stat)+"\n+"+delta.ToString("0.##")+" · "+cost+currency+(affordable?"":" · 부족");
     }
@@ -272,7 +280,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         }
         return source;
     }
-    TowerState Selected()=>game.Session.Towers.FirstOrDefault(t=>t.Id==game.SelectedTower);
+    TowerState Selected(){int id=game.SelectedTower;foreach(var t in game.Session.Towers)if(t.Id==id)return t;return null;}
     int Price(string stat){var t=Selected();if(t==null||!Relevant(t,stat))return 0;return game.Session.TowerUpgradePrice(t.Id,stat);}
     bool Relevant(TowerState t,string stat)=>t.Kind==TowerKind.Support?(stat=="range"||stat=="buffDamage"):stat!="buffDamage";
     bool TowerCanUpgrade(string stat){var t=Selected();return t!=null&&Relevant(t,stat)&&game.Session.Phase==SessionPhase.Preparation&&game.Session.Crystals>=Price(stat);}
@@ -445,7 +453,22 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         foreach(var number in damageNumbers)ReturnNumber(number);
         damageNumbers.Clear();nextDamageLane=0;
     }
-    void Update(){if(game==null||!game.Ready||Time.unscaledTime<nextRefresh)return;nextRefresh=Time.unscaledTime+.2f;Refresh();}
+    // First-wave hit numbers: a combat round needs ~24 at once; creating TMP objects mid-combat costs GC and spikes.
+    // Top up the hidden pool a couple per frame while preparation time is actually running (scaled time), never in combat.
+    const int PreparationHitNumbers=32,PreparationNumbersPerFrame=2;
+    void PrepareNumbersDuringPreparation()
+    {
+        if(game==null||!game.Ready||game.Session.Phase!=SessionPhase.Preparation||Time.timeScale<=0||Time.timeSinceLevelLoad<1f)return;
+        if(hitNumberPool.Count>=PreparationHitNumbers||disposingNumbers)return;
+        using var scope=prepareDamageNumbersSample.Auto();
+        for(int i=0;i<PreparationNumbersPerFrame&&hitNumberPool.Count<PreparationHitNumbers;i++)
+        {
+            var number=CreateFloatingNumber("HitDamage");
+            number.Text.color=Color.clear;number.Text.text="0123456789";number.Text.ForceMeshUpdate();
+            ReturnNumber(number);
+        }
+    }
+    void Update(){PrepareNumbersDuringPreparation();if(game==null||!game.Ready||Time.unscaledTime<nextRefresh)return;nextRefresh=Time.unscaledTime+.2f;Refresh();}
     void Refresh()
     {
         if(game==null||!game.Ready||status==null)return;
@@ -454,26 +477,46 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         status.text="코어 "+s.CoreEnergy+" / "+s.CoreMaximum+"  |  "+(s.Diagnostic?"역할 검증":"라운드 "+s.Wave+" / "+s.LastWave)+"  |  골드 "+s.Gold+"  |  수정 "+s.Crystals+"  |  증강 "+s.Augments.Selected.Count;
         bool selecting=s.Phase==SessionPhase.Augmentation;
         if(augmentationPanel!=null){augmentationPanel.gameObject.SetActive(selecting);if(selecting){RefreshCards();augmentationTimer.text="선택 "+Mathf.CeilToInt(s.AugmentationRemaining)+"초 · 클릭 공개 / 공개된 카드 다시 클릭 선택\n시간 초과 시 최고 등급 자동 선택 · 동률이면 왼쪽 우선";}else choiceSignature=null;}
-        if(bossStatus!=null){var boss=s.Enemies.FirstOrDefault(e=>e.Alive&&e.Kind==EnemyKind.Boss);bossStatus.text=!boss.IsValid?"":"보스 · "+boss.Health+" / "+boss.Spec.Health+(boss.Enraged?" · 격노: 이동속도 +30%":"");}
-        center.text=s.Phase==SessionPhase.Preparation?s.Wave+"라운드 준비 "+Mathf.CeilToInt(s.PreparationRemaining)+"초":s.Phase==SessionPhase.Combat?s.Wave+"라운드 전투 · 살아 있는 적 "+s.Enemies.Count(e=>e.Alive):s.Phase==SessionPhase.Defeat?"코어 파괴 · 패배":s.Diagnostic?"역할 검증 완료":"1~"+s.LastWave+"라운드 완료";
+        if(bossStatus!=null){var boss=FirstLivingBoss(s);bossStatus.text=!boss.IsValid?"":"보스 · "+boss.Health+" / "+boss.Spec.Health+(boss.Enraged?" · 격노: 이동속도 +30%":"");}
+        center.text=s.Phase==SessionPhase.Preparation?s.Wave+"라운드 준비 "+Mathf.CeilToInt(s.PreparationRemaining)+"초":s.Phase==SessionPhase.Combat?s.Wave+"라운드 전투 · 살아 있는 적 "+LivingEnemyCount(s):s.Phase==SessionPhase.Defeat?"코어 파괴 · 패배":s.Diagnostic?"역할 검증 완료":"1~"+s.LastWave+"라운드 완료";
         SetHudText(feedback,game.Feedback);
         bool showFeedback=s.Phase==SessionPhase.Preparation||game.HasFeedback;
         SetHudActive(feedback.gameObject,showFeedback);
         SetHudSize(stagePlateView,new Vector2(900,showFeedback?78:42));
         if(selecting)center.text="보스 라운드 완료 · 증강 선택";
-        foreach(var action in refresh.ToArray())action();
-        if(selecting){foreach(var button in canvas.GetComponentsInChildren<UnityEngine.UI.Button>(true))if(!augmentationButtons.Contains(button))button.interactable=false;if(EventSystem.current!=null&&!augmentationButtons.Any(b=>b.gameObject==EventSystem.current.currentSelectedGameObject))EventSystem.current.SetSelectedGameObject(augmentationButtons[0].gameObject);}
+        // Same snapshot semantics as ToArray (actions may rebuild the list), without a new array per refresh.
+        bool outerRefresh=refreshDepth==0;refreshDepth++;
+        try
+        {
+            if(outerRefresh){refreshSnapshot.Clear();refreshSnapshot.AddRange(refresh);for(int i=0;i<refreshSnapshot.Count;i++)refreshSnapshot[i]();}
+            else foreach(var action in refresh.ToArray())action();
+        }
+        finally{refreshDepth--;if(outerRefresh)refreshSnapshot.Clear();}
+        if(selecting)
+        {
+            // Same buttons and order as the array overload; the list is reused across refreshes.
+            canvas.GetComponentsInChildren(true,modalButtonScratch);
+            foreach(var button in modalButtonScratch)if(!augmentationButtons.Contains(button))button.interactable=false;
+            modalButtonScratch.Clear();
+            if(EventSystem.current!=null)
+            {
+                bool selectedChoice=false;foreach(var b in augmentationButtons)if(b.gameObject==EventSystem.current.currentSelectedGameObject){selectedChoice=true;break;}
+                if(!selectedChoice)EventSystem.current.SetSelectedGameObject(augmentationButtons[0].gameObject);
+            }
+        }
         RefreshInspectors();
         RefreshStageFold();
         RefreshPlacementVisibility();
         RefreshDamageTotals();
     }
+    static int LivingEnemyCount(Session s){int count=0;foreach(var e in s.Enemies)if(e.Alive)count++;return count;}
+    static EnemyHandle FirstLivingBoss(Session s){foreach(var e in s.Enemies)if(e.Alive&&e.Kind==EnemyKind.Boss)return e;return default;}
     void RefreshDamageTotals()
     {
         damageTotals.Clear();int ordinal=0;
         foreach(var pair in game.Session.DamageTotals)damageTotals.Add(new DamageTotal{Key=pair.Key,Value=pair.Value,Ordinal=ordinal++});
         // Ordinal preserves LINQ's stable ordering even for culture-equivalent distinct keys.
-        damageTotals.Sort(damageTotalComparer);
+        damageTotals.Sort(damageTotalCompare);
         string negativeSign=System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NegativeSign;
         bool changed=!damageTotalsPresented||negativeSign!=damageNegativeSign||damageTotals.Count!=previousDamageTotals.Count;
         if(!changed)

@@ -27,8 +27,10 @@ Shader "CoreGuardian/TowerBaseShade"
             Varyings Vert(Attributes i){Varyings o;o.positionCS=TransformObjectToHClip(i.positionOS.xyz);o.uv=i.uv;return o;}
             half4 Frag(Varyings i):SV_Target
             {
-                half alpha=SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,i.uv).a;
                 float row=floor((i.uv.y-_BottomUV)*_TextureHeight);
+                // Rows 5+ have zero strength; their alpha-blended output never changed the target.
+                if(row>=5)discard;
+                half alpha=SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,i.uv).a;
                 half strength=.46*saturate(1-row/5.0);
                 return half4(.025,.022,.018,alpha*strength);
             }

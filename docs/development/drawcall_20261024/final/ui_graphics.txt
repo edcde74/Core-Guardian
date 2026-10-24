@@ -1,0 +1,73 @@
+V|0|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|1|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|2|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|3|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|4|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|5|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|6|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|7|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|8|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|9|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|10|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|11|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|12|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|13|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|14|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|15|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|16|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|17|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|18|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|19|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|20|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|21|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|22|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|23|TextMeshProUGUI|PixelifySansBoldDamageOutline|UnityWhite|WorldFeedback/HitDamage
+V|24|Image|Default UI Material|Panel|BottomControls
+V|25|Image|Default UI Material|Disabled|BottomControls/Installation
+V|26|Image|Default UI Material|TowerAttackCategory|BottomControls/Installation/Symbol_TowerAttackCategory
+V|27|Text|Default UI Material|Font Texture|BottomControls/Installation/Label
+V|28|Image|Default UI Material|Disabled|BottomControls/Start
+V|29|Image|Default UI Material|Play|BottomControls/Start/Symbol_Play
+V|30|Text|Default UI Material|Font Texture|BottomControls/Start/Label
+V|31|Image|Default UI Material|Button|BottomControls/PlayerSpecs
+V|32|Image|Default UI Material|AbilityList|BottomControls/PlayerSpecs/Symbol_AbilityList
+V|33|Text|Default UI Material|Font Texture|BottomControls/PlayerSpecs/Label
+V|34|Image|Default UI Material|Button|BottomControls/PlayerGrowth
+V|35|Image|Default UI Material|AbilityUpgrade|BottomControls/PlayerGrowth/Symbol_AbilityUpgrade
+V|36|Text|Default UI Material|Font Texture|BottomControls/PlayerGrowth/Label
+V|37|Image|Default UI Material|Panel|StagePlate
+V|38|Image|Default UI Material|Wave|StagePlate/Symbol_Wave
+V|39|Text|Default UI Material|Font Texture|StagePlate/Preparation
+V|40|Text|Default UI Material|Font Texture|StagePlate/Feedback
+V|41|Image|Default UI Material|Panel|DamagePanel
+V|42|Image|Default UI Material|Damage|DamagePanel/Symbol_Damage
+V|43|Text|Default UI Material|Font Texture|DamagePanel/Title
+-|44|Image|Default UI Material|UnityWhite|DamagePanel/Scroll/Viewport
+V|45|Image|Default UI Material|DamageRoles|DamagePanel/Scroll/Viewport/Content/Tower:6/RoleIcon
+V|46|Text|Default UI Material|Font Texture|DamagePanel/Scroll/Viewport/Content/Tower:6/Value
+V|47|Text|Default UI Material|Font Texture|DamagePanel/Scroll/Viewport/Content/Tower:6/Total
+V|48|Image|Default UI Material|Panel|DamagePanel/Scroll/Viewport/Content/Tower:6/BarTrack
+V|49|Image|Default UI Material|UnityWhite|DamagePanel/Scroll/Viewport/Content/Tower:6/BarTrack/Bar
+-|50|Image|Default UI Material|UnityWhite|DamageFold
+V|51|Image|Default UI Material|DamageRoles|DamageFold/HandleArt
+V|52|Image|Default UI Material|UnityWhite|DamageFold/HandleArt/HoverEdge/Left
+V|53|Image|Default UI Material|UnityWhite|DamageFold/HandleArt/HoverEdge/Right
+-|54|Image|Default UI Material|UnityWhite|TopFold
+V|55|Image|Default UI Material|DamageRoles|TopFold/HandleArt
+V|56|Image|Default UI Material|UnityWhite|TopFold/HandleArt/HoverEdge/Left
+V|57|Image|Default UI Material|UnityWhite|TopFold/HandleArt/HoverEdge/Right
+V|58|Image|Default UI Material|Button|DeveloperMenu
+V|59|Image|Default UI Material|Install|DeveloperMenu/Symbol_Install
+V|60|Text|Default UI Material|Font Texture|DeveloperMenu/Label
+V|61|Image|Default UI Material|Panel|TopStatus
+-|62|Text|Default UI Material|Font Texture|TopStatus/Status
+V|63|Image|Default UI Material|Core|TopStatus/Symbol_Core
+V|64|Text|Default UI Material|Font Texture|TopStatus/Status_Core
+V|65|Image|Default UI Material|Wave|TopStatus/Symbol_Wave
+V|66|Text|Default UI Material|Font Texture|TopStatus/Status_Wave
+V|67|Image|Default UI Material|Gold|TopStatus/Symbol_Gold
+V|68|Text|Default UI Material|Font Texture|TopStatus/Status_Gold
+V|69|Image|Default UI Material|Crystal|TopStatus/Symbol_Crystal
+V|70|Text|Default UI Material|Font Texture|TopStatus/Status_Crystal
+V|71|Image|Default UI Material|Augment|TopStatus/Symbol_Augment
+V|72|Text|Default UI Material|Font Texture|TopStatus/Status_Augment

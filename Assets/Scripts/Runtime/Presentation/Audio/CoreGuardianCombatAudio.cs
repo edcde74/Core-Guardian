@@ -188,7 +188,7 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         if(!isActiveAndEnabled||clip==null)return false;
         var cue=CoreGuardianAudioCatalog.ForClip(clip);
         if(cue==null||cue.Volume<=0)return false;
-        var voice=voices.FirstOrDefault(v=>v!=null&&!v.isPlaying);
+        AudioSource voice=null;foreach(var candidate in voices)if(candidate!=null&&!candidate.isPlaying){voice=candidate;break;}
         // Core danger remains audible when attacks occupy the bounded pool.
         if(voice==null&&important)
         {

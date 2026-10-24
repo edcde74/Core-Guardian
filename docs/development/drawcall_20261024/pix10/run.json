@@ -1,0 +1,106 @@
+{
+  "error": null,
+  "completedSteps": 16,
+  "totalSteps": 16,
+  "log": [
+    {
+      "frame": 1,
+      "what": "setup",
+      "shared": true,
+      "data": {
+        "screenW": 1920,
+        "screenH": 1080,
+        "ortho": 8.5,
+        "outline": 1
+      }
+    },
+    {
+      "frame": 32,
+      "what": "deco mpb applied",
+      "shared": true,
+      "data": [
+        "LeftEdge",
+        "LowProps",
+        "SpawnTunnel02_Selected",
+        "TopEdge",
+        "RightEdge",
+        "BottomEdge"
+      ]
+    },
+    {
+      "frame": 32,
+      "what": "brightness",
+      "shared": true,
+      "data": 1.15
+    },
+    {
+      "frame": 34,
+      "what": "hit on",
+      "shared": true,
+      "data": [
+        "LeftLower en=True vis=True amt=0.05703703 col=RGBA(1.000, 1.000, 1.000, 1.000) order=774 layer=Default pos=(11.37, 11.24, 0.00)",
+        "LeftLower en=True vis=True amt=0.05703703 col=RGBA(1.000, 1.000, 1.000, 1.000) order=774 layer=Default pos=(11.37, 11.24, 0.00)",
+        "RightLower en=True vis=True amt=0.1385185 col=RGBA(1.000, 1.000, 1.000, 1.000) order=774 layer=Default pos=(12.07, 11.26, 0.00)",
+        "RightUpper en=True vis=True amt=0.05703703 col=RGBA(1.000, 1.000, 1.000, 1.000) order=774 layer=Default pos=(11.20, 11.25, 0.00)",
+        "2D Sprite en=False vis=False amt=0.1385185 col=RGBA(1.000, 1.000, 1.000, 1.000) order=774 layer=Default pos=(12.10, 11.27, 0.00)",
+        "2D Sprite en=False vis=False amt=0.05703703 col=RGBA(1.000, 1.000, 1.000, 1.000) order=774 layer=Default pos=(11.27, 11.27, 0.00)"
+      ]
+    },
+    {
+      "frame": 40,
+      "what": "frame capture on_m",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 1607,
+        "setpass": 240
+      }
+    },
+    {
+      "frame": 41,
+      "what": "hidden",
+      "shared": true,
+      "data": 45
+    },
+    {
+      "frame": 47,
+      "what": "frame capture on_h",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 1608,
+        "setpass": 196
+      }
+    },
+    {
+      "frame": 55,
+      "what": "frame capture off_m",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 278,
+        "setpass": 253
+      }
+    },
+    {
+      "frame": 56,
+      "what": "hidden",
+      "shared": true,
+      "data": 45
+    },
+    {
+      "frame": 62,
+      "what": "frame capture off_h",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 270,
+        "setpass": 244
+      }
+    }
+  ]
+}

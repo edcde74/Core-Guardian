@@ -23,27 +23,74 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
 
     sealed class Tint
     {
-        public Color baseline,last;
+        // Brightness goes into a shared twin material's _Color: dynamic sprite batching (SRP Batcher off) bakes
+        // renderer.color into 8-bit vertex colours and would clamp RGB above 1. renderer.color is never changed.
+        // The twin stays assigned while the part is emphasized (one material read per frame instead of a swap and a
+        // restore around every render). Any material another system assigns (hit flash, feedback) becomes the new
+        // source on the next frame; twins copied onto other renderers are mapped back to their source, never stacked.
+        public Material original,twin;
+        public float brightness=-1;
         public bool applied;
-        public void Apply(SpriteRenderer renderer,float brightness)
+        public int seen;
+        public void Apply(SpriteRenderer renderer,float value)
         {
-            var current=renderer.color;
-            if(!applied||current!=last)baseline=current;
-            last=new Color(baseline.r*brightness,baseline.g*brightness,baseline.b*brightness,baseline.a);
-            renderer.color=last;applied=true;
+            var current=renderer.sharedMaterial;
+            if(applied&&twin!=null&&brightness==value&&ReferenceEquals(current,twin))return;
+            var source=SourceOf(current);
+            if(!ReferenceEquals(source,original)||brightness!=value){original=source;twin=Brighter(source,value);brightness=value;}
+            // No twin (brightness 1 or no _Color): show the source itself, never a stale twin.
+            var target=twin!=null?twin:source;
+            if(!ReferenceEquals(current,target))renderer.sharedMaterial=target;
+            applied=true;
         }
         public void Restore(SpriteRenderer renderer)
         {
-            // Another presentation system may have supplied a newer tint; never overwrite it.
-            if(renderer!=null&&applied&&renderer.color==last)renderer.color=baseline;
+            // Another presentation system may have supplied a newer material; never overwrite it.
+            if(renderer!=null&&applied&&twin!=null&&renderer.sharedMaterial==twin)renderer.sharedMaterial=original;
             applied=false;
         }
+    }
+    // Twins are shared by every emphasis owner and live until Play mode ends, so a pooled or copied renderer that
+    // still references one never shows a destroyed material. Keyed by (source, brightness).
+    static readonly Dictionary<(Material,float),Material> twinCache=new Dictionary<(Material,float),Material>();
+    static readonly Dictionary<Material,(Material source,float brightness)> twinInfo=new Dictionary<Material,(Material,float)>();
+    static readonly Dictionary<Material,int> twinSynced=new Dictionary<Material,int>();
+    static int tintFrame;
+    static Material SourceOf(Material material)=>material!=null&&twinInfo.TryGetValue(material,out var info)?info.source:material;
+    static Material Brighter(Material source,float brightness)
+    {
+        if(source==null||brightness<=1)return null;
+        if(!twinCache.TryGetValue((source,brightness),out var twin))
+        {
+            twin=source.HasProperty(ColorId)?new Material(source){name=source.name+" (CG emphasis)",hideFlags=HideFlags.HideAndDontSave}:null;
+            twinCache[(source,brightness)]=twin;
+            if(twin!=null){twinInfo[twin]=(source,brightness);twinSynced[twin]=-1;}
+        }
+        if(twin!=null&&twinSynced[twin]!=tintFrame)Sync(twin);
+        return twin;
+    }
+    // Twins follow later edits of their source material once per presentation.
+    static void Sync(Material twin)
+    {
+        var (source,brightness)=twinInfo[twin];if(source==null)return;
+        twin.CopyPropertiesFromMaterial(source);
+        var c=source.GetColor(ColorId);twin.SetColor(ColorId,new Color(c.r*brightness,c.g*brightness,c.b*brightness,c.a));
+        twinSynced[twin]=tintFrame;
+    }
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetTwins(){ReleaseTwins();Application.quitting-=ReleaseTwins;Application.quitting+=ReleaseTwins;}
+    static void ReleaseTwins()
+    {
+        foreach(var twin in twinInfo.Keys)if(twin!=null){if(Application.isPlaying)Destroy(twin);else DestroyImmediate(twin);}
+        twinCache.Clear();twinInfo.Clear();twinSynced.Clear();
     }
     sealed class Body
     {
         public GameObject host;
         public CoreGuardianSelectionOutline union;
         public Transform art;
+        public SpriteRenderer sharedOutput;
+        public bool unionPresented;
         public readonly Dictionary<SpriteRenderer,Tint> tints=new Dictionary<SpriteRenderer,Tint>();
         public readonly List<SpriteRenderer> sources=new List<SpriteRenderer>();
         public readonly CoreGuardianSpriteReferences references=new CoreGuardianSpriteReferences();
@@ -52,6 +99,12 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
     readonly HashSet<Transform> live=new HashSet<Transform>();
     readonly List<Transform> targets=new List<Transform>(),removed=new List<Transform>();
     readonly List<KeyValuePair<SpriteRenderer,Tint>> appliedTints=new List<KeyValuePair<SpriteRenderer,Tint>>();
+    static readonly int ColorId=Shader.PropertyToID("_Color");
+    readonly List<Material> syncTwins=new List<Material>();
+    int tintPass;
+    // Always-on outline uses one shared screen mask (CoreGuardianSharedOutline, default ON). SetEnabled(false) = original path.
+    // Created on first use: its MaterialPropertyBlock may not be built during MonoBehaviour construction.
+    CoreGuardianSharedOutline sharedOutline;
     CoreGuardianPrototype game;
     Transform core;
     Camera presentedCamera;
@@ -65,22 +118,44 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
     {
         if(!isActiveAndEnabled||camera!=presentedCamera)return;
         using var tintScope=tintSample.Auto();
+        ApplyBodyTints();
+    }
+    void EndCameraRendering(ScriptableRenderContext context,Camera camera){}
+    void ApplyBodyTints()
+    {
         float brightness=Mathf.Clamp(bodyBrightness,1,1.5f);
+        int pass=++tintPass;
+        if(tintFrame!=Time.frameCount||!Application.isPlaying)
+        {
+            tintFrame=Application.isPlaying?Time.frameCount:tintFrame+1;
+            syncTwins.Clear();syncTwins.AddRange(twinInfo.Keys);foreach(var twin in syncTwins)if(twin!=null)Sync(twin);
+        }
         foreach(var state in states.Values)
             foreach(var renderer in state.sources)
                 if(renderer!=null&&renderer.enabled&&renderer.gameObject.activeInHierarchy&&renderer.sprite!=null)
                 {
                     if(!state.tints.TryGetValue(renderer,out var tint)){tint=new Tint();state.tints.Add(renderer,tint);}
                     if(!tint.applied)appliedTints.Add(new KeyValuePair<SpriteRenderer,Tint>(renderer,tint));
-                    tint.Apply(renderer,brightness);
+                    tint.Apply(renderer,brightness);tint.seen=pass;
                 }
-        CoreGuardianAttackBodyBatch.Flush(camera);
-    }
-    void EndCameraRendering(ScriptableRenderContext context,Camera camera)
-    {
-        if(camera==presentedCamera){CoreGuardianAttackBodyBatch.Restore();RestoreBodyTints();}
+        // Parts that were hidden, left the body or were released this frame get their source material back.
+        int write=0;
+        for(int i=0;i<appliedTints.Count;i++)
+        {
+            var pair=appliedTints[i];
+            if(pair.Key!=null&&pair.Value.applied&&pair.Value.seen==pass){appliedTints[write++]=pair;continue;}
+            pair.Value.Restore(pair.Key);
+        }
+        appliedTints.RemoveRange(write,appliedTints.Count-write);
     }
     void RestoreBodyTints(){foreach(var pair in appliedTints)pair.Value.Restore(pair.Key);appliedTints.Clear();}
+    // A released body may still hold a twin that another system copied or put back (e.g. hit flash restore).
+    static void RestoreTwinCopies(Body state)
+    {
+        if(state.art==null)return;
+        foreach(var r in state.art.GetComponentsInChildren<SpriteRenderer>(true))
+            if(r!=null&&r.sharedMaterial!=null&&twinInfo.TryGetValue(r.sharedMaterial,out var info)&&info.source!=null)r.sharedMaterial=info.source;
+    }
 
     void LateUpdate()
     {
@@ -96,9 +171,11 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
     public void PresentTargets(IEnumerable<Transform> bodyTargets,Camera camera)
     {
         using var presentScope=presentSample.Auto();
-        // Keep animation inputs unmodified between renders, including whole-sprite -> cutout transitions.
-        RestoreBodyTints();presentedCamera=camera;
+        // renderer.color is never changed by emphasis, so animation inputs stay unmodified between renders.
+        presentedCamera=camera;
         live.Clear();
+        bool shared=CoreGuardianSharedOutline.Enabled&&CoreGuardianSharedOutline.Supports(camera,transform);
+        if(shared){sharedOutline??=new CoreGuardianSharedOutline();sharedOutline.Begin(camera,transform,outlineWidthPixels,outlineColor,alphaThreshold);}
         if(camera!=null&&bodyTargets!=null)
         foreach(var target in bodyTargets)
         {
@@ -115,18 +192,27 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
             if(state.art==null)continue;
             // Both consumers validate visibility when they use this same, structurally checked list.
             state.sources.Clear();
-            foreach(var renderer in state.references.Read(state.art))
-                if(renderer!=null&&renderer.gameObject.activeInHierarchy)state.sources.Add(renderer);
+            var read=state.references.Read(state.art);var objects=state.references.GameObjects;
+            for(int i=0;i<read.Count;i++){var renderer=read[i];if(renderer!=null&&objects[i].activeInHierarchy)state.sources.Add(renderer);}
+            if(shared)
+            {
+                if(state.unionPresented){state.union.ReleasePresentation();state.unionPresented=false;}
+                sharedOutline.Add(state.host,ref state.sharedOutput,state.sources);
+                continue;
+            }
+            CoreGuardianSharedOutline.Hide(state.sharedOutput);
             state.union.widthPixels=Mathf.Clamp(outlineWidthPixels,0,8);state.union.color=outlineColor;
             state.union.alphaThreshold=Mathf.Clamp(alphaThreshold,.01f,1);
-            state.union.PresentAtOrderWithSources(target,camera,3,state.art,state.sources);
+            state.union.PresentAtOrderWithSources(target,camera,3,state.art,state.sources);state.unionPresented=true;
         }
+        if(shared)sharedOutline.End();
         removed.Clear();foreach(var pair in states)if(pair.Key==null||!live.Contains(pair.Key))removed.Add(pair.Key);
         foreach(var target in removed){Release(states[target]);states.Remove(target);}
     }
     static void Release(Body state)
     {
         foreach(var pair in state.tints)pair.Value.Restore(pair.Key);
+        RestoreTwinCopies(state);
         if(state.host==null)return;
         if(state.union!=null)state.union.ReleasePresentation();
         // Non-ExecuteAlways EditMode consumers may never receive OnDestroy.
@@ -143,7 +229,7 @@ public sealed class CoreGuardianObjectEmphasis : MonoBehaviour
         if(target==null||!states.TryGetValue(target,out var state))return;
         Release(state);states.Remove(target);live.Remove(target);
     }
-    void Clear(){RestoreBodyTints();foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;}
+    void Clear(){RestoreBodyTints();foreach(var state in states.Values)Release(state);states.Clear();presentedCamera=null;sharedOutline?.Release();}
     void OnDisable()
     {
         RenderPipelineManager.beginCameraRendering-=BeginCameraRendering;

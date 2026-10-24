@@ -74,7 +74,7 @@ public static class CoreGuardianRouteMeshBuilder
         foreach(var r in sources)
         {
             if(r.sprite==null||r.sharedMaterial==null||r.sharedMaterial.shader.name!="Universal Render Pipeline/2D/Sprite-Unlit-Default"
-                ||r.drawMode!=SpriteDrawMode.Simple||r.maskInteraction!=SpriteMaskInteraction.None||r.HasPropertyBlock()
+                ||r.drawMode!=SpriteDrawMode.Simple||r.maskInteraction!=SpriteMaskInteraction.None||CoreGuardianSpriteBlocks.HasCustomBlock(r)
                 ||r.GetComponentInParent<SortingGroup>()!=null||r.GetComponentsInChildren<MonoBehaviour>(true).Length!=0)
                 throw new InvalidOperationException("Unsupported road sprite: "+r.name);
             for(var t=r.transform;t!=null;t=t.parent)

@@ -11,6 +11,12 @@ using UnityEditor.SceneManagement;
 
 public class CoreGuardianCoreAmbientPlayModeTests
 {
+    // Emphasis keeps a shared brightness twin assigned between frames; compare the material it was made from.
+    static Material Source(Material material)
+    {
+        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianObjectEmphasis")).First(t=>t!=null);
+        return (Material)type.GetMethod("SourceOf",BindingFlags.NonPublic|BindingFlags.Static).Invoke(null,new object[]{material});
+    }
     [UnityTest]
     public IEnumerator CoreParticlesRiseAndExpire_WhileDamageTemporarilyHidesAmbient_WithoutCameraPostProcessing()
     {
@@ -18,7 +24,7 @@ public class CoreGuardianCoreAmbientPlayModeTests
         EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
         yield return null;
         var ps=UnityEngine.Object.FindObjectsByType<ParticleSystem>().Single(p=>p.name=="CoreCrystalParticles");
-        var body=ps.transform.parent.parent.GetComponent<SpriteRenderer>();var original=body.sharedMaterial;
+        var body=ps.transform.parent.parent.GetComponent<SpriteRenderer>();var original=Source(body.sharedMaterial);
         var camera=Camera.main;bool hdr=camera.allowHDR;
         var data=camera.GetComponents<Component>().Single(c=>c.GetType().Name=="UniversalAdditionalCameraData");
         var post=data.GetType().GetProperty("renderPostProcessing");bool originalPost=(bool)post.GetValue(data);
@@ -32,9 +38,9 @@ public class CoreGuardianCoreAmbientPlayModeTests
         var art=UnityEngine.Object.FindFirstObjectByType(artType);artType.GetMethod("CoreDamaged").Invoke(art,new object[]{1});
         var overlay=ps.transform.parent.GetComponent<MeshRenderer>();
         Assert.That(overlay.enabled,Is.False);Assert.That(ps.GetComponent<ParticleSystemRenderer>().enabled,Is.False);
-        Assert.That(body.sharedMaterial,Is.Not.SameAs(original),"Approved body feedback still owns the damage flash");
+        Assert.That(Source(body.sharedMaterial),Is.Not.SameAs(original),"Approved body feedback still owns the damage flash");
         yield return new WaitForSeconds(.35f);
-        Assert.That(overlay.enabled,Is.True);Assert.That(body.sharedMaterial,Is.SameAs(original));
+        Assert.That(overlay.enabled,Is.True);Assert.That(Source(body.sharedMaterial),Is.SameAs(original));
         Assert.That(camera.allowHDR,Is.EqualTo(hdr));Assert.That((bool)post.GetValue(data),Is.EqualTo(originalPost));
 #else
         yield return null;

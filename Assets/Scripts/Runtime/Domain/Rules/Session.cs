@@ -44,17 +44,20 @@ namespace CoreGuardian
         }
         readonly EnemyRangeIndex viewRangeIndex=new EnemyRangeIndex();
         bool towerViewsPrepared;
+        int viewRevision,viewListVersion;
         public void BeginTowerViews()
         {
             towerViewsPrepared=false;
-            foreach(var tower in Towers)if(tower.Kind==TowerKind.Multi){viewRangeIndex.Build(Enemies);towerViewsPrepared=true;break;}
+            foreach(var tower in Towers)if(tower.Kind==TowerKind.Multi){viewRangeIndex.Build(Enemies);viewRevision=enemyRevision;viewListVersion=Enemies.Version;towerViewsPrepared=true;break;}
         }
         public void EndTowerViews(){towerViewsPrepared=false;viewRangeIndex.Clear();}
         public EnemyHandle TowerTargetForView(TowerState tower)
         {
             tower=FindTower(tower.Id);if(tower==null)return default;
             if(!towerViewsPrepared)return TowerTarget(tower,null);
-            viewRangeIndex.Invalidate(); // Views can invoke external code between tower visits.
+            // Views can invoke external code between tower visits; re-validate only when an enemy write,
+            // model operation or membership change happened since the index was last checked.
+            if(viewRevision!=enemyRevision||viewListVersion!=Enemies.Version){viewRangeIndex.Invalidate();viewRevision=enemyRevision;viewListVersion=Enemies.Version;}
             return TowerTarget(tower,viewRangeIndex);
         }
         public CombatStats Player {get;private set;}
@@ -80,11 +83,10 @@ namespace CoreGuardian
         const int MaxRetainedWorkBuffers=8;
         struct RangeEntry {public EnemyHandle Enemy;public int Ordinal;}
         struct RangeStamp {public EnemyHandle Enemy;public Vector2 Position;public bool Alive;}
-        sealed class RangeEntryComparer : IComparer<RangeEntry>
-        {
-            public int Compare(RangeEntry a,RangeEntry b)=>a.Ordinal.CompareTo(b.Ordinal);
-        }
-        static readonly IComparer<RangeEntry> rangeEntryComparer=new RangeEntryComparer();
+        struct BuffAura {public EnemyHandle Source;public Vector2 Position;public EnemySpec Spec;}
+        // List.Sort(IComparer) wraps comparer.Compare in a new delegate on every call (about 128 B per query);
+        // a cached Comparison runs the same introsort with the same comparisons and allocates nothing.
+        static readonly Comparison<RangeEntry> rangeEntryOrder=(a,b)=>a.Ordinal.CompareTo(b.Ordinal);
         sealed class EnemyRangeIndex
         {
             const float CellSize=4,CoordinateLimit=65536;
@@ -139,7 +141,7 @@ namespace CoreGuardian
                 for(int y=(int)minY;y<=(int)maxY;y++)for(int x=(int)minX;x<=(int)maxX;x++)
                     if(buckets.TryGetValue(new Vector2Int(x,y),out var bucket))
                         foreach(var entry in bucket)if(entry.Enemy.Alive&&Vector2.Distance(entry.Enemy.Position,position)<=range)candidates.Add(entry);
-                candidates.Sort(rangeEntryComparer);
+                candidates.Sort(rangeEntryOrder);
                 foreach(var entry in candidates)result.Add(entry.Enemy);
                 return true;
             }
@@ -149,12 +151,13 @@ namespace CoreGuardian
             public readonly List<WaveSpec> Rows=new List<WaveSpec>();
             public readonly ModelList<EnemyHandle> Enemies=new ModelList<EnemyHandle>();
             public readonly List<EnemyHandle> BuffSources=new List<EnemyHandle>();
+            public readonly List<BuffAura> Auras=new List<BuffAura>();
             public readonly Dictionary<EnemyHandle,float> Boosts=new Dictionary<EnemyHandle,float>();
             public readonly List<TowerState> Towers=new List<TowerState>();
             public readonly ModelList<ProjectileHandle> Projectiles=new ModelList<ProjectileHandle>();
             public readonly Dictionary<ProjectileHandle,int> ProjectileRemovals=new Dictionary<ProjectileHandle,int>();
             public readonly EnemyRangeIndex RangeIndex=new EnemyRangeIndex();
-            public void Clear(){Rows.Clear();Enemies.Clear();BuffSources.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();ProjectileRemovals.Clear();RangeIndex.Clear();}
+            public void Clear(){Rows.Clear();Enemies.Clear();BuffSources.Clear();Auras.Clear();Boosts.Clear();Towers.Clear();Projectiles.Clear();ProjectileRemovals.Clear();RangeIndex.Clear();}
         }
         sealed class ShotWork
         {
@@ -251,7 +254,7 @@ namespace CoreGuardian
         // Session investment: independent per kind/stat, retained even with no towers installed.
         readonly Dictionary<TowerKind,Dictionary<string,int>> towerUpgradeSteps=new Dictionary<TowerKind,Dictionary<string,int>>();
         int TowerStep(TowerKind kind,string stat) => towerUpgradeSteps.TryGetValue(kind,out var steps)&&steps.TryGetValue(stat,out var n)?n:0;
-        public Session(CombatData data, int? seed=null) { Data=data??throw new ArgumentNullException(nameof(data));augmentationRandom=seed.HasValue?new System.Random(seed.Value):new System.Random();Player=data.Player.Clone();Gold=data.StartGold;Crystals=data.StartCrystals;CoreEnergy=CoreMaximum=data.CoreEnergy;PreparationRemaining=data.PreparationSeconds;Phase=SessionPhase.Preparation;Wave=1;LastWave=data.Waves.Select(x=>x.Wave).DefaultIfEmpty(1).Max();LastMessage="준비";InitializeModelPools(); }
+        public Session(CombatData data, int? seed=null) { Data=data??throw new ArgumentNullException(nameof(data));augmentationRandom=seed.HasValue?new System.Random(seed.Value):new System.Random();Player=data.Player.Clone();Gold=data.StartGold;Crystals=data.StartCrystals;CoreEnergy=CoreMaximum=data.CoreEnergy;PreparationRemaining=data.PreparationFor(1,false);Phase=SessionPhase.Preparation;Wave=1;LastWave=data.Waves.Select(x=>x.Wave).DefaultIfEmpty(1).Max();LastMessage="준비";InitializeModelPools(); }
         public void SetBoard(int width,int height,Vector2Int core,IEnumerable<Vector2Int> route)
         {
             if(width<=0||height<=0)throw new ArgumentException("Invalid board");this.width=width;this.height=height;this.core=core;path.Clear();lengths.Clear();pathCells.Clear();segmentEnds.Clear();exactPathIndex=false;pathLength=0;
@@ -285,10 +288,10 @@ namespace CoreGuardian
             Crystals-=s.Cost;Towers.Add(t);LastMessage="포탑 설치";return t;
         }
         public bool DestroyTower(int id) {if(Phase==SessionPhase.Augmentation)return false;var t=Towers.FirstOrDefault(x=>x.Id==id);if(t==null)return false;Towers.Remove(t);int refund=t.Spent/2;Crystals+=refund;LastMessage="철거 +"+refund+" 수정";return true;}
-        UpgradeSpec FindUpgrade(string target,string stat) {return Data.Upgrades.FirstOrDefault(u=>u.Target==target&&u.Stat==stat);}
+        UpgradeSpec FindUpgrade(string target,string stat) {foreach(var u in Data.Upgrades)if(u.Target==target&&u.Stat==stat)return u;return null;}
         static int Step(CombatStats s,string stat) {int n;return s.UpgradeSteps.TryGetValue(stat,out n)?n:0;}
         public int PlayerUpgradePrice(string stat) {return FindUpgrade("Player",stat)==null?-1:Data.PlayerUpgradePrice(Step(Player,stat)+1);}
-        public int TowerUpgradePrice(int id,string stat) {var t=Towers.FirstOrDefault(x=>x.Id==id);if(t==null)return -1;var u=FindUpgrade(t.Kind.ToString(),stat);int step=TowerStep(t.Kind,stat);return u==null?-1:u.Cost+u.CostIncrement*step-(step==0?Data.TowerFirstUpgradeDiscount:0);}
+        public int TowerUpgradePrice(int id,string stat) {TowerState t=null;foreach(var x in Towers)if(x.Id==id){t=x;break;}if(t==null)return -1;var u=FindUpgrade(t.Kind.ToString(),stat);int step=TowerStep(t.Kind,stat);return u==null?-1:u.Cost+u.CostIncrement*step-(step==0?Data.TowerFirstUpgradeDiscount:0);}
         public bool UpgradePlayer(string stat,out string reason) {var u=FindUpgrade("Player",stat);reason=null;if(u==null)reason="강화 불가";else if(Phase!=SessionPhase.Preparation&&Phase!=SessionPhase.Combat)reason="현재 단계에서 강화 불가";else if(Gold<PlayerUpgradePrice(stat))reason="골드 부족";if(reason!=null)return false;Gold-=PlayerUpgradePrice(stat);Player.Add(stat,u.Delta);Player.UpgradeSteps[stat]=Step(Player,stat)+1;LastMessage="기술병 강화";return true;}
         public bool UpgradeTower(int id,string stat,out string reason)
         {
@@ -356,11 +359,13 @@ namespace CoreGuardian
                 var boosts=work.Boosts;
                 // Keep the original source order and freeze membership before any movement.
                 foreach(var source in Enemies)if(source.Alive&&source.Kind==EnemyKind.Buff)work.BuffSources.Add(source);
+                // Nothing writes enemies inside this pass, so each source's position/spec is read once instead of per pair.
+                var auras=work.Auras;foreach(var source in work.BuffSources)auras.Add(new BuffAura{Source=source,Position=source.Position,Spec=source.Spec});
                 foreach(var enemy in Enemies)if(enemy.Alive)
                 {
-                    float boost=0;bool found=false;
-                    foreach(var other in work.BuffSources)
-                        if(other!=enemy&&Vector2.Distance(enemy.Position,other.Position)<=other.Spec.BuffRadius)
+                    float boost=0;bool found=false;var position=enemy.Position;
+                    foreach(var other in auras)
+                        if(other.Source!=enemy&&Vector2.Distance(position,other.Position)<=other.Spec.BuffRadius)
                         {
                             float value=other.Spec.BuffSpeed;
                             if(!found||value>boost||float.IsNaN(boost))boost=value;
@@ -450,7 +455,7 @@ namespace CoreGuardian
             LastMessage=CompletedWave+"라운드 완료 +"+LastCompletionReward+" 수정";
             if(Wave>=LastWave){Phase=SessionPhase.Victory;LastMessage+=" · 1~"+LastWave+"라운드 검증 완료";VictoryReached?.Invoke();return;}
             if(!Data.Waves.Any(row=>row.Wave==Wave+1))throw new InvalidOperationException("Next wave is missing");
-            Wave++;PreparationRemaining=Data.PreparationSeconds;
+            Wave++;PreparationRemaining=Data.PreparationFor(Wave,false);
             if(CompletedWave%Data.AugmentationEvery==0&&(!Data.AugmentationRequiresBoss||BossKilled)){choices=AugmentationDeck.Draw(augmentationRandom,Augments.Selected);AugmentationRemaining=30;Phase=SessionPhase.Augmentation;LastMessage+=" · 증강 선택";RoundCompleted?.Invoke();return;}
             Phase=SessionPhase.Preparation;
             LastMessage+=" · "+Wave+"라운드 준비";
@@ -461,7 +466,7 @@ namespace CoreGuardian
             if(Phase!=SessionPhase.Augmentation||index<0||index>=choices.Length)return false;
             var card=choices[index];var grant=Augments.Apply(card);
             Gold+=grant.Gold;Crystals+=grant.Crystals;CoreMaximum+=grant.Core;CoreEnergy+=grant.Core;Player.Damage+=grant.PlayerDamage;
-            choices=Array.Empty<AugmentationCard>();AugmentationRemaining=0;Phase=SessionPhase.Preparation;PreparationRemaining=Data.PreparationSeconds;
+            choices=Array.Empty<AugmentationCard>();AugmentationRemaining=0;Phase=SessionPhase.Preparation;PreparationRemaining=Data.PreparationFor(Wave,true);
             LastMessage=card.GradeName+" · "+card.Title+" 선택 · "+Wave+"라운드 준비";return true;
         }
         void Shoot(Vector2 position,CombatStats stats,string source,float buff,ref float cooldown,ref EnemyHandle target,ref bool acquired,float dt,bool multi,EnemyRangeIndex rangeIndex)

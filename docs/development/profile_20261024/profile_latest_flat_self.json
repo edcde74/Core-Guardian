@@ -1,0 +1,567 @@
+{
+  "framesUsed": 90,
+  "flat": [
+    {
+      "name": "EditorLoop",
+      "selfMs": 11.5129,
+      "callsPerFrame": 4.0
+    },
+    {
+      "name": "CG.SpriteReferences.Read",
+      "selfMs": 0.8753,
+      "callsPerFrame": 290.0
+    },
+    {
+      "name": "CGX.Sync.EnemyAnim",
+      "selfMs": 0.7923,
+      "callsPerFrame": 125.16
+    },
+    {
+      "name": "CG.SharedOutline.Collect",
+      "selfMs": 0.5892,
+      "callsPerFrame": 145.0
+    },
+    {
+      "name": "CG.SharedOutline.Record",
+      "selfMs": 0.5568,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CG.Emphasis.Present",
+      "selfMs": 0.4933,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CG.Emphasis.Tint",
+      "selfMs": 0.4389,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CGX.Sync.Towers",
+      "selfMs": 0.4085,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "Profiler.FlushMemoryCounters",
+      "selfMs": 0.3907,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CGX.Sync.Enemies",
+      "selfMs": 0.3754,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "SpriteRenderer.PrepareNode",
+      "selfMs": 0.2875,
+      "callsPerFrame": 668.0
+    },
+    {
+      "name": "UnityEngine.CoreModule.dll!UnityEngine::UnitySynchronizationContext.ExecuteTasks() [Invoke]",
+      "selfMs": 0.2525,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "CG.PhotoShadow.Cast",
+      "selfMs": 0.2418,
+      "callsPerFrame": 145.0
+    },
+    {
+      "name": "WaitForJobGroupID",
+      "selfMs": 0.213,
+      "callsPerFrame": 12.14
+    },
+    {
+      "name": "Inl_RenderPipeline.EndCameraRendering",
+      "selfMs": 0.1666,
+      "callsPerFrame": 1.01
+    },
+    {
+      "name": "CG.SharedOutline.Output",
+      "selfMs": 0.1495,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "GarbageCollector.CollectIncremental",
+      "selfMs": 0.1402,
+      "callsPerFrame": 0.89
+    },
+    {
+      "name": "CGX.Tick.Buff",
+      "selfMs": 0.1395,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "CGX.Tick.ShootTowers",
+      "selfMs": 0.1367,
+      "callsPerFrame": 11.73
+    },
+    {
+      "name": "GC.Collect",
+      "selfMs": 0.1271,
+      "callsPerFrame": 0.01
+    },
+    {
+      "name": "LateBehaviourUpdate",
+      "selfMs": 0.1091,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CGX.Tick.Spawn",
+      "selfMs": 0.0867,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "CG.SharedOutline.Sort",
+      "selfMs": 0.0834,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "ClipperRegistry.Cull",
+      "selfMs": 0.0772,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "Inl_On Record Render Graph",
+      "selfMs": 0.0764,
+      "callsPerFrame": 1.01
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianCombatAudio.Update() [Invoke]",
+      "selfMs": 0.0762,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CGX.Tick.Projectiles",
+      "selfMs": 0.0732,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "Idle",
+      "selfMs": 0.072,
+      "callsPerFrame": 1.73
+    },
+    {
+      "name": "Assembly-CSharp.dll!::ArtDepthSorting.LateUpdate() [Invoke]",
+      "selfMs": 0.0614,
+      "callsPerFrame": 145.0
+    },
+    {
+      "name": "TMP GenerateText - Phase III",
+      "selfMs": 0.0563,
+      "callsPerFrame": 12.2
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+      "selfMs": 0.0558,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "GameObject.AddComponent",
+      "selfMs": 0.0539,
+      "callsPerFrame": 4.57
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+      "selfMs": 0.0516,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+      "selfMs": 0.0505,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "UpdateScene",
+      "selfMs": 0.046,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CGX.Sync.Remove",
+      "selfMs": 0.0459,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "UpdateRendererBoundingVolumes",
+      "selfMs": 0.0369,
+      "callsPerFrame": 7.77
+    },
+    {
+      "name": "Shared emphasis outline mask",
+      "selfMs": 0.0357,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "PostLateUpdate.MemoryFrameMaintenance",
+      "selfMs": 0.0335,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianUnitAnimation.LateUpdate() [Invoke]",
+      "selfMs": 0.0321,
+      "callsPerFrame": 144.0
+    },
+    {
+      "name": "Font.CacheFontForText",
+      "selfMs": 0.0319,
+      "callsPerFrame": 0.56
+    },
+    {
+      "name": "CanvasUpdate.Layout",
+      "selfMs": 0.0309,
+      "callsPerFrame": 0.24
+    },
+    {
+      "name": "RenderLoop.CleanupNodeQueue",
+      "selfMs": 0.0306,
+      "callsPerFrame": 4.6
+    },
+    {
+      "name": "UGUI.Rendering.UpdateBatches",
+      "selfMs": 0.0305,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "Inl_UniversalRenderPipeline.RenderSingleCameraInternal: Main Camera",
+      "selfMs": 0.0295,
+      "callsPerFrame": 1.01
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianMusicAudio.Update() [Invoke]",
+      "selfMs": 0.0293,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CG.PhotoShadow.Present",
+      "selfMs": 0.0292,
+      "callsPerFrame": 145.0
+    },
+    {
+      "name": "QueuePrepareIntegrateMainThreadObjects",
+      "selfMs": 0.0291,
+      "callsPerFrame": 1.01
+    },
+    {
+      "name": "Unaccounted time between: Profiler.SessionMetadata and PlayerLoop",
+      "selfMs": 0.0281,
+      "callsPerFrame": 0.01
+    },
+    {
+      "name": "TransformChangeSystem",
+      "selfMs": 0.028,
+      "callsPerFrame": 16.81
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianPhotoShadow.LateUpdate() [Invoke]",
+      "selfMs": 0.0279,
+      "callsPerFrame": 145.0
+    },
+    {
+      "name": "Profiler.CollectUIStats",
+      "selfMs": 0.0267,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CanvasUpdate.PreRender",
+      "selfMs": 0.0265,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "Inl_RenderCameraStack",
+      "selfMs": 0.0255,
+      "callsPerFrame": 1.01
+    },
+    {
+      "name": "TMP.GenerateText",
+      "selfMs": 0.0242,
+      "callsPerFrame": 12.2
+    },
+    {
+      "name": "CGX.Sync.Health",
+      "selfMs": 0.024,
+      "callsPerFrame": 125.16
+    },
+    {
+      "name": "TMP.SetArraySizes",
+      "selfMs": 0.0231,
+      "callsPerFrame": 12.2
+    },
+    {
+      "name": "CGX.Tick.RangeIndex",
+      "selfMs": 0.0229,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "TMP GenerateText - Phase II",
+      "selfMs": 0.0226,
+      "callsPerFrame": 12.2
+    },
+    {
+      "name": "CGX.Tick",
+      "selfMs": 0.0223,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "CGX.Tick.Move",
+      "selfMs": 0.0221,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "Assembly-CSharp.dll!::CoreGuardianObjectEmphasis.LateUpdate() [Invoke]",
+      "selfMs": 0.0221,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "TMP GenerateText - Phase I",
+      "selfMs": 0.0219,
+      "callsPerFrame": 12.2
+    },
+    {
+      "name": "Material.SetPassFast",
+      "selfMs": 0.0215,
+      "callsPerFrame": 2.76
+    },
+    {
+      "name": "CGX.Sync.Player",
+      "selfMs": 0.0196,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "PrepareSceneNodesCombineJob",
+      "selfMs": 0.0185,
+      "callsPerFrame": 0.73
+    },
+    {
+      "name": "CG.SharedOutline.Execute",
+      "selfMs": 0.0178,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "CGX.Sync.Projectiles",
+      "selfMs": 0.0177,
+      "callsPerFrame": 0.98
+    },
+    {
+      "name": "CG.SharedOutline.Mask",
+      "selfMs": 0.0173,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "UnityEngine.UI.dll!UnityEngine.UI::ScrollRect.LateUpdate() [Invoke]",
+      "selfMs": 0.0162,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "BehaviourUpdate",
+      "selfMs": 0.0162,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "Unity.TextMeshPro.dll!TMPro::TextMeshProUGUI.Awake() [Invoke]",
+      "selfMs": 0.0158,
+      "callsPerFrame": 0.43
+    },
+    {
+      "name": "RenderLoop.ScheduleDraw",
+      "selfMs": 0.0152,
+      "callsPerFrame": 2.02
+    },
+    {
+      "name": "Canvas.RenderOverlays",
+      "selfMs": 0.015,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "EditorConnection.CheckForIncomingConnections",
+      "selfMs": 0.0149,
+      "callsPerFrame": 1.0
+    },
+    {
+      "name": "SpriteRenderer.RenderMultiple",
+      "selfMs": 0.0141,
+      "callsPerFrame": 2.97
+    },
+    {
+      "name": "RenderLoop.Draw",
+      "selfMs": 0.014,
+      "callsPerFrame": 0.6
+    },
+    {
+      "name": "RenderPlayModeViewCameras",
+      "selfMs": 0.014,
+      "callsPerFrame": 1.01
+    },
+    {
+      "name": "Unity.TextMeshPro.dll!TMPro::TextMeshProUGUI.OnEnable() [Invoke]",
+      "selfMs": 0.0137,
+      "callsPerFrame": 0.47
+    },
+    {
+      "name": "UI.RenderOverlays",
+      "selfMs": 0.0134,
+      "callsPerFrame": 1.01
+    }
+  ],
+  "gcOwners": [
+    {
+      "owner": "UnityEngine.UI.dll!UnityEngine.UI::Text.OnEnable() [Invoke]",
+      "bytesPerFrame": 7201.0
+    },
+    {
+      "owner": "UnityEngine.CoreModule.dll!UnityEngine::UnitySynchronizationContext.ExecuteTasks() [Invoke]",
+      "bytesPerFrame": 3973.0
+    },
+    {
+      "owner": "Unity.TextMeshPro.dll!TMPro::TextMeshProUGUI.Awake() [Invoke]",
+      "bytesPerFrame": 1791.0
+    },
+    {
+      "owner": "Unity.TextMeshPro.dll!TMPro::TextMeshProUGUI..ctor() [Invoke]",
+      "bytesPerFrame": 1283.0
+    },
+    {
+      "owner": "CGX.Tick.ShootTowers",
+      "bytesPerFrame": 1263.0
+    },
+    {
+      "owner": "CGX.Sync.Towers",
+      "bytesPerFrame": 1253.0
+    },
+    {
+      "owner": "GameObject.AddComponent",
+      "bytesPerFrame": 1058.0
+    },
+    {
+      "owner": "CG.Emphasis.Present",
+      "bytesPerFrame": 892.0
+    },
+    {
+      "owner": "Unity.TextMeshPro.dll!TMPro::TextMeshProUGUI.OnEnable() [Invoke]",
+      "bytesPerFrame": 887.0
+    },
+    {
+      "owner": "Assembly-CSharp.dll!::CoreGuardianHud.Update() [Invoke]",
+      "bytesPerFrame": 875.0
+    },
+    {
+      "owner": "TMP.SetArraySizes",
+      "bytesPerFrame": 482.0
+    },
+    {
+      "owner": "CG.HUD.CreateDamageNumber",
+      "bytesPerFrame": 316.0
+    },
+    {
+      "owner": "UnityEngine.UI.dll!UnityEngine.UI::Text..ctor() [Invoke]",
+      "bytesPerFrame": 262.0
+    },
+    {
+      "owner": "UnityEngine.UI.dll!UnityEngine.UI::Image.OnEnable() [Invoke]",
+      "bytesPerFrame": 185.0
+    },
+    {
+      "owner": "TMP Parse Text",
+      "bytesPerFrame": 166.0
+    },
+    {
+      "owner": "UnityEngine.UI.dll!UnityEngine.UI::Image..ctor() [Invoke]",
+      "bytesPerFrame": 157.0
+    },
+    {
+      "owner": "Unity.TextMeshPro.dll!TMPro::TextMeshProUGUI.OnValidate() [Invoke]",
+      "bytesPerFrame": 139.0
+    },
+    {
+      "owner": "CG.SharedOutline.Sort",
+      "bytesPerFrame": 128.0
+    },
+    {
+      "owner": "CGX.Tick.Projectiles",
+      "bytesPerFrame": 125.0
+    },
+    {
+      "owner": "Inl_On Record Render Graph",
+      "bytesPerFrame": 94.0
+    },
+    {
+      "owner": "Assembly-CSharp.dll!::CoreGuardianPrototype.Update() [Invoke]",
+      "bytesPerFrame": 83.0
+    },
+    {
+      "owner": "UnityEngine.InputModule.dll!UnityEngineInternal.Input::NativeInputSystem.NotifyBeforeUpdate() [Invoke]",
+      "bytesPerFrame": 49.0
+    },
+    {
+      "owner": "ClipperRegistry.Cull",
+      "bytesPerFrame": 33.0
+    },
+    {
+      "owner": "DeformationManager.LateUpdate",
+      "bytesPerFrame": 32.0
+    },
+    {
+      "owner": "CGX.Sync.Projectiles",
+      "bytesPerFrame": 31.0
+    },
+    {
+      "owner": "TMP.RegisterTextObjectForUpdate",
+      "bytesPerFrame": 28.0
+    },
+    {
+      "owner": "Inl_NRPRGComp_SetupContextData",
+      "bytesPerFrame": 22.0
+    },
+    {
+      "owner": "CG.SharedOutline.Record",
+      "bytesPerFrame": 15.0
+    },
+    {
+      "owner": "CanvasUpdate.Layout",
+      "bytesPerFrame": 14.0
+    },
+    {
+      "owner": "Assembly-CSharp.dll!::CoreGuardianCombatArt.Update() [Invoke]",
+      "bytesPerFrame": 14.0
+    },
+    {
+      "owner": "CGX.Tick",
+      "bytesPerFrame": 13.0
+    },
+    {
+      "owner": "Assembly-CSharp.dll!::CoreGuardianHud.LateUpdate() [Invoke]",
+      "bytesPerFrame": 12.0
+    },
+    {
+      "owner": "UnityEditor.CoreModule.dll!UnityEditor::MaterialEditor.ApplyMaterialPropertyDrawersFromNative() [Invoke]",
+      "bytesPerFrame": 12.0
+    },
+    {
+      "owner": "CG.Emphasis.Tint",
+      "bytesPerFrame": 9.0
+    },
+    {
+      "owner": "Inl_UniversalRenderPipeline.InitializeAdditionalCameraData",
+      "bytesPerFrame": 2.0
+    },
+    {
+      "owner": "UnityEngine.UI.dll!UnityEngine.UI::LayoutGroup.OnRectTransformDimensionsChange() [Invoke]",
+      "bytesPerFrame": 2.0
+    },
+    {
+      "owner": "Inl_RenderPipeline.BeginContextRendering",
+      "bytesPerFrame": 1.0
+    },
+    {
+      "owner": "CGX.Sync.Player",
+      "bytesPerFrame": 1.0
+    },
+    {
+      "owner": "UnityEngine.UIModule.dll!UnityEngine::RectTransformUtility..cctor()",
+      "bytesPerFrame": 1.0
+    },
+    {
+      "owner": "mscorlib.dll!System.Collections.Generic::ArraySortHelper`1..cctor()",
+      "bytesPerFrame": 0.0
+    }
+  ]
+}

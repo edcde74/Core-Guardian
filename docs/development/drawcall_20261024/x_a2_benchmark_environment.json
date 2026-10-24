@@ -1,0 +1,135 @@
+{
+  "unity": "6000.6.2f1",
+  "cpu": "AMD Ryzen 5 5600X 6-Core Processor ",
+  "gpu": "NVIDIA GeForce RTX 3070",
+  "ramMB": 32681,
+  "width": 1920,
+  "height": 1080,
+  "vSyncCount": 1,
+  "targetFrameRate": -1,
+  "camera": 8.5,
+  "captureDeltaTime": 0.0166666675,
+  "policy": "fixed simulation dt1/60; wall frame intervals from realtimeSinceStartup; standard/SRP Rendering counters; 15 warm + 90 observed each; each run warm15/sample90; 3 runs per condition; current-thread marker sums; recording OFF",
+  "counters": [
+    {
+      "Name": "PlayerLoop",
+      "category": "PlayerLoop",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "GC Allocated In Frame",
+      "category": "Memory",
+      "unit": "Bytes"
+    },
+    {
+      "Name": "CPU Render Thread Frame Time",
+      "category": "Render",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.SpriteReferences.Read",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Emphasis.Present",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.Emphasis.Tint",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "Update.ScriptRunBehaviourUpdate",
+      "category": "PlayerLoop",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "PreLateUpdate.ScriptRunBehaviourLateUpdate",
+      "category": "PlayerLoop",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.PhotoShadow.Present",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.SharedOutline.Mask",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.SharedOutline.Output",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.SharedOutline.Collect",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.SharedOutline.Sort",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.SharedOutline.Record",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CG.SharedOutline.Execute",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.E.Targets",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.E.Filter",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.E.Removed",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.E.Begin",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.E.Restore",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.W.Align",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.W.Layers",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.W.Pose",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    },
+    {
+      "Name": "CGX.W.Active",
+      "category": "Scripts",
+      "unit": "TimeNanoseconds"
+    }
+  ]
+}

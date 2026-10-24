@@ -94,13 +94,15 @@ namespace CoreGuardian
     public sealed class ModelList<T> : IReadOnlyList<T>
     {
         readonly List<T> values=new List<T>();
-        public int Count=>values.Count;public T this[int index]{get=>values[index];internal set=>values[index]=value;}
+        // Bumped by every membership/order change; lets cached views skip re-validation when nothing changed.
+        internal int Version;
+        public int Count=>values.Count;public T this[int index]{get=>values[index];internal set{values[index]=value;Version++;}}
         public List<T>.Enumerator GetEnumerator()=>values.GetEnumerator();
         IEnumerator<T> IEnumerable<T>.GetEnumerator()=>values.GetEnumerator();IEnumerator IEnumerable.GetEnumerator()=>values.GetEnumerator();
-        internal void Add(T value)=>values.Add(value);internal void AddRange(IEnumerable<T> source)=>values.AddRange(source);
-        internal void AddRange(ModelList<T> source)=>values.AddRange(source.values);
-        internal bool Remove(T value)=>values.Remove(value);internal void RemoveRange(int index,int count)=>values.RemoveRange(index,count);
-        internal void Clear()=>values.Clear();internal void Reverse()=>values.Reverse();
+        internal void Add(T value){values.Add(value);Version++;}internal void AddRange(IEnumerable<T> source){values.AddRange(source);Version++;}
+        internal void AddRange(ModelList<T> source){values.AddRange(source.values);Version++;}
+        internal bool Remove(T value){Version++;return values.Remove(value);}internal void RemoveRange(int index,int count){values.RemoveRange(index,count);Version++;}
+        internal void Clear(){values.Clear();Version++;}internal void Reverse(){values.Reverse();Version++;}
     }
     public readonly struct ModelPoolCounters
     {

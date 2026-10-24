@@ -1,0 +1,324 @@
+{
+  "error": null,
+  "completedSteps": 53,
+  "totalSteps": 53,
+  "log": [
+    {
+      "frame": 1,
+      "what": "setup",
+      "shared": true,
+      "data": {
+        "screenW": 1920,
+        "screenH": 1080,
+        "ortho": 8.5,
+        "outline": 1
+      }
+    },
+    {
+      "frame": 32,
+      "what": "canvases",
+      "shared": true,
+      "data": [
+        "CombatHUD root=True mode=ScreenSpaceOverlay order=2000 override=False enabled=True graphics=73"
+      ]
+    },
+    {
+      "frame": 32,
+      "what": "groups",
+      "shared": true,
+      "data": [
+        "WorldFeedback graphics=24",
+        "BottomControls graphics=13",
+        "StagePlate graphics=4",
+        "DamagePanel graphics=9",
+        "DamageFold graphics=4",
+        "TopFold graphics=4",
+        "DeveloperMenu graphics=3",
+        "TopStatus graphics=12"
+      ]
+    },
+    {
+      "frame": 38,
+      "what": "frame capture ui_base",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 39,
+      "what": "cull group",
+      "shared": true,
+      "data": "WorldFeedback"
+    },
+    {
+      "frame": 45,
+      "what": "frame capture ui_g0",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 141,
+        "setpass": 116
+      }
+    },
+    {
+      "frame": 46,
+      "what": "cull group",
+      "shared": true,
+      "data": "BottomControls"
+    },
+    {
+      "frame": 52,
+      "what": "frame capture ui_g1",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 136,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 53,
+      "what": "cull group",
+      "shared": true,
+      "data": "StagePlate"
+    },
+    {
+      "frame": 59,
+      "what": "frame capture ui_g2",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 60,
+      "what": "cull group",
+      "shared": true,
+      "data": "DamagePanel"
+    },
+    {
+      "frame": 66,
+      "what": "frame capture ui_g3",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 141,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 67,
+      "what": "cull group",
+      "shared": true,
+      "data": "DamageFold"
+    },
+    {
+      "frame": 73,
+      "what": "frame capture ui_g4",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 141,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 74,
+      "what": "cull group",
+      "shared": true,
+      "data": "TopFold"
+    },
+    {
+      "frame": 80,
+      "what": "frame capture ui_g5",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 141,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 81,
+      "what": "cull group",
+      "shared": true,
+      "data": "DeveloperMenu"
+    },
+    {
+      "frame": 87,
+      "what": "frame capture ui_g6",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 140,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 88,
+      "what": "cull group",
+      "shared": true,
+      "data": "TopStatus"
+    },
+    {
+      "frame": 94,
+      "what": "frame capture ui_g7",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 138,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 95,
+      "what": "cull group",
+      "shared": true,
+      "data": "-"
+    },
+    {
+      "frame": 101,
+      "what": "frame capture ui_g8",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 102,
+      "what": "cull group",
+      "shared": true,
+      "data": "-"
+    },
+    {
+      "frame": 108,
+      "what": "frame capture ui_g9",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 109,
+      "what": "cull group",
+      "shared": true,
+      "data": "-"
+    },
+    {
+      "frame": 115,
+      "what": "frame capture ui_g10",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 116,
+      "what": "cull group",
+      "shared": true,
+      "data": "-"
+    },
+    {
+      "frame": 122,
+      "what": "frame capture ui_g11",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 123,
+      "what": "cull group",
+      "shared": true,
+      "data": "-"
+    },
+    {
+      "frame": 129,
+      "what": "frame capture ui_g12",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 130,
+      "what": "cull group",
+      "shared": true,
+      "data": "-"
+    },
+    {
+      "frame": 136,
+      "what": "frame capture ui_g13",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 143,
+        "setpass": 118
+      }
+    },
+    {
+      "frame": 137,
+      "what": "cull group",
+      "shared": true,
+      "data": "-"
+    },
+    {
+      "frame": 143,
+      "what": "frame capture ui_g14",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    },
+    {
+      "frame": 144,
+      "what": "cull group",
+      "shared": true,
+      "data": "-"
+    },
+    {
+      "frame": 150,
+      "what": "frame capture ui_g15",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 142,
+        "setpass": 117
+      }
+    }
+  ]
+}

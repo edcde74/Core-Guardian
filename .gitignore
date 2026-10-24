@@ -48,3 +48,6 @@ __pycache__/
 
 # Separate existing tool repository; preserve it on disk
 /HUDDesigner/
+
+# Unity Profiler captures (hundreds of MB; over GitHub's 100MB file limit). Keep summaries/JSON instead.
+docs/development/**/*.data

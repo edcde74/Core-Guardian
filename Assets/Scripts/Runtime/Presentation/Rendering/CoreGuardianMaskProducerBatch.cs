@@ -45,6 +45,8 @@ internal static class CoreGuardianMaskProducerBatch
     static readonly Dictionary<RenderTexture,long> clearedGenerations=new Dictionary<RenderTexture,long>();
     static readonly bool supported=SystemInfo.supportsComputeShaders&&(SystemInfo.graphicsDeviceType==GraphicsDeviceType.Direct3D11||SystemInfo.graphicsDeviceType==GraphicsDeviceType.Direct3D12);
     static readonly MaterialPropertyBlock properties=new MaterialPropertyBlock();
+    static readonly int ItemsId=Shader.PropertyToID("_Items"),PageSizeId=Shader.PropertyToID("_PageSize"),MaskAtlasId=Shader.PropertyToID("_MaskAtlas"),MainTexId=Shader.PropertyToID("_MainTex");
+    static readonly int UseAtlasId=Shader.PropertyToID("_UseAtlas"),OpacityId=Shader.PropertyToID("_Opacity"),ThresholdId=Shader.PropertyToID("_Threshold"),MaskVPId=Shader.PropertyToID("_MaskVP"),UsePartMatricesId=Shader.PropertyToID("_UsePartMatrices");
     static readonly ProfilerMarker marker=new ProfilerMarker("CG.Mask.PageProducer");
     static Material material;
     static Shader sourceShader;
@@ -110,8 +112,8 @@ internal static class CoreGuardianMaskProducerBatch
             commands.SetRenderTarget(group.page);
             if(cleared.Add(group.page)&&(!clearedGenerations.TryGetValue(group.page,out var generation)||generation!=group.draws[0].slot.Generation))commands.ClearRenderTarget(false,true,Color.clear);
             commands.SetViewport(new Rect(0,0,group.page.width,group.page.height));
-            properties.Clear();properties.SetBuffer("_Items",group.buffer);properties.SetVector("_PageSize",new Vector4(group.page.width,group.page.height,0,0));
-            bool array=group.source is Texture2DArray;properties.SetTexture(array?"_MaskAtlas":"_MainTex",group.source);properties.SetFloat("_UseAtlas",array?1:0);
+            properties.Clear();properties.SetBuffer(ItemsId,group.buffer);properties.SetVector(PageSizeId,new Vector4(group.page.width,group.page.height,0,0));
+            bool array=group.source is Texture2DArray;properties.SetTexture(array?MaskAtlasId:MainTexId,group.source);properties.SetFloat(UseAtlasId,array?1:0);
             commands.DrawMesh(group.mesh,Matrix4x4.identity,material,0,0,properties);LastDraws++;
         }
         Graphics.ExecuteCommandBuffer(commands);
@@ -119,7 +121,12 @@ internal static class CoreGuardianMaskProducerBatch
         if(discard)Discard(camera);
     }
     internal static void Discard(Camera camera)
-    {var id=camera.GetEntityId();queued.RemoveAll(draw=>draw.slot.CameraID==id||!CoreGuardianMaskPage.IsValid(draw.slot));}
+    {
+        // Same order-preserving filter as RemoveAll, without allocating a capturing predicate per Flush.
+        var id=camera.GetEntityId();int write=0;
+        for(int read=0;read<queued.Count;read++){var draw=queued[read];if(draw.slot.CameraID==id||!CoreGuardianMaskPage.IsValid(draw.slot))continue;queued[write++]=draw;}
+        if(write<queued.Count)queued.RemoveRange(write,queued.Count-write);
+    }
     internal static void ReleasePage(RenderTexture page)=>clearedGenerations.Remove(page);
     internal static void RenderOriginal(in CoreGuardianMaskPage.Slot slot,RenderTexture target)
     {
@@ -135,8 +142,8 @@ internal static class CoreGuardianMaskProducerBatch
                 sourceAtlas.Clear();for(int i=0;i<shape.vertices.Length;i++)sourceAtlas.Add(new Vector4(shape.layer,0,0,0));shape.fallback.SetUVs(5,sourceAtlas);fallbackMeshes.Add(shape.fallback);
             }
             commands.SetViewport(new Rect(0,0,draw.viewport.x,draw.viewport.y));properties.Clear();
-            bool array=draw.source is Texture2DArray;properties.SetTexture(array?"_MaskAtlas":"_MainTex",draw.source);properties.SetFloat("_UseAtlas",array?1:0);
-            properties.SetFloat("_Opacity",draw.opacity);properties.SetFloat("_Threshold",draw.threshold);properties.SetMatrix("_MaskVP",draw.vp);properties.SetFloat("_UsePartMatrices",0);
+            bool array=draw.source is Texture2DArray;properties.SetTexture(array?MaskAtlasId:MainTexId,draw.source);properties.SetFloat(UseAtlasId,array?1:0);
+            properties.SetFloat(OpacityId,draw.opacity);properties.SetFloat(ThresholdId,draw.threshold);properties.SetMatrix(MaskVPId,draw.vp);properties.SetFloat(UsePartMatricesId,0);
             commands.DrawMesh(shape.fallback,draw.part,draw.original,0,0,properties);
         }
         Graphics.ExecuteCommandBuffer(commands);

@@ -1,0 +1,46 @@
+{
+  "error": null,
+  "completedSteps": 9,
+  "totalSteps": 9,
+  "log": [
+    {
+      "frame": 1,
+      "what": "setup",
+      "shared": true,
+      "data": {
+        "screenW": 1920,
+        "screenH": 1080,
+        "ortho": 8.5,
+        "outline": 1
+      }
+    },
+    {
+      "frame": 38,
+      "what": "frame capture f_off",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 141,
+        "setpass": 116
+      }
+    },
+    {
+      "frame": 39,
+      "what": "hidden",
+      "shared": true,
+      "data": 0
+    },
+    {
+      "frame": 45,
+      "what": "frame capture f_off_h",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 141,
+        "setpass": 116
+      }
+    }
+  ]
+}

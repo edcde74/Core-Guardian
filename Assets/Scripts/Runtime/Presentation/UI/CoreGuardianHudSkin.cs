@@ -49,6 +49,7 @@ public static class CoreGuardianHudSkin
 public sealed class CoreGuardianHudReaction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, ISelectHandler, IDeselectHandler
 {
     Button button;Image image;RectTransform label;Vector2 origin;bool hover,pressed;float flash;
+    string spriteKey;Sprite keyedSprite;
     public Func<bool> Selected;
     public bool InsetAbilityCell;
     void Awake(){button=GetComponent<Button>();image=GetComponent<Image>();button.transition=Selectable.Transition.None;}
@@ -64,14 +65,19 @@ public sealed class CoreGuardianHudReaction : MonoBehaviour, IPointerEnterHandle
     void Update()
     {
         bool usable=button!=null&&button.interactable;
-        image.sprite=CoreGuardianHudSkin.Sprite(!usable?"Disabled":hover||Time.unscaledTime<flash||Selected!=null&&Selected()?"Hover":"Button");
-        image.type=Image.Type.Sliced;image.color=!usable?new Color(.7f,.72f,.75f):pressed?new Color(.7f,.8f,.8f):Color.white;
+        string key=!usable?"Disabled":hover||Time.unscaledTime<flash||Selected!=null&&Selected()?"Hover":"Button";
+        // Same skin lookup result; skip the string-keyed dictionary while the key and sprite are unchanged.
+        if(!ReferenceEquals(key,spriteKey)||keyedSprite==null){keyedSprite=CoreGuardianHudSkin.Sprite(key);spriteKey=key;}
+        image.sprite=keyedSprite;
+        var color=!usable?new Color(.7f,.72f,.75f):pressed?new Color(.7f,.8f,.8f):Color.white;
         if(InsetAbilityCell)
         {
             // Preserve the shared recessed plate; only the hovered/confirmed cell gets a frame.
             bool highlight=usable&&(hover||Time.unscaledTime<flash);
-            image.color=highlight?(pressed?new Color(.7f,.8f,.8f,.75f):new Color(1,1,1,.75f)):Color.clear;
+            color=highlight?(pressed?new Color(.7f,.8f,.8f,.75f):new Color(1,1,1,.75f)):Color.clear;
         }
+        // One final assignment: the former interim color dirtied inset cells' vertices every frame.
+        image.type=Image.Type.Sliced;image.color=color;
         if(label!=null)label.anchoredPosition=origin+(pressed&&usable?new Vector2(0,-3):Vector2.zero);
     }
     public void OnPointerEnter(PointerEventData e){hover=true;}

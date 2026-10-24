@@ -13,6 +13,7 @@ public sealed class CoreGuardianPlayerMotion
     readonly Sprite[,] sprites=new Sprite[8,4];
     readonly Pose idle,walk,attack;
     readonly float ppu;
+    readonly SpriteRenderer[] presentedParts=new SpriteRenderer[4];
     float phase,gaitWeight;
     bool moving;
     Vector2 travel=Vector2.left;
@@ -67,7 +68,7 @@ public sealed class CoreGuardianPlayerMotion
     {
         bool firing=age<duration;var p=firing?attack:gaitWeight>0?walk:idle;
         idle.root.gameObject.SetActive(p==idle);walk.root.gameObject.SetActive(p==walk);attack.root.gameObject.SetActive(p==attack);original.enabled=false;
-        var parts=new[]{p.body,p.arm,p.left,p.right};
+        var parts=presentedParts;parts[0]=p.body;parts[1]=p.arm;parts[2]=p.left;parts[3]=p.right;
         for(int i=0;i<4;i++)
         {
             var r=parts[i];r.sprite=sprites[direction,i];r.color=original.color;r.sortingLayerID=original.sortingLayerID;

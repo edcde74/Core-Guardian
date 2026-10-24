@@ -34,6 +34,55 @@ public class CoreGuardianRoundFlowTests
         }
         Assert.That(s.Phase,Is.Not.EqualTo(SessionPhase.Combat));
     }
+    static CombatData Load(string stage) => CombatData.Load(Resources.Load<TextAsset>("CoreGuardian/enemies").text,Resources.Load<TextAsset>("CoreGuardian/towers").text,stage,Resources.Load<TextAsset>("CoreGuardian/upgrades").text,Resources.Load<TextAsset>("CoreGuardian/waves").text);
+    // 2026-10-24 rule: normal preparation 30s; 45s before a boss round and right after an augmentation choice.
+    [Test] public void PreparationIsThirtySecondsAndLongLengthIsStageData()
+    {
+        var d=Data();
+        Assert.That(d.PreparationSeconds,Is.EqualTo(30));Assert.That(d.PreparationSecondsLong,Is.EqualTo(45));
+        Assert.That(Game(d).PreparationRemaining,Is.EqualTo(30),"Round 1 preparation is normal length");
+        var stage=Resources.Load<TextAsset>("CoreGuardian/stage").text;
+        Assert.That(Load(stage.Replace("preparationSecondsLong,45","preparationSecondsLong,50")).PreparationSecondsLong,Is.EqualTo(50));
+        var legacy=Load(string.Join("\n",stage.Replace("\r","").Split('\n').Where(l=>!l.StartsWith("preparationSecondsLong,"))));
+        Assert.That(legacy.PreparationSecondsLong,Is.EqualTo(legacy.PreparationSeconds),"Without the key every preparation keeps the normal length");
+    }
+    [Test] public void BossRoundsComeFromWaveData()
+    {
+        var d=Data();
+        foreach(int wave in new[]{10,20,30})Assert.That(d.IsBossWave(wave),Is.True,"Boss round "+wave);
+        foreach(int wave in new[]{1,5,9,11,15,19,21,25,29})Assert.That(d.IsBossWave(wave),Is.False,"Normal round "+wave);
+        Assert.That(d.PreparationFor(10,false),Is.EqualTo(45));Assert.That(d.PreparationFor(11,false),Is.EqualTo(30));
+        Assert.That(d.PreparationFor(6,true),Is.EqualTo(45));Assert.That(d.PreparationFor(20,true),Is.EqualTo(45));
+    }
+    [Test] public void ThirtyRoundsUseLongPreparationBeforeBossesAndAfterAugmentations()
+    {
+        var s=Game(Data());
+        for(int wave=1;wave<30;wave++)
+        {
+            Assert.That(s.Wave,Is.EqualTo(wave));Assert.That(s.StartCombat(),Is.True);Finish(s);
+            if(wave%5==0)
+            {
+                Assert.That(s.Phase,Is.EqualTo(SessionPhase.Augmentation),"Augmentation after round "+wave);
+                float before=s.PreparationRemaining;s.Tick(10,Away);
+                Assert.That(s.Phase,Is.EqualTo(SessionPhase.Augmentation));
+                Assert.That(s.PreparationRemaining,Is.EqualTo(before),"Augmentation time never consumes preparation");
+                Assert.That(s.ChooseAugmentation(0),Is.True);
+            }
+            Assert.That(s.Phase,Is.EqualTo(SessionPhase.Preparation));Assert.That(s.Wave,Is.EqualTo(wave+1));
+            bool longer=wave%5==0||(wave+1)%10==0;
+            float expected=longer?45:30;Assert.That(s.PreparationRemaining,Is.InRange(expected-.2f,expected),"Preparation before round "+(wave+1)+" (the finishing tick may already spend a fraction)");
+        }
+    }
+    [Test] public void LongPreparationRunsItsFullLengthAndTimedOutChoiceAlsoGetsIt()
+    {
+        var s=Game(Data());
+        for(int wave=1;wave<=5;wave++){Assert.That(s.StartCombat(),Is.True);Finish(s);}
+        Assert.That(s.Phase,Is.EqualTo(SessionPhase.Augmentation));
+        s.Tick(30.01f,Away);
+        Assert.That(s.Phase,Is.EqualTo(SessionPhase.Preparation),"Choice timeout picks a card");Assert.That(s.PreparationRemaining,Is.InRange(44.9f,45));
+        s.Tick(s.PreparationRemaining-.1f,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Preparation));
+        s.Tick(.2f,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Combat));Assert.That(s.Wave,Is.EqualTo(6));
+    }
     [Test] public void AllNineSchedulesAwardOnceAndEndAtNine()
     {
         var d=Data();d.AugmentationEvery=10;d.Waves.RemoveAll(w=>w.Wave>9);var expectedGold=d.Waves.Sum(w=>w.Count*(w.Enemy??d.Enemies[w.Kind]).Gold);var s=Game(d);int[] rewards={60,60,60,60,65,65,65,65,65};

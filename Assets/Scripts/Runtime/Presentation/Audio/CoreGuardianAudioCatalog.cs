@@ -11,7 +11,19 @@ public sealed class CoreGuardianAudioCue
     public int priority;
     public bool important,protectCore;
     [NonSerialized] AudioClip clip;
-    public CoreGuardianAudioCategory Category=>(CoreGuardianAudioCategory)Enum.Parse(typeof(CoreGuardianAudioCategory),category);
+    [NonSerialized] bool categoryParsed;
+    [NonSerialized] string parsedCategory;
+    [NonSerialized] CoreGuardianAudioCategory parsedValue;
+    // Parsed once per category string. Enum.Parse boxed on every voice-volume update each frame.
+    public CoreGuardianAudioCategory Category
+    {
+        get
+        {
+            if(!categoryParsed||!ReferenceEquals(parsedCategory,category))
+            {parsedValue=(CoreGuardianAudioCategory)Enum.Parse(typeof(CoreGuardianAudioCategory),category);parsedCategory=category;categoryParsed=true;}
+            return parsedValue;
+        }
+    }
     public AudioClip Clip=>clip!=null?clip:(clip=Resources.Load<AudioClip>(resourcePath));
     public float Volume=>CoreGuardianSoundSettings.EffectiveVolume(Category)*gain;
 }
@@ -20,6 +32,7 @@ public static class CoreGuardianAudioCatalog
 {
     [Serializable] sealed class Data {public CoreGuardianAudioCue[] cues;}
     static Dictionary<string,CoreGuardianAudioCue> cues;
+    static readonly Dictionary<AudioClip,CoreGuardianAudioCue> byClip=new Dictionary<AudioClip,CoreGuardianAudioCue>();
     public static CoreGuardianAudioCue Find(string id)
     {
         if(cues==null)
@@ -34,6 +47,10 @@ public static class CoreGuardianAudioCatalog
     public static CoreGuardianAudioCue ForClip(AudioClip clip)
     {
         Find("");
-        return cues.Values.FirstOrDefault(c=>c.Clip==clip);
+        // The catalog is immutable after load. Reuse a first match only while it still owns this clip.
+        if(clip!=null&&byClip.TryGetValue(clip,out var cached)&&cached.Clip==clip)return cached;
+        var result=cues.Values.FirstOrDefault(c=>c.Clip==clip);
+        if(clip!=null&&result!=null)byClip[clip]=result;
+        return result;
     }
 }

@@ -1,0 +1,150 @@
+{
+  "error": null,
+  "completedSteps": 17,
+  "totalSteps": 17,
+  "log": [
+    {
+      "frame": 1,
+      "what": "setup",
+      "shared": true,
+      "data": {
+        "screenW": 1920,
+        "screenH": 1080,
+        "ortho": 8.5,
+        "outline": 1
+      }
+    },
+    {
+      "frame": 32,
+      "what": "deco mpb applied",
+      "shared": true,
+      "data": [
+        "SpawnTunnel02_Selected",
+        "RightEdge",
+        "TopEdge",
+        "LeftEdge",
+        "LowProps",
+        "BottomEdge"
+      ]
+    },
+    {
+      "frame": 38,
+      "what": "frame capture on_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 1737,
+        "setpass": 278
+      }
+    },
+    {
+      "frame": 43,
+      "what": "frame capture on_b",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 1607,
+        "setpass": 240
+      }
+    },
+    {
+      "frame": 50,
+      "what": "frame capture off_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 278,
+        "setpass": 253
+      }
+    },
+    {
+      "frame": 55,
+      "what": "frame capture off_b",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 278,
+        "setpass": 253
+      }
+    },
+    {
+      "frame": 56,
+      "what": "lit renderers by name",
+      "shared": true,
+      "data": [
+        "128 EnemySpeedBuff",
+        "128 Health",
+        "24 EnemyHit",
+        "3 TowerDamageBuff",
+        "1 Projectile_14",
+        "1 Projectile_5",
+        "1 Projectile_18",
+        "1 Projectile_17",
+        "1 Projectile_21",
+        "1 Projectile_9",
+        "1 Projectile_31",
+        "1 Projectile_33",
+        "1 Projectile_25",
+        "1 Projectile_26",
+        "1 Projectile_22",
+        "1 Projectile_10",
+        "1 Projectile_11",
+        "1 Projectile_30",
+        "1 Projectile_4",
+        "1 Projectile_12",
+        "1 Projectile_7",
+        "1 Projectile_35",
+        "1 Projectile_34",
+        "1 Projectile_15",
+        "1 Projectile_36",
+        "1 Projectile_32",
+        "1 Projectile_24",
+        "1 Projectile_6",
+        "1 Projectile_2",
+        "1 Projectile_20",
+        "1 Projectile_1",
+        "1 Projectile_19",
+        "1 Projectile_28",
+        "1 Projectile_16",
+        "1 Projectile_8",
+        "1 Projectile_13",
+        "1 Projectile_27",
+        "1 Projectile_23",
+        "1 Projectile_29",
+        "1 Projectile_3"
+      ]
+    },
+    {
+      "frame": 56,
+      "what": "swapped to",
+      "shared": true,
+      "data": "ArtReview_Unlit|Universal Render Pipeline/2D/Sprite-Unlit-Default"
+    },
+    {
+      "frame": 62,
+      "what": "frame capture unlit_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 278,
+        "setpass": 253
+      }
+    },
+    {
+      "frame": 69,
+      "what": "frame capture on_c",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "draw": 1607,
+        "setpass": 240
+      }
+    }
+  ]
+}

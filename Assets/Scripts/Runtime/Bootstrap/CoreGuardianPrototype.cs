@@ -55,6 +55,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     Transform enemyPoolRoot;
     CoreGuardianPlacementOverlay placementOverlay;
     GameObject ghost;
+    SpriteRenderer[] ghostRenderers=System.Array.Empty<SpriteRenderer>();
+    readonly List<RaycastResult> uiRaycastResults=new List<RaycastResult>();
     Sprite square, dot;
     Tile occupiedTile;
     CoreGuardianHud hud;
@@ -146,7 +148,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             ghost.SetActive(onBoard);
             ghost.transform.position=ground.GetCellCenterWorld(cell);
             bool valid=CanInstall(xy);
-            foreach(var sr in ghost.GetComponentsInChildren<SpriteRenderer>())sr.color=new Color(valid?.55f:1f,valid?1f:.35f,valid?.65f:.35f,.6f);
+            // Same active renderer set as the previous per-frame lookup: captured once, applied only while shown.
+            if(onBoard)foreach(var sr in ghostRenderers)if(sr!=null)sr.color=new Color(valid?.55f:1f,valid?1f:.35f,valid?.65f:.35f,.6f);
         }
         // A UI press owns the entire gesture, including a release after its panel disappears.
         // Commit world clicks on release so the UI Button release cannot also place/select.
@@ -197,9 +200,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     bool OverUI(Vector2 position)
     {
         if(EventSystem.current==null)return false;
-        var results=new List<RaycastResult>();
-        EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current){position=position},results);
-        return results.Count>0;
+        uiRaycastResults.Clear();
+        EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current){position=position},uiRaycastResults);
+        bool hit=uiRaycastResults.Count>0;uiRaycastResults.Clear();return hit;
     }
     bool CanInstall(Vector2Int c)
     {
@@ -215,7 +218,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         Installing=kind;
         ghost=Instantiate(towerArt[(int)kind]);ghost.name="TowerPlacementPreview";
         var shadow=ghost.transform.Find("그림자");if(shadow!=null)shadow.gameObject.SetActive(false);
-        foreach(var sr in ghost.GetComponentsInChildren<SpriteRenderer>())sr.sortingOrder=1800;
+        ghostRenderers=ghost.GetComponentsInChildren<SpriteRenderer>();
+        foreach(var sr in ghostRenderers)sr.sortingOrder=1800;
         foreach(var d in ghost.GetComponentsInChildren<ArtDepthSorting>())d.enabled=false;
         if(placementOverlay==null)
             placementOverlay=new CoreGuardianPlacementOverlay(transform,square,UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline.default2DMaterial);
@@ -225,7 +229,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public void CancelInstall()
     {
         bool wasInstalling=Installing.HasValue;
-        Installing=null;if(ghost!=null)Destroy(ghost);
+        Installing=null;if(ghost!=null)Destroy(ghost);ghostRenderers=System.Array.Empty<SpriteRenderer>();
         placementOverlay?.Hide();
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
         Cursor.visible=true;

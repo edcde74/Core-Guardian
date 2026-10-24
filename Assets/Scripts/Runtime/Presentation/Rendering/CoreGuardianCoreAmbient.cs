@@ -4,6 +4,7 @@ using UnityEngine;
 // Core-local presentation only: no camera, Volume, lighting, source material or combat changes.
 public sealed class CoreGuardianCoreAmbient : IDisposable
 {
+    static readonly int StrengthId=Shader.PropertyToID("_Strength");
     readonly SpriteRenderer source;
     readonly GameObject root;
     readonly Mesh mesh;
@@ -64,7 +65,7 @@ public sealed class CoreGuardianCoreAmbient : IDisposable
         bool showParticles=visible&&(particleSettings==null||particleSettings.isActiveAndEnabled);
         glow.enabled=visible;particleRenderer.enabled=showParticles;
         var emission=particles.emission;emission.enabled=showParticles;
-        glowMaterial.SetFloat("_Strength",.34f+.06f*Mathf.Sin(phase*Mathf.PI*2/3));
+        glowMaterial.SetFloat(StrengthId,.34f+.06f*Mathf.Sin(phase*Mathf.PI*2/3));
         if(source!=null)
         {
             glow.sortingLayerID=source.sortingLayerID;glow.sortingOrder=source.sortingOrder+1;

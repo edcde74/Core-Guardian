@@ -16,6 +16,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     static readonly ProfilerMarker executeSample=new ProfilerMarker("CG.Mask.Execute");
     static readonly ProfilerMarker outputSample=new ProfilerMarker("CG.Mask.Output");
     static Shader contactShader;
+    static readonly int MainTexId=Shader.PropertyToID("_MainTex"),MainTexTexelSizeId=Shader.PropertyToID("_MainTex_TexelSize"),MaskOriginId=Shader.PropertyToID("_MaskOriginPx");
+    static readonly int ColorId=Shader.PropertyToID("_Color"),WidthId=Shader.PropertyToID("_Width"),BandId=Shader.PropertyToID("_Band"),MaskAtlasId=Shader.PropertyToID("_MaskAtlas");
+    static readonly int UseAtlasId=Shader.PropertyToID("_UseAtlas"),OpacityId=Shader.PropertyToID("_Opacity"),ThresholdId=Shader.PropertyToID("_Threshold"),MaskVPId=Shader.PropertyToID("_MaskVP"),UsePartMatricesId=Shader.PropertyToID("_UsePartMatrices");
     [Header("선택 대상 아웃라인 · 능력치/강화 패널이 열려 있을 때만 표시")]
     [Tooltip("외곽선 색상과 불투명도. 발광이나 깜빡임은 사용하지 않습니다.")]
     public Color color=new Color(.8f,.67f,.39f,1);
@@ -99,7 +102,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         var bounds=sources[0].bounds;foreach(var r in sources)bounds.Encapsulate(r.bounds);
         TargetBounds=bounds;
         var lo=new Vector2(float.PositiveInfinity,float.PositiveInfinity);var hi=new Vector2(float.NegativeInfinity,float.NegativeInfinity);
-        for(int i=0;i<8;i++)
+        // With zero depth extent, corners i and i^4 are bit-identical; project each distinct corner once.
+        int cornerCount=bounds.extents.z==0?4:8;
+        for(int i=0;i<cornerCount;i++)
         {
             var corner=bounds.center+Vector3.Scale(bounds.extents,new Vector3((i&1)==0?-1:1,(i&2)==0?-1:1,(i&4)==0?-1:1));
             var screen=camera.WorldToScreenPoint(corner);if(screen.z<=0){ReleasePresentation();return;}
@@ -171,7 +176,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         output.sortingLayerID=front.sortingLayerID;output.sortingOrder=front.sortingOrder+4;
         if(writeOutlineProperties)
         {
-            SetOutputMask();outputProperties.SetColor("_Color",color);outputProperties.SetInt("_Width",radius);
+            SetOutputMask();outputProperties.SetColor(ColorId,color);outputProperties.SetInt(WidthId,radius);
             output.SetPropertyBlock(outputProperties);
         }
         output.sharedMaterial=outlineMaterial;
@@ -215,7 +220,7 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
         }
         PresentMask(target,camera,material==null,compact);
         if(!IsVisible||material==null)return;
-        SetOutputMask();if(band.HasValue)outputProperties.SetFloat("_Band",band.Value);
+        SetOutputMask();if(band.HasValue)outputProperties.SetFloat(BandId,band.Value);
         output.SetPropertyBlock(outputProperties);output.sharedMaterial=material;output.sortingOrder=43;
         if(compact)RegisterOutput(camera,true,band??material.GetFloat("_Band"));
     }
@@ -255,9 +260,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     }
     void SetOutputMask()
     {
-        outputProperties.Clear();outputProperties.SetTexture("_MainTex",mask);
-        outputProperties.SetVector("_MainTex_TexelSize",new Vector4(1f/mask.width,1f/mask.height,mask.width,mask.height));
-        outputProperties.SetVector("_MaskOriginPx",new Vector4(maskOriginPx.x,maskOriginPx.y,0,0));
+        outputProperties.Clear();outputProperties.SetTexture(MainTexId,mask);
+        outputProperties.SetVector(MainTexTexelSizeId,new Vector4(1f/mask.width,1f/mask.height,mask.width,mask.height));
+        outputProperties.SetVector(MaskOriginId,new Vector4(maskOriginPx.x,maskOriginPx.y,0,0));
     }
     Mesh SpriteMesh(Sprite sprite)
     {
@@ -313,9 +318,9 @@ public sealed class CoreGuardianSelectionOutline : MonoBehaviour
     void MaskProperties(Texture texture,float opacity,Matrix4x4 vp,bool combined)
     {
         properties.Clear();bool array=texture is Texture2DArray;
-        properties.SetTexture(array?"_MaskAtlas":"_MainTex",texture);properties.SetFloat("_UseAtlas",array?1:0);properties.SetFloat("_Opacity",opacity);
-        properties.SetFloat("_Threshold",Mathf.Clamp(alphaThreshold,.01f,1));properties.SetMatrix("_MaskVP",vp);
-        properties.SetFloat("_UsePartMatrices",combined?1:0);
+        properties.SetTexture(array?MaskAtlasId:MainTexId,texture);properties.SetFloat(UseAtlasId,array?1:0);properties.SetFloat(OpacityId,opacity);
+        properties.SetFloat(ThresholdId,Mathf.Clamp(alphaThreshold,.01f,1));properties.SetMatrix(MaskVPId,vp);
+        properties.SetFloat(UsePartMatricesId,combined?1:0);
     }
     void DrawMaskParts(Matrix4x4 vp)
     {
@@ -453,9 +458,15 @@ internal sealed class CoreGuardianSpriteReferences
     bool dirty=true;
     public int Revision {get;private set;}
     readonly List<SpriteRenderer> renderers=new List<SpriteRenderer>();
+    // GameObject of each renderer (same index), captured at refresh so per-frame visibility checks skip the getter.
+    public readonly List<GameObject> GameObjects=new List<GameObject>();
     readonly List<Transform> nodes=new List<Transform>();
     readonly List<int> childCounts=new List<int>();
     readonly List<Transform> parents=new List<Transform>();
+    // Root structure stamp (children added/removed/reparented below it, root reparent). The full node walk runs
+    // only when the stamp moved, the watcher is missing, or the root is not a scene object.
+    CoreGuardianHierarchyWatch watch;
+    int watchVersion;
     public void Invalidate()=>dirty=true;
     public List<SpriteRenderer> Read(Transform target)
     {
@@ -463,18 +474,28 @@ internal sealed class CoreGuardianSpriteReferences
         bool refresh=dirty||root!=target;
         if(!refresh)
         {
-            for(int i=0;i<nodes.Count;i++)
-                if(nodes[i]==null||nodes[i].childCount!=childCounts[i]||nodes[i].parent!=parents[i]){refresh=true;break;}
+            if(watch==null||watch.Version!=watchVersion)
+            {
+                for(int i=0;i<nodes.Count;i++)
+                    if(nodes[i]==null||nodes[i].childCount!=childCounts[i]||nodes[i].parent!=parents[i]){refresh=true;break;}
+                if(!refresh&&watch!=null)watchVersion=watch.Version; // e.g. root reparent with unchanged contents
+            }
             if(!refresh)for(int i=0;i<renderers.Count;i++)if(renderers[i]==null){refresh=true;break;}
         }
         if(refresh)
         {
             Revision++;
-            root=target;dirty=false;renderers.Clear();nodes.Clear();childCounts.Clear();parents.Clear();
+            root=target;dirty=false;renderers.Clear();GameObjects.Clear();nodes.Clear();childCounts.Clear();parents.Clear();watch=null;
             if(root!=null)
             {
-                root.GetComponentsInChildren(true,renderers);root.GetComponentsInChildren(true,nodes);
+                root.GetComponentsInChildren(true,renderers);foreach(var r in renderers)GameObjects.Add(r.gameObject);root.GetComponentsInChildren(true,nodes);
                 foreach(var node in nodes){childCounts.Add(node.childCount);parents.Add(node.parent);}
+                // Never add components to prefab assets or other non-scene objects.
+                if(root.gameObject.scene.IsValid())
+                {
+                    foreach(var node in nodes)if(!node.TryGetComponent(out CoreGuardianHierarchyWatch _))node.gameObject.AddComponent<CoreGuardianHierarchyWatch>().hideFlags=HideFlags.DontSaveInEditor|HideFlags.DontSaveInBuild|HideFlags.HideInInspector;
+                    root.TryGetComponent(out watch);watchVersion=watch!=null?watch.Version:0;
+                }
             }
         }
         return renderers;

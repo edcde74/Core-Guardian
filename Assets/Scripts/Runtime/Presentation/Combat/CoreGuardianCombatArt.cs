@@ -38,7 +38,9 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     public Sprite Projectile(ProjectileHandle projectile)
     {
         if(projectile.Source=="Player")return Get("EngineerChip");
-        var tower=game.Session.Towers.FirstOrDefault(t=>projectile.Source=="Tower:"+t.Id);
+        // Session launches with TowerState.AttackSource ("Tower:"+Id). Match it without building a string per tower.
+        TowerState tower=null;var source=projectile.Source;
+        foreach(var t in game.Session.Towers)if(t.AttackSource==source){tower=t;break;}
         return Get(tower!=null&&tower.Kind==TowerKind.Multi?"MultiBolt":"SingleBolt");
     }
     public GameObject Marker(string name,Vector3 position,float width)

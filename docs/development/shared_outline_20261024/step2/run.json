@@ -1,0 +1,394 @@
+{
+  "error": null,
+  "completedSteps": 41,
+  "totalSteps": 41,
+  "log": [
+    {
+      "frame": 1,
+      "what": "setup",
+      "shared": true,
+      "data": {
+        "screenW": 1920,
+        "screenH": 1080,
+        "ortho": 8.5,
+        "outline": 1
+      }
+    },
+    {
+      "frame": 32,
+      "what": "frozen",
+      "shared": true,
+      "data": null
+    },
+    {
+      "frame": 36,
+      "what": "before orig_a",
+      "shared": true,
+      "data": {
+        "targets": 145,
+        "sharedOutputs": 145,
+        "originalOutputs": 0,
+        "enemies": 128
+      }
+    },
+    {
+      "frame": 36,
+      "what": "capture orig_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 1,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 39,
+      "what": "capture orig_b",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 1,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 43,
+      "what": "capture none_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 0,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 51,
+      "what": "shared_a",
+      "shared": true,
+      "data": {
+        "targets": 145,
+        "sharedOutputs": 145,
+        "originalOutputs": 0,
+        "enemies": 128
+      }
+    },
+    {
+      "frame": 51,
+      "what": "capture shared_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 1,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 51,
+      "what": "mask mask_a",
+      "shared": true,
+      "data": {
+        "width": 1924,
+        "height": 1084,
+        "layout": [
+          2.0,
+          2.0,
+          1920.0,
+          1080.0
+        ]
+      }
+    },
+    {
+      "frame": 54,
+      "what": "capture shared_b",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 1,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 58,
+      "what": "shared width0",
+      "shared": true,
+      "data": {
+        "targets": 145,
+        "sharedOutputs": 0,
+        "originalOutputs": 0,
+        "enemies": 128
+      }
+    },
+    {
+      "frame": 58,
+      "what": "capture none_shared_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 0,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 66,
+      "what": "orig_c",
+      "shared": false,
+      "data": {
+        "targets": 145,
+        "sharedOutputs": 0,
+        "originalOutputs": 145,
+        "enemies": 128
+      }
+    },
+    {
+      "frame": 66,
+      "what": "capture orig_c",
+      "shared": false,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 1,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 71,
+      "what": "capture zoom_orig_a",
+      "shared": false,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 4.25,
+        "width": 1,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 74,
+      "what": "capture zoom_orig_b",
+      "shared": false,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 4.25,
+        "width": 1,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 79,
+      "what": "capture zoom_shared_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 4.25,
+        "width": 1,
+        "targets": 145
+      }
+    },
+    {
+      "frame": 79,
+      "what": "mask zoom_mask_a",
+      "shared": true,
+      "data": {
+        "width": 1924,
+        "height": 1084,
+        "layout": [
+          2.0,
+          2.0,
+          1920.0,
+          1080.0
+        ]
+      }
+    },
+    {
+      "frame": 83,
+      "what": "variety",
+      "shared": false,
+      "data": [
+        "Attack",
+        "Defense",
+        "Buff",
+        "Boss"
+      ]
+    },
+    {
+      "frame": 128,
+      "what": "variety",
+      "shared": false,
+      "data": {
+        "targets": 33,
+        "sharedOutputs": 0,
+        "originalOutputs": 33,
+        "enemies": 16
+      }
+    },
+    {
+      "frame": 128,
+      "what": "capture var_orig_a",
+      "shared": false,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 1,
+        "targets": 33
+      }
+    },
+    {
+      "frame": 131,
+      "what": "capture var_orig_b",
+      "shared": false,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 1,
+        "targets": 33
+      }
+    },
+    {
+      "frame": 136,
+      "what": "capture var_shared_a",
+      "shared": true,
+      "data": {
+        "w": 1920,
+        "h": 1080,
+        "ortho": 8.5,
+        "width": 1,
+        "targets": 33
+      }
+    },
+    {
+      "frame": 136,
+      "what": "mask var_mask_a",
+      "shared": true,
+      "data": {
+        "width": 1924,
+        "height": 1084,
+        "layout": [
+          2.0,
+          2.0,
+          1920.0,
+          1080.0
+        ]
+      }
+    },
+    {
+      "frame": 140,
+      "what": "regress start",
+      "shared": true,
+      "data": {
+        "targets": 33,
+        "sharedOutputs": 0,
+        "originalOutputs": 33,
+        "enemies": 16
+      }
+    },
+    {
+      "frame": 171,
+      "what": "after remove 10 (same frame)",
+      "shared": true,
+      "data": {
+        "targets": 33,
+        "sharedOutputs": 33,
+        "originalOutputs": 0,
+        "enemies": 6
+      }
+    },
+    {
+      "frame": 175,
+      "what": "after remove 10",
+      "shared": true,
+      "data": {
+        "targets": 23,
+        "sharedOutputs": 23,
+        "originalOutputs": 0,
+        "enemies": 6
+      }
+    },
+    {
+      "frame": 182,
+      "what": "after respawn 10 (pool reuse)",
+      "shared": true,
+      "data": {
+        "targets": 33,
+        "sharedOutputs": 33,
+        "originalOutputs": 0,
+        "enemies": 16
+      }
+    },
+    {
+      "frame": 194,
+      "what": "zoom 4.25 live",
+      "shared": true,
+      "data": {
+        "targets": 33,
+        "sharedOutputs": 33,
+        "originalOutputs": 0,
+        "enemies": 16
+      }
+    },
+    {
+      "frame": 204,
+      "what": "toggle off live",
+      "shared": false,
+      "data": {
+        "targets": 33,
+        "sharedOutputs": 0,
+        "originalOutputs": 33,
+        "enemies": 16
+      }
+    },
+    {
+      "frame": 209,
+      "what": "toggle on live",
+      "shared": true,
+      "data": {
+        "targets": 33,
+        "sharedOutputs": 33,
+        "originalOutputs": 0,
+        "enemies": 16
+      }
+    },
+    {
+      "frame": 210,
+      "what": "restart called",
+      "shared": true,
+      "data": null
+    },
+    {
+      "frame": 241,
+      "what": "after restart",
+      "shared": true,
+      "data": {
+        "targets": 0,
+        "sharedOutputs": 2,
+        "originalOutputs": 0,
+        "enemies": 0
+      }
+    },
+    {
+      "frame": 241,
+      "what": "restart leftovers",
+      "shared": true,
+      "data": [
+        "ObjectEmphasis_B2_core / CoreGuardian_Gameplay",
+        "ObjectEmphasis_B2_PlayerStart_Prototype / CoreGuardian_Gameplay"
+      ]
+    }
+  ]
+}

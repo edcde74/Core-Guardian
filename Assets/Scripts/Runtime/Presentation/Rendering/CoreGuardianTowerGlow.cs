@@ -13,6 +13,7 @@ public sealed class CoreGuardianTowerGlow : IDisposable
         public Mesh mesh;
         public Material material;
     }
+    static readonly int AgeId=Shader.PropertyToID("_Age"),ClockId=Shader.PropertyToID("_Clock"),PulseScaleId=Shader.PropertyToID("_PulseScale");
     readonly List<Layer> layers=new List<Layer>();
     float clock;
     bool enabled=true,disposed;
@@ -49,7 +50,7 @@ public sealed class CoreGuardianTowerGlow : IDisposable
             if(layer.renderer==null||layer.source==null||layer.material==null)continue;
             layer.renderer.enabled=enabled&&layer.source.enabled;
             layer.renderer.sortingLayerID=layer.source.sortingLayerID;layer.renderer.sortingOrder=layer.source.sortingOrder+3;
-            layer.material.SetFloat("_Age",Mathf.Max(0,shotAge));layer.material.SetFloat("_Clock",clock);layer.material.SetFloat("_PulseScale",pulseScale);
+            layer.material.SetFloat(AgeId,Mathf.Max(0,shotAge));layer.material.SetFloat(ClockId,clock);layer.material.SetFloat(PulseScaleId,pulseScale);
         }
     }
     public void Clear()

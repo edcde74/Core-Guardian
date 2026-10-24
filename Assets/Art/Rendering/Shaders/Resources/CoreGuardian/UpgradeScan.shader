@@ -18,8 +18,9 @@ Shader "CoreGuardian/UpgradeScan"
             Out Vert(In i){Out o;o.positionCS=TransformObjectToHClip(i.positionOS.xyz);o.worldY=TransformObjectToWorld(i.positionOS.xyz).y;o.uv=i.uv;return o;}
             half4 Frag(Out i):SV_Target
             {
-                clip(SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,i.uv).r-.5);
+                // Same two discards; the band test runs first so pixels outside it skip the mask read.
                 float distance=abs(i.worldY-_BandY);clip(_BandWidth-distance);
+                clip(SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,i.uv).r-.5);
                 half lead=step(_BandWidth*.6,distance);
                 return half4(lerp(half3(.12,.8,.9),half3(.65,1,1),lead),_Opacity*lerp(.62,.9,lead));
             }
