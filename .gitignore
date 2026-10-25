@@ -51,3 +51,6 @@ __pycache__/
 
 # Unity Profiler captures (hundreds of MB; over GitHub's 100MB file limit). Keep summaries/JSON instead.
 docs/development/**/*.data
+
+# Runtime performance logs (F4 recorder; Editor runs write here)
+/[Pp]erf[Ll]ogs/

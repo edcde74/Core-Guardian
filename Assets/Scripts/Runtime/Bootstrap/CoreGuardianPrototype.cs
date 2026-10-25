@@ -54,6 +54,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     readonly Dictionary<EnemyKind,Stack<EnemyBodyView>> enemyBodyPools=new Dictionary<EnemyKind,Stack<EnemyBodyView>>();
     Transform enemyPoolRoot;
     CoreGuardianPlacementOverlay placementOverlay;
+    Material placementOverlaySource;
     GameObject ghost;
     SpriteRenderer[] ghostRenderers=System.Array.Empty<SpriteRenderer>();
     readonly List<RaycastResult> uiRaycastResults=new List<RaycastResult>();
@@ -222,9 +223,26 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         foreach(var sr in ghostRenderers)sr.sortingOrder=1800;
         foreach(var d in ghost.GetComponentsInChildren<ArtDepthSorting>())d.enabled=false;
         if(placementOverlay==null)
-            placementOverlay=new CoreGuardianPlacementOverlay(transform,square,UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline.default2DMaterial);
-        placementOverlay.Show(ground,CanInstall);
+        {
+            var overlayMaterial=PlacementOverlaySource();
+            if(overlayMaterial!=null)placementOverlay=new CoreGuardianPlacementOverlay(transform,square,overlayMaterial);
+            else Debug.LogWarning("Placement overlay material unavailable; tower placement continues without tile tint.",this);
+        }
+        placementOverlay?.Show(ground,CanInstall);
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);Changed?.Invoke();
+    }
+    // URP returns default2DMaterial only inside the Editor (null in players), so builds use the same shader by name.
+    Material PlacementOverlaySource()
+    {
+        var pipeline=UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline;
+        var source=pipeline!=null?pipeline.default2DMaterial:null;
+        if(source!=null)return source;
+        if(placementOverlaySource==null)
+        {
+            var shader=Shader.Find("Universal Render Pipeline/2D/Sprite-Lit-Default");
+            if(shader!=null)placementOverlaySource=new Material(shader){name="Installation overlay source"};
+        }
+        return placementOverlaySource;
     }
     public void CancelInstall()
     {
@@ -463,6 +481,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     void OnDestroy()
     {
         placementOverlay?.Dispose();placementOverlay=null;
+        if(placementOverlaySource!=null){Destroy(placementOverlaySource);placementOverlaySource=null;}
         Session?.Dispose();
         if(TestSpeed!=1)Time.timeScale=1;
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
