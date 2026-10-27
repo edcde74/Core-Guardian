@@ -34,6 +34,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
         coreFeedback=new CoreGuardianCoreFeedback(coreBody,hud.CoreDamageGraphics());
         if(coreBody!=null)coreAmbient=new CoreGuardianCoreAmbient(coreBody,game.GetComponent<CoreGuardianCoreParticleSettings>());
     }
+    Sprite fireball,railBolt;
     public Sprite Get(string name)=>sprites[name];
     public Sprite Projectile(ProjectileHandle projectile)
     {
@@ -41,6 +42,8 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
         // Session launches with TowerState.AttackSource ("Tower:"+Id). Match it without building a string per tower.
         TowerState tower=null;var source=projectile.Source;
         foreach(var t in game.Session.Towers)if(t.AttackSource==source){tower=t;break;}
+        if(tower!=null&&tower.Kind==TowerKind.Flame){fireball??=Resources.Load<Sprite>("CoreGuardian/Art/Towers/Fireball");if(fireball!=null)return fireball;}
+        if(tower!=null&&tower.Kind==TowerKind.Rail){railBolt??=CoreGuardianSpriteLibrary.Instance?.Get("Fx/RailBolt");if(railBolt!=null)return railBolt;}
         return Get(tower!=null&&tower.Kind==TowerKind.Multi?"MultiBolt":"SingleBolt");
     }
     public GameObject Marker(string name,Vector3 position,float width)

@@ -62,6 +62,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     Tile occupiedTile;
     CoreGuardianHud hud;
     CoreGuardianCombatArt combatArt;
+    CoreGuardianEffectsView effects;
     CoreGuardianCombatAnimation combatAnimation;
     CoreGuardianUpgradeFeedback upgradeFeedback;
     GameObject bossArt;
@@ -75,6 +76,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public bool Ready => Session != null;
     // HUD owns inspection visibility; changing its subject must not leave a competing tower ID.
     public void ClearInspectionSelection(){SelectedTower=-1;}
+    public Transform HealthView(int id)=>healthViews.TryGetValue(id,out var view)?view:null;
     public Transform TowerView(int id)=>towerViews.TryGetValue(id,out var view)&&view!=null?view.transform:null;
     public void GetCombatBodyTargets(List<Transform> targets)
     {
@@ -91,9 +93,11 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             if(ground==null||player==null||occupied==null)throw new InvalidOperationException("Missing gameplay scene references");
             bossArt=Resources.Load<GameObject>("CoreGuardian/Animation/Boss/BossAnimated");
             if(bossArt==null)throw new InvalidOperationException("Missing approved boss art prefab");
-            Session=new Session(CombatData.Load(enemiesCsv.text,towersCsv.text,stageCsv.text,upgradesCsv.text,wavesCsv.text));
+            Session=new Session(CombatData.Load(enemiesCsv.text,towersCsv.text,stageCsv.text,upgradesCsv.text,wavesCsv.text,Sheet("player"),Sheet("augments"),Sheet("effectTags"),Sheet("skills")));
             route=routeCells.Select(c=>World(c)).ToArray();
             Session.SetBoard(boardSize.x,boardSize.y,coreCell,routeCells);
+            var flying=FlyingRoute();if(flying!=null)Session.SetFlyingRoute(flying);
+            player.Stepped+=cell=>Session.NotifyPlayerStep(new Vector2Int(cell.x,cell.y));
             var combatAudio=GetComponent<CoreGuardianCombatAudio>();
             if(combatAudio==null)combatAudio=gameObject.AddComponent<CoreGuardianCombatAudio>();
             combatAudio.Configure(Session);
@@ -102,6 +106,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             hud=gameObject.AddComponent<CoreGuardianHud>();hud.Configure(this);
             combatArt=gameObject.AddComponent<CoreGuardianCombatArt>();combatArt.Configure(this,hud);
             combatAnimation=gameObject.AddComponent<CoreGuardianCombatAnimation>();combatAnimation.Configure(this);
+            effects=gameObject.AddComponent<CoreGuardianEffectsView>();effects.Configure(this);
             upgradeFeedback=GetComponent<CoreGuardianUpgradeFeedback>();
             if(upgradeFeedback==null)upgradeFeedback=gameObject.AddComponent<CoreGuardianUpgradeFeedback>();
             previousGold=Session.Gold;
@@ -128,7 +133,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         SyncTestSpeed();
         Session.Tick(Time.deltaTime,PlayerTile());
         SyncTestSpeed();
-        if(Installing.HasValue&&Session.Phase!=SessionPhase.Preparation)CancelInstall();
+        if(Installing.HasValue&&!Session.CanBuildNow)CancelInstall();
         player.enabled=Session.Phase!=SessionPhase.Augmentation;
         if(Session.Gold>previousGold){ Feedback="+"+(Session.Gold-previousGold)+" 골드 획득";notificationUntil=Time.unscaledTime+2; }
         previousGold=Session.Gold;
@@ -137,6 +142,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         if(phase!=Session.Phase){pointerBlocked=true;CancelInstall();Notify(Session.LastMessage);}
         SynchronizeViews();
         if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame&&hud.CancelInstallation()){pointerBlocked=true;return;}
+        // Space belongs to the skill: drop any UI selection so it never submits a focused button.
+        if(Keyboard.current!=null&&Keyboard.current.spaceKey.wasPressedThisFrame){if(EventSystem.current!=null)EventSystem.current.SetSelectedGameObject(null);UseAreaBlast();}
         if(Mouse.current==null||Camera.main==null)return;
         var mouse=Mouse.current.position.ReadValue();
         var world=Camera.main.ScreenToWorldPoint(new Vector3(mouse.x,mouse.y,-Camera.main.transform.position.z));
@@ -213,11 +220,11 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public void ChooseTower(TowerKind kind)
     {
         CancelInstall();
-        if(Session.Phase!=SessionPhase.Preparation){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("전투 중에는 설치할 수 없습니다.");return;}
-        if(Session.Crystals<Session.Data.Towers[kind].Cost){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("수정 부족 · 필요 "+Session.Data.Towers[kind].Cost+"수정");return;}
+        if(!Session.CanBuildNow){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("전투 중에는 설치할 수 없습니다.");return;}
+        if(Session.Crystals<Session.InstallCost(kind)){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("수정 부족 · 필요 "+Session.InstallCost(kind)+"수정");return;}
         if(kind==TowerKind.Support&&!Session.Towers.Any(t=>t.Kind!=TowerKind.Support)){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("공격 포탑을 먼저 설치하세요.");return;}
         Installing=kind;
-        ghost=Instantiate(towerArt[(int)kind]);ghost.name="TowerPlacementPreview";
+        ghost=Instantiate(TowerArtFor(kind));ghost.name="TowerPlacementPreview";
         var shadow=ghost.transform.Find("그림자");if(shadow!=null)shadow.gameObject.SetActive(false);
         ghostRenderers=ghost.GetComponentsInChildren<SpriteRenderer>();
         foreach(var sr in ghostRenderers)sr.sortingOrder=1800;
@@ -258,9 +265,14 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         if(!CanInstall(cell)){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("이 칸에는 설치할 수 없습니다.");return false;}
         string reason;var tower=Session.TryInstall(kind,cell,out reason);
         if(tower==null){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify(reason);return false;}
-        occupied.SetTile(new Vector3Int(cell.x,cell.y,0),occupiedTile);
+        // A merge (45 포탑 합체) can vacate cells, so occupancy follows the model.
+        RebuildOccupied();
         GetComponent<CoreGuardianCombatAudio>()?.NotifyTowerInstalled();
-        SelectedTower=tower.Id;CancelInstall();Notify("포탑 설치 완료");SynchronizeViews();return true;
+        SelectedTower=tower.Id;CancelInstall();Notify(tower.Stars>1?Session.LastMessage:"포탑 설치 완료");SynchronizeViews();return true;
+    }
+    void RebuildOccupied()
+    {
+        occupied.ClearAllTiles();foreach(var t in Session.Towers)occupied.SetTile(new Vector3Int(t.Position.x,t.Position.y,0),occupiedTile);
     }
     public bool PlaceAtPlayerForTest(){var p=player.CurrentCell;return Place(TowerKind.Single,new Vector2Int(p.x,p.y));}
     public void DestroySelected()
@@ -288,12 +300,25 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         else GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeFailed();
         Notify(reason);
     }
+    // 범위 폭발 (Space, 전투 중). 46 순간 이동 follows the blast.
+    public bool UseAreaBlast()
+    {
+        if(Session.Phase!=SessionPhase.Combat||!Session.UseAreaBlast(PlayerTile()))return false;
+        if(Session.Augments.Has(46))
+        {
+            var dir=player.LastDirection;
+            if(dir==Vector2Int.zero){var p=Vector2Int.RoundToInt(PlayerTile());var d=coreCell-p;dir=Mathf.Abs(d.x)>=Mathf.Abs(d.y)?new Vector2Int(Math.Sign(d.x),0):new Vector2Int(0,Math.Sign(d.y));if(dir==Vector2Int.zero)dir=Vector2Int.right;}
+            var from=player.transform.position;
+            if(player.TryTeleport(dir,(int)(Session.Augments.Value(46)/Math.Max(1,Session.Augments.Count(46)))))effects.Teleport(from,player.transform.position);
+        }
+        return true;
+    }
     public void StartCombat(){CancelInstall();Session.StartCombat();SyncTestSpeed();Notify(Session.LastMessage);}
     public void Diagnostic()
     {
         hud.ClearDamageNumbers();
         upgradeFeedback.Clear();
-        combatArt.ClearEffects();
+        combatArt.ClearEffects();effects?.Clear();
         CancelInstall();Session.StartDiagnosticEncounter();SelectedTower=-1;previousGold=Session.Gold;previousCore=Session.CoreEnergy;
         SyncTestSpeed();
         occupied.ClearAllTiles();foreach(var t in Session.Towers)occupied.SetTile(new Vector3Int(t.Position.x,t.Position.y,0),occupiedTile);
@@ -342,7 +367,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         {
         foreach(var t in Session.Towers)
         {
-            if(!towerViews.TryGetValue(t.Id,out var view)){view=Instantiate(towerArt[(int)t.Kind]);view.name="Tower_"+t.Kind+"_"+t.Id;towerViews.Add(t.Id,view);}
+            if(!towerViews.TryGetValue(t.Id,out var view)){view=Instantiate(TowerArtFor(t.Kind));view.name="Tower_"+t.Kind+"_"+t.Id;towerViews.Add(t.Id,view);}
             view.transform.position=World(t.Position);
             combatAnimation.Tower(t,view);
             bool supported=t.Kind!=TowerKind.Support&&(Session.Augments.TowerBuffPercent>0||Session.HasTowerSupport(t));
@@ -399,9 +424,46 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         }
         removedViewIds.Clear();
     }
+    // Sheets added by the 2026-10-26 data spec live beside the scene-referenced CSVs.
+    static string Sheet(string name)=>CombatData.Sheet(name);
+    // 비행 경로 (프로토타입 레벨 디자인): the ground route without its inner loop — corners 0..3, then 6.. to the core.
+    IEnumerable<Vector2> FlyingRoute()
+    {
+        if(routeCells.Length<9)return null;
+        var list=new List<Vector2>();for(int i=0;i<=3;i++)list.Add(routeCells[i]);for(int i=6;i<routeCells.Length;i++)list.Add(routeCells[i]);return list;
+    }
+    // Scene arrays cover the original kinds; later kinds load their prefab from Resources by name.
+    readonly Dictionary<string,GameObject> unitPrefabs=new Dictionary<string,GameObject>();
+    GameObject UnitPrefab(string name)
+    {
+        if(!unitPrefabs.TryGetValue(name,out var prefab)){prefab=Resources.Load<GameObject>("CoreGuardian/Units/"+name);unitPrefabs[name]=prefab;}
+        return prefab;
+    }
+    GameObject EnemyArtFor(EnemyKind kind)
+    {
+        if((int)kind<enemyArt.Length&&enemyArt[(int)kind]!=null)return enemyArt[(int)kind];
+        return UnitPrefab("enemy_"+kind.ToString().ToLowerInvariant())??enemyArt[(int)EnemyKind.Attack];
+    }
+    public GameObject TowerArtFor(TowerKind kind)
+    {
+        if((int)kind<towerArt.Length&&towerArt[(int)kind]!=null)return towerArt[(int)kind];
+        return UnitPrefab("tower_"+kind.ToString().ToLowerInvariant())??towerArt[(int)TowerKind.Single];
+    }
+    GameObject BossArtFor(EnemySpec spec)
+    {
+        if(spec==null||string.IsNullOrEmpty(spec.Key)||spec.Key=="Boss")return bossArt;
+        if(!unitPrefabs.TryGetValue("boss_"+spec.Key,out var prefab)){prefab=Resources.Load<GameObject>("CoreGuardian/Animation/Boss/"+spec.Key+"Animated");unitPrefabs["boss_"+spec.Key]=prefab;}
+        return prefab!=null?prefab:bossArt;
+    }
+    string EnemyArtRole(EnemyHandle enemy)
+    {
+        if(enemy.Kind==EnemyKind.Boss)return BossArtFor(enemy.Spec)==bossArt?"Boss":enemy.Spec.Key;
+        var source=EnemyArtFor(enemy.Kind);
+        return source==enemyArt[(int)EnemyKind.Attack]&&enemy.Kind!=EnemyKind.Attack?"Attack":enemy.Kind.ToString();
+    }
     EnemyBodyView RentEnemyBody(EnemyHandle enemy)
     {
-        var source=enemy.Kind==EnemyKind.Boss?bossArt:enemyArt[(int)enemy.Kind];
+        var source=enemy.Kind==EnemyKind.Boss?BossArtFor(enemy.Spec):EnemyArtFor(enemy.Kind);
         EnemyBodyView body=null;
         if(enemyBodyPools.TryGetValue(enemy.Kind,out var pool))
             while(pool.Count>0&&body==null)
@@ -416,7 +478,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
             bar.transform.SetParent(root.transform,false);
             var health=bar.AddComponent<SegmentedEnemyHealthBar>();health.Configure(enemy.Kind==EnemyKind.Boss);
-            var animation=CoreGuardianUnitAnimation.Attach(root,enemy.Kind.ToString());
+            var animation=CoreGuardianUnitAnimation.Attach(root,EnemyArtRole(enemy));
             body=new EnemyBodyView{Kind=enemy.Kind,Source=source,Root=root,Animation=animation,Shadow=root.GetComponent<CoreGuardianPhotoShadow>(),Health=health,InitialScale=root.transform.localScale,InitialRotation=root.transform.rotation};
         }
         else

@@ -12,7 +12,7 @@ namespace CoreGuardian
         int enemyRevision;
         void InitializeModelPools()
         {
-            enemyPools=new ModelPool<EnemyState>[4];for(int i=0;i<4;i++)enemyPools[i]=new ModelPool<EnemyState>(this,i==3?4:32);
+            int kinds=Enum.GetValues(typeof(EnemyKind)).Length;enemyPools=new ModelPool<EnemyState>[kinds];for(int i=0;i<kinds;i++)enemyPools[i]=new ModelPool<EnemyState>(this,i==(int)EnemyKind.Boss?4:32);
             projectilePool=new ModelPool<ProjectileState>(this,256);
         }
         void BeginModelOperation(){if(disposed)throw new ObjectDisposedException(nameof(Session));operationDepth++;enemyRevision++;}
@@ -54,13 +54,14 @@ namespace CoreGuardian
         {if(disposed||!ReferenceEquals(handle.Owner,this)||!handle.IsValid)return false;if(update==null)throw new ArgumentNullException(nameof(update));update(handle);return true;}
         public ModelPoolCounters EnemyPool(EnemyKind kind)=>enemyPools[(int)kind].Counters;
         public ModelPoolCounters ProjectilePool=>projectilePool.Counters;
-        EnemyHandle RentEnemy(EnemyKind kind,EnemySpec spec,float distance)
+        EnemyHandle RentEnemy(EnemyKind kind,EnemySpec spec,float distance,int route=0)
         {
             if(disposed)throw new ObjectDisposedException(nameof(Session));
             enemyRevision++;var pool=enemyPools[(int)kind];var slot=pool.Rent();
             try
             {
-                slot.PoolKind=kind;slot.Id=nextEnemy++;slot.Kind=kind;slot.Spec=spec;slot.Health=spec.Health;slot.PathTravelled=Mathf.Clamp(distance,0,pathLength);
+                slot.PoolKind=kind;slot.Id=nextEnemy++;slot.Kind=kind;slot.Spec=spec;slot.Health=spec.Health;
+                slot.Route=route==1&&HasFlyingRoute?1:0;slot.PathTravelled=Mathf.Clamp(distance,0,slot.Route==1?flyLength:pathLength);
                 var handle=new EnemyHandle(slot);PositionEnemy(handle);Enemies.Add(handle);return handle;
             }
             catch{pool.Return(slot);if(operationDepth==0)pool.Flush();throw;}

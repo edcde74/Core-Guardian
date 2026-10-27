@@ -13,12 +13,20 @@ namespace CoreGuardian
     internal sealed class EnemyState : ModelSlot
     {
         public EnemyState(){}internal int Id,Health;internal EnemyKind Kind,PoolKind;internal Vector2 Position;internal float PathTravelled,PathRemaining,SlowRemaining;internal bool Buffed,Exited;internal EnemySpec Spec;
-        internal override void Clear(){Id=Health=0;Kind=default;Position=default;PathTravelled=PathRemaining=SlowRemaining=0;Buffed=Exited=false;Spec=null;}
+        // Status effects (전투 피해 계산 규칙 효과 태그). SlowRemaining is the player-hit slow timer.
+        internal float SlowPlayer,SlowFrost,SlowFrostTime,BurnTime,BurnPerStack,BurnTick,BurnCarry,StunTime,StunImmune,FrozenDamage,AbilityTimer,ShieldTime;
+        internal int BurnStacks,ShieldUsed,Route,SummonerId;internal bool Frozen,BurnKill;internal string BurnSource;
+        internal override void Clear(){Id=Health=0;Kind=default;Position=default;PathTravelled=PathRemaining=SlowRemaining=0;Buffed=Exited=false;Spec=null;
+            SlowPlayer=SlowFrost=SlowFrostTime=BurnTime=BurnPerStack=BurnTick=BurnCarry=StunTime=StunImmune=FrozenDamage=AbilityTimer=ShieldTime=0;
+            BurnStacks=ShieldUsed=Route=SummonerId=0;Frozen=BurnKill=false;BurnSource=null;}
     }
     internal sealed class ProjectileState : ModelSlot
     {
         public ProjectileState(){}internal int Id;internal Vector2 Position;internal EnemyHandle Target;internal EnemySnapshot LastTarget;internal string Source;internal float Damage,Speed;
-        internal override void Clear(){Id=0;Position=default;Target=default;LastTarget=default;Source=null;Damage=Speed=0;}
+        // Line mode (관통): flies straight for Remaining tiles and hits each enemy once per pass.
+        internal bool Line,Reflected;internal Vector2 Direction;internal float Remaining,Range;internal int HitsLeft;internal HitPayload Payload;
+        internal readonly System.Collections.Generic.List<int> Hits=new System.Collections.Generic.List<int>(8);
+        internal override void Clear(){Id=0;Position=default;Target=default;LastTarget=default;Source=null;Damage=Speed=0;Line=Reflected=false;Direction=default;Remaining=Range=0;HitsLeft=0;Payload=default;Hits.Clear();}
     }
     public readonly struct EnemyHandle : IEquatable<EnemyHandle>
     {
@@ -40,8 +48,15 @@ namespace CoreGuardian
         public bool Exited {get=>Read.Exited;set=>Write.Exited=value;}
         public EnemySpec Spec {get=>Read.Spec;set=>Write.Spec=value;}
         public bool Alive=>Accessible&&Slot.Health>0&&!Slot.Exited;
-        public bool Enraged=>Kind==EnemyKind.Boss&&Health<=Spec.Health/2f;
-        public float MovementSpeed=>Spec.Speed*(Enraged?1.3f:1)*(SlowRemaining>0?.8f:1);
+        public bool Enraged=>Kind==EnemyKind.Boss&&Health<=Spec.Health*Spec.RagePercent/100f;
+        public float MovementSpeed=>Read.StunTime>0?0:Spec.Speed*(Enraged?1+Spec.RageBoost/100f:1)*(1-Owner.SlowFraction(Slot));
+        public int BurnStacks=>Read.BurnStacks;
+        public bool Stunned=>Read.StunTime>0;
+        public bool Frozen=>Read.Frozen;
+        public bool Shielded=>Read.ShieldTime>0;
+        public bool Flying=>Read.Route==1;
+        public bool Summoned=>Read.SummonerId!=0;
+        public float SlowPercent=>Owner.SlowFraction(Read)*100;
         public bool Equals(EnemyHandle other)=>ReferenceEquals(Slot,other.Slot)&&Generation==other.Generation;
         public override bool Equals(object obj)=>obj is EnemyHandle other&&Equals(other);
         public override int GetHashCode()=>((Slot?.GetHashCode()??0)*397)^Generation.GetHashCode();
@@ -65,7 +80,9 @@ namespace CoreGuardian
             set{var slot=Write;if(value!=default&&!ReferenceEquals(value.Owner,Owner))throw new ArgumentException("Foreign target");slot.Target=value;slot.LastTarget=value.Accessible?new EnemySnapshot(value):default;}
         }
         public EnemySnapshot TargetSnapshot=>Target.Accessible?new EnemySnapshot(Target):Read.LastTarget;
-        public Vector2 TargetPosition=>Target.Accessible?Target.Position:Read.LastTarget.Position;
+        public Vector2 TargetPosition=>Read.Line?Read.Position+Read.Direction:Target.Accessible?Target.Position:Read.LastTarget.Position;
+        public bool Line=>Read.Line;
+        public Vector2 Direction=>Read.Direction;
         public string Source {get=>Read.Source;set=>Write.Source=value;}
         public float Damage {get=>Read.Damage;set=>Write.Damage=value;}
         public float Speed {get=>Read.Speed;set=>Write.Speed=value;}
@@ -83,12 +100,19 @@ namespace CoreGuardian
     public readonly struct EnemySnapshot
     {
         public readonly EnemyHandle Handle;public readonly int Id,Health;public readonly EnemyKind Kind;public readonly Vector2 Position;public readonly float PathTravelled,PathRemaining,SlowRemaining;public readonly bool Buffed,Exited,Alive,Enraged,HasSpec;public readonly EnemySpecSnapshot Spec;
-        internal EnemySnapshot(EnemyHandle enemy){Handle=enemy;Id=enemy.Id;Health=enemy.Health;Kind=enemy.Kind;Position=enemy.Position;PathTravelled=enemy.PathTravelled;PathRemaining=enemy.PathRemaining;SlowRemaining=enemy.SlowRemaining;Buffed=enemy.Buffed;Exited=enemy.Exited;Alive=enemy.Alive;var spec=enemy.Spec;HasSpec=spec!=null;Enraged=Kind==EnemyKind.Boss&&HasSpec&&Health<=spec.Health/2f;Spec=HasSpec?new EnemySpecSnapshot(spec):default;}
+        internal EnemySnapshot(EnemyHandle enemy){Handle=enemy;Id=enemy.Id;Health=enemy.Health;Kind=enemy.Kind;Position=enemy.Position;PathTravelled=enemy.PathTravelled;PathRemaining=enemy.PathRemaining;SlowRemaining=enemy.SlowRemaining;Buffed=enemy.Buffed;Exited=enemy.Exited;Alive=enemy.Alive;var spec=enemy.Spec;HasSpec=spec!=null;Enraged=Kind==EnemyKind.Boss&&HasSpec&&Health<=spec.Health*spec.RagePercent/100f;Spec=HasSpec?new EnemySpecSnapshot(spec):default;}
+    }
+    // Effects fixed when an attack is launched (치명타·버프 시점).
+    internal struct HitPayload
+    {
+        public float Crit,BurnPerStack,BurnDuration,SlowPercent,SlowDuration,Execute,PierceFalloff,ChainFalloff,ExtraLine;
+        public int BurnStacks,Chain,ExtraPierce;public bool Player,Skill,NoBounce,PierceGrowth,CritNoFalloff,Rail;
     }
     public readonly struct ProjectileSnapshot
     {
         public readonly ProjectileHandle Handle;public readonly int Id;public readonly Vector2 Position;public readonly EnemySnapshot Target;public readonly bool TargetIsValid;public readonly string Source;public readonly float Damage,Speed;
-        internal ProjectileSnapshot(ProjectileHandle shot){Handle=shot;Id=shot.Id;Position=shot.Position;Target=shot.TargetSnapshot;TargetIsValid=shot.Target.IsValid;Source=shot.Source;Damage=shot.Damage;Speed=shot.Speed;}
+        public readonly bool Line;public readonly Vector2 Direction;
+        internal ProjectileSnapshot(ProjectileHandle shot){Handle=shot;Id=shot.Id;Position=shot.Position;Target=shot.TargetSnapshot;TargetIsValid=shot.Target.IsValid;Source=shot.Source;Damage=shot.Damage;Speed=shot.Speed;Line=shot.Line;Direction=shot.Direction;}
     }
     // Public enumeration is read-only; all mutations remain assembly-internal.
     public sealed class ModelList<T> : IReadOnlyList<T>

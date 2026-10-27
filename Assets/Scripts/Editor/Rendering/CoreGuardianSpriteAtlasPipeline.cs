@@ -16,7 +16,7 @@ public sealed class CoreGuardianSpriteAtlasPipeline : IPreprocessBuildWithReport
     const string Manifest="Assets/Data/Presentation/Resources/CoreGuardian/SpriteAtlases/Sources.asset";
     public int callbackOrder=>-100;
     static readonly string[][] Groups={
-        new[]{"CG_Enemies_Common_01","Assets/Art/Characters/Enemies/Sprites","Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk","Assets/Art/Characters/Enemies/Boss"},
+        new[]{"CG_Enemies_Common_01","Assets/Art/Characters/Enemies/Sprites","Assets/Art/Characters/Enemies/Resources/CoreGuardian/VerticalWalk","Assets/Art/Characters/Enemies/Boss","Assets/Art/Characters/Enemies/Resources/CoreGuardian/OriginalWalk"},
         new[]{"CG_Towers_Common_01","Assets/Art/Characters/Towers"},
         new[]{"CG_CombatFX_Common","Assets/Art/Effects/Combat"}
     };

@@ -1,4 +1,7 @@
-id,cost,damage,rate,range,projectileSpeed,buffDamage,status
-Single,60,12.5,1.2,3.5,6,0,provisional
-Multi,60,11,0.6,3,6,0,provisional
-Support,75,0,0,1,0,20,provisional
+id,key,cost,damage,rate,range,projectileSpeed,buffDamage,tag,attackType,maxTargets,slowPercent,slowDuration,burnPerStack,burnDuration,pierceFalloff,requires,status
+12001,Single,60,12.5,1.2,3.5,6,0,Crit,Projectile,1,0,0,0,0,0,,provisional
+12002,Multi,60,11,0.6,3,6,0,Chain,MultiProjectile,3,0,0,0,0,0,,provisional
+12003,Frost,60,5,0.5,2,0,0,Slow,Pulse,0,30,2.5,0,0,0,,provisional
+12004,Flame,65,5,0.8,3,6,0,Burn,Projectile,1,0,0,3,3,0,,provisional
+12005,Rail,75,35,0.4,6,12,0,Pierce,PierceLine,0,0,0,0,0,0.8,,provisional
+12101,Support,75,0,0,1,0,20,None,Aura,0,0,0,0,0,0,AttackTower,provisional

@@ -80,9 +80,9 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         music.Configure(value);
         if(isActiveAndEnabled)Subscribe();
     }
-    void Subscribe(){if(session!=null){session.ProjectileLaunched+=OnLaunch;session.AttackLaunched+=OnAttackLaunched;session.DefeatReached+=OnDefeatReached;session.DamageApplied+=OnMonsterHit;session.CombatStarted+=OnCombatStarted;session.RoundCompleted+=OnRoundCompleted;session.VictoryReached+=OnVictoryReached;}}
+    void Subscribe(){if(session!=null){session.ProjectileLaunched+=OnLaunch;session.AttackLaunched+=OnAttackLaunched;session.DefeatReached+=OnDefeatReached;session.DamageApplied+=OnMonsterHit;session.CombatStarted+=OnCombatStarted;session.RoundCompleted+=OnRoundCompleted;session.VictoryReached+=OnVictoryReached;session.Cue+=OnSessionCue;}}
     void OnEnable(){Subscribe();if(music!=null)music.enabled=true;}
-    void Unsubscribe(){if(session!=null){session.ProjectileLaunched-=OnLaunch;session.AttackLaunched-=OnAttackLaunched;session.DefeatReached-=OnDefeatReached;session.DamageApplied-=OnMonsterHit;session.CombatStarted-=OnCombatStarted;session.RoundCompleted-=OnRoundCompleted;session.VictoryReached-=OnVictoryReached;}}
+    void Unsubscribe(){if(session!=null){session.ProjectileLaunched-=OnLaunch;session.AttackLaunched-=OnAttackLaunched;session.DefeatReached-=OnDefeatReached;session.DamageApplied-=OnMonsterHit;session.CombatStarted-=OnCombatStarted;session.RoundCompleted-=OnRoundCompleted;session.VictoryReached-=OnVictoryReached;session.Cue-=OnSessionCue;}}
     void OnDisable(){Unsubscribe();foreach(var voice in voices)if(voice!=null)voice.Stop();if(music!=null)music.enabled=false;}
     void OnDestroy(){PlayerPrefs.Save();}
     void OnApplicationPause(bool paused){if(paused)PlayerPrefs.Save();}
@@ -115,6 +115,16 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         var tower=session.TowerFromSource(source);
         if(tower==null||tower.Kind!=TowerKind.Multi)return;
         if(PlayCue("multi_"+Mathf.Clamp(count,1,3))){MultiVolleyPlayedCount++;LastMultiShotCount=Mathf.Clamp(count,1,3);}
+    }
+    // New SFX (2026-10-27 slice): one voice per cue id per short window so dense fights stay readable.
+    readonly System.Collections.Generic.Dictionary<string,float> cueCooldowns=new System.Collections.Generic.Dictionary<string,float>();
+    public int SessionCuePlayedCount {get;private set;}
+    void OnSessionCue(Session.CueEvent cue)
+    {
+        if(cue.Id=="split")return;
+        float now=Time.unscaledTime;
+        if(cueCooldowns.TryGetValue(cue.Id,out float next)&&now<next){DroppedCount++;return;}
+        if(PlayCue(cue.Id)){SessionCuePlayedCount++;cueCooldowns[cue.Id]=now+(cue.Id=="cold_pulse"||cue.Id=="flame_shot"||cue.Id.StartsWith("hit_")?.08f:.12f);}
     }
     public bool PlayCue(string id)
     {

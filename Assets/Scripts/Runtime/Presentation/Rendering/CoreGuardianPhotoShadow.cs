@@ -30,12 +30,14 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
     void Configure(string value)
     {
         role=value;
-        replace=role=="Defense"||role=="Boss"||role=="Core"||role=="Multi"||role=="Support";
+        bool bossLike=role=="Boss"||role=="IronKnight"||role=="CrimsonLord";
+        replace=role=="Defense"||bossLike||role=="Core"||role=="Multi"||role=="Support";
         art=GetComponentsInChildren<SpriteRenderer>(true).First(r=>r.name=="2D Sprite");
-        string source=role=="Boss"?"Defense":role;
+        // New towers share the single-tower floor mass; new bosses reuse the boss treatment.
+        string source=bossLike?"Defense":role=="Frost"||role=="Flame"||role=="Rail"?"Single":role;
         if(registration==null)registration=JsonUtility.FromJson<Entries>(Resources.Load<TextAsset>("CoreGuardian/PhotoShadows/registration").text);
-        var e=registration.entries.First(r=>r.role==source);
-        size=role=="Boss"?art.bounds.size.x/(33*.6f/32):Mathf.Abs(art.transform.lossyScale.x)/.6f;
+        var e=registration.entries.FirstOrDefault(r=>r.role==source)??new Entry{role=source,x=.12f,y=.06f};
+        size=bossLike?art.bounds.size.x/(33*.6f/32):Mathf.Abs(art.transform.lossyScale.x)/.6f;
         offset=new Vector3(e.x,e.y,0)*size;
         cast=new GameObject("PhotoCastShadow").AddComponent<SpriteRenderer>();cast.transform.SetParent(transform,false);
         cast.sprite=Resources.Load<Sprite>("CoreGuardian/PhotoShadows/"+source);

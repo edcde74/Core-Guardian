@@ -5,6 +5,20 @@ public sealed class CoreGuardianOriginalWalk
 {
     internal static void ClearCachedParts()=>VerticalLegPair.ClearCachedParts();
     readonly SpriteRenderer original, body;
+    // New roles (2026-10 enemies) carry their leg layers on a canvas that differs from the full
+    // sprite; joints are measured on that layer canvas instead of the original sprite.
+    readonly Sprite reference;
+    readonly bool generic;
+    // Joint pixels from the top of the layer canvas: hip, knee, ankle (left then right), cycle, lift, anchor x, top.
+    static readonly System.Collections.Generic.Dictionary<string,float[]> NewRoles=new System.Collections.Generic.Dictionary<string,float[]>
+    {
+        {"Charger",   new float[]{24,43,24,49,24,61, 38.5f,44,39.5f,51,39.5f,61, 14,1.8f, 7.75f,52}},
+        {"Splitter",  new float[]{13,31,12,36,12,43, 23,32,24,37,24,43, 10,1.2f, 3,38}},
+        {"SplitChild",new float[]{13,31,12,36,12,43, 23,32,24,37,24,43, 9,1.2f, 3,38}},
+        {"Healer",    new float[]{11.5f,62,11,67,11,74, 23,62,23,69,23,77, 12,1.6f, -.5f,62}},
+        {"Armored",   new float[]{20.5f,35,20.5f,39,20.5f,41, 28,33,29,39,29,48, 10,1.4f, 5.25f,50}},
+    };
+    public static bool Supports(string role)=>role=="Attack"||role=="Defense"||role=="Buff"||role=="Boss"||NewRoles.ContainsKey(role);
     readonly Transform rig;
     readonly SpriteRenderer[] layers;
     readonly float ppu, cyclePixels, lift;
@@ -47,6 +61,15 @@ public sealed class CoreGuardianOriginalWalk
         rig=new GameObject("OriginalWalk").transform;rig.SetParent(artwork.transform,false);
         body=Layer("Body",role);var lu=Layer("LeftUpper",role);var ll=Layer("LeftLower",role);var ru=Layer("RightUpper",role);var rl=Layer("RightLower",role);
         layers=new[]{body,lu,ll,ru,rl};
+        generic=NewRoles.TryGetValue(role,out var table);reference=generic?body.sprite:original.sprite;
+        float directionalTop;
+        if(generic)
+        {
+            left=Bone(lu,ll,table[0],table[1],table[2],table[3],table[4],table[5]);right=Bone(ru,rl,table[6],table[7],table[8],table[9],table[10],table[11]);
+            cyclePixels=table[12];lift=table[13];groundAnchor=new Vector2(table[14],0);directionalTop=table[15];
+        }
+        else
+        {
         if(role=="Attack") {left=Bone(lu,ll,18,43,19,49,17,61);right=Bone(ru,rl,30,43,31,51,35,60);cyclePixels=14;lift=1.8f;}
         else if(role=="Defense") {left=Bone(lu,ll,17,31,17,36,17,42);right=Bone(ru,rl,24,29,24,36,27,44);cyclePixels=10;lift=1.4f;}
         else if(role=="Buff") {left=Bone(lu,ll,13,61,12,67,9,74);right=Bone(ru,rl,22,60,24,69,24,77);cyclePixels=12;lift=1.6f;}
@@ -54,8 +77,9 @@ public sealed class CoreGuardianOriginalWalk
         // Midpoint of the two original boot soles, in source pixels relative to its pivot.
         // This is a ground anchor, not the center of the canvas/weapon/banner.
         groundAnchor=role=="Attack"?new Vector2(3.5f,0):role=="Defense"?new Vector2(5.5f,4):role=="Buff"?new Vector2(-1.75f,1.5f):new Vector2(-.75f,2);
-        float directionalTop=role=="Attack"?65:role=="Defense"?46:role=="Buff"?84:65;
-        healthTopPixels=Mathf.Max(directionalTop,original.sprite.rect.height-original.sprite.pivot.y-groundAnchor.y);
+        directionalTop=role=="Attack"?65:role=="Defense"?46:role=="Buff"?84:65;
+        }
+        healthTopPixels=Mathf.Max(directionalTop,reference.rect.height-reference.pivot.y-groundAnchor.y);
         var parent=artwork.transform.parent;
         groundInParent=parent.InverseTransformPoint(artwork.transform.TransformPoint(groundAnchor/ppu));
         foreach(var renderer in parent.GetComponentsInChildren<SpriteRenderer>(true))
@@ -76,7 +100,8 @@ public sealed class CoreGuardianOriginalWalk
             if(verticalFrames[d,f]==null)throw new System.InvalidOperationException("Missing directional walk frame "+path);
         }
         vertical.gameObject.SetActive(false);
-        verticalLegs=new VerticalLegPair(vertical,verticalFrames,role);
+        // New roles' Up/Down drawings are complete walking frames; no leg splitting.
+        verticalLegs=generic?null:new VerticalLegPair(vertical,verticalFrames,role);
     }
     SpriteRenderer Layer(string name,string role)
     {
@@ -84,7 +109,7 @@ public sealed class CoreGuardianOriginalWalk
         if(sprite==null)throw new System.InvalidOperationException("Missing original walk layer "+role+"/"+name);
         var renderer=new GameObject(name).AddComponent<SpriteRenderer>();renderer.transform.SetParent(rig,false);renderer.sprite=sprite;renderer.sharedMaterial=original.sharedMaterial;return renderer;
     }
-    Vector2 Point(float x,float top)=>(new Vector2(x,original.sprite.rect.height-top)-original.sprite.pivot);
+    Vector2 Point(float x,float top)=>(new Vector2(x,reference.rect.height-top)-reference.pivot);
     Leg Bone(SpriteRenderer upper,SpriteRenderer lower,float hx,float hy,float kx,float ky,float ax,float ay)=>new Leg{hip=Point(hx,hy),knee=Point(kx,ky),ankle=Point(ax,ay),upper=upper.transform,lower=lower.transform}.Prepare();
     public void Move(Vector2 worldVelocity,float delta)
     {

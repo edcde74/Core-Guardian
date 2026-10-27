@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 1711,\n  \"executeMs\": 299,\n  \"assemblyName\": \"PipelineRunScript_VerifyB_18a14f64a3cc449280338c44e36b0e8e\",\n  \"success\": true,\n  \"result\": {\n    \"passed\": true,\n    \"checks\": \"Five handle hover/press/exit event paths, distinct installation symbols, category navigation\",\n    \"kind\": \"EventSystem dispatch and actual HUD callbacks, not physical mouse or human play\"\n  }\n}"
-    }
-  ]
-}

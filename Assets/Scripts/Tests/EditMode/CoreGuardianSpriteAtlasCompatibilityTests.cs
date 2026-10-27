@@ -49,6 +49,9 @@ public class CoreGuardianSpriteAtlasCompatibilityTests
     public void ManagedAtlasesKeepFullRectPixelsAndOriginalBMaskLookup()
     {
         var pipeline=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardianSpriteAtlasPipeline")).First(t=>t!=null);
+        // Packing is the default since 2026-10-27 (최적화 1). Restore whatever state the project had before the test.
+        var enemyAtlas=(SpriteAtlasImporter)AssetImporter.GetAtPath("Assets/Art/Atlases/Sprites/CG_Enemies_Common_01.spriteatlasv2");
+        bool wasEnabled=enemyAtlas!=null&&enemyAtlas.includeInBuild;
         try
         {
         pipeline.GetMethod("Synchronize").Invoke(null,new object[]{true,true});
@@ -61,7 +64,7 @@ public class CoreGuardianSpriteAtlasCompatibilityTests
         var mask=Resources.Load("CoreGuardian/MaskAtlas/Manifest",maskType);
         var lookup=maskType.GetMethod("TryGet",new[]{typeof(Texture2D),maskType.GetNestedType("Entry").MakeByRefType()});
         int tested=0,mapped=0;
-        foreach(string path in AssetDatabase.FindAssets("t:Texture2D",new[]{"Assets/Art/Characters/Enemies","Assets/Art/Characters/Towers"}).Select(AssetDatabase.GUIDToAssetPath).Where(p=>!p.Contains("/OriginalWalk/")))
+        foreach(string path in AssetDatabase.FindAssets("t:Texture2D",new[]{"Assets/Art/Characters/Enemies","Assets/Art/Characters/Towers"}).Select(AssetDatabase.GUIDToAssetPath))
         {
             var original=AssetDatabase.LoadAssetAtPath<Texture2D>(path);
             foreach(var sprite in AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>())
@@ -90,7 +93,7 @@ public class CoreGuardianSpriteAtlasCompatibilityTests
         }
         Assert.That(tested,Is.GreaterThan(20));Assert.That(mapped,Is.GreaterThan(20),"Existing B coverage must remain active; originally unsupported inputs keep fallback");
         }
-        finally{pipeline.GetMethod("Synchronize").Invoke(null,new object[]{false,false});}
+        finally{pipeline.GetMethod("Synchronize").Invoke(null,new object[]{wasEnabled,wasEnabled});}
     }
 
     [Test]

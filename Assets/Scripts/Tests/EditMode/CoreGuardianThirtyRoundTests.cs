@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CoreGuardianThirtyRoundTests
 {
-    static string Csv(string key)=>Resources.Load<TextAsset>("CoreGuardian/"+key).text;
+    static string Csv(string key)=>CoreGuardianLegacyData.Text(key);
     static CombatData Data()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves"));
     static Session Game(CombatData d){var s=new Session(d,42);s.SetBoard(40,25,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});return s;}
     [Test] public void LoaderKeepsSixColumnCompatibilityAndRejectsInvalidWaveOverrides()

@@ -36,6 +36,13 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         flashSprite=Resources.LoadAll<Sprite>(CoreGuardianCombatArt.ResourcePath).First(s=>s.name=="SingleBolt");
         game.Session.ProjectileLaunched+=Launched;
         game.Session.DamageApplied+=Damaged;
+        game.Session.TowerPulsed+=Pulsed;
+    }
+    // 냉기 포탑 pulse has no projectile; play the tower's attack frames directly.
+    void Pulsed(int id,Vector2 position,float radius)
+    {
+        if(!towers.TryGetValue(id,out var source)||source==null)return;
+        var tower=game.Session.FindTower(id);source.Fire(Vector2.down,tower!=null?tower.Stats.Rate:1);
     }
     public void Enemy(EnemyHandle enemy,GameObject view)
     {
@@ -118,8 +125,9 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
             var tower=game.Session.FindTower(id);if(tower!=null){rate=tower.Stats.Rate;single=tower.Kind==TowerKind.Single;}
         }
         if(source==null)return;
-        var direction=game.World(shot.Target.Position)-game.World(shot.Position);
-        if(single)direction=game.World(shot.Target.Position)+Vector3.up*.25f-source.AimOriginWorld;
+        var aimAt=shot.Line?shot.Position+shot.Direction:shot.Target.Position;
+        var direction=game.World(aimAt)-game.World(shot.Position);
+        if(single)direction=game.World(aimAt)+Vector3.up*.25f-source.AimOriginWorld;
         if(!volleyFrames.TryGetValue(shot.Source,out int frame)||frame!=Time.frameCount)
         {source.Fire(direction,rate);volleyFrames[shot.Source]=Time.frameCount;}
         if(shot.Source.StartsWith("Tower:"))
@@ -159,6 +167,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
     {
         if(game!=null&&game.Session!=null)game.Session.ProjectileLaunched-=Launched;
         if(game!=null&&game.Session!=null)game.Session.DamageApplied-=Damaged;
+        if(game!=null&&game.Session!=null)game.Session.TowerPulsed-=Pulsed;
         foreach(var flash in flashes)if(flash.renderer!=null)Destroy(flash.renderer.gameObject);
         while(flashPool.Count>0){var flash=flashPool.Pop();if(flash.renderer!=null)Destroy(flash.renderer.gameObject);}
     }

@@ -49,7 +49,7 @@ public class CoreGuardianRuntimePlayModeTests
                 Assert.That(game.GetComponentsInChildren<UnityEngine.UI.Text>(true).Single(t=>t.name=="Status_Wave").text,Does.Contain("/30"));
                 if(s.Phase==CoreGuardian.SessionPhase.Augmentation){choices++;Assert.That(game.GetComponentsInChildren<Transform>(true).Single(t=>t.name=="AugmentationSelection").gameObject.activeSelf,Is.True);Assert.That(s.ChooseAugmentation(0),Is.True);}
             }
-            Assert.That(choices,Is.EqualTo(5));Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Victory));Assert.That(s.AugmentationChoices,Is.Empty);
+            Assert.That(choices,Is.EqualTo((s.LastWave-1)/s.Data.AugmentationEvery));Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Victory));Assert.That(s.AugmentationChoices,Is.Empty);
         }
         finally{Time.timeScale=previous;}
 #else
@@ -111,7 +111,7 @@ public class CoreGuardianRuntimePlayModeTests
             type.GetMethod("CycleTestSpeed").Invoke(runtime,null);
             Assert.That((int)type.GetProperty("TestSpeed").GetValue(runtime),Is.EqualTo(2));
             Assert.That(Time.timeScale,Is.EqualTo(1),"Selecting combat speed must not accelerate preparation");
-            for(int wave=1;wave<=5;wave++)
+            for(int wave=1;wave<=s.Data.AugmentationEvery;wave++)
             {
                 type.GetMethod("StartCombat").Invoke(runtime,null);Assert.That(Time.timeScale,Is.EqualTo(2));
                 // Injected functional phase QA, not difficulty measurement.
@@ -124,7 +124,7 @@ public class CoreGuardianRuntimePlayModeTests
             float remaining=s.AugmentationRemaining;yield return new WaitForSecondsRealtime(.3f);
             Assert.That(remaining-s.AugmentationRemaining,Is.InRange(.2f,.55f),"Augmentation timer must use normal real-time pacing");
             Assert.That(s.ChooseAugmentation(0),Is.True);yield return null;Assert.That(Time.timeScale,Is.EqualTo(1));
-            for(int wave=6;wave<=s.LastWave;wave++)
+            for(int wave=s.Data.AugmentationEvery+1;wave<=s.LastWave;wave++)
             {
                 if(s.Phase==CoreGuardian.SessionPhase.Augmentation)s.ChooseAugmentation(0);
                 type.GetMethod("StartCombat").Invoke(runtime,null);Assert.That(Time.timeScale,Is.EqualTo(3));
@@ -191,11 +191,11 @@ public class CoreGuardianRuntimePlayModeTests
                 yield return null;
                 Assert.That(GameObject.Find("Tower_Single_1"),Is.Not.Null);
                 Assert.That(GameObject.Find("Status").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("라운드 "+s.Wave+" / 30"));
-                Assert.That(s.Phase,Is.EqualTo(wave==30?CoreGuardian.SessionPhase.Victory:wave%5==0?CoreGuardian.SessionPhase.Augmentation:CoreGuardian.SessionPhase.Preparation));
+                Assert.That(s.Phase,Is.EqualTo(wave==30?CoreGuardian.SessionPhase.Victory:wave%s.Data.AugmentationEvery==0?CoreGuardian.SessionPhase.Augmentation:CoreGuardian.SessionPhase.Preparation));
                 if(wave%10==9)Assert.That(s.PreparationRemaining,Is.InRange(s.Data.PreparationSecondsLong-1,s.Data.PreparationSecondsLong),"Preparation before boss round "+(wave+1)+" is the long length");
-                if(wave%5==0&&wave<s.LastWave){Assert.That(GameObject.Find("AugmentationSelection"),Is.Not.Null);Assert.That(s.AugmentationChoices.Count,Is.EqualTo(3));Assert.That(GameObject.Find("ChoiceTimer").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("30초"));Assert.That(HudButton(runtime,"RoleDiagnostic").interactable,Is.False);Assert.That(HudButton(runtime,"Reload").interactable,Is.False);int gold=s.Gold,crystals=s.Crystals;var card=s.AugmentationChoices[0];var cardButton=GameObject.Find("AugmentationCard0").GetComponent<UnityEngine.UI.Button>();Assert.That(cardButton.GetComponentsInChildren<UnityEngine.UI.Text>().Length,Is.Zero,"Card back must not reveal title, effect or tier text");cardButton.onClick.Invoke();Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Augmentation),"First click only reveals");yield return new WaitForSecondsRealtime(1.05f);Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Augmentation));cardButton.onClick.Invoke();Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Preparation));if(card.Family==CoreGuardian.AugmentationFamily.Gold)Assert.That(s.Gold-gold,Is.EqualTo(card.Value(100,300,600)));if(card.Family==CoreGuardian.AugmentationFamily.Crystals)Assert.That(s.Crystals-crystals,Is.EqualTo(card.Value(80,240,480)));Assert.That(s.PreparationRemaining,Is.EqualTo(s.Data.PreparationSecondsLong),"Preparation right after an augmentation choice is the long length");Assert.That(HudButton(runtime,"Reload").interactable,Is.True);}
+                if(wave%s.Data.AugmentationEvery==0&&wave<s.LastWave){Assert.That(GameObject.Find("AugmentationSelection"),Is.Not.Null);Assert.That(s.AugmentationChoices.Count,Is.GreaterThanOrEqualTo(3));Assert.That(GameObject.Find("ChoiceTimer").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("30초"));Assert.That(HudButton(runtime,"RoleDiagnostic").interactable,Is.False);Assert.That(HudButton(runtime,"Reload").interactable,Is.False);int gold=s.Gold,crystals=s.Crystals;var card=s.AugmentationChoices[0];var cardButton=GameObject.Find("AugmentationCard0").GetComponent<UnityEngine.UI.Button>();Assert.That(cardButton.GetComponentsInChildren<UnityEngine.UI.Text>().Length,Is.Zero,"Card back must not reveal title, effect or tier text");cardButton.onClick.Invoke();Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Augmentation),"First click only reveals");yield return new WaitForSecondsRealtime(1.05f);Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Augmentation));cardButton.onClick.Invoke();Assert.That(s.Phase,Is.EqualTo(CoreGuardian.SessionPhase.Preparation));if(card.Number==18)Assert.That(s.Gold-gold,Is.EqualTo((int)card.Spec.Value(0)));Assert.That(s.Augments.Selected.Last(),Is.EqualTo(card.Id));Assert.That(s.PreparationRemaining,Is.EqualTo(s.Data.PreparationSecondsLong),"Preparation right after an augmentation choice is the long length");Assert.That(HudButton(runtime,"Reload").interactable,Is.True);}
             }
-            Assert.That(s.Gold,Is.GreaterThanOrEqualTo(752));Assert.That(s.Crystals,Is.GreaterThanOrEqualTo(270));Assert.That(s.CoreEnergy,Is.GreaterThanOrEqualTo(20));
+            Assert.That(s.Gold,Is.GreaterThanOrEqualTo(752));Assert.That(s.Crystals,Is.GreaterThanOrEqualTo(270));Assert.That(s.CoreEnergy,Is.EqualTo(s.CoreMaximum),"No enemy reaches the core; random cards may change the maximum");
             Assert.That(GameObject.Find("Preparation").GetComponent<UnityEngine.UI.Text>().text,Does.Contain("1~30라운드 완료"));
             type.GetMethod("Restart").Invoke(runtime,null);
             yield return null;yield return null;

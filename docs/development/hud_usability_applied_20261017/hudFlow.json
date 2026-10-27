@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 1633,\n  \"executeMs\": 1353,\n  \"assemblyName\": \"PipelineRunScript_VerifyFlow_239b218f6612471189f698d26303ff5a\",\n  \"success\": true,\n  \"result\": {\n    \"passed\": true,\n    \"checks\": \"real purchase,exclusive dock,placement fail/success,no auto-open,first fold/second deselect,same-tower reopen,combat entry/reopen,augmentation fold/time/automatic selection\",\n    \"kind\": \"Controlled functional QA with diagnostic resources and forced clears; not human play/balance\"\n  }\n}"
-    }
-  ]
-}

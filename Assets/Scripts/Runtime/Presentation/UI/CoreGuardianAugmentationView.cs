@@ -9,7 +9,7 @@ public sealed class CoreGuardianAugmentationView : MonoBehaviour, IPointerEnterH
 {
     public bool Revealed {get;private set;}
     public bool Busy {get;private set;}
-    Button button;RectTransform body;GameObject back,front;Image rim;Text title,description;Image symbol;
+    Button button;RectTransform body;GameObject back,front;Image rim;Text title,description;
     AugmentationCard card;Action select;Func<bool> allowed;bool hover;
     static readonly Color[] colors={new Color(.76f,.83f,.9f),new Color(1,.76f,.28f),new Color(.5f,.94f,1)};
     public void Configure(AugmentationCard value,Font font,Action chosen,Func<bool> canChoose)
@@ -22,9 +22,9 @@ public sealed class CoreGuardianAugmentationView : MonoBehaviour, IPointerEnterH
         var art=back.AddComponent<Image>();art.sprite=CoreGuardianHudSkin.Sprite("CardBack"+card.Grade);art.preserveAspect=true;art.raycastTarget=false;
         front=Rect("Front",body,Vector2.zero,body.sizeDelta-new Vector2(48,48)).gameObject;
         float width=((RectTransform)front.transform).rect.width;
-        symbol=CoreGuardianHudSkin.Icon(front.transform,FamilyIcon(card.Family),new Vector2((width-80)/2,-28),new Vector2(80,80));
-        title=Label("Title",front.transform,Resources.Load<Font>("CoreGuardian/Fonts/Galmuri11-Bold")??font,new Vector2(14,-128),new Vector2(width-28,48),26);title.text=card.Title;
-        description=Label("Effect",front.transform,font,new Vector2(14,-188),new Vector2(width-28,144),20);description.text=card.Description;
+        // Card front: grade frame + name + text only (category icon removed, 아트 F2 · 2026-10-26).
+        title=Label("Title",front.transform,Resources.Load<Font>("CoreGuardian/Fonts/Galmuri11-Bold")??font,new Vector2(14,-60),new Vector2(width-28,48),26);title.text=card.Title;
+        description=Label("Effect",front.transform,font,new Vector2(14,-130),new Vector2(width-28,200),20);description.text=card.Description;
         Label("Choose",front.transform,font,new Vector2(14,-354),new Vector2(width-28,34),18).text="다시 클릭하여 선택";
         front.SetActive(false);
     }
@@ -66,7 +66,6 @@ public sealed class CoreGuardianAugmentationView : MonoBehaviour, IPointerEnterH
     void Update(){if(body!=null&&!Busy){body.localScale=Vector3.Lerp(body.localScale,hover?new Vector3(1.025f,1.025f,1):Vector3.one,Time.unscaledDeltaTime*18);rim.color=colors[(int)card.Grade]*(hover?1.18f:1);}}
     void OnDisable(){StopAllCoroutines();Busy=false;if(body!=null){body.localScale=Vector3.one;foreach(Transform child in transform)if(child.name=="RevealSpark")Destroy(child.gameObject);}hover=false;}
     public void OnPointerEnter(PointerEventData e){hover=true;}public void OnPointerExit(PointerEventData e){hover=false;}public void OnSelect(BaseEventData e){hover=true;}public void OnDeselect(BaseEventData e){hover=false;}
-    public static string FamilyIcon(AugmentationFamily f)=>f==AugmentationFamily.Gold?"Gold":f==AugmentationFamily.Crystals?"Crystal":f==AugmentationFamily.Core||f==AugmentationFamily.Flawless?"Core":f==AugmentationFamily.Player?"Upgrade":"Install";
     static RectTransform Rect(string name,Transform parent,Vector2 pos,Vector2 size){var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.anchoredPosition=pos;r.sizeDelta=size;return r;}
     static Text Label(string name,Transform parent,Font font,Vector2 pos,Vector2 size,int points){var r=Rect(name,parent,pos,size);r.anchorMin=r.anchorMax=r.pivot=new Vector2(0,1);var t=r.gameObject.AddComponent<Text>();t.font=font;t.fontSize=points;t.color=new Color(1,.95f,.84f);t.alignment=TextAnchor.MiddleCenter;t.horizontalOverflow=HorizontalWrapMode.Wrap;t.verticalOverflow=VerticalWrapMode.Truncate;t.raycastTarget=false;return t;}
 }

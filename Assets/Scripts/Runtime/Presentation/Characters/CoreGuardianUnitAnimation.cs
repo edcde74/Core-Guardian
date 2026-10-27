@@ -14,6 +14,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     SpriteRenderer artwork;
     CoreGuardianOriginalMotion originalMotion;
     CoreGuardianOriginalWalk originalWalk;
+    CoreGuardianFrameWalk frameWalk;
     CoreGuardianPlayerMotion playerMotion;
     CoreGuardianHitFlash hitFlash;
     CoreGuardianTowerGlow towerGlow;
@@ -30,10 +31,12 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     public int ShotCount {get;private set;}
     public Vector3 MuzzleWorld {get;private set;}
     public Vector3 AimOriginWorld=>originalMotion!=null?originalMotion.AimOriginWorld:transform.position;
-    public Vector3 HealthBarWorld => originalWalk!=null?originalWalk.HealthBarWorld:transform.position;
-    public bool Loaded=>originalMotion!=null||originalWalk!=null||playerMotion!=null;
-    public bool UsesOriginalArtwork=>role=="Player"||role=="Single"||role=="Multi"||role=="Support";
-    public bool UsesOriginalWalking=>role=="Attack"||role=="Defense"||role=="Buff"||role=="Boss";
+    public Vector3 HealthBarWorld => originalWalk!=null?originalWalk.HealthBarWorld:frameWalk!=null?frameWalk.HealthBarWorld:transform.position;
+    public bool Loaded=>originalMotion!=null||originalWalk!=null||frameWalk!=null||playerMotion!=null;
+    public bool UsesOriginalArtwork=>role=="Player"||role=="Single"||role=="Multi"||role=="Support"||role=="Frost"||role=="Flame"||role=="Rail";
+    public bool UsesOriginalWalking=>CoreGuardianOriginalWalk.Supports(role);
+    public bool UsesFrameWalking=>role=="Flyer"||role=="IronKnight"||role=="CrimsonLord";
+    public bool IsEnemyBody=>UsesOriginalWalking||UsesFrameWalking;
     public static CoreGuardianUnitAnimation Attach(GameObject root,string role)
     {
         var animation=root.GetComponent<CoreGuardianUnitAnimation>();if(animation!=null)return animation;
@@ -50,18 +53,31 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         else if(UsesOriginalArtwork)
         {
             originalMotion=new CoreGuardianOriginalMotion(artwork,role);
-            towerGlow=new CoreGuardianTowerGlow(artwork,role);
+            if(role=="Single"||role=="Multi"||role=="Support")towerGlow=new CoreGuardianTowerGlow(artwork,role);
             towerGrounding=new CoreGuardianTowerGrounding(artwork,role);
         }
         else if(UsesOriginalWalking){originalWalk=new CoreGuardianOriginalWalk(artwork,role);hitFlash=new CoreGuardianHitFlash(artwork);}
+        else if(UsesFrameWalking){frameWalk=CreateFrameWalk(artwork,role);hitFlash=new CoreGuardianHitFlash(artwork);}
         else throw new InvalidOperationException("Unsupported original animation role: "+role);
         MuzzleWorld=artwork.transform.position;
+    }
+    static CoreGuardianFrameWalk CreateFrameWalk(SpriteRenderer artwork,string role)
+    {
+        if(role=="Flyer")
+        {
+            var hover=new Sprite[6];for(int i=0;i<6;i++)hover[i]=Resources.Load<Sprite>("CoreGuardian/OriginalWalk/Flyer/Hover_"+i);
+            Sprite[] V(string d){var f=new Sprite[4];for(int i=0;i<4;i++)f[i]=Resources.Load<Sprite>("CoreGuardian/VerticalWalk/Flyer/"+d+"_"+i);return f;}
+            return new CoreGuardianFrameWalk(artwork,hover,null,V("Up"),V("Down"),14,10);
+        }
+        var library=CoreGuardianSpriteLibrary.Instance;
+        Sprite[] B(string d){var f=new Sprite[4];for(int i=0;i<4;i++)f[i]=library!=null?library.Get(role+"/"+d+"_"+i):null;return f;}
+        return new CoreGuardianFrameWalk(artwork,B("Left"),B("Right"),B("Up"),B("Down"),18,0);
     }
     public void Move(Vector2 worldVelocity,float delta)=>TrackMotion(worldVelocity,delta,true);
     public void MoveWithoutTurning(Vector2 worldVelocity,float delta)=>TrackMotion(worldVelocity,delta,false);
     void TrackMotion(Vector2 velocity,float delta,bool turn)
     {
-        originalWalk?.Move(velocity,delta);playerMotion?.Move(velocity,delta);walking=velocity.sqrMagnitude>.000001f;
+        originalWalk?.Move(velocity,delta);frameWalk?.Move(velocity,delta);playerMotion?.Move(velocity,delta);walking=velocity.sqrMagnitude>.000001f;
         if(role=="Player")aiming=!turn;
         if(walking&&turn)Face(velocity,role=="Player",delta);
     }
@@ -91,8 +107,8 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     public void ReceiveHit(){if(hitFlash!=null&&hitFlash.Trigger())justHit=true;}
     public void ResetEnemyForReuse()
     {
-        if(!UsesOriginalWalking||originalWalk==null)throw new InvalidOperationException("Only configured enemy walking bodies can be reused");
-        hitFlash?.ResetForReuse();originalWalk.ResetForReuse();
+        if(originalWalk==null&&frameWalk==null)throw new InvalidOperationException("Only configured enemy walking bodies can be reused");
+        hitFlash?.ResetForReuse();originalWalk?.ResetForReuse();frameWalk?.ResetForReuse();
         justHit=walking=justFired=aiming=false;
         shotAge=100;shotDuration=.25f;idleTime=0;facingAngle=-90;aim=Vector2.down;
         direction=3;lastShotFrame=-1;ShotCount=0;MuzzleWorld=artwork.transform.position;
@@ -107,6 +123,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         if(artwork==null)return;
         if(playerMotion!=null){playerMotion.Present(direction,aim,shotAge,shotDuration,idleTime,aiming);MuzzleWorld=playerMotion.MuzzleWorld;return;}
         if(originalWalk!=null){originalWalk.Present(delta);return;}
+        if(frameWalk!=null){frameWalk.Present(delta);return;}
         originalMotion.Present(shotAge,shotDuration,(Vector2)(Quaternion.Euler(0,0,facingAngle)*Vector3.right));
         towerGlow?.Present(shotAge,shotDuration,delta);
         towerGrounding?.Present();

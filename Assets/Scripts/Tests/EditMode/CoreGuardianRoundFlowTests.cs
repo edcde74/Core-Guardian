@@ -20,7 +20,7 @@ public class CoreGuardianRoundFlowTests
         Assert.That(d.RewardForWave(11),Is.EqualTo(70));
     }
     static readonly Vector2 Away = new Vector2(100,100);
-    static CombatData Data() => CombatData.Load(Resources.Load<TextAsset>("CoreGuardian/enemies").text,Resources.Load<TextAsset>("CoreGuardian/towers").text,Resources.Load<TextAsset>("CoreGuardian/stage").text,Resources.Load<TextAsset>("CoreGuardian/upgrades").text,Resources.Load<TextAsset>("CoreGuardian/waves").text);
+    static CombatData Data() => CombatData.Load(CoreGuardianLegacyData.Text("enemies"),CoreGuardianLegacyData.Text("towers"),CoreGuardianLegacyData.Text("stage"),CoreGuardianLegacyData.Text("upgrades"),CoreGuardianLegacyData.Text("waves"));
     static Session Game(CombatData d)
     {
         var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});return s;
@@ -34,14 +34,14 @@ public class CoreGuardianRoundFlowTests
         }
         Assert.That(s.Phase,Is.Not.EqualTo(SessionPhase.Combat));
     }
-    static CombatData Load(string stage) => CombatData.Load(Resources.Load<TextAsset>("CoreGuardian/enemies").text,Resources.Load<TextAsset>("CoreGuardian/towers").text,stage,Resources.Load<TextAsset>("CoreGuardian/upgrades").text,Resources.Load<TextAsset>("CoreGuardian/waves").text);
+    static CombatData Load(string stage) => CombatData.Load(CoreGuardianLegacyData.Text("enemies"),CoreGuardianLegacyData.Text("towers"),stage,CoreGuardianLegacyData.Text("upgrades"),CoreGuardianLegacyData.Text("waves"));
     // 2026-10-24 rule: normal preparation 30s; 45s before a boss round and right after an augmentation choice.
     [Test] public void PreparationIsThirtySecondsAndLongLengthIsStageData()
     {
         var d=Data();
         Assert.That(d.PreparationSeconds,Is.EqualTo(30));Assert.That(d.PreparationSecondsLong,Is.EqualTo(45));
         Assert.That(Game(d).PreparationRemaining,Is.EqualTo(30),"Round 1 preparation is normal length");
-        var stage=Resources.Load<TextAsset>("CoreGuardian/stage").text;
+        var stage=CoreGuardianLegacyData.Text("stage");
         Assert.That(Load(stage.Replace("preparationSecondsLong,45","preparationSecondsLong,50")).PreparationSecondsLong,Is.EqualTo(50));
         var legacy=Load(string.Join("\n",stage.Replace("\r","").Split('\n').Where(l=>!l.StartsWith("preparationSecondsLong,"))));
         Assert.That(legacy.PreparationSecondsLong,Is.EqualTo(legacy.PreparationSeconds),"Without the key every preparation keeps the normal length");

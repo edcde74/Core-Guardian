@@ -22,6 +22,9 @@ public sealed class PrototypeGridMovement : MonoBehaviour
     private bool isMoving;
 
     public Vector3Int CurrentCell => currentCell;
+    // Last WASD direction pressed (46 순간 이동) and a notice per completed step (22 불길 발자국: the cell left).
+    public Vector2Int LastDirection { get; private set; }
+    public event System.Action<Vector3Int> Stepped;
 
     private void Awake()
     {
@@ -64,6 +67,7 @@ public sealed class PrototypeGridMovement : MonoBehaviour
 
         Vector2Int direction = pendingDirection;
         pendingDirection = Vector2Int.zero;
+        LastDirection = direction;
         TryStep(direction);
     }
 
@@ -80,12 +84,31 @@ public sealed class PrototypeGridMovement : MonoBehaviour
                 return false;
         Vector3Int nextCell = currentCell + delta * distance;
 
+        var left = currentCell;
         currentCell = nextCell;
+        Stepped?.Invoke(left);
         stepStart = transform.position;
         stepEnd = TileCenter(currentCell) + spriteOffset;
         stepProgress = 0f;
         isMoving = true;
         return true;
+    }
+
+    // Jumps over path/tower/core cells; lands on the farthest free cell within maxCells (3 → 2 → 1).
+    public bool TryTeleport(Vector2Int direction, int maxCells)
+    {
+        if (!enabled || Mathf.Abs(direction.x) + Mathf.Abs(direction.y) != 1) return false;
+        var delta = new Vector3Int(direction.x, direction.y, 0);
+        int unit = direction.x != 0 ? movementTileSize.x : movementTileSize.y;
+        for (int cells = maxCells; cells >= 1; cells--)
+        {
+            var target = currentCell + delta * (cells * unit);
+            if (!CanOccupy(target)) continue;
+            currentCell = target; isMoving = false; pendingDirection = Vector2Int.zero;
+            transform.position = TileCenter(currentCell) + spriteOffset;
+            return true;
+        }
+        return false;
     }
 
     private Vector3 TileCenter(Vector3Int origin)

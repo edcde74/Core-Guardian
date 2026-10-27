@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"status\": \"completed\",\n  \"duration\": 0.25,\n  \"summary\": {\n    \"total\": 3,\n    \"passed\": 3,\n    \"failed\": 0,\n    \"skipped\": 0,\n    \"inconclusive\": 0\n  },\n  \"results\": [\n    {\n      \"FullName\": \"CoreGuardianMaskSourceFrameTests.CaptureReflectsSameFrameChanges_AndPriorValueStaysImmutable\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0297321,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianMaskSourceFrameTests.NextCaptureDoesNotMutateBoundRecordOrOldReaderPixels\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0884419,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianMaskSourceFrameTests.ResourceCreationCallbackRunsBeforeCapture\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0086275,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ]\n}"
-    }
-  ]
-}

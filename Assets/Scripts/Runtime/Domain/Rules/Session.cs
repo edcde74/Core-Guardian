@@ -254,7 +254,7 @@ namespace CoreGuardian
         // Session investment: independent per kind/stat, retained even with no towers installed.
         readonly Dictionary<TowerKind,Dictionary<string,int>> towerUpgradeSteps=new Dictionary<TowerKind,Dictionary<string,int>>();
         int TowerStep(TowerKind kind,string stat) => towerUpgradeSteps.TryGetValue(kind,out var steps)&&steps.TryGetValue(stat,out var n)?n:0;
-        public Session(CombatData data, int? seed=null) { Data=data??throw new ArgumentNullException(nameof(data));augmentationRandom=seed.HasValue?new System.Random(seed.Value):new System.Random();Player=data.Player.Clone();Gold=data.StartGold;Crystals=data.StartCrystals;CoreEnergy=CoreMaximum=data.CoreEnergy;PreparationRemaining=data.PreparationFor(1,false);Phase=SessionPhase.Preparation;Wave=1;LastWave=data.Waves.Select(x=>x.Wave).DefaultIfEmpty(1).Max();LastMessage="준비";InitializeModelPools(); }
+        public Session(CombatData data, int? seed=null) { Data=data??throw new ArgumentNullException(nameof(data));augmentationRandom=seed.HasValue?new System.Random(seed.Value):new System.Random();combatRandom=seed.HasValue?new System.Random(unchecked(seed.Value*31+7)):new System.Random();tags=TagCache.From(data);Player=data.Player.Clone();Gold=data.StartGold;Crystals=data.StartCrystals;CoreEnergy=CoreMaximum=data.CoreEnergy;PreparationRemaining=data.PreparationFor(1,false);Phase=SessionPhase.Preparation;Wave=1;LastWave=data.Waves.Select(x=>x.Wave).DefaultIfEmpty(1).Max();LastMessage="준비";InitializeModelPools(); }
         public void SetBoard(int width,int height,Vector2Int core,IEnumerable<Vector2Int> route)
         {
             if(width<=0||height<=0)throw new ArgumentException("Invalid board");this.width=width;this.height=height;this.core=core;path.Clear();lengths.Clear();pathCells.Clear();segmentEnds.Clear();exactPathIndex=false;pathLength=0;
@@ -273,22 +273,67 @@ namespace CoreGuardian
             }
         }
         public bool IsBuildable(Vector2Int cell) {return cell.x>=0&&cell.y>=0&&cell.x<width&&cell.y<height&&!pathCells.Contains(cell)&&cell!=core&&!Towers.Any(t=>t.Position==cell);}
+        // 49 전선 건설 allows combat installs (+25%); 34 급속 건설 discounts then taxes.
+        public bool CanBuildNow=>Phase==SessionPhase.Preparation||Phase==SessionPhase.Combat&&Augments.Has(49);
+        public int InstallCost(TowerKind kind)
+        {
+            float cost=Data.Towers[kind].Cost;
+            if(Augments.Has(34)){cost*=Augments.Rounds34>0?1-Augments.Value(34,1)/Augments.Count(34)/100f:1+Augments.Value(34,2)/Augments.Count(34)/100f;}
+            if(Phase==SessionPhase.Combat&&Augments.Has(49))cost*=1+Augments.Value(49)/Augments.Count(49)/100f;
+            return Mathf.Max(0,Mathf.FloorToInt(cost+.5f));
+        }
         public bool CanInstall(TowerKind kind,Vector2Int cell,out string reason)
         {
-            reason=null;if(Phase!=SessionPhase.Preparation)reason="준비 시간에만 설치 가능";else if(!IsBuildable(cell))reason="설치 불가 칸";else if(Crystals<Data.Towers[kind].Cost)reason="수정 부족";else if(kind==TowerKind.Support&&!Towers.Any(t=>t.Kind!=TowerKind.Support))reason="공격 포탑을 먼저 설치";return reason==null;
+            reason=null;if(!CanBuildNow)reason="준비 시간에만 설치 가능";else if(!IsBuildable(cell))reason="설치 불가 칸";else if(Crystals<InstallCost(kind))reason="수정 부족";else if(kind==TowerKind.Support&&!Towers.Any(t=>t.Kind!=TowerKind.Support))reason="공격 포탑을 먼저 설치";return reason==null;
         }
         public TowerState TryInstall(TowerKind kind,Vector2Int cell,out string reason)
         {
-            if(!CanInstall(kind,cell,out reason))return null;var s=Data.Towers[kind];var t=new TowerState{Id=nextTower++,Kind=kind,Position=cell,Spent=s.Cost,Stats=new CombatStats{Damage=s.Damage,Rate=s.Rate,Range=s.Range,ProjectileSpeed=s.ProjectileSpeed,BuffDamage=s.BuffDamage}};
+            if(!CanInstall(kind,cell,out reason))return null;var s=Data.Towers[kind];int cost=InstallCost(kind);var t=new TowerState{Id=nextTower++,Kind=kind,Position=cell,Spent=cost,Stats=new CombatStats{Damage=s.Damage,Rate=s.Rate,Range=s.Range,ProjectileSpeed=s.ProjectileSpeed,BuffDamage=s.BuffDamage,SlowPercent=s.SlowPercent,SlowDuration=s.SlowDuration,BurnPerStack=s.BurnPerStack,BurnDuration=s.BurnDuration,PierceFalloff=s.PierceFalloff}};
             foreach(var u in Data.Upgrades.Where(u=>u.Target==kind.ToString()))
             {
-                int step=TowerStep(kind,u.Stat);if(step==0)continue;
+                int step=TowerStep(kind,UpgradeKey(u));if(step==0)continue;
                 t.Stats.Add(u.Stat,u.Delta*step);t.Stats.UpgradeSteps[u.Stat]=step;
             }
-            Crystals-=s.Cost;Towers.Add(t);LastMessage="포탑 설치";return t;
+            ClampTowerStats(t);
+            Crystals-=cost;Towers.Add(t);LastMessage="포탑 설치";
+            if(Augments.Has(45))t=TryMerge(t);
+            return t;
         }
-        public bool DestroyTower(int id) {if(Phase==SessionPhase.Augmentation)return false;var t=Towers.FirstOrDefault(x=>x.Id==id);if(t==null)return false;Towers.Remove(t);int refund=t.Spent/2;Crystals+=refund;LastMessage="철거 +"+refund+" 수정";return true;}
+        public int RefundPercent=>Augments.Has(13)?(int)Augments.Value(13)/Augments.Count(13):(int)Data.Setting("refundPercent",50);
+        public bool DestroyTower(int id) {if(Phase==SessionPhase.Augmentation)return false;var t=Towers.FirstOrDefault(x=>x.Id==id);if(t==null)return false;Towers.Remove(t);int refund=t.Spent*RefundPercent/100;Crystals+=refund;LastMessage="철거 +"+refund+" 수정";return true;}
+        // 45 포탑 합체: ★1+★1 side by side → ★2, two adjacent ★2 → ★3. The later tower's cell frees.
+        static readonly Vector2Int[] Sides={Vector2Int.up,Vector2Int.down,Vector2Int.left,Vector2Int.right};
+        TowerState TryMerge(TowerState placed)
+        {
+            var current=placed;
+            for(int guard=0;guard<3;guard++)
+            {
+                if(current.Stars>=3)break;
+                TowerState partner=null;
+                foreach(var d in Sides){var other=Towers.FirstOrDefault(x=>x!=current&&x.Kind==current.Kind&&x.Stars==current.Stars&&x.Position==current.Position+d);if(other!=null){partner=other;break;}}
+                if(partner==null)break;
+                var keep=partner.Id<current.Id?partner:current;var vacate=keep==partner?current:partner;
+                Towers.Remove(vacate);keep.Spent+=vacate.Spent;SetStars(keep,keep.Stars+1);
+                RaiseCue("star_merge",keep.Position);LastMessage="포탑 합체 ★"+keep.Stars;current=keep;
+            }
+            return current;
+        }
+        float StarDamage(int stars)=>stars>=3?Data.Setting("starDamage3",3.2f):stars==2?Data.Setting("starDamage2",1.8f):1;
+        float StarRange(int stars)=>stars>=3?Data.Setting("starRange3",1):stars==2?Data.Setting("starRange2",.5f):0;
+        void SetStars(TowerState t,int stars)
+        {
+            float ratio=StarDamage(stars)/StarDamage(t.Stars);float range=StarRange(stars)-StarRange(t.Stars);
+            t.Stats.Damage*=ratio;t.Stats.BuffDamage*=ratio;t.Stats.BurnPerStack*=ratio;t.Stats.Range+=range;t.Stars=stars;
+        }
+        void ClampTowerStats(TowerState t)
+        {
+            t.Stats.PierceFalloff=Mathf.Min(1,t.Stats.PierceFalloff);
+            if(t.Stats.SlowPercent>0)t.Stats.SlowPercent=Mathf.Min(t.Stats.SlowPercent,tags.SlowMax);
+        }
+        // Grouped upgrades (21501 + 21511) share the step of their group leader's stat.
+        string UpgradeKey(UpgradeSpec u){if(u.Group==0||u.Group==u.Id)return u.Stat;foreach(var g in Data.Upgrades)if(g.Id==u.Group)return g.Stat;return u.Stat;}
         UpgradeSpec FindUpgrade(string target,string stat) {foreach(var u in Data.Upgrades)if(u.Target==target&&u.Stat==stat)return u;return null;}
+        public IEnumerable<string> UpgradeStats(TowerKind kind){foreach(var u in Data.Upgrades)if(u.Target==kind.ToString()&&UpgradeKey(u)==u.Stat)yield return u.Stat;}
         static int Step(CombatStats s,string stat) {int n;return s.UpgradeSteps.TryGetValue(stat,out n)?n:0;}
         public int PlayerUpgradePrice(string stat) {return FindUpgrade("Player",stat)==null?-1:Data.PlayerUpgradePrice(Step(Player,stat)+1);}
         public int TowerUpgradePrice(int id,string stat) {TowerState t=null;foreach(var x in Towers)if(x.Id==id){t=x;break;}if(t==null)return -1;var u=FindUpgrade(t.Kind.ToString(),stat);int step=TowerStep(t.Kind,stat);return u==null?-1:u.Cost+u.CostIncrement*step-(step==0?Data.TowerFirstUpgradeDiscount:0);}
@@ -301,7 +346,15 @@ namespace CoreGuardian
             Crystals-=TowerUpgradePrice(id,stat);int step=TowerStep(t.Kind,stat)+1;
             if(!towerUpgradeSteps.TryGetValue(t.Kind,out var steps))towerUpgradeSteps[t.Kind]=steps=new Dictionary<string,int>();
             steps[stat]=step;
-            foreach(var tower in Towers.Where(x=>x.Kind==t.Kind)){tower.Stats.Add(stat,u.Delta);tower.Stats.UpgradeSteps[stat]=step;}
+            foreach(var member in Data.Upgrades)
+            {
+                if(member.Target!=u.Target||member!=u&&UpgradeKey(member)!=stat)continue;
+                foreach(var tower in Towers.Where(x=>x.Kind==t.Kind))
+                {
+                    bool scaled=member.Stat=="damage"||member.Stat=="buffDamage"||member.Stat=="burnPerStack";
+                    tower.Stats.Add(member.Stat,member.Delta*(scaled?StarDamage(tower.Stars):1));tower.Stats.UpgradeSteps[member.Stat]=step;ClampTowerStats(tower);
+                }
+            }
             LastMessage="같은 종류 포탑 전체 강화 · 이후 설치 포함";return true;
         }
         public bool StartCombat()
@@ -309,7 +362,8 @@ namespace CoreGuardian
             if(Phase!=SessionPhase.Preparation||path.Count<2)return false;
             Phase=SessionPhase.Combat;PreparationRemaining=0;waveTime=0;spawned.Clear();DamageTotals.Clear();
             BossKilled=false;coreDamagedThisRound=false;
-            playerTarget=default;playerAcquired=false;playerCooldown=0;
+            playerTarget=default;playerAcquired=false;playerCooldown=0;fireCells.Clear();fireTick=0;
+            if(AreaBlast==null||AreaBlast.ResetOnRoundStart)areaBlastCooldown=0;
             foreach(var tower in Towers){tower.Target=default;tower.AcquiredOnce=false;tower.Cooldown=0;}
             LastMessage=Diagnostic?"역할 검증 전투 시작":Wave+"라운드 전투 시작";CombatStarted?.Invoke();return true;
         }
@@ -323,9 +377,10 @@ namespace CoreGuardian
             }
             finally{EndModelOperation();}
         }
-        public EnemyHandle DebugSpawn(EnemyKind kind,float distance=0,EnemySpec spec=null) {if(path.Count<2)throw new InvalidOperationException("Board missing");spec=spec??Data.EnemyForWave(Wave,kind);return RentEnemy(kind,spec,distance);}
+        public EnemyHandle DebugSpawn(EnemyKind kind,float distance=0,EnemySpec spec=null) {if(path.Count<2)throw new InvalidOperationException("Board missing");spec=spec??Data.EnemyForWave(Wave,kind);return RentEnemy(kind,spec,distance,spec.Flying?1:0);}
         void PositionEnemy(EnemyHandle e)
         {
+            if(e.Slot.Route==1){enemyRevision++;PositionFlying(e.Slot);return;}
             float d=e.PathTravelled;
             if(exactPathIndex&&d>=0&&d<=pathLength)
             {
@@ -342,6 +397,7 @@ namespace CoreGuardian
             if(float.IsNaN(dt)||float.IsInfinity(dt)||dt<0)throw new ArgumentException("Invalid dt");
             BeginModelOperation();try{while(dt>0&&!disposed){float step=Mathf.Min(dt,.05f);StepTick(step,playerPosition);dt-=step;}}
             finally{EndModelOperation();}
+            FlushCues();
         }
         void StepTick(float dt,Vector2 playerPosition)
         {
@@ -355,6 +411,19 @@ namespace CoreGuardian
                 if(Diagnostic) {if(waveTime==0) {float diagnosticDistance=Mathf.Min(Data.DiagnosticStartDistance,pathLength*.2f);DebugSpawn(EnemyKind.Attack,diagnosticDistance);DebugSpawn(EnemyKind.Defense,diagnosticDistance+Data.DiagnosticSpacing);DebugSpawn(EnemyKind.Buff,diagnosticDistance+2*Data.DiagnosticSpacing);} }
                 else foreach(var row in rows) {int count;spawned.TryGetValue(row,out count);while(count<row.Count&&waveTime+.00001f>=row.Start+count*row.Interval) {DebugSpawn(row.Kind,0,row.Enemy??Data.Enemies[row.Kind]);count++;}spawned[row]=count;}
                 waveTime+=dt;
+                if(areaBlastCooldown>0)areaBlastCooldown=Mathf.Max(0,areaBlastCooldown-dt);
+                // Status timers, burn ticks and abilities run before movement, on a frozen list.
+                work.Enemies.AddRange(Enemies);
+                foreach(var e in work.Enemies)
+                {
+                    if(!e.Alive)continue;
+                    TickStun(e,dt);if(!e.Alive)continue;
+                    TickBurn(e,dt);if(!e.Alive)continue;
+                    TickAbilities(e,dt);
+                }
+                TickFire(dt);
+                FlushSpawns();
+                work.Enemies.Clear();
                 // Calculate all auras before moving anyone so source order cannot alter the radius test.
                 var boosts=work.Boosts;
                 // Keep the original source order and freeze membership before any movement.
@@ -374,22 +443,30 @@ namespace CoreGuardian
                     boosts.Add(enemy,boost);work.Enemies.Add(enemy);
                 }
                 foreach(var e in work.Enemies)e.Buffed=boosts[e]>0;
-                foreach(var e in work.Enemies) {float boost=boosts[e];e.PathTravelled=Mathf.Min(pathLength,e.PathTravelled+e.MovementSpeed*(1+boost/100f)*dt);e.SlowRemaining=Mathf.Max(0,e.SlowRemaining-dt);PositionEnemy(e);if(e.PathRemaining<=.00001f){e.Exited=true;coreDamagedThisRound|=e.Spec.CoreDamage>0;CoreEnergy=Mathf.Max(0,CoreEnergy-e.Spec.CoreDamage);LastMessage="코어 -"+e.Spec.CoreDamage;}}
+                foreach(var e in work.Enemies)
+                {
+                    float boost=boosts[e];var slot=e.Slot;float length=RouteLength(slot);
+                    e.PathTravelled=Mathf.Min(length,e.PathTravelled+e.MovementSpeed*(1+boost/100f)*dt);e.SlowRemaining=Mathf.Max(0,e.SlowRemaining-dt);PositionEnemy(e);
+                    if(e.PathRemaining<=.00001f){e.Exited=true;coreDamagedThisRound|=e.Spec.CoreDamage>0;CoreEnergy=Mathf.Max(0,CoreEnergy-e.Spec.CoreDamage);LastMessage="코어 -"+e.Spec.CoreDamage;}
+                }
                 if(CoreEnergy<=0) {Phase=SessionPhase.Defeat;ClearProjectiles();RemoveDeadEnemies();LastMessage="방어 실패";if(!Diagnostic)DefeatReached?.Invoke();return;}
                 work.RangeIndex.Build(Enemies);
                 supportCache.Dirty=true;
-                Shoot(playerPosition,Player,"Player",0,ref playerCooldown,ref playerTarget,ref playerAcquired,dt,false,work.RangeIndex);
+                Shoot(playerPosition,Player,"Player",0,ref playerCooldown,ref playerTarget,ref playerAcquired,dt,false,work.RangeIndex,null,1+Augments.PlayerRatePercent/100f);
                 if(disposed)return;
                 work.Towers.AddRange(Towers);
                 foreach(var t in work.Towers)
                 {
                     if(t.Kind==TowerKind.Support)continue;
-                    float buff=Augments.TowerBuffPercent+supportCache.Get(Towers,t.Position).Damage;
-                    Shoot(t.Position,t.Stats,t.AttackSource,buff,ref t.Cooldown,ref t.Target,ref t.AcquiredOnce,dt,t.Kind==TowerKind.Multi,work.RangeIndex);
+                    float buff=Augments.TowerDamagePercent+supportCache.Get(Towers,t.Position).Damage;
+                    float rate=1+TowerRatePercent(t,playerPosition)/100f;
+                    if(t.Kind==TowerKind.Frost)Pulse(t,buff,rate,dt,work.RangeIndex);
+                    else Shoot(t.Position,t.Stats,t.AttackSource,buff,ref t.Cooldown,ref t.Target,ref t.AcquiredOnce,dt,t.Kind==TowerKind.Multi,work.RangeIndex,t,rate);
                     if(disposed)return;
                 }
                 work.Projectiles.AddRange(Projectiles);
                 MoveProjectiles(dt,work);
+                FlushSpawns();
                 RemoveDeadEnemies();
                 bool complete=Diagnostic;
                 if(!complete&&rows.Count>0)
@@ -409,6 +486,7 @@ namespace CoreGuardian
                 foreach(var p in work.Projectiles)
                 {
                     if(disposed)return;if(!p.Accessible)continue;
+                    if(p.Slot.Line){if(MoveLine(p,dt))continue;removals.TryGetValue(p,out int finished);removals[p]=finished+1;continue;}
                     if(p.Target.Alive)
                     {
                         p.Slot.LastTarget=new EnemySnapshot(p.Target);
@@ -420,11 +498,11 @@ namespace CoreGuardian
                             // Remove after the callback using the original first-match rule:
                             // the observer may clear/reorder the list or re-enter Tick.
                             FlushProjectileRemovals(removals);
-                            ApplyDamage(p.Target,p.Damage,p.Source);
+                            if(ProjectileHit(p))continue;
                             RemoveProjectile(p);
                             continue;
                         }
-                        ApplyDamage(p.Target,p.Damage,p.Source);
+                        if(ProjectileHit(p))continue;
                     }
                     removals.TryGetValue(p,out int count);removals[p]=count+1;
                 }
@@ -446,30 +524,180 @@ namespace CoreGuardian
             if(write<count)Projectiles.RemoveRange(write,count-write);
             removals.Clear();
         }
+        // Homing hit. Piercing shots (레일, 5 꿰뚫는 탄) fly as lines from launch and never home.
+        bool ProjectileHit(ProjectileHandle p)
+        {
+            var slot=p.Slot;HitWithChain(p.Target,p.Damage,p.Source,slot.Payload);return false;
+        }
+        const float LineHitRadius=.35f;
+        readonly List<EnemyHandle> lineHits=new List<EnemyHandle>(8);
+        // Straight piercing flight (레일, 관통). Returns true while the shot is still flying.
+        bool MoveLine(ProjectileHandle p,float dt)
+        {
+            var s=p.Slot;float step=Mathf.Min(s.Remaining,s.Speed*dt);
+            Vector2 from=s.Position,to=from+s.Direction*step;
+            lineHits.Clear();
+            foreach(var e in Enemies)
+            {
+                if(!e.Alive||s.Hits.Contains(e.Id))continue;
+                Vector2 d=to-from;float t=d.sqrMagnitude>0?Mathf.Clamp01(Vector2.Dot(e.Position-from,d)/d.sqrMagnitude):0;
+                if(Vector2.Distance(from+d*t,e.Position)<=LineHitRadius)lineHits.Add(e);
+            }
+            // Insertion sort by distance along the flight (few hits; no comparer allocation).
+            for(int i=1;i<lineHits.Count;i++){var x=lineHits[i];float k=Vector2.Dot(x.Position-from,s.Direction);int j=i-1;while(j>=0&&Vector2.Dot(lineHits[j].Position-from,s.Direction)>k){lineHits[j+1]=lineHits[j];j--;}lineHits[j+1]=x;}
+            foreach(var e in lineHits)
+            {
+                if(s.HitsLeft==0)break;
+                s.Hits.Add(e.Id);var payload=s.Payload;
+                Strike(e,s.Damage,s.Source,payload);
+                if(payload.Rail)RaiseCue("hit_rail",e.Position);
+                if(s.HitsLeft>0)s.HitsLeft--;
+                // 관통: ×falloff per enemy passed; 29 crit → none; 41 일직선 → none and +N% each.
+                if(payload.PierceGrowth)s.Damage*=1+Augments.Value(41)/100f;
+                else if(!payload.CritNoFalloff)s.Damage*=payload.PierceFalloff>0?payload.PierceFalloff:1;
+                if(disposed)return false;
+            }
+            s.Position=to;s.Remaining-=step;
+            if(s.HitsLeft==0)return false;
+            if(s.Remaining<=.00001f)
+            {
+                // 23 레일 반사: returns once along the same line; earlier victims can be hit again.
+                if(s.Payload.Rail&&Augments.Has(23)&&!s.Reflected){s.Reflected=true;s.Direction=-s.Direction;s.Remaining=s.Range;s.Hits.Clear();return true;}
+                return false;
+            }
+            return true;
+        }
         void CompleteRound()
         {
-            ClearProjectiles();
+            ClearProjectiles();fireCells.Clear();
             if(Diagnostic){Phase=SessionPhase.Victory;LastMessage="역할 검증 종료";return;}
-            CompletedWave=Wave;LastCompletionReward=Data.RewardForWave(Wave);Crystals+=LastCompletionReward;
-            if(!coreDamagedThisRound){Gold+=Augments.FlawlessGold;Crystals+=Augments.FlawlessCrystals;}
+            CompletedWave=Wave;int reward=Data.RewardForWave(Wave);
+            // 12 수정 조각: next N completions ×mult, then −X per round.
+            if(Augments.Has(12)){if(Augments.Rounds12>0){reward=Mathf.FloorToInt(reward*Augments.Value(12,1)/Augments.Count(12));Augments.Rounds12--;}else reward=Mathf.Max(0,reward-(int)Augments.Value(12,2));}
+            // 32 수정 광산: income after a delay.
+            if(Augments.Has(32)){Augments.Rounds32++;if(Augments.Rounds32>Augments.Value(32)/Augments.Count(32))reward+=(int)Augments.Value(32,1);}
+            LastCompletionReward=reward;Crystals+=reward;
+            if(Augments.Has(33)){int moved=Mathf.FloorToInt(Gold*Augments.Value(33)/100f);Gold-=moved;Crystals+=moved;}
+            if(Augments.Has(35))CoreEnergy=Mathf.Min(CoreMaximum,CoreEnergy+(int)Augments.Value(35));
+            if(!coreDamagedThisRound)Augments.CleanRounds++;
+            if(Augments.Rounds18>0)Augments.Rounds18--;
+            if(Augments.Rounds34>0)Augments.Rounds34--;
             LastMessage=CompletedWave+"라운드 완료 +"+LastCompletionReward+" 수정";
             if(Wave>=LastWave){Phase=SessionPhase.Victory;LastMessage+=" · 1~"+LastWave+"라운드 검증 완료";VictoryReached?.Invoke();return;}
             if(!Data.Waves.Any(row=>row.Wave==Wave+1))throw new InvalidOperationException("Next wave is missing");
             Wave++;PreparationRemaining=Data.PreparationFor(Wave,false);
-            if(CompletedWave%Data.AugmentationEvery==0&&(!Data.AugmentationRequiresBoss||BossKilled)){choices=AugmentationDeck.Draw(augmentationRandom,Augments.Selected);AugmentationRemaining=30;Phase=SessionPhase.Augmentation;LastMessage+=" · 증강 선택";RoundCompleted?.Invoke();return;}
+            int every=CompletedWave>30?(int)Data.Setting("augmentationEveryLate",Data.AugmentationEvery):Data.AugmentationEvery;
+            if(every>0&&CompletedWave%every==0&&(!Data.AugmentationRequiresBoss||BossKilled)&&Data.Augments.Count>0)
+            {
+                rerollsLeft=(int)Data.Setting("augmentRerolls",1)+(int)Augments.ExtraRerolls;
+                DrawChoices(null);AugmentationRemaining=Data.Setting("augmentSeconds",30);Phase=SessionPhase.Augmentation;LastMessage+=" · 증강 선택";RoundCompleted?.Invoke();return;
+            }
             Phase=SessionPhase.Preparation;
             LastMessage+=" · "+Wave+"라운드 준비";
             RoundCompleted?.Invoke();
         }
+        int rerollsLeft;
+        public int RerollsLeft=>Phase==SessionPhase.Augmentation?rerollsLeft:0;
+        readonly HashSet<int> previousScreen=new HashSet<int>();
+        void DrawChoices(ICollection<int> exclude)
+        {
+            int count=Augments.Has(47)?Augments.Cards:(int)Data.Setting("augmentCards",3);
+            choices=AugmentationDeck.Draw(augmentationRandom,Data.Augments,Augments,count,exclude,Augments.PendingPlatinum,
+                Data.Setting("augmentGradeSilver",60),Data.Setting("augmentGradeGold",30),Data.Setting("augmentSubcategoryWeight",25));
+        }
+        // Free reroll per selection; the shown cards are excluded and the timer keeps running.
+        public bool RerollAugmentation()
+        {
+            if(Phase!=SessionPhase.Augmentation||rerollsLeft<=0)return false;
+            rerollsLeft--;previousScreen.Clear();foreach(var c in choices)previousScreen.Add(c.Spec.Id);
+            DrawChoices(previousScreen);RaiseCue("reroll",Vector2.zero);FlushCues();LastMessage="증강 리롤";return true;
+        }
         public bool ChooseAugmentation(int index)
         {
             if(Phase!=SessionPhase.Augmentation||index<0||index>=choices.Length)return false;
-            var card=choices[index];var grant=Augments.Apply(card);
-            Gold+=grant.Gold;Crystals+=grant.Crystals;CoreMaximum+=grant.Core;CoreEnergy+=grant.Core;Player.Damage+=grant.PlayerDamage;
-            choices=Array.Empty<AugmentationCard>();AugmentationRemaining=0;Phase=SessionPhase.Preparation;PreparationRemaining=Data.PreparationFor(Wave,true);
+            var card=choices[index];
+            if(Augments.PendingPlatinum&&card.Number!=48)Augments.PendingPlatinum=false;
+            Augments.Apply(card);ApplyImmediate(card);
+            choices=Array.Empty<AugmentationCard>();AugmentationRemaining=0;rerollsLeft=0;Phase=SessionPhase.Preparation;PreparationRemaining=Data.PreparationFor(Wave,true);
             LastMessage=card.GradeName+" · "+card.Title+" 선택 · "+Wave+"라운드 준비";return true;
         }
-        void Shoot(Vector2 position,CombatStats stats,string source,float buff,ref float cooldown,ref EnemyHandle target,ref bool acquired,float dt,bool multi,EnemyRangeIndex rangeIndex)
+        // QA/test hook: grant a card exactly as if it had been chosen, without the selection screen.
+        public bool DebugGrantAugmentation(int number)
+        {
+            var spec=Data.Augments.FirstOrDefault(x=>x.Number==number);if(spec==null)return false;
+            var card=new AugmentationCard(spec);Augments.Apply(card);ApplyImmediate(card);return true;
+        }
+        // One-time effects at selection; standing effects are read live from Augments.
+        void ApplyImmediate(AugmentationCard card)
+        {
+            var v=card.Spec;
+            switch(v.Number)
+            {
+                case 2:Player.Damage+=v.Value(0);break;
+                case 20:Player.Damage+=v.Value(0);Player.Range+=v.Value(1);break;
+                case 14:CoreMaximum+=(int)v.Value(0);CoreEnergy+=(int)v.Value(0);break;
+                case 18:Gold+=(int)v.Value(0);break;
+                case 48:CoreMaximum=Mathf.Max(1,CoreMaximum-(int)v.Value(0));CoreEnergy=Mathf.Min(CoreEnergy,CoreMaximum);break;
+                case 50:CoreMaximum=Mathf.Max(1,Mathf.CeilToInt(CoreMaximum*v.Value(0)/100f));CoreEnergy=Mathf.Min(CoreEnergy,CoreMaximum);break;
+            }
+        }
+        // 16 촘촘한 진지 (adjacent tower), 30 화력 지원 (player within N tiles).
+        float TowerRatePercent(TowerState t,Vector2 player)
+        {
+            float percent=0;
+            if(Augments.Has(16))foreach(var d in Sides){bool found=false;foreach(var o in Towers)if(o!=t&&o.Position==t.Position+d){found=true;break;}if(found){percent+=Augments.Value(16);break;}}
+            if(Augments.Has(30)&&Vector2.Distance(player,t.Position)<=Augments.Value(30)/Augments.Count(30))percent+=Augments.Value(30,1);
+            return percent;
+        }
+        HitPayload LaunchPayload(TowerState tower,CombatStats stats,float buff,float crit)
+        {
+            var p=new HitPayload{Crit=crit};
+            if(tower==null)
+            {
+                p.Player=true;
+                if(Augments.Has(3)){p.SlowPercent=Augments.Value(3)/Augments.Count(3);p.SlowDuration=Augments.Value(3,1)/Augments.Count(3);}
+                if(Augments.Has(5)){p.ExtraPierce=Augments.Count(5);p.PierceFalloff=tags.PierceFalloff;}
+                if(Augments.Has(7))p.Execute=Augments.Value(7)/Augments.Count(7);
+                return p;
+            }
+            switch(tower.Kind)
+            {
+                case TowerKind.Flame:p.BurnStacks=1;p.BurnPerStack=stats.BurnPerStack*(1+buff/100f);p.BurnDuration=stats.BurnDuration;break;
+                case TowerKind.Single:if(Augments.Has(4)){FlameBurn(out float per,out float duration);p.BurnStacks=Augments.Count(4);p.BurnPerStack=per*(1+buff/100f);p.BurnDuration=duration;}break;
+                case TowerKind.Multi:p.Chain=Augments.ChainCount;p.ChainFalloff=Augments.Has(24)?1:tags.ChainFalloff;break;
+                case TowerKind.Rail:p.Rail=true;p.PierceFalloff=stats.PierceFalloff>0?stats.PierceFalloff:tags.PierceFalloff;p.PierceGrowth=Augments.Has(41);p.CritNoFalloff=Augments.Has(29)&&crit>1;break;
+            }
+            return p;
+        }
+        // 냉기 포탑: every 1/rate seconds, damage + slow to every enemy within the pulse radius. No target choice.
+        void Pulse(TowerState t,float buff,float rateMul,float dt,EnemyRangeIndex rangeIndex)
+        {
+            var stats=t.Stats;float rate=stats.Rate*rateMul;
+            var work=shotWorkPool.Count>0?shotWorkPool.Pop():new ShotWork();
+            try
+            {
+                var available=work.Available;
+                if(!rangeIndex.TryCollect(t.Position,stats.Range,Enemies,available,work.SpatialCandidates))
+                    foreach(var enemy in Enemies)if(enemy.Alive&&Vector2.Distance(enemy.Position,t.Position)<=stats.Range)available.Add(enemy);
+                t.Cooldown-=dt;if(available.Count==0||rate<=0){t.Cooldown=Mathf.Max(0,t.Cooldown);return;}if(t.Cooldown>0)return;
+                while(t.Cooldown<=.00001f)
+                {
+                    float crit=RollCrit(ref t.Attacks,ref t.CritBonus);
+                    var payload=LaunchPayload(t,stats,buff,crit);payload.SlowPercent=stats.SlowPercent;payload.SlowDuration=stats.SlowDuration;
+                    float damage=stats.Damage*(1+buff/100f)*crit;
+                    RaiseCue("cold_pulse",t.Position);if(crit>1)RaiseCue("crit",t.Position);
+                    TowerPulsed?.Invoke(t.Id,t.Position,stats.Range);
+                    foreach(var e in available){if(e.Alive){Strike(e,damage,t.AttackSource,payload);RaiseCue("hit_cold",e.Position);}}
+                    rangeIndex.Invalidate();supportCache.Dirty=true;
+                    var onAttack=AttackLaunched;if(onAttack!=null){try{onAttack(t.AttackSource,1);}finally{rangeIndex.Invalidate();supportCache.Dirty=true;}}
+                    if(disposed)return;
+                    float next=t.Cooldown+1/rate;if(next<=t.Cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");t.Cooldown=next;
+                    available.RemoveAll(e=>!e.Alive);if(available.Count==0){t.Cooldown=Mathf.Max(t.Cooldown,0);break;}
+                }
+            }
+            finally{work.Clear();if(shotWorkPool.Count<MaxRetainedWorkBuffers)shotWorkPool.Push(work);}
+        }
+        void Shoot(Vector2 position,CombatStats stats,string source,float buff,ref float cooldown,ref EnemyHandle target,ref bool acquired,float dt,bool multi,EnemyRangeIndex rangeIndex,TowerState tower,float rateMul)
         {
             var work=shotWorkPool.Count>0?shotWorkPool.Pop():new ShotWork();
             try
@@ -477,17 +705,27 @@ namespace CoreGuardian
                 var available=work.Available;
                 if(!rangeIndex.TryCollect(position,stats.Range,Enemies,available,work.SpatialCandidates))
                     foreach(var enemy in Enemies)if(enemy.Alive&&Vector2.Distance(enemy.Position,position)<=stats.Range)available.Add(enemy);
-                bool isTower=source!="Player";
+                // 공격 대상 선택(정본)은 플레이어·포탑 공통: 사거리가 비면 다음 진입 때 다시 '가장 먼저 들어온 적',
+                // 보스는 일반 적보다 뒤, 보스 조준 중 일반 적이 들어오면 바꿈.
+                if(available.Count==0)acquired=false;
                 if(target!=default&&(!target.Alive||Vector2.Distance(target.Position,position)>stats.Range))target=default;
-                if(isTower&&target!=default&&target.Kind==EnemyKind.Boss)
+                if(target!=default&&target.Kind==EnemyKind.Boss)
                     foreach(var enemy in available)if(enemy.Kind!=EnemyKind.Boss){target=default;break;}
+                // 화염 포탑: unburned enemies first, then the shared priority.
+                bool flame=tower!=null&&tower.Kind==TowerKind.Flame;
+                if(flame&&target!=default&&target.BurnStacks>0)foreach(var enemy in available)if(enemy.BurnStacks==0){target=default;break;}
                 if(target==default&&available.Count>0)
                 {
                     foreach(var enemy in available)
-                        if(target==default||(acquired?ComparePriority(enemy,target,isTower):CompareInitialTarget(enemy,target,isTower))<0)target=enemy;
+                    {
+                        if(target==default){target=enemy;continue;}
+                        if(flame&&(enemy.BurnStacks==0)!=(target.BurnStacks==0)){if(enemy.BurnStacks==0)target=enemy;continue;}
+                        if((acquired?ComparePriority(enemy,target,true):CompareInitialTarget(enemy,target))<0)target=enemy;
+                    }
                     acquired=true;
                 }
-                cooldown-=dt;if(available.Count==0||stats.Rate<=0){cooldown=Mathf.Max(0,cooldown);return;}if(cooldown>0)return;
+                float rate=stats.Rate*rateMul;
+                cooldown-=dt;if(available.Count==0||rate<=0){cooldown=Mathf.Max(0,cooldown);return;}if(cooldown>0)return;
                 var targets=work.Targets;int targetCount=1;
                 if(!multi)targets[0]=target;
                 else
@@ -505,12 +743,24 @@ namespace CoreGuardian
                 while(cooldown<=.00001f)
                 {
                     int launched=0;
+                    float crit=tower!=null?RollCrit(ref tower.Attacks,ref tower.CritBonus):RollCrit(ref playerAttacks,ref playerCritBonus);
+                    var payload=LaunchPayload(tower,stats,buff,crit);
+                    if(crit>1)RaiseCue("crit",position);
+                    if(tower!=null&&tower.Kind==TowerKind.Flame)RaiseCue("flame_shot",position);
+                    if(tower!=null&&tower.Kind==TowerKind.Rail)RaiseCue("rail_shot",position);
                     for(int i=0;i<targetCount;i++)
                     {
-                        var e=targets[i];if(e==default)continue;int shots=source=="Player"?1+Augments.ExtraPlayerProjectiles:1;
+                        var e=targets[i];if(e==default)continue;int shots=1;
                         for(int shot=0;shot<shots;shot++)
                         {
-                            var projectile=RentProjectile(e,position,stats.Damage*(1+buff/100f),stats.ProjectileSpeed,source);
+                            var projectile=RentProjectile(e,position,stats.Damage*(1+buff/100f)*crit,stats.ProjectileSpeed,source);
+                            projectile.Slot.Payload=payload;
+                            // 관통(정본): 대상을 따라가지 않고 사거리 끝까지 직진. 레일은 전부, 5 꿰뚫는 탄은 1+N명.
+                            if(payload.Rail||payload.ExtraPierce>0)
+                            {
+                                var slot=projectile.Slot;var direction=e.Position-position;
+                                slot.Line=true;slot.Direction=direction.sqrMagnitude>.000001f?direction.normalized:Vector2.right;slot.Remaining=slot.Range=stats.Range;slot.HitsLeft=payload.Rail?-1:1+payload.ExtraPierce;slot.Target=default;
+                            }
                             launched++;
                             var onProjectile=ProjectileLaunched;
                             if(onProjectile!=null)
@@ -528,15 +778,15 @@ namespace CoreGuardian
                         try{onAttack(source,launched);}finally{rangeIndex.Invalidate();supportCache.Dirty=true;}
                     }
                     if(disposed)return;
-                    float nextCooldown=cooldown+1/stats.Rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;
+                    float nextCooldown=cooldown+1/rate;if(nextCooldown<=cooldown)throw new InvalidOperationException("Attack rate exceeds floating-point timing precision");cooldown=nextCooldown;
                 }
                 }
             finally{work.Clear();if(shotWorkPool.Count<MaxRetainedWorkBuffers)shotWorkPool.Push(work);}
         }
         static int ComparePriority(EnemyHandle a,EnemyHandle b,bool tower)=>CombatRules.CompareTargetPriority(a,b,tower);
-        static int CompareInitialTarget(EnemyHandle a,EnemyHandle b,bool tower)
+        static int CompareInitialTarget(EnemyHandle a,EnemyHandle b)
         {
-            if(tower){int order=(a.Kind==EnemyKind.Boss?1:0).CompareTo(b.Kind==EnemyKind.Boss?1:0);if(order!=0)return order;}
+            int order=(a.Kind==EnemyKind.Boss?1:0).CompareTo(b.Kind==EnemyKind.Boss?1:0);if(order!=0)return order;
             return a.Id.CompareTo(b.Id);
         }
         public int ApplyDamage(EnemyHandle target,float damage,string source)
@@ -544,7 +794,10 @@ namespace CoreGuardian
             if(disposed||target==default||!ReferenceEquals(target.Owner,this)||!target.IsValid||!target.Alive)return 0;
             BeginModelOperation();try
             {
-                int actual=Math.Min(target.Health,CombatRules.Damage(damage,target.Spec.Defense));target.Health-=actual;int previous;DamageTotals.TryGetValue(source,out previous);DamageTotals[source]=previous+actual;if(actual>0&&source=="Player"&&Augments.PlayerSlow)target.SlowRemaining=1;if(target.Health==0){Gold+=target.Spec.Gold;if(target.Kind==EnemyKind.Boss)BossKilled=true;LastMessage="+"+target.Spec.Gold+" 골드";}if(actual>0)DamageApplied?.Invoke(new EnemySnapshot(target),actual);return actual;
+                var payload=source=="Player"?LaunchPayload(null,Player,0,1):default;
+                int dealt=Strike(target,damage,source,payload);
+                if(operationDepth==1)FlushSpawns();
+                return dealt;
             }
             finally{EndModelOperation();}
         }

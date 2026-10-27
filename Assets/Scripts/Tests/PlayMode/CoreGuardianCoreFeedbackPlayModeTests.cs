@@ -25,14 +25,16 @@ public class CoreGuardianCoreFeedbackPlayModeTests
         try
         {
             Time.timeScale=0;session.StartCombat();int before=session.CoreEnergy;
-            var enemy=session.DebugSpawn(EnemyKind.Attack,10000);
+            var enemy=session.DebugSpawn(EnemyKind.Attack,10000);int coreDamage=enemy.Spec.CoreDamage;
+            // The exited handle is retired by the same tick; the HUD consumes the snapshot taken before it.
+            var snapshot=Activator.CreateInstance(typeof(EnemySnapshot),BindingFlags.Instance|BindingFlags.NonPublic,null,new object[]{enemy},null);
             type.GetMethod("Update",flags).Invoke(game,null);
-            Assert.That(session.CoreEnergy,Is.EqualTo(before-enemy.Spec.CoreDamage));
+            Assert.That(session.CoreEnergy,Is.EqualTo(before-coreDamage));
             var core=UnityEngine.Object.FindObjectsByType<SpriteRenderer>(FindObjectsSortMode.None).First(r=>r.name=="2D Sprite"&&r.sprite!=null&&r.sprite.name=="core");
             var block=new MaterialPropertyBlock();core.GetPropertyBlock(block);Assert.That(block.GetFloat("_HitFlashAmount"),Is.GreaterThan(.4f));
             Assert.That(GameObject.Find("CoreHit"),Is.Not.Null);
             var hud=game.GetComponents<Component>().First(c=>c.GetType().Name=="CoreGuardianHud");
-            hud.GetType().GetMethod("ShowDamageNumber",flags).Invoke(hud,new object[]{enemy,12});
+            hud.GetType().GetMethod("ShowDamageNumber",flags).Invoke(hud,new object[]{snapshot,12});
             hud.GetType().GetMethod("LateUpdate",flags).Invoke(hud,null);
             var number=GameObject.Find("CoreDamageNumber");Assert.That(number,Is.Not.Null);
             var text=number.GetComponents<Component>().First(c=>c.GetType().Name=="TextMeshProUGUI");

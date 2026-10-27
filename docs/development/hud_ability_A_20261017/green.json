@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 107,\n  \"executeMs\": 727,\n  \"assemblyName\": \"PipelineRunScript_VerifyAbilityA_62d86844a4a54af3b402daa46d0c3f44\",\n  \"success\": true,\n  \"result\": {\n    \"passed\": true,\n    \"kind\": \"HUD callbacks and diagnostic installation; not human play or balance\",\n    \"checks\": \"player/tower inset plate, purchase refresh and rounding, distinct symbols, tab switching, support two abilities, folding retains target\"\n  }\n}"
-    }
-  ]
-}

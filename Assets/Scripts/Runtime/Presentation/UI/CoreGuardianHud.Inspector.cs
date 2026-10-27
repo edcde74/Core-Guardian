@@ -74,6 +74,7 @@ public sealed partial class CoreGuardianHud
         var reload=canvas.Find("Reload") as RectTransform;reload.anchorMin=reload.anchorMax=reload.pivot=new Vector2(0,1);reload.anchoredPosition=new Vector2(32,-168);
         var speed=canvas.Find("TestSpeed") as RectTransform;speed.anchorMin=speed.anchorMax=speed.pivot=new Vector2(0,1);speed.anchoredPosition=new Vector2(32,-232);
         BuildSoundControls();
+        BuildCheatPanel();
         developerViews.Add(debug.gameObject);developerViews.Add(reload.gameObject);developerViews.Add(speed.gameObject);
         var sound=canvas.Find("SoundControls");if(sound!=null)developerViews.Add(sound.gameObject);
         SetTopCompact(true);
@@ -104,14 +105,14 @@ public sealed partial class CoreGuardianHud
             StyleAbilityPurchase(b);
             refresh.Add(()=>b.gameObject.SetActive(purchaseOpen));
         }
-        foreach(var stat in stats.Concat(new[]{"buffDamage"}))
+        foreach(var stat in stats.Concat(new[]{"buffDamage","slowPercent","burnDuration","pierceFalloff"}))
         {
-            string captured=stat;int index=Array.IndexOf(stats,captured);
+            string captured=stat;
             var b=Button("Tower_"+stat,towerPanel,Vector2.zero,new Vector2(306,64),()=>Selected()==null?"":UpgradeLabel(Selected().Stats,Selected().Kind.ToString(),captured,Price(captured),"수정"),()=>PurchaseTower(captured),()=>TowerCanUpgrade(captured));
             StyleAbilityPurchase(b);
-            refresh.Add(()=>{var t=Selected();bool relevant=t!=null&&Relevant(t,captured);b.gameObject.SetActive(purchaseOpen&&relevant);if(relevant){int row=t.Kind==TowerKind.Support?(captured=="buffDamage"?0:1):index;((RectTransform)b.transform).anchoredPosition=new Vector2(264+row%2*306,-52-row/2*64);}});
+            refresh.Add(()=>{var t=Selected();bool relevant=t!=null&&Relevant(t,captured);b.gameObject.SetActive(purchaseOpen&&relevant);if(relevant){int row=UpgradeRows(t.Kind).IndexOf(captured);((RectTransform)b.transform).anchoredPosition=new Vector2(264+row%2*306,-52-row/2*64);}});
         }
-        var destroy=Button("Destroy",towerPanel,new Vector2(264,-220),new Vector2(612,44),()=>"철거 · 설치비 50% 반환 · 공유 강화 유지",()=>game.DestroySelected(),()=>CanBuyPlayer&&Selected()!=null);
+        var destroy=Button("Destroy",towerPanel,new Vector2(264,-220),new Vector2(612,44),()=>"철거 · 설치비 "+game.Session.RefundPercent+"% 반환 · 공유 강화 유지",()=>game.DestroySelected(),()=>CanBuyPlayer&&Selected()!=null);
         var destroyLabel=(RectTransform)destroy.transform.Find("Label");
         SetHudSize(destroyLabel,new Vector2(542,28));
         inspectorFold=SmallHandle("InspectorFold",canvas,()=>TryFoldDetails(),true);
@@ -167,7 +168,7 @@ public sealed partial class CoreGuardianHud
         var s=game.Session;
         if(displayedPhase!=s.Phase)
         {
-            if(displayedPhase.HasValue){ReleaseInspection();developerOpen=false;}
+            if(displayedPhase.HasValue){ReleaseInspection();if(s.Phase==SessionPhase.Augmentation)developerOpen=false;} // 개발 도구는 증강 화면에서만 닫음(테스트 중 유지)
             displayedPhase=s.Phase;
             if(s.Phase==SessionPhase.Combat)SetTopCompact(true);
         }
@@ -182,10 +183,10 @@ public sealed partial class CoreGuardianHud
         var st=s.Player;
         RefreshAbilityPlate(playerAbilities,st,false);
         SetHudText(playerTitle,purchaseOpen?"플레이어 능력치 강화":"플레이어 능력치");
-        SetHudText(playerInfo,"추가 발사 "+s.Augments.ExtraPlayerProjectiles+"발 · 둔화 효과 "+(s.Augments.PlayerSlow?"있음":"없음"));
+        SetHudText(playerInfo,"범위 폭발(Space) "+(s.AreaBlast==null?"없음":s.Phase!=SessionPhase.Combat?"전투 중 사용":s.AreaBlastReady?"준비":Mathf.CeilToInt(s.AreaBlastCooldown)+"초")+" · 증강 "+s.Augments.Selected.Count+"장");
         if(selected!=null)
         {
-            st=selected.Stats;SetHudText(towerTitle,TowerName(selected.Kind)+(purchaseOpen?" · 종류 전체 강화":" #"+selected.Id+" · 능력치"));
+            st=selected.Stats;SetHudText(towerTitle,TowerName(selected.Kind)+(selected.Stars>1?" ★"+selected.Stars:"")+(purchaseOpen?" · 종류 전체 강화":" #"+selected.Id+" · 능력치"));
             var identity=CoreGuardianHudSkin.Sprite(CoreGuardianHudSkin.Symbol("Install_"+selected.Kind));if(towerIdentityIcon.sprite!=identity)towerIdentityIcon.sprite=identity;
             RefreshAbilityPlate(towerAbilities,st,selected.Kind==TowerKind.Support);
             float support=s.Towers.Where(t=>t.Kind==TowerKind.Support&&Vector2.Distance(t.Position,selected.Position)<=t.Stats.Range).Sum(t=>t.Stats.BuffDamage);

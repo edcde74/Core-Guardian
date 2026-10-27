@@ -45,12 +45,15 @@ public class CoreGuardianPlayerFacingPlayModeTests
         Assert.That(successful,Is.GreaterThanOrEqualTo(2));Assert.That(left.Count,Is.GreaterThan(2));
         Assert.That(left.Max()-left.Min(),Is.GreaterThan(.02f));Assert.That(right.Max()-right.Min(),Is.GreaterThan(.02f));
         var session=(CoreGuardian.Session)type.GetProperty("Session").GetValue(game);var playerTile=(Vector2)type.GetMethod("PlayerTile",flags).Invoke(game,null);
-        session.StartCombat();session.DebugSpawn(CoreGuardian.EnemyKind.Defense,77);session.Player.Rate=8;
+        // Spawn on the route cell nearest the player so the shot is in range regardless of map length.
+        var route=(System.Collections.Generic.IReadOnlyList<Vector2Int>)type.GetProperty("RouteCells").GetValue(game);float along=0,best=float.MaxValue,spawnAt=0;
+        for(int i=0;i<route.Count;i++){if(i>0)along+=Vector2.Distance(route[i-1],route[i]);float gap=Vector2.Distance(route[i],playerTile);if(gap<best){best=gap;spawnAt=along;}}
+        session.StartCombat();session.DebugSpawn(CoreGuardian.EnemyKind.Defense,spawnAt);session.Player.Rate=8;
         int launches=0;session.ProjectileLaunched+=shot=>
         {
             if(shot.Source!="Player")return;launches++;
             var muzzle=(Vector3)unitType.GetProperty("MuzzleWorld").GetValue(unit);
-            var actual=(Vector3)combat.GetType().GetMethod("ProjectilePosition").Invoke(combat,new object[]{shot});
+            var actual=(Vector3)combat.GetType().GetMethod("ProjectilePosition").Invoke(combat,new object[]{shot.Handle});
             Assert.That(Vector3.Distance(actual,muzzle),Is.LessThan(.0001f),"The actual projectile must start at this frame's aimed tool");
             Assert.That(art.transform.Find("OriginalMotion").gameObject.activeSelf,Is.True);
             var world=type.GetMethod("World");Vector2 aim=(Vector3)world.Invoke(game,new object[]{shot.Target.Position})-(Vector3)world.Invoke(game,new object[]{shot.Position});
@@ -58,7 +61,7 @@ public class CoreGuardianPlayerFacingPlayModeTests
             Assert.That(art.transform.Find("OriginalMotion/Fixed").GetComponent<SpriteRenderer>().sprite.name,Does.StartWith("D"+direction+"_"));
         };
         for(int i=0;i<20&&launches==0;i++){session.Tick(.05f,playerTile);type.GetMethod("SynchronizeViews",flags).Invoke(game,null);yield return null;}
-        Assert.That(launches,Is.GreaterThan(0));
+        Assert.That(launches,Is.GreaterThan(0),"phase "+session.Phase+" player "+playerTile+" range "+session.Player.Range+" enemies "+string.Join(";",session.Enemies.Select(e=>e.Kind+"@"+e.Position+" alive "+e.Alive)));
 #else
         yield return null;
 #endif

@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"Summary\": {\n    \"Total\": 4,\n    \"Passed\": 4,\n    \"Failed\": 0,\n    \"Skipped\": 0,\n    \"Inconclusive\": 0\n  },\n  \"Results\": [\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.AtlasPointSamplingHasNoNeighbourBleed\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.1605294,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.CutoutRectAndFlipRenderExactly\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.1422023,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.SharedHealthStatesKeepAllFillPixels\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.5523615,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianSpriteAtlasTests.UnmappedSpriteRetainsOriginal\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0018964,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ],\n  \"Duration\": 4.63,\n  \"StatusPath\": null,\n  \"Mode\": \"EditMode\",\n  \"FilterApplied\": \"testname: CoreGuardianSpriteAtlasTests\",\n  \"success\": true,\n  \"result\": null\n}"
-    }
-  ]
-}

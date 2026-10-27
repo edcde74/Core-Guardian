@@ -91,8 +91,9 @@ public class CoreGuardianSelectedAudioPlayModeTests
     [UnityTest]
     public IEnumerator MusicCrossfadesAtRealAugmentationAndReturnsThenStopsAtFinalVictory()
     {
-        var data=Data();data.Waves.Clear();data.Waves.Add(new WaveSpec{Wave=10,Kind=EnemyKind.Boss,Count=1,Interval=1});data.Waves.Add(new WaveSpec{Wave=11,Kind=EnemyKind.Attack,Count=1,Interval=1});
-        var s=Bind(data);typeof(Session).GetProperty("Wave").SetValue(s,10);
+        var data=Data();data.Waves.Clear();// Augmentation cadence from data (every 3 rounds): round 9 opens a choice, round 10 is final.
+        data.Waves.Add(new WaveSpec{Wave=9,Kind=EnemyKind.Boss,Count=1,Interval=1});data.Waves.Add(new WaveSpec{Wave=10,Kind=EnemyKind.Attack,Count=1,Interval=1});
+        var s=Bind(data);typeof(Session).GetProperty("Wave").SetValue(s,9);
         var musicType=Type.GetType("CoreGuardianMusicAudio, Assembly-CSharp");var music=audio.GetComponentInChildren(musicType);
         yield return new WaitForSecondsRealtime(.45f);
         Assert.That(musicType.GetProperty("CurrentCue").GetValue(music),Is.EqualTo("bgm"));
@@ -163,7 +164,7 @@ public class CoreGuardianSelectedAudioPlayModeTests
         {
             ClearVoices();var root=new GameObject("AudioRevealQA",typeof(RectTransform));root.transform.SetParent(game.transform,false);((RectTransform)root.transform).sizeDelta=new Vector2(350,460);
             root.AddComponent(imageType);root.AddComponent(buttonType);var view=root.AddComponent(viewType);
-            viewType.GetMethod("Configure").Invoke(view,new object[]{new AugmentationCard(grade,AugmentationFamily.Gold),Resources.Load<Font>("CoreGuardian/Fonts/Galmuri11-Bold"),(Action)(()=>{}),(Func<bool>)(()=>true)});
+            viewType.GetMethod("Configure").Invoke(view,new object[]{new AugmentationCard(new AugmentSpec{Id=22001,Number=1,Name="QA",Grade=grade,Category="Combat",Subcategories=new[]{"Tower"},Values=new float[]{8},Text="QA"}),Resources.Load<Font>("CoreGuardian/Fonts/Galmuri11-Bold"),(Action)(()=>{}),(Func<bool>)(()=>true)});
             int before=(int)audioType.GetProperty("PlayedCount").GetValue(audio);
             viewType.GetMethod("Click").Invoke(view,null);viewType.GetMethod("Click").Invoke(view,null);
             Assert.That((int)audioType.GetProperty("PlayedCount").GetValue(audio),Is.EqualTo(before+1));

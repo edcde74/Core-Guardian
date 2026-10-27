@@ -41,20 +41,18 @@ public class CoreGuardianAnimationTimingTests
     }
 
     [Test]
-    public void AugmentedVolleyPublishesEveryProjectile_WithoutChangingDamageOrCadence()
+    public void PlayerVolleyPublishesOneProjectile_WithoutChangingDamageOrCadence()
     {
         var session = Game();
-        session.Augments.Apply(new AugmentationCard(AugmentationGrade.Platinum,AugmentationFamily.Player));
         session.DebugSpawn(EnemyKind.Defense,1);
         var shots = new List<ProjectileSnapshot>();
         var feedback = typeof(Session).GetEvent("ProjectileLaunched");
         Assert.That(feedback,Is.Not.Null);
         feedback.AddEventHandler(session,new Action<ProjectileSnapshot>(shots.Add));
         session.Tick(.01f,new Vector2(0,1));
-        Assert.That(shots.Count,Is.EqualTo(2));
-        Assert.That(shots.Select(p=>p.Id).Distinct().Count(),Is.EqualTo(2));
+        Assert.That(shots.Count,Is.EqualTo(1));
         Assert.That(shots.All(p=>p.Source=="Player"&&p.Damage==10),Is.True);
         session.Tick(.5f,new Vector2(0,1));
-        Assert.That(shots.Count,Is.EqualTo(2),"Presentation must not introduce another attack");
+        Assert.That(shots.Count,Is.EqualTo(1),"Presentation must not introduce another attack");
     }
 }

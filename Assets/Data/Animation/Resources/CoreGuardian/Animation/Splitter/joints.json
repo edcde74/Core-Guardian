@@ -1,0 +1,47 @@
+{
+  "convention": "CoreGuardianOriginalWalk.cs와 같은 좌표계(픽셀, 원점 왼쪽 위)",
+  "legs": {
+    "Left": {
+      "hip": [
+        12.96,
+        30.96
+      ],
+      "knee": [
+        13.68,
+        35.28
+      ],
+      "ankle": [
+        12.24,
+        43.92
+      ]
+    },
+    "Right": {
+      "hip": [
+        21.6,
+        30.96
+      ],
+      "knee": [
+        22.32,
+        36.72
+      ],
+      "ankle": [
+        25.2,
+        43.2
+      ]
+    }
+  },
+  "sourceRole": "Attack",
+  "cyclePixels": 14,
+  "back": {
+    "offset": [
+      14,
+      -2
+    ],
+    "phaseOffset": 0.5,
+    "drawOrder": "뒤 병사 → 앞 병사 → 끈"
+  },
+  "cordOffset": [
+    0,
+    -2
+  ]
+}

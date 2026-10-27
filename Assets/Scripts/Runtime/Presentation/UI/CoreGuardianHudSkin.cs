@@ -28,6 +28,11 @@ public static class CoreGuardianHudSkin
         if(name=="지원 포탑"||name=="Install_Support")return "TowerSupport";
         if(name=="Install_Single")return "TowerSingle";
         if(name=="Install_Multi")return "TowerMulti";
+        if(name=="Install_Frost"||name=="Tower_slowPercent")return "TowerFrost";
+        if(name=="Install_Flame"||name=="Tower_burnDuration")return "TowerFlame";
+        if(name=="Install_Rail"||name=="Tower_pierceFalloff")return "TowerRail";
+        if(name=="AugmentReroll")return "Reroll";
+        if(name=="AreaBlast")return "AreaBlast";
         if(name=="PlayerSpecs"||name.EndsWith("SpecTab"))return "AbilityList";
         if(name=="PlayerGrowth"||name.EndsWith("BuyTab"))return "AbilityUpgrade";
         if(name=="damage"||name=="Tower_damage")return "StatDamage";

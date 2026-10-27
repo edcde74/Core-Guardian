@@ -8,35 +8,80 @@ using UnityEngine;
 public class CoreGuardianAugmentationTests
 {
     static readonly Vector2 Away=new Vector2(100,100);
-    // These card/boss-gate regression fixtures deliberately select the supported legacy cadence. Current five-round progression is tested in CoreGuardianThirtyRoundTests.
-    static CombatData Data(){var d=CombatData.Load(Resources.Load<TextAsset>("CoreGuardian/enemies").text,Resources.Load<TextAsset>("CoreGuardian/towers").text,Resources.Load<TextAsset>("CoreGuardian/stage").text,Resources.Load<TextAsset>("CoreGuardian/upgrades").text,Resources.Load<TextAsset>("CoreGuardian/waves").text);d.AugmentationEvery=10;d.AugmentationRequiresBoss=true;d.Waves.RemoveAll(w=>w.Wave>11);return d;}
+    // Boss-gate fixtures use the legacy cadence (10 rounds + boss). Cards come from the live augments.csv.
+    static CombatData Data(){var d=CombatData.Load(CoreGuardianLegacyData.Text("enemies"),CoreGuardianLegacyData.Text("towers"),CoreGuardianLegacyData.Text("stage"),CoreGuardianLegacyData.Text("upgrades"),CoreGuardianLegacyData.Text("waves"));d.AugmentationEvery=10;d.AugmentationRequiresBoss=true;d.Waves.RemoveAll(w=>w.Wave>11);return d;}
     static Session Game(CombatData d){var s=new Session(d,42);s.SetBoard(40,25,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});return s;}
     static void Finish(Session s){for(int i=0;i<1000&&s.Phase==SessionPhase.Combat;i++){s.Tick(.05f,Away);foreach(var e in s.Enemies.ToArray())s.ApplyDamage(e,10000,"Test");}Assert.That(s.Phase,Is.Not.EqualTo(SessionPhase.Combat));}
     static Session BeforeBoss(CombatData data=null){var s=Game(data??Data());for(int i=1;i<=9;i++){Assert.That(s.StartCombat(),Is.True);Finish(s);}Assert.That(s.Wave,Is.EqualTo(10));return s;}
     [Test] public void BossKillWaitsForAllSpawnsAwardsOnceAndBlocksPreparationUntilSelection(){var s=BeforeBoss();s.StartCombat();s.Tick(.8f,Away);var boss=s.Enemies.Single(e=>e.Kind==EnemyKind.Boss);Assert.That(s.Enemies.Count(e=>e.Kind==EnemyKind.Defense),Is.EqualTo(3));int g=s.Gold;s.ApplyDamage(boss,10000,"Test");Assert.That(s.Gold-g,Is.EqualTo(120));s.Tick(.05f,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Combat));Finish(s);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Augmentation));Assert.That(s.Wave,Is.EqualTo(11));Assert.That(s.Crystals,Is.EqualTo(755));s.Tick(10,Away);Assert.That(s.PreparationRemaining,Is.EqualTo(s.Data.PreparationSeconds));Assert.That(s.AugmentationRemaining,Is.EqualTo(20).Within(.01));string reason;Assert.That(s.StartCombat(),Is.False);Assert.That(s.UpgradePlayer("damage",out reason),Is.False);Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(20,20),out reason),Is.Null);Assert.That(s.ChooseAugmentation(-1),Is.False);Assert.That(s.ChooseAugmentation(0),Is.True);Assert.That(s.ChooseAugmentation(0),Is.False);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Preparation));Assert.That(s.PreparationRemaining,Is.EqualTo(s.Data.PreparationSecondsLong));s.StartCombat();Finish(s);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Victory));Assert.That(s.CompletedWave,Is.EqualTo(11));}
     [Test] public void BossArrivalHasNoGoldOrAugmentationAndWaitsForOtherEnemies(){var d=Data();d.Waves.RemoveAll(w=>w.Wave==10);d.Waves.Add(new WaveSpec{Wave=10,Kind=EnemyKind.Boss,Count=1,Interval=1});d.Waves.Add(new WaveSpec{Wave=10,Kind=EnemyKind.Attack,Count=1,Interval=1,Start=30});var s=BeforeBoss(d);int gold=s.Gold;s.StartCombat();s.Tick(17,Away);Assert.That(s.CoreEnergy,Is.EqualTo(10));Assert.That(s.BossKilled,Is.False);Assert.That(s.Gold,Is.EqualTo(gold));Assert.That(s.Phase,Is.EqualTo(SessionPhase.Combat));Finish(s);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Preparation));Assert.That(s.AugmentationChoices,Is.Empty);}
     [Test] public void LethalBossArrivalDoesNotAwardRoundReward(){var d=Data();d.CoreEnergy=10;var s=BeforeBoss(d);int crystals=s.Crystals;s.StartCombat();s.Tick(17,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Defeat));Assert.That(s.Crystals,Is.EqualTo(crystals));Assert.That(s.AugmentationChoices,Is.Empty);}
-    [Test] public void BossAcceleratesExactlyAtHalfAndSlowRefreshesWithoutStacking(){var d=Data();d.Waves.Clear();var s=Game(d);s.StartCombat();var e=s.DebugSpawn(EnemyKind.Boss);Assert.That(e.MovementSpeed,Is.EqualTo(.6f));s.ApplyDamage(e,e.Spec.Health-e.Spec.Health/2-1,"Test");Assert.That(e.Enraged,Is.False);s.ApplyDamage(e,1,"Test");Assert.That(e.Enraged,Is.True);Assert.That(e.MovementSpeed,Is.EqualTo(.78f).Within(.0001));s.Augments.Apply(new AugmentationCard(AugmentationGrade.Gold,AugmentationFamily.Player));s.ApplyDamage(e,1,"Player");Assert.That(e.MovementSpeed,Is.EqualTo(.624f).Within(.0001));s.Tick(.5f,Away);s.ApplyDamage(e,1,"Player");Assert.That(e.SlowRemaining,Is.EqualTo(1));s.Tick(1.01f,Away);Assert.That(e.SlowRemaining,Is.Zero);Assert.That(e.MovementSpeed,Is.EqualTo(.78f).Within(.0001));}
-    [Test] public void GradeThresholdsAndHighestLeftmostTimeoutAreCorrect(){Assert.That(AugmentationDeck.RollGrade(.699999),Is.EqualTo(AugmentationGrade.Silver));Assert.That(AugmentationDeck.RollGrade(.7),Is.EqualTo(AugmentationGrade.Gold));Assert.That(AugmentationDeck.RollGrade(.95),Is.EqualTo(AugmentationGrade.Platinum));var s=BeforeBoss();s.StartCombat();Finish(s);var best=s.AugmentationChoices[AugmentationDeck.BestIndex(s.AugmentationChoices)];s.Tick(30.01f,Away);Assert.That(s.Augments.Selected.Single(),Is.EqualTo(best.Id));Assert.That(s.Phase,Is.EqualTo(SessionPhase.Preparation));Assert.That(s.PreparationRemaining,Is.InRange(s.Data.PreparationSecondsLong-.1f,s.Data.PreparationSecondsLong));var cards=new[]{new AugmentationCard(AugmentationGrade.Gold,AugmentationFamily.Core),new AugmentationCard(AugmentationGrade.Platinum,AugmentationFamily.Core),new AugmentationCard(AugmentationGrade.Platinum,AugmentationFamily.Player)};Assert.That(AugmentationDeck.BestIndex(cards),Is.EqualTo(1));}
-    [Test] public void DrawExcludesHistoryThenReusesOnlyWhenGradeExhaustedWithoutDuplicates(){var random=new System.Random(123);for(int i=0;i<100;i++){var draw=AugmentationDeck.Draw(random,Array.Empty<string>());Assert.That(draw.Select(c=>c.Id).Distinct().Count(),Is.EqualTo(3));}var all=AugmentationDeck.Cards.Select(c=>c.Id).ToArray();for(int i=0;i<50;i++){var draw=AugmentationDeck.Draw(random,all);Assert.That(draw.Select(c=>c.Id).Distinct().Count(),Is.EqualTo(3));}var history=AugmentationDeck.Cards.Where(c=>c.Family!=AugmentationFamily.Core).Select(c=>c.Id);var first=AugmentationDeck.Draw(random,history);Assert.That(first[0].Family,Is.EqualTo(AugmentationFamily.Core));}
-    public static IEnumerable<TestCaseData> AllCards()=>AugmentationDeck.Cards.Select(c=>new TestCaseData(c).SetName("CardEffects_"+c.Id));
-    public static IEnumerable<TestCaseData> SelectionCards()=>AugmentationDeck.Cards.Select(c=>new TestCaseData(c).SetName("SessionSelection_"+c.Id));
-    [TestCaseSource(nameof(SelectionCards))] public void RealSelectionGrantsAndPersistsEveryCard(AugmentationCard target)
+    static Session Field(int crystals=1000){var d=Data();d.Waves.Clear();d.Waves.Add(new WaveSpec{Wave=1,Kind=EnemyKind.Attack,Count=1,Interval=1,Start=1000});d.StartCrystals=crystals;var s=Game(d);return s;}
+    [Test] public void BossAcceleratesAtHalfAndBossSlowIsHalvedAndCapped()
     {
-        int seed=Enumerable.Range(0,10000).First(n=>AugmentationDeck.Draw(new System.Random(n),Array.Empty<string>()).Any(c=>c.Id==target.Id));
-        var d=Data();d.Waves.Clear();for(int w=1;w<=11;w++)d.Waves.Add(new WaveSpec{Wave=w,Kind=w==10?EnemyKind.Boss:EnemyKind.Attack,Count=1,Interval=1});
-        var s=new Session(d,seed);s.SetBoard(40,25,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});
-        for(int w=1;w<=10;w++){s.StartCombat();Finish(s);}
-        int gold=s.Gold,crystals=s.Crystals,core=s.CoreEnergy,maximum=s.CoreMaximum;float damage=s.Player.Damage;
-        int index=s.AugmentationChoices.ToList().FindIndex(c=>c.Id==target.Id);Assert.That(index,Is.GreaterThanOrEqualTo(0));Assert.That(s.ChooseAugmentation(index),Is.True);
-        Assert.That(s.Gold-gold,Is.EqualTo(target.Family==AugmentationFamily.Gold?target.Value(100,300,600):0));
-        Assert.That(s.Crystals-crystals,Is.EqualTo(target.Family==AugmentationFamily.Crystals?target.Value(80,240,480):0));
-        Assert.That(s.CoreEnergy-core,Is.EqualTo(target.Family==AugmentationFamily.Core?target.Value(2,6,12):0));Assert.That(s.CoreMaximum-maximum,Is.EqualTo(s.CoreEnergy-core));
-        Assert.That(s.Player.Damage-damage,Is.EqualTo(target.Family==AugmentationFamily.Player?target.Value(2,4,0):0));Assert.That(s.Augments.Selected.Single(),Is.EqualTo(target.Id));
-        s.StartCombat();Finish(s);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Victory));Assert.That(s.Augments.Selected.Single(),Is.EqualTo(target.Id));
-        s.StartDiagnosticEncounter();Assert.That(s.Augments.Selected,Is.Empty);Assert.That(s.Player.Damage,Is.EqualTo(d.Player.Damage));Assert.That(s.CoreEnergy,Is.EqualTo(d.CoreEnergy));
+        var s=Field();s.StartCombat();var e=s.DebugSpawn(EnemyKind.Boss);Assert.That(e.MovementSpeed,Is.EqualTo(.6f));
+        s.ApplyDamage(e,e.Spec.Health-e.Spec.Health/2-1,"Test");Assert.That(e.Enraged,Is.False);s.ApplyDamage(e,1,"Test");Assert.That(e.Enraged,Is.True);Assert.That(e.MovementSpeed,Is.EqualTo(.78f).Within(.0001));
+        Assert.That(s.DebugGrantAugmentation(3),Is.True);s.ApplyDamage(e,1,"Player");
+        Assert.That(e.SlowPercent,Is.EqualTo(7.5f).Within(.001),"Boss takes half of the 15% player slow");
+        Assert.That(e.MovementSpeed,Is.EqualTo(.78f*.925f).Within(.0001));
     }
-    [TestCaseSource(nameof(AllCards))] public void AllEighteenCardsGrantAndStackAsSpecified(AugmentationCard c){var e=new AugmentationEffects();var a=e.Apply(c);var b=e.Apply(c);Assert.That(e.Selected.Count,Is.EqualTo(2));Assert.That(b.Gold,Is.EqualTo(a.Gold));Assert.That(b.Crystals,Is.EqualTo(a.Crystals));Assert.That(a.Gold,Is.EqualTo(c.Family==AugmentationFamily.Gold?c.Value(100,300,600):0));Assert.That(a.Crystals,Is.EqualTo(c.Family==AugmentationFamily.Crystals?c.Value(80,240,480):0));Assert.That(a.Core,Is.EqualTo(c.Family==AugmentationFamily.Core?c.Value(2,6,12):0));Assert.That(a.PlayerDamage,Is.EqualTo(c.Family==AugmentationFamily.Player?c.Value(2,4,0):0));Assert.That(e.ExtraPlayerProjectiles,Is.EqualTo(c.Family==AugmentationFamily.Player&&c.Grade==AugmentationGrade.Platinum?2:0));Assert.That(e.PlayerSlow,Is.EqualTo(c.Family==AugmentationFamily.Player&&c.Grade==AugmentationGrade.Gold));Assert.That(e.TowerBuffPercent,Is.EqualTo(c.Family==AugmentationFamily.Towers?2*c.Value(10,30,60):0));Assert.That(e.FlawlessGold,Is.EqualTo(c.Family==AugmentationFamily.Flawless?2*c.Value(10,30,60):0));Assert.That(e.FlawlessCrystals,Is.EqualTo(c.Family==AugmentationFamily.Flawless?2*c.Value(5,15,30):0));}
-    [Test] public void BonusProjectilesShareTargetAndCurrentDamageAndTowerBuffAddsToSupport(){var d=Data();d.Waves.Clear();d.StartCrystals=1000;var s=Game(d);s.StartCombat();var e=s.DebugSpawn(EnemyKind.Boss);s.Augments.Apply(new AugmentationCard(AugmentationGrade.Platinum,AugmentationFamily.Player));s.Tick(.01f,new Vector2(0,2));Assert.That(s.Projectiles.Count,Is.EqualTo(2));Assert.That(s.Projectiles.All(p=>p.Target==e&&p.Damage==s.Player.Damage),Is.True);s.StartDiagnosticEncounter();string reason;var attack=s.TryInstall(TowerKind.Single,new Vector2Int(0,1),out reason);s.TryInstall(TowerKind.Support,new Vector2Int(1,1),out reason);s.Augments.Apply(new AugmentationCard(AugmentationGrade.Gold,AugmentationFamily.Towers));s.StartCombat();s.DebugSpawn(EnemyKind.Boss);s.Tick(.01f,Away);var p=s.Projectiles.First(x=>x.Source=="Tower:"+attack.Id);Assert.That(p.Damage,Is.EqualTo(attack.Stats.Damage*(1+(30+d.Towers[TowerKind.Support].BuffDamage)/100f)).Within(.001));}
-    [Test] public void FlawlessRequiresNoCoreDamageAndResetClearsAllEffects(){var d=Data();d.Waves.Clear();d.Waves.Add(new WaveSpec{Wave=1,Kind=EnemyKind.Attack,Count=1,Interval=1});d.Waves.Add(new WaveSpec{Wave=2,Kind=EnemyKind.Attack,Count=1,Interval=1});var s=Game(d);s.Augments.Apply(new AugmentationCard(AugmentationGrade.Gold,AugmentationFamily.Flawless));s.StartCombat();Finish(s);Assert.That(s.Gold,Is.EqualTo(33));Assert.That(s.Crystals,Is.EqualTo(175));s.StartCombat();s.Tick(11,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Victory));Assert.That(s.Gold,Is.EqualTo(33));Assert.That(s.Crystals,Is.EqualTo(235));s.StartDiagnosticEncounter();Assert.That(s.Augments.Selected,Is.Empty);Assert.That(s.Augments.FlawlessGold,Is.Zero);Assert.That(s.CoreMaximum,Is.EqualTo(20));}
+    [Test] public void GradeThresholdsFollowStageChancesAndTimeoutPicksHighestLeftmost()
+    {
+        Assert.That(AugmentationDeck.RollGrade(.599999),Is.EqualTo(AugmentationGrade.Silver));Assert.That(AugmentationDeck.RollGrade(.6),Is.EqualTo(AugmentationGrade.Gold));Assert.That(AugmentationDeck.RollGrade(.9),Is.EqualTo(AugmentationGrade.Platinum));
+        var s=BeforeBoss();s.StartCombat();Finish(s);var best=s.AugmentationChoices[AugmentationDeck.BestIndex(s.AugmentationChoices)];
+        s.Tick(30.01f,Away);Assert.That(s.Augments.Selected.Single(),Is.EqualTo(best.Id));Assert.That(s.Phase,Is.EqualTo(SessionPhase.Preparation));
+    }
+    [Test] public void DrawHasNoDuplicatesExcludesPicksAndPreviousScreenAndWeightsOwnedSubcategories()
+    {
+        var cards=Data().Augments;var random=new System.Random(7);var owned=new AugmentationEffects();
+        for(int i=0;i<200;i++){var draw=AugmentationDeck.Draw(random,cards,owned,3,null,false);Assert.That(draw.Length,Is.EqualTo(3));Assert.That(draw.Select(c=>c.Id).Distinct().Count(),Is.EqualTo(3));}
+        var screen=AugmentationDeck.Draw(random,cards,owned,3,null,false);var previous=new HashSet<int>(screen.Select(c=>c.Spec.Id));
+        for(int i=0;i<100;i++)Assert.That(AugmentationDeck.Draw(random,cards,owned,3,previous,false).Any(c=>previous.Contains(c.Spec.Id)),Is.False,"Reroll excludes the shown cards");
+        foreach(var rule in cards.Where(c=>!c.Repeatable&&c.Grade==AugmentationGrade.Platinum))owned.Apply(new AugmentationCard(rule));
+        for(int i=0;i<100;i++)Assert.That(AugmentationDeck.Draw(random,cards,owned,1,null,true).All(c=>c.Spec.Repeatable),Is.True,"Rule cards never return");
+        Assert.That(AugmentationDeck.Draw(random,cards,new AugmentationEffects(),3,null,true)[0].Grade,Is.EqualTo(AugmentationGrade.Platinum),"48 황금 거래 forces the first slot");
+        var burn=new AugmentationEffects();burn.Apply(new AugmentationCard(cards.Single(c=>c.Number==4)));burn.Apply(new AugmentationCard(cards.Single(c=>c.Number==22)));
+        int burnSilver=0,plainSilver=0;var r=new System.Random(3);
+        for(int i=0;i<4000;i++){var c=AugmentationDeck.Draw(r,cards.Where(x=>x.Grade==AugmentationGrade.Silver).ToList(),burn,1,null,false,100,0)[0];if(c.Number==4)burnSilver++;}
+        r=new System.Random(3);for(int i=0;i<4000;i++){var c=AugmentationDeck.Draw(r,cards.Where(x=>x.Grade==AugmentationGrade.Silver).ToList(),new AugmentationEffects(),1,null,false,100,0)[0];if(c.Number==4)plainSilver++;}
+        Assert.That(burnSilver,Is.EqualTo(0),"Picked numeric cards stay out while fresh cards remain");
+        Assert.That(plainSilver,Is.GreaterThan(0));
+    }
+    [Test] public void RerollIsFreeOncePerSelectionAndCardFourAddsChoices()
+    {
+        var s=BeforeBoss();s.StartCombat();Finish(s);Assert.That(s.RerollsLeft,Is.EqualTo(1));
+        var before=s.AugmentationChoices.Select(c=>c.Id).ToArray();Assert.That(s.RerollAugmentation(),Is.True);Assert.That(s.RerollAugmentation(),Is.False);
+        Assert.That(s.AugmentationChoices.Select(c=>c.Id).Intersect(before),Is.Empty);Assert.That(s.AugmentationRemaining,Is.EqualTo(30).Within(.01));
+        var t=BeforeBoss();t.DebugGrantAugmentation(17);t.DebugGrantAugmentation(47);t.StartCombat();Finish(t);Assert.That(t.RerollsLeft,Is.EqualTo(2));Assert.That(t.AugmentationChoices.Count,Is.EqualTo(4));
+    }
+    [Test] public void NumericCardsStackAndOneTimeGrantsApply()
+    {
+        var s=Field();int gold=s.Gold;float damage=s.Player.Damage;int core=s.CoreMaximum;
+        s.DebugGrantAugmentation(1);s.DebugGrantAugmentation(1);Assert.That(s.Augments.TowerDamagePercent,Is.EqualTo(16));
+        s.DebugGrantAugmentation(19);Assert.That(s.Augments.TowerDamagePercent,Is.EqualTo(36));
+        s.DebugGrantAugmentation(2);Assert.That(s.Player.Damage,Is.EqualTo(damage+2));Assert.That(s.Augments.PlayerRatePercent,Is.EqualTo(10));
+        s.DebugGrantAugmentation(18);Assert.That(s.Gold,Is.EqualTo(gold+150));Assert.That(s.Augments.KillGoldPercent,Is.EqualTo(-20));
+        s.DebugGrantAugmentation(14);Assert.That(s.CoreMaximum,Is.EqualTo(core+5));Assert.That(s.CoreEnergy,Is.EqualTo(core+5));
+        s.DebugGrantAugmentation(50);Assert.That(s.CoreMaximum,Is.EqualTo(Mathf.CeilToInt((core+5)/2f)));Assert.That(s.CoreEnergy,Is.EqualTo(s.CoreMaximum));
+        s.DebugGrantAugmentation(13);string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);int crystals=s.Crystals;Assert.That(s.DestroyTower(t.Id),Is.True);Assert.That(s.Crystals-crystals,Is.EqualTo(45),"재활용 75%");
+    }
+    [Test] public void CritCardsChangeDamageAndEveryFourthAttackCrits()
+    {
+        var s=Field();s.DebugGrantAugmentation(44);s.StartCombat();var e=s.DebugSpawn(EnemyKind.Boss,0);var hits=new List<int>();
+        typeof(Session).GetEvent("DamageApplied").AddEventHandler(s,new Action<EnemySnapshot,int>((x,n)=>hits.Add(n)));
+        for(int i=0;i<4;i++){s.Tick(1.0f,new Vector2(0,1));}
+        Assert.That(hits.Count,Is.GreaterThanOrEqualTo(4));Assert.That(hits.Take(4).ToArray(),Is.EqualTo(new[]{10,10,10,20}),"Player 10 damage, boss defense 0, ×2 on the fourth attack");
+    }
+    [Test] public void MergingAdjacentSameTowersBuildsStars()
+    {
+        var s=Field(10000);s.DebugGrantAugmentation(45);string reason;
+        var a=s.TryInstall(TowerKind.Single,new Vector2Int(2,2),out reason);var b=s.TryInstall(TowerKind.Single,new Vector2Int(3,2),out reason);
+        Assert.That(b,Is.SameAs(a));Assert.That(a.Stars,Is.EqualTo(2));Assert.That(s.Towers.Count,Is.EqualTo(1));Assert.That(a.Stats.Damage,Is.EqualTo(12.5f*1.8f).Within(.001));Assert.That(a.Stats.Range,Is.EqualTo(4f).Within(.001));
+        var c=s.TryInstall(TowerKind.Single,new Vector2Int(2,4),out reason);var d=s.TryInstall(TowerKind.Single,new Vector2Int(2,5),out reason);Assert.That(d.Stars,Is.EqualTo(2));
+        // ★2 at (2,2); a new ★2 forms at (3,2) and joins it → ★3 keeps the oldest cell.
+        var t=Field(10000);t.DebugGrantAugmentation(45);
+        t.TryInstall(TowerKind.Multi,new Vector2Int(2,2),out reason);t.TryInstall(TowerKind.Multi,new Vector2Int(2,3),out reason);
+        t.TryInstall(TowerKind.Multi,new Vector2Int(3,2),out reason);var star3=t.TryInstall(TowerKind.Multi,new Vector2Int(4,2),out reason);
+        Assert.That(t.Towers.Count(x=>x.Kind==TowerKind.Multi),Is.EqualTo(1));Assert.That(star3.Stars,Is.EqualTo(3));Assert.That(star3.Stats.Damage,Is.EqualTo(11f*3.2f).Within(.001));Assert.That(star3.Spent,Is.EqualTo(240));
+    }
 }

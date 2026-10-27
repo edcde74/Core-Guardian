@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 43,\n  \"executeMs\": 1803,\n  \"assemblyName\": \"PipelineRunScript_VerifyHoverPointer_1801dbd9a96048c99401c16d5f4be33c\",\n  \"success\": true,\n  \"result\": {\n    \"passed\": true,\n    \"checks\": \"InputSystem mouse enters/presses/releases both visible grips, top handle moves and damage grip mirrors/reopens with hover intact\",\n    \"kind\": \"Temporary mouse, diagnostic resources and TimeScale0; restored; not human play\"\n  }\n}"
-    }
-  ]
-}

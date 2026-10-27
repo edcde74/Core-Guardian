@@ -13,6 +13,8 @@ public sealed class CoreGuardianOriginalMotion
     readonly Vector2 sourcePivot;
     // Original 52x64 pixels: barrel collar pivot (26,17 from top), muzzle (3,4).
     readonly Vector2 singleMount=new Vector2(26,47),barrelCenter=new Vector2(13.5f,53.5f);
+    // New towers (냉기·화염·레일) ship finished attack frames; they replace the whole sprite during a shot.
+    readonly Sprite[] attackFrames;readonly Sprite restSprite;const float AttackFrameSeconds=.075f;
     public Vector3 AimOriginWorld=>role=="Single"?singleProjection.position:original.transform.position;
     public CoreGuardianOriginalMotion(SpriteRenderer artwork,string role)
     {
@@ -20,6 +22,7 @@ public sealed class CoreGuardianOriginalMotion
         var stationary=Resources.Load<Sprite>("CoreGuardian/OriginalMotion/"+role+"/Fixed");
         var moving=Resources.Load<Sprite>("CoreGuardian/OriginalMotion/"+role+"/Moving");
         if(stationary==null||moving==null)throw new System.InvalidOperationException("Missing original cutout layers: "+role);
+        restSprite=artwork.sprite;attackFrames=LoadFrames(role);
         rig=new GameObject("OriginalMotion").transform;rig.SetParent(artwork.transform,false);
         fixedPart=Layer("Fixed",stationary);
         if(role=="Single")
@@ -37,6 +40,13 @@ public sealed class CoreGuardianOriginalMotion
         else movingPart=Layer("Moving",moving);
         rig.gameObject.SetActive(false);
     }
+    static Sprite[] LoadFrames(string role)
+    {
+        var list=new System.Collections.Generic.List<Sprite>();
+        foreach(var prefix in new[]{"Fire_","Pulse_"})
+            for(int i=0;i<16;i++){var s=Resources.Load<Sprite>("CoreGuardian/OriginalMotion/"+role+"/"+prefix+i);if(s==null)break;list.Add(s);}
+        return list.ToArray();
+    }
     Sprite Cut(Sprite source,Rect part,string name)
     {
         var sprite=CoreGuardianSpriteAtlasSources.Cut(source,part,Vector2.one*.5f,ppu);
@@ -50,6 +60,14 @@ public sealed class CoreGuardianOriginalMotion
     }
     public void Present(float age,float duration,Vector2 aim)
     {
+        if(attackFrames.Length>0)
+        {
+            rig.gameObject.SetActive(false);original.enabled=true;
+            int index=(int)(age/AttackFrameSeconds);
+            var frame=index>=0&&index<attackFrames.Length?attackFrames[index]:restSprite;
+            if(original.sprite!=frame)original.sprite=frame;
+            return;
+        }
         bool active=age<duration;
         rig.gameObject.SetActive(active||role=="Single");original.enabled=!(active||role=="Single");
         if(!active&&role!="Single")return;

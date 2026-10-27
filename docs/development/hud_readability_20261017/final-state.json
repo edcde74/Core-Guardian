@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"output\": null,\n  \"diagnostics\": [],\n  \"success\": true,\n  \"result\": {\n    \"playing\": false,\n    \"paused\": false,\n    \"compiling\": false,\n    \"failed\": false,\n    \"timeScale\": 1,\n    \"captureDelta\": 0,\n    \"backgroundBehavior\": \"ResetAndDisableNonBackgroundDevices\",\n    \"scenes\": [\n      {\n        \"path\": \"Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity\",\n        \"dirty\": false\n      }\n    ]\n  }\n}"
-    }
-  ]
-}

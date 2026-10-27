@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"status\": \"completed\",\n  \"duration\": 0.54,\n  \"summary\": {\n    \"total\": 5,\n    \"passed\": 5,\n    \"failed\": 0,\n    \"skipped\": 0,\n    \"inconclusive\": 0\n  },\n  \"results\": [\n    {\n      \"FullName\": \"CoreGuardianThirtyRoundTests.EveryFifthRoundOpensAugmentationAndFinalThirtyEndsWithoutAnotherChoice\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.2748443,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianThirtyRoundTests.FiveRoundAugmentationDoesNotRequireTheBossToHaveBeenKilled\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0132364,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianThirtyRoundTests.LoaderKeepsSixColumnCompatibilityAndRejectsInvalidWaveOverrides\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0124701,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianThirtyRoundTests.ThirtyRoundDataHasFrequentGrowthAndThreeBosses\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.0142762,\n      \"Message\": null,\n      \"StackTrace\": null\n    },\n    {\n      \"FullName\": \"CoreGuardianThirtyRoundTests.WaveStatsArePerSpawnAndDoNotMutateTheBaseEnemyOrPreviouslySpawnedEnemy\",\n      \"Status\": \"Passed\",\n      \"Duration\": 0.017996,\n      \"Message\": null,\n      \"StackTrace\": null\n    }\n  ]\n}"
-    }
-  ]
-}

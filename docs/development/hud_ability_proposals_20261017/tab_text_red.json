@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 438,\n  \"executeMs\": 214,\n  \"assemblyName\": \"PipelineRunScript_VerifyTabText_52a04639212442e5843627b5b9e74c50\",\n  \"success\": false,\n  \"error\": \"Runtime Error\",\n  \"errorDetails\": \"Exception: Tab text needs bottom inset after reaction update: PlayerSpecTab\\n  at VerifyAbilityTabText.Check (UnityEngine.Transform panel) [0x0008d] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\docs\\\\development\\\\hud_ability_proposals_20261017\\\\VerifyTabText.cs:15 \\r\\n  at VerifyAbilityTabText.Main () [0x001ba] in C:\\\\Users\\\\edcde\\\\OneDrive\\\\Desktop\\\\CD\\\\docs\\\\development\\\\hud_ability_proposals_20261017\\\\VerifyTabText.cs:25 \\r\\n  at Unity.Pipeline.Editor.Commands.Scripts.RunScriptCommand.RunEphemeral (System.String file, System.String entry, Newtonsoft.Json.Linq.JArray args, System.String[] references, System.String[] defines, System.Boolean pdb, System.Boolean dryRun, System.Int32 timeoutMs, System.Diagnostics.Stopwatch total) [0x00492] in .\\\\Library\\\\PackageCache\\\\com.unity.pipeline@ab05e9cd7f74\\\\Editor\\\\Commands\\\\Scripts\\\\RunScriptCommand.cs:252 \"\n}"
-    }
-  ]
-}

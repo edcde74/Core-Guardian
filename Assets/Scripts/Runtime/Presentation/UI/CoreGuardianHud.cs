@@ -128,7 +128,10 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         var panel=Box("Cards",augmentationPanel,new Vector2(.5f,.5f),new Vector2(0,0),new Vector2(1140,650));
         cardsRoot=panel;
         CoreGuardianHudSkin.Icon(panel,"Augment",new Vector2(24,-24),new Vector2(30,30));
-        Text("Title",panel,new Vector2(66,-18),new Vector2(1050,44),30).text="보스 격파 · 증강 1개 선택";
+        Text("Title",panel,new Vector2(66,-18),new Vector2(700,44),30).text="증강 1개 선택";
+        // Free reroll (선택마다 1회 + 17번). The shown cards are excluded and the timer keeps running.
+        rerollButton=Button("AugmentReroll",panel,new Vector2(1140-264,-12),new Vector2(240,56),()=>"리롤 "+game.Session.RerollsLeft+"회",()=>{if(game.Session.RerollAugmentation()){choiceSignature=null;Refresh();}},()=>game.Session.Phase==SessionPhase.Augmentation&&game.Session.RerollsLeft>0);
+        augmentationButtons.Add(rerollButton);
         // The timer and input shield survive folding; hiding CanvasGroups preserves reveal coroutines.
         var timerPlate=Box("AugmentTimerPlate",augmentationPanel,new Vector2(.5f,1),new Vector2(0,-100),new Vector2(1140,92));
         augmentationTimer=Text("ChoiceTimer",timerPlate,new Vector2(20,-12),new Vector2(1100,68),21);
@@ -139,13 +142,18 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         augmentationPanel.gameObject.SetActive(false);
         topDetails.SetAsLastSibling();
     }
+    UnityEngine.UI.Button rerollButton,blastButton;
     void RefreshCards()
     {
         string signature=string.Join("|",game.Session.AugmentationChoices.Select(x=>x.Id));
         if(choiceSignature==signature)return;choiceSignature=signature;
         foreach(var b in augmentationButtons.Where(b=>b.name.StartsWith("AugmentationCard")).ToArray()){augmentationButtons.Remove(b);b.gameObject.SetActive(false);Destroy(b.gameObject);}
         cardsFolded=false;SetCardsVisible();
-        for(int i=0;i<game.Session.AugmentationChoices.Count;i++){
+        // 47 넓은 선택 shows four cards; the panel widens instead of shrinking the cards.
+        int count=game.Session.AugmentationChoices.Count;float width=Mathf.Max(1140,28+count*370);
+        cardsRoot.sizeDelta=new Vector2(width,cardsRoot.sizeDelta.y);
+        if(rerollButton!=null)((RectTransform)rerollButton.transform).anchoredPosition=new Vector2(width-264,-14);
+        for(int i=0;i<count;i++){
             int index=i;var r=Box("AugmentationCard"+i,cardsRoot,new Vector2(0,1),new Vector2(24+i*370,-164),new Vector2(350,460));
             var b=r.gameObject.AddComponent<UnityEngine.UI.Button>();augmentationButtons.Add(b);
             r.gameObject.AddComponent<CoreGuardianAugmentationView>().Configure(game.Session.AugmentationChoices[i],font,()=>{
@@ -185,13 +193,16 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         topDetails=Box("TopStatus",canvas,new Vector2(.5f,1),new Vector2(0,-12),new Vector2(920,72));
         status=Text("Status",topDetails,new Vector2(24,0),new Vector2(875,64),23);status.color=Color.clear;
         string[] symbols={"Core","Wave","Gold","Crystal","Augment"};
-        for(int i=0;i<5;i++){int index=i;CoreGuardianHudSkin.Icon(topDetails,symbols[i],new Vector2(16+i*181,-21),new Vector2(30,30));var value=Text("Status_"+symbols[i],topDetails,new Vector2(52+i*181,-16),new Vector2(126,40),19);
+        for(int i=0;i<5;i++){int index=i;CoreGuardianHudSkin.Icon(topDetails,symbols[i],new Vector2(16+i*181,-21),new Vector2(30,30));var value=Text("Status_"+symbols[i],topDetails,new Vector2(52+i*181,-16),new Vector2(126,40),19);value.horizontalOverflow=HorizontalWrapMode.Overflow; // "라운드 25/30"이 줄바꿈되어 사라지지 않게
             refresh.Add(()=>{var s=game.Session;value.text=index==0?"코어 "+s.CoreEnergy+"/"+s.CoreMaximum:index==1?"라운드 "+s.Wave+"/"+s.LastWave:index==2?"골드 "+s.Gold:index==3?"수정 "+s.Crystals:"증강 "+s.Augments.Selected.Count;});}
-        var controls=Box("BottomControls",canvas,new Vector2(.5f,0),new Vector2(0,12),new Vector2(976,88));
-        Button("Installation",controls,new Vector2(16,-16),new Vector2(180,56),()=>"타워 설치",()=>SetInstallPanelOpen(!installOpen),()=>game.Session.Phase==SessionPhase.Preparation);
+        var controls=Box("BottomControls",canvas,new Vector2(.5f,0),new Vector2(0,12),new Vector2(1224,88));
+        Button("Installation",controls,new Vector2(16,-16),new Vector2(180,56),()=>"타워 설치",()=>SetInstallPanelOpen(!installOpen),()=>game.Session.CanBuildNow);
         Button("Start",controls,new Vector2(220,-16),new Vector2(224,56),()=>game.Session.Phase==SessionPhase.Preparation?"라운드 시작":game.Session.Phase==SessionPhase.Combat?"전투 진행":game.Session.Phase==SessionPhase.Augmentation?"증강 선택 중":game.Session.Phase==SessionPhase.Defeat?"패배":"라운드 완료",()=>game.StartCombat(),()=>game.Session.Phase==SessionPhase.Preparation);
         Button("PlayerSpecs",controls,new Vector2(468,-16),new Vector2(220,56),()=>"플레이어 능력치",()=>OpenPlayer(false));
         Button("PlayerGrowth",controls,new Vector2(712,-16),new Vector2(224,56),()=>"플레이어 강화",()=>OpenPlayer(true),()=>CanBuyPlayer);
+        // 범위 폭발 (Space). Shows the cooldown; Space stays reserved for the skill, never HUD submit.
+        blastButton=Button("AreaBlast",controls,new Vector2(960,-16),new Vector2(248,56),()=>{var s=game.Session;return s.AreaBlast==null?"범위 폭발 없음":s.Phase!=SessionPhase.Combat?"범위 폭발 · Space":s.AreaBlastReady?"범위 폭발 · Space":"범위 폭발 "+Mathf.CeilToInt(s.AreaBlastCooldown)+"초";},()=>game.UseAreaBlast(),()=>game.Session.AreaBlastReady);
+        blastButton.navigation=new UnityEngine.UI.Navigation{mode=UnityEngine.UI.Navigation.Mode.None};
         var stagePlate=Box("StagePlate",canvas,new Vector2(.5f,1),new Vector2(0,-74),new Vector2(900,78));stagePlateView=stagePlate;
         CoreGuardianHudSkin.Icon(stagePlate,"Wave",new Vector2(16,-16),new Vector2(28,28));
         center=Text("Preparation",stagePlate,new Vector2(54,-8),new Vector2(826,28),21);
@@ -229,7 +240,9 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     static Sprite DamageSprite(string name)
     {
         if(damageSprites.Count==0)foreach(var sprite in Resources.LoadAll<Sprite>("CoreGuardian/Hud/DamageRoles"))damageSprites[sprite.name]=sprite;
-        return damageSprites.TryGetValue(name,out var result)?result:null;
+        if(damageSprites.TryGetValue(name,out var result))return result;
+        // New tower roles (냉기·화염·레일) are separate confirmed sprites next to the sheet.
+        result=Resources.Load<Sprite>("CoreGuardian/Hud/"+name);damageSprites[name]=result;return result;
     }
     void BuildDamageFold()
     {
@@ -256,21 +269,24 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     {
         if(source=="Player")return "DamageEngineer";
         int id;if(source.StartsWith("Tower:")&&int.TryParse(source.Substring(6),out id))
-        {var tower=game.Session.Towers.FirstOrDefault(t=>t.Id==id);if(tower!=null&&tower.Kind==TowerKind.Multi)return "DamageRange";}
+        {var tower=game.Session.Towers.FirstOrDefault(t=>t.Id==id);if(tower!=null)switch(tower.Kind){case TowerKind.Multi:return "DamageRange";case TowerKind.Frost:return "DamageFrost";case TowerKind.Flame:return "DamageFlame";case TowerKind.Rail:return "DamageRail";}}
         return "DamageSingle";
     }
-    string StatName(string stat){switch(stat){case "damage":return "공격력";case "rate":return "공격속도";case "range":return "사거리";case "buffDamage":return "공격력 증가";default:return "탄환 속도";}}
-    float StatValue(CombatStats stats,string stat)=>stat=="damage"?stats.Damage:stat=="rate"?stats.Rate:stat=="range"?stats.Range:stat=="buffDamage"?stats.BuffDamage:stats.ProjectileSpeed;
+    static string BossName(EnemySpec spec)=>spec==null?"보스":spec.Key=="IronKnight"?"철벽 기사":spec.Key=="CrimsonLord"?"진홍의 군주":"보스";
+    string StatName(string stat){switch(stat){case "damage":return "공격력";case "rate":return "공격속도";case "range":return "사거리";case "buffDamage":return "공격력 증가";case "slowPercent":return "둔화율";case "burnPerStack":return "화상 피해";case "burnDuration":return "화상 지속";case "pierceFalloff":return "관통 유지";default:return "탄환 속도";}}
+    float StatValue(CombatStats stats,string stat)=>stat=="damage"?stats.Damage:stat=="rate"?stats.Rate:stat=="range"?stats.Range:stat=="buffDamage"?stats.BuffDamage:stat=="slowPercent"?stats.SlowPercent:stat=="burnPerStack"?stats.BurnPerStack:stat=="burnDuration"?stats.BurnDuration:stat=="pierceFalloff"?stats.PierceFalloff:stats.ProjectileSpeed;
     string StatDisplay(float value,string stat)=>stat=="damage"?Mathf.FloorToInt(value+.5f).ToString():value.ToString("0.##");
     string UpgradeLabel(CombatStats stats,string target,string stat,int cost,string currency)
     {
         UpgradeSpec spec=null;foreach(var u in game.Session.Data.Upgrades)if(u.Target==target&&u.Stat==stat){spec=u;break;}float value=StatValue(stats,stat),delta=spec==null?0:spec.Delta;
         bool affordable=currency=="골드"?game.Session.Gold>=cost:game.Session.Crystals>=cost;
-        return StatName(stat)+" "+StatDisplay(value,stat)+" → "+StatDisplay(value+delta,stat)+"\n+"+delta.ToString("0.##")+" · "+cost+currency+(affordable?"":" · 부족");
+        // Grouped upgrades (화염 공격력 + 화상 피해) list their partner stat too.
+        string extra="";if(spec!=null)foreach(var u in game.Session.Data.Upgrades)if(u!=spec&&u.Group==spec.Id&&u.Target==target)extra+=" · "+StatName(u.Stat)+" +"+u.Delta.ToString("0.##");
+        return StatName(stat)+" "+StatDisplay(value,stat)+" → "+StatDisplay(value+delta,stat)+"\n+"+delta.ToString("0.##")+extra+" · "+cost+currency+(affordable?"":" · 부족");
     }
     void PurchasePlayer(string stat){float before=StatValue(game.Session.Player,stat);game.UpgradePlayer(stat);if(StatValue(game.Session.Player,stat)>before){game.Notify(StatName(stat)+" +"+(StatValue(game.Session.Player,stat)-before).ToString("0.##"));var b=playerPanel.Find(stat);if(b!=null)b.GetComponent<CoreGuardianHudReaction>().Confirm();}}
     void PurchaseTower(string stat){var tower=Selected();if(tower==null)return;float before=StatValue(tower.Stats,stat);game.UpgradeTower(stat);if(StatValue(tower.Stats,stat)>before){game.Notify(TowerName(tower.Kind)+" · "+StatName(stat)+" +"+(StatValue(tower.Stats,stat)-before).ToString("0.##"));var b=towerPanel.Find("Tower_"+stat);if(b!=null)b.GetComponent<CoreGuardianHudReaction>().Confirm();}}
-    string TowerName(TowerKind kind)=>kind==TowerKind.Single?"단일 고속":kind==TowerKind.Multi?"범위 공격":"지원 포탑";
+    string TowerName(TowerKind kind){switch(kind){case TowerKind.Single:return "단일 고속";case TowerKind.Multi:return "범위 공격";case TowerKind.Frost:return "냉기 포탑";case TowerKind.Flame:return "화염 포탑";case TowerKind.Rail:return "레일 포탑";default:return "지원 포탑";}}
     string SourceName(string source)
     {
         if(source=="Player")return "기술병";
@@ -282,11 +298,17 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     }
     TowerState Selected(){int id=game.SelectedTower;foreach(var t in game.Session.Towers)if(t.Id==id)return t;return null;}
     int Price(string stat){var t=Selected();if(t==null||!Relevant(t,stat))return 0;return game.Session.TowerUpgradePrice(t.Id,stat);}
-    bool Relevant(TowerState t,string stat)=>t.Kind==TowerKind.Support?(stat=="range"||stat=="buffDamage"):stat!="buffDamage";
+    // Upgrade rows follow upgrades.csv (group leaders only), so new towers show their own stats.
+    readonly Dictionary<TowerKind,List<string>> upgradeRows=new Dictionary<TowerKind,List<string>>();
+    List<string> UpgradeRows(TowerKind kind){if(!upgradeRows.TryGetValue(kind,out var rows)){rows=game.Session.UpgradeStats(kind).OrderBy(UpgradeRowOrder).ToList();upgradeRows[kind]=rows;}return rows;}
+    // Fixed HUD row order (cells never move between towers); unknown stats keep sheet order after these.
+    static readonly string[] UpgradeOrder={"buffDamage","damage","rate","range","projectileSpeed","slowPercent","burnDuration","pierceFalloff"};
+    static int UpgradeRowOrder(string stat){int i=System.Array.IndexOf(UpgradeOrder,stat);return i<0?UpgradeOrder.Length:i;}
+    bool Relevant(TowerState t,string stat)=>UpgradeRows(t.Kind).Contains(stat);
     bool TowerCanUpgrade(string stat){var t=Selected();return t!=null&&Relevant(t,stat)&&game.Session.Phase==SessionPhase.Preparation&&game.Session.Crystals>=Price(stat);}
     void SetInstallPanelOpen(bool open)
     {
-        open=open&&game.Session.Phase==SessionPhase.Preparation;
+        open=open&&game.Session.CanBuildNow;
         if(open!=installOpen)game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue(open?"ui_open":"ui_close");
         if(open)ReleaseInspection();
         // Every new opening starts at categories; folding changes only panel visibility.
@@ -302,23 +324,24 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     void ClearInstallButtons(){foreach(var a in installRefresh)refresh.Remove(a);installRefresh.Clear();foreach(Transform child in installPanel){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
     void InstallButton(int index,string label,Action action,Func<bool> available=null)
     {
-        int before=refresh.Count;Button(label,installPanel,new Vector2(16+(index%3)*212,-16-(index/3)*100),new Vector2(204,96),()=>label,action,()=>game.Session.Phase==SessionPhase.Preparation&&(available==null||available()));
+        int before=refresh.Count;Button(label,installPanel,new Vector2(16+(index%3)*212,-16-(index/3)*100),new Vector2(204,96),()=>label,action,()=>game.Session.CanBuildNow&&(available==null||available()));
         installRefresh.Add(refresh[before]);
     }
     void BuildInstallList(bool support)
     {
         ClearInstallButtons();
         if(support)InstallTowerButton(0,TowerKind.Support);
-        else{InstallTowerButton(0,TowerKind.Single);InstallTowerButton(1,TowerKind.Multi);}
+        else{InstallTowerButton(0,TowerKind.Single);InstallTowerButton(1,TowerKind.Multi);InstallTowerButton(2,TowerKind.Frost);InstallTowerButton(3,TowerKind.Flame);InstallTowerButton(4,TowerKind.Rail);}
         InstallButton(8,"분류로 돌아가기",BuildInstallCategories);Refresh();
     }
     void InstallTowerButton(int index,TowerKind kind)
     {
         int before=refresh.Count;
         var b=Button("Install_"+kind,installPanel,new Vector2(16+(index%3)*212,-16-(index/3)*100),new Vector2(204,96),()=> {
-            string reason=game.Session.Crystals<game.Session.Data.Towers[kind].Cost?"\n수정 부족":kind==TowerKind.Support&&!game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support)?"\n공격 포탑 필요":"";
-            return TowerName(kind)+"\n"+game.Session.Data.Towers[kind].Cost+"수정"+reason;
-        },()=>{game.ChooseTower(kind);Refresh();},()=>game.Session.Phase==SessionPhase.Preparation&&game.Session.Crystals>=game.Session.Data.Towers[kind].Cost&&(kind!=TowerKind.Support||game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support)));
+            int cost=game.Session.InstallCost(kind);
+            string reason=game.Session.Crystals<cost?"\n수정 부족":kind==TowerKind.Support&&!game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support)?"\n공격 포탑 필요":"";
+            return TowerName(kind)+"\n"+cost+"수정"+reason;
+        },()=>{game.ChooseTower(kind);Refresh();},()=>game.Session.CanBuildNow&&game.Session.Crystals>=game.Session.InstallCost(kind)&&(kind!=TowerKind.Support||game.Session.Towers.Any(t=>t.Kind!=TowerKind.Support)));
         b.GetComponentInChildren<UnityEngine.UI.Text>().fontSize=16;
         installRefresh.Add(refresh[before]);
     }
@@ -359,6 +382,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     }
     public void ShowGoldNumber(Vector3 position,int amount,Sprite icon)
     {
+        if(amount<=0)return; // 졸개 등 처치 골드 0은 표시하지 않음
         var number=FloatingNumber("GoldNumber","+"+amount,position,new Color(1f,.76f,.22f),0);
         var text=number.Text;
         float textWidth=Mathf.Ceil(text.GetPreferredValues(text.text).x);
@@ -473,17 +497,17 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     {
         if(game==null||!game.Ready||status==null)return;
         var s=game.Session;
-        if(s.Phase!=SessionPhase.Preparation){installOpen=false;SetHudActive(installPanel.gameObject,false);}
+        if(!s.CanBuildNow){installOpen=false;SetHudActive(installPanel.gameObject,false);}
         status.text="코어 "+s.CoreEnergy+" / "+s.CoreMaximum+"  |  "+(s.Diagnostic?"역할 검증":"라운드 "+s.Wave+" / "+s.LastWave)+"  |  골드 "+s.Gold+"  |  수정 "+s.Crystals+"  |  증강 "+s.Augments.Selected.Count;
         bool selecting=s.Phase==SessionPhase.Augmentation;
         if(augmentationPanel!=null){augmentationPanel.gameObject.SetActive(selecting);if(selecting){RefreshCards();augmentationTimer.text="선택 "+Mathf.CeilToInt(s.AugmentationRemaining)+"초 · 클릭 공개 / 공개된 카드 다시 클릭 선택\n시간 초과 시 최고 등급 자동 선택 · 동률이면 왼쪽 우선";}else choiceSignature=null;}
-        if(bossStatus!=null){var boss=FirstLivingBoss(s);bossStatus.text=!boss.IsValid?"":"보스 · "+boss.Health+" / "+boss.Spec.Health+(boss.Enraged?" · 격노: 이동속도 +30%":"");}
+        if(bossStatus!=null){var boss=FirstLivingBoss(s);bossStatus.text=!boss.IsValid?"":BossName(boss.Spec)+" · "+boss.Health+" / "+boss.Spec.Health+(boss.Shielded?" · 방패 전개":"")+(boss.Enraged?" · 격노: 이동속도 +"+boss.Spec.RageBoost.ToString("0")+"%":"");}
         center.text=s.Phase==SessionPhase.Preparation?s.Wave+"라운드 준비 "+Mathf.CeilToInt(s.PreparationRemaining)+"초":s.Phase==SessionPhase.Combat?s.Wave+"라운드 전투 · 살아 있는 적 "+LivingEnemyCount(s):s.Phase==SessionPhase.Defeat?"코어 파괴 · 패배":s.Diagnostic?"역할 검증 완료":"1~"+s.LastWave+"라운드 완료";
         SetHudText(feedback,game.Feedback);
         bool showFeedback=s.Phase==SessionPhase.Preparation||game.HasFeedback;
         SetHudActive(feedback.gameObject,showFeedback);
         SetHudSize(stagePlateView,new Vector2(900,showFeedback?78:42));
-        if(selecting)center.text="보스 라운드 완료 · 증강 선택";
+        if(selecting)center.text="라운드 완료 · 증강 선택";
         // Same snapshot semantics as ToArray (actions may rebuild the list), without a new array per refresh.
         bool outerRefresh=refreshDepth==0;refreshDepth++;
         try

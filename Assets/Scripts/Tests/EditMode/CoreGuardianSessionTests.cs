@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CoreGuardianSessionTests
 {
-    static string Csv(string file) {var asset=Resources.Load<TextAsset>("CoreGuardian/"+file);Assert.That(asset,Is.Not.Null,"Missing CSV "+file);return asset.text;}
+    static string Csv(string file) {return CoreGuardianLegacyData.Text(file);}
     static CombatData Data() {return CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves"));}
     static Session Game(bool noSpawns=true) {var d=Data();if(noSpawns)d.Waves.Clear();var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});return s;}
     static readonly Vector2 Away=new Vector2(100,100);
@@ -201,11 +201,12 @@ public class CoreGuardianSessionTests
         Assert.That(s.TowerTarget(t.Id),Is.EqualTo(attack));
         Assert.That(s.Projectiles.First(p=>p.Source=="Tower:"+t.Id).Target,Is.EqualTo(attack));
     }
-    [Test] public void BossScreenDoesNotChangePlayerExistingBossLock()
+    [Test] public void PlayerYieldsBossLockLikeTowers()
     {
+        // 공격 대상 선택(정본): 플레이어도 보스 맨 뒤, 보스 조준 중 일반 적이 들어오면 바꿈.
         var s=Game();s.Player.ProjectileSpeed=.001f;s.StartCombat();var boss=s.DebugSpawn(EnemyKind.Boss,0);
         s.Tick(.01f,new Vector2(0,1));Assert.That(s.PlayerTarget,Is.EqualTo(boss));
-        s.DebugSpawn(EnemyKind.Attack,0);s.Tick(1.05f,new Vector2(0,1));Assert.That(s.PlayerTarget,Is.EqualTo(boss));
+        var attack=s.DebugSpawn(EnemyKind.Attack,0);s.Tick(1.05f,new Vector2(0,1));Assert.That(s.PlayerTarget,Is.EqualTo(attack));
     }
     [Test] public void PriorityUsesRoleThenHealthThenRemainingPathDistance()
     {

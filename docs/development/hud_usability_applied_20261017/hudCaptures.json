@@ -1,8 +1,0 @@
-{
-  "content": [
-    {
-      "type": "text",
-      "text": "{\n  \"diagnostics\": [],\n  \"compileMs\": 189,\n  \"executeMs\": 1285,\n  \"assemblyName\": \"PipelineRunScript_CaptureViews_eab315e556fd43a49f64114bfb4482c2\",\n  \"success\": true,\n  \"result\": {\n    \"captured\": true,\n    \"resolution\": \"1920x1080\",\n    \"timeScale\": 1,\n    \"captureDelta\": 0,\n    \"conditions\": \"Owned Play, diagnostic resources,real install,UI callbacks,adapter temporarily disabled,no camera/zoom/TimeScale change; functional presentation QA not human play/balance\"\n  }\n}"
-    }
-  ]
-}

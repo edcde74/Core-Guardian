@@ -1,9 +1,0 @@
-{
-  "diagnostics": [],
-  "compileMs": 43,
-  "executeMs": 2,
-  "assemblyName": "PipelineRunScript_VerifyBossArt_20261013_f8ead7a9ba74470cacde6d0d882fc1ef",
-  "success": false,
-  "error": "Runtime Error",
-  "errorDetails": "Exception: Boss still uses soldier sprite instead of approved eye-glow sprite\n  at VerifyBossArt_20261013.Check () [0x001de] in C:\\Users\\edcde\\OneDrive\\Desktop\\CD\\docs\\development\\VerifyBossArt_20261013.cs:32 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 "
-}
