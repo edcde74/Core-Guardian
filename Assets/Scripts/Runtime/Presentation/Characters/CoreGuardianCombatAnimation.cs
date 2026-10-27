@@ -68,7 +68,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         {animation=CoreGuardianUnitAnimation.Attach(view,tower.Kind.ToString());towers.Add(tower.Id,animation);}
         var target=game.Session.TowerTargetForView(tower);
         if(target.Alive)
-            animation.Aim(tower.Kind==TowerKind.Single?(Vector2)(game.World(target.Position)+Vector3.up*.25f-animation.AimOriginWorld):target.Position-tower.Position,Time.deltaTime);
+            animation.Aim(tower.Kind==TowerKind.Single||tower.Kind==TowerKind.Flame||tower.Kind==TowerKind.Rail?(Vector2)(game.World(target.Position)+Vector3.up*.25f-animation.AimOriginWorld):target.Position-tower.Position,Time.deltaTime);
         animation.Present(Time.deltaTime);
     }
     void Damaged(EnemySnapshot enemy,int amount)
@@ -152,7 +152,7 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
         var flash=entry.renderer;flash.name="Muzzle_"+shot.Id;
         flash.transform.SetParent(transform,false);flash.transform.position=muzzle;
         flash.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
-        flash.sprite=flashSprite;flash.color=Color.white;flash.flipX=flash.flipY=false;flash.sortingOrder=1501;CoreGuardianCombatArt.SetWidth(flash,.12f);
+        flash.sprite=flashSprite;flash.color=Color.white;flash.flipX=flash.flipY=false;flash.sortingOrder=ArtDepthSorting.OverlayBase+1501;CoreGuardianCombatArt.SetWidth(flash,.12f);
         entry.age=0;entry.createdFrame=Time.frameCount;
         flash.transform.SetAsLastSibling();flash.gameObject.SetActive(true);flashes.Add(entry);
     }

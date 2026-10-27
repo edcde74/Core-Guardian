@@ -46,7 +46,8 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     void Configure(string value)
     {
         role=value;if(role=="Player"){direction=5;facingAngle=-135;aim=new Vector2(-8,-6).normalized;}
-        if(role=="Single"){aim=new Vector2(-23,13).normalized;facingAngle=Mathf.Atan2(aim.y,aim.x)*Mathf.Rad2Deg;}
+        if(role=="Single"||role=="Rail"){aim=new Vector2(-23,13).normalized;facingAngle=Mathf.Atan2(aim.y,aim.x)*Mathf.Rad2Deg;}
+        if(role=="Flame"){aim=new Vector2(-9,8).normalized;facingAngle=Mathf.Atan2(aim.y,aim.x)*Mathf.Rad2Deg;}
         artwork=GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r=>r.name=="2D Sprite");
         if(artwork==null)throw new InvalidOperationException("Missing approved artwork child: "+name);
         if(role=="Player")playerMotion=new CoreGuardianPlayerMotion(artwork);
@@ -71,7 +72,9 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
         }
         var library=CoreGuardianSpriteLibrary.Instance;
         Sprite[] B(string d){var f=new Sprite[4];for(int i=0;i<4;i++)f[i]=library!=null?library.Get(role+"/"+d+"_"+i):null;return f;}
-        return new CoreGuardianFrameWalk(artwork,B("Left"),B("Right"),B("Up"),B("Down"),18,0);
+        var walk=new CoreGuardianFrameWalk(artwork,B("Left"),B("Right"),B("Up"),B("Down"),18,0);
+        if(role=="IronKnight")walk.SideBobPixels=2;
+        return walk;
     }
     public void Move(Vector2 worldVelocity,float delta)=>TrackMotion(worldVelocity,delta,true);
     public void MoveWithoutTurning(Vector2 worldVelocity,float delta)=>TrackMotion(worldVelocity,delta,false);

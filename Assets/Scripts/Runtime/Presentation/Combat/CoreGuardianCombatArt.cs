@@ -48,7 +48,7 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     }
     public GameObject Marker(string name,Vector3 position,float width)
     {
-        var r=NewRenderer(name,Get(name),position,1700);SetWidth(r,width);return r.gameObject;
+        var r=NewRenderer(name,Get(name),position,ArtDepthSorting.OverlayBase+1700);SetWidth(r,width);return r.gameObject;
     }
     SpriteRenderer NewRenderer(string name,Sprite sprite,Vector3 position,int order)
     {
@@ -81,10 +81,10 @@ public sealed class CoreGuardianCombatArt : MonoBehaviour
     {
         Effect effect=null;
         while(effectPool.Count>0&&effect==null){var candidate=effectPool.Pop();if(candidate.Renderer!=null)effect=candidate;}
-        if(effect==null)effect=new Effect{Renderer=NewRenderer(name,Get(name),position,1750)};
+        if(effect==null)effect=new Effect{Renderer=NewRenderer(name,Get(name),position,ArtDepthSorting.OverlayBase+1750)};
         var renderer=effect.Renderer;
         renderer.name=name;renderer.sprite=Get(name);renderer.color=Color.white;
-        renderer.flipX=renderer.flipY=false;renderer.sortingOrder=1750;
+        renderer.flipX=renderer.flipY=false;renderer.sortingOrder=ArtDepthSorting.OverlayBase+1750;
         renderer.transform.position=position;renderer.transform.localRotation=Quaternion.identity;SetWidth(renderer,width);
         effect.Started=Time.time;effect.Duration=duration;effect.Width=width;effect.Rise=rise;effect.Origin=position;
         renderer.transform.SetAsLastSibling();renderer.gameObject.SetActive(true);effects.Add(effect);

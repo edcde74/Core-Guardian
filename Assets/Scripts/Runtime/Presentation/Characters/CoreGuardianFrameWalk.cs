@@ -12,6 +12,8 @@ public sealed class CoreGuardianFrameWalk
     readonly Vector3 initialPosition;
     readonly float topPixels;
     float phase,clock;bool walking,mirror;int vertical;
+    // 피드백 2 (2026-10-27): 옆걸음 몸 들썩임. 한 걸음 주기에 두 번, 원본 픽셀 기준 깊이.
+    public float SideBobPixels;
     public CoreGuardianFrameWalk(SpriteRenderer artwork,Sprite[] left,Sprite[] right,Sprite[] up,Sprite[] down,float cyclePixels,float hoverFps)
     {
         art=artwork;this.left=left;this.right=right!=null&&right.Length>0?right:null;this.up=up;this.down=down;rest=artwork.sprite;
@@ -46,6 +48,12 @@ public sealed class CoreGuardianFrameWalk
         if(frame==null)frame=rest;
         if(art.sprite!=frame)art.sprite=frame;
         if(art.flipX!=flip)art.flipX=flip;
+        // Side frames alternate stride (0,2: legs apart) and passing (1,3: legs together).
+        // The body settles on the stride and rises through the pass; whole source pixels only (half pixels shimmer).
+        float bob=0;
+        if(walking&&vertical==0&&SideBobPixels>0){int count=(mirror&&right!=null?right.Length:left?.Length)??0;int index=count>0?Mathf.Min(count-1,(int)(phase*count)):0;bob=index%2==0?-Mathf.Round(SideBobPixels):0;}
+        var position=initialPosition+Vector3.up*(bob*art.transform.localScale.y/ppu);
+        if(art.transform.localPosition!=position)art.transform.localPosition=position;
     }
     public void ResetForReuse(){phase=clock=0;walking=mirror=false;vertical=0;art.sprite=rest;art.flipX=false;art.transform.localPosition=initialPosition;}
 }

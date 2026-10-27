@@ -8,7 +8,7 @@ public sealed partial class CoreGuardianHud
     void BuildCheatPanel()
     {
         const float W=190,H=48,Gap=8;
-        var panel=Box("DevCheats",canvas,new Vector2(0,1),new Vector2(334,-72),new Vector2(16*2+W*3+Gap*2,16+6*(H+Gap)));
+        var panel=Box("DevCheats",canvas,new Vector2(0,1),new Vector2(334,-72),new Vector2(16*2+W*3+Gap*2,16+10*(H+Gap)));
         Vector2 At(int col,int row)=>new Vector2(16+col*(W+Gap),-16-row*(H+Gap));
         Vector2 Size(int cols)=>new Vector2(W*cols+Gap*(cols-1),H);
         bool Combat()=>game.Session.Phase==SessionPhase.Combat;
@@ -27,9 +27,18 @@ public sealed partial class CoreGuardianHud
         Button("Cheat_WaveDown",panel,At(0,4),Size(1),()=>"라운드 -1",()=>{cheatWave=Mathf.Clamp(cheatWave-1,1,game.Session.LastWave);});
         Button("Cheat_WaveUp",panel,At(1,4),Size(1),()=>"라운드 +1",()=>{cheatWave=Mathf.Clamp(cheatWave+1,1,game.Session.LastWave);});
         Button("Cheat_SetWave",panel,At(2,4),Size(1),()=>cheatWave+"라운드로 이동",()=>{if(game.Session.DebugSetWave(cheatWave))Done();},Prep);
-        Button("Cheat_EnemyNext",panel,At(0,5),Size(1),()=>"적: "+game.Session.DebugEnemyName(CheatEnemyId()),()=>{var ids=game.Session.DebugEnemyIds;cheatEnemy=(cheatEnemy+1)%Mathf.Max(1,ids.Length);});
-        Button("Cheat_Spawn1",panel,At(1,5),Size(1),()=>"1마리 소환",()=>{game.Session.DebugSpawnEnemy(CheatEnemyId(),1);Done();},Combat);
-        Button("Cheat_Spawn10",panel,At(2,5),Size(1),()=>"10마리 소환",()=>{game.Session.DebugSpawnEnemy(CheatEnemyId(),10);Done();},Combat);
+        // 9 일시정지/재개, 8 개체 목록: 버튼 하나 = 그 적 1마리 소환(선택도 바뀜), 10마리는 마지막 선택 기준.
+        Button("Cheat_Pause",panel,At(0,5),Size(1),()=>game.DebugPaused?"재개":"일시정지",()=>{game.ToggleDebugPause();Refresh();});
+        Button("Cheat_Spawn10",panel,At(1,5),Size(2),()=>game.Session.DebugEnemyName(CheatEnemyId())+" 10마리 소환",()=>{game.Session.DebugSpawnEnemy(CheatEnemyId(),10);Done();},Combat);
+        for(int slot=0;slot<12;slot++)
+        {
+            int index=slot;
+            var slotButton=Button("Cheat_Enemy"+index,panel,At(index%3,6+index/3),Size(1),
+                ()=>{var ids=game.Session.DebugEnemyIds;return index<ids.Length?(index==cheatEnemy?"> ":"")+game.Session.DebugEnemyName(ids[index]):"";},
+                ()=>{var ids=game.Session.DebugEnemyIds;if(index>=ids.Length)return;cheatEnemy=index;game.Session.DebugSpawnEnemy(ids[index],1);Done();},
+                ()=>Combat()&&index<game.Session.DebugEnemyIds.Length);
+            refresh.Add(()=>slotButton.gameObject.SetActive(index<game.Session.DebugEnemyIds.Length)); // 빈 칸은 숨김
+        }
         refresh.Add(()=>{if(!developerOpen)cheatWave=Mathf.Clamp(game.Session.Wave,1,game.Session.LastWave);});
         developerViews.Add(panel.gameObject);
     }

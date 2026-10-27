@@ -109,6 +109,7 @@ public class CoreGuardianContentTests
         var s=Game();s.StartCombat();var near=s.DebugSpawn(EnemyKind.Attack,1,Dummy(s.Data));var far=s.DebugSpawn(EnemyKind.Attack,6,Dummy(s.Data));
         Assert.That(s.AreaBlastReady,Is.True);Assert.That(s.UseAreaBlast(new Vector2(1,1)),Is.True);
         Assert.That(near.Health,Is.EqualTo(960),"Player 10 × 4");Assert.That(far.Health,Is.EqualTo(1000));
+        Assert.That(s.DamageTotals.ContainsKey("PlayerSkill"),Is.False,"피드백 4: 범위 폭발은 기술병 누적 피해에 합산");Assert.That(s.DamageTotals["Player"],Is.EqualTo(40));
         Assert.That(s.UseAreaBlast(new Vector2(1,1)),Is.False);Assert.That(s.AreaBlastCooldown,Is.EqualTo(12).Within(.001));
         s.Tick(12.01f,Away);Assert.That(s.AreaBlastReady,Is.True);
     }

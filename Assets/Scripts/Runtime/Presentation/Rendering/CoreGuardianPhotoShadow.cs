@@ -42,6 +42,9 @@ public sealed class CoreGuardianPhotoShadow : MonoBehaviour
         cast=new GameObject("PhotoCastShadow").AddComponent<SpriteRenderer>();cast.transform.SetParent(transform,false);
         cast.sprite=Resources.Load<Sprite>("CoreGuardian/PhotoShadows/"+source);
         if(cast.sprite==null)throw new InvalidOperationException("Missing approved shadow "+source);
+        // 피드백 1 (2026-10-27): 보스는 방패병 그림자를 몸 전체 폭(방패·망토 포함)에 맞춰 키워 1.6배로 퍼졌다.
+        // 일반 적과 같은 비율(몸 폭의 약 0.9)로 맞춘다.
+        if(bossLike&&cast.sprite.bounds.size.x>0){size=art.bounds.size.x*.9f/cast.sprite.bounds.size.x;offset=new Vector3(e.x,e.y,0)*size;}
         cast.sharedMaterial=art.sharedMaterial;
         Present(null);
     }

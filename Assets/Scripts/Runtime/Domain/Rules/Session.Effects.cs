@@ -195,7 +195,9 @@ namespace CoreGuardian
             if(!target.Alive||amount<=0)return 0;
             var e=target.Slot;int before=e.Health;int actual=Mathf.Min(before,amount);
             enemyRevision++;e.Health-=actual;
-            DamageTotals.TryGetValue(source,out int previous);DamageTotals[source]=previous+actual;
+            // 피드백 4: 범위 폭발(PlayerSkill)도 누적 피해는 기술병 한 줄로 합산.
+            var totalKey=source=="PlayerSkill"?"Player":source;
+            DamageTotals.TryGetValue(totalKey,out int previous);DamageTotals[totalKey]=previous+actual;
             if(e.Frozen)e.FrozenDamage+=actual;
             if(e.Health>0)CheckShield(e,before);
             if(actual>0)DamageApplied?.Invoke(new EnemySnapshot(target),actual);

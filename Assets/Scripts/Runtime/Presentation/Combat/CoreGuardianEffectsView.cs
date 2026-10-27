@@ -7,7 +7,7 @@ using UnityEngine;
 public sealed class CoreGuardianEffectsView : MonoBehaviour
 {
     const float PixelScale=.6f;
-    const int GroundOrder=45,MarkerOrder=1750,PopOrder=1600,MaxPooled=256;
+    const int GroundOrder=45,MarkerOrder=ArtDepthSorting.OverlayBase+1750,PopOrder=ArtDepthSorting.OverlayBase+1600,MaxPooled=256;
     CoreGuardianPrototype game;
     sealed class Anim {public SpriteRenderer Renderer;public Sprite[] Frames;public float Age,Fps,Fade;public bool Loop;}
     readonly List<Anim> anims=new List<Anim>();
@@ -69,7 +69,7 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
         var at=W(cue.Position);
         switch(cue.Id)
         {
-            case "execute":Play("Status/Execute_",at+Vector3.up*.4f,16);break;
+            case "execute":Play("Status/Execute_",at+Vector3.up*.5f,10,PopOrder,TileWidth*2.5f);break; // 피드백 4: 약 1.6배 크기·0.7초로 키움
             case "shatter":Play("Status/FreezeShatter_",at+Vector3.up*.3f,14);break;
             case "burn_explode":Play("Augments/BurnExplosion",at+Vector3.up*.1f,1,PopOrder,TileWidth*3,.45f);break;
             case "chain":Play("Status/Chain_",at+Vector3.up*.3f,18);break;

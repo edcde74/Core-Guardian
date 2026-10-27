@@ -64,7 +64,8 @@ namespace CoreGuardian
             LastMessage="개발 도구 · 증강 "+number+"번 "+DebugAugmentName(number)+" 획득";return true;
         }
         // Spawnable list for the developer menu: every enemy row in the data table, bosses by their own ID.
-        public int[] DebugEnemyIds=>Data.EnemiesById.Keys.Where(id=>id/100!=112).OrderBy(id=>id).ToArray();
+        int[] debugEnemyIds;
+        public int[] DebugEnemyIds=>debugEnemyIds??=Data.EnemiesById.Keys.Where(id=>id/100!=112).OrderBy(id=>id).ToArray();
         public string DebugEnemyName(int id)
         {
             if(!Data.EnemiesById.TryGetValue(id,out var e))return "?";

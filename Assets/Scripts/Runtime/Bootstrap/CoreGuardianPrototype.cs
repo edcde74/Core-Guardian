@@ -227,7 +227,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         ghost=Instantiate(TowerArtFor(kind));ghost.name="TowerPlacementPreview";
         var shadow=ghost.transform.Find("그림자");if(shadow!=null)shadow.gameObject.SetActive(false);
         ghostRenderers=ghost.GetComponentsInChildren<SpriteRenderer>();
-        foreach(var sr in ghostRenderers)sr.sortingOrder=1800;
+        foreach(var sr in ghostRenderers)sr.sortingOrder=ArtDepthSorting.OverlayBase+1800;
         foreach(var d in ghost.GetComponentsInChildren<ArtDepthSorting>())d.enabled=false;
         if(placementOverlay==null)
         {
@@ -328,7 +328,16 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     void SyncTestSpeed(bool force=false)
     {
         // An external QA pause/clock at default speed is not owned by this button.
+        if(DebugPaused){Time.timeScale=0;return;}
         if(force||TestSpeed!=1)Time.timeScale=Ready&&Session.Phase==SessionPhase.Combat?TestSpeed:1;
+    }
+    // 개발 도구 일시정지 (2026-10-27 사용자 요청). Overrides combat speed until resumed.
+    public bool DebugPaused {get;private set;}
+    public void ToggleDebugPause()
+    {
+        DebugPaused=!DebugPaused;
+        if(DebugPaused)Time.timeScale=0;else SyncTestSpeed(true);
+        Notify(DebugPaused?"개발 도구 · 일시정지":"개발 도구 · 재개");
     }
     public void CycleTestSpeed()
     {
@@ -336,7 +345,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         SyncTestSpeed(true);
         Notify("전투 배속 ×"+TestSpeed+" · 준비/증강/결과는 ×1");
     }
-    public void Restart(){if(TestSpeed!=1)Time.timeScale=1;UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);}
+    public void Restart(){if(TestSpeed!=1||DebugPaused)Time.timeScale=1;UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);}
     public void Notify(string text){Feedback=string.IsNullOrEmpty(text)?Session.LastMessage:text;notificationUntil=Time.unscaledTime+3;Changed?.Invoke();}
     void SynchronizeViews()
     {
@@ -475,7 +484,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         if(body==null)
         {
             var root=Instantiate(source);root.name="Enemy_"+enemy.Kind+"_"+enemy.Id;root.transform.position=World(enemy.Position);
-            var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),1900);
+            var bar=CreateSprite("Health",square,Vector3.zero,new Color(.35f,1f,.45f),ArtDepthSorting.OverlayBase+1900);
             bar.transform.SetParent(root.transform,false);
             var health=bar.AddComponent<SegmentedEnemyHealthBar>();health.Configure(enemy.Kind==EnemyKind.Boss);
             var animation=CoreGuardianUnitAnimation.Attach(root,EnemyArtRole(enemy));
@@ -515,9 +524,9 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     {
         SpriteRenderer renderer=null;
         while(projectileViewPool.Count>0&&renderer==null)renderer=projectileViewPool.Pop();
-        if(renderer==null)renderer=CreateSprite("Projectile_"+projectile.Id,combatArt.Projectile(projectile),World(projectile.Position),Color.white,1500).GetComponent<SpriteRenderer>();
+        if(renderer==null)renderer=CreateSprite("Projectile_"+projectile.Id,combatArt.Projectile(projectile),World(projectile.Position),Color.white,ArtDepthSorting.OverlayBase+1500).GetComponent<SpriteRenderer>();
         else{renderer.name="Projectile_"+projectile.Id;renderer.sprite=combatArt.Projectile(projectile);}
-        renderer.color=Color.white;renderer.flipX=renderer.flipY=false;renderer.sortingOrder=1500;
+        renderer.color=Color.white;renderer.flipX=renderer.flipY=false;renderer.sortingOrder=ArtDepthSorting.OverlayBase+1500;
         renderer.transform.position=World(projectile.Position);renderer.transform.rotation=Quaternion.identity;
         CoreGuardianCombatArt.SetWidth(renderer,projectile.Source=="Player"?.2f:.275f);
         renderer.transform.SetAsLastSibling();renderer.gameObject.SetActive(true);return renderer.gameObject;
@@ -545,7 +554,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         placementOverlay?.Dispose();placementOverlay=null;
         if(placementOverlaySource!=null){Destroy(placementOverlaySource);placementOverlaySource=null;}
         Session?.Dispose();
-        if(TestSpeed!=1)Time.timeScale=1;
+        if(TestSpeed!=1||DebugPaused)Time.timeScale=1;
         Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
         Cursor.visible=true;
         if(occupiedTile!=null)Destroy(occupiedTile);

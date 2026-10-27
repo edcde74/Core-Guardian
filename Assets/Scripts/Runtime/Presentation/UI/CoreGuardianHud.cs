@@ -117,7 +117,8 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     }
     void BuildAugmentationSelection()
     {
-        var bossPlate=Box("BossPlate",canvas,new Vector2(.5f,1),new Vector2(0,-224),new Vector2(740,60));
+        // 피드백 7: 하단 조작 바(높이 88, 아래 12) 바로 위.
+        var bossPlate=Box("BossPlate",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(740,60));
         CoreGuardianHudSkin.Icon(bossPlate,"Damage",new Vector2(16,-15),new Vector2(30,30));
         bossStatus=Text("BossStatus",bossPlate,new Vector2(54,-14),new Vector2(666,32),22);
         refresh.Add(()=>bossPlate.gameObject.SetActive(!string.IsNullOrEmpty(bossStatus.text)));
