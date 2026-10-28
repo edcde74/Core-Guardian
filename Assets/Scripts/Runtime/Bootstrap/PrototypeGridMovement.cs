@@ -4,15 +4,30 @@ using UnityEngine.Tilemaps;
 
 public sealed class PrototypeGridMovement : MonoBehaviour
 {
-    [SerializeField] private Tilemap ground;
-    [SerializeField] private Tilemap enemyPath;
-    [SerializeField] private Tilemap core;
-    [SerializeField] private Tilemap occupiedTowerCells;
-    [SerializeField] private Vector3 spriteOffset = new Vector3(0f, 0.11f, 0f);
-    [SerializeField, Min(0.01f)] private float stepDuration = 0.12f;
+    [SerializeField]
+    private Tilemap ground;
+
+    [SerializeField]
+    private Tilemap enemyPath;
+
+    [SerializeField]
+    private Tilemap core;
+
+    [SerializeField]
+    private Tilemap occupiedTowerCells;
+
+    [SerializeField]
+    private Vector3 spriteOffset = new Vector3(0f, 0.11f, 0f);
+
+    [SerializeField, Min(0.01f)]
+    private float stepDuration = 0.12f;
+
     // Art review slabs cover 2x2 base cells; existing scenes retain one-cell steps.
-    [SerializeField] private Vector2Int movementTileSize = Vector2Int.one;
-    [SerializeField] private Vector2Int movementTileOrigin = Vector2Int.zero;
+    [SerializeField]
+    private Vector2Int movementTileSize = Vector2Int.one;
+
+    [SerializeField]
+    private Vector2Int movementTileOrigin = Vector2Int.zero;
 
     private Vector3Int currentCell;
     private Vector2Int pendingDirection;
@@ -22,6 +37,7 @@ public sealed class PrototypeGridMovement : MonoBehaviour
     private bool isMoving;
 
     public Vector3Int CurrentCell => currentCell;
+
     // Last WASD direction pressed (46 순간 이동) and a notice per completed step (22 불길 발자국: the cell left).
     public Vector2Int LastDirection { get; private set; }
     public event System.Action<Vector3Int> Stepped;
@@ -38,9 +54,14 @@ public sealed class PrototypeGridMovement : MonoBehaviour
         movementTileSize = new Vector2Int(Mathf.Max(1, movementTileSize.x), Mathf.Max(1, movementTileSize.y));
         Vector3Int initialCell = ground.WorldToCell(transform.position);
         currentCell = new Vector3Int(
-            movementTileOrigin.x + Mathf.FloorToInt((float)(initialCell.x - movementTileOrigin.x) / movementTileSize.x) * movementTileSize.x,
-            movementTileOrigin.y + Mathf.FloorToInt((float)(initialCell.y - movementTileOrigin.y) / movementTileSize.y) * movementTileSize.y,
-            initialCell.z);
+            movementTileOrigin.x
+                + Mathf.FloorToInt((float)(initialCell.x - movementTileOrigin.x) / movementTileSize.x)
+                    * movementTileSize.x,
+            movementTileOrigin.y
+                + Mathf.FloorToInt((float)(initialCell.y - movementTileOrigin.y) / movementTileSize.y)
+                    * movementTileSize.y,
+            initialCell.z
+        );
         transform.position = TileCenter(currentCell) + spriteOffset;
     }
 
@@ -48,10 +69,22 @@ public sealed class PrototypeGridMovement : MonoBehaviour
     {
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.wKey.wasPressedThisFrame) pendingDirection = Vector2Int.up;
-            else if (Keyboard.current.sKey.wasPressedThisFrame) pendingDirection = Vector2Int.down;
-            else if (Keyboard.current.aKey.wasPressedThisFrame) pendingDirection = Vector2Int.left;
-            else if (Keyboard.current.dKey.wasPressedThisFrame) pendingDirection = Vector2Int.right;
+            if (Keyboard.current.wKey.wasPressedThisFrame)
+            {
+                pendingDirection = Vector2Int.up;
+            }
+            else if (Keyboard.current.sKey.wasPressedThisFrame)
+            {
+                pendingDirection = Vector2Int.down;
+            }
+            else if (Keyboard.current.aKey.wasPressedThisFrame)
+            {
+                pendingDirection = Vector2Int.left;
+            }
+            else if (Keyboard.current.dKey.wasPressedThisFrame)
+            {
+                pendingDirection = Vector2Int.right;
+            }
         }
 
         if (isMoving)
@@ -59,7 +92,9 @@ public sealed class PrototypeGridMovement : MonoBehaviour
             stepProgress = Mathf.Min(1f, stepProgress + Time.deltaTime / stepDuration);
             transform.position = Vector3.Lerp(stepStart, stepEnd, stepProgress);
             if (stepProgress >= 1f)
+            {
                 isMoving = false;
+            }
         }
 
         if (isMoving || pendingDirection == Vector2Int.zero)
@@ -80,8 +115,11 @@ public sealed class PrototypeGridMovement : MonoBehaviour
         var delta = new Vector3Int(direction.x, direction.y, 0);
         // Check the swept footprint as well as the destination; never jump over blockers.
         for (int step = 1; step <= distance; step++)
+        {
             if (!CanOccupy(currentCell + delta * step))
                 return false;
+        }
+
         Vector3Int nextCell = currentCell + delta * distance;
 
         var left = currentCell;
@@ -97,14 +135,20 @@ public sealed class PrototypeGridMovement : MonoBehaviour
     // Jumps over path/tower/core cells; lands on the farthest free cell within maxCells (3 → 2 → 1).
     public bool TryTeleport(Vector2Int direction, int maxCells)
     {
-        if (!enabled || Mathf.Abs(direction.x) + Mathf.Abs(direction.y) != 1) return false;
+        if (!enabled || Mathf.Abs(direction.x) + Mathf.Abs(direction.y) != 1)
+            return false;
+
         var delta = new Vector3Int(direction.x, direction.y, 0);
         int unit = direction.x != 0 ? movementTileSize.x : movementTileSize.y;
         for (int cells = maxCells; cells >= 1; cells--)
         {
             var target = currentCell + delta * (cells * unit);
-            if (!CanOccupy(target)) continue;
-            currentCell = target; isMoving = false; pendingDirection = Vector2Int.zero;
+            if (!CanOccupy(target))
+                continue;
+
+            currentCell = target;
+            isMoving = false;
+            pendingDirection = Vector2Int.zero;
             transform.position = TileCenter(currentCell) + spriteOffset;
             return true;
         }
@@ -120,13 +164,22 @@ public sealed class PrototypeGridMovement : MonoBehaviour
     private bool CanOccupy(Vector3Int origin)
     {
         for (int y = 0; y < movementTileSize.y; y++)
-        for (int x = 0; x < movementTileSize.x; x++)
         {
-            var cell = origin + new Vector3Int(x, y, 0);
-            if (!ground.HasTile(cell) || enemyPath.HasTile(cell) || core.HasTile(cell) ||
-                (occupiedTowerCells != null && occupiedTowerCells.HasTile(cell)))
-                return false;
+            for (int x = 0; x < movementTileSize.x; x++)
+            {
+                var cell = origin + new Vector3Int(x, y, 0);
+                if (
+                    !ground.HasTile(cell)
+                    || enemyPath.HasTile(cell)
+                    || core.HasTile(cell)
+                    || (occupiedTowerCells != null && occupiedTowerCells.HasTile(cell))
+                )
+                {
+                    return false;
+                }
+            }
         }
+
         return true;
     }
 }

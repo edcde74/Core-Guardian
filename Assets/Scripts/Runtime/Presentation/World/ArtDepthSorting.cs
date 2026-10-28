@@ -6,15 +6,25 @@ using UnityEngine;
 [ExecuteAlways]
 public sealed class ArtDepthSorting : MonoBehaviour
 {
-    public const int Base = 2000, Stride = 5, Lanes = 16, MinRow = -50, MaxRow = 250;
+    public const int Base = 2000,
+        Stride = 5,
+        Lanes = 16,
+        MinRow = -50,
+        MaxRow = 250;
+
     // World-space overlays (projectiles, health bars, effects) sit above every unit order.
     public const int OverlayBase = 30000;
     const float RowsPerUnit = 10f;
     static int nextLane;
-    [SerializeField] private SpriteRenderer artwork;
+
+    // Domain Reload is off: start every Play from lane 0 so overlapping units sort the same each run (B12).
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetLanes() => nextLane = 0;
+
+    [SerializeField]
+    private SpriteRenderer artwork;
     int lane = -1;
 
-    public void SetArtwork(SpriteRenderer renderer) => artwork = renderer;
     public static int Order(float worldY, int lane)
     {
         int row = Mathf.Clamp(Mathf.RoundToInt(worldY * RowsPerUnit), MinRow, MaxRow);
@@ -23,8 +33,14 @@ public sealed class ArtDepthSorting : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (artwork == null) return;
-        if (lane < 0) lane = (nextLane++) & (Lanes - 1);
+        if (artwork == null)
+            return;
+
+        if (lane < 0)
+        {
+            lane = (nextLane++) & (Lanes - 1);
+        }
+
         artwork.sortingOrder = Order(transform.position.y, lane);
     }
 }

@@ -1,6 +1,6 @@
-using NUnit.Framework;
 using System;
 using System.Reflection;
+using NUnit.Framework;
 
 namespace Fortress.Game.Tests
 {
@@ -15,8 +15,7 @@ namespace Fortress.Game.Tests
             Assert.That(type, Is.Not.Null, "Current Core Guardian combat rules are not implemented");
             var method = type.GetMethod("Damage", BindingFlags.Public | BindingFlags.Static);
             Assert.That(method, Is.Not.Null);
-            Assert.That(method.Invoke(null, new object[] {damage, defense}), Is.EqualTo(expected));
+            Assert.That(method.Invoke(null, new object[] { damage, defense }), Is.EqualTo(expected));
         }
     }
 }
-

@@ -17,576 +17,1476 @@ public class CoreGuardianCombatAudioPlayModeTests
     public IEnumerator FinalVictoryPlaysSelectedSteelOnceAndExcludesOrdinaryDiagnosticAndDefeat()
     {
 #if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
         yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("VictoryResourcePath"),Is.Not.Null,"Selected steel victory audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(type.GetField("VictoryResourcePath"), Is.Not.Null, "Selected steel victory audio is missing");
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
         try
         {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            Func<int,Session> make=rounds=>{
-                var data=CombatData.Load(Resources.Load<TextAsset>("CoreGuardian/enemies").text,Resources.Load<TextAsset>("CoreGuardian/towers").text,Resources.Load<TextAsset>("CoreGuardian/stage").text,Resources.Load<TextAsset>("CoreGuardian/upgrades").text,Resources.Load<TextAsset>("CoreGuardian/waves").text);
-                data.Waves.Clear();for(int i=1;i<=rounds;i++)data.Waves.Add(new WaveSpec{Wave=i,Kind=EnemyKind.Attack,Count=1,Interval=1});
-                var s=new Session(data);s.SetBoard(20,20,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});return s;
-            };
-            Action<Session> finish=s=>{s.Tick(.01f,new Vector2(-100,-100));foreach(var enemy in s.Enemies.ToArray())s.ApplyDamage(enemy,10000,"Player");s.Tick(.01f,new Vector2(-100,-100));};
-            var configure=type.GetMethod("Configure");var count=type.GetProperty("VictoryPlayedCount");var complete=type.GetProperty("RoundCompletePlayedCount");
-            var session=make(1);configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});session.StartCombat();
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();foreach(var voice in voices)voice.Stop();type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
-            int crystals=session.Crystals;finish(session);Assert.That(session.Phase,Is.EqualTo(SessionPhase.Victory));Assert.That(session.Crystals,Is.EqualTo(crystals+session.LastCompletionReward));Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(complete.GetValue(audio),Is.EqualTo(0));
-            var clip=Resources.Load<AudioClip>((string)type.GetField("VictoryResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);Assert.That(voices.Count(v=>v.isPlaying&&v.clip==clip),Is.EqualTo(1));Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            session.Tick(1,new Vector2(-100,-100));Assert.That(session.StartCombat(),Is.False);audio.enabled=false;audio.enabled=true;configure.Invoke(audio,new object[]{session});Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            session=make(2);configure.Invoke(audio,new object[]{session});session.StartCombat();finish(session);Assert.That(session.Phase,Is.EqualTo(SessionPhase.Preparation));Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(complete.GetValue(audio),Is.EqualTo(1));
-            session=make(1);configure.Invoke(audio,new object[]{session});session.StartDiagnosticEncounter();session.StartCombat();finish(session);Assert.That(session.Phase,Is.EqualTo(SessionPhase.Victory));Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            session=make(1);configure.Invoke(audio,new object[]{session});typeof(Session).GetProperty("CoreEnergy").SetValue(session,1);session.StartCombat();session.DebugSpawn(EnemyKind.Attack,9.99f);session.Tick(.1f,new Vector2(-100,-100));Assert.That(session.Phase,Is.EqualTo(SessionPhase.Defeat));Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            session=make(1);configure.Invoke(audio,new object[]{session});PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);session.StartCombat();finish(session);Assert.That(count.GetValue(audio),Is.EqualTo(1));PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);configure.Invoke(audio,new object[]{session});Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);Assert.That(voices.All(v=>!v.loop&&v.pitch==1),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator RoundCompletionPlaysOnceForPreparationAndAugmentationButNotFinalResults()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("RoundCompleteResourcePath"),Is.Not.Null,"Selected round completion audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            Func<int,EnemyKind,Session> make=(wave,kind)=>{
-                var data=CombatData.Load(Resources.Load<TextAsset>("CoreGuardian/enemies").text,Resources.Load<TextAsset>("CoreGuardian/towers").text,Resources.Load<TextAsset>("CoreGuardian/stage").text,Resources.Load<TextAsset>("CoreGuardian/upgrades").text,Resources.Load<TextAsset>("CoreGuardian/waves").text);
-                data.Waves.Clear();data.Waves.Add(new WaveSpec{Wave=wave,Kind=kind,Count=1,Interval=1});data.Waves.Add(new WaveSpec{Wave=wave+1,Kind=EnemyKind.Attack,Count=1,Interval=1});
-                var s=new Session(data);s.SetBoard(20,20,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});typeof(Session).GetProperty("Wave").SetValue(s,wave);return s;
-            };
-            var configure=type.GetMethod("Configure");var count=type.GetProperty("RoundCompletePlayedCount");
-            var session=make(1,EnemyKind.Attack);configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});session.StartCombat();
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();foreach(var voice in voices)voice.Stop();type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
-            int crystals=session.Crystals;session.Tick(.01f,new Vector2(-100,-100));session.ApplyDamage(session.Enemies.Single(),10000,"Player");session.Tick(.01f,new Vector2(-100,-100));
-            Assert.That(session.Phase,Is.EqualTo(SessionPhase.Preparation));Assert.That(session.CompletedWave,Is.EqualTo(1));Assert.That(session.Crystals,Is.EqualTo(crystals+session.LastCompletionReward));Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            var clip=Resources.Load<AudioClip>((string)type.GetField("RoundCompleteResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);Assert.That(voices.Any(v=>v.isPlaying&&v.clip==clip),Is.True);Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            session.Tick(.01f,new Vector2(-100,-100));audio.enabled=false;audio.enabled=true;configure.Invoke(audio,new object[]{session});Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            session.StartCombat();session.Tick(.01f,new Vector2(-100,-100));session.ApplyDamage(session.Enemies.Single(),10000,"Player");session.Tick(.01f,new Vector2(-100,-100));Assert.That(session.Phase,Is.EqualTo(SessionPhase.Victory));Assert.That(count.GetValue(audio),Is.EqualTo(1),"Final victory is a separate cue");
-            session=make(9,EnemyKind.Boss);configure.Invoke(audio,new object[]{session});foreach(var voice in voices)voice.Stop();session.StartCombat();session.Tick(.01f,new Vector2(-100,-100));session.ApplyDamage(session.Enemies.Single(),10000,"Player");session.Tick(.01f,new Vector2(-100,-100));Assert.That(session.Phase,Is.EqualTo(SessionPhase.Augmentation));Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            session=make(1,EnemyKind.Attack);configure.Invoke(audio,new object[]{session});typeof(Session).GetProperty("CoreEnergy").SetValue(session,1);session.StartCombat();session.DebugSpawn(EnemyKind.Attack,9.99f);session.Tick(.1f,new Vector2(-100,-100));Assert.That(session.Phase,Is.EqualTo(SessionPhase.Defeat));Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            session=make(1,EnemyKind.Attack);configure.Invoke(audio,new object[]{session});session.StartDiagnosticEncounter();session.StartCombat();session.Tick(.01f,new Vector2(-100,-100));foreach(var enemy in session.Enemies.ToArray())session.ApplyDamage(enemy,10000,"Player");session.Tick(.01f,new Vector2(-100,-100));Assert.That(session.Phase,Is.EqualTo(SessionPhase.Victory));Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            session=make(1,EnemyKind.Attack);configure.Invoke(audio,new object[]{session});PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);session.StartCombat();session.Tick(.01f,new Vector2(-100,-100));session.ApplyDamage(session.Enemies.Single(),10000,"Player");session.Tick(.01f,new Vector2(-100,-100));Assert.That(count.GetValue(audio),Is.EqualTo(2));PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);configure.Invoke(audio,new object[]{session});Assert.That(count.GetValue(audio),Is.EqualTo(2),"No delayed completion on unmute");
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator CombatStartUsesConfirmationForManualAndTimeoutWithoutReplaying()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("RoundStartResourcePath"),Is.Not.Null,"Selected round start audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
-            var count=type.GetProperty("RoundStartPlayedCount");var configure=type.GetMethod("Configure");configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});
-            Assert.That(count.GetValue(audio),Is.EqualTo(0),"Preparation is silent");
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
-            gameType.GetMethod("StartCombat").Invoke(game,null);Assert.That(session.Phase,Is.EqualTo(SessionPhase.Combat));Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            var clip=Resources.Load<AudioClip>((string)type.GetField("RoundStartResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);Assert.That(voices.Count(v=>v.isPlaying&&v.clip==clip),Is.EqualTo(1));Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            gameType.GetMethod("StartCombat").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            audio.enabled=false;audio.enabled=true;configure.Invoke(audio,new object[]{session});Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            foreach(var voice in voices)voice.Stop();session.StartDiagnosticEncounter();Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            session.Tick(session.PreparationRemaining+.01f,new Vector2(-100,-100));Assert.That(session.Phase,Is.EqualTo(SessionPhase.Combat));Assert.That(count.GetValue(audio),Is.EqualTo(2),"Real preparation timeout must play once");
-            session.Tick(.01f,new Vector2(-100,-100));Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            session.StartDiagnosticEncounter();PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);gameType.GetMethod("StartCombat").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);configure.Invoke(audio,new object[]{session});Assert.That(count.GetValue(audio),Is.EqualTo(2),"No delayed start on unmute");
-            session.StartDiagnosticEncounter();foreach(var voice in voices)voice.Stop();gameType.GetMethod("StartCombat").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(3));
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator UpgradeFailureUsesError006WithoutSpendingCurrencyOrShowingSuccessScan()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("UpgradeFailureResourcePath"),Is.Not.Null,"Selected upgrade failure audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
-            var upgrade=gameType.GetMethod("UpgradePlayer");var towerUpgrade=gameType.GetMethod("UpgradeTower");
-            var count=type.GetProperty("UpgradeFailurePlayedCount");var success=type.GetProperty("UpgradeSuccessPlayedCount");
-            var feedbackType=Type.GetType("CoreGuardianUpgradeFeedback, Assembly-CSharp");var feedback=game.GetComponent(feedbackType);var scans=feedbackType.GetProperty("TriggerCount");
-            typeof(Session).GetProperty("Gold").SetValue(session,0);float damage=session.Player.Damage;
-            upgrade.Invoke(game,new object[]{"damage"});Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(session.Gold,Is.Zero);Assert.That(session.Player.Damage,Is.EqualTo(damage));Assert.That(scans.GetValue(feedback),Is.EqualTo(0));Assert.That(success.GetValue(audio),Is.EqualTo(0));
-            var clip=Resources.Load<AudioClip>((string)type.GetField("UpgradeFailureResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();Assert.That(voices.Any(v=>v.isPlaying&&v.clip==clip),Is.True);
-            upgrade.Invoke(game,new object[]{"damage"});Assert.That(count.GetValue(audio),Is.EqualTo(1),"Fast repeated failures are coalesced");
-            yield return new WaitForSecondsRealtime(.22f);
-            typeof(Session).GetProperty("Gold").SetValue(session,10000);upgrade.Invoke(game,new object[]{"damage"});Assert.That(success.GetValue(audio),Is.EqualTo(1));Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(scans.GetValue(feedback),Is.EqualTo(1));
-            upgrade.Invoke(game,new object[]{"invalid"});Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            var can=gameType.GetMethod("CanInstall",BindingFlags.Instance|BindingFlags.NonPublic);
-            var cell=(from y in Enumerable.Range(0,22) from x in Enumerable.Range(0,39) let c=new Vector2Int(x,y) where session.IsBuildable(c)&&(bool)can.Invoke(game,new object[]{c}) select c).First();
-            Assert.That(gameType.GetMethod("Place").Invoke(game,new object[]{TowerKind.Single,cell}),Is.True);
-            yield return new WaitForSecondsRealtime(.22f);
-            typeof(Session).GetProperty("Crystals").SetValue(session,0);float towerDamage=session.Towers.Last().Stats.Damage;
-            towerUpgrade.Invoke(game,new object[]{"damage"});Assert.That(count.GetValue(audio),Is.EqualTo(3));Assert.That(session.Crystals,Is.Zero);Assert.That(session.Towers.Last().Stats.Damage,Is.EqualTo(towerDamage));
-            yield return new WaitForSecondsRealtime(.22f);
-            foreach(var voice in voices)voice.Stop();type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
-            session.StartCombat();towerUpgrade.Invoke(game,new object[]{"damage"});Assert.That(count.GetValue(audio),Is.EqualTo(4));Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            yield return new WaitForSecondsRealtime(.22f);
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);upgrade.Invoke(game,new object[]{"invalid"});Assert.That(count.GetValue(audio),Is.EqualTo(4));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);upgrade.Invoke(game,new object[]{"invalid"});Assert.That(count.GetValue(audio),Is.EqualTo(5));Assert.That(scans.GetValue(feedback),Is.EqualTo(1));Assert.That(success.GetValue(audio),Is.EqualTo(1));
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator UpgradeSuccessUsesConfirmationOnlyAfterSuccessfulPurchaseAndKeepsScan()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("UpgradeSuccessResourcePath"),Is.Not.Null,"Selected upgrade success audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
-            var count=type.GetProperty("UpgradeSuccessPlayedCount");var upgrade=gameType.GetMethod("UpgradePlayer");
-            var feedbackType=Type.GetType("CoreGuardianUpgradeFeedback, Assembly-CSharp");var feedback=game.GetComponent(feedbackType);
-            var scans=feedbackType.GetProperty("TriggerCount");
-            upgrade.Invoke(game,new object[]{"invalid"});Assert.That(count.GetValue(audio),Is.EqualTo(0));Assert.That(scans.GetValue(feedback),Is.EqualTo(0));
-            int gold=session.Gold;int price=session.PlayerUpgradePrice("damage");float damage=session.Player.Damage;
-            upgrade.Invoke(game,new object[]{"damage"});Assert.That(session.Gold,Is.EqualTo(gold-price));Assert.That(session.Player.Damage,Is.GreaterThan(damage));
-            Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(scans.GetValue(feedback),Is.EqualTo(1));Assert.That(feedbackType.GetProperty("Duration").GetValue(feedback),Is.EqualTo(.8f));
-            var clip=Resources.Load<AudioClip>((string)type.GetField("UpgradeSuccessResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);Assert.That(clip.length,Is.EqualTo(.433922917f).Within(.001f));
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();Assert.That(voices.Any(v=>v.isPlaying&&v.clip==clip),Is.True);
-            var can=gameType.GetMethod("CanInstall",BindingFlags.Instance|BindingFlags.NonPublic);
-            var cells=(from y in Enumerable.Range(0,22) from x in Enumerable.Range(0,39) let cell=new Vector2Int(x,y) where session.IsBuildable(cell)&&(bool)can.Invoke(game,new object[]{cell}) select cell).Take(3).ToArray();
-            int expected=1;
-            foreach(var kind in new[]{TowerKind.Single,TowerKind.Multi,TowerKind.Support})
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            Func<int, Session> make = rounds =>
             {
-                Assert.That(gameType.GetMethod("Place").Invoke(game,new object[]{kind,cells[expected-1]}),Is.True);
-                foreach(var voice in voices)voice.Stop();
-                gameType.GetMethod("UpgradeTower").Invoke(game,new object[]{kind==TowerKind.Support?"buffDamage":"damage"});
-                expected++;Assert.That(count.GetValue(audio),Is.EqualTo(expected));Assert.That(scans.GetValue(feedback),Is.EqualTo(expected));
-            }
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);upgrade.Invoke(game,new object[]{"rate"});Assert.That(count.GetValue(audio),Is.EqualTo(4));Assert.That(scans.GetValue(feedback),Is.EqualTo(5));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);foreach(var voice in voices)voice.Stop();
-            type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
-            upgrade.Invoke(game,new object[]{"range"});Assert.That(count.GetValue(audio),Is.EqualTo(5));Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            session.StartCombat();gameType.GetMethod("UpgradeTower").Invoke(game,new object[]{"buffDamage"});Assert.That(count.GetValue(audio),Is.EqualTo(6),"전투 중 강화 허용 (10-28)");
-            typeof(Session).GetProperty("Gold").SetValue(session,0);upgrade.Invoke(game,new object[]{"damage"});Assert.That(count.GetValue(audio),Is.EqualTo(6));Assert.That(scans.GetValue(feedback),Is.EqualTo(7));
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator TowerInstallationUsesUnequipOnlyOnSuccessfulPlacement()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("TowerInstallResourcePath"),Is.Not.Null,"Selected tower installation audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
-            var place=gameType.GetMethod("Place");var can=gameType.GetMethod("CanInstall",BindingFlags.Instance|BindingFlags.NonPublic);
-            var count=type.GetProperty("TowerInstallPlayedCount");
-            var cells=(from y in Enumerable.Range(0,22) from x in Enumerable.Range(0,39) let cell=new Vector2Int(x,y) where session.IsBuildable(cell)&&(bool)can.Invoke(game,new object[]{cell}) select cell).Take(6).ToArray();
-            Assert.That(cells.Length,Is.EqualTo(6));
-            Assert.That(place.Invoke(game,new object[]{TowerKind.Support,cells[0]}),Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(0));
-            foreach(var kind in new[]{TowerKind.Single,TowerKind.Multi,TowerKind.Support})
+                var data = CombatData.Load(
+                    Resources.Load<TextAsset>("CoreGuardian/enemies").text,
+                    Resources.Load<TextAsset>("CoreGuardian/towers").text,
+                    Resources.Load<TextAsset>("CoreGuardian/stage").text,
+                    Resources.Load<TextAsset>("CoreGuardian/upgrades").text,
+                    Resources.Load<TextAsset>("CoreGuardian/waves").text
+                );
+                data.Waves.Clear();
+                for (int i = 1; i <= rounds; i++)
+                {
+                    data.Waves.Add(
+                        new WaveSpec
+                        {
+                            Wave = i,
+                            Kind = EnemyKind.Attack,
+                            Count = 1,
+                            Interval = 1,
+                        }
+                    );
+                }
+
+                var s = new Session(data);
+                s.SetBoard(20, 20, new Vector2Int(10, 0), new[] { Vector2Int.zero, new Vector2Int(10, 0) });
+                return s;
+            };
+            Action<Session> finish = s =>
             {
-                int index=session.Towers.Count;Assert.That(place.Invoke(game,new object[]{kind,cells[index]}),Is.True);Assert.That(count.GetValue(audio),Is.EqualTo(index+1));
+                s.Tick(.01f, new Vector2(-100, -100));
+                foreach (var enemy in s.Enemies.ToArray())
+                {
+                    s.ApplyDamage(enemy, 10000, "Player");
+                }
+                s.Tick(.01f, new Vector2(-100, -100));
+            };
+            var configure = type.GetMethod("Configure");
+            var count = type.GetProperty("VictoryPlayedCount");
+            var complete = type.GetProperty("RoundCompletePlayedCount");
+            var session = make(1);
+            configure.Invoke(audio, new object[] { session });
+            configure.Invoke(audio, new object[] { session });
+            session.StartCombat();
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            foreach (var voice in voices)
+            {
+                voice.Stop();
             }
-            var clip=Resources.Load<AudioClip>((string)type.GetField("TowerInstallResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();Assert.That(voices.Count(v=>v.isPlaying&&v.clip==clip),Is.EqualTo(3));
-            Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[0]}),Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(3));
-            gameType.GetMethod("ChooseTower").Invoke(game,new object[]{TowerKind.Single});gameType.GetMethod("CancelInstall").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(3));
-            gameType.GetMethod("DestroySelected").Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(3));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[3]}),Is.True);Assert.That(count.GetValue(audio),Is.EqualTo(3));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);foreach(var voice in voices)voice.Stop();
-            type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
-            Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[4]}),Is.True);Assert.That(count.GetValue(audio),Is.EqualTo(4));
-            Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            session.StartCombat();Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[5]}),Is.True,"전투 중 설치 허용 (10-28)");Assert.That(count.GetValue(audio),Is.EqualTo(5));
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator BossHalfHealthPlaysSpeedUpOnceAndNeverOnLethalDamage()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("BossAccelerationResourcePath"),Is.Not.Null,"Selected boss acceleration audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
-            var count=type.GetProperty("BossAccelerationPlayedCount");var hits=type.GetProperty("MonsterHitPlayedCount");
-            var boss=session.DebugSpawn(EnemyKind.Boss);session.ApplyDamage(boss,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(0));
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();foreach(var voice in voices)voice.Stop();
-            type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
-            boss.Health=boss.Spec.Health/2+1;Assert.That(boss.Enraged,Is.False);int beforeHits=(int)hits.GetValue(audio);
-            session.ApplyDamage(boss,2,"Player");Assert.That(boss.Enraged,Is.True);Assert.That(boss.MovementSpeed,Is.EqualTo(boss.Spec.Speed*1.3f).Within(.00001f));
-            Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(hits.GetValue(audio),Is.EqualTo(beforeHits),"Transition replaces ordinary hit audio");
-            var clip=Resources.Load<AudioClip>((string)type.GetField("BossAccelerationResourcePath").GetRawConstantValue());Assert.That(clip,Is.Not.Null);
-            Assert.That(voices.Any(v=>v.isPlaying&&v.clip==clip),Is.True);Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            type.GetMethod("Configure").Invoke(audio,new object[]{session});session.ApplyDamage(boss,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            session.ApplyDamage(session.DebugSpawn(EnemyKind.Boss),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1),"Lethal damage never announces acceleration");
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);var muted=session.DebugSpawn(EnemyKind.Boss);muted.Health=muted.Spec.Health/2+1;session.ApplyDamage(muted,2,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);foreach(var voice in voices)voice.Stop();audio.enabled=false;audio.enabled=true;
-            session.ApplyDamage(muted,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1),"Muted transition must not replay later");
-            var other=session.DebugSpawn(EnemyKind.Boss);other.Health=other.Spec.Health/2+1;session.ApplyDamage(other,2,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator BossViewAppearsWithEncounterOnceAndRespectsMuteAndCorePriority()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("BossSpawnResourcePath"),Is.Not.Null,"Selected boss spawn audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);session.StartDiagnosticEncounter();
-            var sync=gameType.GetMethod("SynchronizeViews",BindingFlags.Instance|BindingFlags.NonPublic);
-            var count=type.GetProperty("BossSpawnPlayedCount");var notify=type.GetMethod("NotifyBossSpawn");
-            session.DebugSpawn(EnemyKind.Attack);sync.Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(0));
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();
-            type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
-            var boss=session.DebugSpawn(EnemyKind.Boss);sync.Invoke(game,null);
-            var clip=Resources.Load<AudioClip>((string)type.GetField("BossSpawnResourcePath").GetRawConstantValue());
-            Assert.That(clip,Is.Not.Null);Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            Assert.That(voices.Count(v=>v.isPlaying&&v.clip==clip),Is.EqualTo(1));
-            Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True,"Boss must not stop the core warning");
-            sync.Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            type.GetMethod("Configure").Invoke(audio,new object[]{session});
-            Assert.That(notify.Invoke(audio,new object[]{boss.Id}),Is.False,"Reconfiguring the same session must not replay");
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);var muted=session.DebugSpawn(EnemyKind.Boss);sync.Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);foreach(var voice in voices)voice.Stop();
-            Assert.That(notify.Invoke(audio,new object[]{muted.Id}),Is.False,"Muted spawn must not be delayed until unmute");
-            audio.enabled=false;audio.enabled=true;Assert.That(notify.Invoke(audio,new object[]{boss.Id}),Is.False);
-            session.DebugSpawn(EnemyKind.Boss);sync.Invoke(game,null);Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-            Assert.That(voices.All(v=>!v.loop&&v.pitch==1),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator MonsterDeathsReplaceLethalHitAndIgnoreCoreExitsMuteAndRepeatedDamage()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("MonsterDeathResourcePath"),Is.Not.Null,"Selected monster death audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);
-            session.StartDiagnosticEncounter();session.SetBoard(20,20,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});
-            var configure=type.GetMethod("Configure");configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});
-            var count=type.GetProperty("MonsterDeathPlayedCount");var hits=type.GetProperty("MonsterHitPlayedCount");
-            var enemy=session.DebugSpawn(EnemyKind.Attack);session.ApplyDamage(enemy,1,"Player");
-            Assert.That(hits.GetValue(audio),Is.EqualTo(1));
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();foreach(var voice in voices)voice.Stop();
-            int gold=session.Gold;int reward=enemy.Spec.Gold;
-            session.ApplyDamage(enemy,10000,"Tower:1");
-            Assert.That(enemy.Health,Is.Zero);Assert.That(session.Gold,Is.EqualTo(gold+reward));
-            Assert.That(count.GetValue(audio),Is.EqualTo(1));Assert.That(hits.GetValue(audio),Is.EqualTo(1),"Lethal damage must not add the hit clip");
-            var clip=Resources.Load<AudioClip>((string)type.GetField("MonsterDeathResourcePath").GetRawConstantValue());
-            Assert.That(voices.Count(v=>v.isPlaying&&v.clip==clip),Is.EqualTo(1));
-            session.ApplyDamage(enemy,10000,"Player");
-            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");
-            Assert.That(count.GetValue(audio),Is.EqualTo(1),"Same-time kills are coalesced; dead targets cannot replay");
-            yield return new WaitForSecondsRealtime(.12f);
-            session.StartCombat();session.DebugSpawn(EnemyKind.Attack,9.99f);session.Tick(.1f,new Vector2(-100,-100));
-            Assert.That(session.CoreEnergy,Is.LessThan(session.CoreMaximum));Assert.That(count.GetValue(audio),Is.EqualTo(1),"Core exit is not a kill");
-            foreach(var voice in voices)voice.Stop();
-            for(int i=0;i<4;i++)type.GetMethod("Preview").Invoke(audio,null);
-            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1),"Full pool drops ordinary death audio");
-            foreach(var voice in voices)voice.Stop();
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);audio.enabled=false;
-            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            audio.enabled=true;session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack),10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
-            yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator MonsterHitsUseSelectedClipAndBoundOverlapWithoutChangingDamage()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("MonsterHitResourcePath"),Is.Not.Null,"Selected monster hit audio is missing");
-        var audio=(MonoBehaviour)game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);
+
+            type.GetMethod("PreviewCoreDamage").Invoke(audio, null);
+            for (int i = 0; i < 3; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            int crystals = session.Crystals;
+            finish(session);
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Victory));
+            Assert.That(session.Crystals, Is.EqualTo(crystals + session.LastCompletionReward));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            Assert.That(complete.GetValue(audio), Is.EqualTo(0));
+            var clip = Resources.Load<AudioClip>((string)type.GetField("VictoryResourcePath").GetRawConstantValue());
+            Assert.That(clip, Is.Not.Null);
+            Assert.That(voices.Count(v => v.isPlaying && v.clip == clip), Is.EqualTo(1));
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "core"), Is.True);
+            session.Tick(1, new Vector2(-100, -100));
+            Assert.That(session.StartCombat(), Is.False);
+            audio.enabled = false;
+            audio.enabled = true;
+            configure.Invoke(audio, new object[] { session });
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            session = make(2);
+            configure.Invoke(audio, new object[] { session });
+            session.StartCombat();
+            finish(session);
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Preparation));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            Assert.That(complete.GetValue(audio), Is.EqualTo(1));
+            session = make(1);
+            configure.Invoke(audio, new object[] { session });
             session.StartDiagnosticEncounter();
-            var configure=type.GetMethod("Configure");configure.Invoke(audio,new object[]{session});configure.Invoke(audio,new object[]{session});
-            var count=type.GetProperty("MonsterHitPlayedCount");
-            var enemy=session.DebugSpawn(EnemyKind.Attack);float hp=enemy.Health;
-            session.ApplyDamage(enemy,0,"Player");session.ApplyDamage(default,10,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(0));
-            session.ApplyDamage(enemy,1,"Player");Assert.That(enemy.Health,Is.EqualTo(hp-1));
-            Assert.That(count.GetValue(audio),Is.EqualTo(1),"Configure twice must not double-subscribe");
-            var clip=Resources.Load<AudioClip>((string)type.GetField("MonsterHitResourcePath").GetRawConstantValue());
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();
-            Assert.That(voices.Any(v=>v.isPlaying&&v.clip==clip),Is.True);
-            session.ApplyDamage(enemy,1,"Tower:1");Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            yield return new WaitForSecondsRealtime(.12f);
-            session.ApplyDamage(enemy,10000,"Tower:1");Assert.That(enemy.Alive,Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(1),"Lethal hit uses the separate death clip");
-            yield return new WaitForSecondsRealtime(.12f);
-            session.ApplyDamage(enemy,10000,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1),"Dead targets must not play again");
-            foreach(var voice in voices)voice.Stop();
-            for(int i=0;i<4;i++)type.GetMethod("Preview").Invoke(audio,null);
-            var other=session.DebugSpawn(EnemyKind.Attack);session.ApplyDamage(other,1,"Player");
-            Assert.That(count.GetValue(audio),Is.EqualTo(1),"Full pool drops ordinary hit audio");
-            Assert.That(voices.All(v=>v.clip.name=="single"),Is.True,"Hit must not replace attacks");
-            foreach(var voice in voices)voice.Stop();
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            audio.enabled=false;session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            audio.enabled=true;session.ApplyDamage(other,1,"Player");Assert.That(count.GetValue(audio),Is.EqualTo(2));
+            session.StartCombat();
+            finish(session);
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Victory));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            session = make(1);
+            configure.Invoke(audio, new object[] { session });
+            typeof(Session).GetProperty("CoreEnergy").SetValue(session, 1);
+            session.StartCombat();
+            session.DebugSpawn(EnemyKind.Attack, 9.99f);
+            session.Tick(.1f, new Vector2(-100, -100));
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Defeat));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            session = make(1);
+            configure.Invoke(audio, new object[] { session });
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            session.StartCombat();
+            finish(session);
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            configure.Invoke(audio, new object[] { session });
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
             yield return null;
-            Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-        }
-        finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
-#else
-        yield return null;
-#endif
-    }
-    [UnityTest]
-    public IEnumerator CoreArrivalPlaysSelectedGlyphAndHonorsMuteCooldownAndFullPool()
-    {
-#if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
-        yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var type=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        Assert.That(type.GetField("CoreDamageResourcePath"),Is.Not.Null,"Selected core damage audio is missing");
-        var audio=game.GetComponent(type);
-        bool had=PlayerPrefs.HasKey("CoreGuardian.SoundVolume");float volume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
-        float time=Time.timeScale;
-        try
-        {
-            Time.timeScale=0;game.enabled=false;PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);
-            session.StartDiagnosticEncounter();
-            session.SetBoard(20,20,new Vector2Int(10,0),new[]{Vector2Int.zero,new Vector2Int(10,0)});
-            gameType.GetField("previousCore",BindingFlags.Instance|BindingFlags.NonPublic).SetValue(game,session.CoreEnergy);
-            var sources=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();
-            for(int i=0;i<4;i++)Assert.That(type.GetMethod("Preview").Invoke(audio,null),Is.True);
-            session.StartCombat();session.DebugSpawn(EnemyKind.Attack,9.99f);
-            session.Tick(.1f,new Vector2(-100,-100));
-            gameType.GetMethod("Update",BindingFlags.Instance|BindingFlags.NonPublic).Invoke(game,null);
-            var clip=Resources.Load<AudioClip>((string)type.GetField("CoreDamageResourcePath").GetRawConstantValue());
-            Assert.That(clip,Is.Not.Null);
-            Assert.That(sources.Any(s=>s.isPlaying&&s.clip==clip),Is.True,"Actual core arrival must be audible with a full attack pool");
-            var count=type.GetProperty("CoreDamagePlayedCount");Assert.That(count.GetValue(audio),Is.EqualTo(1));
-            var notify=type.GetMethod("NotifyCoreDamage");
-            Assert.That(notify.Invoke(audio,new object[]{2}),Is.False,"Rapid arrivals are coalesced");
-            yield return new WaitForSecondsRealtime(.35f);
-            Assert.That(notify.Invoke(audio,new object[]{0}),Is.False);
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",0f);
-            yield return null;
-            Assert.That(notify.Invoke(audio,new object[]{2}),Is.False);
-            Assert.That(sources.All(s=>s.volume==0),Is.True);
-            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);
-            Assert.That(notify.Invoke(audio,new object[]{2}),Is.True);
-            yield return null; // Existing active voices receive slider changes in Update.
-            Assert.That(sources.Where(s=>s.isPlaying).All(s=>Mathf.Abs(s.volume-.37f*.55f)<.00001f),Is.True);
-            ((MonoBehaviour)audio).enabled=false;
-            Assert.That(sources.All(s=>!s.isPlaying),Is.True);
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+            Assert.That(voices.All(v => !v.loop && v.pitch == 1), Is.True);
         }
         finally
         {
-            Time.timeScale=time;
-            if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
             PlayerPrefs.Save();
         }
 #else
         yield return null;
 #endif
     }
+
+    [UnityTest]
+    public IEnumerator RoundCompletionPlaysOnceForPreparationAndAugmentationButNotFinalResults()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(
+            type.GetField("RoundCompleteResourcePath"),
+            Is.Not.Null,
+            "Selected round completion audio is missing"
+        );
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            Func<int, EnemyKind, Session> make = (wave, kind) =>
+            {
+                var data = CombatData.Load(
+                    Resources.Load<TextAsset>("CoreGuardian/enemies").text,
+                    Resources.Load<TextAsset>("CoreGuardian/towers").text,
+                    Resources.Load<TextAsset>("CoreGuardian/stage").text,
+                    Resources.Load<TextAsset>("CoreGuardian/upgrades").text,
+                    Resources.Load<TextAsset>("CoreGuardian/waves").text
+                );
+                data.Waves.Clear();
+                data.Waves.Add(
+                    new WaveSpec
+                    {
+                        Wave = wave,
+                        Kind = kind,
+                        Count = 1,
+                        Interval = 1,
+                    }
+                );
+                data.Waves.Add(
+                    new WaveSpec
+                    {
+                        Wave = wave + 1,
+                        Kind = EnemyKind.Attack,
+                        Count = 1,
+                        Interval = 1,
+                    }
+                );
+                var s = new Session(data);
+                s.SetBoard(20, 20, new Vector2Int(10, 0), new[] { Vector2Int.zero, new Vector2Int(10, 0) });
+                typeof(Session).GetProperty("Wave").SetValue(s, wave);
+                return s;
+            };
+            var configure = type.GetMethod("Configure");
+            var count = type.GetProperty("RoundCompletePlayedCount");
+            var session = make(1, EnemyKind.Attack);
+            configure.Invoke(audio, new object[] { session });
+            configure.Invoke(audio, new object[] { session });
+            session.StartCombat();
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            type.GetMethod("PreviewCoreDamage").Invoke(audio, null);
+            for (int i = 0; i < 3; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            int crystals = session.Crystals;
+            session.Tick(.01f, new Vector2(-100, -100));
+            session.ApplyDamage(session.Enemies.Single(), 10000, "Player");
+            session.Tick(.01f, new Vector2(-100, -100));
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Preparation));
+            Assert.That(session.CompletedWave, Is.EqualTo(1));
+            Assert.That(session.Crystals, Is.EqualTo(crystals + session.LastCompletionReward));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            var clip = Resources.Load<AudioClip>(
+                (string)type.GetField("RoundCompleteResourcePath").GetRawConstantValue()
+            );
+            Assert.That(clip, Is.Not.Null);
+            Assert.That(voices.Any(v => v.isPlaying && v.clip == clip), Is.True);
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "core"), Is.True);
+            session.Tick(.01f, new Vector2(-100, -100));
+            audio.enabled = false;
+            audio.enabled = true;
+            configure.Invoke(audio, new object[] { session });
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            session.StartCombat();
+            session.Tick(.01f, new Vector2(-100, -100));
+            session.ApplyDamage(session.Enemies.Single(), 10000, "Player");
+            session.Tick(.01f, new Vector2(-100, -100));
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Victory));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Final victory is a separate cue");
+            session = make(9, EnemyKind.Boss);
+            configure.Invoke(audio, new object[] { session });
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            session.StartCombat();
+            session.Tick(.01f, new Vector2(-100, -100));
+            session.ApplyDamage(session.Enemies.Single(), 10000, "Player");
+            session.Tick(.01f, new Vector2(-100, -100));
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Augmentation));
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            session = make(1, EnemyKind.Attack);
+            configure.Invoke(audio, new object[] { session });
+            typeof(Session).GetProperty("CoreEnergy").SetValue(session, 1);
+            session.StartCombat();
+            session.DebugSpawn(EnemyKind.Attack, 9.99f);
+            session.Tick(.1f, new Vector2(-100, -100));
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Defeat));
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            session = make(1, EnemyKind.Attack);
+            configure.Invoke(audio, new object[] { session });
+            session.StartDiagnosticEncounter();
+            session.StartCombat();
+            session.Tick(.01f, new Vector2(-100, -100));
+            foreach (var enemy in session.Enemies.ToArray())
+            {
+                session.ApplyDamage(enemy, 10000, "Player");
+            }
+
+            session.Tick(.01f, new Vector2(-100, -100));
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Victory));
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            session = make(1, EnemyKind.Attack);
+            configure.Invoke(audio, new object[] { session });
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            session.StartCombat();
+            session.Tick(.01f, new Vector2(-100, -100));
+            session.ApplyDamage(session.Enemies.Single(), 10000, "Player");
+            session.Tick(.01f, new Vector2(-100, -100));
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            configure.Invoke(audio, new object[] { session });
+            Assert.That(count.GetValue(audio), Is.EqualTo(2), "No delayed completion on unmute");
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator CombatStartUsesConfirmationForManualAndTimeoutWithoutReplaying()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(type.GetField("RoundStartResourcePath"), Is.Not.Null, "Selected round start audio is missing");
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            var count = type.GetProperty("RoundStartPlayedCount");
+            var configure = type.GetMethod("Configure");
+            configure.Invoke(audio, new object[] { session });
+            configure.Invoke(audio, new object[] { session });
+            Assert.That(count.GetValue(audio), Is.EqualTo(0), "Preparation is silent");
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            type.GetMethod("PreviewCoreDamage").Invoke(audio, null);
+            for (int i = 0; i < 3; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            gameType.GetMethod("StartCombat").Invoke(game, null);
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Combat));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            var clip = Resources.Load<AudioClip>((string)type.GetField("RoundStartResourcePath").GetRawConstantValue());
+            Assert.That(clip, Is.Not.Null);
+            Assert.That(voices.Count(v => v.isPlaying && v.clip == clip), Is.EqualTo(1));
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "core"), Is.True);
+            gameType.GetMethod("StartCombat").Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            audio.enabled = false;
+            audio.enabled = true;
+            configure.Invoke(audio, new object[] { session });
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            session.StartDiagnosticEncounter();
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            session.Tick(session.PreparationRemaining + .01f, new Vector2(-100, -100));
+            Assert.That(session.Phase, Is.EqualTo(SessionPhase.Combat));
+            Assert.That(count.GetValue(audio), Is.EqualTo(2), "Real preparation timeout must play once");
+            session.Tick(.01f, new Vector2(-100, -100));
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            session.StartDiagnosticEncounter();
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            gameType.GetMethod("StartCombat").Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            configure.Invoke(audio, new object[] { session });
+            Assert.That(count.GetValue(audio), Is.EqualTo(2), "No delayed start on unmute");
+            session.StartDiagnosticEncounter();
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            gameType.GetMethod("StartCombat").Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(3));
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator UpgradeFailureUsesError006WithoutSpendingCurrencyOrShowingSuccessScan()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(
+            type.GetField("UpgradeFailureResourcePath"),
+            Is.Not.Null,
+            "Selected upgrade failure audio is missing"
+        );
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            var upgrade = gameType.GetMethod("UpgradePlayer");
+            var towerUpgrade = gameType.GetMethod("UpgradeTower");
+            var count = type.GetProperty("UpgradeFailurePlayedCount");
+            var success = type.GetProperty("UpgradeSuccessPlayedCount");
+            var feedbackType = typeof(CoreGuardianUpgradeFeedback);
+            var feedback = game.GetComponent(feedbackType);
+            var scans = feedbackType.GetProperty("TriggerCount");
+            typeof(Session).GetProperty("Gold").SetValue(session, 0);
+            float damage = session.Player.Damage;
+            upgrade.Invoke(game, new object[] { "damage" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            Assert.That(session.Gold, Is.Zero);
+            Assert.That(session.Player.Damage, Is.EqualTo(damage));
+            Assert.That(scans.GetValue(feedback), Is.EqualTo(0));
+            Assert.That(success.GetValue(audio), Is.EqualTo(0));
+            var clip = Resources.Load<AudioClip>(
+                (string)type.GetField("UpgradeFailureResourcePath").GetRawConstantValue()
+            );
+            Assert.That(clip, Is.Not.Null);
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            Assert.That(voices.Any(v => v.isPlaying && v.clip == clip), Is.True);
+            upgrade.Invoke(game, new object[] { "damage" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Fast repeated failures are coalesced");
+            yield return new WaitForSecondsRealtime(.22f);
+            typeof(Session).GetProperty("Gold").SetValue(session, 10000);
+            upgrade.Invoke(game, new object[] { "damage" });
+            Assert.That(success.GetValue(audio), Is.EqualTo(1));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            Assert.That(scans.GetValue(feedback), Is.EqualTo(1));
+            upgrade.Invoke(game, new object[] { "invalid" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            var can = gameType.GetMethod("CanInstall", BindingFlags.Instance | BindingFlags.NonPublic);
+            var cell = (
+                from y in Enumerable.Range(0, 22)
+                from x in Enumerable.Range(0, 39)
+                let c = new Vector2Int(x, y)
+                where session.IsBuildable(c) && (bool)can.Invoke(game, new object[] { c })
+                select c
+            ).First();
+            Assert.That(gameType.GetMethod("Place").Invoke(game, new object[] { TowerKind.Single, cell }), Is.True);
+            yield return new WaitForSecondsRealtime(.22f);
+            typeof(Session).GetProperty("Crystals").SetValue(session, 0);
+            float towerDamage = session.Towers.Last().Stats.Damage;
+            towerUpgrade.Invoke(game, new object[] { "damage" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(3));
+            Assert.That(session.Crystals, Is.Zero);
+            Assert.That(session.Towers.Last().Stats.Damage, Is.EqualTo(towerDamage));
+            yield return new WaitForSecondsRealtime(.22f);
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            type.GetMethod("PreviewCoreDamage").Invoke(audio, null);
+            for (int i = 0; i < 3; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            session.StartCombat();
+            towerUpgrade.Invoke(game, new object[] { "damage" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(4));
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "core"), Is.True);
+            yield return new WaitForSecondsRealtime(.22f);
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            upgrade.Invoke(game, new object[] { "invalid" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(4));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            upgrade.Invoke(game, new object[] { "invalid" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(5));
+            Assert.That(scans.GetValue(feedback), Is.EqualTo(1));
+            Assert.That(success.GetValue(audio), Is.EqualTo(1));
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator UpgradeSuccessUsesConfirmationOnlyAfterSuccessfulPurchaseAndKeepsScan()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(
+            type.GetField("UpgradeSuccessResourcePath"),
+            Is.Not.Null,
+            "Selected upgrade success audio is missing"
+        );
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            var count = type.GetProperty("UpgradeSuccessPlayedCount");
+            var upgrade = gameType.GetMethod("UpgradePlayer");
+            var feedbackType = typeof(CoreGuardianUpgradeFeedback);
+            var feedback = game.GetComponent(feedbackType);
+            var scans = feedbackType.GetProperty("TriggerCount");
+            upgrade.Invoke(game, new object[] { "invalid" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(0));
+            Assert.That(scans.GetValue(feedback), Is.EqualTo(0));
+            int gold = session.Gold;
+            int price = session.PlayerUpgradePrice("damage");
+            float damage = session.Player.Damage;
+            upgrade.Invoke(game, new object[] { "damage" });
+            Assert.That(session.Gold, Is.EqualTo(gold - price));
+            Assert.That(session.Player.Damage, Is.GreaterThan(damage));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            Assert.That(scans.GetValue(feedback), Is.EqualTo(1));
+            Assert.That(feedbackType.GetProperty("Duration").GetValue(feedback), Is.EqualTo(.8f));
+            var clip = Resources.Load<AudioClip>(
+                (string)type.GetField("UpgradeSuccessResourcePath").GetRawConstantValue()
+            );
+            Assert.That(clip, Is.Not.Null);
+            Assert.That(clip.length, Is.EqualTo(.433922917f).Within(.001f));
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            Assert.That(voices.Any(v => v.isPlaying && v.clip == clip), Is.True);
+            var can = gameType.GetMethod("CanInstall", BindingFlags.Instance | BindingFlags.NonPublic);
+            var cells = (
+                from y in Enumerable.Range(0, 22)
+                from x in Enumerable.Range(0, 39)
+                let cell = new Vector2Int(x, y)
+                where session.IsBuildable(cell) && (bool)can.Invoke(game, new object[] { cell })
+                select cell
+            )
+                .Take(3)
+                .ToArray();
+            int expected = 1;
+            foreach (var kind in new[] { TowerKind.Single, TowerKind.Multi, TowerKind.Support })
+            {
+                Assert.That(
+                    gameType.GetMethod("Place").Invoke(game, new object[] { kind, cells[expected - 1] }),
+                    Is.True
+                );
+                foreach (var voice in voices)
+                {
+                    voice.Stop();
+                }
+
+                gameType
+                    .GetMethod("UpgradeTower")
+                    .Invoke(game, new object[] { kind == TowerKind.Support ? "buffDamage" : "damage" });
+                expected++;
+                Assert.That(count.GetValue(audio), Is.EqualTo(expected));
+                Assert.That(scans.GetValue(feedback), Is.EqualTo(expected));
+            }
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            upgrade.Invoke(game, new object[] { "rate" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(4));
+            Assert.That(scans.GetValue(feedback), Is.EqualTo(5));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            type.GetMethod("PreviewCoreDamage").Invoke(audio, null);
+            for (int i = 0; i < 3; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            upgrade.Invoke(game, new object[] { "range" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(5));
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "core"), Is.True);
+            session.StartCombat();
+            gameType.GetMethod("UpgradeTower").Invoke(game, new object[] { "buffDamage" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(6), "전투 중 강화 허용 (10-28)");
+            typeof(Session).GetProperty("Gold").SetValue(session, 0);
+            upgrade.Invoke(game, new object[] { "damage" });
+            Assert.That(count.GetValue(audio), Is.EqualTo(6));
+            Assert.That(scans.GetValue(feedback), Is.EqualTo(7));
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator TowerInstallationUsesUnequipOnlyOnSuccessfulPlacement()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(
+            type.GetField("TowerInstallResourcePath"),
+            Is.Not.Null,
+            "Selected tower installation audio is missing"
+        );
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            var place = gameType.GetMethod("Place");
+            var can = gameType.GetMethod("CanInstall", BindingFlags.Instance | BindingFlags.NonPublic);
+            var count = type.GetProperty("TowerInstallPlayedCount");
+            var cells = (
+                from y in Enumerable.Range(0, 22)
+                from x in Enumerable.Range(0, 39)
+                let cell = new Vector2Int(x, y)
+                where session.IsBuildable(cell) && (bool)can.Invoke(game, new object[] { cell })
+                select cell
+            )
+                .Take(6)
+                .ToArray();
+            Assert.That(cells.Length, Is.EqualTo(6));
+            Assert.That(place.Invoke(game, new object[] { TowerKind.Support, cells[0] }), Is.False);
+            Assert.That(count.GetValue(audio), Is.EqualTo(0));
+            foreach (var kind in new[] { TowerKind.Single, TowerKind.Multi, TowerKind.Support })
+            {
+                int index = session.Towers.Count;
+                Assert.That(place.Invoke(game, new object[] { kind, cells[index] }), Is.True);
+                Assert.That(count.GetValue(audio), Is.EqualTo(index + 1));
+            }
+            var clip = Resources.Load<AudioClip>(
+                (string)type.GetField("TowerInstallResourcePath").GetRawConstantValue()
+            );
+            Assert.That(clip, Is.Not.Null);
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            Assert.That(voices.Count(v => v.isPlaying && v.clip == clip), Is.EqualTo(3));
+            Assert.That(place.Invoke(game, new object[] { TowerKind.Single, cells[0] }), Is.False);
+            Assert.That(count.GetValue(audio), Is.EqualTo(3));
+            gameType.GetMethod("ChooseTower").Invoke(game, new object[] { TowerKind.Single });
+            gameType.GetMethod("CancelInstall").Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(3));
+            gameType.GetMethod("DestroySelected").Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(3));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            Assert.That(place.Invoke(game, new object[] { TowerKind.Single, cells[3] }), Is.True);
+            Assert.That(count.GetValue(audio), Is.EqualTo(3));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            type.GetMethod("PreviewCoreDamage").Invoke(audio, null);
+            for (int i = 0; i < 3; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            Assert.That(place.Invoke(game, new object[] { TowerKind.Single, cells[4] }), Is.True);
+            Assert.That(count.GetValue(audio), Is.EqualTo(4));
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "core"), Is.True);
+            session.StartCombat();
+            Assert.That(
+                place.Invoke(game, new object[] { TowerKind.Single, cells[5] }),
+                Is.True,
+                "전투 중 설치 허용 (10-28)"
+            );
+            Assert.That(count.GetValue(audio), Is.EqualTo(5));
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator BossHalfHealthPlaysSpeedUpOnceAndNeverOnLethalDamage()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(
+            type.GetField("BossAccelerationResourcePath"),
+            Is.Not.Null,
+            "Selected boss acceleration audio is missing"
+        );
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            var count = type.GetProperty("BossAccelerationPlayedCount");
+            var hits = type.GetProperty("MonsterHitPlayedCount");
+            var boss = session.DebugSpawn(EnemyKind.Boss);
+            session.ApplyDamage(boss, 1, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(0));
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            type.GetMethod("PreviewCoreDamage").Invoke(audio, null);
+            for (int i = 0; i < 3; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            boss.Health = boss.Spec.Health / 2 + 1;
+            Assert.That(boss.Enraged, Is.False);
+            int beforeHits = (int)hits.GetValue(audio);
+            session.ApplyDamage(boss, 2, "Player");
+            Assert.That(boss.Enraged, Is.True);
+            Assert.That(boss.MovementSpeed, Is.EqualTo(boss.Spec.Speed * 1.3f).Within(.00001f));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            Assert.That(hits.GetValue(audio), Is.EqualTo(beforeHits), "Transition replaces ordinary hit audio");
+            var clip = Resources.Load<AudioClip>(
+                (string)type.GetField("BossAccelerationResourcePath").GetRawConstantValue()
+            );
+            Assert.That(clip, Is.Not.Null);
+            Assert.That(voices.Any(v => v.isPlaying && v.clip == clip), Is.True);
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "core"), Is.True);
+            type.GetMethod("Configure").Invoke(audio, new object[] { session });
+            session.ApplyDamage(boss, 1, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Boss), 10000, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Lethal damage never announces acceleration");
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            var muted = session.DebugSpawn(EnemyKind.Boss);
+            muted.Health = muted.Spec.Health / 2 + 1;
+            session.ApplyDamage(muted, 2, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            audio.enabled = false;
+            audio.enabled = true;
+            session.ApplyDamage(muted, 1, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Muted transition must not replay later");
+            var other = session.DebugSpawn(EnemyKind.Boss);
+            other.Health = other.Spec.Health / 2 + 1;
+            session.ApplyDamage(other, 2, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator BossViewAppearsWithEncounterOnceAndRespectsMuteAndCorePriority()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(type.GetField("BossSpawnResourcePath"), Is.Not.Null, "Selected boss spawn audio is missing");
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            var sync = gameType.GetMethod("SynchronizeViews", BindingFlags.Instance | BindingFlags.NonPublic);
+            var count = type.GetProperty("BossSpawnPlayedCount");
+            var notify = type.GetMethod("NotifyBossSpawn");
+            session.DebugSpawn(EnemyKind.Attack);
+            sync.Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(0));
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            type.GetMethod("PreviewCoreDamage").Invoke(audio, null);
+            for (int i = 0; i < 3; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            var boss = session.DebugSpawn(EnemyKind.Boss);
+            sync.Invoke(game, null);
+            var clip = Resources.Load<AudioClip>((string)type.GetField("BossSpawnResourcePath").GetRawConstantValue());
+            Assert.That(clip, Is.Not.Null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            Assert.That(voices.Count(v => v.isPlaying && v.clip == clip), Is.EqualTo(1));
+            Assert.That(
+                voices.Any(v => v.isPlaying && v.clip.name == "core"),
+                Is.True,
+                "Boss must not stop the core warning"
+            );
+            sync.Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            type.GetMethod("Configure").Invoke(audio, new object[] { session });
+            Assert.That(
+                notify.Invoke(audio, new object[] { boss.Id }),
+                Is.False,
+                "Reconfiguring the same session must not replay"
+            );
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            var muted = session.DebugSpawn(EnemyKind.Boss);
+            sync.Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            Assert.That(
+                notify.Invoke(audio, new object[] { muted.Id }),
+                Is.False,
+                "Muted spawn must not be delayed until unmute"
+            );
+            audio.enabled = false;
+            audio.enabled = true;
+            Assert.That(notify.Invoke(audio, new object[] { boss.Id }), Is.False);
+            session.DebugSpawn(EnemyKind.Boss);
+            sync.Invoke(game, null);
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+            Assert.That(voices.All(v => !v.loop && v.pitch == 1), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator MonsterDeathsReplaceLethalHitAndIgnoreCoreExitsMuteAndRepeatedDamage()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(type.GetField("MonsterDeathResourcePath"), Is.Not.Null, "Selected monster death audio is missing");
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            session.SetBoard(20, 20, new Vector2Int(10, 0), new[] { Vector2Int.zero, new Vector2Int(10, 0) });
+            var configure = type.GetMethod("Configure");
+            configure.Invoke(audio, new object[] { session });
+            configure.Invoke(audio, new object[] { session });
+            var count = type.GetProperty("MonsterDeathPlayedCount");
+            var hits = type.GetProperty("MonsterHitPlayedCount");
+            var enemy = session.DebugSpawn(EnemyKind.Attack);
+            session.ApplyDamage(enemy, 1, "Player");
+            Assert.That(hits.GetValue(audio), Is.EqualTo(1));
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            int gold = session.Gold;
+            int reward = enemy.Spec.Gold;
+            session.ApplyDamage(enemy, 10000, "Tower:1");
+            Assert.That(enemy.Health, Is.Zero);
+            Assert.That(session.Gold, Is.EqualTo(gold + reward));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            Assert.That(hits.GetValue(audio), Is.EqualTo(1), "Lethal damage must not add the hit clip");
+            var clip = Resources.Load<AudioClip>(
+                (string)type.GetField("MonsterDeathResourcePath").GetRawConstantValue()
+            );
+            Assert.That(voices.Count(v => v.isPlaying && v.clip == clip), Is.EqualTo(1));
+            session.ApplyDamage(enemy, 10000, "Player");
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack), 10000, "Player");
+            Assert.That(
+                count.GetValue(audio),
+                Is.EqualTo(1),
+                "Same-time kills are coalesced; dead targets cannot replay"
+            );
+            yield return new WaitForSecondsRealtime(.12f);
+            session.StartCombat();
+            session.DebugSpawn(EnemyKind.Attack, 9.99f);
+            session.Tick(.1f, new Vector2(-100, -100));
+            Assert.That(session.CoreEnergy, Is.LessThan(session.CoreMaximum));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Core exit is not a kill");
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack), 10000, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Full pool drops ordinary death audio");
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack), 10000, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            audio.enabled = false;
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack), 10000, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            audio.enabled = true;
+            session.ApplyDamage(session.DebugSpawn(EnemyKind.Attack), 10000, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator MonsterHitsUseSelectedClipAndBoundOverlapWithoutChangingDamage()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(type.GetField("MonsterHitResourcePath"), Is.Not.Null, "Selected monster hit audio is missing");
+        var audio = (MonoBehaviour)game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            var configure = type.GetMethod("Configure");
+            configure.Invoke(audio, new object[] { session });
+            configure.Invoke(audio, new object[] { session });
+            var count = type.GetProperty("MonsterHitPlayedCount");
+            var enemy = session.DebugSpawn(EnemyKind.Attack);
+            float hp = enemy.Health;
+            session.ApplyDamage(enemy, 0, "Player");
+            session.ApplyDamage(default, 10, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(0));
+            session.ApplyDamage(enemy, 1, "Player");
+            Assert.That(enemy.Health, Is.EqualTo(hp - 1));
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Configure twice must not double-subscribe");
+            var clip = Resources.Load<AudioClip>((string)type.GetField("MonsterHitResourcePath").GetRawConstantValue());
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            Assert.That(voices.Any(v => v.isPlaying && v.clip == clip), Is.True);
+            session.ApplyDamage(enemy, 1, "Tower:1");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            yield return new WaitForSecondsRealtime(.12f);
+            session.ApplyDamage(enemy, 10000, "Tower:1");
+            Assert.That(enemy.Alive, Is.False);
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Lethal hit uses the separate death clip");
+            yield return new WaitForSecondsRealtime(.12f);
+            session.ApplyDamage(enemy, 10000, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Dead targets must not play again");
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                type.GetMethod("Preview").Invoke(audio, null);
+            }
+
+            var other = session.DebugSpawn(EnemyKind.Attack);
+            session.ApplyDamage(other, 1, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1), "Full pool drops ordinary hit audio");
+            Assert.That(voices.All(v => v.clip.name == "single"), Is.True, "Hit must not replace attacks");
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            session.ApplyDamage(other, 1, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            audio.enabled = false;
+            session.ApplyDamage(other, 1, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            audio.enabled = true;
+            session.ApplyDamage(other, 1, "Player");
+            Assert.That(count.GetValue(audio), Is.EqualTo(2));
+            yield return null;
+            Assert.That(voices.Where(v => v.isPlaying).All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
+    [UnityTest]
+    public IEnumerator CoreArrivalPlaysSelectedGlyphAndHonorsMuteCooldownAndFullPool()
+    {
+#if UNITY_EDITOR
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
+        yield return null;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var type = typeof(CoreGuardianCombatAudio);
+        Assert.That(type.GetField("CoreDamageResourcePath"), Is.Not.Null, "Selected core damage audio is missing");
+        var audio = game.GetComponent(type);
+        bool had = PlayerPrefs.HasKey("CoreGuardian.SoundVolume");
+        float volume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        float time = Time.timeScale;
+        try
+        {
+            Time.timeScale = 0;
+            game.enabled = false;
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
+            session.StartDiagnosticEncounter();
+            session.SetBoard(20, 20, new Vector2Int(10, 0), new[] { Vector2Int.zero, new Vector2Int(10, 0) });
+            gameType
+                .GetField("previousCore", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(game, session.CoreEnergy);
+            var sources = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            for (int i = 0; i < 4; i++)
+            {
+                Assert.That(type.GetMethod("Preview").Invoke(audio, null), Is.True);
+            }
+
+            session.StartCombat();
+            session.DebugSpawn(EnemyKind.Attack, 9.99f);
+            session.Tick(.1f, new Vector2(-100, -100));
+            gameType.GetMethod("Update", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(game, null);
+            var clip = Resources.Load<AudioClip>((string)type.GetField("CoreDamageResourcePath").GetRawConstantValue());
+            Assert.That(clip, Is.Not.Null);
+            Assert.That(
+                sources.Any(s => s.isPlaying && s.clip == clip),
+                Is.True,
+                "Actual core arrival must be audible with a full attack pool"
+            );
+            var count = type.GetProperty("CoreDamagePlayedCount");
+            Assert.That(count.GetValue(audio), Is.EqualTo(1));
+            var notify = type.GetMethod("NotifyCoreDamage");
+            Assert.That(notify.Invoke(audio, new object[] { 2 }), Is.False, "Rapid arrivals are coalesced");
+            yield return new WaitForSecondsRealtime(.35f);
+            Assert.That(notify.Invoke(audio, new object[] { 0 }), Is.False);
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", 0f);
+            yield return null;
+            Assert.That(notify.Invoke(audio, new object[] { 2 }), Is.False);
+            Assert.That(sources.All(s => s.volume == 0), Is.True);
+            PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", .37f);
+            Assert.That(notify.Invoke(audio, new object[] { 2 }), Is.True);
+            yield return null; // Existing active voices receive slider changes in Update.
+            Assert.That(sources.Where(s => s.isPlaying).All(s => Mathf.Abs(s.volume - .37f * .55f) < .00001f), Is.True);
+            ((MonoBehaviour)audio).enabled = false;
+            Assert.That(sources.All(s => !s.isPlaying), Is.True);
+        }
+        finally
+        {
+            Time.timeScale = time;
+            if (had)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", volume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+
+            PlayerPrefs.Save();
+        }
+#else
+        yield return null;
+#endif
+    }
+
     [UnityTest]
     public IEnumerator RealSingleTowerLaunchesAndDeveloperControlsRespectMuteAndVoiceLimit()
     {
 #if UNITY_EDITOR
-        EditorSceneManager.LoadSceneInPlayMode("Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        EditorSceneManager.LoadSceneInPlayMode(
+            "Assets/Scenes/CoreGuardian_CombatPrototype_20261008.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single)
+        );
         yield return null;
-        var gameType=Type.GetType("CoreGuardianPrototype, Assembly-CSharp");
-        var game=(MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType,FindObjectsSortMode.None).Single();
-        var audioType=Type.GetType("CoreGuardianCombatAudio, Assembly-CSharp");
-        var settings=Type.GetType("CoreGuardianSoundSettings, Assembly-CSharp");
-        var audio=(MonoBehaviour)game.GetComponent(audioType);
-        var volume=settings.GetProperty("Volume");var candidate=settings.GetProperty("Candidate");
-        bool hadVolume=PlayerPrefs.HasKey("CoreGuardian.SoundVolume"),hadCandidate=PlayerPrefs.HasKey("CoreGuardian.ShotCandidate");
-        float oldVolume=PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");int oldCandidate=PlayerPrefs.GetInt("CoreGuardian.ShotCandidate");
-        float oldTime=Time.timeScale;
+        var gameType = typeof(CoreGuardianPrototype);
+        var game = (MonoBehaviour)UnityEngine.Object.FindObjectsByType(gameType, FindObjectsSortMode.None).Single();
+        var audioType = typeof(CoreGuardianCombatAudio);
+        var settings = typeof(CoreGuardianSoundSettings);
+        var audio = (MonoBehaviour)game.GetComponent(audioType);
+        var volume = settings.GetProperty("Volume");
+        var candidate = settings.GetProperty("Candidate");
+        bool hadVolume = PlayerPrefs.HasKey("CoreGuardian.SoundVolume"),
+            hadCandidate = PlayerPrefs.HasKey("CoreGuardian.ShotCandidate");
+        float oldVolume = PlayerPrefs.GetFloat("CoreGuardian.SoundVolume");
+        int oldCandidate = PlayerPrefs.GetInt("CoreGuardian.ShotCandidate");
+        float oldTime = Time.timeScale;
         try
         {
-            Time.timeScale=0;game.enabled=false;
-            volume.SetValue(null,.65f);candidate.SetValue(null,0);
-            var session=(Session)gameType.GetProperty("Session").GetValue(game);
+            Time.timeScale = 0;
+            game.enabled = false;
+            volume.SetValue(null, .65f);
+            candidate.SetValue(null, 0);
+            var session = (Session)gameType.GetProperty("Session").GetValue(game);
             // Injected functional QA: isolated board/resources, real Session shots. No balance claim.
             session.StartDiagnosticEncounter();
-            session.SetBoard(30,30,new Vector2Int(20,20),new[]{Vector2Int.zero,new Vector2Int(20,0),new Vector2Int(20,20)});
-            string reason;var tower=session.TryInstall(TowerKind.Single,new Vector2Int(1,1),out reason);
-            Assert.That(tower,Is.Not.Null,reason);
-            var multi=session.TryInstall(TowerKind.Multi,new Vector2Int(2,1),out reason);Assert.That(multi,Is.Not.Null,reason);
-            var multiTwo=session.TryInstall(TowerKind.Multi,new Vector2Int(2,2),out reason);Assert.That(multiTwo,Is.Not.Null,reason);
-            var support=session.TryInstall(TowerKind.Support,new Vector2Int(1,2),out reason);Assert.That(support,Is.Not.Null,reason);
-            var played=audioType.GetProperty("PlayedCount");
-            audioType.GetMethod("Configure").Invoke(audio,new object[]{session});
-            audioType.GetMethod("Configure").Invoke(audio,new object[]{session});
-            int singleShots=0,multiShots=0,multiTwoShots=0;
-            session.ProjectileLaunched+=p=>{if(p.Source=="Tower:"+tower.Id)singleShots++;if(p.Source=="Tower:"+multi.Id)multiShots++;if(p.Source=="Tower:"+multiTwo.Id)multiTwoShots++;};
+            session.SetBoard(
+                30,
+                30,
+                new Vector2Int(20, 20),
+                new[] { Vector2Int.zero, new Vector2Int(20, 0), new Vector2Int(20, 20) }
+            );
+            string reason;
+            var tower = session.TryInstall(TowerKind.Single, new Vector2Int(1, 1), out reason);
+            Assert.That(tower, Is.Not.Null, reason);
+            var multi = session.TryInstall(TowerKind.Multi, new Vector2Int(2, 1), out reason);
+            Assert.That(multi, Is.Not.Null, reason);
+            var multiTwo = session.TryInstall(TowerKind.Multi, new Vector2Int(2, 2), out reason);
+            Assert.That(multiTwo, Is.Not.Null, reason);
+            var support = session.TryInstall(TowerKind.Support, new Vector2Int(1, 2), out reason);
+            Assert.That(support, Is.Not.Null, reason);
+            var played = audioType.GetProperty("PlayedCount");
+            audioType.GetMethod("Configure").Invoke(audio, new object[] { session });
+            audioType.GetMethod("Configure").Invoke(audio, new object[] { session });
+            int singleShots = 0,
+                multiShots = 0,
+                multiTwoShots = 0;
+            session.ProjectileLaunched += p =>
+            {
+                if (p.Source == "Tower:" + tower.Id)
+                {
+                    singleShots++;
+                }
+                if (p.Source == "Tower:" + multi.Id)
+                {
+                    multiShots++;
+                }
+                if (p.Source == "Tower:" + multiTwo.Id)
+                {
+                    multiTwoShots++;
+                }
+            };
             session.StartCombat();
-            int beforeLaunches=(int)played.GetValue(audio); // The approved round-start cue is separate from shots.
-            foreach(float distance in new[]{0f,1f,2f})session.DebugSpawn(EnemyKind.Defense,distance).Health=10000;
-            session.Tick(.05f,new Vector2(-100,-100));
-            Assert.That(singleShots,Is.EqualTo(1));Assert.That(multiShots,Is.EqualTo(3));Assert.That(multiTwoShots,Is.GreaterThan(0));
-            Assert.That((int)played.GetValue(audio)-beforeLaunches,Is.EqualTo(3),"Single plus one audio volley per multi tower, with support silent");
-            var voices=audio.GetComponentsInChildren<AudioSource>().Where(v=>v.name.StartsWith("MagicCannonVoice_")).ToArray();Assert.That(voices.Length,Is.EqualTo(4));
-            Assert.That(voices.Count(v=>v.isPlaying&&v.clip.name=="multi_3"),Is.EqualTo(2));
-            foreach(var source in voices){Assert.That(source.loop,Is.False);Assert.That(source.spatialBlend,Is.Zero);}
+            int beforeLaunches = (int)played.GetValue(audio); // The approved round-start cue is separate from shots.
+            foreach (float distance in new[] { 0f, 1f, 2f })
+            {
+                session.DebugSpawn(EnemyKind.Defense, distance).Health = 10000;
+            }
+
+            session.Tick(.05f, new Vector2(-100, -100));
+            Assert.That(singleShots, Is.EqualTo(1));
+            Assert.That(multiShots, Is.EqualTo(3));
+            Assert.That(multiTwoShots, Is.GreaterThan(0));
+            Assert.That(
+                (int)played.GetValue(audio) - beforeLaunches,
+                Is.EqualTo(3),
+                "Single plus one audio volley per multi tower, with support silent"
+            );
+            var voices = audio
+                .GetComponentsInChildren<AudioSource>()
+                .Where(v => v.name.StartsWith("MagicCannonVoice_"))
+                .ToArray();
+            Assert.That(voices.Length, Is.EqualTo(4));
+            Assert.That(voices.Count(v => v.isPlaying && v.clip.name == "multi_3"), Is.EqualTo(2));
+            foreach (var source in voices)
+            {
+                Assert.That(source.loop, Is.False);
+                Assert.That(source.spatialBlend, Is.Zero);
+            }
             yield return new WaitForSecondsRealtime(.85f);
             // Before tower cooldowns expire, a real player launch uses approved candidate3.
-            int beforePlayer=(int)played.GetValue(audio);
-            session.Tick(.01f,new Vector2(1,1));
-            Assert.That((int)played.GetValue(audio),Is.EqualTo(beforePlayer+1));
-            Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="player"),Is.True);
-            foreach(var voice in voices)voice.Stop();
-            var preview=audioType.GetMethod("Preview");
-            for(int i=0;i<3;i++)
+            int beforePlayer = (int)played.GetValue(audio);
+            session.Tick(.01f, new Vector2(1, 1));
+            Assert.That((int)played.GetValue(audio), Is.EqualTo(beforePlayer + 1));
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "player"), Is.True);
+            foreach (var voice in voices)
             {
-                candidate.SetValue(null,i);Assert.That(preview.Invoke(audio,null),Is.EqualTo(true));
-                Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="single"),Is.True,"Old candidate preferences must not change approved single audio");
+                voice.Stop();
             }
-            preview.Invoke(audio,null);
-            Assert.That(preview.Invoke(audio,null),Is.EqualTo(false),"Pool must reject a fifth overlapping sound");
-            audio.enabled=false;Assert.That(voices.All(v=>!v.isPlaying),Is.True);audio.enabled=true;
-            Assert.That(audioType.GetMethod("PreviewMulti").Invoke(audio,null),Is.EqualTo(true));
-            Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="multi_3"),Is.True);
-            foreach(var voice in voices)voice.Stop();
-            var canvas=game.transform.Find("CombatHUD");
-            var buttonType=Type.GetType("UnityEngine.UI.Button, UnityEngine.UI");
-            var sliderType=Type.GetType("UnityEngine.UI.Slider, UnityEngine.UI");
-            var menu=canvas.Find("DeveloperMenu").GetComponent(buttonType);
+
+            var preview = audioType.GetMethod("Preview");
+            for (int i = 0; i < 3; i++)
+            {
+                candidate.SetValue(null, i);
+                Assert.That(preview.Invoke(audio, null), Is.EqualTo(true));
+                Assert.That(
+                    voices.Any(v => v.isPlaying && v.clip.name == "single"),
+                    Is.True,
+                    "Old candidate preferences must not change approved single audio"
+                );
+            }
+            preview.Invoke(audio, null);
+            Assert.That(preview.Invoke(audio, null), Is.EqualTo(false), "Pool must reject a fifth overlapping sound");
+            audio.enabled = false;
+            Assert.That(voices.All(v => !v.isPlaying), Is.True);
+            audio.enabled = true;
+            Assert.That(audioType.GetMethod("PreviewMulti").Invoke(audio, null), Is.EqualTo(true));
+            Assert.That(voices.Any(v => v.isPlaying && v.clip.name == "multi_3"), Is.True);
+            foreach (var voice in voices)
+            {
+                voice.Stop();
+            }
+
+            var canvas = game.transform.Find("CombatHUD");
+            var buttonType = Type.GetType("UnityEngine.UI.Button, UnityEngine.UI");
+            var sliderType = Type.GetType("UnityEngine.UI.Slider, UnityEngine.UI");
+            var menu = canvas.Find("DeveloperMenu").GetComponent(buttonType);
             yield return new WaitForSecondsRealtime(.25f); // HUD phase refresh closes developer tools on phase changes.
-            var click=buttonType.GetProperty("onClick").GetValue(menu);click.GetType().GetMethod("Invoke").Invoke(click,null);
+            var click = buttonType.GetProperty("onClick").GetValue(menu);
+            click.GetType().GetMethod("Invoke").Invoke(click, null);
             yield return new WaitForSecondsRealtime(.25f);
-            var panel=canvas.Find("SoundControls");Assert.That(panel.gameObject.activeInHierarchy,Is.True);
-            Assert.That(panel.Find("Listen_Support"),Is.Null);
-            Assert.That(panel.Find("PreviewPlayer"),Is.Not.Null);
-            Assert.That(panel.Find("PreviewMulti"),Is.Not.Null);
-            Assert.That(panel.Find("Audition_Multi"),Is.Null);
-            var slider=panel.Find("SoundVolume").GetComponent(sliderType);
-            var fill=(RectTransform)sliderType.GetProperty("fillRect").GetValue(slider);
-            var handle=(RectTransform)sliderType.GetProperty("handleRect").GetValue(slider);
-            Assert.That(fill.rect.height,Is.LessThanOrEqualTo(8.01f),"Thin track must stay inside the panel");
-            Assert.That(handle.rect.height,Is.LessThanOrEqualTo(28.01f));
-            sliderType.GetProperty("value").SetValue(slider,0f);yield return null;
-            Assert.That(volume.GetValue(null),Is.EqualTo(0f));Assert.That(voices.All(v=>v.volume==0),Is.True);
-            Assert.That(preview.Invoke(audio,null),Is.EqualTo(false));
-            sliderType.GetProperty("value").SetValue(slider,.37f);yield return null;
-            Assert.That(voices.All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
-            Assert.That(PlayerPrefs.GetFloat("CoreGuardian.SoundVolume"),Is.EqualTo(.37f));
-            click.GetType().GetMethod("Invoke").Invoke(click,null);yield return new WaitForSecondsRealtime(.25f);
-            Assert.That(panel.gameObject.activeSelf,Is.False);
+            var panel = canvas.Find("SoundControls");
+            Assert.That(panel.gameObject.activeInHierarchy, Is.True);
+            Assert.That(panel.Find("Listen_Support"), Is.Null);
+            Assert.That(panel.Find("PreviewPlayer"), Is.Not.Null);
+            Assert.That(panel.Find("PreviewMulti"), Is.Not.Null);
+            Assert.That(panel.Find("Audition_Multi"), Is.Null);
+            var slider = panel.Find("SoundVolume").GetComponent(sliderType);
+            var fill = (RectTransform)sliderType.GetProperty("fillRect").GetValue(slider);
+            var handle = (RectTransform)sliderType.GetProperty("handleRect").GetValue(slider);
+            Assert.That(fill.rect.height, Is.LessThanOrEqualTo(8.01f), "Thin track must stay inside the panel");
+            Assert.That(handle.rect.height, Is.LessThanOrEqualTo(28.01f));
+            sliderType.GetProperty("value").SetValue(slider, 0f);
+            yield return null;
+            Assert.That(volume.GetValue(null), Is.EqualTo(0f));
+            Assert.That(voices.All(v => v.volume == 0), Is.True);
+            Assert.That(preview.Invoke(audio, null), Is.EqualTo(false));
+            sliderType.GetProperty("value").SetValue(slider, .37f);
+            yield return null;
+            Assert.That(voices.All(v => Mathf.Abs(v.volume - .37f * .55f) < .00001f), Is.True);
+            Assert.That(PlayerPrefs.GetFloat("CoreGuardian.SoundVolume"), Is.EqualTo(.37f));
+            click.GetType().GetMethod("Invoke").Invoke(click, null);
+            yield return new WaitForSecondsRealtime(.25f);
+            Assert.That(panel.gameObject.activeSelf, Is.False);
         }
         finally
         {
-            Time.timeScale=oldTime;
-            if(hadVolume)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",oldVolume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
-            if(hadCandidate)PlayerPrefs.SetInt("CoreGuardian.ShotCandidate",oldCandidate);else PlayerPrefs.DeleteKey("CoreGuardian.ShotCandidate");
+            Time.timeScale = oldTime;
+            if (hadVolume)
+            {
+                PlayerPrefs.SetFloat("CoreGuardian.SoundVolume", oldVolume);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");
+            }
+
+            if (hadCandidate)
+            {
+                PlayerPrefs.SetInt("CoreGuardian.ShotCandidate", oldCandidate);
+            }
+            else
+            {
+                PlayerPrefs.DeleteKey("CoreGuardian.ShotCandidate");
+            }
+
             PlayerPrefs.Save();
         }
 #else

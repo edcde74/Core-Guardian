@@ -1,7 +1,7 @@
 {
   "name": "Fortress.Game.EditModeTests",
   "rootNamespace": "Fortress.Game.Tests",
-  "references": ["Fortress.Game"],
+  "references": ["Fortress.Game", "CoreGuardian.Game"],
   "includePlatforms": ["Editor"],
   "excludePlatforms": [],
   "allowUnsafeCode": false,

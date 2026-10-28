@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using CoreGuardian;
 using NUnit.Framework;
@@ -6,554 +7,1507 @@ using UnityEngine;
 
 public class CoreGuardianSessionTests
 {
-    static string Csv(string file) {return CoreGuardianLegacyData.Text(file);}
-    static CombatData Data() {return CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves"));}
-    static Session Game(bool noSpawns=true) {var d=Data();if(noSpawns)d.Waves.Clear();var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});return s;}
-    static readonly Vector2 Away=new Vector2(100,100);
-    static float Stat(CombatStats s,string key)=>key=="damage"?s.Damage:key=="rate"?s.Rate:key=="range"?s.Range:key=="projectileSpeed"?s.ProjectileSpeed:s.BuffDamage;
-    [Test] public void SegmentedHealthBarUsesDiscreteCellsAndStableFramedWidth()
+    static string Csv(string file)
     {
-        var type=AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("CoreGuardian.SegmentedEnemyHealthBar")).FirstOrDefault(t=>t!=null);
-        Assert.That(type,Is.Not.Null,"Framed cell health display is missing");
-        var go=new GameObject("SegmentHealthQA",typeof(SpriteRenderer));
+        return CoreGuardianLegacyData.Text(file);
+    }
+
+    static CombatData Data()
+    {
+        return CombatData.Load(Csv("enemies"), Csv("towers"), Csv("stage"), Csv("upgrades"), Csv("waves"));
+    }
+
+    static Session Game(bool noSpawns = true)
+    {
+        var d = Data();
+        if (noSpawns)
+        {
+            d.Waves.Clear();
+        }
+        var s = new Session(d);
+        s.SetBoard(40, 25, new Vector2Int(10, 0), new[] { new Vector2Int(0, 0), new Vector2Int(10, 0) });
+        return s;
+    }
+
+    static readonly Vector2 Away = new Vector2(100, 100);
+
+    static float Stat(CombatStats s, string key) =>
+        key == "damage" ? s.Damage
+        : key == "rate" ? s.Rate
+        : key == "range" ? s.Range
+        : key == "projectileSpeed" ? s.ProjectileSpeed
+        : s.BuffDamage;
+
+    [Test]
+    public void SegmentedHealthBarUsesDiscreteCellsAndStableFramedWidth()
+    {
+        var type = AppDomain
+            .CurrentDomain.GetAssemblies()
+            .Select(a => a.GetType("CoreGuardian.SegmentedEnemyHealthBar"))
+            .FirstOrDefault(t => t != null);
+        Assert.That(type, Is.Not.Null, "Framed cell health display is missing");
+        var go = new GameObject("SegmentHealthQA", typeof(SpriteRenderer));
         try
         {
-            var bar=go.AddComponent(type);var renderer=go.GetComponent<SpriteRenderer>();
-            type.GetMethod("Configure").Invoke(bar,new object[]{false});
-            type.GetMethod("SetHealth").Invoke(bar,new object[]{20,40});
-            Assert.That(type.GetProperty("SegmentCount").GetValue(bar),Is.EqualTo(8));Assert.That(type.GetProperty("FilledSegments").GetValue(bar),Is.EqualTo(4));
-            var half=renderer.sprite;float width=half.bounds.size.x;
-            type.GetMethod("SetHealth").Invoke(bar,new object[]{19,40});Assert.That(renderer.sprite,Is.SameAs(half),"HP within one cell must not smoothly shrink the display");
-            type.GetMethod("SetHealth").Invoke(bar,new object[]{15,40});Assert.That(type.GetProperty("FilledSegments").GetValue(bar),Is.EqualTo(3));
-            Assert.That(renderer.sprite.bounds.size.x,Is.EqualTo(width));Assert.That(renderer.sprite.texture.filterMode,Is.EqualTo(FilterMode.Point));
-            type.GetMethod("Configure").Invoke(bar,new object[]{true});type.GetMethod("SetHealth").Invoke(bar,new object[]{250,500});
-            Assert.That(type.GetProperty("SegmentCount").GetValue(bar),Is.EqualTo(12));Assert.That(type.GetProperty("FilledSegments").GetValue(bar),Is.EqualTo(6));
-            type.GetMethod("SetHealth").Invoke(bar,new object[]{0,500});Assert.That(type.GetProperty("FilledSegments").GetValue(bar),Is.Zero);
+            var bar = go.AddComponent(type);
+            var renderer = go.GetComponent<SpriteRenderer>();
+            type.GetMethod("Configure").Invoke(bar, new object[] { false });
+            type.GetMethod("SetHealth").Invoke(bar, new object[] { 20, 40 });
+            Assert.That(type.GetProperty("SegmentCount").GetValue(bar), Is.EqualTo(8));
+            Assert.That(type.GetProperty("FilledSegments").GetValue(bar), Is.EqualTo(4));
+            var half = renderer.sprite;
+            float width = half.bounds.size.x;
+            type.GetMethod("SetHealth").Invoke(bar, new object[] { 19, 40 });
+            Assert.That(renderer.sprite, Is.SameAs(half), "HP within one cell must not smoothly shrink the display");
+            type.GetMethod("SetHealth").Invoke(bar, new object[] { 15, 40 });
+            Assert.That(type.GetProperty("FilledSegments").GetValue(bar), Is.EqualTo(3));
+            Assert.That(renderer.sprite.bounds.size.x, Is.EqualTo(width));
+            Assert.That(renderer.sprite.texture.filterMode, Is.EqualTo(FilterMode.Point));
+            type.GetMethod("Configure").Invoke(bar, new object[] { true });
+            type.GetMethod("SetHealth").Invoke(bar, new object[] { 250, 500 });
+            Assert.That(type.GetProperty("SegmentCount").GetValue(bar), Is.EqualTo(12));
+            Assert.That(type.GetProperty("FilledSegments").GetValue(bar), Is.EqualTo(6));
+            type.GetMethod("SetHealth").Invoke(bar, new object[] { 0, 500 });
+            Assert.That(type.GetProperty("FilledSegments").GetValue(bar), Is.Zero);
         }
-        finally{UnityEngine.Object.DestroyImmediate(go);}
+        finally
+        {
+            UnityEngine.Object.DestroyImmediate(go);
+        }
     }
-    [Test] public void DamageFeedbackReportsEachActualHitIncludingLethalDamage()
+
+    [Test]
+    public void DamageFeedbackReportsEachActualHitIncludingLethalDamage()
     {
-        var s=Game();var e=s.DebugSpawn(EnemyKind.Defense);
-        var damageEvent=typeof(Session).GetEvent("DamageApplied");
-        Assert.That(damageEvent,Is.Not.Null,"Actual hit feedback event is missing");
-        var hits=new System.Collections.Generic.List<int>();
-        damageEvent.AddEventHandler(s,new Action<EnemySnapshot,int>((target,amount)=>{Assert.That(target.Handle,Is.EqualTo(e));hits.Add(amount);}));
-        s.ApplyDamage(e,12.5f,"Player"); // Defense then round: 12.
-        s.ApplyDamage(e,100,"Tower:1"); // Remaining health, excluding overkill: 38.
-        s.ApplyDamage(e,100,"Player"); // Dead target must not create another number.
-        Assert.That(hits,Is.EqualTo(new[]{12,38}));
-        Assert.That(s.DamageTotals.Values.Sum(),Is.EqualTo(50));
+        var s = Game();
+        var e = s.DebugSpawn(EnemyKind.Defense);
+        var damageEvent = typeof(Session).GetEvent("DamageApplied");
+        Assert.That(damageEvent, Is.Not.Null, "Actual hit feedback event is missing");
+        var hits = new System.Collections.Generic.List<int>();
+        damageEvent.AddEventHandler(
+            s,
+            new Action<EnemySnapshot, int>(
+                (target, amount) =>
+                {
+                    Assert.That(target.Handle, Is.EqualTo(e));
+                    hits.Add(amount);
+                }
+            )
+        );
+        s.ApplyDamage(e, 12.5f, "Player"); // Defense then round: 12.
+        s.ApplyDamage(e, 100, "Tower:1"); // Remaining health, excluding overkill: 38.
+        s.ApplyDamage(e, 100, "Player"); // Dead target must not create another number.
+        Assert.That(hits, Is.EqualTo(new[] { 12, 38 }));
+        Assert.That(s.DamageTotals.Values.Sum(), Is.EqualTo(50));
     }
-    [Test] public void DamageFeedbackIgnoresZeroDamageMissingTargetsAndCoreArrival()
+
+    [Test]
+    public void DamageFeedbackIgnoresZeroDamageMissingTargetsAndCoreArrival()
     {
-        var s=Game();var e=s.DebugSpawn(EnemyKind.Attack,9.99f);
-        var damageEvent=typeof(Session).GetEvent("DamageApplied");
-        Assert.That(damageEvent,Is.Not.Null,"Actual hit feedback event is missing");
-        int count=0;damageEvent.AddEventHandler(s,new Action<EnemySnapshot,int>((target,amount)=>count++));
-        s.ApplyDamage(e,0,"Player");s.ApplyDamage(default,10,"Player");
-        s.StartCombat();s.Tick(.1f,Away);
-        Assert.That(count,Is.Zero);Assert.That(s.CoreEnergy,Is.EqualTo(18));
+        var s = Game();
+        var e = s.DebugSpawn(EnemyKind.Attack, 9.99f);
+        var damageEvent = typeof(Session).GetEvent("DamageApplied");
+        Assert.That(damageEvent, Is.Not.Null, "Actual hit feedback event is missing");
+        int count = 0;
+        damageEvent.AddEventHandler(s, new Action<EnemySnapshot, int>((target, amount) => count++));
+        s.ApplyDamage(e, 0, "Player");
+        s.ApplyDamage(default, 10, "Player");
+        s.StartCombat();
+        s.Tick(.1f, Away);
+        Assert.That(count, Is.Zero);
+        Assert.That(s.CoreEnergy, Is.EqualTo(18));
     }
-    [Test] public void CsvRejectsDuplicateNegativeAndMissingReference()
+
+    [Test]
+    public void CsvRejectsDuplicateNegativeAndMissingReference()
     {
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies")+"\nAttack,25,1,2,3,0,0,0,provisional",Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Attack,"+Data().Enemies[EnemyKind.Attack].Health+",","Attack,-1,"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Boss,"+Data().Enemies[EnemyKind.Boss].Health+",0.6,10,120,0,0,0,provisional",""),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies") + "\nAttack,25,1,2,3,0,0,0,provisional",
+                Csv("towers"),
+                Csv("stage"),
+                Csv("upgrades"),
+                Csv("waves")
+            )
+        );
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies").Replace("Attack," + Data().Enemies[EnemyKind.Attack].Health + ",", "Attack,-1,"),
+                Csv("towers"),
+                Csv("stage"),
+                Csv("upgrades"),
+                Csv("waves")
+            )
+        );
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies")
+                    .Replace("Boss," + Data().Enemies[EnemyKind.Boss].Health + ",0.6,10,120,0,0,0,provisional", ""),
+                Csv("towers"),
+                Csv("stage"),
+                Csv("upgrades"),
+                Csv("waves")
+            )
+        );
     }
-    [Test] public void UndefinedNumericKindsMissingWaveOneAndCaseDuplicateUpgradeAreRejected()
+
+    [Test]
+    public void UndefinedNumericKindsMissingWaveOneAndCaseDuplicateUpgradeAreRejected()
     {
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies").Replace("Buff,30","9,30"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers").Replace("Support,75","9,75"),Csv("stage"),Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades").Replace(",Support,",",9,"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades"),Csv("waves").Replace(",1,Attack,",",2,Attack,")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),Csv("stage"),Csv("upgrades")+"\ncase_duplicate,single,damage,2.5,80,20",Csv("waves")));
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies").Replace("Buff,30", "9,30"),
+                Csv("towers"),
+                Csv("stage"),
+                Csv("upgrades"),
+                Csv("waves")
+            )
+        );
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies"),
+                Csv("towers").Replace("Support,75", "9,75"),
+                Csv("stage"),
+                Csv("upgrades"),
+                Csv("waves")
+            )
+        );
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies"),
+                Csv("towers"),
+                Csv("stage"),
+                Csv("upgrades").Replace(",Support,", ",9,"),
+                Csv("waves")
+            )
+        );
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies"),
+                Csv("towers"),
+                Csv("stage"),
+                Csv("upgrades"),
+                Csv("waves").Replace(",1,Attack,", ",2,Attack,")
+            )
+        );
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies"),
+                Csv("towers"),
+                Csv("stage"),
+                Csv("upgrades") + "\ncase_duplicate,single,damage,2.5,80,20",
+                Csv("waves")
+            )
+        );
     }
-    [Test] public void AttackRateRetainsFractionalCooldownAndSupportsMultipleShotsPerStep()
+
+    [Test]
+    public void AttackRateRetainsFractionalCooldownAndSupportsMultipleShotsPerStep()
     {
-        string reason;var s=Game();var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.Data.Enemies[EnemyKind.Attack].Speed=.001f;s.StartCombat();var e=s.DebugSpawn(EnemyKind.Attack,2);e.Health=10000;s.Tick(5.05f,Away);Assert.That(s.Projectiles.Count,Is.EqualTo(7));
-        var fast=Game();t=fast.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);t.Stats.Rate=100;t.Stats.ProjectileSpeed=.001f;fast.Data.Enemies[EnemyKind.Attack].Speed=.001f;fast.StartCombat();e=fast.DebugSpawn(EnemyKind.Attack,2);e.Health=10000;fast.Tick(.05f,Away);Assert.That(fast.Projectiles.Count,Is.EqualTo(6));
+        string reason;
+        var s = Game();
+        var t = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out reason);
+        t.Stats.ProjectileSpeed = .001f;
+        s.Data.Enemies[EnemyKind.Attack].Speed = .001f;
+        s.StartCombat();
+        var e = s.DebugSpawn(EnemyKind.Attack, 2);
+        e.Health = 10000;
+        s.Tick(5.05f, Away);
+        Assert.That(s.Projectiles.Count, Is.EqualTo(7));
+        var fast = Game();
+        t = fast.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out reason);
+        t.Stats.Rate = 100;
+        t.Stats.ProjectileSpeed = .001f;
+        fast.Data.Enemies[EnemyKind.Attack].Speed = .001f;
+        fast.StartCombat();
+        e = fast.DebugSpawn(EnemyKind.Attack, 2);
+        e.Health = 10000;
+        fast.Tick(.05f, Away);
+        Assert.That(fast.Projectiles.Count, Is.EqualTo(6));
     }
-    [Test] public void PlayerPricesHaveIncreasingIncrementAndIndependentStats()
+
+    [Test]
+    public void PlayerPricesHaveIncreasingIncrementAndIndependentStats()
     {
-        var d=Data();Assert.That(Enumerable.Range(1,6).Select(d.PlayerUpgradePrice),Is.EqualTo(new[]{40,65,85,110,140,175}));
-        var s=Game();s.StartDiagnosticEncounter();string reason;Assert.That(s.UpgradePlayer("damage",out reason),Is.True);Assert.That(s.PlayerUpgradePrice("damage"),Is.EqualTo(65));Assert.That(s.PlayerUpgradePrice("range"),Is.EqualTo(40));
+        var d = Data();
+        Assert.That(
+            Enumerable.Range(1, 6).Select(d.PlayerUpgradePrice),
+            Is.EqualTo(new[] { 40, 65, 85, 110, 140, 175 })
+        );
+        var s = Game();
+        s.StartDiagnosticEncounter();
+        string reason;
+        Assert.That(s.UpgradePlayer("damage", out reason), Is.True);
+        Assert.That(s.PlayerUpgradePrice("damage"), Is.EqualTo(65));
+        Assert.That(s.PlayerUpgradePrice("range"), Is.EqualTo(40));
     }
-    [Test] public void FirstGrowthBudgetUnlocksPlayerAndTowerAfterTwoRounds()
+
+    [Test]
+    public void FirstGrowthBudgetUnlocksPlayerAndTowerAfterTwoRounds()
     {
         // Functional affordability fixture, not a simulated or measured combat run.
-        var d=Data();d.StartGold=d.Waves.Where(w=>w.Wave<=2).Sum(w=>w.Count*d.Enemies[w.Kind].Gold);
-        d.StartCrystals=d.Towers[TowerKind.Single].Cost+d.RewardForWave(1)+d.RewardForWave(2);
-        var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});
-        string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);
-        Assert.That(s.Gold,Is.EqualTo(93));Assert.That(s.Crystals,Is.EqualTo(120));
-        Assert.That(s.UpgradePlayer("damage",out reason),Is.True,reason);Assert.That(s.Gold,Is.EqualTo(53));
-        Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.True,reason);Assert.That(s.Crystals,Is.EqualTo(60));
-        Assert.That(s.TowerUpgradePrice(t.Id,"damage"),Is.EqualTo(90));
-        Assert.That(s.TowerUpgradePrice(t.Id,"range"),Is.EqualTo(60));
-        Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.False,"Insufficient crystals must still reject a purchase");
+        var d = Data();
+        d.StartGold = d.Waves.Where(w => w.Wave <= 2).Sum(w => w.Count * d.Enemies[w.Kind].Gold);
+        d.StartCrystals = d.Towers[TowerKind.Single].Cost + d.RewardForWave(1) + d.RewardForWave(2);
+        var s = new Session(d);
+        s.SetBoard(40, 25, new Vector2Int(10, 0), new[] { new Vector2Int(0, 0), new Vector2Int(10, 0) });
+        string reason;
+        var t = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out reason);
+        Assert.That(s.Gold, Is.EqualTo(93));
+        Assert.That(s.Crystals, Is.EqualTo(120));
+        Assert.That(s.UpgradePlayer("damage", out reason), Is.True, reason);
+        Assert.That(s.Gold, Is.EqualTo(53));
+        Assert.That(s.UpgradeTower(t.Id, "damage", out reason), Is.True, reason);
+        Assert.That(s.Crystals, Is.EqualTo(60));
+        Assert.That(s.TowerUpgradePrice(t.Id, "damage"), Is.EqualTo(90));
+        Assert.That(s.TowerUpgradePrice(t.Id, "range"), Is.EqualTo(60));
+        Assert.That(
+            s.UpgradeTower(t.Id, "damage", out reason),
+            Is.False,
+            "Insufficient crystals must still reject a purchase"
+        );
     }
-    [Test] public void FirstGrowthDiscountsAreOptionalAndCannotMakeUpgradesFree()
+
+    [Test]
+    public void FirstGrowthDiscountsAreOptionalAndCannotMakeUpgradesFree()
     {
-        var oldStage=string.Join("\n",Csv("stage").Replace("\r","").Split('\n').Where(l=>!l.StartsWith("playerFirstUpgradeDiscount,")&&!l.StartsWith("towerFirstUpgradeDiscount,")));
-        var legacy=CombatData.Load(Csv("enemies"),Csv("towers"),oldStage,Csv("upgrades"),Csv("waves"));
-        Assert.That(legacy.PlayerUpgradePrice(1),Is.EqualTo(50));
-        var s=new Session(legacy);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});
-        string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);Assert.That(s.TowerUpgradePrice(t.Id,"damage"),Is.EqualTo(60));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),oldStage+"\nplayerFirstUpgradeDiscount,100",Csv("upgrades"),Csv("waves")));
-        Assert.Throws<ArgumentException>(()=>CombatData.Load(Csv("enemies"),Csv("towers"),oldStage+"\ntowerFirstUpgradeDiscount,80",Csv("upgrades"),Csv("waves")));
+        var oldStage = string.Join(
+            "\n",
+            Csv("stage")
+                .Replace("\r", "")
+                .Split('\n')
+                .Where(l => !l.StartsWith("playerFirstUpgradeDiscount,") && !l.StartsWith("towerFirstUpgradeDiscount,"))
+        );
+        var legacy = CombatData.Load(Csv("enemies"), Csv("towers"), oldStage, Csv("upgrades"), Csv("waves"));
+        Assert.That(legacy.PlayerUpgradePrice(1), Is.EqualTo(50));
+        var s = new Session(legacy);
+        s.SetBoard(40, 25, new Vector2Int(10, 0), new[] { new Vector2Int(0, 0), new Vector2Int(10, 0) });
+        string reason;
+        var t = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out reason);
+        Assert.That(s.TowerUpgradePrice(t.Id, "damage"), Is.EqualTo(60));
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies"),
+                Csv("towers"),
+                oldStage + "\nplayerFirstUpgradeDiscount,100",
+                Csv("upgrades"),
+                Csv("waves")
+            )
+        );
+        Assert.Throws<ArgumentException>(() =>
+            CombatData.Load(
+                Csv("enemies"),
+                Csv("towers"),
+                oldStage + "\ntowerFirstUpgradeDiscount,80",
+                Csv("upgrades"),
+                Csv("waves")
+            )
+        );
     }
-    [Test] public void TimeoutStartsCombatWithoutTowerAndCurrencyStartsCorrectly()
+
+    [Test]
+    public void TimeoutStartsCombatWithoutTowerAndCurrencyStartsCorrectly()
     {
-        var s=Game();Assert.That(s.Gold,Is.Zero);Assert.That(s.Crystals,Is.EqualTo(100));s.Tick(s.Data.PreparationSeconds+.1f,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Combat));
+        var s = Game();
+        Assert.That(s.Gold, Is.Zero);
+        Assert.That(s.Crystals, Is.EqualTo(100));
+        s.Tick(s.Data.PreparationSeconds + .1f, Away);
+        Assert.That(s.Phase, Is.EqualTo(SessionPhase.Combat));
     }
-    [Test] public void PlacementRejectsPathCoreDuplicateButAllowsCombatAndPlayerCell()
+
+    [Test]
+    public void PlacementRejectsPathCoreDuplicateButAllowsCombatAndPlayerCell()
     {
-        var s=Game();string r;Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(0,0),out r),Is.Null);Assert.That(s.Crystals,Is.EqualTo(100));Assert.That(s.TryInstall(TowerKind.Support,new Vector2Int(2,2),out r),Is.Null);
-        var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,2),out r);Assert.That(t,Is.Not.Null);Assert.That(s.IsBuildable(t.Position),Is.False);Assert.That(s.DestroyTower(t.Id),Is.True);Assert.That(s.DestroyTower(t.Id),Is.False);Assert.That(s.Crystals,Is.EqualTo(70));s.StartCombat();Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,3),out r),Is.Not.Null,"전투 중 설치 허용 (10-28)");
+        var s = Game();
+        string r;
+        Assert.That(s.TryInstall(TowerKind.Single, new Vector2Int(0, 0), out r), Is.Null);
+        Assert.That(s.Crystals, Is.EqualTo(100));
+        Assert.That(s.TryInstall(TowerKind.Support, new Vector2Int(2, 2), out r), Is.Null);
+        var t = s.TryInstall(TowerKind.Single, new Vector2Int(2, 2), out r);
+        Assert.That(t, Is.Not.Null);
+        Assert.That(s.IsBuildable(t.Position), Is.False);
+        Assert.That(s.DestroyTower(t.Id), Is.True);
+        Assert.That(s.DestroyTower(t.Id), Is.False);
+        Assert.That(s.Crystals, Is.EqualTo(70));
+        s.StartCombat();
+        Assert.That(
+            s.TryInstall(TowerKind.Single, new Vector2Int(3, 3), out r),
+            Is.Not.Null,
+            "전투 중 설치 허용 (10-28)"
+        );
     }
-    [TestCase(TowerKind.Single,"damage")][TestCase(TowerKind.Multi,"damage")][TestCase(TowerKind.Support,"buffDamage")]
-    [TestCase(TowerKind.Single,"rate")][TestCase(TowerKind.Single,"range")][TestCase(TowerKind.Single,"projectileSpeed")]
-    [TestCase(TowerKind.Multi,"rate")][TestCase(TowerKind.Multi,"range")][TestCase(TowerKind.Multi,"projectileSpeed")][TestCase(TowerKind.Support,"range")]
-    public void SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(TowerKind kind,string stat)
+
+    [TestCase(TowerKind.Single, "damage")]
+    [TestCase(TowerKind.Multi, "damage")]
+    [TestCase(TowerKind.Support, "buffDamage")]
+    [TestCase(TowerKind.Single, "rate")]
+    [TestCase(TowerKind.Single, "range")]
+    [TestCase(TowerKind.Single, "projectileSpeed")]
+    [TestCase(TowerKind.Multi, "rate")]
+    [TestCase(TowerKind.Multi, "range")]
+    [TestCase(TowerKind.Multi, "projectileSpeed")]
+    [TestCase(TowerKind.Support, "range")]
+    public void SharedTowerUpgradeAppliesToExistingAndFutureOfSameKind(TowerKind kind, string stat)
     {
-        var s=Game();s.StartDiagnosticEncounter();string r;
-        if(kind==TowerKind.Support)s.TryInstall(TowerKind.Single,new Vector2Int(1,1),out r);
-        var a=s.TryInstall(kind,new Vector2Int(2,1),out r);var b=s.TryInstall(kind,new Vector2Int(3,1),out r);
-        var other=s.TryInstall(kind==TowerKind.Single?TowerKind.Multi:TowerKind.Single,new Vector2Int(4,1),out r);
-        float before=Stat(a.Stats,stat),otherBefore=other.Stats.Damage;int crystals=s.Crystals;
-        float delta=s.Data.Upgrades.Single(u=>u.Target==kind.ToString()&&u.Stat==stat).Delta;
-        Assert.That(s.UpgradeTower(a.Id,stat,out r),Is.True,r);
-        Assert.That(crystals-s.Crystals,Is.EqualTo(60));Assert.That(Stat(b.Stats,stat),Is.EqualTo(before+delta).Within(.001));
-        Assert.That(other.Stats.Damage,Is.EqualTo(otherBefore));Assert.That(s.TowerUpgradePrice(b.Id,stat),Is.EqualTo(90));
-        var future=s.TryInstall(kind,new Vector2Int(5,1),out r);
-        Assert.That(Stat(future.Stats,stat),Is.EqualTo(before+delta).Within(.001));Assert.That(future.Stats.UpgradeSteps[stat],Is.EqualTo(1));
-        foreach(var t in s.Towers.Where(t=>t.Kind==kind).ToArray())s.DestroyTower(t.Id);
-        var replacement=s.TryInstall(kind,new Vector2Int(2,1),out r);
-        Assert.That(Stat(replacement.Stats,stat),Is.EqualTo(before+delta).Within(.001));Assert.That(s.TowerUpgradePrice(replacement.Id,stat),Is.EqualTo(90));
-        s.StartDiagnosticEncounter();if(kind==TowerKind.Support)s.TryInstall(TowerKind.Single,new Vector2Int(1,1),out r);
-        var reset=s.TryInstall(kind,new Vector2Int(2,1),out r);Assert.That(Stat(reset.Stats,stat),Is.EqualTo(before));Assert.That(s.TowerUpgradePrice(reset.Id,stat),Is.EqualTo(60));
-    }
-    [Test] public void RefundReturnsInstallationOnlyAndSharedInvestmentRemains()
-    {
-        var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(s.UpgradeTower(t.Id,"damage",out r),Is.True);Assert.That(t.Spent,Is.EqualTo(60));int before=s.Crystals;s.DestroyTower(t.Id);Assert.That(s.Crystals-before,Is.EqualTo(30));Assert.That(s.DestroyTower(t.Id),Is.False);
-    }
-    [Test] public void RejectedSharedUpgradeCannotSpendOrChangeCurrentAndFutureTowers()
-    {
-        var s=Game();string r;var a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);
-        Assert.That(s.UpgradeTower(a.Id,"damage",out r),Is.False);Assert.That(r,Is.EqualTo("수정 부족"));
-        Assert.That(s.Crystals,Is.EqualTo(40));Assert.That(a.Stats.Damage,Is.EqualTo(s.Data.Towers[TowerKind.Single].Damage));
-        Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(60));
-        s.StartDiagnosticEncounter();a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);int crystals=s.Crystals;
-        Assert.That(s.UpgradeTower(a.Id,"invalid",out r),Is.False);Assert.That(s.UpgradeTower(-1,"damage",out r),Is.False);
-        Assert.That(s.Crystals,Is.EqualTo(crystals));
-        Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(60));Assert.That(a.Stats.UpgradeSteps,Is.Empty);
-    }
-    [Test] public void KillGoldAndActualDamageAreAccountedOnceWithoutOverkill()
-    {
-        var s=Game();var e=s.DebugSpawn(EnemyKind.Attack);int initialHealth=e.Health;Assert.That(s.ApplyDamage(e,100,"Player"),Is.EqualTo(initialHealth));Assert.That(s.ApplyDamage(e,100,"Player"),Is.Zero);Assert.That(s.Gold,Is.EqualTo(3));Assert.That(s.DamageTotals["Player"],Is.EqualTo(initialHealth));
-    }
-    [Test] public void CoreArrivalNeverRewardsAndNeverHitsTwice()
-    {
-        var s=Game();s.StartCombat();s.DebugSpawn(EnemyKind.Attack,9.99f);s.Tick(.1f,Away);Assert.That(s.CoreEnergy,Is.EqualTo(18));Assert.That(s.Gold,Is.Zero);s.Tick(1,Away);Assert.That(s.CoreEnergy,Is.EqualTo(18));
-    }
-    [Test] public void HordeAfterTwoUsesThirtyRoundCountsAndPreservesIntro()
-    {
-        var d=Data();Assert.That(d.Waves.Where(w=>w.Wave==1).Max(w=>w.Start+(w.Count-1)*w.Interval),Is.EqualTo(22.68f).Within(.01f));
-        Assert.That(d.Waves.Where(w=>w.Wave==2).Max(w=>w.Start+(w.Count-1)*w.Interval),Is.EqualTo(22.95f).Within(.01f));
-        int[] counts={23,26,31,35,38,42,46};int[] gold={72,82,102,116,126,142,156};
-        for(int wave=3;wave<=9;wave++)
+        var s = Game();
+        s.StartDiagnosticEncounter();
+        string r;
+        if (kind == TowerKind.Support)
         {
-            var rows=d.Waves.Where(w=>w.Wave==wave).OrderBy(w=>w.Start).ToArray();
-            Assert.That(rows.Sum(w=>w.Count),Is.EqualTo(counts[wave-3]));Assert.That(rows.Sum(w=>w.Count*d.Enemies[w.Kind].Gold),Is.EqualTo(gold[wave-3]));
-            Assert.That(rows.Last().Start,Is.LessThanOrEqualTo(16f),"Spawn pressure must be substantially denser after round 2");
+            s.TryInstall(TowerKind.Single, new Vector2Int(1, 1), out r);
         }
-        Assert.That(d.Waves.First(w=>w.Wave==11&&w.Kind==EnemyKind.Attack).Interval,Is.EqualTo(.34f));
-        Assert.That(d.Waves.Single(w=>w.Wave==10&&w.Kind==EnemyKind.Boss).Start,Is.EqualTo(.75f));
+
+        var a = s.TryInstall(kind, new Vector2Int(2, 1), out r);
+        var b = s.TryInstall(kind, new Vector2Int(3, 1), out r);
+        var other = s.TryInstall(
+            kind == TowerKind.Single ? TowerKind.Multi : TowerKind.Single,
+            new Vector2Int(4, 1),
+            out r
+        );
+        float before = Stat(a.Stats, stat),
+            otherBefore = other.Stats.Damage;
+        int crystals = s.Crystals;
+        float delta = s.Data.Upgrades.Single(u => u.Target == kind.ToString() && u.Stat == stat).Delta;
+        Assert.That(s.UpgradeTower(a.Id, stat, out r), Is.True, r);
+        Assert.That(crystals - s.Crystals, Is.EqualTo(60));
+        Assert.That(Stat(b.Stats, stat), Is.EqualTo(before + delta).Within(.001));
+        Assert.That(other.Stats.Damage, Is.EqualTo(otherBefore));
+        Assert.That(s.TowerUpgradePrice(b.Id, stat), Is.EqualTo(90));
+        var future = s.TryInstall(kind, new Vector2Int(5, 1), out r);
+        Assert.That(Stat(future.Stats, stat), Is.EqualTo(before + delta).Within(.001));
+        Assert.That(future.Stats.UpgradeSteps[stat], Is.EqualTo(1));
+        foreach (var t in s.Towers.Where(t => t.Kind == kind).ToArray())
+        {
+            s.DestroyTower(t.Id);
+        }
+
+        var replacement = s.TryInstall(kind, new Vector2Int(2, 1), out r);
+        Assert.That(Stat(replacement.Stats, stat), Is.EqualTo(before + delta).Within(.001));
+        Assert.That(s.TowerUpgradePrice(replacement.Id, stat), Is.EqualTo(90));
+        s.StartDiagnosticEncounter();
+        if (kind == TowerKind.Support)
+        {
+            s.TryInstall(TowerKind.Single, new Vector2Int(1, 1), out r);
+        }
+
+        var reset = s.TryInstall(kind, new Vector2Int(2, 1), out r);
+        Assert.That(Stat(reset.Stats, stat), Is.EqualTo(before));
+        Assert.That(s.TowerUpgradePrice(reset.Id, stat), Is.EqualTo(60));
     }
-    [Test] public void BossScreenWaveTenSpawnsThreeQuickShieldsBeforeBoss()
+
+    [Test]
+    public void RefundReturnsInstallationOnlyAndSharedInvestmentRemains()
     {
-        var d=Data();var schedule=d.Waves.Where(w=>w.Wave==10).ToArray();
-        Assert.That(schedule.Sum(w=>w.Count),Is.EqualTo(38));
-        d.Waves.Clear();foreach(var w in schedule)d.Waves.Add(new WaveSpec{Wave=1,Kind=w.Kind,Count=w.Count,Interval=w.Interval,Start=w.Start});
-        var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});s.StartCombat();
-        s.Tick(.01f,Away);Assert.That(s.Enemies.Select(e=>e.Kind),Is.EqualTo(new[]{EnemyKind.Defense}));
-        s.Tick(.25f,Away);Assert.That(s.Enemies.Count,Is.EqualTo(2));Assert.That(s.Enemies.All(e=>e.Kind==EnemyKind.Defense),Is.True);
-        s.Tick(.25f,Away);Assert.That(s.Enemies.Count,Is.EqualTo(3));Assert.That(s.Enemies.All(e=>e.Kind==EnemyKind.Defense),Is.True);
-        s.Tick(.25f,Away);Assert.That(s.Enemies.Select(e=>e.Kind),Is.EqualTo(new[]{EnemyKind.Defense,EnemyKind.Defense,EnemyKind.Defense,EnemyKind.Boss}));
+        var s = Game();
+        s.StartDiagnosticEncounter();
+        string r;
+        var t = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out r);
+        Assert.That(s.UpgradeTower(t.Id, "damage", out r), Is.True);
+        Assert.That(s.UpgradeTower(t.Id, "damage", out r), Is.True);
+        Assert.That(t.Spent, Is.EqualTo(60));
+        int before = s.Crystals;
+        s.DestroyTower(t.Id);
+        Assert.That(s.Crystals - before, Is.EqualTo(30));
+        Assert.That(s.DestroyTower(t.Id), Is.False);
     }
+
+    [Test]
+    public void RejectedSharedUpgradeCannotSpendOrChangeCurrentAndFutureTowers()
+    {
+        var s = Game();
+        string r;
+        var a = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out r);
+        Assert.That(s.UpgradeTower(a.Id, "damage", out r), Is.False);
+        Assert.That(r, Is.EqualTo("수정 부족"));
+        Assert.That(s.Crystals, Is.EqualTo(40));
+        Assert.That(a.Stats.Damage, Is.EqualTo(s.Data.Towers[TowerKind.Single].Damage));
+        Assert.That(s.TowerUpgradePrice(a.Id, "damage"), Is.EqualTo(60));
+        s.StartDiagnosticEncounter();
+        a = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out r);
+        int crystals = s.Crystals;
+        Assert.That(s.UpgradeTower(a.Id, "invalid", out r), Is.False);
+        Assert.That(s.UpgradeTower(-1, "damage", out r), Is.False);
+        Assert.That(s.Crystals, Is.EqualTo(crystals));
+        Assert.That(s.TowerUpgradePrice(a.Id, "damage"), Is.EqualTo(60));
+        Assert.That(a.Stats.UpgradeSteps, Is.Empty);
+    }
+
+    [Test]
+    public void KillGoldAndActualDamageAreAccountedOnceWithoutOverkill()
+    {
+        var s = Game();
+        var e = s.DebugSpawn(EnemyKind.Attack);
+        int initialHealth = e.Health;
+        Assert.That(s.ApplyDamage(e, 100, "Player"), Is.EqualTo(initialHealth));
+        Assert.That(s.ApplyDamage(e, 100, "Player"), Is.Zero);
+        Assert.That(s.Gold, Is.EqualTo(3));
+        Assert.That(s.DamageTotals["Player"], Is.EqualTo(initialHealth));
+    }
+
+    [Test]
+    public void CoreArrivalNeverRewardsAndNeverHitsTwice()
+    {
+        var s = Game();
+        s.StartCombat();
+        s.DebugSpawn(EnemyKind.Attack, 9.99f);
+        s.Tick(.1f, Away);
+        Assert.That(s.CoreEnergy, Is.EqualTo(18));
+        Assert.That(s.Gold, Is.Zero);
+        s.Tick(1, Away);
+        Assert.That(s.CoreEnergy, Is.EqualTo(18));
+    }
+
+    [Test]
+    public void HordeAfterTwoUsesThirtyRoundCountsAndPreservesIntro()
+    {
+        var d = Data();
+        Assert.That(
+            d.Waves.Where(w => w.Wave == 1).Max(w => w.Start + (w.Count - 1) * w.Interval),
+            Is.EqualTo(22.68f).Within(.01f)
+        );
+        Assert.That(
+            d.Waves.Where(w => w.Wave == 2).Max(w => w.Start + (w.Count - 1) * w.Interval),
+            Is.EqualTo(22.95f).Within(.01f)
+        );
+        int[] counts = { 23, 26, 31, 35, 38, 42, 46 };
+        int[] gold = { 72, 82, 102, 116, 126, 142, 156 };
+        for (int wave = 3; wave <= 9; wave++)
+        {
+            var rows = d.Waves.Where(w => w.Wave == wave).OrderBy(w => w.Start).ToArray();
+            Assert.That(rows.Sum(w => w.Count), Is.EqualTo(counts[wave - 3]));
+            Assert.That(rows.Sum(w => w.Count * d.Enemies[w.Kind].Gold), Is.EqualTo(gold[wave - 3]));
+            Assert.That(
+                rows.Last().Start,
+                Is.LessThanOrEqualTo(16f),
+                "Spawn pressure must be substantially denser after round 2"
+            );
+        }
+        Assert.That(d.Waves.First(w => w.Wave == 11 && w.Kind == EnemyKind.Attack).Interval, Is.EqualTo(.34f));
+        Assert.That(d.Waves.Single(w => w.Wave == 10 && w.Kind == EnemyKind.Boss).Start, Is.EqualTo(.75f));
+    }
+
+    [Test]
+    public void BossScreenWaveTenSpawnsThreeQuickShieldsBeforeBoss()
+    {
+        var d = Data();
+        var schedule = d.Waves.Where(w => w.Wave == 10).ToArray();
+        Assert.That(schedule.Sum(w => w.Count), Is.EqualTo(38));
+        d.Waves.Clear();
+        foreach (var w in schedule)
+        {
+            d.Waves.Add(
+                new WaveSpec
+                {
+                    Wave = 1,
+                    Kind = w.Kind,
+                    Count = w.Count,
+                    Interval = w.Interval,
+                    Start = w.Start,
+                }
+            );
+        }
+
+        var s = new Session(d);
+        s.SetBoard(40, 25, new Vector2Int(10, 0), new[] { new Vector2Int(0, 0), new Vector2Int(10, 0) });
+        s.StartCombat();
+        s.Tick(.01f, Away);
+        Assert.That(s.Enemies.Select(e => e.Kind), Is.EqualTo(new[] { EnemyKind.Defense }));
+        s.Tick(.25f, Away);
+        Assert.That(s.Enemies.Count, Is.EqualTo(2));
+        Assert.That(s.Enemies.All(e => e.Kind == EnemyKind.Defense), Is.True);
+        s.Tick(.25f, Away);
+        Assert.That(s.Enemies.Count, Is.EqualTo(3));
+        Assert.That(s.Enemies.All(e => e.Kind == EnemyKind.Defense), Is.True);
+        s.Tick(.25f, Away);
+        Assert.That(
+            s.Enemies.Select(e => e.Kind),
+            Is.EqualTo(new[] { EnemyKind.Defense, EnemyKind.Defense, EnemyKind.Defense, EnemyKind.Boss })
+        );
+    }
+
     // Legacy fixtures keep the common order (boss last). Since 10-28 a single-target tower has no boss-last
     // acquisition rule, so only the multi-target ordering is checked here (live tables: CoreGuardianContentTests).
     [TestCase(TowerKind.Multi)]
     public void BossScreenTowersPutEvenLowHealthFirstArrivalBossLast(TowerKind kind)
     {
-        var s=Game();string reason;var t=s.TryInstall(kind,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
-        var boss=s.DebugSpawn(EnemyKind.Boss,0);boss.Health=1;
-        s.DebugSpawn(EnemyKind.Attack,.2f);s.DebugSpawn(EnemyKind.Buff,.4f);s.DebugSpawn(EnemyKind.Defense,.6f);
-        s.Tick(.01f,Away);var shots=s.Projectiles.Where(p=>p.Source=="Tower:"+t.Id).ToArray();
-        Assert.That(shots,Is.Not.Empty);Assert.That(shots.All(p=>p.Target!=boss),Is.True);
-        Assert.That(s.TowerTarget(t.Id),Is.Not.EqualTo(boss));
+        var s = Game();
+        string reason;
+        var t = s.TryInstall(kind, new Vector2Int(2, 1), out reason);
+        t.Stats.ProjectileSpeed = .001f;
+        s.StartCombat();
+        var boss = s.DebugSpawn(EnemyKind.Boss, 0);
+        boss.Health = 1;
+        s.DebugSpawn(EnemyKind.Attack, .2f);
+        s.DebugSpawn(EnemyKind.Buff, .4f);
+        s.DebugSpawn(EnemyKind.Defense, .6f);
+        s.Tick(.01f, Away);
+        var shots = s.Projectiles.Where(p => p.Source == "Tower:" + t.Id).ToArray();
+        Assert.That(shots, Is.Not.Empty);
+        Assert.That(shots.All(p => p.Target != boss), Is.True);
+        Assert.That(s.TowerTarget(t.Id), Is.Not.EqualTo(boss));
     }
+
     [TestCase(TowerKind.Multi)]
     public void BossScreenTowersYieldBossLockWhenOrdinaryEnemyEntersRange(TowerKind kind)
     {
-        var s=Game();string reason;var t=s.TryInstall(kind,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
-        var boss=s.DebugSpawn(EnemyKind.Boss,0);s.Tick(.01f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(boss));
-        s.DebugClearProjectiles();var attack=s.DebugSpawn(EnemyKind.Attack,0);s.Tick(2f,Away);
-        Assert.That(s.TowerTarget(t.Id),Is.EqualTo(attack));
-        Assert.That(s.Projectiles.First(p=>p.Source=="Tower:"+t.Id).Target,Is.EqualTo(attack));
+        var s = Game();
+        string reason;
+        var t = s.TryInstall(kind, new Vector2Int(2, 1), out reason);
+        t.Stats.ProjectileSpeed = .001f;
+        s.StartCombat();
+        var boss = s.DebugSpawn(EnemyKind.Boss, 0);
+        s.Tick(.01f, Away);
+        Assert.That(s.TowerTarget(t.Id), Is.EqualTo(boss));
+        s.DebugClearProjectiles();
+        var attack = s.DebugSpawn(EnemyKind.Attack, 0);
+        s.Tick(2f, Away);
+        Assert.That(s.TowerTarget(t.Id), Is.EqualTo(attack));
+        Assert.That(s.Projectiles.First(p => p.Source == "Tower:" + t.Id).Target, Is.EqualTo(attack));
     }
-    [Test] public void SingleTowerKeepsItsBossTargetWhileItStaysInRange()
+
+    [Test]
+    public void SingleTowerKeepsItsBossTargetWhileItStaysInRange()
     {
         // 10-28: 보스 맨 뒤·보스 조준 중 교체는 기술병만. 포탑은 대상이 살아 있고 사거리 안이면 유지.
-        var s=Game();string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
-        var boss=s.DebugSpawn(EnemyKind.Boss,0);s.Tick(.01f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(boss));
-        s.DebugSpawn(EnemyKind.Attack,0);s.Tick(.5f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(boss));
+        var s = Game();
+        string reason;
+        var t = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out reason);
+        t.Stats.ProjectileSpeed = .001f;
+        s.StartCombat();
+        var boss = s.DebugSpawn(EnemyKind.Boss, 0);
+        s.Tick(.01f, Away);
+        Assert.That(s.TowerTarget(t.Id), Is.EqualTo(boss));
+        s.DebugSpawn(EnemyKind.Attack, 0);
+        s.Tick(.5f, Away);
+        Assert.That(s.TowerTarget(t.Id), Is.EqualTo(boss));
     }
-    [Test] public void PlayerYieldsBossLockLikeTowers()
+
+    [Test]
+    public void PlayerYieldsBossLockLikeTowers()
     {
         // 공격 대상 선택(정본): 플레이어도 보스 맨 뒤, 보스 조준 중 일반 적이 들어오면 바꿈.
-        var s=Game();s.Player.ProjectileSpeed=.001f;s.StartCombat();var boss=s.DebugSpawn(EnemyKind.Boss,0);
-        s.Tick(.01f,new Vector2(0,1));Assert.That(s.PlayerTarget,Is.EqualTo(boss));
-        var attack=s.DebugSpawn(EnemyKind.Attack,0);s.Tick(1.05f,new Vector2(0,1));Assert.That(s.PlayerTarget,Is.EqualTo(attack));
+        var s = Game();
+        s.Player.ProjectileSpeed = .001f;
+        s.StartCombat();
+        var boss = s.DebugSpawn(EnemyKind.Boss, 0);
+        s.Tick(.01f, new Vector2(0, 1));
+        Assert.That(s.PlayerTarget, Is.EqualTo(boss));
+        var attack = s.DebugSpawn(EnemyKind.Attack, 0);
+        s.Tick(1.05f, new Vector2(0, 1));
+        Assert.That(s.PlayerTarget, Is.EqualTo(attack));
     }
-    [Test] public void PriorityUsesRoleThenHealthThenRemainingPathDistance()
+
+    [Test]
+    public void PriorityUsesRoleThenHealthThenRemainingPathDistance()
     {
-        var s=Game();var a=s.DebugSpawn(EnemyKind.Attack,9);var b=s.DebugSpawn(EnemyKind.Buff,9);var d=s.DebugSpawn(EnemyKind.Defense,1);var d2=s.DebugSpawn(EnemyKind.Defense,2);Assert.That(CombatRules.Priority(s.Enemies),Is.EqualTo(d2));d.Health=1;Assert.That(CombatRules.Priority(s.Enemies),Is.EqualTo(d));
+        var s = Game();
+        var a = s.DebugSpawn(EnemyKind.Attack, 9);
+        var b = s.DebugSpawn(EnemyKind.Buff, 9);
+        var d = s.DebugSpawn(EnemyKind.Defense, 1);
+        var d2 = s.DebugSpawn(EnemyKind.Defense, 2);
+        Assert.That(
+            s.Enemies.Where(e => e.Alive)
+                .OrderBy(e => e, Comparer<EnemyHandle>.Create(TargetOrder.Common.Compare))
+                .FirstOrDefault(),
+            Is.EqualTo(d2)
+        );
+        d.Health = 1;
+        Assert.That(
+            s.Enemies.Where(e => e.Alive)
+                .OrderBy(e => e, Comparer<EnemyHandle>.Create(TargetOrder.Common.Compare))
+                .FirstOrDefault(),
+            Is.EqualTo(d)
+        );
     }
-    [TestCase(0)] [TestCase(1)] [TestCase(2)] [TestCase(3)]
+
+    [TestCase(0)]
+    [TestCase(1)]
+    [TestCase(2)]
+    [TestCase(3)]
     public void EqualRoleAndHealthPriorityUsesRemainingRouteAcrossAllTravelDirections(int turns)
     {
         Vector2Int Rotate(Vector2Int point)
         {
-            for(int i=0;i<turns;i++)point=new Vector2Int(-point.y,point.x);
-            return point+new Vector2Int(12,12);
+            for (int i = 0; i < turns; i++)
+            {
+                point = new Vector2Int(-point.y, point.x);
+            }
+
+            return point + new Vector2Int(12, 12);
         }
-        var route=new[]{new Vector2Int(0,0),new Vector2Int(10,0),new Vector2Int(10,10),new Vector2Int(0,10),new Vector2Int(0,1),new Vector2Int(8,1)}.Select(Rotate).ToArray();
-        var session=new Session(Data(),17);var core=route[route.Length-1];session.SetBoard(30,30,core,route);
-        var straightNear=session.DebugSpawn(EnemyKind.Attack,8);
-        var routeNear=session.DebugSpawn(EnemyKind.Attack,40);
-        Assert.That(routeNear.Health,Is.EqualTo(straightNear.Health));
-        Assert.That(Vector2.Distance(straightNear.Position,core),Is.LessThan(Vector2.Distance(routeNear.Position,core)));
-        Assert.That(routeNear.PathRemaining,Is.LessThan(straightNear.PathRemaining));
-        Assert.That(CombatRules.Priority(session.Enemies),Is.EqualTo(routeNear));
-        Assert.That(CombatRules.CompareTargetPriority(routeNear,straightNear,false),Is.LessThan(0));
-        Assert.That(CombatRules.TowerPriorityOrder(session.Enemies).First(),Is.EqualTo(routeNear));
+        var route = new[]
+        {
+            new Vector2Int(0, 0),
+            new Vector2Int(10, 0),
+            new Vector2Int(10, 10),
+            new Vector2Int(0, 10),
+            new Vector2Int(0, 1),
+            new Vector2Int(8, 1),
+        }
+            .Select(Rotate)
+            .ToArray();
+        var session = new Session(Data(), 17);
+        var core = route[route.Length - 1];
+        session.SetBoard(30, 30, core, route);
+        var straightNear = session.DebugSpawn(EnemyKind.Attack, 8);
+        var routeNear = session.DebugSpawn(EnemyKind.Attack, 40);
+        Assert.That(routeNear.Health, Is.EqualTo(straightNear.Health));
+        Assert.That(
+            Vector2.Distance(straightNear.Position, core),
+            Is.LessThan(Vector2.Distance(routeNear.Position, core))
+        );
+        Assert.That(routeNear.PathRemaining, Is.LessThan(straightNear.PathRemaining));
+        Assert.That(
+            session
+                .Enemies.Where(e => e.Alive)
+                .OrderBy(e => e, Comparer<EnemyHandle>.Create(TargetOrder.Common.Compare))
+                .FirstOrDefault(),
+            Is.EqualTo(routeNear)
+        );
+        Assert.That(TargetOrder.Common.Compare(routeNear, straightNear), Is.LessThan(0));
+        Assert.That(
+            session
+                .Enemies.Where(e => e.Alive)
+                .OrderBy(e => e, Comparer<EnemyHandle>.Create(TargetOrder.Common.Compare))
+                .First(),
+            Is.EqualTo(routeNear)
+        );
     }
-    [Test] public void FirstTargetIsFirstArrivalThenRangeExitReacquiresPriority()
+
+    [Test]
+    public void FirstTargetIsFirstArrivalThenRangeExitReacquiresPriority()
     {
-        var s=Game();s.StartCombat();var attack=s.DebugSpawn(EnemyKind.Attack,0);var defense=s.DebugSpawn(EnemyKind.Defense,1);s.Tick(.01f,new Vector2(0,1));Assert.That(s.Projectiles.Single().Target,Is.EqualTo(attack));
-        attack.Position=new Vector2(-100,-100);attack.PathTravelled=9;s.Tick(1.05f,new Vector2(0,1));Assert.That(s.Projectiles.Any(p=>p.Target==defense),Is.True);
+        var s = Game();
+        s.StartCombat();
+        var attack = s.DebugSpawn(EnemyKind.Attack, 0);
+        var defense = s.DebugSpawn(EnemyKind.Defense, 1);
+        s.Tick(.01f, new Vector2(0, 1));
+        Assert.That(s.Projectiles.Single().Target, Is.EqualTo(attack));
+        attack.Position = new Vector2(-100, -100);
+        attack.PathTravelled = 9;
+        s.Tick(1.05f, new Vector2(0, 1));
+        Assert.That(s.Projectiles.Any(p => p.Target == defense), Is.True);
     }
-    [Test] public void MultishotUsesThreeDistinctTargetsWithNoSplash()
+
+    [Test]
+    public void MultishotUsesThreeDistinctTargetsWithNoSplash()
     {
-        var s=Game();string r;var tower=s.TryInstall(TowerKind.Multi,new Vector2Int(2,1),out r);s.StartCombat();var a=s.DebugSpawn(EnemyKind.Attack,0);var b=s.DebugSpawn(EnemyKind.Buff,1);var d=s.DebugSpawn(EnemyKind.Defense,2);var fourth=s.DebugSpawn(EnemyKind.Attack,0);
-        s.Tick(.01f,Away);var p=s.Projectiles.Where(x=>x.Source=="Tower:"+tower.Id).ToArray();Assert.That(p.Length,Is.EqualTo(3));Assert.That(p.Select(x=>x.Target.Id).Distinct().Count(),Is.EqualTo(3));CollectionAssert.Contains(p.Select(x=>x.Target).ToArray(),d);CollectionAssert.Contains(p.Select(x=>x.Target).ToArray(),b);Assert.That(fourth.Health,Is.EqualTo(s.Data.Enemies[EnemyKind.Attack].Health));
+        var s = Game();
+        string r;
+        var tower = s.TryInstall(TowerKind.Multi, new Vector2Int(2, 1), out r);
+        s.StartCombat();
+        var a = s.DebugSpawn(EnemyKind.Attack, 0);
+        var b = s.DebugSpawn(EnemyKind.Buff, 1);
+        var d = s.DebugSpawn(EnemyKind.Defense, 2);
+        var fourth = s.DebugSpawn(EnemyKind.Attack, 0);
+        s.Tick(.01f, Away);
+        var p = s.Projectiles.Where(x => x.Source == "Tower:" + tower.Id).ToArray();
+        Assert.That(p.Length, Is.EqualTo(3));
+        Assert.That(p.Select(x => x.Target.Id).Distinct().Count(), Is.EqualTo(3));
+        CollectionAssert.Contains(p.Select(x => x.Target).ToArray(), d);
+        CollectionAssert.Contains(p.Select(x => x.Target).ToArray(), b);
+        Assert.That(fourth.Health, Is.EqualTo(s.Data.Enemies[EnemyKind.Attack].Health));
     }
-    [Test] public void SupportAddsDamagePercentOnlyToAttackTowers()
+
+    [Test]
+    public void SupportAddsDamagePercentOnlyToAttackTowers()
     {
-        var s=Game();s.StartDiagnosticEncounter();string r;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);var a=s.TryInstall(TowerKind.Support,new Vector2Int(2,2),out r);var b=s.TryInstall(TowerKind.Support,new Vector2Int(3,1),out r);s.UpgradeTower(b.Id,"buffDamage",out r);s.Data.Waves.Clear();s.StartCombat();s.Tick(.01f,new Vector2(0,1));
-        var shot=s.Projectiles.First(x=>x.Source=="Tower:"+t.Id);Assert.That(shot.Damage,Is.EqualTo(12.5f*1.45f).Within(.0001));Assert.That(s.Projectiles.First(x=>x.Source=="Player").Damage,Is.EqualTo(10));Assert.That(s.Projectiles.Any(x=>x.Source=="Tower:"+a.Id||x.Source=="Tower:"+b.Id),Is.False);
+        var s = Game();
+        s.StartDiagnosticEncounter();
+        string r;
+        var t = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out r);
+        var a = s.TryInstall(TowerKind.Support, new Vector2Int(2, 2), out r);
+        var b = s.TryInstall(TowerKind.Support, new Vector2Int(3, 1), out r);
+        s.UpgradeTower(b.Id, "buffDamage", out r);
+        s.Data.Waves.Clear();
+        s.StartCombat();
+        s.Tick(.01f, new Vector2(0, 1));
+        var shot = s.Projectiles.First(x => x.Source == "Tower:" + t.Id);
+        Assert.That(shot.Damage, Is.EqualTo(12.5f * 1.45f).Within(.0001));
+        Assert.That(s.Projectiles.First(x => x.Source == "Player").Damage, Is.EqualTo(10));
+        Assert.That(s.Projectiles.Any(x => x.Source == "Tower:" + a.Id || x.Source == "Tower:" + b.Id), Is.False);
     }
-    [Test] public void EnemyBuffDoesNotStackAndSourceCannotBuffItself()
+
+    [Test]
+    public void EnemyBuffDoesNotStackAndSourceCannotBuffItself()
     {
-        var s=Game();s.StartCombat();var a=s.DebugSpawn(EnemyKind.Attack,1);s.DebugSpawn(EnemyKind.Buff,0);s.DebugSpawn(EnemyKind.Buff,2);s.Tick(.05f,Away);Assert.That(a.PathTravelled,Is.EqualTo(1.06f).Within(.00001));
-        var solo=Game();solo.StartCombat();var b=solo.DebugSpawn(EnemyKind.Buff,0);solo.Tick(.05f,Away);Assert.That(b.Buffed,Is.False);Assert.That(b.PathTravelled,Is.EqualTo(.05f).Within(.00001));
+        var s = Game();
+        s.StartCombat();
+        var a = s.DebugSpawn(EnemyKind.Attack, 1);
+        s.DebugSpawn(EnemyKind.Buff, 0);
+        s.DebugSpawn(EnemyKind.Buff, 2);
+        s.Tick(.05f, Away);
+        Assert.That(a.PathTravelled, Is.EqualTo(1.06f).Within(.00001));
+        var solo = Game();
+        solo.StartCombat();
+        var b = solo.DebugSpawn(EnemyKind.Buff, 0);
+        solo.Tick(.05f, Away);
+        Assert.That(b.Buffed, Is.False);
+        Assert.That(b.PathTravelled, Is.EqualTo(.05f).Within(.00001));
     }
-    [Test] public void AuraAtBoundaryIsIndependentOfSourceInsertionOrder() { var s=Game();s.StartCombat();s.DebugSpawn(EnemyKind.Buff,3);var a=s.DebugSpawn(EnemyKind.Attack,1);s.Tick(.05f,Away);Assert.That(a.PathTravelled,Is.EqualTo(1.06f).Within(.00001)); }
-    [Test] public void DeadTargetProjectilesVanishWithoutCollateralDamage()
+
+    [Test]
+    public void AuraAtBoundaryIsIndependentOfSourceInsertionOrder()
     {
-        var s=Game();s.StartCombat();var e=s.DebugSpawn(EnemyKind.Attack,0);var other=s.DebugSpawn(EnemyKind.Defense,1);s.Tick(.01f,new Vector2(0,1));Assert.That(s.Projectiles.Count,Is.EqualTo(1));s.ApplyDamage(e,100,"Test");s.Tick(.01f,Away);Assert.That(s.Projectiles.Count,Is.Zero);Assert.That(other.Health,Is.EqualTo(50));Assert.That(s.Gold,Is.EqualTo(3));
+        var s = Game();
+        s.StartCombat();
+        s.DebugSpawn(EnemyKind.Buff, 3);
+        var a = s.DebugSpawn(EnemyKind.Attack, 1);
+        s.Tick(.05f, Away);
+        Assert.That(a.PathTravelled, Is.EqualTo(1.06f).Within(.00001));
     }
-    static ProjectileHandle Shot(EnemyHandle target,Vector2 position,float damage=1)=>target.Owner.DebugProjectile(target,position,damage);
+
+    [Test]
+    public void DeadTargetProjectilesVanishWithoutCollateralDamage()
+    {
+        var s = Game();
+        s.StartCombat();
+        var e = s.DebugSpawn(EnemyKind.Attack, 0);
+        var other = s.DebugSpawn(EnemyKind.Defense, 1);
+        s.Tick(.01f, new Vector2(0, 1));
+        Assert.That(s.Projectiles.Count, Is.EqualTo(1));
+        s.ApplyDamage(e, 100, "Test");
+        s.Tick(.01f, Away);
+        Assert.That(s.Projectiles.Count, Is.Zero);
+        Assert.That(other.Health, Is.EqualTo(50));
+        Assert.That(s.Gold, Is.EqualTo(3));
+    }
+
+    static ProjectileHandle Shot(EnemyHandle target, Vector2 position, float damage = 1) =>
+        target.Owner.DebugProjectile(target, position, damage);
+
     static Session ProjectileGame(out EnemyHandle target)
     {
-        var s=Game();s.StartCombat();s.Player.Rate=0;target=s.DebugSpawn(EnemyKind.Attack,1);target.Spec.Speed=0;target.Health=1000;return s;
+        var s = Game();
+        s.StartCombat();
+        s.Player.Rate = 0;
+        target = s.DebugSpawn(EnemyKind.Attack, 1);
+        target.Spec.Speed = 0;
+        target.Health = 1000;
+        return s;
     }
-    [Test] public void ProjectileBatchPreservesSurvivorOrderAndDuplicateRemovalCounts()
+
+    [Test]
+    public void ProjectileBatchPreservesSurvivorOrderAndDuplicateRemovalCounts()
     {
-        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
-        var a=Shot(live,new Vector2(20,20));var b=Shot(live,new Vector2(21,20));var removed=Shot(dead,Vector2.zero);var hit=Shot(live,live.Position);
-        s.DebugReplaceProjectiles(new[]{removed,a,removed,hit,b});s.Tick(.01f,Away);
-        CollectionAssert.AreEqual(new[]{a,b},s.Projectiles);Assert.That(live.Health,Is.EqualTo(999));
+        var s = ProjectileGame(out var live);
+        var dead = s.DebugSpawn(EnemyKind.Defense, 2);
+        dead.Health = 0;
+        var a = Shot(live, new Vector2(20, 20));
+        var b = Shot(live, new Vector2(21, 20));
+        var removed = Shot(dead, Vector2.zero);
+        var hit = Shot(live, live.Position);
+        s.DebugReplaceProjectiles(new[] { removed, a, removed, hit, b });
+        s.Tick(.01f, Away);
+        CollectionAssert.AreEqual(new[] { a, b }, s.Projectiles);
+        Assert.That(live.Health, Is.EqualTo(999));
     }
-    [Test] public void ProjectileObserverSeesPriorRemovalsAndMayReplaceList()
+
+    [Test]
+    public void ProjectileObserverSeesPriorRemovalsAndMayReplaceList()
     {
-        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
-        var removed=Shot(dead,Vector2.zero);var hit=Shot(live,live.Position);var later=Shot(live,live.Position);ProjectileHandle added=default;int calls=0;
-        s.DebugReplaceProjectiles(new[]{removed,hit,later});
-        s.DamageApplied+=(target,damage)=>
+        var s = ProjectileGame(out var live);
+        var dead = s.DebugSpawn(EnemyKind.Defense, 2);
+        dead.Health = 0;
+        var removed = Shot(dead, Vector2.zero);
+        var hit = Shot(live, live.Position);
+        var later = Shot(live, live.Position);
+        ProjectileHandle added = default;
+        int calls = 0;
+        s.DebugReplaceProjectiles(new[] { removed, hit, later });
+        s.DamageApplied += (target, damage) =>
         {
-            if(calls++==0){CollectionAssert.AreEqual(new[]{hit,later},s.Projectiles);s.DebugClearProjectiles();added=Shot(live,new Vector2(20,20));}
-            else CollectionAssert.AreEqual(new[]{added},s.Projectiles);
+            if (calls++ == 0)
+            {
+                CollectionAssert.AreEqual(new[] { hit, later }, s.Projectiles);
+                s.DebugClearProjectiles();
+                added = Shot(live, new Vector2(20, 20));
+            }
+            else
+            {
+                CollectionAssert.AreEqual(new[] { added }, s.Projectiles);
+            }
         };
-        s.Tick(.01f,Away);Assert.That(calls,Is.EqualTo(2));Assert.That(live.Health,Is.EqualTo(998));CollectionAssert.AreEqual(new[]{added},s.Projectiles);
+        s.Tick(.01f, Away);
+        Assert.That(calls, Is.EqualTo(2));
+        Assert.That(live.Health, Is.EqualTo(998));
+        CollectionAssert.AreEqual(new[] { added }, s.Projectiles);
     }
-    [Test] public void ProjectileObserverCanReenterWithIndependentRemovalBuffers()
+
+    [Test]
+    public void ProjectileObserverCanReenterWithIndependentRemovalBuffers()
     {
-        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
-        var hit=Shot(live,live.Position);s.DebugReplaceProjectiles(new[]{Shot(dead,Vector2.zero),hit});int calls=0;
-        Action<EnemySnapshot,int> observer=null;
-        observer=(target,damage)=>{calls++;CollectionAssert.AreEqual(new[]{hit},s.Projectiles);s.DamageApplied-=observer;s.Tick(.01f,Away);};
-        s.DamageApplied+=observer;s.Tick(.01f,Away);
-        Assert.That(calls,Is.EqualTo(1));Assert.That(live.Health,Is.EqualTo(998));Assert.That(s.Projectiles,Is.Empty);
+        var s = ProjectileGame(out var live);
+        var dead = s.DebugSpawn(EnemyKind.Defense, 2);
+        dead.Health = 0;
+        var hit = Shot(live, live.Position);
+        s.DebugReplaceProjectiles(new[] { Shot(dead, Vector2.zero), hit });
+        int calls = 0;
+        Action<EnemySnapshot, int> observer = null;
+        observer = (target, damage) =>
+        {
+            calls++;
+            CollectionAssert.AreEqual(new[] { hit }, s.Projectiles);
+            s.DamageApplied -= observer;
+            s.Tick(.01f, Away);
+        };
+        s.DamageApplied += observer;
+        s.Tick(.01f, Away);
+        Assert.That(calls, Is.EqualTo(1));
+        Assert.That(live.Health, Is.EqualTo(998));
+        Assert.That(s.Projectiles, Is.Empty);
     }
-    [Test] public void ProjectileObserverExceptionKeepsCurrentShotAfterPriorRemovals()
+
+    [Test]
+    public void ProjectileObserverExceptionKeepsCurrentShotAfterPriorRemovals()
     {
-        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
-        var hit=Shot(live,live.Position);s.DebugReplaceProjectiles(new[]{Shot(dead,Vector2.zero),hit});
-        s.DamageApplied+=(target,damage)=>throw new InvalidOperationException("Expected observer failure");
-        Assert.Throws<InvalidOperationException>(()=>s.Tick(.01f,Away));
-        CollectionAssert.AreEqual(new[]{hit},s.Projectiles);Assert.That(live.Health,Is.EqualTo(999));
+        var s = ProjectileGame(out var live);
+        var dead = s.DebugSpawn(EnemyKind.Defense, 2);
+        dead.Health = 0;
+        var hit = Shot(live, live.Position);
+        s.DebugReplaceProjectiles(new[] { Shot(dead, Vector2.zero), hit });
+        s.DamageApplied += (target, damage) => throw new InvalidOperationException("Expected observer failure");
+        Assert.Throws<InvalidOperationException>(() => s.Tick(.01f, Away));
+        CollectionAssert.AreEqual(new[] { hit }, s.Projectiles);
+        Assert.That(live.Health, Is.EqualTo(999));
     }
-    [Test] public void ProjectileBatchFlushesEarlierRemovalsOnProcessingException()
+
+    [Test]
+    public void ProjectileBatchFlushesEarlierRemovalsOnProcessingException()
     {
-        var s=ProjectileGame(out var live);var dead=s.DebugSpawn(EnemyKind.Defense,2);dead.Health=0;
-        var invalid=Shot(live,live.Position);invalid.Source=null;s.DebugReplaceProjectiles(new[]{Shot(dead,Vector2.zero),invalid});
-        Assert.Throws<ArgumentNullException>(()=>s.Tick(.01f,Away));CollectionAssert.AreEqual(new[]{invalid},s.Projectiles);
+        var s = ProjectileGame(out var live);
+        var dead = s.DebugSpawn(EnemyKind.Defense, 2);
+        dead.Health = 0;
+        var invalid = Shot(live, live.Position);
+        invalid.Source = null;
+        s.DebugReplaceProjectiles(new[] { Shot(dead, Vector2.zero), invalid });
+        Assert.Throws<ArgumentNullException>(() => s.Tick(.01f, Away));
+        CollectionAssert.AreEqual(new[] { invalid }, s.Projectiles);
     }
-    [Test] public void ProjectileWithNonFinitePositionDoesNotBecomeAHit()
+
+    [Test]
+    public void ProjectileWithNonFinitePositionDoesNotBecomeAHit()
     {
-        var s=ProjectileGame(out var live);var shot=Shot(live,new Vector2(float.NaN,0));
-        s.Tick(.01f,Away);CollectionAssert.AreEqual(new[]{shot},s.Projectiles);Assert.That(live.Health,Is.EqualTo(1000));
+        var s = ProjectileGame(out var live);
+        var shot = Shot(live, new Vector2(float.NaN, 0));
+        s.Tick(.01f, Away);
+        CollectionAssert.AreEqual(new[] { shot }, s.Projectiles);
+        Assert.That(live.Health, Is.EqualTo(1000));
     }
-    [Test] public void TowerSourcesAreReusedAndTrackPublicIdChanges()
+
+    [Test]
+    public void TowerSourcesAreReusedAndTrackPublicIdChanges()
     {
-        var tower=new TowerState{Id=12};string source=tower.AttackSource,support=tower.SupportSource;
-        Assert.That(tower.AttackSource,Is.SameAs(source));Assert.That(tower.SupportSource,Is.SameAs(support));
-        tower.Id=19;Assert.That(tower.AttackSource,Is.EqualTo("Tower:19"));Assert.That(tower.SupportSource,Is.EqualTo("Support:19"));
+        var tower = new TowerState { Id = 12 };
+        string source = tower.AttackSource,
+            support = tower.SupportSource;
+        Assert.That(tower.AttackSource, Is.SameAs(source));
+        Assert.That(tower.SupportSource, Is.SameAs(support));
+        tower.Id = 19;
+        Assert.That(tower.AttackSource, Is.EqualTo("Tower:19"));
+        Assert.That(tower.SupportSource, Is.EqualTo("Support:19"));
     }
-    [Test] public void CachedTowerLookupTracksReorderingDuplicateIdsReplacementAndRemoval()
+
+    [Test]
+    public void CachedTowerLookupTracksReorderingDuplicateIdsReplacementAndRemoval()
     {
-        var s=Game();var a=new TowerState{Id=7};var b=new TowerState{Id=7};s.Towers.AddRange(new[]{a,b});
-        Assert.That(s.TowerFromSource("Tower:7"),Is.SameAs(a));s.Towers.Reverse();Assert.That(s.FindTower(7),Is.SameAs(b));
-        b.Id=8;Assert.That(s.TowerFromSource("Tower:7"),Is.SameAs(a));
-        var replacement=new TowerState{Id=7};s.Towers[1]=replacement;Assert.That(s.TowerFromSource("Tower:7"),Is.SameAs(replacement));
-        s.Towers.Clear();Assert.That(s.TowerFromSource("Tower:7"),Is.Null);Assert.That(s.TowerFromSource("Player"),Is.Null);Assert.That(s.TowerFromSource("Tower:bad"),Is.Null);
+        var s = Game();
+        var a = new TowerState { Id = 7 };
+        var b = new TowerState { Id = 7 };
+        s.Towers.AddRange(new[] { a, b });
+        Assert.That(s.TowerFromSource("Tower:7"), Is.SameAs(a));
+        s.Towers.Reverse();
+        Assert.That(s.FindTower(7), Is.SameAs(b));
+        b.Id = 8;
+        Assert.That(s.TowerFromSource("Tower:7"), Is.SameAs(a));
+        var replacement = new TowerState { Id = 7 };
+        s.Towers[1] = replacement;
+        Assert.That(s.TowerFromSource("Tower:7"), Is.SameAs(replacement));
+        s.Towers.Clear();
+        Assert.That(s.TowerFromSource("Tower:7"), Is.Null);
+        Assert.That(s.TowerFromSource("Player"), Is.Null);
+        Assert.That(s.TowerFromSource("Tower:bad"), Is.Null);
     }
-    [Test] public void NegativeTowerSourceFormattingAndParsingTrackCultureSignChanges()
+
+    [Test]
+    public void NegativeTowerSourceFormattingAndParsingTrackCultureSignChanges()
     {
-        var s=Game();var tower=new TowerState{Id=-12};s.Towers.Add(tower);
-        var original=System.Globalization.CultureInfo.CurrentCulture;
+        var s = Game();
+        var tower = new TowerState { Id = -12 };
+        s.Towers.Add(tower);
+        var original = System.Globalization.CultureInfo.CurrentCulture;
         try
         {
-            var culture=(System.Globalization.CultureInfo)System.Globalization.CultureInfo.InvariantCulture.Clone();
-            System.Globalization.CultureInfo.CurrentCulture=culture;
-            Assert.That(s.TowerFromSource(tower.AttackSource),Is.SameAs(tower));
-            culture.NumberFormat.NegativeSign="~";
-            Assert.That(tower.AttackSource,Is.EqualTo("Tower:~12"));Assert.That(tower.SupportSource,Is.EqualTo("Support:~12"));
-            Assert.That(s.TowerFromSource(tower.AttackSource),Is.SameAs(tower));Assert.That(s.TowerFromSource("Tower:-12"),Is.Null);
+            var culture = (System.Globalization.CultureInfo)System.Globalization.CultureInfo.InvariantCulture.Clone();
+            System.Globalization.CultureInfo.CurrentCulture = culture;
+            Assert.That(s.TowerFromSource(tower.AttackSource), Is.SameAs(tower));
+            culture.NumberFormat.NegativeSign = "~";
+            Assert.That(tower.AttackSource, Is.EqualTo("Tower:~12"));
+            Assert.That(tower.SupportSource, Is.EqualTo("Support:~12"));
+            Assert.That(s.TowerFromSource(tower.AttackSource), Is.SameAs(tower));
+            Assert.That(s.TowerFromSource("Tower:-12"), Is.Null);
         }
-        finally{System.Globalization.CultureInfo.CurrentCulture=original;}
+        finally
+        {
+            System.Globalization.CultureInfo.CurrentCulture = original;
+        }
     }
-    [Test] public void TowerSupportRangeIncludesZeroBuffAndTracksDirectChanges()
+
+    [Test]
+    public void TowerSupportRangeIncludesZeroBuffAndTracksDirectChanges()
     {
-        var s=Game();var attack=new TowerState{Id=1,Kind=TowerKind.Single,Position=new Vector2Int(2,1)};
-        var support=new TowerState{Id=2,Kind=TowerKind.Support,Position=new Vector2Int(2,2),Stats=new CombatStats{Range=1,BuffDamage=0}};
-        s.Towers.AddRange(new[]{attack,support});Assert.That(s.HasTowerSupport(attack),Is.True);
-        support.Stats.Range=.5f;Assert.That(s.HasTowerSupport(attack),Is.False);
-        support.Position=attack.Position;Assert.That(s.HasTowerSupport(attack),Is.True);
-        support.Kind=TowerKind.Single;Assert.That(s.HasTowerSupport(attack),Is.False);
-        support.Kind=TowerKind.Support;s.Towers.Remove(support);Assert.That(s.HasTowerSupport(attack),Is.False);
+        var s = Game();
+        var attack = new TowerState
+        {
+            Id = 1,
+            Kind = TowerKind.Single,
+            Position = new Vector2Int(2, 1),
+        };
+        var support = new TowerState
+        {
+            Id = 2,
+            Kind = TowerKind.Support,
+            Position = new Vector2Int(2, 2),
+            Stats = new CombatStats { Range = 1, BuffDamage = 0 },
+        };
+        s.Towers.AddRange(new[] { attack, support });
+        Assert.That(s.HasTowerSupport(attack), Is.True);
+        support.Stats.Range = .5f;
+        Assert.That(s.HasTowerSupport(attack), Is.False);
+        support.Position = attack.Position;
+        Assert.That(s.HasTowerSupport(attack), Is.True);
+        support.Kind = TowerKind.Single;
+        Assert.That(s.HasTowerSupport(attack), Is.False);
+        support.Kind = TowerKind.Support;
+        s.Towers.Remove(support);
+        Assert.That(s.HasTowerSupport(attack), Is.False);
     }
-    [Test] public void SupportCacheRefreshesBetweenLaunchCallbacksAndOnTheNextTick()
+
+    [Test]
+    public void SupportCacheRefreshesBetweenLaunchCallbacksAndOnTheNextTick()
     {
-        var s=Game();s.StartDiagnosticEncounter();string reason;
-        var a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);var b=s.TryInstall(TowerKind.Single,new Vector2Int(3,1),out reason);
-        var support=s.TryInstall(TowerKind.Support,new Vector2Int(2,2),out reason);
-        a.Stats.ProjectileSpeed=b.Stats.ProjectileSpeed=.001f;
-        s.StartCombat();s.Player.Rate=0;var enemy=s.DebugSpawn(EnemyKind.Attack,2);enemy.Spec.Speed=0;enemy.Health=10000;
-        support.Stats.Range=10;support.Stats.BuffDamage=0;
-        s.ProjectileLaunched+=shot=>{if(shot.Source==a.AttackSource)support.Stats.BuffDamage=100;};
-        s.Tick(.01f,Away);
-        Assert.That(s.Projectiles.First(p=>p.Source==a.AttackSource).Damage,Is.EqualTo(a.Stats.Damage));
-        Assert.That(s.Projectiles.First(p=>p.Source==b.AttackSource).Damage,Is.EqualTo(b.Stats.Damage*2));
-        support.Stats.BuffDamage=200;Assert.That(s.HasTowerSupport(b),Is.True);
+        var s = Game();
+        s.StartDiagnosticEncounter();
+        string reason;
+        var a = s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out reason);
+        var b = s.TryInstall(TowerKind.Single, new Vector2Int(3, 1), out reason);
+        var support = s.TryInstall(TowerKind.Support, new Vector2Int(2, 2), out reason);
+        a.Stats.ProjectileSpeed = b.Stats.ProjectileSpeed = .001f;
+        s.StartCombat();
+        s.Player.Rate = 0;
+        var enemy = s.DebugSpawn(EnemyKind.Attack, 2);
+        enemy.Spec.Speed = 0;
+        enemy.Health = 10000;
+        support.Stats.Range = 10;
+        support.Stats.BuffDamage = 0;
+        s.ProjectileLaunched += shot =>
+        {
+            if (shot.Source == a.AttackSource)
+            {
+                support.Stats.BuffDamage = 100;
+            }
+        };
+        s.Tick(.01f, Away);
+        Assert.That(s.Projectiles.First(p => p.Source == a.AttackSource).Damage, Is.EqualTo(a.Stats.Damage));
+        Assert.That(s.Projectiles.First(p => p.Source == b.AttackSource).Damage, Is.EqualTo(b.Stats.Damage * 2));
+        support.Stats.BuffDamage = 200;
+        Assert.That(s.HasTowerSupport(b), Is.True);
         // A zero-rate first tower prevents its observer from replacing the next-tick edit.
-        a.Stats.Rate=0;b.Stats.Rate=100;s.DebugClearProjectiles();s.Tick(.05f,Away);
+        a.Stats.Rate = 0;
+        b.Stats.Rate = 100;
+        s.DebugClearProjectiles();
+        s.Tick(.05f, Away);
         // Existing cooldown can delay b; advance enough for the next real volley.
-        s.Tick(2,Away);Assert.That(s.Projectiles.Any(p=>p.Source==b.AttackSource&&p.Damage==b.Stats.Damage*3),Is.True);
+        s.Tick(2, Away);
+        Assert.That(s.Projectiles.Any(p => p.Source == b.AttackSource && p.Damage == b.Stats.Damage * 3), Is.True);
     }
-    [TestCase(0)] [TestCase(1)] [TestCase(2)] [TestCase(3)]
+
+    [TestCase(0)]
+    [TestCase(1)]
+    [TestCase(2)]
+    [TestCase(3)]
     public void IndexedPathPositionMatchesSequentialSubtractionAtTurnsAndFractions(int turns)
     {
-        Vector2Int Rotate(Vector2Int p){for(int i=0;i<turns;i++)p=new Vector2Int(-p.y,p.x);return p+new Vector2Int(12,12);}
-        var route=new[]{new Vector2Int(0,0),new Vector2Int(10,0),new Vector2Int(10,10),new Vector2Int(0,10),new Vector2Int(0,1),new Vector2Int(8,1)}.Select(Rotate).ToArray();
-        var s=new Session(Data());s.SetBoard(30,30,route.Last(),route);
-        foreach(float travelled in new[]{0,.00001f,9.999999f,10,10.000001f,19.999998f,20,30,39,40.125f,47,float.NaN})
+        Vector2Int Rotate(Vector2Int p)
         {
-            float d=travelled;Vector2 expected=route.Last();
-            for(int i=0;i<route.Length-1;i++){float len=Vector2.Distance(route[i],route[i+1]);if(d<=len){expected=Vector2.Lerp(route[i],route[i+1],d/len);break;}d-=len;}
-            var enemy=s.DebugSpawn(EnemyKind.Attack,travelled);Assert.That(enemy.Position.Equals(expected),Is.True,"distance "+travelled);
-            Assert.That(enemy.PathRemaining,float.IsNaN(travelled)?Is.EqualTo(0):Is.EqualTo(Mathf.Max(0,47-travelled)));
+            for (int i = 0; i < turns; i++)
+            {
+                p = new Vector2Int(-p.y, p.x);
+            }
+            return p + new Vector2Int(12, 12);
+        }
+        var route = new[]
+        {
+            new Vector2Int(0, 0),
+            new Vector2Int(10, 0),
+            new Vector2Int(10, 10),
+            new Vector2Int(0, 10),
+            new Vector2Int(0, 1),
+            new Vector2Int(8, 1),
+        }
+            .Select(Rotate)
+            .ToArray();
+        var s = new Session(Data());
+        s.SetBoard(30, 30, route.Last(), route);
+        foreach (
+            float travelled in new[]
+            {
+                0,
+                .00001f,
+                9.999999f,
+                10,
+                10.000001f,
+                19.999998f,
+                20,
+                30,
+                39,
+                40.125f,
+                47,
+                float.NaN,
+            }
+        )
+        {
+            float d = travelled;
+            Vector2 expected = route.Last();
+            for (int i = 0; i < route.Length - 1; i++)
+            {
+                float len = Vector2.Distance(route[i], route[i + 1]);
+                if (d <= len)
+                {
+                    expected = Vector2.Lerp(route[i], route[i + 1], d / len);
+                    break;
+                }
+                d -= len;
+            }
+            var enemy = s.DebugSpawn(EnemyKind.Attack, travelled);
+            Assert.That(enemy.Position.Equals(expected), Is.True, "distance " + travelled);
+            Assert.That(
+                enemy.PathRemaining,
+                float.IsNaN(travelled) ? Is.EqualTo(0) : Is.EqualTo(Mathf.Max(0, 47 - travelled))
+            );
         }
     }
-    [Test] public void ViewTargetIndexTracksPositionHealthRevivalAndMembershipChanges()
+
+    [Test]
+    public void ViewTargetIndexTracksPositionHealthRevivalAndMembershipChanges()
     {
-        var s=Game();var tower=new TowerState{Id=1,Kind=TowerKind.Multi,Position=new Vector2Int(2,1),Stats=new CombatStats{Range=2}};s.Towers.Add(tower);
-        for(int i=0;i<96;i++)s.DebugSpawn(EnemyKind.Attack,1+i%8);
+        var s = Game();
+        var tower = new TowerState
+        {
+            Id = 1,
+            Kind = TowerKind.Multi,
+            Position = new Vector2Int(2, 1),
+            Stats = new CombatStats { Range = 2 },
+        };
+        s.Towers.Add(tower);
+        for (int i = 0; i < 96; i++)
+        {
+            s.DebugSpawn(EnemyKind.Attack, 1 + i % 8);
+        }
+
         s.BeginTowerViews();
         try
         {
-            Assert.That(s.TowerTargetForView(tower),Is.EqualTo(s.TowerTarget(tower.Id)));
-            var enemy=s.Enemies[50];enemy.Position=tower.Position;enemy.Health=1;
-            Assert.That(s.TowerTargetForView(tower),Is.EqualTo(enemy));
-            enemy.Health=0;Assert.That(s.TowerTargetForView(tower),Is.EqualTo(s.TowerTarget(tower.Id)));
-            enemy.Health=1;s.DebugReverseEnemies();Assert.That(s.TowerTargetForView(tower),Is.EqualTo(enemy));
-            s.DebugRemoveEnemy(enemy);Assert.That(s.TowerTargetForView(tower),Is.EqualTo(s.TowerTarget(tower.Id)));
-            tower.Stats.Range=float.PositiveInfinity;Assert.That(s.TowerTargetForView(tower),Is.EqualTo(s.TowerTarget(tower.Id)));
+            Assert.That(s.TowerTargetForView(tower), Is.EqualTo(s.TowerTarget(tower.Id)));
+            var enemy = s.Enemies[50];
+            enemy.Position = tower.Position;
+            enemy.Health = 1;
+            Assert.That(s.TowerTargetForView(tower), Is.EqualTo(enemy));
+            enemy.Health = 0;
+            Assert.That(s.TowerTargetForView(tower), Is.EqualTo(s.TowerTarget(tower.Id)));
+            enemy.Health = 1;
+            s.DebugReverseEnemies();
+            Assert.That(s.TowerTargetForView(tower), Is.EqualTo(enemy));
+            s.DebugRemoveEnemy(enemy);
+            Assert.That(s.TowerTargetForView(tower), Is.EqualTo(s.TowerTarget(tower.Id)));
+            tower.Stats.Range = float.PositiveInfinity;
+            Assert.That(s.TowerTargetForView(tower), Is.EqualTo(s.TowerTarget(tower.Id)));
         }
-        finally{s.EndTowerViews();}
-        Assert.That(s.TowerTargetForView(tower),Is.EqualTo(s.TowerTarget(tower.Id)));
+        finally
+        {
+            s.EndTowerViews();
+        }
+        Assert.That(s.TowerTargetForView(tower), Is.EqualTo(s.TowerTarget(tower.Id)));
     }
-    [TestCase(false)] [TestCase(true)]
+
+    [TestCase(false)]
+    [TestCase(true)]
     public void AttackIndexHandlesUnchangedAndMutatingLaunchObservers(bool mutate)
     {
-        var s=Game();s.StartDiagnosticEncounter();string reason;var tower=s.TryInstall(TowerKind.Single,new Vector2Int(30,1),out reason);
-        tower.Stats.Range=2;s.StartCombat();var first=s.DebugSpawn(EnemyKind.Attack,1);first.Spec.Speed=0;first.Health=10000;
-        for(int i=0;i<95;i++)s.DebugSpawn(EnemyKind.Attack,1+i%8);
-        bool observed=false;
-        s.ProjectileLaunched+=shot=>{if(!observed&&shot.Source=="Player"){observed=true;if(mutate)first.Position=new Vector2(30,0);}};
-        s.Tick(.01f,new Vector2(1,1));Assert.That(observed,Is.True);
-        Assert.That(s.Projectiles.Any(p=>p.Source==tower.AttackSource&&p.Target==first),Is.EqualTo(mutate));
-    }
-    [Test] public void EnemyModelReuseInvalidatesOldHandleAndResetsEveryLifetimeField()
-    {
-        var s=Game();var old=s.DebugSpawn(EnemyKind.Attack,3);old.Health=1;old.Buffed=true;old.SlowRemaining=10;old.Exited=true;
-        int id=old.Id;Assert.That(s.DebugRemoveEnemy(old),Is.True);
-        var current=s.DebugSpawn(EnemyKind.Attack);
-        Assert.That(s.EnemyPool(EnemyKind.Attack).Reused,Is.EqualTo(1));Assert.That(current,Is.Not.EqualTo(old));Assert.That(current.Id,Is.GreaterThan(id));
-        Assert.That(old.IsValid,Is.False);Assert.That(old.Alive,Is.False);Assert.That(s.TryRead(old,out _),Is.False);Assert.That(s.TrySetHealth(old,99),Is.False);
-        Assert.Throws<InvalidOperationException>(()=>old.Health=99);
-        Assert.That(current.Health,Is.EqualTo(current.Spec.Health));Assert.That(current.Buffed,Is.False);Assert.That(current.Exited,Is.False);Assert.That(current.SlowRemaining,Is.Zero);Assert.That(current.PathTravelled,Is.Zero);
-    }
-    [Test] public void ModelHandlesRejectForeignSessionAndDefaultUpdates()
-    {
-        var a=Game();var b=Game();var enemy=a.DebugSpawn(EnemyKind.Defense);bool called=false;
-        Assert.That(b.TryRead(enemy,out _),Is.False);Assert.That(b.TryUpdate(enemy,e=>called=true),Is.False);Assert.That(called,Is.False);
-        Assert.That(b.ApplyDamage(enemy,100,"Test"),Is.Zero);Assert.That(enemy.Health,Is.EqualTo(enemy.Spec.Health));
-        Assert.That(a.TryRead(default(EnemyHandle),out _),Is.False);Assert.That(a.TryUpdate(default(EnemyHandle),e=>called=true),Is.False);
-        Assert.Throws<ArgumentException>(()=>b.DebugProjectile(enemy,Vector2.zero));
-    }
-    [Test] public void ProjectileModelReuseLeavesSavedSnapshotUnchanged()
-    {
-        var s=Game();var target=s.DebugSpawn(EnemyKind.Attack,2);var old=s.DebugProjectile(target,new Vector2(4,3),7,2,"Saved");
-        Assert.That(s.TryRead(old,out var saved),Is.True);int gold=saved.Target.Spec.Gold;
-        s.DebugClearProjectiles();var current=s.DebugProjectile(target,Vector2.zero,99,10,"New");
-        Assert.That(s.ProjectilePool.Reused,Is.EqualTo(1));Assert.That(old,Is.Not.EqualTo(current));Assert.That(s.TryRead(old,out _),Is.False);
-        Assert.That(saved.Id,Is.EqualTo(old.Id));Assert.That(saved.Source,Is.EqualTo("Saved"));Assert.That(saved.Damage,Is.EqualTo(7));Assert.That(saved.Position,Is.EqualTo(new Vector2(4,3)));
-        target.Spec.Gold=gold+10;target.Position=Vector2.zero;
-        Assert.That(saved.Target.Spec.Gold,Is.EqualTo(gold));Assert.That(saved.Target.Position,Is.EqualTo(new Vector2(2,0)));
-    }
-    [Test] public void StaleProjectileTargetNeverHitsReusedEnemySlot()
-    {
-        var s=ProjectileGame(out var old);s.DebugRemoveEnemy(old);var current=s.DebugSpawn(EnemyKind.Attack,1);current.Spec.Speed=0;
-        int health=current.Health;s.DebugProjectile(old,current.Position,1000,100);
-        s.Tick(.01f,Away);Assert.That(current.Health,Is.EqualTo(health));Assert.That(s.Projectiles,Is.Empty);Assert.That(old.IsValid,Is.False);
-    }
-    [Test] public void ModelRetirementWaitsForOutermostEventAndNestedTick()
-    {
-        var s=ProjectileGame(out var enemy);var old=s.DebugProjectile(enemy,enemy.Position);EnemySnapshot saved=default;ProjectileHandle added=default;int calls=0;
-        s.DamageApplied+=(snapshot,amount)=>
+        var s = Game();
+        s.StartDiagnosticEncounter();
+        string reason;
+        var tower = s.TryInstall(TowerKind.Single, new Vector2Int(30, 1), out reason);
+        tower.Stats.Range = 2;
+        s.StartCombat();
+        var first = s.DebugSpawn(EnemyKind.Attack, 1);
+        first.Spec.Speed = 0;
+        first.Health = 10000;
+        for (int i = 0; i < 95; i++)
         {
-            calls++;saved=snapshot;s.DebugClearProjectiles();Assert.That(s.TryRead(old,out _),Is.False);
-            added=s.DebugProjectile(enemy,new Vector2(20,20));Assert.That(s.ProjectilePool.Reused,Is.Zero);
-            s.Tick(.01f,Away);enemy.Health=700;
+            s.DebugSpawn(EnemyKind.Attack, 1 + i % 8);
+        }
+
+        bool observed = false;
+        s.ProjectileLaunched += shot =>
+        {
+            if (!observed && shot.Source == "Player")
+            {
+                observed = true;
+                if (mutate)
+                {
+                    first.Position = new Vector2(30, 0);
+                }
+            }
         };
-        s.Tick(.01f,Away);
-        Assert.That(calls,Is.EqualTo(1));Assert.That(saved.Health,Is.EqualTo(999));Assert.That(enemy.Health,Is.EqualTo(700));
-        Assert.That(old.IsValid,Is.False);Assert.That(added.IsValid,Is.True);Assert.That(s.ProjectilePool.Retained,Is.EqualTo(1));
+        s.Tick(.01f, new Vector2(1, 1));
+        Assert.That(observed, Is.True);
+        Assert.That(s.Projectiles.Any(p => p.Source == tower.AttackSource && p.Target == first), Is.EqualTo(mutate));
     }
-    [Test] public void ObserverExceptionStillFlushesRetiredModelQuarantine()
+
+    [Test]
+    public void EnemyModelReuseInvalidatesOldHandleAndResetsEveryLifetimeField()
     {
-        var s=ProjectileGame(out var enemy);var shot=s.DebugProjectile(enemy,enemy.Position);ProjectileSnapshot saved=default;s.TryRead(shot,out saved);
-        s.DamageApplied+=(snapshot,amount)=>{s.DebugClearProjectiles();throw new InvalidOperationException("Expected pooled observer failure");};
-        Assert.Throws<InvalidOperationException>(()=>s.Tick(.01f,Away));
-        Assert.That(shot.IsValid,Is.False);Assert.That(s.ProjectilePool.Active,Is.Zero);Assert.That(s.ProjectilePool.Retained,Is.EqualTo(1));Assert.That(saved.Damage,Is.EqualTo(1));
+        var s = Game();
+        var old = s.DebugSpawn(EnemyKind.Attack, 3);
+        old.Health = 1;
+        old.Buffed = true;
+        old.SlowRemaining = 10;
+        old.Exited = true;
+        int id = old.Id;
+        Assert.That(s.DebugRemoveEnemy(old), Is.True);
+        var current = s.DebugSpawn(EnemyKind.Attack);
+        Assert.That(s.EnemyPool(EnemyKind.Attack).Reused, Is.EqualTo(1));
+        Assert.That(current, Is.Not.EqualTo(old));
+        Assert.That(current.Id, Is.GreaterThan(id));
+        Assert.That(old.IsValid, Is.False);
+        Assert.That(old.Alive, Is.False);
+        Assert.That(s.TryRead(old, out _), Is.False);
+        Assert.That(s.TrySetHealth(old, 99), Is.False);
+        Assert.Throws<InvalidOperationException>(() => old.Health = 99);
+        Assert.That(current.Health, Is.EqualTo(current.Spec.Health));
+        Assert.That(current.Buffed, Is.False);
+        Assert.That(current.Exited, Is.False);
+        Assert.That(current.SlowRemaining, Is.Zero);
+        Assert.That(current.PathTravelled, Is.Zero);
     }
-    [TestCase(EnemyKind.Attack,40,32)] [TestCase(EnemyKind.Boss,6,4)]
-    public void EnemyPoolCapsOnlyInactiveStorage(EnemyKind kind,int count,int retained)
+
+    [Test]
+    public void ModelHandlesRejectForeignSessionAndDefaultUpdates()
     {
-        var s=Game();var handles=Enumerable.Range(0,count).Select(i=>s.DebugSpawn(kind)).ToArray();
-        Assert.That(s.EnemyPool(kind).Active,Is.EqualTo(count));foreach(var handle in handles)Assert.That(s.DebugRemoveEnemy(handle),Is.True);
-        Assert.That(s.EnemyPool(kind).Active,Is.Zero);Assert.That(s.EnemyPool(kind).Retained,Is.EqualTo(retained));Assert.That(handles.All(h=>!h.IsValid),Is.True);
+        var a = Game();
+        var b = Game();
+        var enemy = a.DebugSpawn(EnemyKind.Defense);
+        bool called = false;
+        Assert.That(b.TryRead(enemy, out _), Is.False);
+        Assert.That(b.TryUpdate(enemy, e => called = true), Is.False);
+        Assert.That(called, Is.False);
+        Assert.That(b.ApplyDamage(enemy, 100, "Test"), Is.Zero);
+        Assert.That(enemy.Health, Is.EqualTo(enemy.Spec.Health));
+        Assert.That(a.TryRead(default(EnemyHandle), out _), Is.False);
+        Assert.That(a.TryUpdate(default(EnemyHandle), e => called = true), Is.False);
+        Assert.Throws<ArgumentException>(() => b.DebugProjectile(enemy, Vector2.zero));
     }
-    [Test] public void ProjectilePoolCapsOnlyInactiveStorageAndDisposeClearsModels()
+
+    [Test]
+    public void ProjectileModelReuseLeavesSavedSnapshotUnchanged()
     {
-        var s=Game();var enemy=s.DebugSpawn(EnemyKind.Attack);var handles=Enumerable.Range(0,300).Select(i=>s.DebugProjectile(enemy,Vector2.zero)).ToArray();
-        Assert.That(s.ProjectilePool.Active,Is.EqualTo(300));s.DebugClearProjectiles();Assert.That(s.ProjectilePool.Retained,Is.EqualTo(256));Assert.That(handles.All(h=>!h.IsValid),Is.True);
-        var shot=s.DebugProjectile(enemy,Vector2.one);s.Dispose();s.Dispose();
-        Assert.That(enemy.IsValid,Is.False);Assert.That(shot.IsValid,Is.False);Assert.That(s.ProjectilePool.Active,Is.Zero);Assert.That(s.ProjectilePool.Retained,Is.Zero);Assert.That(s.EnemyPool(EnemyKind.Attack).Retained,Is.Zero);
-        Assert.That(s.TryRead(enemy,out _),Is.False);Assert.Throws<ObjectDisposedException>(()=>s.DebugSpawn(EnemyKind.Attack));
+        var s = Game();
+        var target = s.DebugSpawn(EnemyKind.Attack, 2);
+        var old = s.DebugProjectile(target, new Vector2(4, 3), 7, 2, "Saved");
+        Assert.That(s.TryRead(old, out var saved), Is.True);
+        int gold = saved.Target.Spec.Gold;
+        s.DebugClearProjectiles();
+        var current = s.DebugProjectile(target, Vector2.zero, 99, 10, "New");
+        Assert.That(s.ProjectilePool.Reused, Is.EqualTo(1));
+        Assert.That(old, Is.Not.EqualTo(current));
+        Assert.That(s.TryRead(old, out _), Is.False);
+        Assert.That(saved.Id, Is.EqualTo(old.Id));
+        Assert.That(saved.Source, Is.EqualTo("Saved"));
+        Assert.That(saved.Damage, Is.EqualTo(7));
+        Assert.That(saved.Position, Is.EqualTo(new Vector2(4, 3)));
+        target.Spec.Gold = gold + 10;
+        target.Position = Vector2.zero;
+        Assert.That(saved.Target.Spec.Gold, Is.EqualTo(gold));
+        Assert.That(saved.Target.Position, Is.EqualTo(new Vector2(2, 0)));
     }
-    [Test] public void DiagnosticResetInvalidatesBothModelLifetimesAndKeepsIdsIncreasing()
+
+    [Test]
+    public void StaleProjectileTargetNeverHitsReusedEnemySlot()
     {
-        var s=Game();var enemy=s.DebugSpawn(EnemyKind.Attack);var shot=s.DebugProjectile(enemy,Vector2.zero);s.StartDiagnosticEncounter();
-        Assert.That(enemy.IsValid,Is.False);Assert.That(shot.IsValid,Is.False);Assert.That(s.Enemies,Is.Empty);Assert.That(s.Projectiles,Is.Empty);
-        var next=s.DebugSpawn(EnemyKind.Attack);Assert.That(next.Id,Is.GreaterThan(enemy.Id));Assert.That(next,Is.Not.EqualTo(enemy));
+        var s = ProjectileGame(out var old);
+        s.DebugRemoveEnemy(old);
+        var current = s.DebugSpawn(EnemyKind.Attack, 1);
+        current.Spec.Speed = 0;
+        int health = current.Health;
+        s.DebugProjectile(old, current.Position, 1000, 100);
+        s.Tick(.01f, Away);
+        Assert.That(current.Health, Is.EqualTo(health));
+        Assert.That(s.Projectiles, Is.Empty);
+        Assert.That(old.IsValid, Is.False);
     }
-    [Test] public void SurvivingProjectileKeepsFinalTargetPositionAfterCallbackMovementAndSlotReuse()
+
+    [Test]
+    public void ModelRetirementWaitsForOutermostEventAndNestedTick()
     {
-        var s=ProjectileGame(out var enemy);var slow=s.DebugProjectile(enemy,new Vector2(20,20));s.DebugProjectile(enemy,enemy.Position,10000);
-        var finalPosition=new Vector2(4,3);s.DamageApplied+=(snapshot,amount)=>enemy.Position=finalPosition;
-        s.Tick(.01f,Away);Assert.That(enemy.IsValid,Is.False);Assert.That(slow.IsValid,Is.True);Assert.That(slow.TargetPosition,Is.EqualTo(finalPosition));
-        Assert.That(s.TryRead(slow,out var saved),Is.True);Assert.That(saved.TargetIsValid,Is.False);Assert.That(saved.Target.Position,Is.EqualTo(finalPosition));
-        var next=s.DebugSpawn(EnemyKind.Attack,8);int health=next.Health;
-        Assert.That(slow.TargetPosition,Is.EqualTo(finalPosition));s.Tick(.01f,Away);Assert.That(next.Health,Is.EqualTo(health));Assert.That(slow.IsValid,Is.False);
+        var s = ProjectileGame(out var enemy);
+        var old = s.DebugProjectile(enemy, enemy.Position);
+        EnemySnapshot saved = default;
+        ProjectileHandle added = default;
+        int calls = 0;
+        s.DamageApplied += (snapshot, amount) =>
+        {
+            calls++;
+            saved = snapshot;
+            s.DebugClearProjectiles();
+            Assert.That(s.TryRead(old, out _), Is.False);
+            added = s.DebugProjectile(enemy, new Vector2(20, 20));
+            Assert.That(s.ProjectilePool.Reused, Is.Zero);
+            s.Tick(.01f, Away);
+            enemy.Health = 700;
+        };
+        s.Tick(.01f, Away);
+        Assert.That(calls, Is.EqualTo(1));
+        Assert.That(saved.Health, Is.EqualTo(999));
+        Assert.That(enemy.Health, Is.EqualTo(700));
+        Assert.That(old.IsValid, Is.False);
+        Assert.That(added.IsValid, Is.True);
+        Assert.That(s.ProjectilePool.Retained, Is.EqualTo(1));
     }
-    [Test] public void DisposeInsideDamageObserverInvalidatesModelsAndFinishesQuarantine()
+
+    [Test]
+    public void ObserverExceptionStillFlushesRetiredModelQuarantine()
     {
-        var s=ProjectileGame(out var enemy);var shot=s.DebugProjectile(enemy,enemy.Position);EnemySnapshot saved=default;
-        s.DamageApplied+=(snapshot,amount)=>{saved=snapshot;s.Dispose();Assert.That(s.ProjectilePool.Retained,Is.Zero);};
-        s.Tick(.01f,Away);
-        Assert.That(enemy.IsValid,Is.False);Assert.That(shot.IsValid,Is.False);Assert.That(saved.Health,Is.EqualTo(999));
-        Assert.That(s.ProjectilePool.Active,Is.Zero);Assert.That(s.ProjectilePool.Retained,Is.Zero);Assert.That(s.EnemyPool(EnemyKind.Attack).Retained,Is.Zero);
+        var s = ProjectileGame(out var enemy);
+        var shot = s.DebugProjectile(enemy, enemy.Position);
+        ProjectileSnapshot saved = default;
+        s.TryRead(shot, out saved);
+        s.DamageApplied += (snapshot, amount) =>
+        {
+            s.DebugClearProjectiles();
+            throw new InvalidOperationException("Expected pooled observer failure");
+        };
+        Assert.Throws<InvalidOperationException>(() => s.Tick(.01f, Away));
+        Assert.That(shot.IsValid, Is.False);
+        Assert.That(s.ProjectilePool.Active, Is.Zero);
+        Assert.That(s.ProjectilePool.Retained, Is.EqualTo(1));
+        Assert.That(saved.Damage, Is.EqualTo(1));
     }
-    [Test] public void FailedEnemyInitializationReturnsSlotAndMissingSpecCannotBlockRetirement()
+
+    [TestCase(EnemyKind.Attack, 40, 32)]
+    [TestCase(EnemyKind.Boss, 6, 4)]
+    public void EnemyPoolCapsOnlyInactiveStorage(EnemyKind kind, int count, int retained)
     {
-        var s=Game();var spec=s.Data.Enemies[EnemyKind.Attack];s.Data.Enemies[EnemyKind.Attack]=null;
-        Assert.Throws<NullReferenceException>(()=>s.DebugSpawn(EnemyKind.Attack));Assert.That(s.EnemyPool(EnemyKind.Attack).Active,Is.Zero);
-        s.Data.Enemies[EnemyKind.Attack]=spec;var enemy=s.DebugSpawn(EnemyKind.Attack);enemy.Spec=null;
-        var pending=s.DebugProjectile(enemy,Vector2.zero);Assert.That(s.TryRead(pending,out var saved),Is.True);Assert.That(saved.Target.HasSpec,Is.False);
-        Assert.That(s.DebugRemoveEnemy(enemy),Is.True);Assert.That(enemy.IsValid,Is.False);Assert.That(s.EnemyPool(EnemyKind.Attack).Active,Is.Zero);Assert.That(pending.TargetPosition,Is.EqualTo(Vector2.zero));
-        s.DebugClearProjectiles();var next=s.DebugSpawn(EnemyKind.Attack);var shot=s.DebugProjectile(next,Vector2.zero);Assert.That(shot.IsValid,Is.True);Assert.That(s.ProjectilePool.Reused,Is.EqualTo(1));
+        var s = Game();
+        var handles = Enumerable.Range(0, count).Select(i => s.DebugSpawn(kind)).ToArray();
+        Assert.That(s.EnemyPool(kind).Active, Is.EqualTo(count));
+        foreach (var handle in handles)
+        {
+            Assert.That(s.DebugRemoveEnemy(handle), Is.True);
+        }
+
+        Assert.That(s.EnemyPool(kind).Active, Is.Zero);
+        Assert.That(s.EnemyPool(kind).Retained, Is.EqualTo(retained));
+        Assert.That(handles.All(h => !h.IsValid), Is.True);
     }
-    [Test] public void DefeatRetiresExitedModelsAndPreservesLivingFrozenBodies()
+
+    [Test]
+    public void ProjectilePoolCapsOnlyInactiveStorageAndDisposeClearsModels()
     {
-        var s=Game();s.StartCombat();s.Player.Rate=0;
-        var exited=s.DebugSpawn(EnemyKind.Attack,10,new EnemySpec{Health=10,CoreDamage=s.CoreEnergy,Speed=0});
-        var frozen=s.DebugSpawn(EnemyKind.Defense,1,new EnemySpec{Health=10,Speed=0});
-        s.Tick(.01f,Away);
-        Assert.That(s.Phase,Is.EqualTo(SessionPhase.Defeat));Assert.That(exited.IsValid,Is.False);Assert.That(frozen.IsValid,Is.True);
-        Assert.That(s.Enemies.Count,Is.EqualTo(1));Assert.That(s.EnemyPool(EnemyKind.Attack).Active,Is.Zero);Assert.That(s.EnemyPool(EnemyKind.Defense).Active,Is.EqualTo(1));
+        var s = Game();
+        var enemy = s.DebugSpawn(EnemyKind.Attack);
+        var handles = Enumerable.Range(0, 300).Select(i => s.DebugProjectile(enemy, Vector2.zero)).ToArray();
+        Assert.That(s.ProjectilePool.Active, Is.EqualTo(300));
+        s.DebugClearProjectiles();
+        Assert.That(s.ProjectilePool.Retained, Is.EqualTo(256));
+        Assert.That(handles.All(h => !h.IsValid), Is.True);
+        var shot = s.DebugProjectile(enemy, Vector2.one);
+        s.Dispose();
+        s.Dispose();
+        Assert.That(enemy.IsValid, Is.False);
+        Assert.That(shot.IsValid, Is.False);
+        Assert.That(s.ProjectilePool.Active, Is.Zero);
+        Assert.That(s.ProjectilePool.Retained, Is.Zero);
+        Assert.That(s.EnemyPool(EnemyKind.Attack).Retained, Is.Zero);
+        Assert.That(s.TryRead(enemy, out _), Is.False);
+        Assert.Throws<ObjectDisposedException>(() => s.DebugSpawn(EnemyKind.Attack));
     }
+
+    [Test]
+    public void DiagnosticResetInvalidatesBothModelLifetimesAndKeepsIdsIncreasing()
+    {
+        var s = Game();
+        var enemy = s.DebugSpawn(EnemyKind.Attack);
+        var shot = s.DebugProjectile(enemy, Vector2.zero);
+        s.StartDiagnosticEncounter();
+        Assert.That(enemy.IsValid, Is.False);
+        Assert.That(shot.IsValid, Is.False);
+        Assert.That(s.Enemies, Is.Empty);
+        Assert.That(s.Projectiles, Is.Empty);
+        var next = s.DebugSpawn(EnemyKind.Attack);
+        Assert.That(next.Id, Is.GreaterThan(enemy.Id));
+        Assert.That(next, Is.Not.EqualTo(enemy));
+    }
+
+    [Test]
+    public void SurvivingProjectileKeepsFinalTargetPositionAfterCallbackMovementAndSlotReuse()
+    {
+        var s = ProjectileGame(out var enemy);
+        var slow = s.DebugProjectile(enemy, new Vector2(20, 20));
+        s.DebugProjectile(enemy, enemy.Position, 10000);
+        var finalPosition = new Vector2(4, 3);
+        s.DamageApplied += (snapshot, amount) => enemy.Position = finalPosition;
+        s.Tick(.01f, Away);
+        Assert.That(enemy.IsValid, Is.False);
+        Assert.That(slow.IsValid, Is.True);
+        Assert.That(slow.TargetPosition, Is.EqualTo(finalPosition));
+        Assert.That(s.TryRead(slow, out var saved), Is.True);
+        Assert.That(saved.TargetIsValid, Is.False);
+        Assert.That(saved.Target.Position, Is.EqualTo(finalPosition));
+        var next = s.DebugSpawn(EnemyKind.Attack, 8);
+        int health = next.Health;
+        Assert.That(slow.TargetPosition, Is.EqualTo(finalPosition));
+        s.Tick(.01f, Away);
+        Assert.That(next.Health, Is.EqualTo(health));
+        Assert.That(slow.IsValid, Is.False);
+    }
+
+    [Test]
+    public void DisposeInsideDamageObserverInvalidatesModelsAndFinishesQuarantine()
+    {
+        var s = ProjectileGame(out var enemy);
+        var shot = s.DebugProjectile(enemy, enemy.Position);
+        EnemySnapshot saved = default;
+        s.DamageApplied += (snapshot, amount) =>
+        {
+            saved = snapshot;
+            s.Dispose();
+            Assert.That(s.ProjectilePool.Retained, Is.Zero);
+        };
+        s.Tick(.01f, Away);
+        Assert.That(enemy.IsValid, Is.False);
+        Assert.That(shot.IsValid, Is.False);
+        Assert.That(saved.Health, Is.EqualTo(999));
+        Assert.That(s.ProjectilePool.Active, Is.Zero);
+        Assert.That(s.ProjectilePool.Retained, Is.Zero);
+        Assert.That(s.EnemyPool(EnemyKind.Attack).Retained, Is.Zero);
+    }
+
+    [Test]
+    public void FailedEnemyInitializationReturnsSlotAndMissingSpecCannotBlockRetirement()
+    {
+        var s = Game();
+        var spec = s.Data.Enemies[EnemyKind.Attack];
+        s.Data.Enemies[EnemyKind.Attack] = null;
+        Assert.Throws<NullReferenceException>(() => s.DebugSpawn(EnemyKind.Attack));
+        Assert.That(s.EnemyPool(EnemyKind.Attack).Active, Is.Zero);
+        s.Data.Enemies[EnemyKind.Attack] = spec;
+        var enemy = s.DebugSpawn(EnemyKind.Attack);
+        enemy.Spec = null;
+        var pending = s.DebugProjectile(enemy, Vector2.zero);
+        Assert.That(s.TryRead(pending, out var saved), Is.True);
+        Assert.That(saved.Target.HasSpec, Is.False);
+        Assert.That(s.DebugRemoveEnemy(enemy), Is.True);
+        Assert.That(enemy.IsValid, Is.False);
+        Assert.That(s.EnemyPool(EnemyKind.Attack).Active, Is.Zero);
+        Assert.That(pending.TargetPosition, Is.EqualTo(Vector2.zero));
+        s.DebugClearProjectiles();
+        var next = s.DebugSpawn(EnemyKind.Attack);
+        var shot = s.DebugProjectile(next, Vector2.zero);
+        Assert.That(shot.IsValid, Is.True);
+        Assert.That(s.ProjectilePool.Reused, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void DefeatRetiresExitedModelsAndPreservesLivingFrozenBodies()
+    {
+        var s = Game();
+        s.StartCombat();
+        s.Player.Rate = 0;
+        var exited = s.DebugSpawn(
+            EnemyKind.Attack,
+            10,
+            new EnemySpec
+            {
+                Health = 10,
+                CoreDamage = s.CoreEnergy,
+                Speed = 0,
+            }
+        );
+        var frozen = s.DebugSpawn(EnemyKind.Defense, 1, new EnemySpec { Health = 10, Speed = 0 });
+        s.Tick(.01f, Away);
+        Assert.That(s.Phase, Is.EqualTo(SessionPhase.Defeat));
+        Assert.That(exited.IsValid, Is.False);
+        Assert.That(frozen.IsValid, Is.True);
+        Assert.That(s.Enemies.Count, Is.EqualTo(1));
+        Assert.That(s.EnemyPool(EnemyKind.Attack).Active, Is.Zero);
+        Assert.That(s.EnemyPool(EnemyKind.Defense).Active, Is.EqualTo(1));
+    }
+
     // HUD 개편 B안 (2026-10-28): 건물 칸은 설치 불가, 연구소는 그 종류 포탑이 있어야 종류 강화 구매, 약점·저항 피해 숫자 표시.
-    [Test] public void StructureCellsRejectPlacement()
+    [Test]
+    public void StructureCellsRejectPlacement()
     {
-        var s=Game();s.SetStructures(new[]{new Vector2Int(2,1),new Vector2Int(3,1)});string r;
-        Assert.That(s.IsBuildable(new Vector2Int(2,1)),Is.False);Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,1),out r),Is.Null);
-        Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(4,1),out r),Is.Not.Null,r);
+        var s = Game();
+        s.SetStructures(new[] { new Vector2Int(2, 1), new Vector2Int(3, 1) });
+        string r;
+        Assert.That(s.IsBuildable(new Vector2Int(2, 1)), Is.False);
+        Assert.That(s.TryInstall(TowerKind.Single, new Vector2Int(3, 1), out r), Is.Null);
+        Assert.That(s.TryInstall(TowerKind.Single, new Vector2Int(4, 1), out r), Is.Not.Null, r);
     }
-    [Test] public void LabUpgradeNeedsATowerOfThatKindAndAppliesToLaterInstalls()
+
+    [Test]
+    public void LabUpgradeNeedsATowerOfThatKindAndAppliesToLaterInstalls()
     {
-        var s=Game();s.StartDiagnosticEncounter();string r;float before=s.TowerKindStats(TowerKind.Multi).Damage;int price=s.TowerKindUpgradePrice(TowerKind.Multi,"damage");
-        int crystals=s.Crystals;Assert.That(s.UpgradeTowerKind(TowerKind.Multi,"damage",out r),Is.False,"그 종류 포탑이 없으면 구매 불가 (10-28)");Assert.That(s.Crystals,Is.EqualTo(crystals));
-        var t=s.TryInstall(TowerKind.Multi,new Vector2Int(2,1),out r);Assert.That(t,Is.Not.Null,r);crystals=s.Crystals;
-        Assert.That(s.UpgradeTowerKind(TowerKind.Multi,"damage",out r),Is.True,r);Assert.That(s.Crystals,Is.EqualTo(crystals-price));
-        float after=s.TowerKindStats(TowerKind.Multi).Damage;Assert.That(after,Is.GreaterThan(before));Assert.That(t.Stats.Damage,Is.EqualTo(after).Within(.001f));
-        var later=s.TryInstall(TowerKind.Multi,new Vector2Int(4,1),out r);Assert.That(later.Stats.Damage,Is.EqualTo(after).Within(.001f));
+        var s = Game();
+        s.StartDiagnosticEncounter();
+        string r;
+        float before = s.TowerKindStats(TowerKind.Multi).Damage;
+        int price = s.TowerKindUpgradePrice(TowerKind.Multi, "damage");
+        int crystals = s.Crystals;
+        Assert.That(
+            s.UpgradeTowerKind(TowerKind.Multi, "damage", out r),
+            Is.False,
+            "그 종류 포탑이 없으면 구매 불가 (10-28)"
+        );
+        Assert.That(s.Crystals, Is.EqualTo(crystals));
+        var t = s.TryInstall(TowerKind.Multi, new Vector2Int(2, 1), out r);
+        Assert.That(t, Is.Not.Null, r);
+        crystals = s.Crystals;
+        Assert.That(s.UpgradeTowerKind(TowerKind.Multi, "damage", out r), Is.True, r);
+        Assert.That(s.Crystals, Is.EqualTo(crystals - price));
+        float after = s.TowerKindStats(TowerKind.Multi).Damage;
+        Assert.That(after, Is.GreaterThan(before));
+        Assert.That(t.Stats.Damage, Is.EqualTo(after).Within(.001f));
+        var later = s.TryInstall(TowerKind.Multi, new Vector2Int(4, 1), out r);
+        Assert.That(later.Stats.Damage, Is.EqualTo(after).Within(.001f));
     }
-    [TestCase(true,1)][TestCase(false,-1)]
-    public void HitAffinityReportsWeakAndResistTowerHits(bool weak,int expected)
+
+    [TestCase(true, 1)]
+    [TestCase(false, -1)]
+    public void HitAffinityReportsWeakAndResistTowerHits(bool weak, int expected)
     {
-        var d=Data();d.Waves.Clear();var spec=d.Enemies[EnemyKind.Attack];spec.WeakTowers=weak?1<<(int)TowerKind.Single:0;spec.ResistTowers=weak?0:1<<(int)TowerKind.Single;spec.Speed=.001f;
-        var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});string r;s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);
-        s.StartCombat();var e=s.DebugSpawn(EnemyKind.Attack,2);e.Health=10000;
-        var seen=new System.Collections.Generic.List<int>();s.DamageApplied+=(target,amount)=>seen.Add(s.HitAffinity);
-        s.Tick(3f,Away);Assert.That(seen,Is.Not.Empty);Assert.That(seen,Has.Member(expected));Assert.That(s.HitAffinity,Is.EqualTo(0));
-        seen.Clear();s.ApplyDamage(e,10,"Player");Assert.That(seen,Is.EqualTo(new[]{0}),"기술병 피해는 약점·저항 표시 없음");
+        var d = Data();
+        d.Waves.Clear();
+        var spec = d.Enemies[EnemyKind.Attack];
+        spec.WeakTowers = weak ? 1 << (int)TowerKind.Single : 0;
+        spec.ResistTowers = weak ? 0 : 1 << (int)TowerKind.Single;
+        spec.Speed = .001f;
+        var s = new Session(d);
+        s.SetBoard(40, 25, new Vector2Int(10, 0), new[] { new Vector2Int(0, 0), new Vector2Int(10, 0) });
+        string r;
+        s.TryInstall(TowerKind.Single, new Vector2Int(2, 1), out r);
+        s.StartCombat();
+        var e = s.DebugSpawn(EnemyKind.Attack, 2);
+        e.Health = 10000;
+        var seen = new System.Collections.Generic.List<int>();
+        s.DamageApplied += (target, amount) => seen.Add(s.HitAffinity);
+        s.Tick(3f, Away);
+        Assert.That(seen, Is.Not.Empty);
+        Assert.That(seen, Has.Member(expected));
+        Assert.That(s.HitAffinity, Is.EqualTo(0));
+        seen.Clear();
+        s.ApplyDamage(e, 10, "Player");
+        Assert.That(seen, Is.EqualTo(new[] { 0 }), "기술병 피해는 약점·저항 표시 없음");
     }
 }
-
-
-

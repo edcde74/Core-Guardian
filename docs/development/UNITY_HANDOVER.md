@@ -1,8 +1,24 @@
 # 코어 가디언 인수인계
 
-갱신: 2026-10-28 12:30 Asia/Seoul (Claude. 맨 위 '현재 상태' 절이 최신이고 아래 절들은 이전 기록 — 아래의 '개발 보류' 문구는 10-25 당시 기록이며 10-27부터 개발 재개, 10-28 확정 기획까지 구현 완료.) 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다. 2026-10-24 오전까지의 상세 절(마스크/B1·B2/뷰 동기화/윤곽 등)은 [이전 인수인계 스냅샷](unity_handover_snapshot_20261025_before_rewrite.md)으로 옮겼다.
+갱신: 2026-10-28 15:40 Asia/Seoul (Claude. 맨 위 '현재 상태' 절이 최신이고 아래 절들은 이전 기록 — 아래의 '개발 보류' 문구는 10-25 당시 기록이며 10-27부터 개발 재개, 10-28 확정 기획까지 구현 완료.) 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다. 2026-10-24 오전까지의 상세 절(마스크/B1·B2/뷰 동기화/윤곽 등)은 [이전 인수인계 스냅샷](unity_handover_snapshot_20261025_before_rewrite.md)으로 옮겼다.
 
-## 현재 상태 (2026-10-28 12:30) — 먼저 읽기
+## 현재 상태 (2026-10-28 15:40) — 먼저 읽기
+
+- 코드: 브랜치 `codex/shared-body-mask`. 10-28 오후 리팩토링(사용자 확정 방향, 규칙 [REFACTORING_RULES.md](REFACTORING_RULES.md), 검토 결과 [refactor_review_20261028/FINAL.md](refactor_review_20261028/FINAL.md), 사용자 결정 [DECISIONS.md](refactor_review_20261028/DECISIONS.md)).
+  - 커밋 순서: b314b90(규칙·검토) → 8007b5a(셰이더 기준 테스트) → 92c40ab(화면·입력 코드를 `CoreGuardian.Game` 어셈블리로 분리) → feca580·d08c8ea(자동 모양 정리, CSharpier) → 4eb1ef8·15228e1(큰 파일 나누기) → 2080e48(Unity 물체 `OrNull`) → 7f8c4b3(테스트 typeof) → 6e3e541·9f85750(안 쓰는 코드 삭제) → 0f32be1(버그 묶음 + 빈 바닥 클릭으로 개발 도구 닫기) → B21 셰이더 '항상 포함' → 841a0b7(성능 F1~F31) → 이 문서 커밋. GitHub 푸시 완료.
+  - 리팩토링 단계(버그 묶음 전까지)는 IL 지문으로 동작이 같음을 확인. 버그·성능 묶음은 의도한 변경.
+  - 테스트: EditMode 318/318, PlayMode 54/54.
+- 빌드: `Builds/CoreGuardian_20261028_refactor/CoreGuardian.exe` (10-28 리팩토링·버그·성능 포함).
+- 성능(에디터 Play, 28라운드·포탑 32·3배속·증강 11, 적 약 113, 350프레임, VSync 끔): FPS 약 54, 메인 스레드 약 18ms. Profiler 결과 보통 프레임 16ms = 게임 약 8ms + 에디터 약 7ms, 게임 쪽 쓰레기 할당 평균 3.4KB/프레임. 가끔 40ms 튐은 쓰레기 수거(대부분 에디터가 만든 것). 게임 쪽 큰 비용: 강조 윤곽 1.9ms, 스크립트 Update 약 3ms, 바닥·그림자 1.1ms. 실행 파일 실측은 아직 없음.
+- 증강 기획 논의로 넘긴 것: B3(미래형 카드 늦게 고를수록 보정), B10(29번 적용 범위), B11(27번 처형), B19(반복 증강 합산/평균) — Notion 증강 문서 '남은 결정'.
+- 남겨 둔 것: F16, F27(테스트가 음량 저장값 즉시 반영을 확인), ArtDepthSorting 합치기(앞뒤 순서 바뀔 위험), B22(Windows 영향 없음), B23(빌드 때 아틀라스 준비 코드가 자산을 다시 저장 — 빌드 후 `Sources.asset` 변경은 커밋하지 않음), X21·X22(아트 정리 때).
+- 작업 팁(리팩토링 이후):
+  - 코드 모양: 수정 뒤 `dotnet csharpier` (`.config/dotnet-tools.json`, `.csharpierrc.yaml` 120자). Unity 물체에는 `?.`/`??` 대신 `OrNull()`.
+  - 큰 git 명령은 eval 안에서 기다리지 말고 `cmd /c ... > Logs\x.txt`로 띄운 뒤 파일을 읽는다.
+  - PlayMode 테스트는 `async_tests: true`. EditMode 결과는 파일로 나오니 요약만 읽는다.
+  - 성능 측정 스크립트: `Logs/claude_perf_setup.cs` → (적 쌓일 때까지 대기) → `claude_perf_start.cs` → 350프레임 뒤 `claude_perf_read.cs`, 결과 `Logs/claude_perf_runs.txt`. 측정 중에는 eval을 부르지 않는다(값이 흔들림). 에디터 GC 수치에는 에디터 할당이 섞인다 — 게임만 보려면 Profiler(`claude_prof_*.cs`).
+
+## 이전 상태 (2026-10-28 12:30)
 
 - 코드: 브랜치 `codex/shared-body-mask`. 로컬 커밋 순서 290822e(10-28 기획 1~4·6) → b14a22e(HUD 개편 B안) → 582e96a(사용자 확정 2건) → 이 문서 커밋. GitHub에도 푸시(github-sync 정리 커밋). EditMode 308/308, PlayMode 57/57. 커밋 안 된 사용자 파일 `held_final_*.csv`, `Assets/_Recovery/`는 건드리지 않는다.
 - 10-28 기획 확정 1~6 **전부 게임 반영**: 범위 공격 70·10·0.5, 화염 화상 4초 / 약점 ×1.3·저항 ×0.7(포탑만) / 포탑별 공격 순서 CSV / 전투 중 설치·강화 허용, 49 '약점 공략' / 46 도착 폭발 / HUD 개편 B안.

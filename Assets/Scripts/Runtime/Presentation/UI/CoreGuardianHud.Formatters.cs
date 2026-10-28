@@ -1,0 +1,118 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CoreGuardian;
+using TMPro;
+using Unity.Profiling;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
+
+// CoreGuardianHud: stat and name text formatting.
+public sealed partial class CoreGuardianHud
+{
+    static string BossName(EnemySpec spec) => EnemyNames.Boss(spec);
+
+    string StatName(string stat)
+    {
+        switch (stat)
+        {
+            case "damage":
+                return "공격력";
+            case "rate":
+                return "공격속도";
+            case "range":
+                return "사거리";
+            case "buffDamage":
+                return "공격력 증가";
+            case "slowPercent":
+                return "둔화율";
+            case "burnPerStack":
+                return "화상 피해";
+            case "burnDuration":
+                return "화상 지속";
+            case "pierceFalloff":
+                return "관통 유지";
+            default:
+                return "탄환 속도";
+        }
+    }
+
+    float StatValue(CombatStats stats, string stat) =>
+        stat == "damage" ? stats.Damage
+        : stat == "rate" ? stats.Rate
+        : stat == "range" ? stats.Range
+        : stat == "buffDamage" ? stats.BuffDamage
+        : stat == "slowPercent" ? stats.SlowPercent
+        : stat == "burnPerStack" ? stats.BurnPerStack
+        : stat == "burnDuration" ? stats.BurnDuration
+        : stat == "pierceFalloff" ? stats.PierceFalloff
+        : stats.ProjectileSpeed;
+
+    string StatDisplay(float value, string stat) =>
+        stat == "damage" ? Mathf.FloorToInt(value + .5f).ToString() : value.ToString("0.##");
+
+    string UpgradeLabel(CombatStats stats, string target, string stat, int cost, string currency, bool maxed = false)
+    {
+        if (maxed)
+            return StatName(stat) + " " + StatDisplay(StatValue(stats, stat), stat) + "\n최대치";
+
+        UpgradeSpec spec = null;
+        foreach (var u in game.Session.Data.Upgrades)
+        {
+            if (u.Target == target && u.Stat == stat)
+            {
+                spec = u;
+                break;
+            }
+        }
+
+        float value = StatValue(stats, stat),
+            delta = spec == null ? 0 : spec.Delta;
+        bool affordable = currency == "골드" ? game.Session.Gold >= cost : game.Session.Crystals >= cost;
+        // Grouped upgrades (화염 공격력 + 화상 피해) list their partner stat too.
+        string extra = "";
+        if (spec != null)
+        {
+            foreach (var u in game.Session.Data.Upgrades)
+            {
+                if (u != spec && u.Group == spec.Id && u.Target == target)
+                {
+                    extra += " · " + StatName(u.Stat) + " +" + u.Delta.ToString("0.##");
+                }
+            }
+        }
+
+        return StatName(stat)
+            + " "
+            + StatDisplay(value, stat)
+            + " → "
+            + StatDisplay(value + delta, stat)
+            + "\n+"
+            + delta.ToString("0.##")
+            + extra
+            + " · "
+            + cost
+            + currency
+            + (affordable ? "" : " · 부족");
+    }
+
+    string TowerName(TowerKind kind)
+    {
+        switch (kind)
+        {
+            case TowerKind.Single:
+                return "단일 고속";
+            case TowerKind.Multi:
+                return "범위 공격";
+            case TowerKind.Frost:
+                return "냉기 포탑";
+            case TowerKind.Flame:
+                return "화염 포탑";
+            case TowerKind.Rail:
+                return "레일 포탑";
+            default:
+                return "지원 포탑";
+        }
+    }
+}

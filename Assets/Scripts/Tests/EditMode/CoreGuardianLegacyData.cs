@@ -6,5 +6,8 @@ using UnityEngine;
 // CoreGuardianDataTableTests.
 public static class CoreGuardianLegacyData
 {
-    public static string Text(string name)=>File.ReadAllText(Path.Combine(Application.dataPath,"Scripts/Tests/EditMode/Fixtures/LegacyData",name+".csv"));
+    public static string Text(string name) =>
+        File.ReadAllText(
+            Path.Combine(Application.dataPath, "Scripts/Tests/EditMode/Fixtures/LegacyData", name + ".csv")
+        );
 }
