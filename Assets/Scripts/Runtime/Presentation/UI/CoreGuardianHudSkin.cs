@@ -24,6 +24,8 @@ public static class CoreGuardianHudSkin
     }
     public static string Symbol(string name)
     {
+        if(name.StartsWith("LabKind_"))name="Install_"+name.Substring(8); // 연구소 종류 탭 = 설치 아이콘
+        if(name=="InfoClose")return "Cancel";
         if(name=="Installation"||name=="공격 포탑")return "TowerAttackCategory";
         if(name=="지원 포탑"||name=="Install_Support")return "TowerSupport";
         if(name=="Install_Single")return "TowerSingle";

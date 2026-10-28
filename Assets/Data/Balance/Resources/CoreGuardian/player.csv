@@ -1,2 +1,2 @@
-id,damage,rate,range,projectileSpeed
-10001,10,1,3,6
+id,damage,rate,range,projectileSpeed,targetPriority,targetTiebreak
+10001,10,1,3,6,11006|11002|11003|11007|11008|11005|11201|11001|11004|11101|11102|11103,LowestHealth

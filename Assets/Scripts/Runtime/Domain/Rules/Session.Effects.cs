@@ -28,13 +28,14 @@ namespace CoreGuardian
         // Effect-tag numbers (effectTags.csv) read once; hot paths never search the table.
         struct TagCache
         {
-            public float SlowMax,SlowMaxBoss,SlowBossScale,BurnTick,BurnIgnore,ChainRadius,ChainFalloff,PierceFalloff,ExecuteBase,CritBase,CritMul,CritCap,StunBossScale,StunImmune;public int BurnMax;
+            public float SlowMax,SlowMaxBoss,SlowBossScale,BurnTick,BurnIgnore,ChainRadius,ChainFalloff,PierceFalloff,ExecuteBase,CritBase,CritMul,CritCap,StunBossScale,StunImmune,Weak,Resist;public int BurnMax;
             public static TagCache From(CombatData d)=>new TagCache{
                 SlowMax=d.Tag("Slow","maxPercent",false,60),SlowMaxBoss=d.Tag("Slow","maxPercent",true,30),SlowBossScale=d.Tag("Slow","effectScale",true,.5f),
                 BurnMax=(int)d.Tag("Burn","maxStacks",false,5),BurnTick=d.Tag("Burn","tickSeconds",false,1),BurnIgnore=d.Tag("Burn","defenseIgnore",false,50),
                 ChainRadius=d.Tag("Chain","radius",false,2),ChainFalloff=d.Tag("Chain","falloff",false,.7f),PierceFalloff=d.Tag("Pierce","falloff",false,.8f),
                 ExecuteBase=d.Tag("Execute","baseThreshold",false,8),CritBase=d.Tag("Crit","baseChance",false,0),CritMul=d.Tag("Crit","baseMultiplier",false,2),CritCap=d.Tag("Crit","chanceCap",false,100),
-                StunBossScale=d.Tag("Stun","durationScale",true,.25f),StunImmune=d.Tag("Stun","immuneSeconds",false,3)};
+                StunBossScale=d.Tag("Stun","durationScale",true,.25f),StunImmune=d.Tag("Stun","immuneSeconds",false,3),
+                Weak=d.Tag("Affinity","weakMultiplier",false,1.3f),Resist=d.Tag("Affinity","resistMultiplier",false,.7f)};
         }
         TagCache tags;
         // ---- random for crits (separate stream so card draws stay reproducible per seed)
@@ -115,9 +116,10 @@ namespace CoreGuardian
             while(e.BurnTick>=tick&&e.BurnStacks>0&&e.Health>0)
             {
                 e.BurnTick-=tick;
-                float raw=e.BurnPerStack*e.BurnStacks*(1+DamageIncreasePercent(e)/100f)*Mathf.Max(0,1-EffectiveDefense(e)*(1-ignore)/100f);
+                // 화상 틱은 화염 포탑 피해로 판정 (증강 4·22·28·40 화상 포함, 2026-10-28).
+                float raw=e.BurnPerStack*e.BurnStacks*(1+DamageIncreasePercent(e)/100f)*Affinity(e,(int)TowerKind.Flame+1)*Mathf.Max(0,1-EffectiveDefense(e)*(1-ignore)/100f);
                 e.BurnCarry+=raw;int whole=Mathf.FloorToInt(e.BurnCarry);e.BurnCarry-=whole;
-                if(whole>0){e.BurnKill=true;DealDamage(h,whole,e.BurnSource??"Burn",raw,default);if(h.Accessible)e.BurnKill=false;}
+                if(whole>0){e.BurnKill=true;float flame=Affinity(e,(int)TowerKind.Flame+1);hitAffinity=flame>1?1:flame<1?-1:0;try{DealDamage(h,whole,e.BurnSource??"Burn",raw,default);}finally{hitAffinity=0;}if(h.Accessible)e.BurnKill=false;}
             }
             if(e.BurnTime<=0){e.BurnStacks=0;e.BurnCarry=0;}
         }
@@ -158,13 +160,26 @@ namespace CoreGuardian
             if(Augments.Has(50))percent+=Augments.Value(50,1);
             return percent;
         }
-        // Damage input after buff/crit/falloff; applies increase, defense, rounding, then on-hit effects.
+        // Presentation only: +1 약점 / -1 저항 for the hit being reported through DamageApplied (피해 숫자 표시).
+        int hitAffinity;
+        public int HitAffinity=>hitAffinity;
+        // 3-4 약점·저항: tower damage only. 49 약점 공략 replaces the multipliers (×1.6 / ×0.85).
+        float Affinity(EnemyState e,int tower)
+        {
+            if(tower<=0||e.Spec==null)return 1;int bit=1<<(tower-1);
+            if((e.Spec.WeakTowers&bit)!=0)return Augments.Has(49)?Augments.Value(49)/Augments.Count(49):tags.Weak;
+            if((e.Spec.ResistTowers&bit)!=0)return Augments.Has(49)?Augments.Value(49,1)/Augments.Count(49):tags.Resist;
+            return 1;
+        }
+        // Damage input after buff/crit/falloff; applies increase, weakness, defense, rounding, then on-hit effects.
         int Strike(EnemyHandle target,float damage,string source,HitPayload payload)
         {
             if(!target.Alive)return 0;
             var e=target.Slot;
-            float scaled=damage*(1+DamageIncreasePercent(e)/100f);
-            int dealt=DealDamage(target,CombatRules.Damage(scaled,EffectiveDefense(e)),source,scaled*Mathf.Max(0,1-EffectiveDefense(e)/100f),payload);
+            float affinity=Affinity(e,payload.Tower);
+            float scaled=damage*(1+DamageIncreasePercent(e)/100f)*affinity;
+            hitAffinity=affinity>1?1:affinity<1?-1:0;
+            int dealt;try{dealt=DealDamage(target,CombatRules.Damage(scaled,EffectiveDefense(e)),source,scaled*Mathf.Max(0,1-EffectiveDefense(e)/100f),payload);}finally{hitAffinity=0;}
             if(!target.Alive)return dealt;
             if(payload.BurnStacks>0){AddBurn(e,payload.BurnPerStack,payload.BurnDuration,payload.BurnStacks,source);RaiseCue("hit_flame",e.Position);}
             if(payload.SlowPercent>0)
@@ -420,6 +435,31 @@ namespace CoreGuardian
             return true;
         }
         readonly List<EnemyHandle> blastWork=new List<EnemyHandle>();
+        // 46 순간 이동 도착 폭발: 일반 범위 폭발과 같이 취급(반지름·43 처형·25 쿨감·기술병 누적), 피해 = value2 배율. 쿨다운은 새로 걸지 않음.
+        public bool UseTeleportBlast(Vector2 position)
+        {
+            var skill=AreaBlast;if(skill==null||Phase!=SessionPhase.Combat||!Augments.Has(46))return false;
+            float scale=Augments.Value(46,1)/Mathf.Max(1,Augments.Count(46));if(scale<=0)return false;
+            BeginModelOperation();
+            try
+            {
+                float damage=Player.Damage*skill.DamageMul*scale;
+                var payload=new HitPayload{Player=true,Skill=true};
+                if(Augments.Has(43))payload.Execute=tags.ExecuteBase*Augments.Value(43)/Augments.Count(43);
+                blastWork.Clear();foreach(var e in Enemies)if(e.Alive&&Vector2.Distance(e.Position,position)<=skill.Radius)blastWork.Add(e);
+                foreach(var e in blastWork)
+                {
+                    float crit=RollCrit(ref playerAttacks,ref playerCritBonus);
+                    if(crit>1)RaiseCue("crit",e.Position);
+                    Strike(e,damage*crit,"PlayerSkill",payload);
+                }
+                RaiseCue("area_blast",position);
+                AreaBlastUsed?.Invoke(position,skill.Radius);
+                FlushSpawns();RemoveDeadEnemies();
+            }
+            finally{EndModelOperation();FlushCues();}
+            return true;
+        }
 
         // ================= Crit =================
         int playerAttacks;float playerCritBonus;

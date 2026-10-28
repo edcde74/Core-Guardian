@@ -107,10 +107,10 @@ public class CoreGuardianSessionTests
     {
         var s=Game();Assert.That(s.Gold,Is.Zero);Assert.That(s.Crystals,Is.EqualTo(100));s.Tick(s.Data.PreparationSeconds+.1f,Away);Assert.That(s.Phase,Is.EqualTo(SessionPhase.Combat));
     }
-    [Test] public void PlacementRejectsPathCoreDuplicateAndCombatButAllowsPlayerCell()
+    [Test] public void PlacementRejectsPathCoreDuplicateButAllowsCombatAndPlayerCell()
     {
         var s=Game();string r;Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(0,0),out r),Is.Null);Assert.That(s.Crystals,Is.EqualTo(100));Assert.That(s.TryInstall(TowerKind.Support,new Vector2Int(2,2),out r),Is.Null);
-        var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,2),out r);Assert.That(t,Is.Not.Null);Assert.That(s.IsBuildable(t.Position),Is.False);Assert.That(s.DestroyTower(t.Id),Is.True);Assert.That(s.DestroyTower(t.Id),Is.False);Assert.That(s.Crystals,Is.EqualTo(70));s.StartCombat();Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,3),out r),Is.Null);
+        var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,2),out r);Assert.That(t,Is.Not.Null);Assert.That(s.IsBuildable(t.Position),Is.False);Assert.That(s.DestroyTower(t.Id),Is.True);Assert.That(s.DestroyTower(t.Id),Is.False);Assert.That(s.Crystals,Is.EqualTo(70));s.StartCombat();Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,3),out r),Is.Not.Null,"전투 중 설치 허용 (10-28)");
     }
     [TestCase(TowerKind.Single,"damage")][TestCase(TowerKind.Multi,"damage")][TestCase(TowerKind.Support,"buffDamage")]
     [TestCase(TowerKind.Single,"rate")][TestCase(TowerKind.Single,"range")][TestCase(TowerKind.Single,"projectileSpeed")]
@@ -146,7 +146,7 @@ public class CoreGuardianSessionTests
         Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(60));
         s.StartDiagnosticEncounter();a=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);int crystals=s.Crystals;
         Assert.That(s.UpgradeTower(a.Id,"invalid",out r),Is.False);Assert.That(s.UpgradeTower(-1,"damage",out r),Is.False);
-        s.StartCombat();Assert.That(s.UpgradeTower(a.Id,"damage",out r),Is.False);Assert.That(s.Crystals,Is.EqualTo(crystals));
+        Assert.That(s.Crystals,Is.EqualTo(crystals));
         Assert.That(s.TowerUpgradePrice(a.Id,"damage"),Is.EqualTo(60));Assert.That(a.Stats.UpgradeSteps,Is.Empty);
     }
     [Test] public void KillGoldAndActualDamageAreAccountedOnceWithoutOverkill()
@@ -182,7 +182,9 @@ public class CoreGuardianSessionTests
         s.Tick(.25f,Away);Assert.That(s.Enemies.Count,Is.EqualTo(3));Assert.That(s.Enemies.All(e=>e.Kind==EnemyKind.Defense),Is.True);
         s.Tick(.25f,Away);Assert.That(s.Enemies.Select(e=>e.Kind),Is.EqualTo(new[]{EnemyKind.Defense,EnemyKind.Defense,EnemyKind.Defense,EnemyKind.Boss}));
     }
-    [TestCase(TowerKind.Single)][TestCase(TowerKind.Multi)]
+    // Legacy fixtures keep the common order (boss last). Since 10-28 a single-target tower has no boss-last
+    // acquisition rule, so only the multi-target ordering is checked here (live tables: CoreGuardianContentTests).
+    [TestCase(TowerKind.Multi)]
     public void BossScreenTowersPutEvenLowHealthFirstArrivalBossLast(TowerKind kind)
     {
         var s=Game();string reason;var t=s.TryInstall(kind,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
@@ -192,7 +194,7 @@ public class CoreGuardianSessionTests
         Assert.That(shots,Is.Not.Empty);Assert.That(shots.All(p=>p.Target!=boss),Is.True);
         Assert.That(s.TowerTarget(t.Id),Is.Not.EqualTo(boss));
     }
-    [TestCase(TowerKind.Single)][TestCase(TowerKind.Multi)]
+    [TestCase(TowerKind.Multi)]
     public void BossScreenTowersYieldBossLockWhenOrdinaryEnemyEntersRange(TowerKind kind)
     {
         var s=Game();string reason;var t=s.TryInstall(kind,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
@@ -200,6 +202,13 @@ public class CoreGuardianSessionTests
         s.DebugClearProjectiles();var attack=s.DebugSpawn(EnemyKind.Attack,0);s.Tick(2f,Away);
         Assert.That(s.TowerTarget(t.Id),Is.EqualTo(attack));
         Assert.That(s.Projectiles.First(p=>p.Source=="Tower:"+t.Id).Target,Is.EqualTo(attack));
+    }
+    [Test] public void SingleTowerKeepsItsBossTargetWhileItStaysInRange()
+    {
+        // 10-28: 보스 맨 뒤·보스 조준 중 교체는 기술병만. 포탑은 대상이 살아 있고 사거리 안이면 유지.
+        var s=Game();string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
+        var boss=s.DebugSpawn(EnemyKind.Boss,0);s.Tick(.01f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(boss));
+        s.DebugSpawn(EnemyKind.Attack,0);s.Tick(.5f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(boss));
     }
     [Test] public void PlayerYieldsBossLockLikeTowers()
     {
@@ -517,6 +526,32 @@ public class CoreGuardianSessionTests
         s.Tick(.01f,Away);
         Assert.That(s.Phase,Is.EqualTo(SessionPhase.Defeat));Assert.That(exited.IsValid,Is.False);Assert.That(frozen.IsValid,Is.True);
         Assert.That(s.Enemies.Count,Is.EqualTo(1));Assert.That(s.EnemyPool(EnemyKind.Attack).Active,Is.Zero);Assert.That(s.EnemyPool(EnemyKind.Defense).Active,Is.EqualTo(1));
+    }
+    // HUD 개편 B안 (2026-10-28): 건물 칸은 설치 불가, 연구소는 그 종류 포탑이 있어야 종류 강화 구매, 약점·저항 피해 숫자 표시.
+    [Test] public void StructureCellsRejectPlacement()
+    {
+        var s=Game();s.SetStructures(new[]{new Vector2Int(2,1),new Vector2Int(3,1)});string r;
+        Assert.That(s.IsBuildable(new Vector2Int(2,1)),Is.False);Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,1),out r),Is.Null);
+        Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(4,1),out r),Is.Not.Null,r);
+    }
+    [Test] public void LabUpgradeNeedsATowerOfThatKindAndAppliesToLaterInstalls()
+    {
+        var s=Game();s.StartDiagnosticEncounter();string r;float before=s.TowerKindStats(TowerKind.Multi).Damage;int price=s.TowerKindUpgradePrice(TowerKind.Multi,"damage");
+        int crystals=s.Crystals;Assert.That(s.UpgradeTowerKind(TowerKind.Multi,"damage",out r),Is.False,"그 종류 포탑이 없으면 구매 불가 (10-28)");Assert.That(s.Crystals,Is.EqualTo(crystals));
+        var t=s.TryInstall(TowerKind.Multi,new Vector2Int(2,1),out r);Assert.That(t,Is.Not.Null,r);crystals=s.Crystals;
+        Assert.That(s.UpgradeTowerKind(TowerKind.Multi,"damage",out r),Is.True,r);Assert.That(s.Crystals,Is.EqualTo(crystals-price));
+        float after=s.TowerKindStats(TowerKind.Multi).Damage;Assert.That(after,Is.GreaterThan(before));Assert.That(t.Stats.Damage,Is.EqualTo(after).Within(.001f));
+        var later=s.TryInstall(TowerKind.Multi,new Vector2Int(4,1),out r);Assert.That(later.Stats.Damage,Is.EqualTo(after).Within(.001f));
+    }
+    [TestCase(true,1)][TestCase(false,-1)]
+    public void HitAffinityReportsWeakAndResistTowerHits(bool weak,int expected)
+    {
+        var d=Data();d.Waves.Clear();var spec=d.Enemies[EnemyKind.Attack];spec.WeakTowers=weak?1<<(int)TowerKind.Single:0;spec.ResistTowers=weak?0:1<<(int)TowerKind.Single;spec.Speed=.001f;
+        var s=new Session(d);s.SetBoard(40,25,new Vector2Int(10,0),new[]{new Vector2Int(0,0),new Vector2Int(10,0)});string r;s.TryInstall(TowerKind.Single,new Vector2Int(2,1),out r);
+        s.StartCombat();var e=s.DebugSpawn(EnemyKind.Attack,2);e.Health=10000;
+        var seen=new System.Collections.Generic.List<int>();s.DamageApplied+=(target,amount)=>seen.Add(s.HitAffinity);
+        s.Tick(3f,Away);Assert.That(seen,Is.Not.Empty);Assert.That(seen,Has.Member(expected));Assert.That(s.HitAffinity,Is.EqualTo(0));
+        seen.Clear();s.ApplyDamage(e,10,"Player");Assert.That(seen,Is.EqualTo(new[]{0}),"기술병 피해는 약점·저항 표시 없음");
     }
 }
 

@@ -21,6 +21,8 @@ namespace CoreGuardian
         // Boss abilities: shield thresholds (% of max health), summons (enemy ID x count per cycle).
         public float[] ShieldAt=Array.Empty<float>(); public float ShieldDefense, ShieldSeconds;
         public int SummonId, SummonCount; public float SummonInterval, SummonRageInterval;
+        // 약점·저항 (2026-10-28): bit (1<<(int)TowerKind) per tower kind. Tower damage only.
+        public int WeakTowers, ResistTowers;
         public float RagePercent=>RageAt>0?RageAt:50;
         public float RageBoost=>RageSpeed>0?RageSpeed:30;
         public EnemySpec Clone()=>(EnemySpec)MemberwiseClone();
@@ -30,6 +32,8 @@ namespace CoreGuardian
         public TowerKind Kind; public int Cost; public float Damage, Rate, Range, ProjectileSpeed, BuffDamage;
         public int Id, MaxTargets; public string Key, Tag, AttackType, Requires;
         public float SlowPercent, SlowDuration, BurnPerStack, BurnDuration, PierceFalloff;
+        // 포탑별 공격 순서 (towers.targetPriority/targetTiebreak). Null = no target choice (냉기·지원).
+        public TargetOrder TargetOrder;
     }
     public sealed class UpgradeSpec { public string Target, Stat; public float Delta; public int Cost, CostIncrement; public int Id, TargetId, Group; }
     public sealed class WaveSpec { public int Wave, Count; public EnemyKind Kind; public float Interval, Start; public EnemySpec Enemy; public int Id, EnemyId; }
@@ -86,6 +90,8 @@ namespace CoreGuardian
         public float PreparationFor(int wave,bool afterAugmentation)=>afterAugmentation||IsBossWave(wave)?PreparationSecondsLong:PreparationSeconds;
         public float Setting(string key,float fallback)=>Settings.TryGetValue(key,out var value)?value:fallback;
         public CombatStats Player;
+        // 기술병 공통 공격 순서 (player.targetPriority). Legacy data uses TargetOrder.Common.
+        public TargetOrder PlayerTargetOrder=TargetOrder.Common;
         // Effect tag lookup with a fallback when the sheet lacks the row; NaN marks boss immunity.
         public float Tag(string tag,string param,bool boss,float fallback)
         {
@@ -235,6 +241,12 @@ namespace CoreGuardian
             if(quoted)throw new ArgumentException("Unterminated quote: "+line);
             cells.Add(cell.ToString().Trim());return cells.ToArray();
         }
+        int TowerMask(string list)
+        {
+            int mask=0;if(list.Length==0)return 0;
+            foreach(var part in list.Split('|')){int id=I(part.Trim());if(!TowersById.TryGetValue(id,out var t))throw new ArgumentException("enemies: unknown tower "+id);mask|=1<<(int)t.Kind;}
+            return mask;
+        }
         static void Unique(HashSet<int> ids,int id,string table){if(!ids.Add(id))throw new ArgumentException(table+": duplicate ID "+id);}
         static (int id,float value) Reference(string text,string table)
         {
@@ -249,16 +261,18 @@ namespace CoreGuardian
             foreach(var r in stageTable.Rows){Unique(ids,stageTable.Id(r,42000,42999),"stage");var key=stageTable.Required(r,"key");if(settings.ContainsKey(key))throw new ArgumentException("stage: duplicate key "+key);settings.Add(key,stageTable.Required(r,"value"));}
             d.ApplyStage(settings);
             // player
+            string playerPriority="",playerTiebreak="";
             if(player!=null)
             {
                 var t=new Table("player",player,"id","damage","rate","range","projectileSpeed");if(t.Rows.Count!=1)throw new ArgumentException("player: expected one row");
                 var r=t.Rows[0];t.Id(r,10000,10999);d.Player=new CombatStats{Damage=t.F(r,"damage"),Rate=t.F(r,"rate"),Range=t.F(r,"range"),ProjectileSpeed=t.F(r,"projectileSpeed")};
+                playerPriority=t.S(r,"targetPriority");playerTiebreak=t.S(r,"targetTiebreak");
             }
             else if(settings.ContainsKey("playerDamage"))d.Player=new CombatStats{Damage=F(settings["playerDamage"]),Rate=F(settings["playerRate"]),Range=F(settings["playerRange"]),ProjectileSpeed=F(settings["playerProjectileSpeed"])};
             else throw new ArgumentException("Missing player data");
             // enemies
             var et=new Table("enemies",enemies,"id","key","health","speed","coreDamage","gold","defense","buffRadius","buffSpeed","status");ids.Clear();
-            var pending=new List<(EnemySpec spec,string[] row)>();
+            var pending=new List<(EnemySpec spec,string[] row)>();var affinity=new List<(EnemySpec spec,string weak,string resist)>();
             foreach(var r in et.Rows)
             {
                 int id=et.Id(r,11000,11999);Unique(ids,id,"enemies");var key=et.Required(r,"key");
@@ -274,7 +288,7 @@ namespace CoreGuardian
                 var shield=et.S(r,"shieldAt");if(shield.Length>0){e.ShieldAt=shield.Split('|').Select(x=>F(x.Trim())).OrderByDescending(x=>x).ToArray();e.ShieldDefense=et.F(r,"shieldDefense");e.ShieldSeconds=et.F(r,"shieldSeconds");}
                 var summon=et.S(r,"summonInto");if(summon.Length>0){var x=Reference(summon,"enemies");e.SummonId=x.id;e.SummonCount=(int)x.value;e.SummonInterval=et.F(r,"summonInterval");e.SummonRageInterval=et.F(r,"summonRageInterval",e.SummonInterval);if(e.SummonCount<1||e.SummonInterval<=0)throw new ArgumentException("enemies: invalid summon");}
                 var split=et.S(r,"splitInto");if(split.Length>0){var x=Reference(split,"enemies");e.SplitIntoId=x.id;e.SplitCount=(int)x.value;if(x.value!=e.SplitCount||e.SplitCount<1)throw new ArgumentException("enemies: split count must be a positive integer");}
-                d.EnemiesById.Add(id,e);if(!d.Enemies.ContainsKey(kind))d.Enemies.Add(kind,e);pending.Add((e,r));
+                d.EnemiesById.Add(id,e);if(!d.Enemies.ContainsKey(kind))d.Enemies.Add(kind,e);pending.Add((e,r));affinity.Add((e,et.S(r,"weakTower"),et.S(r,"resistTower")));
             }
             if(!d.Enemies.TryGetValue(EnemyKind.Attack,out var attack))throw new ArgumentException("enemies: missing Attack");
             foreach(var (e,r) in pending)
@@ -300,7 +314,10 @@ namespace CoreGuardian
                     BurnPerStack=tt.F(r,"burnPerStack",0),BurnDuration=tt.F(r,"burnDuration",0),PierceFalloff=tt.F(r,"pierceFalloff",0),Requires=tt.S(r,"requires")};
                 if(t.PierceFalloff>1)throw new ArgumentException("towers: pierceFalloff above 1");
                 d.Towers.Add(kind,t);d.TowersById.Add(id,t);
+                var priority=tt.S(r,"targetPriority");if(priority.Length>0)t.TargetOrder=TargetOrder.Parse(priority,tt.S(r,"targetTiebreak"),d.EnemiesById,"towers");
             }
+            if(playerPriority.Length>0)d.PlayerTargetOrder=TargetOrder.Parse(playerPriority,playerTiebreak,d.EnemiesById,"player");
+            foreach(var (e,weak,resist) in affinity){e.WeakTowers=d.TowerMask(weak);e.ResistTowers=d.TowerMask(resist);if((e.WeakTowers&e.ResistTowers)!=0)throw new ArgumentException("enemies: tower both weak and resist for "+e.Id);}
             // upgrades
             var ut=new Table("upgrades",upgrades,"id","target","stat","delta","cost","costIncrement");ids.Clear();
             foreach(var r in ut.Rows)
@@ -371,27 +388,56 @@ namespace CoreGuardian
             public int Compare(EnemyHandle a,EnemyHandle b)=>CompareTargetPriority(a,b,tower);
         }
         static readonly IComparer<EnemyHandle> playerPriority=new TargetComparer(false),towerPriority=new TargetComparer(true);
-        // 전투 피해 계산 규칙 우선순위: 치유사 > 수비형 > 버프형 > 장갑병 > 비행체 > 분열체(작은 개체) > 공격형 > 돌격병 > 보스(포탑).
-        // The player keeps the boss level with Attack (documented current behaviour).
-        static int TargetRank(EnemyHandle enemy,bool tower)
-        {
-            switch(enemy.Kind)
-            {
-                case EnemyKind.Healer:return 0;case EnemyKind.Defense:return 1;case EnemyKind.Buff:return 2;case EnemyKind.Armored:return 3;
-                case EnemyKind.Flyer:return 4;case EnemyKind.Splitter:case EnemyKind.SplitChild:return 5;case EnemyKind.Charger:return 7;
-                case EnemyKind.Boss:return 8;default:return 6; // 보스 맨 뒤: 플레이어·포탑 공통 (정본)
-            }
-        }
-        public static int CompareTargetPriority(EnemyHandle a,EnemyHandle b,bool tower)
-        {
-            int order=TargetRank(a,tower).CompareTo(TargetRank(b,tower));if(order!=0)return order;
-            order=a.Health.CompareTo(b.Health);if(order!=0)return order;
-            // Session derives PathRemaining from route length minus travelled length. It is
-            // distance along every remaining X/Y segment, never straight-line distance to core.
-            order=a.PathRemaining.CompareTo(b.PathRemaining);return order!=0?order:a.Id.CompareTo(b.Id);
-        }
+        // 공통 우선순위 (전투 피해 계산 규칙 정본, 2026-10-28부터 기술병 전용) = TargetOrder.Common.
+        public static int CompareTargetPriority(EnemyHandle a,EnemyHandle b,bool tower)=>TargetOrder.Common.Compare(a,b);
         public static EnemyHandle Priority(IEnumerable<EnemyHandle> enemies)=>enemies.Where(e=>e.Alive).OrderBy(e=>e,playerPriority).FirstOrDefault();
         public static IOrderedEnumerable<EnemyHandle> TowerPriorityOrder(IEnumerable<EnemyHandle> enemies)=>enemies.Where(e=>e.Alive).OrderBy(e=>e,towerPriority);
+    }
+    // 공격 대상 순서: 적 종류 순위(데이터의 적 ID 목록, 같은 종류는 같은 순위) → 같은 순위 안 기준.
+    // 기준: LowestHealth(기술병) · HighestHealth(단일) · NearestCore(범위) · UnburnedNearestCore(화염) · MostPierced(레일, Session이 직선 관통 수를 셈).
+    // 마지막은 코어까지 남은 경로 길이(PathRemaining) → ID.
+    public sealed class TargetOrder
+    {
+        public const string LowestHealth="LowestHealth",HighestHealth="HighestHealth",NearestCore="NearestCore",UnburnedNearestCore="UnburnedNearestCore",MostPierced="MostPierced";
+        static readonly int KindCount=Enum.GetValues(typeof(EnemyKind)).Length;
+        readonly int[] rank;public readonly string Tiebreak;public readonly int[] EnemyIds;
+        TargetOrder(int[] rank,string tiebreak,int[] ids){this.rank=rank;Tiebreak=tiebreak;EnemyIds=ids;}
+        public static readonly TargetOrder Common=FromKinds(new[]{EnemyKind.Healer,EnemyKind.Defense,EnemyKind.Buff,EnemyKind.Armored,EnemyKind.Flyer,EnemyKind.Splitter,EnemyKind.Attack,EnemyKind.Charger,EnemyKind.Boss},LowestHealth,Array.Empty<int>());
+        static TargetOrder FromKinds(IList<EnemyKind> kinds,string tiebreak,int[] ids)
+        {
+            var r=new int[KindCount];for(int i=0;i<r.Length;i++)r[i]=-1;int next=0;
+            // 분열 작은 개체는 분열체와 같은 순위 (정본): 목록에서 같은 종류로 취급.
+            foreach(var listed in kinds){var k=listed==EnemyKind.SplitChild?EnemyKind.Splitter:listed;if(r[(int)k]<0)r[(int)k]=next++;}
+            r[(int)EnemyKind.SplitChild]=r[(int)EnemyKind.Splitter];
+            for(int i=0;i<r.Length;i++)if(r[i]<0)r[i]=next;
+            return new TargetOrder(r,tiebreak,ids);
+        }
+        public static TargetOrder Parse(string priority,string tiebreak,IReadOnlyDictionary<int,EnemySpec> enemies,string table)
+        {
+            switch(tiebreak){case LowestHealth:case HighestHealth:case NearestCore:case UnburnedNearestCore:case MostPierced:break;default:throw new ArgumentException(table+": unknown targetTiebreak "+tiebreak);}
+            var ids=new List<int>();var kinds=new List<EnemyKind>();
+            foreach(var part in priority.Split('|'))
+            {
+                if(!int.TryParse(part.Trim(),NumberStyles.Integer,CultureInfo.InvariantCulture,out int id)||!enemies.TryGetValue(id,out var e))throw new ArgumentException(table+": unknown enemy in targetPriority "+part);
+                ids.Add(id);kinds.Add(e.Kind);
+            }
+            return FromKinds(kinds,tiebreak,ids.ToArray());
+        }
+        public int Rank(EnemyKind kind)=>rank[(int)kind];
+        public int Compare(EnemyHandle a,EnemyHandle b)
+        {
+            int o=Rank(a.Kind).CompareTo(Rank(b.Kind));if(o!=0)return o;
+            switch(Tiebreak)
+            {
+                case HighestHealth:o=b.Health.CompareTo(a.Health);break;
+                case UnburnedNearestCore:o=(a.BurnStacks>0).CompareTo(b.BurnStacks>0);break;
+                case NearestCore:case MostPierced:o=0;break;
+                default:o=a.Health.CompareTo(b.Health);break;
+            }
+            if(o!=0)return o;
+            // PathRemaining: distance along the remaining route, never straight-line distance to core.
+            o=a.PathRemaining.CompareTo(b.PathRemaining);return o!=0?o:a.Id.CompareTo(b.Id);
+        }
     }
     public sealed class TowerState
     {

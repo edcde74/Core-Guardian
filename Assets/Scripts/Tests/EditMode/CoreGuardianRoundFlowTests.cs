@@ -112,8 +112,8 @@ public class CoreGuardianRoundFlowTests
         Assert.That(s.PreparationRemaining,Is.InRange(d.PreparationSeconds-2,d.PreparationSeconds));
         Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.True);
         Assert.That(s.StartCombat(),Is.True);Assert.That(s.StartCombat(),Is.False);
-        Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.False);
-        Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(31,20),out reason),Is.Null);
+        Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.True,"전투 중 강화 허용 (10-28)");
+        Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(31,20),out reason),Is.Not.Null,"전투 중 설치 허용 (10-28)");
         s.Tick(.05f,Away);Assert.That(s.Enemies.Single().Kind,Is.EqualTo(EnemyKind.Defense));
     }
     [Test] public void WaitingForFutureSpawnDoesNotFinishRound()

@@ -78,6 +78,13 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public void ClearInspectionSelection(){SelectedTower=-1;}
     public Transform HealthView(int id)=>healthViews.TryGetValue(id,out var view)?view:null;
     public Transform TowerView(int id)=>towerViews.TryGetValue(id,out var view)&&view!=null?view.transform:null;
+    public Transform EnemyView(int id)=>enemyViews.TryGetValue(id,out var view)&&view!=null?view.transform:null;
+    // HUD 개편 B안: 포탑 연구소(1)·기술병 작업대(2) 건물. 2×2 칸, 위치는 stage.csv 427xx.
+    readonly HashSet<Vector2Int> labCells=new HashSet<Vector2Int>(),benchCells=new HashSet<Vector2Int>();
+    SpriteRenderer labView,benchView;
+    Sprite labSprite,labHighlight,benchSprite,benchHighlight;
+    public bool IsLabCell(Vector2Int c)=>labCells.Contains(c);
+    public bool IsBenchCell(Vector2Int c)=>benchCells.Contains(c);
     public void GetCombatBodyTargets(List<Transform> targets)
     {
         if(player!=null&&player.gameObject.activeInHierarchy)targets.Add(player.transform);
@@ -97,6 +104,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             route=routeCells.Select(c=>World(c)).ToArray();
             Session.SetBoard(boardSize.x,boardSize.y,coreCell,routeCells);
             var flying=FlyingRoute();if(flying!=null)Session.SetFlyingRoute(flying);
+            SetupBuildings();
             player.Stepped+=cell=>Session.NotifyPlayerStep(new Vector2Int(cell.x,cell.y));
             var combatAudio=GetComponent<CoreGuardianCombatAudio>();
             if(combatAudio==null)combatAudio=gameObject.AddComponent<CoreGuardianCombatAudio>();
@@ -111,6 +119,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             if(upgradeFeedback==null)upgradeFeedback=gameObject.AddComponent<CoreGuardianUpgradeFeedback>();
             previousGold=Session.Gold;
             previousCore=Session.CoreEnergy;
+            RebuildOccupied();
             Feedback="공격 포탑을 선택하고 바닥 칸을 클릭하세요. WASD: 한 칸 이동";
         }
         catch(Exception e) { Debug.LogException(e,this);Feedback=e.Message;enabled=false; }
@@ -133,7 +142,8 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         SyncTestSpeed();
         Session.Tick(Time.deltaTime,PlayerTile());
         SyncTestSpeed();
-        if(Installing.HasValue&&!Session.CanBuildNow)CancelInstall();
+        // 전투 중 설치 허용(10-28) 뒤에도 단계가 바뀌면 설치 중인 것은 취소 (기존 동작 유지).
+        if(Installing.HasValue&&(!Session.CanBuildNow||phase!=Session.Phase))CancelInstall();
         player.enabled=Session.Phase!=SessionPhase.Augmentation;
         if(Session.Gold>previousGold){ Feedback="+"+(Session.Gold-previousGold)+" 골드 획득";notificationUntil=Time.unscaledTime+2; }
         previousGold=Session.Gold;
@@ -144,10 +154,17 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame&&hud.CancelInstallation()){pointerBlocked=true;return;}
         // Space belongs to the skill: drop any UI selection so it never submits a focused button.
         if(Keyboard.current!=null&&Keyboard.current.spaceKey.wasPressedThisFrame){if(EventSystem.current!=null)EventSystem.current.SetSelectedGameObject(null);UseAreaBlast();}
+        // 1: 포탑 연구소 / 2: 기술병 작업대 (설치 중·증강 선택 중 제외).
+        if(Keyboard.current!=null&&!Installing.HasValue&&Session.Phase!=SessionPhase.Augmentation)
+        {
+            if(Keyboard.current.digit1Key.wasPressedThisFrame||Keyboard.current.numpad1Key.wasPressedThisFrame)hud.ToggleLab();
+            else if(Keyboard.current.digit2Key.wasPressedThisFrame||Keyboard.current.numpad2Key.wasPressedThisFrame)hud.ToggleBench();
+        }
         if(Mouse.current==null||Camera.main==null)return;
         var mouse=Mouse.current.position.ReadValue();
         var world=Camera.main.ScreenToWorldPoint(new Vector3(mouse.x,mouse.y,-Camera.main.transform.position.z));
         var cell=ground.WorldToCell(world);var xy=new Vector2Int(cell.x,cell.y);
+        RefreshBuildingHighlights(xy,!OverUI(mouse));
         if(Installing.HasValue&&ghost!=null)
         {
             // The tile-centered preview is the visible placement cursor. Preserve normal UI input.
@@ -195,8 +212,14 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     {
         if(Session.Phase==SessionPhase.Augmentation)return;
         if(Installing.HasValue){Place(Installing.Value,xy);return;}
+        if(labCells.Contains(xy)){hud.ToggleLab();return;}
+        if(benchCells.Contains(xy)){hud.ToggleBench();return;}
         var tower=Session.Towers.FirstOrDefault(t=>t.Position==xy);
         if(tower!=null){SelectedTower=tower.Id;hud.OpenSelectedTowerSpecs();Changed?.Invoke();return;}
+        // Enemy: nearest living one whose body covers the clicked tile (art stands above its foot cell).
+        EnemyHandle picked=default;float best=float.MaxValue;
+        foreach(var e in Session.Enemies){if(!e.Alive)continue;float dx=Mathf.Abs(e.Position.x-xy.x),dy=xy.y-e.Position.y;if(dx>.6f||dy<-.4f||dy>1.2f)continue;float d=dx*dx+dy*dy;if(d<best){best=d;picked=e;}}
+        if(best<float.MaxValue){hud.ShowEnemyInfo(picked);Changed?.Invoke();return;}
         if(Vector2Int.RoundToInt(PlayerTile())==xy){hud.OpenPlayerSpecs();return;}
         var cell=new Vector3Int(xy.x,xy.y,0);
         bool empty=ground.HasTile(cell)&&!enemyPath.HasTile(cell)&&!coreMap.HasTile(cell)&&!occupied.HasTile(cell)
@@ -220,7 +243,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     public void ChooseTower(TowerKind kind)
     {
         CancelInstall();
-        if(!Session.CanBuildNow){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("전투 중에는 설치할 수 없습니다.");return;}
+        if(!Session.CanBuildNow){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("지금은 설치할 수 없습니다.");return;}
         if(Session.Crystals<Session.InstallCost(kind)){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("수정 부족 · 필요 "+Session.InstallCost(kind)+"수정");return;}
         if(kind==TowerKind.Support&&!Session.Towers.Any(t=>t.Kind!=TowerKind.Support)){GetComponent<CoreGuardianCombatAudio>()?.PlayCue("install_fail");Notify("공격 포탑을 먼저 설치하세요.");return;}
         Installing=kind;
@@ -273,6 +296,35 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
     void RebuildOccupied()
     {
         occupied.ClearAllTiles();foreach(var t in Session.Towers)occupied.SetTile(new Vector3Int(t.Position.x,t.Position.y,0),occupiedTile);
+        // Buildings block placement and player movement exactly like towers.
+        foreach(var c in labCells)occupied.SetTile(new Vector3Int(c.x,c.y,0),occupiedTile);
+        foreach(var c in benchCells)occupied.SetTile(new Vector3Int(c.x,c.y,0),occupiedTile);
+    }
+    void SetupBuildings()
+    {
+        int size=Mathf.Max(1,Mathf.RoundToInt(Session.Data.Setting("buildingSize",2)));
+        var lab=new Vector2Int(Mathf.RoundToInt(Session.Data.Setting("buildingLabX",2)),Mathf.RoundToInt(Session.Data.Setting("buildingLabY",1)));
+        var bench=new Vector2Int(Mathf.RoundToInt(Session.Data.Setting("buildingBenchX",35)),Mathf.RoundToInt(Session.Data.Setting("buildingBenchY",1)));
+        labCells.Clear();benchCells.Clear();
+        for(int x=0;x<size;x++)for(int y=0;y<size;y++){labCells.Add(lab+new Vector2Int(x,y));benchCells.Add(bench+new Vector2Int(x,y));}
+        Session.SetStructures(labCells.Concat(benchCells));
+        labSprite=Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H1_turret_lab");labHighlight=Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H1_turret_lab_highlight");
+        benchSprite=Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H2_engineer_bench");benchHighlight=Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H2_engineer_bench_highlight");
+        var material=TowerArtFor(TowerKind.Single)?.GetComponentInChildren<SpriteRenderer>(true)?.sharedMaterial;
+        labView=BuildingView("Building_TurretLab",labSprite,lab,size,material);benchView=BuildingView("Building_EngineerBench",benchSprite,bench,size,material);
+    }
+    SpriteRenderer BuildingView(string name,Sprite sprite,Vector2Int origin,int size,Material material)
+    {
+        if(sprite==null){Debug.LogWarning("Missing building art "+name,this);return null;}
+        var go=new GameObject(name);go.transform.position=World(new Vector2(origin.x+(size-1)*.5f,origin.y-.5f));go.transform.localScale=Vector3.one*.6f;
+        var sr=go.AddComponent<SpriteRenderer>();sr.sprite=sprite;if(material!=null)sr.sharedMaterial=material;
+        sr.sortingOrder=ArtDepthSorting.Order(go.transform.position.y,0);return sr;
+    }
+    void RefreshBuildingHighlights(Vector2Int hover,bool pointerOnBoard)
+    {
+        bool idle=!Installing.HasValue&&Session.Phase!=SessionPhase.Augmentation;
+        if(labView!=null){var sprite=(hud.LabOpen||idle&&pointerOnBoard&&labCells.Contains(hover))&&labHighlight!=null?labHighlight:labSprite;if(labView.sprite!=sprite)labView.sprite=sprite;}
+        if(benchView!=null){var sprite=(hud.BenchOpen||idle&&pointerOnBoard&&benchCells.Contains(hover))&&benchHighlight!=null?benchHighlight:benchSprite;if(benchView.sprite!=sprite)benchView.sprite=sprite;}
     }
     public bool PlaceAtPlayerForTest(){var p=player.CurrentCell;return Place(TowerKind.Single,new Vector2Int(p.x,p.y));}
     public void DestroySelected()
@@ -300,6 +352,18 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         else GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeFailed();
         Notify(reason);
     }
+    // 포탑 연구소: 종류별 공유 강화. 그 종류 포탑이 1기 이상 있어야 구매 (10-28).
+    public void UpgradeTowerKind(TowerKind kind,string stat)
+    {
+        string reason;
+        if(Session.UpgradeTowerKind(kind,stat,out reason))
+        {
+            foreach(var tower in Session.Towers.Where(t=>t.Kind==kind))upgradeFeedback.Trigger(TowerView(tower.Id));
+            GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeSucceeded();
+        }
+        else GetComponent<CoreGuardianCombatAudio>()?.NotifyUpgradeFailed();
+        Notify(reason);
+    }
     // 범위 폭발 (Space, 전투 중). 46 순간 이동 follows the blast.
     public bool UseAreaBlast()
     {
@@ -309,7 +373,12 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
             var dir=player.LastDirection;
             if(dir==Vector2Int.zero){var p=Vector2Int.RoundToInt(PlayerTile());var d=coreCell-p;dir=Mathf.Abs(d.x)>=Mathf.Abs(d.y)?new Vector2Int(Math.Sign(d.x),0):new Vector2Int(0,Math.Sign(d.y));if(dir==Vector2Int.zero)dir=Vector2Int.right;}
             var from=player.transform.position;
-            if(player.TryTeleport(dir,(int)(Session.Augments.Value(46)/Math.Max(1,Session.Augments.Count(46)))))effects.Teleport(from,player.transform.position);
+            if(player.TryTeleport(dir,(int)(Session.Augments.Value(46)/Math.Max(1,Session.Augments.Count(46)))))
+            {
+                effects.Teleport(from,player.transform.position);
+                // 46 도착 폭발 (2026-10-28): 도착 칸에서 범위 폭발 한 번 더 (피해 50%).
+                Session.UseTeleportBlast(PlayerTile());
+            }
         }
         return true;
     }
@@ -321,7 +390,7 @@ public sealed class CoreGuardianPrototype : MonoBehaviour
         combatArt.ClearEffects();effects?.Clear();
         CancelInstall();Session.StartDiagnosticEncounter();SelectedTower=-1;previousGold=Session.Gold;previousCore=Session.CoreEnergy;
         SyncTestSpeed();
-        occupied.ClearAllTiles();foreach(var t in Session.Towers)occupied.SetTile(new Vector3Int(t.Position.x,t.Position.y,0),occupiedTile);
+        RebuildOccupied();
         SynchronizeViews();Notify("역할 검증 모드 — 정식 라운드 편성·재화와 별도");
     }
     public int TestSpeed {get;private set;}=1;

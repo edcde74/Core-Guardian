@@ -107,6 +107,8 @@ namespace CoreGuardian
     {
         public float Crit,BurnPerStack,BurnDuration,SlowPercent,SlowDuration,Execute,PierceFalloff,ChainFalloff,ExtraLine;
         public int BurnStacks,Chain,ExtraPierce;public bool Player,Skill,NoBounce,PierceGrowth,CritNoFalloff,Rail;
+        // Tower kind + 1 that made the damage (0 = 기술병·증강 효과). Drives 약점·저항 (3-4).
+        public int Tower;
     }
     public readonly struct ProjectileSnapshot
     {

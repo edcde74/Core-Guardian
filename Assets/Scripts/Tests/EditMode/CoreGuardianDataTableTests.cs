@@ -50,9 +50,13 @@ public class CoreGuardianDataTableTests
     {
         var d=Data();
         var frost=d.Towers[TowerKind.Frost];Assert.That((frost.Cost,frost.Damage,frost.Rate,frost.Range,frost.SlowPercent,frost.SlowDuration,frost.AttackType),Is.EqualTo((60,5f,.5f,2f,30f,2.5f,"Pulse")));
-        var flame=d.Towers[TowerKind.Flame];Assert.That((flame.Cost,flame.Damage,flame.Rate,flame.Range,flame.ProjectileSpeed,flame.BurnPerStack,flame.BurnDuration),Is.EqualTo((65,5f,.8f,3f,6f,3f,3f)));
+        var flame=d.Towers[TowerKind.Flame];Assert.That((flame.Cost,flame.Damage,flame.Rate,flame.Range,flame.ProjectileSpeed,flame.BurnPerStack,flame.BurnDuration),Is.EqualTo((65,5f,.8f,3f,6f,3f,4f)));
         var rail=d.Towers[TowerKind.Rail];Assert.That((rail.Cost,rail.Damage,rail.Rate,rail.Range,rail.ProjectileSpeed,rail.PierceFalloff),Is.EqualTo((75,35f,.4f,6f,12f,.8f)));
-        Assert.That(d.Towers[TowerKind.Multi].MaxTargets,Is.EqualTo(3));
+        var multi=d.Towers[TowerKind.Multi];Assert.That((multi.Cost,multi.Damage,multi.Rate,multi.MaxTargets),Is.EqualTo((70,10f,.5f,3)),"2026-10-28 범위 공격 70·10·0.5");
+        Assert.That(d.EnemiesById[11002].WeakTowers,Is.EqualTo(1<<(int)TowerKind.Flame));Assert.That(d.EnemiesById[11002].ResistTowers,Is.EqualTo(1<<(int)TowerKind.Multi));
+        Assert.That(d.EnemiesById[11201].WeakTowers,Is.EqualTo(d.EnemiesById[11005].WeakTowers));Assert.That(d.EnemiesById[11101].WeakTowers|d.EnemiesById[11101].ResistTowers,Is.Zero);
+        var exploit=d.Augments.Single(a=>a.Number==49);Assert.That((exploit.Name,exploit.Value(0),exploit.Value(1)),Is.EqualTo(("약점 공략",1.6f,.85f)));
+        Assert.That(d.Augments.Single(a=>a.Number==46).Value(1),Is.EqualTo(.5f));
         Assert.That(d.Upgrades.Count,Is.EqualTo(27));
         var burn=d.Upgrades.Single(u=>u.Id==21511);Assert.That((burn.Target,burn.Stat,burn.Delta,burn.Group),Is.EqualTo(("Flame","burnPerStack",.6f,21501)));
         Assert.That(d.Upgrades.Where(u=>u.Target!="Player").All(u=>u.Cost==60&&u.CostIncrement==30),Is.True);

@@ -54,8 +54,8 @@ public class CoreGuardianUpgradeFeedbackPlayModeTests
         try
         {
             Time.timeScale=0;
-            Click(game,"PlayerGrowth");Click(game,"damage");Assert.That(triggers(),Is.Zero,"Initial zero gold cannot produce a success scan");
-            Call(game,"Diagnostic");Click(game,"PlayerSpecs");Click(game,"PlayerBuyTab");Click(game,"damage");Assert.That(triggers(),Is.EqualTo(1));
+            {var hud=game.GetComponent(Find("CoreGuardianHud"));hud.GetType().GetMethod("ToggleBench").Invoke(hud,null);}Click(game,"damage");Assert.That(triggers(),Is.Zero,"Initial zero gold cannot produce a success scan");
+            Call(game,"Diagnostic");Click(game,"PlayerBuyTab");Click(game,"damage");Assert.That(triggers(),Is.EqualTo(1));
             var player=(Component)game.GetType().GetField("player").GetValue(game);
             Assert.That(type.GetMethod("IsScanning").Invoke(feedback,new object[]{player.transform}),Is.EqualTo(true));
             Call(game,"UpgradePlayer","rate");Assert.That(triggers(),Is.EqualTo(2));Assert.That(active(),Is.EqualTo(1),"Rapid repeat restarts the one scan without stacking copies");
@@ -65,7 +65,7 @@ public class CoreGuardianUpgradeFeedbackPlayModeTests
             {
                 if(i==0)Call(game,"Place",TowerKind.Single,new Vector2Int(15,15));
                 var cell=new Vector2Int(14+i*3,15);Call(game,"Place",kinds[i],cell);Call(game,"HandleWorldClick",cell);
-                Click(game,"TowerBuyTab");Click(game,kinds[i]==TowerKind.Support?"Tower_buffDamage":"Tower_damage");
+                Click(game,"LabKind_"+kinds[i]);Click(game,kinds[i]==TowerKind.Support?"Tower_buffDamage":"Tower_damage");
                 Assert.That(triggers(),Is.EqualTo(4+i),"A shared purchase scans every existing same-kind tower");
                 int selected=(int)game.GetType().GetProperty("SelectedTower").GetValue(game);
                 var target=(Transform)game.GetType().GetMethod("TowerView").Invoke(game,new object[]{selected});

@@ -4,11 +4,14 @@ using CoreGuardian;
 using UnityEngine;
 
 // Display policy only: prices, progression, combat and placement remain owned by Session/Prototype.
+// HUD 개편 B안 (2026-10-28): 하단 큰 패널은 설치 목록 · 포탑 연구소(1) · 기술병 작업대(2) 중 하나만,
+// 플레이어·포탑·적 선택 정보는 왼쪽 아래 고정 정보창(CoreGuardianHud.Redesign.cs).
 public sealed partial class CoreGuardianHud
 {
-    enum InspectorSubject { None, Player, Tower }
-    InspectorSubject inspectorSubject;
-    bool inspectorOpen, purchaseOpen, developerOpen, stageFolded;
+    enum BigPanel { None, Bench, Lab }
+    BigPanel bigPanel;
+    bool purchaseOpen=true, developerOpen, stageFolded;
+    TowerKind labKind=TowerKind.Single;
     SessionPhase? displayedPhase;
     RectTransform inspectorFold;
     UnityEngine.UI.Text playerInfo, playerTitle, towerTitle;
@@ -17,21 +20,28 @@ public sealed partial class CoreGuardianHud
     UnityEngine.UI.Image towerIdentityIcon;
     GameObject cancelPlacementView;
     readonly System.Collections.Generic.List<GameObject> developerViews=new System.Collections.Generic.List<GameObject>();
+    static readonly TowerKind[] LabKinds={TowerKind.Single,TowerKind.Multi,TowerKind.Frost,TowerKind.Flame,TowerKind.Rail,TowerKind.Support};
+    static readonly string[] LabStats={"damage","rate","range","projectileSpeed","buffDamage","slowPercent","burnDuration","pierceFalloff"};
     bool CanBuyPlayer=>game.Session.Phase==SessionPhase.Preparation||game.Session.Phase==SessionPhase.Combat;
+    public bool LabOpen=>bigPanel==BigPanel.Lab&&!installOpen;
+    public bool BenchOpen=>bigPanel==BigPanel.Bench&&!installOpen;
+    public TowerKind LabKind=>labKind;
+    // Outline follows the left-bottom selection (player, tower or enemy).
     public Transform InspectionTarget
     {
         get
         {
-            if(game==null||!game.Ready||!inspectorOpen||installOpen||game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return null;
-            if(inspectorSubject==InspectorSubject.Player)return game.player.transform;
-            return inspectorSubject==InspectorSubject.Tower?game.TowerView(game.SelectedTower):null;
+            if(game==null||!game.Ready||installOpen||game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return null;
+            switch(infoSubject)
+            {
+                case InfoSubject.Player:return game.player.transform;
+                case InfoSubject.Tower:return game.TowerView(game.SelectedTower);
+                case InfoSubject.Enemy:return infoEnemy.Alive?game.EnemyView(infoEnemy.Id):null;
+                default:return null;
+            }
         }
     }
-    void ReleaseInspection()
-    {
-        inspectorOpen=false;purchaseOpen=false;inspectorSubject=InspectorSubject.None;lastTower=-1;
-        game.ClearInspectionSelection();
-    }
+    void ReleaseInspection()=>ReleaseInfo();
 
     RectTransform SmallHandle(string name,Transform parent,Action action,bool horizontal)
     {
@@ -58,8 +68,6 @@ public sealed partial class CoreGuardianHud
     {
         var phase=game.Session.Phase;
         var stage=stagePlateView;var handle=stageFoldView;
-        // The user's collapse choice hides combat details, while preparation/augmentation timers
-        // retain their existing phase-specific presentation and the resource row stays visible.
         bool hidden=phase==SessionPhase.Combat&&stageFolded;
         SetHudActive(stage.gameObject,!hidden);
         SetHudActive(handle.gameObject,phase==SessionPhase.Combat);
@@ -69,7 +77,6 @@ public sealed partial class CoreGuardianHud
     void BuildDeveloperMenu()
     {
         Button("DeveloperMenu",canvas,new Vector2(16,-14),new Vector2(150,48),()=>"개발 도구",()=>{developerOpen=!developerOpen;game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue(developerOpen?"ui_open":"ui_close");});
-        // Keep legacy object names for diagnostic scripts; only the menu exposes them now.
         var debug=canvas.Find("PrototypeActions") as RectTransform;debug.anchoredPosition=new Vector2(16,-72);
         var reload=canvas.Find("Reload") as RectTransform;reload.anchorMin=reload.anchorMax=reload.pivot=new Vector2(0,1);reload.anchoredPosition=new Vector2(32,-168);
         var speed=canvas.Find("TestSpeed") as RectTransform;speed.anchorMin=speed.anchorMax=speed.pivot=new Vector2(0,1);speed.anchoredPosition=new Vector2(32,-232);
@@ -81,22 +88,15 @@ public sealed partial class CoreGuardianHud
     }
     void BuildInspectors()
     {
+        // 기술병 작업대 (2): 현재 능력치 + 능력치 강화(골드). Object names kept from the old player panel.
         playerPanel=Box("PlayerGrowthPanel",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,220));
-        towerPanel=Box("TowerInformation",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,280));
         CoreGuardianHudSkin.Icon(playerPanel,"PlayerIdentity",new Vector2(16,-16),new Vector2(28,28));
         playerTitle=Text("Title",playerPanel,new Vector2(54,-12),new Vector2(820,32),22);
-        towerIdentityIcon=CoreGuardianHudSkin.Icon(towerPanel,"TowerIdentity",new Vector2(16,-16),new Vector2(28,28));
-        towerTitle=Text("Title",towerPanel,new Vector2(54,-12),new Vector2(820,32),22);
-        foreach(var panel in new[]{playerPanel,towerPanel})
-        {
-            bool isPlayer=panel==playerPanel;
-            var specTab=Button(isPlayer?"PlayerSpecTab":"TowerSpecTab",panel,new Vector2(16,-56),new Vector2(220,56),()=>"현재 능력치",()=>{purchaseOpen=false;Refresh();});
-            var buyTab=Button(isPlayer?"PlayerBuyTab":"TowerBuyTab",panel,new Vector2(16,-120),new Vector2(220,56),()=>isPlayer?"능력치 강화":"종류 전체 강화",()=>{purchaseOpen=true;Refresh();},()=>isPlayer?CanBuyPlayer:game.Session.Phase==SessionPhase.Preparation);
-            StyleInspectorTab(specTab);StyleInspectorTab(buyTab);
-        }
-        playerAbilities=BuildAbilityPlate(playerPanel);towerAbilities=BuildAbilityPlate(towerPanel);
+        var specTab=Button("PlayerSpecTab",playerPanel,new Vector2(16,-56),new Vector2(220,56),()=>"현재 능력치",()=>{purchaseOpen=false;Refresh();});
+        var buyTab=Button("PlayerBuyTab",playerPanel,new Vector2(16,-120),new Vector2(220,56),()=>"능력치 강화",()=>{purchaseOpen=true;Refresh();},()=>CanBuyPlayer);
+        StyleInspectorTab(specTab);StyleInspectorTab(buyTab);
+        playerAbilities=BuildAbilityPlate(playerPanel);
         playerInfo=Text("Stats",playerPanel,new Vector2(280,-186),new Vector2(580,24),16);playerInfo.alignment=TextAnchor.UpperLeft;
-        towerInfo=Text("Stats",towerPanel,new Vector2(280,-186),new Vector2(580,36),14);towerInfo.alignment=TextAnchor.UpperLeft;
         var stats=new[]{"damage","rate","range","projectileSpeed"};
         for(int i=0;i<stats.Length;i++)
         {
@@ -105,18 +105,35 @@ public sealed partial class CoreGuardianHud
             StyleAbilityPurchase(b);
             refresh.Add(()=>b.gameObject.SetActive(purchaseOpen));
         }
-        foreach(var stat in stats.Concat(new[]{"buffDamage","slowPercent","burnDuration","pierceFalloff"}))
+        // 포탑 연구소 (1): 종류 탭 + 종류별 공유 강화(수정).
+        towerPanel=Box("TowerLabPanel",canvas,new Vector2(.5f,0),new Vector2(0,112),new Vector2(900,352));
+        towerIdentityIcon=CoreGuardianHudSkin.Icon(towerPanel,"TowerIdentity",new Vector2(16,-16),new Vector2(28,28));
+        towerTitle=Text("Title",towerPanel,new Vector2(54,-12),new Vector2(820,32),22);
+        for(int i=0;i<LabKinds.Length;i++)
+        {
+            var kind=LabKinds[i];
+            var tab=Button("LabKind_"+kind,towerPanel,new Vector2(16+i*146,-52),new Vector2(138,48),()=>TowerShortName(kind),()=>{labKind=kind;Refresh();});
+            tab.GetComponent<CoreGuardianHudReaction>().Selected=()=>labKind==kind;
+        }
+        foreach(var stat in LabStats)
         {
             string captured=stat;
-            var b=Button("Tower_"+stat,towerPanel,Vector2.zero,new Vector2(306,64),()=>Selected()==null?"":UpgradeLabel(Selected().Stats,Selected().Kind.ToString(),captured,Price(captured),"수정"),()=>PurchaseTower(captured),()=>TowerCanUpgrade(captured));
-            StyleAbilityPurchase(b);
-            refresh.Add(()=>{var t=Selected();bool relevant=t!=null&&Relevant(t,captured);b.gameObject.SetActive(purchaseOpen&&relevant);if(relevant){int row=UpgradeRows(t.Kind).IndexOf(captured);((RectTransform)b.transform).anchoredPosition=new Vector2(264+row%2*306,-52-row/2*64);}});
+            var b=Button("Tower_"+stat,towerPanel,Vector2.zero,new Vector2(430,64),()=>UpgradeLabel(game.Session.TowerKindStats(labKind),labKind.ToString(),captured,game.Session.TowerKindUpgradePrice(labKind,captured),"수정"),()=>PurchaseLab(captured),()=>LabCanUpgrade(captured));
+            StyleAbilityPurchase(b);b.GetComponent<CoreGuardianHudReaction>().SetLabelLayout(new Vector2(62,-8),new Vector2(352,48));
+            refresh.Add(()=>{bool relevant=UpgradeRows(labKind).Contains(captured);b.gameObject.SetActive(relevant);if(relevant){int row=UpgradeRows(labKind).IndexOf(captured);((RectTransform)b.transform).anchoredPosition=new Vector2(16+row%2*438,-112-row/2*64);}});
         }
-        var destroy=Button("Destroy",towerPanel,new Vector2(264,-220),new Vector2(612,44),()=>"철거 · 설치비 "+game.Session.RefundPercent+"% 반환 · 공유 강화 유지",()=>game.DestroySelected(),()=>CanBuyPlayer&&Selected()!=null);
-        var destroyLabel=(RectTransform)destroy.transform.Find("Label");
-        SetHudSize(destroyLabel,new Vector2(542,28));
-        inspectorFold=SmallHandle("InspectorFold",canvas,()=>TryFoldDetails(),true);
+        towerInfo=Text("Stats",towerPanel,new Vector2(16,-308),new Vector2(860,36),15);towerInfo.alignment=TextAnchor.UpperLeft;
+        inspectorFold=SmallHandle("InspectorFold",canvas,()=>CloseBigPanels(),true);
         playerPanel.gameObject.SetActive(false);towerPanel.gameObject.SetActive(false);
+    }
+    static string TowerShortName(TowerKind kind){switch(kind){case TowerKind.Single:return "단일";case TowerKind.Multi:return "범위";case TowerKind.Frost:return "냉기";case TowerKind.Flame:return "화염";case TowerKind.Rail:return "레일";default:return "지원";}}
+    bool LabCanUpgrade(string stat){int price=game.Session.TowerKindUpgradePrice(labKind,stat);return UpgradeRows(labKind).Contains(stat)&&game.Session.CanBuildNow&&game.Session.HasTowerKind(labKind)&&price>=0&&game.Session.Crystals>=price;}
+    void PurchaseLab(string stat)
+    {
+        var kind=labKind;float before=StatValue(game.Session.TowerKindStats(kind),stat);
+        game.UpgradeTowerKind(kind,stat);
+        float after=StatValue(game.Session.TowerKindStats(kind),stat);
+        if(after>before){game.Notify(TowerName(kind)+" · "+StatName(stat)+" +"+(after-before).ToString("0.##"));var b=towerPanel.Find("Tower_"+stat);if(b!=null)b.GetComponent<CoreGuardianHudReaction>().Confirm();}
     }
     void StyleInspectorTab(UnityEngine.UI.Button button)
     {
@@ -125,36 +142,34 @@ public sealed partial class CoreGuardianHud
         var icon=tab.GetComponentsInChildren<UnityEngine.UI.Image>().First(i=>i.transform!=tab).rectTransform;
         icon.anchoredPosition=new Vector2(16,-(tab.sizeDelta.y-icon.sizeDelta.y)/2);
     }
-    void OpenPlayer(bool buy)
+    public void ToggleLab()=>ToggleBig(BigPanel.Lab);
+    public void ToggleBench()=>ToggleBig(BigPanel.Bench);
+    void ToggleBig(BigPanel panel)
     {
-        SetPlayerInspection(buy,true);
-    }
-    public void OpenPlayerSpecs()=>SetPlayerInspection(false,false);
-    void SetPlayerInspection(bool buy,bool toggle)
-    {
-        if(game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation||buy&&!CanBuyPlayer)return;
-        bool same=toggle&&inspectorSubject==InspectorSubject.Player&&inspectorOpen&&purchaseOpen==buy;
-        if(same||!inspectorOpen||inspectorSubject!=InspectorSubject.Player)game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue(same?"ui_close":"ui_open");
-        ReleaseInspection();
+        if(game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return;
+        bool close=bigPanel==panel&&!installOpen;
+        game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue(close?"ui_close":"ui_open");
         installOpen=false;installPanel.gameObject.SetActive(false);
-        if(!same){inspectorSubject=InspectorSubject.Player;inspectorOpen=true;purchaseOpen=buy;}
+        bigPanel=close?BigPanel.None:panel;
+        if(!close&&panel==BigPanel.Bench)purchaseOpen=true;
+        if(!close&&panel==BigPanel.Lab){var t=Selected();if(t!=null&&infoSubject==InfoSubject.Tower)labKind=t.Kind;}
         Refresh();
     }
-    public void OpenSelectedTowerSpecs()
+    void CloseBigPanels()
     {
-        if(Selected()==null||game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return;
-        if(!inspectorOpen||inspectorSubject!=InspectorSubject.Tower||lastTower!=game.SelectedTower)game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue("ui_open");
-        installOpen=false;installPanel.gameObject.SetActive(false);lastTower=game.SelectedTower;
-        inspectorSubject=InspectorSubject.Tower;inspectorOpen=true;purchaseOpen=false;Refresh();
+        installOpen=false;installPanel.gameObject.SetActive(false);bigPanel=BigPanel.None;
+        if(UnityEngine.EventSystems.EventSystem.current!=null)UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
     }
-    // One floor click folds the panel AND releases inspection. Never places or spends currency.
+    // Old entry points (world clicks, tests): now the left-bottom information panel.
+    public void OpenPlayerSpecs()=>ShowPlayerInfo();
+    public void OpenSelectedTowerSpecs()=>ShowTowerInfo();
+    // One floor click closes the open panels AND releases the selection. Never places or spends currency.
     public bool TryFoldDetails()
     {
         if(game.Installing.HasValue||game.Session.Phase==SessionPhase.Augmentation)return false;
-        if(!installOpen&&!inspectorOpen)return false;
+        if(!installOpen&&bigPanel==BigPanel.None&&infoSubject==InfoSubject.None)return false;
         game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue("ui_close");
-        installOpen=false;installPanel.gameObject.SetActive(false);ReleaseInspection();
-        if(UnityEngine.EventSystems.EventSystem.current!=null)UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        CloseBigPanels();ReleaseInfo();
         Refresh();return true;
     }
     void SetCardsVisible()
@@ -168,37 +183,27 @@ public sealed partial class CoreGuardianHud
         var s=game.Session;
         if(displayedPhase!=s.Phase)
         {
-            if(displayedPhase.HasValue){ReleaseInspection();if(s.Phase==SessionPhase.Augmentation)developerOpen=false;} // 개발 도구는 증강 화면에서만 닫음(테스트 중 유지)
+            if(displayedPhase.HasValue){bigPanel=BigPanel.None;if(s.Phase==SessionPhase.Augmentation){ReleaseInfo();developerOpen=false;}} // 개발 도구는 증강 화면에서만 닫음
             displayedPhase=s.Phase;
             if(s.Phase==SessionPhase.Combat)SetTopCompact(true);
         }
-        var selected=Selected();
-        if(selected==null){lastTower=-1;if(inspectorSubject==InspectorSubject.Tower){inspectorSubject=InspectorSubject.None;inspectorOpen=false;}}
-        else if(lastTower!=selected.Id){lastTower=selected.Id;inspectorSubject=InspectorSubject.Tower;inspectorOpen=false;purchaseOpen=false;}
-        playerOpen=inspectorOpen&&inspectorSubject==InspectorSubject.Player&&!installOpen;
-        bool towerOpen=inspectorOpen&&inspectorSubject==InspectorSubject.Tower&&selected!=null&&!installOpen;
-        towerFolded=!towerOpen;
-        SetHudActive(playerPanel.gameObject,playerOpen);SetHudActive(towerPanel.gameObject,towerOpen);
-        SetHudActive(playerInfo.gameObject,true);SetHudActive(towerInfo.gameObject,true);
-        var st=s.Player;
-        RefreshAbilityPlate(playerAbilities,st,false);
-        SetHudText(playerTitle,purchaseOpen?"플레이어 능력치 강화":"플레이어 능력치");
+        playerOpen=BenchOpen;
+        bool labOpen=LabOpen;
+        towerFolded=!labOpen;
+        SetHudActive(playerPanel.gameObject,playerOpen);SetHudActive(towerPanel.gameObject,labOpen);
+        RefreshAbilityPlate(playerAbilities,s.Player,false);
+        SetHudText(playerTitle,"기술병 작업대 · "+(purchaseOpen?"능력치 강화":"현재 능력치"));
         SetHudText(playerInfo,"범위 폭발(Space) "+(s.AreaBlast==null?"없음":s.Phase!=SessionPhase.Combat?"전투 중 사용":s.AreaBlastReady?"준비":Mathf.CeilToInt(s.AreaBlastCooldown)+"초")+" · 증강 "+s.Augments.Selected.Count+"장");
-        if(selected!=null)
-        {
-            st=selected.Stats;SetHudText(towerTitle,TowerName(selected.Kind)+(selected.Stars>1?" ★"+selected.Stars:"")+(purchaseOpen?" · 종류 전체 강화":" #"+selected.Id+" · 능력치"));
-            var identity=CoreGuardianHudSkin.Sprite(CoreGuardianHudSkin.Symbol("Install_"+selected.Kind));if(towerIdentityIcon.sprite!=identity)towerIdentityIcon.sprite=identity;
-            RefreshAbilityPlate(towerAbilities,st,selected.Kind==TowerKind.Support);
-            float support=s.Towers.Where(t=>t.Kind==TowerKind.Support&&Vector2.Distance(t.Position,selected.Position)<=t.Stats.Range).Sum(t=>t.Stats.BuffDamage);
-            float buff=support+s.Augments.TowerBuffPercent;
-            SetHudPosition(towerInfo.rectTransform,new Vector2(280,selected.Kind==TowerKind.Support?-138:-186));
-            SetHudText(towerInfo,purchaseOpen?"같은 종류의 모든 포탑과 이후 설치분에 적용됩니다.\n철거해도 공유 강화 단계는 유지됩니다.":selected.Kind==TowerKind.Support?"범위 안 공격 포탑의 공격력을 높입니다.\n직접 공격하지 않습니다.":
-                "지원 포탑 +"+support.ToString("0.##")+"% · 증강 +"+s.Augments.TowerBuffPercent+"%\n버프 적용 공격력 "+StatDisplay(st.Damage*(1+buff/100f),"damage")+" (적 방어력 적용 전)");
-        }
-        bool details=playerOpen||towerOpen||installOpen;
+        SetHudText(towerTitle,"포탑 연구소 · "+TowerName(labKind)+" 공유 강화");
+        var identity=CoreGuardianHudSkin.Sprite(CoreGuardianHudSkin.Symbol("Install_"+labKind));if(towerIdentityIcon.sprite!=identity)towerIdentityIcon.sprite=identity;
+        int count=s.Towers.Count(t=>t.Kind==labKind);
+        SetHudText(towerInfo,count==0?"이 종류 포탑을 1기 이상 설치하면 강화할 수 있습니다.":"같은 종류의 모든 포탑과 이후 설치분에 적용됩니다(지금 "+count+"기). 철거해도 공유 강화 단계는 유지됩니다.");
+        bool details=playerOpen||labOpen||installOpen;
         SetHudActive(inspectorFold.gameObject,details&&s.Phase!=SessionPhase.Augmentation);
         SetHudPosition(inspectorFold,new Vector2(0,112+(installOpen?installPanel.sizeDelta.y:playerOpen?playerPanel.sizeDelta.y:towerPanel.sizeDelta.y)));
         foreach(var node in developerViews)SetHudActive(node,developerOpen);
         if(cancelPlacementView!=null)SetHudActive(cancelPlacementView,game.Installing.HasValue);
+        RefreshSelectionInfo();
+        RefreshAugmentStrip();
     }
 }

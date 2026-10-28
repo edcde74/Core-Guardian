@@ -211,8 +211,8 @@ public class CoreGuardianCombatAudioPlayModeTests
             PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",.37f);foreach(var voice in voices)voice.Stop();
             type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
             upgrade.Invoke(game,new object[]{"range"});Assert.That(count.GetValue(audio),Is.EqualTo(5));Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            session.StartCombat();gameType.GetMethod("UpgradeTower").Invoke(game,new object[]{"buffDamage"});Assert.That(count.GetValue(audio),Is.EqualTo(5));
-            typeof(Session).GetProperty("Gold").SetValue(session,0);upgrade.Invoke(game,new object[]{"damage"});Assert.That(count.GetValue(audio),Is.EqualTo(5));Assert.That(scans.GetValue(feedback),Is.EqualTo(6));
+            session.StartCombat();gameType.GetMethod("UpgradeTower").Invoke(game,new object[]{"buffDamage"});Assert.That(count.GetValue(audio),Is.EqualTo(6),"전투 중 강화 허용 (10-28)");
+            typeof(Session).GetProperty("Gold").SetValue(session,0);upgrade.Invoke(game,new object[]{"damage"});Assert.That(count.GetValue(audio),Is.EqualTo(6));Assert.That(scans.GetValue(feedback),Is.EqualTo(7));
             yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
         }
         finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}
@@ -255,7 +255,7 @@ public class CoreGuardianCombatAudioPlayModeTests
             type.GetMethod("PreviewCoreDamage").Invoke(audio,null);for(int i=0;i<3;i++)type.GetMethod("Preview").Invoke(audio,null);
             Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[4]}),Is.True);Assert.That(count.GetValue(audio),Is.EqualTo(4));
             Assert.That(voices.Any(v=>v.isPlaying&&v.clip.name=="core"),Is.True);
-            session.StartCombat();Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[5]}),Is.False);Assert.That(count.GetValue(audio),Is.EqualTo(4));
+            session.StartCombat();Assert.That(place.Invoke(game,new object[]{TowerKind.Single,cells[5]}),Is.True,"전투 중 설치 허용 (10-28)");Assert.That(count.GetValue(audio),Is.EqualTo(5));
             yield return null;Assert.That(voices.Where(v=>v.isPlaying).All(v=>Mathf.Abs(v.volume-.37f*.55f)<.00001f),Is.True);
         }
         finally{Time.timeScale=time;if(had)PlayerPrefs.SetFloat("CoreGuardian.SoundVolume",volume);else PlayerPrefs.DeleteKey("CoreGuardian.SoundVolume");PlayerPrefs.Save();}

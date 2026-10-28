@@ -21,6 +21,8 @@ public class CoreGuardianPlacementHudPlayModeTests
     static void Call(Component game,string method,params object[] args)=>game.GetType().GetMethod(method).Invoke(game,args);
     static void Click(Transform hud,string name)=>hud.GetComponentsInChildren<Button>(true).First(b=>b.name==name).onClick.Invoke();
     static bool Visible(Transform node)=>node.gameObject.activeInHierarchy&&node.GetComponentsInParent<CanvasGroup>(true).All(g=>g.alpha>.001f);
+    // 기술병 작업대 (2 / 건물 클릭) — 개편 후 하단 버튼 대신.
+    static void Bench(Component game){var hud=game.GetComponent(TypeOf("CoreGuardianHud"));hud.GetType().GetMethod("ToggleBench").Invoke(hud,null);}
     static bool Installing(Component game)=>game.GetType().GetProperty("Installing").GetValue(game)!=null;
     static IEnumerator Load()
     {
@@ -49,7 +51,7 @@ public class CoreGuardianPlacementHudPlayModeTests
         yield return Load();var game=Game();var hud=Hud(game);float old=Time.timeScale;
         try
         {
-            Time.timeScale=0;Click(hud,"PlayerGrowth");Click(hud,"DamageFold");Click(hud,"TopFold");
+            Time.timeScale=0;Bench(game);Click(hud,"DamageFold");Click(hud,"TopFold");
             float topHeight=hud.Find("TopStatus").GetComponent<RectTransform>().sizeDelta.y;
             var speed=hud.Find("TestSpeed").gameObject.AddComponent<CanvasGroup>();speed.alpha=.6f;speed.blocksRaycasts=false;
             Begin(hud);Assert.That(Installing(game),Is.True);
@@ -80,7 +82,7 @@ public class CoreGuardianPlacementHudPlayModeTests
         yield return Load();var game=Game();var hud=Hud(game);float old=Time.timeScale;
         try
         {
-            Time.timeScale=0;Click(hud,"PlayerGrowth");Begin(hud);
+            Time.timeScale=0;Bench(game);Begin(hud);
             Assert.That(game.GetType().GetMethod("Place").Invoke(game,new object[]{TowerKind.Single,new Vector2Int(-1,-1)}),Is.EqualTo(false));
             Assert.That(Installing(game),Is.True);Assert.That(Visible(hud.Find("BottomControls")),Is.False);
             var board=(Vector2Int)game.GetType().GetProperty("BoardSize").GetValue(game);
@@ -88,7 +90,7 @@ public class CoreGuardianPlacementHudPlayModeTests
             Assert.That(game.GetType().GetMethod("Place").Invoke(game,new object[]{TowerKind.Single,cell}),Is.EqualTo(true));
             Assert.That(Installing(game),Is.False);Assert.That(Visible(hud.Find("BottomControls")),Is.True);
             Assert.That(Visible(hud.Find("PlayerGrowthPanel")),Is.False);Assert.That(Visible(hud.Find("TowerInstallPanel")),Is.True,"The pre-placement chooser returns after a successful placement");
-            Assert.That(Visible(hud.Find("TowerInformation")),Is.False,"Successful placement must not auto expand specs");
+            Assert.That(Visible(hud.Find("SelectionInfo")),Is.False,"Successful placement must not auto open the selection info");
             Call(game,"StartCombat");Assert.That(hud.Find("TowerInstallPanel").gameObject.activeSelf,Is.False);
         }
         finally{Time.timeScale=old;}

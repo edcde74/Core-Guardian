@@ -1,7 +1,7 @@
-id,key,cost,damage,rate,range,projectileSpeed,buffDamage,tag,attackType,maxTargets,slowPercent,slowDuration,burnPerStack,burnDuration,pierceFalloff,requires,status
-12001,Single,60,12.5,1.2,3.5,6,0,Crit,Projectile,1,0,0,0,0,0,,provisional
-12002,Multi,60,11,0.6,3,6,0,Chain,MultiProjectile,3,0,0,0,0,0,,provisional
-12003,Frost,60,5,0.5,2,0,0,Slow,Pulse,0,30,2.5,0,0,0,,provisional
-12004,Flame,65,5,0.8,3,6,0,Burn,Projectile,1,0,0,3,3,0,,provisional
-12005,Rail,75,35,0.4,6,12,0,Pierce,PierceLine,0,0,0,0,0,0.8,,provisional
-12101,Support,75,0,0,1,0,20,None,Aura,0,0,0,0,0,0,AttackTower,provisional
+id,key,cost,damage,rate,range,projectileSpeed,buffDamage,tag,attackType,maxTargets,slowPercent,slowDuration,burnPerStack,burnDuration,pierceFalloff,requires,targetPriority,targetTiebreak,status
+12001,Single,60,12.5,1.2,3.5,6,0,Crit,Projectile,1,0,0,0,0,0,,11006|11101|11102|11103|11007|11002|11003|11008|11001|11004|11005|11201,HighestHealth,provisional
+12002,Multi,70,10,0.5,3,6,0,Chain,MultiProjectile,3,0,0,0,0,0,,11003|11008|11004|11001|11005|11201|11006|11007|11101|11102|11103|11002,NearestCore,provisional
+12003,Frost,60,5,0.5,2,0,0,Slow,Pulse,0,30,2.5,0,0,0,,,,provisional
+12004,Flame,65,5,0.8,3,6,0,Burn,Projectile,1,0,0,3,4,0,,11002|11005|11201|11007|11006|11003|11001|11008|11101|11102|11103|11004,UnburnedNearestCore,provisional
+12005,Rail,75,35,0.4,6,12,0,Pierce,PierceLine,0,0,0,0,0,0.8,,11007|11002|11101|11102|11103|11006|11005|11201|11003|11001|11004|11008,MostPierced,provisional
+12101,Support,75,0,0,1,0,20,None,Aura,0,0,0,0,0,0,AttackTower,,,provisional

@@ -37,7 +37,8 @@ namespace CoreGuardian
             {
                 if(index==null||!index.TryCollect(tower.Position,tower.Stats.Range,Enemies,work.Available,work.SpatialCandidates))
                     foreach(var enemy in Enemies)if(enemy.Alive&&Vector2.Distance(enemy.Position,tower.Position)<=tower.Stats.Range)work.Available.Add(enemy);
-                foreach(var enemy in work.Available)if(best==default||ComparePriority(enemy,best,true)<0)best=enemy;
+                var order=TowerOrder(tower);
+                foreach(var enemy in work.Available)if(best==default||order.Compare(enemy,best)<0)best=enemy;
                 return best;
             }
             finally{work.Clear();if(shotWorkPool.Count<MaxRetainedWorkBuffers)shotWorkPool.Push(work);}
@@ -257,7 +258,8 @@ namespace CoreGuardian
         public Session(CombatData data, int? seed=null) { Data=data??throw new ArgumentNullException(nameof(data));augmentationRandom=seed.HasValue?new System.Random(seed.Value):new System.Random();combatRandom=seed.HasValue?new System.Random(unchecked(seed.Value*31+7)):new System.Random();tags=TagCache.From(data);Player=data.Player.Clone();Gold=data.StartGold;Crystals=data.StartCrystals;CoreEnergy=CoreMaximum=data.CoreEnergy;PreparationRemaining=data.PreparationFor(1,false);Phase=SessionPhase.Preparation;Wave=1;LastWave=data.Waves.Select(x=>x.Wave).DefaultIfEmpty(1).Max();LastMessage="준비";InitializeModelPools(); }
         public void SetBoard(int width,int height,Vector2Int core,IEnumerable<Vector2Int> route)
         {
-            if(width<=0||height<=0)throw new ArgumentException("Invalid board");this.width=width;this.height=height;this.core=core;path.Clear();lengths.Clear();pathCells.Clear();segmentEnds.Clear();exactPathIndex=false;pathLength=0;
+            if(width<=0||height<=0)throw new ArgumentException("Invalid board");this.width=width;this.height=height;this.core=core;structureCells.Clear(); // 새 보드 = 건물 없음 (SetStructures로 다시 지정)
+            path.Clear();lengths.Clear();pathCells.Clear();segmentEnds.Clear();exactPathIndex=false;pathLength=0;
             foreach(var p in route) { if(p.x<0||p.y<0||p.x>=width||p.y>=height)throw new ArgumentException("Path outside board");path.Add(p); }
             if(path.Count<2||path[path.Count-1]!=(Vector2)core)throw new ArgumentException("Path must terminate at core");
             for(int i=1;i<path.Count;i++) {var a=Vector2Int.RoundToInt(path[i-1]);var b=Vector2Int.RoundToInt(path[i]);if(a.x!=b.x&&a.y!=b.y)throw new ArgumentException("Path must be axial");float len=Vector2.Distance(a,b);if(len<=0)throw new ArgumentException("Zero length segment");lengths.Add(len);pathLength+=len;var dir=new Vector2Int(Math.Sign(b.x-a.x),Math.Sign(b.y-a.y));for(var p=a;p!=b;p+=dir)pathCells.Add(p);pathCells.Add(b);}
@@ -272,19 +274,22 @@ namespace CoreGuardian
                 end+=lengths[i];segmentEnds.Add(end);
             }
         }
-        public bool IsBuildable(Vector2Int cell) {return cell.x>=0&&cell.y>=0&&cell.x<width&&cell.y<height&&!pathCells.Contains(cell)&&cell!=core&&!Towers.Any(t=>t.Position==cell);}
-        // 49 전선 건설 allows combat installs (+25%); 34 급속 건설 discounts then taxes.
-        public bool CanBuildNow=>Phase==SessionPhase.Preparation||Phase==SessionPhase.Combat&&Augments.Has(49);
+        public bool IsBuildable(Vector2Int cell) {return cell.x>=0&&cell.y>=0&&cell.x<width&&cell.y<height&&!pathCells.Contains(cell)&&cell!=core&&!structureCells.Contains(cell)&&!Towers.Any(t=>t.Position==cell);}
+        // HUD 개편 B안 (2026-10-28): 포탑 연구소·기술병 작업대가 설치 칸을 차지. 경로·적과는 무관.
+        readonly HashSet<Vector2Int> structureCells=new HashSet<Vector2Int>();
+        public IReadOnlyCollection<Vector2Int> StructureCells=>structureCells;
+        public void SetStructures(IEnumerable<Vector2Int> cells){structureCells.Clear();if(cells!=null)foreach(var c in cells)structureCells.Add(c);}
+        // 전투 중 설치·강화 허용 (2026-10-28 사용자 확정). 34 급속 건설 discounts then taxes.
+        public bool CanBuildNow=>Phase==SessionPhase.Preparation||Phase==SessionPhase.Combat;
         public int InstallCost(TowerKind kind)
         {
             float cost=Data.Towers[kind].Cost;
             if(Augments.Has(34)){cost*=Augments.Rounds34>0?1-Augments.Value(34,1)/Augments.Count(34)/100f:1+Augments.Value(34,2)/Augments.Count(34)/100f;}
-            if(Phase==SessionPhase.Combat&&Augments.Has(49))cost*=1+Augments.Value(49)/Augments.Count(49)/100f;
             return Mathf.Max(0,Mathf.FloorToInt(cost+.5f));
         }
         public bool CanInstall(TowerKind kind,Vector2Int cell,out string reason)
         {
-            reason=null;if(!CanBuildNow)reason="준비 시간에만 설치 가능";else if(!IsBuildable(cell))reason="설치 불가 칸";else if(Crystals<InstallCost(kind))reason="수정 부족";else if(kind==TowerKind.Support&&!Towers.Any(t=>t.Kind!=TowerKind.Support))reason="공격 포탑을 먼저 설치";return reason==null;
+            reason=null;if(!CanBuildNow)reason="지금은 설치 불가";else if(!IsBuildable(cell))reason="설치 불가 칸";else if(Crystals<InstallCost(kind))reason="수정 부족";else if(kind==TowerKind.Support&&!Towers.Any(t=>t.Kind!=TowerKind.Support))reason="공격 포탑을 먼저 설치";return reason==null;
         }
         public TowerState TryInstall(TowerKind kind,Vector2Int cell,out string reason)
         {
@@ -336,20 +341,37 @@ namespace CoreGuardian
         public IEnumerable<string> UpgradeStats(TowerKind kind){foreach(var u in Data.Upgrades)if(u.Target==kind.ToString()&&UpgradeKey(u)==u.Stat)yield return u.Stat;}
         static int Step(CombatStats s,string stat) {int n;return s.UpgradeSteps.TryGetValue(stat,out n)?n:0;}
         public int PlayerUpgradePrice(string stat) {return FindUpgrade("Player",stat)==null?-1:Data.PlayerUpgradePrice(Step(Player,stat)+1);}
-        public int TowerUpgradePrice(int id,string stat) {TowerState t=null;foreach(var x in Towers)if(x.Id==id){t=x;break;}if(t==null)return -1;var u=FindUpgrade(t.Kind.ToString(),stat);int step=TowerStep(t.Kind,stat);return u==null?-1:u.Cost+u.CostIncrement*step-(step==0?Data.TowerFirstUpgradeDiscount:0);}
+        public int TowerUpgradePrice(int id,string stat) {TowerState t=null;foreach(var x in Towers)if(x.Id==id){t=x;break;}if(t==null)return -1;return TowerKindUpgradePrice(t.Kind,stat);}
+        // 포탑 연구소: 종류별 공유 강화는 그 종류 포탑이 없어도 살 수 있음(이후 설치분에 적용).
+        public int TowerKindUpgradePrice(TowerKind kind,string stat){var u=FindUpgrade(kind.ToString(),stat);int step=TowerStep(kind,stat);return u==null?-1:u.Cost+u.CostIncrement*step-(step==0?Data.TowerFirstUpgradeDiscount:0);}
+        // Base + shared upgrades for one kind (no star scaling, no support buff).
+        public CombatStats TowerKindStats(TowerKind kind)
+        {
+            var s=Data.Towers[kind];var st=new CombatStats{Damage=s.Damage,Rate=s.Rate,Range=s.Range,ProjectileSpeed=s.ProjectileSpeed,BuffDamage=s.BuffDamage,SlowPercent=s.SlowPercent,SlowDuration=s.SlowDuration,BurnPerStack=s.BurnPerStack,BurnDuration=s.BurnDuration,PierceFalloff=s.PierceFalloff};
+            foreach(var u in Data.Upgrades){if(u.Target!=kind.ToString())continue;int step=TowerStep(kind,UpgradeKey(u));if(step==0)continue;st.Add(u.Stat,u.Delta*step);st.UpgradeSteps[u.Stat]=step;}
+            return st;
+        }
         public bool UpgradePlayer(string stat,out string reason) {var u=FindUpgrade("Player",stat);reason=null;if(u==null)reason="강화 불가";else if(Phase!=SessionPhase.Preparation&&Phase!=SessionPhase.Combat)reason="현재 단계에서 강화 불가";else if(Gold<PlayerUpgradePrice(stat))reason="골드 부족";if(reason!=null)return false;Gold-=PlayerUpgradePrice(stat);Player.Add(stat,u.Delta);Player.UpgradeSteps[stat]=Step(Player,stat)+1;LastMessage="기술병 강화";return true;}
         public bool UpgradeTower(int id,string stat,out string reason)
         {
-            var t=Towers.FirstOrDefault(x=>x.Id==id);var u=t==null?null:FindUpgrade(t.Kind.ToString(),stat);reason=null;
-            if(Phase!=SessionPhase.Preparation)reason="준비 시간에만 강화 가능";else if(u==null)reason="강화 불가";else if(Crystals<TowerUpgradePrice(id,stat))reason="수정 부족";
+            var t=Towers.FirstOrDefault(x=>x.Id==id);
+            if(t==null){reason=!CanBuildNow?"지금은 강화 불가":"강화 불가";return false;}
+            return UpgradeTowerKind(t.Kind,stat,out reason);
+        }
+        // 포탑 연구소: 그 종류 포탑이 1기 이상 있어야 구매 (10-28 사용자 확정).
+        public bool HasTowerKind(TowerKind kind){foreach(var t in Towers)if(t.Kind==kind)return true;return false;}
+        public bool UpgradeTowerKind(TowerKind kind,string stat,out string reason)
+        {
+            var u=Data.Towers.ContainsKey(kind)?FindUpgrade(kind.ToString(),stat):null;reason=null;
+            if(!CanBuildNow)reason="지금은 강화 불가";else if(u==null)reason="강화 불가";else if(!HasTowerKind(kind))reason="설치된 포탑 없음";else if(Crystals<TowerKindUpgradePrice(kind,stat))reason="수정 부족";
             if(reason!=null)return false;
-            Crystals-=TowerUpgradePrice(id,stat);int step=TowerStep(t.Kind,stat)+1;
-            if(!towerUpgradeSteps.TryGetValue(t.Kind,out var steps))towerUpgradeSteps[t.Kind]=steps=new Dictionary<string,int>();
+            Crystals-=TowerKindUpgradePrice(kind,stat);int step=TowerStep(kind,stat)+1;
+            if(!towerUpgradeSteps.TryGetValue(kind,out var steps))towerUpgradeSteps[kind]=steps=new Dictionary<string,int>();
             steps[stat]=step;
             foreach(var member in Data.Upgrades)
             {
                 if(member.Target!=u.Target||member!=u&&UpgradeKey(member)!=stat)continue;
-                foreach(var tower in Towers.Where(x=>x.Kind==t.Kind))
+                foreach(var tower in Towers.Where(x=>x.Kind==kind))
                 {
                     bool scaled=member.Stat=="damage"||member.Stat=="buffDamage"||member.Stat=="burnPerStack";
                     tower.Stats.Add(member.Stat,member.Delta*(scaled?StarDamage(tower.Stars):1));tower.Stats.UpgradeSteps[member.Stat]=step;ClampTowerStats(tower);
@@ -652,6 +674,7 @@ namespace CoreGuardian
         HitPayload LaunchPayload(TowerState tower,CombatStats stats,float buff,float crit)
         {
             var p=new HitPayload{Crit=crit};
+            if(tower!=null)p.Tower=(int)tower.Kind+1;
             if(tower==null)
             {
                 p.Player=true;
@@ -707,20 +730,22 @@ namespace CoreGuardian
                     foreach(var enemy in Enemies)if(enemy.Alive&&Vector2.Distance(enemy.Position,position)<=stats.Range)available.Add(enemy);
                 // 공격 대상 선택(정본)은 플레이어·포탑 공통: 사거리가 비면 다음 진입 때 다시 '가장 먼저 들어온 적',
                 // 보스는 일반 적보다 뒤, 보스 조준 중 일반 적이 들어오면 바꿈.
+                // 포탑은 종류별 공격 순서(towers.targetPriority), 기술병은 공통 순서(player). 2026-10-28 사용자 확정.
+                // 대상 유지: 살아 있고 사거리 안이면 바꾸지 않음. 보스 맨 뒤·보스 조준 중 교체는 기술병만.
+                var order=tower!=null?TowerOrder(tower):PlayerOrder;
                 if(available.Count==0)acquired=false;
                 if(target!=default&&(!target.Alive||Vector2.Distance(target.Position,position)>stats.Range))target=default;
-                if(target!=default&&target.Kind==EnemyKind.Boss)
+                if(tower==null&&target!=default&&target.Kind==EnemyKind.Boss)
                     foreach(var enemy in available)if(enemy.Kind!=EnemyKind.Boss){target=default;break;}
-                // 화염 포탑: unburned enemies first, then the shared priority.
-                bool flame=tower!=null&&tower.Kind==TowerKind.Flame;
-                if(flame&&target!=default&&target.BurnStacks>0)foreach(var enemy in available)if(enemy.BurnStacks==0){target=default;break;}
                 if(target==default&&available.Count>0)
                 {
-                    foreach(var enemy in available)
+                    if(acquired&&order.Tiebreak==TargetOrder.MostPierced)target=MostPiercedTarget(position,stats.Range,available,order);
+                    else foreach(var enemy in available)
                     {
                         if(target==default){target=enemy;continue;}
-                        if(flame&&(enemy.BurnStacks==0)!=(target.BurnStacks==0)){if(enemy.BurnStacks==0)target=enemy;continue;}
-                        if((acquired?ComparePriority(enemy,target,true):CompareInitialTarget(enemy,target))<0)target=enemy;
+                        // 사거리가 비었다 다시 들어오면 가장 먼저 들어온 적 (기술병은 보스를 뒤로).
+                        int compare=acquired?order.Compare(enemy,target):tower==null?CompareInitialTarget(enemy,target):enemy.Id.CompareTo(target.Id);
+                        if(compare<0)target=enemy;
                     }
                     acquired=true;
                 }
@@ -734,7 +759,7 @@ namespace CoreGuardian
                     // Stable insertion keeps the first three entries in the original full sort.
                     foreach(var enemy in available)
                     {
-                        int index=0;while(index<targetCount&&ComparePriority(enemy,targets[index],true)>=0)index++;
+                        int index=0;while(index<targetCount&&order.Compare(enemy,targets[index])>=0)index++;
                         if(index>=3)continue;
                         for(int i=Math.Min(targetCount,2);i>index;i--)targets[i]=targets[i-1];
                         targets[index]=enemy;targetCount=Math.Min(targetCount+1,3);
@@ -783,7 +808,32 @@ namespace CoreGuardian
                 }
             finally{work.Clear();if(shotWorkPool.Count<MaxRetainedWorkBuffers)shotWorkPool.Push(work);}
         }
-        static int ComparePriority(EnemyHandle a,EnemyHandle b,bool tower)=>CombatRules.CompareTargetPriority(a,b,tower);
+        TargetOrder PlayerOrder=>Data.PlayerTargetOrder??TargetOrder.Common;
+        TargetOrder TowerOrder(TowerState tower)=>Data.Towers.TryGetValue(tower.Kind,out var spec)&&spec.TargetOrder!=null?spec.TargetOrder:TargetOrder.Common;
+        // 레일 '가장 많이 꿰뚫는 방향': 최고 순위 종류 중 그 적 방향 직선(사거리, 판정 폭 LineHitRadius)에 걸리는 적 수가 가장 많은 적.
+        // 같으면 코어에 가까운 적 → ID (2026-10-28 코드 반영 때 정함).
+        EnemyHandle MostPiercedTarget(Vector2 position,float range,List<EnemyHandle> available,TargetOrder order)
+        {
+            int bestRank=int.MaxValue;foreach(var e in available)bestRank=Math.Min(bestRank,order.Rank(e.Kind));
+            EnemyHandle best=default;int bestCount=-1;
+            foreach(var e in available)
+            {
+                if(order.Rank(e.Kind)!=bestRank)continue;
+                int count=PiercedCount(position,e.Position-position,range);
+                if(best==default||count>bestCount||count==bestCount&&order.Compare(e,best)<0){best=e;bestCount=count;}
+            }
+            return best;
+        }
+        internal int PiercedCount(Vector2 from,Vector2 direction,float range)
+        {
+            if(direction.sqrMagnitude<=.000001f)direction=Vector2.right;var d=direction.normalized;int count=0;
+            foreach(var e in Enemies)
+            {
+                if(!e.Alive)continue;var offset=e.Position-from;float t=Vector2.Dot(offset,d);
+                if(t<0||t>range)continue;if((offset-d*t).magnitude<=LineHitRadius)count++;
+            }
+            return count;
+        }
         static int CompareInitialTarget(EnemyHandle a,EnemyHandle b)
         {
             int order=(a.Kind==EnemyKind.Boss?1:0).CompareTo(b.Kind==EnemyKind.Boss?1:0);if(order!=0)return order;

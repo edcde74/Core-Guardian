@@ -13,3 +13,5 @@ id,tag,param,value,bossValue,unit
 31603,Crit,baseChance,0,,%
 31701,Stun,durationScale,1,0.25,multiplier
 31702,Stun,immuneSeconds,3,,seconds
+31801,Affinity,weakMultiplier,1.3,,multiplier
+31802,Affinity,resistMultiplier,0.7,,multiplier

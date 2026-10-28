@@ -26,7 +26,7 @@ public class CoreGuardianRuntimePlayModeTests
         {
             game.enabled=false;Time.timeScale=0;Assert.That(s.LastWave,Is.EqualTo(30));
             Assert.That(type.GetMethod("Place").Invoke(game,new object[]{CoreGuardian.TowerKind.Multi,new Vector2Int(12,13)}),Is.EqualTo(true));
-            Assert.That(s.Crystals,Is.EqualTo(40));
+            Assert.That(s.Crystals,Is.EqualTo(30),"범위 공격 설치비 70 (10-28)");
             for(int wave=1;wave<=30;wave++)
             {
                 type.GetMethod("StartCombat").Invoke(game,null);bool bossSeen=false;
@@ -72,23 +72,33 @@ public class CoreGuardianRuntimePlayModeTests
             Time.timeScale=0;type.GetMethod("Diagnostic").Invoke(runtime,null);
             foreach(var kind in new[]{CoreGuardian.TowerKind.Single,CoreGuardian.TowerKind.Multi,CoreGuardian.TowerKind.Support})
                 Assert.That(type.GetMethod("Place").Invoke(runtime,new object[]{kind,new Vector2Int(12+(int)kind,13)}),Is.EqualTo(true));
-            for(int subject=0;subject<4;subject++)
+            // HUD 개편 B안: 기술병 작업대(2) = 플레이어 강화, 포탑 연구소(1) = 종류 탭 + 공유 강화.
+            var hudType=hud.GetType();
+            hudType.GetMethod("ToggleBench").Invoke(hud,null);yield return null;Canvas.ForceUpdateCanvases();
             {
-                bool player=subject==0,support=subject==3;string prefix=player?"Player":"Tower";
-                if(player)hud.GetType().GetMethod("OpenPlayerSpecs").Invoke(hud,null);
-                else{type.GetProperty("SelectedTower").SetValue(runtime,s.Towers[subject-1].Id);hud.GetType().GetMethod("OpenSelectedTowerSpecs").Invoke(hud,null);}
-                yield return null;Canvas.ForceUpdateCanvases();
-                var panel=HudButton(runtime,prefix+"SpecTab").transform.parent;var bounds=Corners(panel);
-                var specTab=Corners(panel.Find(prefix+"SpecTab"));var buyTab=Corners(panel.Find(prefix+"BuyTab"));
-                string[] stats=support?new[]{"buffDamage","range"}:new[]{"damage","rate","range","projectileSpeed"};
-                var cells=stats.Select(k=>Corners(panel.Find("AbilityPlate/"+(k=="buffDamage"?"damage":k)))).ToArray();
-                HudButton(runtime,prefix+"BuyTab").onClick.Invoke();yield return null;Canvas.ForceUpdateCanvases();
-                Assert.That(Corners(panel),Is.EqualTo(bounds),prefix+" panel moved/resized");
-                Assert.That(Corners(panel.Find(prefix+"SpecTab")),Is.EqualTo(specTab));Assert.That(Corners(panel.Find(prefix+"BuyTab")),Is.EqualTo(buyTab));
-                for(int i=0;i<stats.Length;i++)Assert.That(Corners(panel.Find((player?"":"Tower_")+stats[i])),Is.EqualTo(cells[i]),stats[i]+" moved on tab switch");
-                var purchase=HudButton(runtime,(player?"":"Tower_")+stats[0]);Assert.That(purchase.interactable,Is.True);purchase.onClick.Invoke();yield return null;
-                Assert.That(player?s.Player.UpgradeSteps[stats[0]]:s.Towers[subject-1].Stats.UpgradeSteps[stats[0]],Is.EqualTo(1));
-                HudButton(runtime,prefix+"SpecTab").onClick.Invoke();yield return null;Assert.That(Corners(panel),Is.EqualTo(bounds));
+                var panel=HudButton(runtime,"PlayerSpecTab").transform.parent;Assert.That(panel.name,Is.EqualTo("PlayerGrowthPanel"));
+                HudButton(runtime,"PlayerSpecTab").onClick.Invoke();yield return null;Canvas.ForceUpdateCanvases();
+                var bounds=Corners(panel);var specTab=Corners(panel.Find("PlayerSpecTab"));var buyTab=Corners(panel.Find("PlayerBuyTab"));
+                string[] stats={"damage","rate","range","projectileSpeed"};
+                var cells=stats.Select(k=>Corners(panel.Find("AbilityPlate/"+k))).ToArray();
+                HudButton(runtime,"PlayerBuyTab").onClick.Invoke();yield return null;Canvas.ForceUpdateCanvases();
+                Assert.That(Corners(panel),Is.EqualTo(bounds),"bench panel moved/resized");
+                Assert.That(Corners(panel.Find("PlayerSpecTab")),Is.EqualTo(specTab));Assert.That(Corners(panel.Find("PlayerBuyTab")),Is.EqualTo(buyTab));
+                for(int i=0;i<stats.Length;i++)Assert.That(Corners(panel.Find(stats[i])),Is.EqualTo(cells[i]),stats[i]+" moved on tab switch");
+                var purchase=HudButton(runtime,stats[0]);Assert.That(purchase.interactable,Is.True);purchase.onClick.Invoke();yield return null;
+                Assert.That(s.Player.UpgradeSteps[stats[0]],Is.EqualTo(1));
+            }
+            hudType.GetMethod("ToggleLab").Invoke(hud,null);yield return null;Canvas.ForceUpdateCanvases();
+            Assert.That(HudButton(runtime,"PlayerSpecTab").gameObject.activeInHierarchy,Is.False,"Only one big panel at a time");
+            var lab=HudButton(runtime,"LabKind_Single").transform.parent;Assert.That(lab.name,Is.EqualTo("TowerLabPanel"));
+            var labBounds=Corners(lab);var firstTab=Corners(lab.Find("LabKind_Single"));
+            for(int subject=1;subject<4;subject++)
+            {
+                var tower=s.Towers[subject-1];string stat=tower.Kind==CoreGuardian.TowerKind.Support?"buffDamage":"damage";
+                HudButton(runtime,"LabKind_"+tower.Kind).onClick.Invoke();yield return null;Canvas.ForceUpdateCanvases();
+                Assert.That(Corners(lab),Is.EqualTo(labBounds),tower.Kind+" lab panel moved/resized");Assert.That(Corners(lab.Find("LabKind_Single")),Is.EqualTo(firstTab));
+                var purchase=HudButton(runtime,"Tower_"+stat);Assert.That(purchase.gameObject.activeInHierarchy&&purchase.interactable,Is.True,tower.Kind+" "+stat);purchase.onClick.Invoke();yield return null;
+                Assert.That(tower.Stats.UpgradeSteps[stat],Is.EqualTo(1),tower.Kind+" shared upgrade");
             }
         }
         finally{Time.timeScale=previous;}

@@ -119,12 +119,64 @@ public class CoreGuardianContentTests
         var spawned=order.Select((k,i)=>s.DebugSpawn(k,i+1,Dummy(s.Data,100,0,k))).ToList();
         Assert.That(CombatRules.TowerPriorityOrder(spawned).Select(e=>e.Kind),Is.EqualTo(new[]{EnemyKind.Healer,EnemyKind.Defense,EnemyKind.Buff,EnemyKind.Armored,EnemyKind.Flyer,EnemyKind.Splitter,EnemyKind.Attack,EnemyKind.Charger,EnemyKind.Boss}));
     }
-    [Test] public void BuildCardsChangeWhenAndForHowMuchTowersCanBeBuilt()
+    [Test] public void CombatAllowsInstallAndUpgradeAtNormalPrices()
     {
-        var s=Game();string reason;s.StartCombat();
-        Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,2),out reason),Is.Null);
-        s.DebugGrantAugmentation(49);int crystals=s.Crystals;
-        Assert.That(s.TryInstall(TowerKind.Single,new Vector2Int(3,2),out reason),Is.Not.Null,"49 전선 건설");Assert.That(crystals-s.Crystals,Is.EqualTo(75),"60 × 1.25");
-        var t=Game();t.DebugGrantAugmentation(34);Assert.That(t.InstallCost(TowerKind.Single),Is.EqualTo(36),"−40% for two rounds");
+        // 2026-10-28: 전투 중 설치·강화 허용, 비용은 준비와 같음.
+        var s=Game();string reason;s.StartCombat();int crystals=s.Crystals;
+        var t=s.TryInstall(TowerKind.Single,new Vector2Int(3,2),out reason);Assert.That(t,Is.Not.Null,reason);Assert.That(crystals-s.Crystals,Is.EqualTo(60));
+        crystals=s.Crystals;Assert.That(s.UpgradeTower(t.Id,"damage",out reason),Is.True,reason);Assert.That(crystals-s.Crystals,Is.EqualTo(60));
+        var u=Game();u.DebugGrantAugmentation(34);Assert.That(u.InstallCost(TowerKind.Single),Is.EqualTo(36),"−40% for two rounds");
+    }
+    [Test] public void FrostPulseAppliesWeaknessAndResistanceAndCardFortyNineWidensThem()
+    {
+        // 약점 ×1.3 / 저항 ×0.7 (포탑만), 49 약점 공략이면 ×1.6 / ×0.85. 돌격병 약점 냉기, 버프형 저항 냉기.
+        foreach(var exploit in new[]{false,true})
+        {
+            var s=Game();string reason;s.TryInstall(TowerKind.Frost,new Vector2Int(5,1),out reason);if(exploit)s.DebugGrantAugmentation(49);s.StartCombat();
+            var weak=s.DebugSpawn(EnemyKind.Charger,5,Dummy(s.Data,1000,0,EnemyKind.Charger));var resist=s.DebugSpawn(EnemyKind.Buff,6,Dummy(s.Data,1000,0,EnemyKind.Buff));var plain=s.DebugSpawn(EnemyKind.Attack,4,Dummy(s.Data));
+            s.Tick(.05f,Away);
+            Assert.That(new[]{weak.Health,resist.Health,plain.Health},Is.EqualTo(exploit?new[]{992,996,995}:new[]{993,996,995}),exploit?"5×1.6=8, 5×0.85=4.25→4":"5×1.3=6.5→7, 5×0.7=3.5→4");
+        }
+        var p=Game();p.StartCombat();var charger=p.DebugSpawn(EnemyKind.Charger,5,Dummy(p.Data,1000,0,EnemyKind.Charger));
+        Assert.That(p.ApplyDamage(charger,10,"Player"),Is.EqualTo(10),"기술병은 약점·저항 없음");
+    }
+    [Test] public void BurnTicksCountAsFlameForWeakness()
+    {
+        // 수비형은 화염 약점: 명중 5×1.3=6.5→7, 틱 3×1.3=3.9→3 (0.9 이월).
+        var s=Game();string reason;s.TryInstall(TowerKind.Flame,new Vector2Int(5,1),out reason);s.StartCombat();
+        var e=s.DebugSpawn(EnemyKind.Defense,5,Dummy(s.Data,1000,0,EnemyKind.Defense));
+        s.Tick(.3f,Away);Assert.That(e.Health,Is.EqualTo(993));
+        s.Tick(.94f,Away);Assert.That(e.Health,Is.EqualTo(990));
+    }
+    [Test] public void TowersFollowTheirOwnPriorityTablesWithoutTheBossLastRule()
+    {
+        var d=Data();
+        Assert.That(d.Towers[TowerKind.Single].TargetOrder.Tiebreak,Is.EqualTo(TargetOrder.HighestHealth));
+        Assert.That(d.Towers[TowerKind.Multi].TargetOrder.Tiebreak,Is.EqualTo(TargetOrder.NearestCore));
+        Assert.That(d.Towers[TowerKind.Flame].TargetOrder.Tiebreak,Is.EqualTo(TargetOrder.UnburnedNearestCore));
+        Assert.That(d.Towers[TowerKind.Rail].TargetOrder.Tiebreak,Is.EqualTo(TargetOrder.MostPierced));
+        Assert.That(d.Towers[TowerKind.Frost].TargetOrder,Is.Null);
+        Assert.That(d.PlayerTargetOrder.Rank(EnemyKind.Boss),Is.EqualTo(8),"기술병 공통 순서: 보스 맨 뒤");
+        // 단일: 첫 진입 적 → 그다음부터 치유사 > 보스 > 장갑병.
+        var s=Game();string reason;var t=s.TryInstall(TowerKind.Single,new Vector2Int(5,1),out reason);t.Stats.ProjectileSpeed=.001f;s.StartCombat();
+        var first=s.DebugSpawn(EnemyKind.Attack,5,Dummy(s.Data));var healer=s.DebugSpawn(EnemyKind.Healer,6,Dummy(s.Data,1000,0,EnemyKind.Healer));
+        var boss=s.DebugSpawn(EnemyKind.Boss,4,Dummy(s.Data,5000,0,EnemyKind.Boss));var armored=s.DebugSpawn(EnemyKind.Armored,5.5f,Dummy(s.Data,1000,0,EnemyKind.Armored));
+        s.Tick(.01f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(first));
+        s.ApplyDamage(first,1e6f,"Player");s.Tick(.01f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(healer));
+        s.ApplyDamage(healer,1e6f,"Player");s.Tick(.01f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(boss),"단일은 보스가 2순위");
+        s.ApplyDamage(boss,1e9f,"Player");s.Tick(.01f,Away);Assert.That(s.TowerTarget(t.Id),Is.EqualTo(armored));
+        // 범위: 버프형 먼저, 보스가 수비형보다 앞.
+        var m=Game();var mt=m.TryInstall(TowerKind.Multi,new Vector2Int(5,1),out reason);m.StartCombat();
+        var defense=m.DebugSpawn(EnemyKind.Defense,5,Dummy(m.Data,1000,0,EnemyKind.Defense));var mboss=m.DebugSpawn(EnemyKind.Boss,4,Dummy(m.Data,5000,0,EnemyKind.Boss));
+        Assert.That(m.TowerTarget(mt.Id),Is.EqualTo(mboss));
+        var buff=m.DebugSpawn(EnemyKind.Buff,6,Dummy(m.Data,1000,0,EnemyKind.Buff));Assert.That(m.TowerTarget(mt.Id),Is.EqualTo(buff));
+    }
+    [Test] public void TeleportArrivalBlastsAtHalfDamageLikeAnAreaBlast()
+    {
+        var s=Game();s.StartCombat();Assert.That(s.UseTeleportBlast(new Vector2(3,1)),Is.False,"46 없으면 없음");
+        s.DebugGrantAugmentation(46);var near=s.DebugSpawn(EnemyKind.Attack,3,Dummy(s.Data));var far=s.DebugSpawn(EnemyKind.Attack,9,Dummy(s.Data));
+        Assert.That(s.UseTeleportBlast(new Vector2(3,1)),Is.True);
+        Assert.That(near.Health,Is.EqualTo(980),"10 × 4 × 0.5");Assert.That(far.Health,Is.EqualTo(1000));
+        Assert.That(s.DamageTotals["Player"],Is.EqualTo(20));Assert.That(s.AreaBlastReady,Is.True,"도착 폭발은 쿨다운을 걸지 않음");
     }
 }

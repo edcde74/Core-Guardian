@@ -196,14 +196,11 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         string[] symbols={"Core","Wave","Gold","Crystal","Augment"};
         for(int i=0;i<5;i++){int index=i;CoreGuardianHudSkin.Icon(topDetails,symbols[i],new Vector2(16+i*181,-21),new Vector2(30,30));var value=Text("Status_"+symbols[i],topDetails,new Vector2(52+i*181,-16),new Vector2(126,40),19);value.horizontalOverflow=HorizontalWrapMode.Overflow; // "라운드 25/30"이 줄바꿈되어 사라지지 않게
             refresh.Add(()=>{var s=game.Session;value.text=index==0?"코어 "+s.CoreEnergy+"/"+s.CoreMaximum:index==1?"라운드 "+s.Wave+"/"+s.LastWave:index==2?"골드 "+s.Gold:index==3?"수정 "+s.Crystals:"증강 "+s.Augments.Selected.Count;});}
-        var controls=Box("BottomControls",canvas,new Vector2(.5f,0),new Vector2(0,12),new Vector2(1224,88));
+        var controls=Box("BottomControls",canvas,new Vector2(.5f,0),new Vector2(0,12),new Vector2(556,88));
         Button("Installation",controls,new Vector2(16,-16),new Vector2(180,56),()=>"타워 설치",()=>SetInstallPanelOpen(!installOpen),()=>game.Session.CanBuildNow);
         Button("Start",controls,new Vector2(220,-16),new Vector2(224,56),()=>game.Session.Phase==SessionPhase.Preparation?"라운드 시작":game.Session.Phase==SessionPhase.Combat?"전투 진행":game.Session.Phase==SessionPhase.Augmentation?"증강 선택 중":game.Session.Phase==SessionPhase.Defeat?"패배":"라운드 완료",()=>game.StartCombat(),()=>game.Session.Phase==SessionPhase.Preparation);
-        Button("PlayerSpecs",controls,new Vector2(468,-16),new Vector2(220,56),()=>"플레이어 능력치",()=>OpenPlayer(false));
-        Button("PlayerGrowth",controls,new Vector2(712,-16),new Vector2(224,56),()=>"플레이어 강화",()=>OpenPlayer(true),()=>CanBuyPlayer);
-        // 범위 폭발 (Space). Shows the cooldown; Space stays reserved for the skill, never HUD submit.
-        blastButton=Button("AreaBlast",controls,new Vector2(960,-16),new Vector2(248,56),()=>{var s=game.Session;return s.AreaBlast==null?"범위 폭발 없음":s.Phase!=SessionPhase.Combat?"범위 폭발 · Space":s.AreaBlastReady?"범위 폭발 · Space":"범위 폭발 "+Mathf.CeilToInt(s.AreaBlastCooldown)+"초";},()=>game.UseAreaBlast(),()=>game.Session.AreaBlastReady);
-        blastButton.navigation=new UnityEngine.UI.Navigation{mode=UnityEngine.UI.Navigation.Mode.None};
+        // 범위 폭발 (Space / 클릭): 아이콘 + 시계 방향 쿨타임 덮개 (HUD 개편 B안).
+        BuildBlastButton(controls);
         var stagePlate=Box("StagePlate",canvas,new Vector2(.5f,1),new Vector2(0,-74),new Vector2(900,78));stagePlateView=stagePlate;
         CoreGuardianHudSkin.Icon(stagePlate,"Wave",new Vector2(16,-16),new Vector2(28,28));
         center=Text("Preparation",stagePlate,new Vector2(54,-8),new Vector2(826,28),21);
@@ -217,7 +214,8 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         BuildInstallCategories();installPanel.gameObject.SetActive(false);
         cancelPlacementView=Button("CancelPlacement",canvas,new Vector2(18,-1000),new Vector2(270,56),()=>"설치 취소 · Esc",()=>CancelInstallation(),()=>game.Installing.HasValue||installOpen).gameObject;
         BuildInspectors();
-        damagePanel=Box("DamagePanel",canvas,new Vector2(1,1),new Vector2(-16,-140),new Vector2(320,380));
+        BuildSelectionInfo();
+        damagePanel=Box("DamagePanel",canvas,new Vector2(1,1),new Vector2(-16,-140),new Vector2(332,380));
         CoreGuardianHudSkin.Icon(damagePanel,"Damage",new Vector2(16,-16),new Vector2(28,28));
         Text("Title",damagePanel,new Vector2(54,-14),new Vector2(250,32),20).text="라운드 누적 피해";
         var scroll=Box("Scroll",damagePanel,new Vector2(0,1),new Vector2(16,-56),new Vector2(288,308),false);
@@ -228,12 +226,14 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         var layout=damageContent.gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();layout.spacing=8;layout.childControlHeight=true;layout.childForceExpandHeight=false;layout.childControlWidth=true;
         damageContent.gameObject.AddComponent<UnityEngine.UI.ContentSizeFitter>().verticalFit=UnityEngine.UI.ContentSizeFitter.FitMode.PreferredSize;
         var sr=scroll.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();sr.viewport=viewport;sr.content=damageContent;sr.horizontal=false;sr.movementType=UnityEngine.UI.ScrollRect.MovementType.Clamped;
+        AddDamageScrollbar(sr);
         BuildDamageFold();
         // Top compact display retains all four critical values when collapsed.
         var topFold=SmallHandle("TopFold",canvas,()=>stageFolded=!stageFolded,true);
         stageFoldView=topFold;stageFoldArt=topFold.Find("HandleArt");
         topFold.anchorMin=topFold.anchorMax=topFold.pivot=new Vector2(.5f,1);topFold.anchoredPosition=new Vector2(0,-84);
         BuildDeveloperMenu();
+        BuildAugmentStrip();
         Refresh();
         Pin("CancelPlacement",new Vector2(0,0),new Vector2(18,32));
     }
@@ -306,12 +306,12 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     static readonly string[] UpgradeOrder={"buffDamage","damage","rate","range","projectileSpeed","slowPercent","burnDuration","pierceFalloff"};
     static int UpgradeRowOrder(string stat){int i=System.Array.IndexOf(UpgradeOrder,stat);return i<0?UpgradeOrder.Length:i;}
     bool Relevant(TowerState t,string stat)=>UpgradeRows(t.Kind).Contains(stat);
-    bool TowerCanUpgrade(string stat){var t=Selected();return t!=null&&Relevant(t,stat)&&game.Session.Phase==SessionPhase.Preparation&&game.Session.Crystals>=Price(stat);}
+    bool TowerCanUpgrade(string stat){var t=Selected();return t!=null&&Relevant(t,stat)&&game.Session.CanBuildNow&&game.Session.Crystals>=Price(stat);}
     void SetInstallPanelOpen(bool open)
     {
         open=open&&game.Session.CanBuildNow;
         if(open!=installOpen)game.GetComponent<CoreGuardianCombatAudio>()?.PlayCue(open?"ui_open":"ui_close");
-        if(open)ReleaseInspection();
+        if(open)bigPanel=BigPanel.None; // 선택 정보창은 유지
         // Every new opening starts at categories; folding changes only panel visibility.
         if(open&&!installOpen)BuildInstallCategories();
         installOpen=open;installPanel.gameObject.SetActive(open);Refresh();
@@ -379,7 +379,10 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     }
     void ShowDamageNumber(EnemySnapshot enemy,int amount)
     {
-        FloatingNumber("HitDamage",amount.ToString(),game.World(enemy.Position)+Vector3.up*.95f,new Color(1f,.94f,.68f),nextDamageLane++%3-1);
+        // 약점: 크게·강조색 / 저항: 작게·회색 (포탑 공격만).
+        int affinity=game.Session.HitAffinity;
+        var number=FloatingNumber("HitDamage",amount.ToString(),game.World(enemy.Position)+Vector3.up*.95f,affinity>0?WeakNumberColor:affinity<0?ResistNumberColor:new Color(1f,.94f,.68f),nextDamageLane++%3-1);
+        if(affinity!=0)number.Root.localScale=Vector3.one*(affinity>0?1.3f:.8f);
     }
     public void ShowGoldNumber(Vector3 position,int amount,Sprite icon)
     {
@@ -493,12 +496,14 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
             ReturnNumber(number);
         }
     }
-    void Update(){PrepareNumbersDuringPreparation();if(game==null||!game.Ready||Time.unscaledTime<nextRefresh)return;nextRefresh=Time.unscaledTime+.2f;Refresh();}
+    void Update(){PrepareNumbersDuringPreparation();UpdateRedesignFrame();if(game==null||!game.Ready||Time.unscaledTime<nextRefresh)return;nextRefresh=Time.unscaledTime+.2f;Refresh();}
+    SessionPhase installPhase;
     void Refresh()
     {
         if(game==null||!game.Ready||status==null)return;
         var s=game.Session;
-        if(!s.CanBuildNow){installOpen=false;SetHudActive(installPanel.gameObject,false);}
+        // Phase changes still close the chooser (existing behaviour); combat itself no longer does (10-28).
+        if(!s.CanBuildNow||s.Phase!=installPhase){installOpen=false;SetHudActive(installPanel.gameObject,false);}installPhase=s.Phase;
         status.text="코어 "+s.CoreEnergy+" / "+s.CoreMaximum+"  |  "+(s.Diagnostic?"역할 검증":"라운드 "+s.Wave+" / "+s.LastWave)+"  |  골드 "+s.Gold+"  |  수정 "+s.Crystals+"  |  증강 "+s.Augments.Selected.Count;
         bool selecting=s.Phase==SessionPhase.Augmentation;
         if(augmentationPanel!=null){augmentationPanel.gameObject.SetActive(selecting);if(selecting){RefreshCards();augmentationTimer.text="선택 "+Mathf.CeilToInt(s.AugmentationRemaining)+"초 · 클릭 공개 / 공개된 카드 다시 클릭 선택\n시간 초과 시 최고 등급 자동 선택 · 동률이면 왼쪽 우선";}else choiceSignature=null;}

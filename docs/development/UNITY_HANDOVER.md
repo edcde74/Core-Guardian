@@ -1,6 +1,16 @@
 # 코어 가디언 인수인계
 
-갱신: 2026-10-26 09:30 Asia/Seoul (Claude, 기획 상태 절 갱신 — 아트 30개·상태 표식 방향 확정, 다음은 아트 시안 → 사운드 → 개발 재개 → 플레이테스트. 개발 절은 10-25 저녁 그대로). **개발 보류 중 — 사용자가 기획 작업에 집중(2026-10-25 결정). 기획을 이어가면 아래 '기획 상태'부터, 개발 재개 시 '미완료·다음 행동'과 '개발 재개 시 구현 목록'부터.** 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다. 2026-10-24 오전까지의 상세 절(마스크/B1·B2/뷰 동기화/윤곽 등)은 [이전 인수인계 스냅샷](unity_handover_snapshot_20261025_before_rewrite.md)으로 옮겼다.
+갱신: 2026-10-28 12:30 Asia/Seoul (Claude. 맨 위 '현재 상태' 절이 최신이고 아래 절들은 이전 기록 — 아래의 '개발 보류' 문구는 10-25 당시 기록이며 10-27부터 개발 재개, 10-28 확정 기획까지 구현 완료.) 현재 사용자 지시·최신 담당 Notion 우선. [WORK_ROUTING.md](WORK_ROUTING.md)에서 필요한 분야만 읽는다. 2026-10-24 오전까지의 상세 절(마스크/B1·B2/뷰 동기화/윤곽 등)은 [이전 인수인계 스냅샷](unity_handover_snapshot_20261025_before_rewrite.md)으로 옮겼다.
+
+## 현재 상태 (2026-10-28 12:30) — 먼저 읽기
+
+- 코드: 브랜치 `codex/shared-body-mask`. 로컬 커밋 순서 290822e(10-28 기획 1~4·6) → b14a22e(HUD 개편 B안) → 582e96a(사용자 확정 2건) → 이 문서 커밋. GitHub에도 푸시(github-sync 정리 커밋). EditMode 308/308, PlayMode 57/57. 커밋 안 된 사용자 파일 `held_final_*.csv`, `Assets/_Recovery/`는 건드리지 않는다.
+- 10-28 기획 확정 1~6 **전부 게임 반영**: 범위 공격 70·10·0.5, 화염 화상 4초 / 약점 ×1.3·저항 ×0.7(포탑만) / 포탑별 공격 순서 CSV / 전투 중 설치·강화 허용, 49 '약점 공략' / 46 도착 폭발 / HUD 개편 B안.
+- HUD 개편 결과·노션 반영 목록: [hud_redesign_applied_20261028/README.md](hud_redesign_applied_20261028/README.md). 아트 원본: [docs/art/hud_redesign_20261028/](../art/hud_redesign_20261028/README.md).
+- 빌드: `Builds/CoreGuardian_20261027_feedback/CoreGuardian.exe`(10-27). 10-28 변경은 미포함 — 새 빌드는 요청 시.
+- 성능: 10-27 측정(적 ~130·3배속, FPS 평균 약 61) 이후 실측 없음.
+- 다음 후보(사용자가 고름): 기술병 밸런스·포탑 강화비 구조 논의(+기술병 문서 46번 반영) / 상태 표현 미적용분(격노 번쩍임·치유 +·장갑 튀김·치명타 숫자) / HUD 문서 본문 전면 정리 / 성능(그리기 횟수) / 새 빌드.
+- 작업 팁: 코드 수정은 eval 문자열 치환(정확히 1곳) 또는 `write_text_file`. PlayMode 테스트는 `async_tests: true` 필수. git 커밋 메시지는 Logs 아래 파일로 쓰고 `commit -F`, GitHub 푸시는 `Logs\ghpush.bat`(-p는 직전 GitHub 커밋).
 
 ## 작업 환경 (2026-10-24부터)
 
