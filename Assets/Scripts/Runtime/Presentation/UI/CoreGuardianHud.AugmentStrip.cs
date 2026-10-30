@@ -138,6 +138,8 @@ public sealed partial class CoreGuardianHud
         SetHudText(slot.Count, count > 1 ? CountLabel(count) : "");
     }
 
+    const float AugmentStripScale = 1.25f;
+
     void BuildAugmentStrip()
     {
         augmentStrip = Box(
@@ -148,6 +150,8 @@ public sealed partial class CoreGuardianHud
             new Vector2(48, 6 * 50 + 40),
             false
         );
+        // 10-30 사용자 선택: 받은 증강 줄 전체를 1.25배(시안 비교 후 확정).
+        augmentStrip.localScale = new Vector3(AugmentStripScale, AugmentStripScale, 1);
         for (int i = 0; i < stripSlots.Length; i++)
         {
             stripSlots[i] = MakeAugmentSlot(
@@ -204,8 +208,8 @@ public sealed partial class CoreGuardianHud
             return;
         }
         SetHudText(augmentTooltipText, slot.Spec.Name + " · " + GradeName(slot.Spec.Grade) + "\n" + slot.Spec.Text);
-        var y = augmentStrip.anchoredPosition.y + slot.Root.anchoredPosition.y;
-        SetHudPosition(augmentTooltip, new Vector2(76, y));
+        var y = augmentStrip.anchoredPosition.y + slot.Root.anchoredPosition.y * AugmentStripScale;
+        SetHudPosition(augmentTooltip, new Vector2(16 + 48 * AugmentStripScale + 12, y));
         augmentTooltip.SetAsLastSibling();
         SetHudActive(augmentTooltip.gameObject, true);
     }

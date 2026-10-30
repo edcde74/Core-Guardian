@@ -44,7 +44,9 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     float shotAge = 100,
         shotDuration = .25f,
         idleTime,
-        facingAngle = -90;
+        facingAngle = -90,
+        restFacingAngle = -90,
+        noTargetSeconds;
     Vector2 aim = Vector2.down;
     int direction = 3,
         lastShotFrame = -1;
@@ -110,6 +112,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
             aim = new Vector2(-9, 8).normalized;
             facingAngle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
         }
+        restFacingAngle = facingAngle;
         artwork = GetComponentsInChildren<SpriteRenderer>(true).FirstOrDefault(r => r.name == "2D Sprite");
         if (artwork == null)
         {
@@ -217,8 +220,26 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
     {
         if (vector.sqrMagnitude > .000001f)
         {
+            noTargetSeconds = 0;
             aiming = true;
             Face(vector, false, delta);
+        }
+    }
+
+    // 포탑: 대상이 없으면 1초 뒤 설치 때 방향으로 조준과 같은 속도로 돌아간다(10-30 사용자 결정).
+    const float RestReturnDelaySeconds = 1f;
+
+    public void ReturnToRestAim(float delta)
+    {
+        noTargetSeconds += delta;
+        if (noTargetSeconds < RestReturnDelaySeconds || Mathf.Approximately(facingAngle, restFacingAngle))
+            return;
+
+        float radians = restFacingAngle * Mathf.Deg2Rad;
+        Face(new Vector2(Mathf.Cos(radians), Mathf.Sin(radians)), false, delta);
+        if (Mathf.Abs(Mathf.DeltaAngle(facingAngle, restFacingAngle)) < .01f)
+        {
+            facingAngle = restFacingAngle;
         }
     }
 
@@ -245,6 +266,7 @@ public sealed class CoreGuardianUnitAnimation : MonoBehaviour
 
     public void Fire(Vector2 vector, float attacksPerSecond)
     {
+        noTargetSeconds = 0;
         Face(vector, true, 0);
         if (lastShotFrame != Time.frameCount)
         {

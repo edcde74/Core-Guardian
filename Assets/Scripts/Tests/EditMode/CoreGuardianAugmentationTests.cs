@@ -283,24 +283,34 @@ public class CoreGuardianAugmentationTests
     }
 
     [Test]
-    public void RerollIsFreeOncePerSelectionAndCardFourAddsChoices()
+    public void RerollIsFreeOncePerCardAndCardFourAddsChoices()
     {
+        // 10-30: 다시 뽑기는 카드마다 1회(롤체 방식). 한 장만 바뀌고 나머지는 그대로.
         var s = BeforeBoss();
         s.StartCombat();
         Finish(s);
-        Assert.That(s.RerollsLeft, Is.EqualTo(1));
+        Assert.That(s.RerollsLeft, Is.EqualTo(3));
+        Assert.That(s.RerollsLeftFor(0), Is.EqualTo(1));
         var before = s.AugmentationChoices.Select(c => c.Id).ToArray();
-        Assert.That(s.RerollAugmentation(), Is.True);
-        Assert.That(s.RerollAugmentation(), Is.False);
-        Assert.That(s.AugmentationChoices.Select(c => c.Id).Intersect(before), Is.Empty);
+        Assert.That(s.RerollAugmentation(0), Is.True);
+        Assert.That(s.RerollAugmentation(0), Is.False);
+        var after = s.AugmentationChoices.Select(c => c.Id).ToArray();
+        Assert.That(before, Does.Not.Contain(after[0]));
+        Assert.That(after.Skip(1), Is.EqualTo(before.Skip(1)));
+        Assert.That(after.Distinct().Count(), Is.EqualTo(after.Length));
+        Assert.That(s.RerollsLeftFor(1), Is.EqualTo(1));
+        Assert.That(s.RerollAugmentation(1), Is.True);
+        Assert.That(s.RerollsLeft, Is.EqualTo(1));
         Assert.That(s.AugmentationRemaining, Is.EqualTo(30).Within(.01));
         var t = BeforeBoss();
         t.DebugGrantAugmentation(17);
         t.DebugGrantAugmentation(47);
         t.StartCombat();
         Finish(t);
-        Assert.That(t.RerollsLeft, Is.EqualTo(2));
         Assert.That(t.AugmentationChoices.Count, Is.EqualTo(4));
+        // 17번 '한 번 더': 카드마다 +1회.
+        Assert.That(t.RerollsLeftFor(3), Is.EqualTo(2));
+        Assert.That(t.RerollsLeft, Is.EqualTo(8));
     }
 
     [Test]

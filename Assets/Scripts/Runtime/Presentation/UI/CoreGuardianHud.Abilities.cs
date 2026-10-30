@@ -58,7 +58,7 @@ public sealed partial class CoreGuardianHud
 
     void StyleAbilityPurchase(Button button)
     {
-        button.GetComponent<CoreGuardianHudReaction>().InsetAbilityCell = true;
+        // 10-30 사용자 결정: 강화 칸도 종류 탭과 같은 테두리 버튼으로 보인다(예전 바탕 없는 칸 방식 대신).
         button.GetComponent<CoreGuardianHudReaction>().SetLabelLayout(new Vector2(62, -8), new Vector2(228, 48));
         var label = button.transform.Find("Label").GetComponent<Text>();
         label.fontSize = 16;
@@ -102,8 +102,9 @@ public sealed partial class CoreGuardianHud
                 key,
                 plate,
                 new Vector2(0, 1),
-                new Vector2(i % 2 * 306, -i / 2 * 64),
-                new Vector2(306, 64),
+                // 강화 칸(테두리 버튼)과 같은 자리·크기: 칸 사이 틈 8.
+                new Vector2(4 + i % 2 * 306, -2 - i / 2 * 64),
+                new Vector2(298, 60),
                 false
             );
             var icon = CoreGuardianHudSkin.Icon(
@@ -140,7 +141,7 @@ public sealed partial class CoreGuardianHud
         {
             var cell = view.Cells[i];
             SetHudActive(cell.Root.gameObject, !purchaseOpen);
-            SetHudPosition(cell.Root, new Vector2(i % 2 * 306, -i / 2 * 64));
+            SetHudPosition(cell.Root, new Vector2(4 + i % 2 * 306, -2 - i / 2 * 64));
             SetHudText(cell.Name, cell.NormalName);
             if (cell.NormalIcon == null)
             {

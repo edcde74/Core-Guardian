@@ -292,6 +292,14 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
             }
             UseAreaBlast();
         }
+        // Shift: 46 순간 이동(받았을 때만, 전투 중).
+        if (
+            Keyboard.current != null
+            && (Keyboard.current.leftShiftKey.wasPressedThisFrame || Keyboard.current.rightShiftKey.wasPressedThisFrame)
+        )
+        {
+            UseTeleport();
+        }
         // 1: 포탑 연구소 / 2: 기술병 작업대 (설치 중·증강 선택 중 제외).
         if (Keyboard.current != null && !Installing.HasValue && Session.Phase != SessionPhase.Augmentation)
         {

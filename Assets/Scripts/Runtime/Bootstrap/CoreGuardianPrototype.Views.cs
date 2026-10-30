@@ -255,6 +255,13 @@ public sealed partial class CoreGuardianPrototype
             var root = Instantiate(source);
             root.name = "Enemy_" + enemy.Kind + "_" + enemy.Id;
             root.transform.position = World(enemy.Position);
+            if (enemy.Kind == EnemyKind.Flyer)
+            {
+                foreach (var sorting in root.GetComponentsInChildren<ArtDepthSorting>(true))
+                {
+                    sorting.Airborne = true;
+                }
+            }
             var bar = CreateSprite(
                 "Health",
                 square,

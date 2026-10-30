@@ -212,6 +212,22 @@ namespace CoreGuardian
         public float AreaBlastCooldown => areaBlastCooldown;
         public bool AreaBlastReady => AreaBlast != null && Phase == SessionPhase.Combat && areaBlastCooldown <= 0;
 
+        // 46 순간 이동(10-30 사용자 결정): Shift로 따로 쓰고 대기 시간도 따로(augments value3, 범위 폭발과 같은 12초).
+        float teleportCooldown;
+        public float TeleportCooldown => teleportCooldown;
+        public float TeleportCooldownTotal =>
+            Augments.Has(46) ? Augments.Value(46, 2) / Mathf.Max(1, Augments.Count(46)) : 0;
+        public bool TeleportReady => Augments.Has(46) && Phase == SessionPhase.Combat && teleportCooldown <= 0;
+
+        public bool StartTeleportCooldown()
+        {
+            if (!TeleportReady)
+                return false;
+
+            teleportCooldown = TeleportCooldownTotal;
+            return true;
+        }
+
         readonly List<EnemyHandle> blastWork = new List<EnemyHandle>();
 
         // ================= Crit =================

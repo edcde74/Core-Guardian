@@ -116,6 +116,10 @@ public sealed class CoreGuardianCombatAnimation : MonoBehaviour
                 Time.deltaTime
             );
         }
+        else
+        {
+            animation.ReturnToRestAim(Time.deltaTime);
+        }
 
         animation.Present(Time.deltaTime);
     }

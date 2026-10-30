@@ -29,6 +29,7 @@ namespace CoreGuardian
         public void DebugResetAreaBlast()
         {
             areaBlastCooldown = 0;
+            teleportCooldown = 0;
             LastMessage = "개발 도구 · 범위 폭발 바로 사용 가능";
         }
 
@@ -128,8 +129,8 @@ namespace CoreGuardian
             if (Phase != SessionPhase.Preparation || Data.Augments.Count == 0)
                 return false;
 
-            rerollsLeft = (int)Data.Setting("augmentRerolls", 1) + (int)Augments.ExtraRerolls;
             DrawChoices(null);
+            ResetCardRerolls();
             AugmentationRemaining = Data.Setting("augmentSeconds", 30);
             Phase = SessionPhase.Augmentation;
             LastMessage = "개발 도구 · 증강 선택";

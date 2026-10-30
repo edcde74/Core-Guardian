@@ -248,6 +248,10 @@ namespace CoreGuardian
                 {
                     areaBlastCooldown = Mathf.Max(0, areaBlastCooldown - dt);
                 }
+                if (teleportCooldown > 0)
+                {
+                    teleportCooldown = Mathf.Max(0, teleportCooldown - dt);
+                }
                 // Status timers, burn ticks and abilities run before movement, on a frozen list.
                 work.Enemies.AddRange(Enemies);
                 foreach (var e in work.Enemies)
@@ -446,8 +450,31 @@ namespace CoreGuardian
         const float LineHitRadius = .35f;
         readonly List<EnemyHandle> lineHits = new List<EnemyHandle>(8);
 
-        int rerollsLeft;
-        public int RerollsLeft => Phase == SessionPhase.Augmentation ? rerollsLeft : 0;
+        // 10-30 사용자 결정: 다시 뽑기는 카드마다 따로(카드 아래 버튼). 카드마다 기본 1회 + 17번 '한 번 더' 1장당 1회.
+        int[] cardRerollsLeft = Array.Empty<int>();
+
+        // Total left across every shown card.
+        public int RerollsLeft
+        {
+            get
+            {
+                if (Phase != SessionPhase.Augmentation)
+                    return 0;
+
+                int total = 0;
+                foreach (int left in cardRerollsLeft)
+                {
+                    total += left;
+                }
+                return total;
+            }
+        }
+
+        public int RerollsLeftFor(int index) =>
+            Phase == SessionPhase.Augmentation && index >= 0 && index < cardRerollsLeft.Length
+                ? cardRerollsLeft[index]
+                : 0;
+
         readonly HashSet<int> previousScreen = new HashSet<int>();
 
         TargetOrder PlayerOrder => Data.PlayerTargetOrder ?? TargetOrder.Common;

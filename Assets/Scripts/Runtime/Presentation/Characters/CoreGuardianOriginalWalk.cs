@@ -21,7 +21,8 @@ public sealed class CoreGuardianOriginalWalk
             { "Splitter", new float[] { 13, 31, 12, 36, 12, 43, 23, 32, 24, 37, 24, 43, 10, 1.2f, 3, 38 } },
             { "SplitChild", new float[] { 13, 31, 12, 36, 12, 43, 23, 32, 24, 37, 24, 43, 9, 1.2f, 3, 38 } },
             { "Healer", new float[] { 11.5f, 62, 11, 67, 11, 74, 23, 62, 23, 69, 23, 77, 12, 1.6f, -.5f, 62 } },
-            { "Armored", new float[] { 20.5f, 35, 20.5f, 39, 20.5f, 41, 28, 33, 29, 39, 29, 48, 10, 1.4f, 5.25f, 50 } },
+            // 장갑병 관절·보폭: Animation/Armored/joints.json(10-30, 아트 기록대로).
+            { "Armored", new float[] { 20, 34, 20, 39, 20, 45, 27, 32, 27, 39, 30, 47, 14, 1.4f, 5.25f, 50 } },
         };
 
     public static bool Supports(string role) =>
@@ -29,6 +30,25 @@ public sealed class CoreGuardianOriginalWalk
 
     readonly Transform rig;
     readonly SpriteRenderer[] layers;
+
+    // 분열체(10-27 확정 그림): 뒤 병사(어두운 Back* 조각, 반 박자 늦게) + 허리 끈. 오프셋은 Animation/Splitter/joints.json의
+    // back.offset [14, -2]·cordOffset [0, -2](원점 왼쪽 위 픽셀 → 여기선 위가 +). 끈 그림(46×48, 발 피벗 23)은 앞 병사 캔버스(30×46,
+    // 피벗 15)와 왼쪽 위를 맞춘 좌표라 피벗 기준으로는 오른쪽 8·위 0. 그리기 순서: 뒤 병사 → 앞 병사 → 끈.
+    static readonly Vector2 SplitterBackOffsetPixels = new Vector2(14, 2),
+        SplitterCordOffsetPixels = new Vector2(8, 0);
+    readonly Transform back;
+    readonly SpriteRenderer backBody,
+        cord;
+    readonly SpriteRenderer[] backLegParts;
+
+    // 장갑병(10-30): 원본 그림엔 왼쪽 다리가 방패에 가려 없다. 보이는 오른쪽 다리 조각을 어둡게 복사해
+    // 왼쪽 엉덩이 자리(오른쪽 엉덩이에서 왼쪽 7, 아래 2픽셀)에 두고 반 박자 엇갈려 걷는다. 새로 그린 픽셀은 없다.
+    static readonly Vector2 ArmoredRearLegOffsetPixels = new Vector2(-7, -2);
+    static readonly Color RearLegShade = new Color(.62f, .62f, .66f, 1);
+    readonly Leg rearLeg;
+    readonly SpriteRenderer[] rearLegParts;
+    readonly Leg backLeft,
+        backRight;
     readonly float ppu,
         cyclePixels,
         lift;
@@ -159,6 +179,39 @@ public sealed class CoreGuardianOriginalWalk
                 : role == "Defense" ? 46
                 : role == "Buff" ? 84
                 : 65;
+        }
+        if (role == "Splitter")
+        {
+            backBody = Layer("BackBody", role);
+            var blu = Layer("BackLeftUpper", role);
+            var bll = Layer("BackLeftLower", role);
+            var bru = Layer("BackRightUpper", role);
+            var brl = Layer("BackRightLower", role);
+            back = new GameObject("Back").transform;
+            back.SetParent(rig, false);
+            back.localPosition = SplitterBackOffsetPixels / ppu;
+            foreach (var part in new[] { backBody, blu, bll, bru, brl })
+            {
+                part.transform.SetParent(back, false);
+            }
+            backLeft = Bone(blu, bll, table[0], table[1], table[2], table[3], table[4], table[5]);
+            backRight = Bone(bru, brl, table[6], table[7], table[8], table[9], table[10], table[11]);
+            cord = Layer("Cord", role);
+            cord.transform.SetParent(body.transform, false);
+            cord.transform.localPosition = SplitterCordOffsetPixels / ppu;
+            backLegParts = new[] { blu, bll, bru, brl };
+        }
+        if (role == "Armored")
+        {
+            var rearUpper = Layer("RightUpper", role);
+            var rearLower = Layer("RightLower", role);
+            var rear = new GameObject("RearLeg").transform;
+            rear.SetParent(rig, false);
+            rear.localPosition = ArmoredRearLegOffsetPixels / ppu;
+            rearUpper.transform.SetParent(rear, false);
+            rearLower.transform.SetParent(rear, false);
+            rearLeg = Bone(rearUpper, rearLower, table[6], table[7], table[8], table[9], table[10], table[11]);
+            rearLegParts = new[] { rearUpper, rearLower };
         }
         healthTopPixels = Mathf.Max(directionalTop, reference.rect.height - reference.pivot.y - groundAnchor.y);
         var parent = artwork.transform.parent;
@@ -375,6 +428,54 @@ public sealed class CoreGuardianOriginalWalk
         body.transform.localPosition = pelvis / ppu;
         Pose(left, WalkingFootOffset(phase, cyclePixels, lift, groundDirection) * weight, pelvis);
         Pose(right, WalkingFootOffset(phase + .5f, cyclePixels, lift, groundDirection) * weight, pelvis);
+        if (back != null)
+        {
+            PresentSplitterBack(order);
+        }
+        if (rearLeg != null)
+        {
+            foreach (var part in rearLegParts)
+            {
+                SyncPart(part, order - 1, RearLegShade);
+            }
+            Pose(rearLeg, WalkingFootOffset(phase, cyclePixels, lift, groundDirection) * weight, pelvis);
+        }
+    }
+
+    // Back soldier half a step behind the front one; drawn under the front soldier, the cord over both.
+    void PresentSplitterBack(int order)
+    {
+        SyncPart(backBody, order - 1);
+        foreach (var part in backLegParts)
+        {
+            SyncPart(part, order - 2);
+        }
+        SyncPart(cord, order + 2);
+        float backPhase = phase + .5f;
+        Vector2 backPelvis = Vector2.up * ((-.65f + .3f * Mathf.Cos(backPhase * Mathf.PI * 4)) * weight);
+        backBody.transform.localPosition = backPelvis / ppu;
+        Pose(backLeft, WalkingFootOffset(backPhase, cyclePixels, lift, groundDirection) * weight, backPelvis);
+        Pose(backRight, WalkingFootOffset(backPhase + .5f, cyclePixels, lift, groundDirection) * weight, backPelvis);
+    }
+
+    // Same color/layer as the original; order per part. Written only when different (F28).
+    void SyncPart(SpriteRenderer part, int order) => SyncPart(part, order, Color.white);
+
+    void SyncPart(SpriteRenderer part, int order, Color shade)
+    {
+        var color = original.color * shade;
+        if (!SameColor(part.color, color))
+        {
+            part.color = color;
+        }
+        if (part.sortingLayerID != original.sortingLayerID)
+        {
+            part.sortingLayerID = original.sortingLayerID;
+        }
+        if (part.sortingOrder != order)
+        {
+            part.sortingOrder = order;
+        }
     }
 
     static void SetActive(GameObject target, bool value)

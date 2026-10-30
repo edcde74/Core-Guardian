@@ -55,6 +55,7 @@ public sealed partial class CoreGuardianPrototype
         }
         var go = new GameObject(name);
         go.transform.position = World(new Vector2(origin.x + (size - 1) * .5f, origin.y - .5f));
+        // 0.6배 = 그림 1칸이 적·코어·바닥과 같은 도트 크기. 그림(H1·H2)은 3×3칸 크기로 그려져 있다(10-30).
         go.transform.localScale = Vector3.one * .6f;
         var sr = go.AddComponent<SpriteRenderer>();
         sr.sprite = sprite;

@@ -14,6 +14,17 @@ public sealed class ArtDepthSorting : MonoBehaviour
 
     // World-space overlays (projectiles, health bars, effects) sit above every unit order.
     public const int OverlayBase = 30000;
+
+    // 비행체(10-30 사용자 결정): 땅 위 개체(적·포탑)보다 항상 앞, 비행체끼리는 높이 순서. 최대 약 27,600 < OverlayBase.
+    public const int AirBase = Base + (MaxRow - MinRow + 1) * Stride * Lanes;
+    public bool Airborne { get; set; }
+
+    public static int AirOrder(float worldY)
+    {
+        int row = Mathf.Clamp(Mathf.RoundToInt(worldY * RowsPerUnit), MinRow, MaxRow);
+        return AirBase + (MaxRow - row) * Stride;
+    }
+
     const float RowsPerUnit = 10f;
     static int nextLane;
 
@@ -41,6 +52,6 @@ public sealed class ArtDepthSorting : MonoBehaviour
             lane = (nextLane++) & (Lanes - 1);
         }
 
-        artwork.sortingOrder = Order(transform.position.y, lane);
+        artwork.sortingOrder = Airborne ? AirOrder(transform.position.y) : Order(transform.position.y, lane);
     }
 }

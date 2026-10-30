@@ -24,6 +24,14 @@ public sealed partial class CoreGuardianHud
             Refresh();
         });
         var icon = CoreGuardianHudSkin.Icon(r, "AreaBlast", new Vector2(14, -6), new Vector2(48, 44));
+        blastIcon = icon;
+        // 10-30: 다 찼을 때 버튼 전체가 한 번 밝게 빛남(0.5초).
+        blastGlow = Box("ReadyGlow", r, new Vector2(0, 1), Vector2.zero, new Vector2(76, 72), false)
+            .gameObject.AddComponent<Image>();
+        CoreGuardianHudSkin.Frame(blastGlow, "Hover");
+        blastGlow.type = Image.Type.Sliced;
+        blastGlow.raycastTarget = false;
+        blastGlow.color = new Color(1, .86f, .45f, 0);
         blastCooldown = Box("Cooldown", r, new Vector2(0, 1), new Vector2(14, -6), new Vector2(48, 44), false)
             .gameObject.AddComponent<Image>();
         blastCooldown.sprite = icon.sprite;
@@ -35,9 +43,11 @@ public sealed partial class CoreGuardianHud
         blastCooldown.fillOrigin = (int)Image.Origin360.Top;
         blastCooldown.fillClockwise = false;
         blastCooldown.fillAmount = 0;
-        blastTimer = Text("Timer", r, new Vector2(0, -6), new Vector2(76, 44), 20);
+        blastTimer = Text("Timer", r, new Vector2(0, -6), new Vector2(76, 44), 30);
         blastTimer.alignment = TextAnchor.MiddleCenter;
-        blastTimer.gameObject.AddComponent<Outline>().effectColor = new Color(0, 0, 0, .9f);
+        var timerOutline = blastTimer.gameObject.AddComponent<Outline>();
+        timerOutline.effectColor = new Color(0, 0, 0, .95f);
+        timerOutline.effectDistance = new Vector2(2, -2);
         var key = Text("Key", r, new Vector2(0, -50), new Vector2(76, 18), 12);
         key.alignment = TextAnchor.MiddleCenter;
         key.text = "Space";
@@ -64,6 +74,26 @@ public sealed partial class CoreGuardianHud
             blastCooldown.fillAmount = fill;
         }
 
+        // 10-30 사용자 결정: 대기 중엔 아이콘 회색 + 큰 숫자, 다 차면 한 번 반짝 + 화면 소리(ui_open 재사용).
+        var iconColor = cooling ? new Color(.42f, .42f, .42f) : Color.white;
+        if (blastIcon != null && blastIcon.color != iconColor)
+        {
+            blastIcon.color = iconColor;
+        }
+        bool ready = s.AreaBlastReady;
+        if (ready && blastWasCooling)
+        {
+            blastFlashUntil = Time.unscaledTime + BlastFlashSeconds;
+            blastButton.GetComponent<CoreGuardianHudReaction>().OrNull()?.Confirm();
+            game.GetComponent<CoreGuardianCombatAudio>().OrNull()?.PlayCue("ui_open");
+        }
+        blastWasCooling = cooling;
+        float glow = Mathf.Clamp01((blastFlashUntil - Time.unscaledTime) / BlastFlashSeconds);
+        if (blastGlow != null && !Mathf.Approximately(blastGlow.color.a, glow))
+        {
+            blastGlow.color = new Color(1, .86f, .45f, glow);
+        }
+
         // F3: the seconds text is made only when the whole-second value changes.
         int seconds = cooling ? Mathf.CeilToInt(s.AreaBlastCooldown) : -1;
         if (seconds != blastSecondsShown || blastTimer.text == null)
@@ -74,6 +104,11 @@ public sealed partial class CoreGuardianHud
     }
 
     int blastSecondsShown = int.MinValue;
+    const float BlastFlashSeconds = .5f;
+    Image blastIcon,
+        blastGlow;
+    bool blastWasCooling;
+    float blastFlashUntil;
 
     // ---------------- damage panel scrollbar ----------------
     void AddDamageScrollbar(ScrollRect scroll)

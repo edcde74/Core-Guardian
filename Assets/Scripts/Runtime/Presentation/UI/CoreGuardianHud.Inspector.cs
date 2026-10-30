@@ -251,8 +251,8 @@ public sealed partial class CoreGuardianHud
             var b = Button(
                 stat,
                 playerPanel,
-                new Vector2(264 + i % 2 * 306, -52 - i / 2 * 64),
-                new Vector2(306, 64),
+                new Vector2(268 + i % 2 * 306, -54 - i / 2 * 64),
+                new Vector2(298, 60),
                 () => UpgradeLabel(game.Session.Player, "Player", stat, game.Session.PlayerUpgradePrice(stat), "골드"),
                 () => PurchasePlayer(stat),
                 () => CanBuyPlayer && game.Session.Gold >= game.Session.PlayerUpgradePrice(stat)
@@ -293,7 +293,7 @@ public sealed partial class CoreGuardianHud
                 "Tower_" + stat,
                 towerPanel,
                 Vector2.zero,
-                new Vector2(430, 64),
+                new Vector2(430, 58),
                 () =>
                     UpgradeLabel(
                         game.Session.TowerKindStats(labKind),

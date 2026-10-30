@@ -23,6 +23,10 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
             Fps,
             Fade;
         public bool Loop;
+
+        // Boss effects follow their boss until they end (10-30): enemy id, offset from its foot. -1 = stays put.
+        public int Follow = -1;
+        public Vector3 Offset;
     }
 
     readonly List<Anim> anims = new List<Anim>();
@@ -153,11 +157,11 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
 
     float TileWidth => Vector3.Distance(game.World(Vector2.zero), game.World(Vector2.right));
 
-    void Play(string key, Vector3 world, float fps = 14, int order = PopOrder, float width = 0, float fade = 0)
+    Anim Play(string key, Vector3 world, float fps = 14, int order = PopOrder, float width = 0, float fade = 0)
     {
         var frames = Set(key);
         if (frames.Length == 0)
-            return;
+            return null;
 
         var a = animPool.Count > 0 ? animPool.Pop() : new Anim();
         if (!fxNames.TryGetValue(key, out var fxName))
@@ -171,6 +175,7 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
         a.Fps = fps;
         a.Loop = false;
         a.Fade = fade;
+        a.Follow = -1;
         a.Renderer.sprite = frames[0];
         a.Renderer.transform.position = world;
         if (width > 0)
@@ -179,6 +184,29 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
         }
 
         anims.Add(a);
+        return a;
+    }
+
+    void FollowBoss(Anim a, Vector2 tile, Vector3 offset)
+    {
+        if (a == null)
+            return;
+
+        // The cue carries only a position; the boss that raised it stands on it this frame.
+        float best = .25f;
+        foreach (var e in game.Session.Enemies)
+        {
+            if (!e.Alive || e.Kind != EnemyKind.Boss)
+                continue;
+
+            float d = (e.Position - tile).sqrMagnitude;
+            if (d <= best)
+            {
+                best = d;
+                a.Follow = e.Id;
+            }
+        }
+        a.Offset = offset;
     }
 
     void OnCue(Session.CueEvent cue)
@@ -202,11 +230,19 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
                 Play("Enemies/HealPulse", at, 1, GroundOrder, TileWidth * 4, .6f);
                 break;
             case "shield_deploy":
-                Play("IronKnightShield/ShieldStart_", at + Vector3.up * .2f, 12);
+                FollowBoss(
+                    Play("IronKnightShield/ShieldStart_", at + Vector3.up * .2f, 12),
+                    cue.Position,
+                    Vector3.up * .2f
+                );
                 break;
             case "summon":
-                Play("CrimsonLordSummon/CrownWave_", at + Vector3.up * .6f, 12);
-                Play("CrimsonLordSummon/SummonCircle_", at, 10, GroundOrder);
+                FollowBoss(
+                    Play("CrimsonLordSummon/CrownWave_", at + Vector3.up * .6f, 12),
+                    cue.Position,
+                    Vector3.up * .6f
+                );
+                FollowBoss(Play("CrimsonLordSummon/SummonCircle_", at, 10, GroundOrder), cue.Position, Vector3.zero);
                 break;
             case "hit_cold":
                 Play("Frost/HitFrost_", at + Vector3.up * .3f, 20);
@@ -244,6 +280,29 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
         Play("Skills/Teleport_", to, 20);
     }
 
+    // Last foot position and the side behind the boss (opposite to its travel), per boss id.
+    readonly Dictionary<int, Vector3> rageLastFoot = new Dictionary<int, Vector3>();
+    readonly Dictionary<int, Vector2> rageTrail = new Dictionary<int, Vector2>();
+
+    Vector2 RageTrail(int id, Vector3 foot)
+    {
+        if (!rageTrail.TryGetValue(id, out var trail))
+        {
+            trail = Vector2.right;
+        }
+        if (rageLastFoot.TryGetValue(id, out var last))
+        {
+            Vector2 moved = foot - last;
+            if (moved.sqrMagnitude > .000001f)
+            {
+                trail = -moved.normalized;
+            }
+        }
+        rageLastFoot[id] = foot;
+        rageTrail[id] = trail;
+        return trail;
+    }
+
     SpriteRenderer Marker(long key, string name, int order)
     {
         liveMarkers.Add(key);
@@ -279,6 +338,10 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
                 continue;
             }
             a.Renderer.sprite = a.Frames[Mathf.Min(frame, a.Frames.Length - 1)];
+            if (a.Follow >= 0)
+            {
+                FollowPosition(a);
+            }
             if (a.Fade > 0)
             {
                 var c = a.Renderer.color;
@@ -368,7 +431,12 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
                 {
                     r.sprite = f[0];
                 }
-                r.transform.position = foot + Vector3.up * .5f + Vector3.right * .35f;
+                // 10-30: 걷는 방향의 뒤쪽에 붙고 방향에 맞춰 돈다(그림은 왼쪽으로 걸을 때 오른쪽에 붙는 모양).
+                var trail = RageTrail(e.Id, foot);
+                r.transform.SetPositionAndRotation(
+                    foot + Vector3.up * .5f + (Vector3)(trail * .35f),
+                    Quaternion.Euler(0, 0, Mathf.Atan2(trail.y, trail.x) * Mathf.Rad2Deg)
+                );
             }
         }
         foreach (var t in s.Towers)
@@ -431,6 +499,22 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
         {
             Return(markers[key]);
             markers.Remove(key);
+        }
+    }
+
+    // O(적 수) per following effect; at most a few boss effects at once.
+    void FollowPosition(Anim a)
+    {
+        foreach (var e in game.Session.Enemies)
+        {
+            if (e.Id != a.Follow)
+                continue;
+
+            if (e.Alive)
+            {
+                a.Renderer.transform.position = W(e.Position) + a.Offset;
+            }
+            return;
         }
     }
 

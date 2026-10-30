@@ -74,7 +74,7 @@ public static class CoreGuardianHudSkin
         if (name == "Install_Rail" || name == "Tower_pierceFalloff")
             return "TowerRail";
 
-        if (name == "AugmentReroll")
+        if (name.StartsWith("AugmentReroll"))
             return "Reroll";
 
         if (name == "AreaBlast")

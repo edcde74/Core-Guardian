@@ -29,6 +29,7 @@ namespace CoreGuardian
             if (AreaBlast == null || AreaBlast.ResetOnRoundStart)
             {
                 areaBlastCooldown = 0;
+                teleportCooldown = 0;
             }
 
             foreach (var tower in Towers)
@@ -186,8 +187,8 @@ namespace CoreGuardian
                 && Data.Augments.Count > 0
             )
             {
-                rerollsLeft = (int)Data.Setting("augmentRerolls", 1) + (int)Augments.ExtraRerolls;
                 DrawChoices(null);
+                ResetCardRerolls();
                 AugmentationRemaining = Data.Setting("augmentSeconds", 30);
                 Phase = SessionPhase.Augmentation;
                 LastMessage += " · 증강 선택";
@@ -215,20 +216,55 @@ namespace CoreGuardian
             );
         }
 
-        // Free reroll per selection; the shown cards are excluded and the timer keeps running.
-        public bool RerollAugmentation()
+        void ResetCardRerolls()
         {
-            if (Phase != SessionPhase.Augmentation || rerollsLeft <= 0)
+            int each = (int)Data.Setting("augmentRerolls", 1) + (int)Augments.ExtraRerolls;
+            cardRerollsLeft = new int[choices.Length];
+            for (int i = 0; i < cardRerollsLeft.Length; i++)
+            {
+                cardRerollsLeft[i] = each;
+            }
+        }
+
+        // Free reroll of one card (카드마다 따로). The shown cards are excluded and the timer keeps running.
+        public bool RerollAugmentation(int index)
+        {
+            if (Phase != SessionPhase.Augmentation || index < 0 || index >= choices.Length)
+                return false;
+            if (index >= cardRerollsLeft.Length || cardRerollsLeft[index] <= 0)
                 return false;
 
-            rerollsLeft--;
             previousScreen.Clear();
             foreach (var c in choices)
             {
                 previousScreen.Add(c.Spec.Id);
             }
 
-            DrawChoices(previousScreen);
+            // Draw falls back to shown cards only when nothing else fits; never put a duplicate on screen.
+            AugmentationCard drawn = null;
+            for (int attempt = 0; attempt < 4 && drawn == null; attempt++)
+            {
+                var one = AugmentationDeck.Draw(
+                    augmentationRandom,
+                    Data.Augments,
+                    Augments,
+                    1,
+                    previousScreen,
+                    index == 0 && Augments.PendingPlatinum,
+                    Data.Setting("augmentGradeSilver", 60),
+                    Data.Setting("augmentGradeGold", 30),
+                    Data.Setting("augmentSubcategoryWeight", 25)
+                );
+                if (one.Length > 0 && !previousScreen.Contains(one[0].Spec.Id))
+                {
+                    drawn = one[0];
+                }
+            }
+            if (drawn == null)
+                return false;
+
+            cardRerollsLeft[index]--;
+            choices[index] = drawn;
             RaiseCue("reroll", Vector2.zero);
             FlushCues();
             LastMessage = "증강 리롤";
@@ -250,7 +286,7 @@ namespace CoreGuardian
             ApplyImmediate(card);
             choices = Array.Empty<AugmentationCard>();
             AugmentationRemaining = 0;
-            rerollsLeft = 0;
+            cardRerollsLeft = Array.Empty<int>();
             Phase = SessionPhase.Preparation;
             PreparationRemaining = Data.PreparationFor(Wave, true);
             LastMessage = card.GradeName + " · " + card.Title + " 선택 · " + Wave + "라운드 준비";

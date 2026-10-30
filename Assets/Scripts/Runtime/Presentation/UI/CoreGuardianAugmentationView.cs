@@ -56,17 +56,25 @@ public sealed class CoreGuardianAugmentationView
         art.raycastTarget = false;
         front = Rect("Front", body, Vector2.zero, body.sizeDelta - new Vector2(48, 48)).gameObject;
         float width = ((RectTransform)front.transform).rect.width;
-        // Card front: grade frame + name + text only (category icon removed, 아트 F2 · 2026-10-26).
+        // Card front: grade frame + card icon (32px art ×3, 10-30 사용자 요청) + name + text.
+        var icon = Rect("Icon", front.transform, Vector2.zero, new Vector2(96, 96));
+        icon.anchorMin = icon.anchorMax = icon.pivot = new Vector2(.5f, 1);
+        icon.anchoredPosition = new Vector2(0, -16);
+        var iconImage = icon.gameObject.AddComponent<Image>();
+        iconImage.sprite = CoreGuardianHudSkin.Sprite("Augments/augment_" + card.Number.ToString("00"));
+        iconImage.preserveAspect = true;
+        iconImage.raycastTarget = false;
+        iconImage.enabled = iconImage.sprite != null;
         title = Label(
             "Title",
             front.transform,
             Resources.Load<Font>("CoreGuardian/Fonts/Galmuri11-Bold").OrNull() ?? font,
-            new Vector2(14, -60),
-            new Vector2(width - 28, 48),
+            new Vector2(14, -116),
+            new Vector2(width - 28, 44),
             26
         );
         title.text = card.Title;
-        description = Label("Effect", front.transform, font, new Vector2(14, -130), new Vector2(width - 28, 200), 20);
+        description = Label("Effect", front.transform, font, new Vector2(14, -166), new Vector2(width - 28, 178), 20);
         description.text = card.Description;
         Label("Choose", front.transform, font, new Vector2(14, -354), new Vector2(width - 28, 34), 18).text =
             "다시 클릭하여 선택";

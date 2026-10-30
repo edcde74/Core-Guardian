@@ -32,28 +32,34 @@ public sealed partial class CoreGuardianHud
         var shade = augmentationPanel.GetComponent<UnityEngine.UI.Image>();
         shade.sprite = null;
         shade.color = new Color(.015f, .025f, .04f, .82f);
-        var panel = Box("Cards", augmentationPanel, new Vector2(.5f, .5f), new Vector2(0, 0), new Vector2(1140, 650));
+        var panel = Box("Cards", augmentationPanel, new Vector2(.5f, .5f), new Vector2(0, -30), new Vector2(1140, 710));
         cardsRoot = panel;
         CoreGuardianHudSkin.Icon(panel, "Augment", new Vector2(24, -24), new Vector2(30, 30));
         Text("Title", panel, new Vector2(66, -18), new Vector2(700, 44), 30).text = "증강 1개 선택";
-        // Free reroll (선택마다 1회 + 17번). The shown cards are excluded and the timer keeps running.
-        rerollButton = Button(
-            "AugmentReroll",
-            panel,
-            new Vector2(1140 - 264, -12),
-            new Vector2(240, 56),
-            () => "리롤 " + game.Session.RerollsLeft + "회",
-            () =>
-            {
-                if (game.Session.RerollAugmentation())
+        // 10-30: 다시 뽑기 버튼은 카드마다 아래에 따로 있다. 최대 4장(47번)이라 4개를 미리 만들고 장 수만큼 보인다.
+        for (int i = 0; i < cardRerollButtons.Length; i++)
+        {
+            int index = i;
+            var reroll = Button(
+                "AugmentReroll",
+                panel,
+                new Vector2(24 + i * 370, -634),
+                new Vector2(350, 56),
+                () => "다시 뽑기 " + game.Session.RerollsLeftFor(index) + "회",
+                () =>
                 {
-                    choiceSignature = null;
-                    Refresh();
-                }
-            },
-            () => game.Session.Phase == SessionPhase.Augmentation && game.Session.RerollsLeft > 0
-        );
-        augmentationButtons.Add(rerollButton);
+                    if (game.Session.RerollAugmentation(index))
+                    {
+                        Refresh();
+                    }
+                },
+                () => game.Session.Phase == SessionPhase.Augmentation && game.Session.RerollsLeftFor(index) > 0
+            );
+            reroll.name = "AugmentReroll" + i;
+            reroll.gameObject.SetActive(false);
+            cardRerollButtons[i] = reroll;
+            augmentationButtons.Add(reroll);
+        }
         // The timer and input shield survive folding; hiding CanvasGroups preserves reveal coroutines.
         var timerPlate = Box(
             "AugmentTimerPlate",
@@ -81,32 +87,53 @@ public sealed partial class CoreGuardianHud
         topDetails.SetAsLastSibling();
     }
 
+    // Cards shown per slot: a reroll replaces only its own card, so the other cards keep their reveal state.
+    string[] shownCardIds = Array.Empty<string>();
+    UnityEngine.UI.Button[] cardButtons = Array.Empty<UnityEngine.UI.Button>();
+    readonly UnityEngine.UI.Button[] cardRerollButtons = new UnityEngine.UI.Button[4];
+
     void RefreshCards()
     {
-        string signature = string.Join("|", game.Session.AugmentationChoices.Select(x => x.Id));
+        var choices = game.Session.AugmentationChoices;
+        string signature = string.Join("|", choices.Select(x => x.Id));
         if (choiceSignature == signature)
             return;
 
+        bool sameScreen = choiceSignature != null && shownCardIds.Length == choices.Count;
         choiceSignature = signature;
-        foreach (var b in augmentationButtons.Where(b => b.name.StartsWith("AugmentationCard")).ToArray())
+        int count = choices.Count;
+        if (!sameScreen)
         {
-            augmentationButtons.Remove(b);
-            b.gameObject.SetActive(false);
-            Destroy(b.gameObject);
-        }
-        cardsFolded = false;
-        SetCardsVisible();
-        // 47 넓은 선택 shows four cards; the panel widens instead of shrinking the cards.
-        int count = game.Session.AugmentationChoices.Count;
-        float width = Mathf.Max(1140, 28 + count * 370);
-        cardsRoot.sizeDelta = new Vector2(width, cardsRoot.sizeDelta.y);
-        if (rerollButton != null)
-        {
-            ((RectTransform)rerollButton.transform).anchoredPosition = new Vector2(width - 264, -14);
+            foreach (var b in augmentationButtons.Where(b => b.name.StartsWith("AugmentationCard")).ToArray())
+            {
+                augmentationButtons.Remove(b);
+                b.gameObject.SetActive(false);
+                Destroy(b.gameObject);
+            }
+            cardsFolded = false;
+            SetCardsVisible();
+            // 47 넓은 선택 shows four cards; the panel widens instead of shrinking the cards.
+            float width = Mathf.Max(1140, 28 + count * 370);
+            cardsRoot.sizeDelta = new Vector2(width, cardsRoot.sizeDelta.y);
+            shownCardIds = new string[count];
+            cardButtons = new UnityEngine.UI.Button[count];
+            for (int i = 0; i < cardRerollButtons.Length; i++)
+            {
+                cardRerollButtons[i].gameObject.SetActive(i < count);
+            }
         }
 
         for (int i = 0; i < count; i++)
         {
+            if (shownCardIds[i] == choices[i].Id)
+                continue;
+
+            if (cardButtons[i] != null)
+            {
+                augmentationButtons.Remove(cardButtons[i]);
+                cardButtons[i].gameObject.SetActive(false);
+                Destroy(cardButtons[i].gameObject);
+            }
             int index = i;
             var r = Box(
                 "AugmentationCard" + i,
@@ -119,7 +146,7 @@ public sealed partial class CoreGuardianHud
             augmentationButtons.Add(b);
             r.gameObject.AddComponent<CoreGuardianAugmentationView>()
                 .Configure(
-                    game.Session.AugmentationChoices[i],
+                    choices[i],
                     font,
                     () =>
                     {
@@ -131,6 +158,8 @@ public sealed partial class CoreGuardianHud
                     },
                     () => game.Session.Phase == SessionPhase.Augmentation
                 );
+            cardButtons[i] = b;
+            shownCardIds[i] = choices[i].Id;
         }
     }
 }

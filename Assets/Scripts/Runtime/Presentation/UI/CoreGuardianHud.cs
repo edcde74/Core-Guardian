@@ -133,8 +133,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         BuildAugmentationSelection();
     }
 
-    UnityEngine.UI.Button rerollButton,
-        blastButton;
+    UnityEngine.UI.Button blastButton;
 
     void Build()
     {
@@ -206,6 +205,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         );
         // 범위 폭발 (Space / 클릭): 아이콘 + 시계 방향 쿨타임 덮개 (HUD 개편 B안).
         BuildBlastButton(controls);
+        BuildTeleportButton(controls);
         var stagePlate = Box("StagePlate", canvas, new Vector2(.5f, 1), new Vector2(0, -74), new Vector2(900, 78));
         stagePlateView = stagePlate;
         CoreGuardianHudSkin.Icon(stagePlate, "Wave", new Vector2(16, -16), new Vector2(28, 28));

@@ -53,6 +53,7 @@ public sealed partial class CoreGuardianHud
     void UpdateRedesignFrame()
     {
         UpdateBlastCooldown();
+        UpdateTeleportCooldown();
         if (augmentList != null && augmentList.gameObject.activeSelf != AugmentListWanted)
         {
             RefreshAugmentList();

@@ -86,36 +86,43 @@ public sealed partial class CoreGuardianPrototype
         Notify(reason);
     }
 
-    // 범위 폭발 (Space, 전투 중). 46 순간 이동 follows the blast.
+    // 범위 폭발 (Space, 전투 중).
     public bool UseAreaBlast()
     {
         if (Session.Phase != SessionPhase.Combat || !Session.UseAreaBlast(PlayerTile()))
             return false;
 
-        if (Session.Augments.Has(46))
+        return true;
+    }
+
+    // 46 순간 이동 (Shift, 전투 중, 10-30): 마지막으로 움직인 방향으로 이동 후 도착 폭발. 대기 시간은 범위 폭발과 따로.
+    public bool UseTeleport()
+    {
+        if (!Session.TeleportReady)
+            return false;
+
+        var dir = player.LastDirection;
+        if (dir == Vector2Int.zero)
         {
-            var dir = player.LastDirection;
+            var p = Vector2Int.RoundToInt(PlayerTile());
+            var d = coreCell - p;
+            dir =
+                Mathf.Abs(d.x) >= Mathf.Abs(d.y)
+                    ? new Vector2Int(Math.Sign(d.x), 0)
+                    : new Vector2Int(0, Math.Sign(d.y));
             if (dir == Vector2Int.zero)
             {
-                var p = Vector2Int.RoundToInt(PlayerTile());
-                var d = coreCell - p;
-                dir =
-                    Mathf.Abs(d.x) >= Mathf.Abs(d.y)
-                        ? new Vector2Int(Math.Sign(d.x), 0)
-                        : new Vector2Int(0, Math.Sign(d.y));
-                if (dir == Vector2Int.zero)
-                {
-                    dir = Vector2Int.right;
-                }
-            }
-            var from = player.transform.position;
-            if (player.TryTeleport(dir, (int)(Session.Augments.Value(46) / Math.Max(1, Session.Augments.Count(46)))))
-            {
-                effects.Teleport(from, player.transform.position);
-                // 46 도착 폭발 (2026-10-28): 도착 칸에서 범위 폭발 한 번 더 (피해 50%).
-                Session.UseTeleportBlast(PlayerTile());
+                dir = Vector2Int.right;
             }
         }
+        var from = player.transform.position;
+        if (!player.TryTeleport(dir, (int)(Session.Augments.Value(46) / Math.Max(1, Session.Augments.Count(46)))))
+            return false;
+
+        Session.StartTeleportCooldown();
+        effects.Teleport(from, player.transform.position);
+        // 46 도착 폭발 (2026-10-28): 도착 칸에서 범위 폭발 한 번 더 (피해 50%).
+        Session.UseTeleportBlast(PlayerTile());
         return true;
     }
 
