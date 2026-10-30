@@ -18,7 +18,7 @@ public sealed partial class CoreGuardianHud
             canvas,
             new Vector2(0, 1),
             new Vector2(334, -72),
-            new Vector2(16 * 2 + W * 3 + Gap * 2, 16 + 10 * (H + Gap))
+            new Vector2(16 * 2 + W * 3 + Gap * 2, 16 + 11 * (H + Gap))
         );
         Vector2 At(int col, int row) => new Vector2(16 + col * (W + Gap), -16 - row * (H + Gap));
         Vector2 Size(int cols) => new Vector2(W * cols + Gap * (cols - 1), H);
@@ -252,6 +252,14 @@ public sealed partial class CoreGuardianHud
             );
             refresh.Add(() => slotButton.gameObject.SetActive(index < game.Session.DebugEnemyIds.Length)); // 빈 칸은 숨김
         }
+        // 직전 라운드 코어 도착 요약 (2026-10-30 사용자 요청, 밸런싱용). Developer menu only.
+        var reachText = Text("Cheat_CoreReach", panel, At(0, 10), Size(3), 18);
+        refresh.Add(() =>
+        {
+            string summary = game.RoundLog?.LastSummary ?? "";
+            if (reachText.text != summary)
+                reachText.text = summary;
+        });
         refresh.Add(() =>
         {
             if (!developerOpen)

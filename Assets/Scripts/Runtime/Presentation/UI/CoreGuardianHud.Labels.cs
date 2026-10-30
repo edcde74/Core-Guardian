@@ -2,66 +2,98 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CoreGuardian;
+using Cysharp.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-// CoreGuardianHud: enemy/tower kind, ability, status and order labels.
+// CoreGuardianHud: enemy/tower kind, ability, status and order labels (appended to a ZString builder).
 public sealed partial class CoreGuardianHud
 {
-    string OrderText(TowerSpec spec)
+    void AppendOrder(ref Utf16ValueStringBuilder sb, TowerSpec spec)
     {
         if (spec.TargetOrder == null)
-            return spec.Kind == TowerKind.Frost ? "없음 (범위 안 전체 펄스)" : "직접 공격하지 않음";
+        {
+            sb.Append(spec.Kind == TowerKind.Frost ? "없음 (범위 안 전체 펄스)" : "직접 공격하지 않음");
+            return;
+        }
 
-        var names = new List<string>();
-        var seen = new HashSet<EnemyKind>();
+        int seen = 0;
+        bool any = false;
         foreach (var id in spec.TargetOrder.EnemyIds)
         {
             if (!game.Session.Data.EnemiesById.TryGetValue(id, out var e))
                 continue;
 
             var k = e.Kind == EnemyKind.SplitChild ? EnemyKind.Splitter : e.Kind;
-            if (seen.Add(k))
+            int bit = 1 << (int)k;
+            if ((seen & bit) == 0)
             {
-                names.Add(KindName(k));
+                seen |= bit;
+                Separate(ref sb, ref any, " > ");
+                sb.Append(KindName(k));
             }
         }
-        string tie =
+        sb.Append("\n같은 순위: ");
+        sb.Append(
             spec.TargetOrder.Tiebreak == TargetOrder.HighestHealth ? "체력 많은 적"
             : spec.TargetOrder.Tiebreak == TargetOrder.NearestCore ? "코어 가까운 적"
             : spec.TargetOrder.Tiebreak == TargetOrder.UnburnedNearestCore ? "화상 없는 적 → 코어 가까운 적"
             : spec.TargetOrder.Tiebreak == TargetOrder.MostPierced ? "가장 많이 꿰뚫는 방향"
-            : "체력 낮은 적";
-        return string.Join(" > ", names) + "\n같은 순위: " + tie;
+            : "체력 낮은 적"
+        );
     }
 
-    string TowerTagText(TowerKind kind, CombatStats st)
+    static bool HasTowerTag(TowerKind kind) =>
+        kind == TowerKind.Frost || kind == TowerKind.Flame || kind == TowerKind.Rail || kind == TowerKind.Multi;
+
+    void AppendTowerTag(ref Utf16ValueStringBuilder sb, TowerKind kind, CombatStats st)
     {
         switch (kind)
         {
             case TowerKind.Frost:
-                return "둔화 " + st.SlowPercent.ToString("0.##") + "% · " + st.SlowDuration.ToString("0.##") + "초";
+                sb.Append("둔화 ");
+                sb.Append(st.SlowPercent, "0.##");
+                sb.Append("% · ");
+                sb.Append(st.SlowDuration, "0.##");
+                sb.Append("초");
+                break;
             case TowerKind.Flame:
-                return "화상 스택당 초당 "
-                    + st.BurnPerStack.ToString("0.##")
-                    + " · "
-                    + st.BurnDuration.ToString("0.##")
-                    + "초";
+                sb.Append("화상 스택당 초당 ");
+                sb.Append(st.BurnPerStack, "0.##");
+                sb.Append(" · ");
+                sb.Append(st.BurnDuration, "0.##");
+                sb.Append("초");
+                break;
             case TowerKind.Rail:
-                return "관통 · 통과마다 ×" + st.PierceFalloff.ToString("0.##");
+                sb.Append("관통 · 통과마다 ×");
+                sb.Append(st.PierceFalloff, "0.##");
+                break;
             case TowerKind.Multi:
-                return "최대 " + game.Session.Data.Towers[kind].MaxTargets + "명 동시 공격";
-            default:
-                return "";
+                sb.Append("최대 ");
+                sb.Append(game.Session.Data.Towers[kind].MaxTargets);
+                sb.Append("명 동시 공격");
+                break;
         }
     }
 
     static string KindName(EnemyKind kind) => EnemyNames.Kind(kind);
 
-    static string EnemyName(EnemyHandle e) =>
-        e.Kind == EnemyKind.Boss ? BossName(e.Spec) : KindName(e.Kind) + (e.Summoned ? " (소환 졸개)" : "");
+    static void AppendEnemyName(ref Utf16ValueStringBuilder sb, EnemyHandle e)
+    {
+        if (e.Kind == EnemyKind.Boss)
+        {
+            sb.Append(BossName(e.Spec));
+            return;
+        }
+
+        sb.Append(KindName(e.Kind));
+        if (e.Summoned)
+        {
+            sb.Append(" (소환 졸개)");
+        }
+    }
 
     static string EnemyFamily(EnemyHandle e)
     {
@@ -82,109 +114,146 @@ public sealed partial class CoreGuardianHud
         }
     }
 
-    static string AbilityText(EnemyHandle e)
+    static void AppendAbility(ref Utf16ValueStringBuilder sb, EnemyHandle e)
     {
         var s = e.Spec;
-        var parts = new List<string>();
+        bool any = false;
         if (s.BuffRadius > 0 && s.BuffSpeed > 0)
         {
-            parts.Add("주변 " + s.BuffRadius.ToString("0.##") + "타일 이동속도 +" + s.BuffSpeed.ToString("0.##") + "%");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("주변 ");
+            sb.Append(s.BuffRadius, "0.##");
+            sb.Append("타일 이동속도 +");
+            sb.Append(s.BuffSpeed, "0.##");
+            sb.Append("%");
         }
 
         if (s.HealInterval > 0)
         {
-            parts.Add(
-                s.HealInterval.ToString("0.##")
-                    + "초마다 "
-                    + s.HealRadius.ToString("0.##")
-                    + "타일 회복 "
-                    + s.HealPercent.ToString("0.##")
-                    + "%"
-            );
+            Separate(ref sb, ref any, " · ");
+            sb.Append(s.HealInterval, "0.##");
+            sb.Append("초마다 ");
+            sb.Append(s.HealRadius, "0.##");
+            sb.Append("타일 회복 ");
+            sb.Append(s.HealPercent, "0.##");
+            sb.Append("%");
         }
 
         if (s.SplitIntoId != 0)
         {
-            parts.Add("처치 시 " + s.SplitCount + "마리로 분열");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("처치 시 ");
+            sb.Append(s.SplitCount);
+            sb.Append("마리로 분열");
         }
 
         if (s.Flying)
         {
-            parts.Add("비행 경로(지름길)");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("비행 경로(지름길)");
         }
 
         if (e.Kind == EnemyKind.Boss)
         {
-            parts.Add("체력 " + s.RagePercent.ToString("0") + "% 이하 격노 +" + s.RageBoost.ToString("0") + "%");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("체력 ");
+            sb.Append(s.RagePercent, "0");
+            sb.Append("% 이하 격노 +");
+            sb.Append(s.RageBoost, "0");
+            sb.Append("%");
         }
 
         if (s.ShieldAt.Length > 0)
         {
-            parts.Add(
-                "체력 "
-                    + string.Join("·", s.ShieldAt.Select(x => x.ToString("0") + "%"))
-                    + "에서 "
-                    + s.ShieldSeconds.ToString("0.#")
-                    + "초 방어 +"
-                    + s.ShieldDefense.ToString("0")
-            );
+            Separate(ref sb, ref any, " · ");
+            sb.Append("체력 ");
+            for (int i = 0; i < s.ShieldAt.Length; i++)
+            {
+                if (i > 0)
+                {
+                    sb.Append("·");
+                }
+
+                sb.Append(s.ShieldAt[i], "0");
+                sb.Append("%");
+            }
+            sb.Append("에서 ");
+            sb.Append(s.ShieldSeconds, "0.#");
+            sb.Append("초 방어 +");
+            sb.Append(s.ShieldDefense, "0");
         }
 
         if (s.SummonId != 0)
         {
-            parts.Add(s.SummonInterval.ToString("0.#") + "초마다 졸개 " + s.SummonCount + "마리 소환");
+            Separate(ref sb, ref any, " · ");
+            sb.Append(s.SummonInterval, "0.#");
+            sb.Append("초마다 졸개 ");
+            sb.Append(s.SummonCount);
+            sb.Append("마리 소환");
         }
 
-        if (parts.Count == 0)
+        if (!any)
         {
-            parts.Add(
+            sb.Append(
                 e.Kind == EnemyKind.Charger ? "매우 빠름"
                 : e.Kind == EnemyKind.Armored ? "높은 방어"
                 : "없음"
             );
         }
-
-        return string.Join(" · ", parts);
     }
 
-    static string StatusText(EnemyHandle e)
+    static void AppendStatus(ref Utf16ValueStringBuilder sb, EnemyHandle e)
     {
-        var parts = new List<string>();
+        bool any = false;
         float slow = e.SlowPercent;
         if (slow > 0)
         {
-            parts.Add("둔화 " + slow.ToString("0") + "%");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("둔화 ");
+            sb.Append(slow, "0");
+            sb.Append("%");
         }
 
         if (e.BurnStacks > 0)
         {
-            parts.Add("화상 " + e.BurnStacks + "스택");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("화상 ");
+            sb.Append(e.BurnStacks);
+            sb.Append("스택");
         }
 
         if (e.Frozen)
         {
-            parts.Add("얼어붙음");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("얼어붙음");
         }
         else if (e.Stunned)
         {
-            parts.Add("기절");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("기절");
         }
 
         if (e.Shielded)
         {
-            parts.Add("방패 전개");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("방패 전개");
         }
 
         if (e.Enraged)
         {
-            parts.Add("격노");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("격노");
         }
 
         if (e.Buffed)
         {
-            parts.Add("버프 받음");
+            Separate(ref sb, ref any, " · ");
+            sb.Append("버프 받음");
         }
 
-        return parts.Count == 0 ? "없음" : string.Join(" · ", parts);
+        if (!any)
+        {
+            sb.Append("없음");
+        }
     }
 }

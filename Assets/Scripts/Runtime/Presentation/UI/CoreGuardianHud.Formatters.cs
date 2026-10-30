@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CoreGuardian;
+using Cysharp.Text;
 using TMPro;
 using Unity.Profiling;
 using UnityEngine;
@@ -49,52 +50,67 @@ public sealed partial class CoreGuardianHud
         : stat == "pierceFalloff" ? stats.PierceFalloff
         : stats.ProjectileSpeed;
 
-    string StatDisplay(float value, string stat) =>
-        stat == "damage" ? Mathf.FloorToInt(value + .5f).ToString() : value.ToString("0.##");
-
     string UpgradeLabel(CombatStats stats, string target, string stat, int cost, string currency, bool maxed = false)
     {
-        if (maxed)
-            return StatName(stat) + " " + StatDisplay(StatValue(stats, stat), stat) + "\n최대치";
-
-        UpgradeSpec spec = null;
-        foreach (var u in game.Session.Data.Upgrades)
+        var sb = ZString.CreateStringBuilder(true);
+        try
         {
-            if (u.Target == target && u.Stat == stat)
+            sb.Append(StatName(stat));
+            sb.Append(" ");
+            if (maxed)
             {
-                spec = u;
-                break;
+                AppendStat(ref sb, StatValue(stats, stat), stat);
+                sb.Append("\n최대치");
+                return sb.ToString();
             }
-        }
 
-        float value = StatValue(stats, stat),
-            delta = spec == null ? 0 : spec.Delta;
-        bool affordable = currency == "골드" ? game.Session.Gold >= cost : game.Session.Crystals >= cost;
-        // Grouped upgrades (화염 공격력 + 화상 피해) list their partner stat too.
-        string extra = "";
-        if (spec != null)
-        {
+            UpgradeSpec spec = null;
             foreach (var u in game.Session.Data.Upgrades)
             {
-                if (u != spec && u.Group == spec.Id && u.Target == target)
+                if (u.Target == target && u.Stat == stat)
                 {
-                    extra += " · " + StatName(u.Stat) + " +" + u.Delta.ToString("0.##");
+                    spec = u;
+                    break;
                 }
             }
-        }
 
-        return StatName(stat)
-            + " "
-            + StatDisplay(value, stat)
-            + " → "
-            + StatDisplay(value + delta, stat)
-            + "\n+"
-            + delta.ToString("0.##")
-            + extra
-            + " · "
-            + cost
-            + currency
-            + (affordable ? "" : " · 부족");
+            float value = StatValue(stats, stat),
+                delta = spec == null ? 0 : spec.Delta;
+            bool affordable = currency == "골드" ? game.Session.Gold >= cost : game.Session.Crystals >= cost;
+            AppendStat(ref sb, value, stat);
+            sb.Append(" → ");
+            AppendStat(ref sb, value + delta, stat);
+            sb.Append("\n+");
+            sb.Append(delta, "0.##");
+            // Grouped upgrades (화염 공격력 + 화상 피해) list their partner stat too.
+            if (spec != null)
+            {
+                foreach (var u in game.Session.Data.Upgrades)
+                {
+                    if (u != spec && u.Group == spec.Id && u.Target == target)
+                    {
+                        sb.Append(" · ");
+                        sb.Append(StatName(u.Stat));
+                        sb.Append(" +");
+                        sb.Append(u.Delta, "0.##");
+                    }
+                }
+            }
+
+            sb.Append(" · ");
+            sb.Append(cost);
+            sb.Append(currency);
+            if (!affordable)
+            {
+                sb.Append(" · 부족");
+            }
+
+            return sb.ToString();
+        }
+        finally
+        {
+            sb.Dispose();
+        }
     }
 
     string TowerName(TowerKind kind)

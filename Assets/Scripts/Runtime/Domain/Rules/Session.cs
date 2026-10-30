@@ -339,6 +339,7 @@ namespace CoreGuardian
                     if (e.PathRemaining <= .00001f)
                     {
                         e.Exited = true;
+                        CountCoreReach(e.Spec);
                         coreDamagedThisRound |= e.Spec.CoreDamage > 0;
                         int coreBefore = CoreEnergy;
                         CoreEnergy = Mathf.Max(0, CoreEnergy - e.Spec.CoreDamage);

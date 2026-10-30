@@ -14,7 +14,8 @@ public sealed class CoreGuardianSpriteAtlasSources : ScriptableObject
         public Rect rect;
     }
 
-    [SerializeField]
+    // 빌드 도구(CoreGuardianSpriteAtlasPipeline)가 채움 — 인스펙터에서는 읽기 전용.
+    [SerializeField, NaughtyAttributes.ReadOnly]
     Entry[] entries = Array.Empty<Entry>();
 
     sealed class Mapping

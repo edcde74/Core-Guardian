@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using CoreGuardian;
+using MessagePipe;
 using UnityEngine;
 
 // Confirmed effect art for tags, abilities and skills (아트 제작 목록 2026-10-26/27). Pooled renderers,
@@ -33,25 +35,25 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
     readonly HashSet<long> liveMarkers = new HashSet<long>();
     readonly List<long> markerWork = new List<long>();
     float clock;
+    IDisposable subscriptions;
 
+    // Session events arrive through the MessagePipe channel (CoreGuardianSessionEvents, 2026-10-28 pilot).
     public void Configure(CoreGuardianPrototype prototype)
     {
         game = prototype;
-        game.Session.Cue += OnCue;
-        game.Session.TowerPulsed += OnPulse;
-        game.Session.AreaBlastUsed += OnBlast;
-        game.Session.DamageApplied += OnDamage;
+        var key = game.Session;
+        var bag = DisposableBag.CreateBuilder();
+        GlobalMessagePipe.GetSubscriber<Session, Session.CueEvent>().Subscribe(key, OnCue).AddTo(bag);
+        GlobalMessagePipe.GetSubscriber<Session, TowerPulseMessage>().Subscribe(key, OnPulse).AddTo(bag);
+        GlobalMessagePipe.GetSubscriber<Session, AreaBlastMessage>().Subscribe(key, OnBlast).AddTo(bag);
+        GlobalMessagePipe.GetSubscriber<Session, DamageMessage>().Subscribe(key, OnDamage).AddTo(bag);
+        subscriptions = bag.Build();
     }
 
     void OnDestroy()
     {
-        if (game == null || game.Session == null)
-            return;
-
-        game.Session.Cue -= OnCue;
-        game.Session.TowerPulsed -= OnPulse;
-        game.Session.AreaBlastUsed -= OnBlast;
-        game.Session.DamageApplied -= OnDamage;
+        subscriptions?.Dispose();
+        subscriptions = null;
     }
 
     // Art lookup: Resources path frames (CoreGuardian/Art/...), else the sprite library (Fx/...).
@@ -222,19 +224,19 @@ public sealed class CoreGuardianEffectsView : MonoBehaviour
     }
 
     // 장갑병 피격: 금속에 튕기는 강철 링 + 불똥(상태 효과 문서, 10-28 사용자 확정 B안). 5프레임 약 0.3초.
-    void OnDamage(EnemySnapshot enemy, int amount)
+    void OnDamage(DamageMessage hit)
     {
-        if (amount > 0 && enemy.Kind == EnemyKind.Armored)
+        if (hit.Amount > 0 && hit.Enemy.Kind == EnemyKind.Armored)
         {
-            Play("Enemies/ArmorDeflect_", W(enemy.Position) + Vector3.up * .42f, 16);
+            Play("Enemies/ArmorDeflect_", W(hit.Enemy.Position) + Vector3.up * .42f, 16);
         }
     }
 
-    void OnPulse(int id, Vector2 position, float radius) =>
-        Play("Towers/FrostPulse_", W(position), 10, GroundOrder, TileWidth * radius * 2, .25f);
+    void OnPulse(TowerPulseMessage pulse) =>
+        Play("Towers/FrostPulse_", W(pulse.Position), 10, GroundOrder, TileWidth * pulse.Radius * 2, .25f);
 
-    void OnBlast(Vector2 position, float radius) =>
-        Play("Skills/AreaBlast_", W(position), 10, GroundOrder, TileWidth * radius * 2, .2f);
+    void OnBlast(AreaBlastMessage blast) =>
+        Play("Skills/AreaBlast_", W(blast.Position), 10, GroundOrder, TileWidth * blast.Radius * 2, .2f);
 
     public void Teleport(Vector3 from, Vector3 to)
     {

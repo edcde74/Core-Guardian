@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CoreGuardian;
+using Cysharp.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -125,7 +126,8 @@ public sealed partial class CoreGuardianHud
         infoPanel.gameObject.SetActive(false);
     }
 
-    void InfoRow(Sprite icon, string text)
+    // Shows the line built in hudLine as the next info row.
+    void InfoRow(Sprite icon)
     {
         if (infoRowCount >= InfoRows)
             return;
@@ -138,12 +140,10 @@ public sealed partial class CoreGuardianHud
 
         SetHudActive(infoRowIcons[i].gameObject, icon != null);
         SetHudActive(infoRowTexts[i].gameObject, true);
-        SetHudText(infoRowTexts[i], text);
+        SetHudText(infoRowTexts[i], ref hudLine);
     }
 
     static Sprite HudSprite(string name) => CoreGuardianHudSkin.Sprite(name);
-
-    static Sprite H5(string name) => CoreGuardianHudSkin.Sprite("Redesign/H5_" + name);
 
     void RefreshSelectionInfo()
     {
@@ -171,84 +171,125 @@ public sealed partial class CoreGuardianHud
             return;
 
         infoRowCount = 0;
-        string note = "";
+        hudNote.Clear();
         bool destroy = false;
         if (infoSubject == InfoSubject.Player)
         {
             var p = s.Player;
             infoIcon.sprite = HudSprite("PlayerIdentity");
             SetHudText(infoTitle, "기술병");
-            InfoRow(HudSprite("StatDamage"), "공격력 " + StatDisplay(p.Damage, "damage"));
-            InfoRow(HudSprite("StatRate"), "공격속도 " + p.Rate.ToString("0.##") + "발/초");
-            InfoRow(HudSprite("StatRange"), "사거리 " + p.Range.ToString("0.##") + "타일");
-            InfoRow(HudSprite("StatProjectile"), "탄환 속도 " + p.ProjectileSpeed.ToString("0.##") + "타일/초");
-            InfoRow(
-                HudSprite("AreaBlast"),
-                "범위 폭발 "
-                    + (
-                        s.AreaBlast == null ? "없음"
-                        : s.Phase != SessionPhase.Combat ? "전투 중 사용"
-                        : s.AreaBlastReady ? "준비"
-                        : Mathf.CeilToInt(s.AreaBlastCooldown) + "초 남음"
-                    )
-            );
+            Line("공격력 ");
+            AppendStat(ref hudLine, p.Damage, "damage");
+            InfoRow(HudSprite("StatDamage"));
+            Line("공격속도 ");
+            hudLine.Append(p.Rate, "0.##");
+            hudLine.Append("발/초");
+            InfoRow(HudSprite("StatRate"));
+            Line("사거리 ");
+            hudLine.Append(p.Range, "0.##");
+            hudLine.Append("타일");
+            InfoRow(HudSprite("StatRange"));
+            Line("탄환 속도 ");
+            hudLine.Append(p.ProjectileSpeed, "0.##");
+            hudLine.Append("타일/초");
+            InfoRow(HudSprite("StatProjectile"));
+            Line("범위 폭발 ");
+            if (s.AreaBlast == null)
+            {
+                hudLine.Append("없음");
+            }
+            else if (s.Phase != SessionPhase.Combat)
+            {
+                hudLine.Append("전투 중 사용");
+            }
+            else if (s.AreaBlastReady)
+            {
+                hudLine.Append("준비");
+            }
+            else
+            {
+                hudLine.Append(Mathf.CeilToInt(s.AreaBlastCooldown));
+                hudLine.Append("초 남음");
+            }
+            InfoRow(HudSprite("AreaBlast"));
             s.DamageTotals.TryGetValue("Player", out int dealt);
-            InfoRow(HudSprite("Damage"), "이번 라운드 피해 " + dealt);
-            note = "약점·저항은 포탑에만 적용 · 강화는 기술병 작업대(2)";
+            Line("이번 라운드 피해 ");
+            hudLine.Append(dealt);
+            InfoRow(HudSprite("Damage"));
+            hudNote.Append("약점·저항은 포탑에만 적용 · 강화는 기술병 작업대(2)");
         }
         else if (infoSubject == InfoSubject.Tower)
         {
             var t = Selected();
             var spec = s.Data.Towers[t.Kind];
             var st = t.Stats;
-            infoIcon.sprite = HudSprite(CoreGuardianHudSkin.Symbol("Install_" + t.Kind));
-            SetHudText(infoTitle, TowerName(t.Kind) + " #" + t.Id + (t.Stars > 1 ? " ★" + t.Stars : ""));
+            infoIcon.sprite = InstallSprite(t.Kind);
+            Line(TowerName(t.Kind));
+            hudLine.Append(" #");
+            hudLine.Append(t.Id);
+            if (t.Stars > 1)
+            {
+                hudLine.Append(" ★");
+                hudLine.Append(t.Stars);
+            }
+            SetHudText(infoTitle, ref hudLine);
             if (t.Kind == TowerKind.Support)
             {
-                InfoRow(
-                    HudSprite("Augment"),
-                    "공격력 증가 +" + st.BuffDamage.ToString("0.##") + "% · 범위 " + st.Range.ToString("0.##") + "타일"
-                );
-                note = "범위 안 공격 포탑의 공격력을 높입니다. 직접 공격하지 않습니다.";
+                Line("공격력 증가 +");
+                hudLine.Append(st.BuffDamage, "0.##");
+                hudLine.Append("% · 범위 ");
+                hudLine.Append(st.Range, "0.##");
+                hudLine.Append("타일");
+                InfoRow(HudSprite("Augment"));
+                hudNote.Append("범위 안 공격 포탑의 공격력을 높입니다. 직접 공격하지 않습니다.");
             }
             else
             {
                 float buff = s.TowerDamageBuffPercent(t);
                 float hit = st.Damage * (1 + buff / 100f);
-                InfoRow(
-                    H5("dps"),
-                    "초당 피해 "
-                        + (hit * s.TowerFireRate(t, game.PlayerTile())).ToString("0.#")
-                        + (
-                            t.Kind == TowerKind.Multi ? " (대상마다, 최대 " + spec.MaxTargets + "명)"
-                            : t.Kind == TowerKind.Frost ? " (범위 안 전체)"
-                            : ""
-                        )
-                        + " · 버프 +"
-                        + buff.ToString("0.##")
-                        + "%"
-                );
-                InfoRow(
-                    HudSprite("StatDamage"),
-                    "피해 "
-                        + StatDisplay(st.Damage, "damage")
-                        + " · 공속 "
-                        + st.Rate.ToString("0.##")
-                        + "발/초 · 사거리 "
-                        + st.Range.ToString("0.##")
-                        + "타일"
-                );
-                string tag = TowerTagText(t.Kind, st);
-                if (tag.Length > 0)
+                Line("초당 피해 ");
+                hudLine.Append(hit * s.TowerFireRate(t, game.PlayerTile()), "0.#");
+                if (t.Kind == TowerKind.Multi)
                 {
-                    InfoRow(HudSprite(CoreGuardianHudSkin.Symbol("Install_" + t.Kind)), "효과: " + tag);
+                    hudLine.Append(" (대상마다, 최대 ");
+                    hudLine.Append(spec.MaxTargets);
+                    hudLine.Append("명)");
+                }
+                else if (t.Kind == TowerKind.Frost)
+                {
+                    hudLine.Append(" (범위 안 전체)");
+                }
+                hudLine.Append(" · 버프 +");
+                hudLine.Append(buff, "0.##");
+                hudLine.Append("%");
+                InfoRow(H5("dps"));
+                Line("피해 ");
+                AppendStat(ref hudLine, st.Damage, "damage");
+                hudLine.Append(" · 공속 ");
+                hudLine.Append(st.Rate, "0.##");
+                hudLine.Append("발/초 · 사거리 ");
+                hudLine.Append(st.Range, "0.##");
+                hudLine.Append("타일");
+                InfoRow(HudSprite("StatDamage"));
+                if (HasTowerTag(t.Kind))
+                {
+                    Line("효과: ");
+                    AppendTowerTag(ref hudLine, t.Kind, st);
+                    InfoRow(InstallSprite(t.Kind));
                 }
 
-                InfoRow(H5("weakness"), "잘 잡는 적: " + EnemyList(e => (e.WeakTowers & (1 << (int)t.Kind)) != 0));
-                InfoRow(H5("resistance"), "약한 적: " + EnemyList(e => (e.ResistTowers & (1 << (int)t.Kind)) != 0));
+                Line("잘 잡는 적: ");
+                AppendEnemyList(ref hudLine, 1 << (int)t.Kind, true);
+                InfoRow(H5("weakness"));
+                Line("약한 적: ");
+                AppendEnemyList(ref hudLine, 1 << (int)t.Kind, false);
+                InfoRow(H5("resistance"));
                 s.DamageTotals.TryGetValue(t.AttackSource, out int dealt);
-                InfoRow(HudSprite("Damage"), "이번 라운드 피해 " + dealt);
-                note = "공격 순서: " + OrderText(spec);
+                Line("이번 라운드 피해 ");
+                hudLine.Append(dealt);
+                InfoRow(HudSprite("Damage"));
+                hudNote.Append("공격 순서: ");
+                AppendOrder(ref hudNote, spec);
             }
             destroy = true;
         }
@@ -257,29 +298,53 @@ public sealed partial class CoreGuardianHud
             var e = infoEnemy;
             var spec = e.Spec;
             infoIcon.sprite = HudSprite("Damage");
-            SetHudText(infoTitle, EnemyName(e) + " · " + EnemyFamily(e));
-            InfoRow(H5("hp"), "체력 " + e.Health + " / " + spec.Health);
+            hudLine.Clear();
+            AppendEnemyName(ref hudLine, e);
+            hudLine.Append(" · ");
+            hudLine.Append(EnemyFamily(e));
+            SetHudText(infoTitle, ref hudLine);
+            Line("체력 ");
+            hudLine.Append(e.Health);
+            hudLine.Append(" / ");
+            hudLine.Append(spec.Health);
+            InfoRow(H5("hp"));
             float defense = spec.Defense + (e.Shielded ? spec.ShieldDefense : 0);
-            InfoRow(
-                H5("defense"),
-                "방어 " + defense.ToString("0.##") + "% (받는 피해 감소)" + (e.Shielded ? " · 방패 전개" : "")
-            );
-            InfoRow(
-                H5("move_speed"),
-                "이동속도 "
-                    + (e.MovementSpeed * (1 + e.SpeedBoostPercent / 100f)).ToString("0.##")
-                    + "타일/초 (기본 "
-                    + spec.Speed.ToString("0.##")
-                    + ")"
-            );
-            InfoRow(H5("core_damage"), "코어 피해 " + spec.CoreDamage);
-            InfoRow(HudSprite("Gold"), "처치 골드 " + (e.Summoned ? 0 : spec.Gold));
-            InfoRow(H5("weakness"), "약점: " + TowerList(spec.WeakTowers) + " (×" + WeakMul().ToString("0.##") + ")");
-            InfoRow(
-                H5("resistance"),
-                "저항: " + TowerList(spec.ResistTowers) + " (×" + ResistMul().ToString("0.##") + ")"
-            );
-            note = "능력: " + AbilityText(e) + "\n상태: " + StatusText(e);
+            Line("방어 ");
+            hudLine.Append(defense, "0.##");
+            hudLine.Append("% (받는 피해 감소)");
+            if (e.Shielded)
+            {
+                hudLine.Append(" · 방패 전개");
+            }
+            InfoRow(H5("defense"));
+            Line("이동속도 ");
+            hudLine.Append(e.MovementSpeed * (1 + e.SpeedBoostPercent / 100f), "0.##");
+            hudLine.Append("타일/초 (기본 ");
+            hudLine.Append(spec.Speed, "0.##");
+            hudLine.Append(")");
+            InfoRow(H5("move_speed"));
+            Line("코어 피해 ");
+            hudLine.Append(spec.CoreDamage);
+            InfoRow(H5("core_damage"));
+            Line("처치 골드 ");
+            hudLine.Append(e.Summoned ? 0 : spec.Gold);
+            InfoRow(HudSprite("Gold"));
+            Line("약점: ");
+            AppendTowerList(ref hudLine, spec.WeakTowers);
+            hudLine.Append(" (×");
+            hudLine.Append(WeakMul(), "0.##");
+            hudLine.Append(")");
+            InfoRow(H5("weakness"));
+            Line("저항: ");
+            AppendTowerList(ref hudLine, spec.ResistTowers);
+            hudLine.Append(" (×");
+            hudLine.Append(ResistMul(), "0.##");
+            hudLine.Append(")");
+            InfoRow(H5("resistance"));
+            hudNote.Append("능력: ");
+            AppendAbility(ref hudNote, e);
+            hudNote.Append("\n상태: ");
+            AppendStatus(ref hudNote, e);
         }
         for (int i = infoRowCount; i < InfoRows; i++)
         {
@@ -288,8 +353,8 @@ public sealed partial class CoreGuardianHud
         }
         float noteY = -60 - infoRowCount * 32;
         SetHudPosition(infoNote.rectTransform, new Vector2(18, noteY));
-        SetHudText(infoNote, note);
-        float bottom = noteY - (note.Length > 0 ? 60 : 0);
+        SetHudText(infoNote, ref hudNote);
+        float bottom = noteY - (hudNote.Length > 0 ? 60 : 0);
         SetHudActive(infoDestroy.gameObject, destroy);
         if (destroy)
         {
@@ -315,35 +380,50 @@ public sealed partial class CoreGuardianHud
             : s.Data.Tag("Affinity", "resistMultiplier", false, .7f);
     }
 
-    string TowerList(int mask)
+    void AppendTowerList(ref Utf16ValueStringBuilder sb, int mask)
     {
         if (mask == 0)
-            return "없음";
+        {
+            sb.Append("없음");
+            return;
+        }
 
-        var names = new List<string>();
-        foreach (TowerKind k in Enum.GetValues(typeof(TowerKind)))
+        bool any = false;
+        foreach (var k in allTowerKinds)
         {
             if ((mask & (1 << (int)k)) != 0)
             {
-                names.Add(TowerName(k));
+                Separate(ref sb, ref any, ", ");
+                sb.Append(TowerName(k));
             }
         }
-
-        return string.Join(", ", names);
     }
 
-    string EnemyList(Func<EnemySpec, bool> match)
+    // Non-boss enemy kinds whose weakness (or resistance) mask includes the given tower bit.
+    void AppendEnemyList(ref Utf16ValueStringBuilder sb, int towerBit, bool weak)
     {
-        var names = new List<string>();
-        var seen = new HashSet<EnemyKind>();
+        int seen = 0;
+        bool any = false;
         foreach (var e in game.Session.Data.EnemiesById.Values)
         {
-            if (e.Kind != EnemyKind.SplitChild && e.Kind != EnemyKind.Boss && match(e) && seen.Add(e.Kind))
+            int mask = weak ? e.WeakTowers : e.ResistTowers;
+            int bit = 1 << (int)e.Kind;
+            if (
+                e.Kind != EnemyKind.SplitChild
+                && e.Kind != EnemyKind.Boss
+                && (mask & towerBit) != 0
+                && (seen & bit) == 0
+            )
             {
-                names.Add(KindName(e.Kind));
+                seen |= bit;
+                Separate(ref sb, ref any, ", ");
+                sb.Append(KindName(e.Kind));
             }
         }
 
-        return names.Count == 0 ? "없음" : string.Join(", ", names);
+        if (!any)
+        {
+            sb.Append("없음");
+        }
     }
 }

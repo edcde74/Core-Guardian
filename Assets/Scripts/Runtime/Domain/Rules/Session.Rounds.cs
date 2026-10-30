@@ -20,6 +20,7 @@ namespace CoreGuardian
             DamageTotals.Clear();
             BossKilled = false;
             coreDamagedThisRound = false;
+            coreReaches.Clear();
             playerTarget = default;
             playerAcquired = false;
             playerCooldown = 0;

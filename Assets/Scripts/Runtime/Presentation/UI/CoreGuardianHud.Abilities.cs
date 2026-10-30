@@ -160,16 +160,18 @@ public sealed partial class CoreGuardianHud
                 : stats.ProjectileSpeed;
             if (!cell.ValueReady || formatChanged || !cell.LastValue.Equals(number))
             {
-                string value =
-                    i == 0
-                        ? StatDisplay(number, "damage")
-                        : number.ToString("0.##")
-                            + (
-                                i == 1 ? "발/초"
-                                : i == 2 ? "타일"
-                                : "타일/초"
-                            );
-                SetHudText(cell.Value, value);
+                hudLine.Clear();
+                AppendStat(ref hudLine, number, i == 0 ? "damage" : "");
+                if (i != 0)
+                {
+                    hudLine.Append(
+                        i == 1 ? "발/초"
+                        : i == 2 ? "타일"
+                        : "타일/초"
+                    );
+                }
+
+                SetHudText(cell.Value, ref hudLine);
                 cell.LastValue = number;
                 cell.ValueReady = true;
             }

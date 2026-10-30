@@ -14,10 +14,11 @@ public sealed class CoreGuardianMaskAtlas : ScriptableObject
         public string dependencyHash;
     }
 
-    [SerializeField]
+    // 빌드 도구(CoreGuardianSpriteAtlasPipeline)가 채움 — 인스펙터에서는 읽기 전용.
+    [SerializeField, NaughtyAttributes.ReadOnly]
     Entry[] entries = Array.Empty<Entry>();
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.ReadOnly]
     string inputHash;
     Dictionary<Texture2D, Entry> lookup;
     public int Revision { get; private set; }

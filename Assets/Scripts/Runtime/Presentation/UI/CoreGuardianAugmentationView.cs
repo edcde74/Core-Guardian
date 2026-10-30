@@ -1,7 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using CoreGuardian;
+using Cysharp.Threading.Tasks;
+using LitMotion;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -26,6 +28,11 @@ public sealed class CoreGuardianAugmentationView
     Action select;
     Func<bool> allowed;
     bool hover;
+
+    // Flip and reveal sparks run on LitMotion (unscaled time) and UniTask (2026-10-28); hiding the card stops both.
+    readonly List<MotionHandle> motions = new List<MotionHandle>();
+    CancellationTokenSource sparkCancel;
+    static readonly float[] FlipDurations = { .44f, .66f, .92f };
     static readonly Color[] colors = { new Color(.76f, .83f, .9f), new Color(1, .76f, .28f), new Color(.5f, .94f, 1) };
 
     public void Configure(AugmentationCard value, Font font, Action chosen, Func<bool> canChoose)
@@ -75,55 +82,78 @@ public sealed class CoreGuardianAugmentationView
             select();
             return;
         }
-        StartCoroutine(Flip());
+        Flip();
     }
 
-    IEnumerator Flip()
+    void Flip()
     {
         Busy = true;
-        float duration = new[] { .44f, .66f, .92f }[(int)card.Grade];
-        float started = Time.unscaledTime;
+        float duration = FlipDurations[(int)card.Grade];
         bool changed = false;
         PlaySound();
-        while (Time.unscaledTime - started < duration)
-        {
-            float p = (Time.unscaledTime - started) / duration;
-            float eased = p * p * (3 - 2 * p);
-            body.localScale = new Vector3(
-                Mathf.Max(.025f, Mathf.Abs(Mathf.Cos(eased * Mathf.PI))),
-                1 + Mathf.Sin(p * Mathf.PI) * .035f,
-                1
-            );
-            if (!changed && p >= .5f)
-            {
-                changed = true;
-                Revealed = true;
-                back.SetActive(false);
-                front.SetActive(true);
-                StartCoroutine(Sparks());
-            }
-            yield return null;
-        }
-        body.localScale = Vector3.one;
-        Revealed = true;
-        Busy = false;
+        motions.Add(
+            LMotion
+                .Create(0f, 1f, duration)
+                .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
+                .WithImmediateBind()
+                .WithOnComplete(() =>
+                {
+                    body.localScale = Vector3.one;
+                    Revealed = true;
+                    Busy = false;
+                })
+                .Bind(p =>
+                {
+                    float eased = p * p * (3 - 2 * p);
+                    body.localScale = new Vector3(
+                        Mathf.Max(.025f, Mathf.Abs(Mathf.Cos(eased * Mathf.PI))),
+                        1 + Mathf.Sin(p * Mathf.PI) * .035f,
+                        1
+                    );
+                    if (!changed && p >= .5f)
+                    {
+                        changed = true;
+                        Revealed = true;
+                        back.SetActive(false);
+                        front.SetActive(true);
+                        if (sparkCancel == null)
+                        {
+                            sparkCancel = new CancellationTokenSource();
+                        }
+
+                        Sparks(sparkCancel.Token).Forget();
+                    }
+                })
+        );
     }
 
-    IEnumerator Sparks()
+    async UniTaskVoid Sparks(CancellationToken cancel)
     {
         int count = SparkCounts[(int)card.Grade];
         for (int batch = 0; batch < (card.Grade == AugmentationGrade.Platinum ? 2 : 1); batch++)
         {
             for (int i = 0; i < (batch == 0 ? count : 20); i++)
             {
-                StartCoroutine(Ray(i));
+                Ray(i);
             }
 
-            yield return new WaitForSecondsRealtime(.17f);
+            if (
+                await UniTask
+                    .Delay(
+                        TimeSpan.FromSeconds(.17f),
+                        Cysharp.Threading.Tasks.DelayType.Realtime,
+                        PlayerLoopTiming.Update,
+                        cancel
+                    )
+                    .SuppressCancellationThrow()
+            )
+            {
+                return;
+            }
         }
     }
 
-    IEnumerator Ray(int index)
+    void Ray(int index)
     {
         float seed = index * 2.399963f;
         int edge = index % 4;
@@ -143,16 +173,21 @@ public sealed class CoreGuardianAugmentationView
         rt.anchoredPosition = start;
         rt.sizeDelta = new Vector2(3, 10 + (index % 4) * 5);
         rt.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90);
-        float began = Time.unscaledTime;
         float life = .3f + (index % 5) * .055f;
-        while (Time.unscaledTime - began < life)
-        {
-            float p = (Time.unscaledTime - began) / life;
-            rt.anchoredPosition = start + dir * (30 + ((int)card.Grade) * 30) * p;
-            img.color = Color.Lerp(Color.white, colors[(int)card.Grade], p) * new Color(1, 1, 1, 1 - p);
-            yield return null;
-        }
-        ReturnSpark(img);
+        float distance = 30 + ((int)card.Grade) * 30;
+        var tint = colors[(int)card.Grade];
+        motions.Add(
+            LMotion
+                .Create(0f, 1f, life)
+                .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
+                .WithImmediateBind()
+                .WithOnComplete(() => ReturnSpark(img))
+                .Bind(p =>
+                {
+                    rt.anchoredPosition = start + dir * distance * p;
+                    img.color = Color.Lerp(Color.white, tint, p) * new Color(1, 1, 1, 1 - p);
+                })
+        );
     }
 
     // F21: reveal sparks are reused per card (up to 104 per reveal); a resting one is renamed so only live sparks
@@ -213,7 +248,19 @@ public sealed class CoreGuardianAugmentationView
 
     void OnDisable()
     {
-        StopAllCoroutines();
+        foreach (var motion in motions)
+        {
+            motion.TryCancel();
+        }
+
+        motions.Clear();
+        if (sparkCancel != null)
+        {
+            sparkCancel.Cancel();
+            sparkCancel.Dispose();
+            sparkCancel = null;
+        }
+
         Busy = false;
         if (body != null)
         {

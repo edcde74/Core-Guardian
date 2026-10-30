@@ -23,13 +23,13 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
         upgradesCsv,
         wavesCsv;
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("맵 배치")]
     Vector2Int boardSize = new Vector2Int(45, 25);
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("맵 배치")]
     Vector2Int coreCell = new Vector2Int(29, 9);
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("맵 배치")]
     Vector2Int[] routeCells =
     {
         new Vector2Int(0, 12),
@@ -90,6 +90,10 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
     CoreGuardianHud hud;
     CoreGuardianCombatArt combatArt;
     CoreGuardianEffectsView effects;
+    CoreGuardianSessionEvents sessionEvents;
+
+    /// <summary>라운드 기록 (2026-10-30): per-round core reaches written to PerfLogs/rounds_*.csv.</summary>
+    public CoreGuardianRoundLog RoundLog { get; private set; }
     CoreGuardianCombatAnimation combatAnimation;
     CoreGuardianUpgradeFeedback upgradeFeedback;
     GameObject bossArt;
@@ -175,6 +179,9 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
             combatArt.Configure(this, hud);
             combatAnimation = gameObject.AddComponent<CoreGuardianCombatAnimation>();
             combatAnimation.Configure(this);
+            // Bridge joins the Session events here, where the effects view used to, so handler order is unchanged.
+            sessionEvents = new CoreGuardianSessionEvents(Session);
+            RoundLog = new CoreGuardianRoundLog(Session);
             effects = gameObject.AddComponent<CoreGuardianEffectsView>();
             effects.Configure(this);
             upgradeFeedback = GetComponent<CoreGuardianUpgradeFeedback>();
@@ -369,6 +376,10 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
             Destroy(placementOverlaySource);
             placementOverlaySource = null;
         }
+        sessionEvents?.Dispose();
+        sessionEvents = null;
+        RoundLog?.Dispose();
+        RoundLog = null;
         Session?.Dispose();
         if (TestSpeed != 1 || DebugPaused)
         {

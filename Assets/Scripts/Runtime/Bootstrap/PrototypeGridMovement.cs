@@ -4,29 +4,29 @@ using UnityEngine.Tilemaps;
 
 public sealed class PrototypeGridMovement : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("타일맵"), NaughtyAttributes.Required]
     private Tilemap ground;
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("타일맵"), NaughtyAttributes.Required]
     private Tilemap enemyPath;
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("타일맵"), NaughtyAttributes.Required]
     private Tilemap core;
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("타일맵"), NaughtyAttributes.Required]
     private Tilemap occupiedTowerCells;
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("이동")]
     private Vector3 spriteOffset = new Vector3(0f, 0.11f, 0f);
 
-    [SerializeField, Min(0.01f)]
+    [SerializeField, Min(0.01f), NaughtyAttributes.BoxGroup("이동")]
     private float stepDuration = 0.12f;
 
     // Art review slabs cover 2x2 base cells; existing scenes retain one-cell steps.
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("이동")]
     private Vector2Int movementTileSize = Vector2Int.one;
 
-    [SerializeField]
+    [SerializeField, NaughtyAttributes.BoxGroup("이동")]
     private Vector2Int movementTileOrigin = Vector2Int.zero;
 
     private Vector3Int currentCell;

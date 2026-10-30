@@ -3,6 +3,11 @@
   "rootNamespace": "",
   "references": [
     "Fortress.Game",
+    "ZString",
+    "NaughtyAttributes.Core",
+    "UniTask",
+    "LitMotion",
+    "MessagePipe",
     "Unity.InputSystem",
     "Unity.TextMeshPro",
     "UnityEngine.UI",
