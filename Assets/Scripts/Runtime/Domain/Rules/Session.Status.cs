@@ -166,12 +166,18 @@ namespace CoreGuardian
         }
 
         // ================= Stun / freeze =================
-        bool ApplyStun(EnemyState e, float seconds)
+        // S19 기절음: 걸리는 순간 한 번. 빙결은 자기 소리(freeze)를 따로 낸다.
+        bool ApplyStun(EnemyState e, float seconds, bool freeze = false)
         {
             if (e.StunTime > 0 || e.StunImmune > 0 || seconds <= 0)
                 return false;
 
             e.StunTime = seconds * (IsBoss(e) ? tags.StunBossScale : 1);
+            if (!freeze)
+            {
+                RaiseCue("stun", e.Position);
+            }
+
             return true;
         }
 
@@ -217,7 +223,15 @@ namespace CoreGuardian
             {
                 if (other != h && other.Alive && Vector2.Distance(other.Position, at) <= radius)
                 {
-                    Strike(other, damage, "Shatter", default);
+                    hitReplacesDeath = true;
+                    try
+                    {
+                        Strike(other, damage, "Shatter", default);
+                    }
+                    finally
+                    {
+                        hitReplacesDeath = false;
+                    }
                 }
             }
         }

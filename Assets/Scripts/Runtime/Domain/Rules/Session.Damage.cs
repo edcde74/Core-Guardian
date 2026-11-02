@@ -123,6 +123,7 @@ namespace CoreGuardian
                 RaiseCue("execute", e.Position);
                 hitAffinity = affinityMark;
                 hitCritical = criticalMark;
+                hitReplacesDeath = true;
                 try
                 {
                     DealDamage(target, e.Health, source, e.Health, payload);
@@ -131,6 +132,7 @@ namespace CoreGuardian
                 {
                     hitAffinity = 0;
                     hitCritical = false;
+                    hitReplacesDeath = false;
                 }
                 if (Augments.Has(25))
                 {
@@ -146,7 +148,7 @@ namespace CoreGuardian
             )
             {
                 float seconds = Augments.Value(39, 1) / Augments.Count(39);
-                if (ApplyStun(e, seconds))
+                if (ApplyStun(e, seconds, true))
                 {
                     e.Frozen = true;
                     e.FrozenDamage = 0;
@@ -155,6 +157,9 @@ namespace CoreGuardian
             }
             return dealt;
         }
+
+        /// <summary>Health actually removed, with the enemy's spec and the damage source (플레이 기록용).</summary>
+        public event Action<EnemySpec, string, int> DamageDealt;
 
         // Integer health change, totals, kill handling. "raw" is the pre-rounding value used for overkill.
         int DealDamage(EnemyHandle target, int amount, string source, float raw, HitPayload payload)
@@ -184,6 +189,7 @@ namespace CoreGuardian
             if (actual > 0)
             {
                 DamageApplied?.Invoke(new EnemySnapshot(target), actual);
+                DamageDealt?.Invoke(e.Spec, source, actual);
             }
 
             if (e.Health == 0 && !e.Exited)

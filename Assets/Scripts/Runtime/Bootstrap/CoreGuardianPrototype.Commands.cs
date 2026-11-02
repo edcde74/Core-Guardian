@@ -116,13 +116,21 @@ public sealed partial class CoreGuardianPrototype
             }
         }
         var from = player.transform.position;
-        if (!player.TryTeleport(dir, (int)(Session.Augments.Value(46) / Math.Max(1, Session.Augments.Count(46)))))
-            return false;
-
+        // 10-30 결정 (기획서): 세 칸이 모두 막히면 제자리에서 도착 폭발, 대기 시간은 그대로 시작.
+        bool moved = player.TryTeleport(
+            dir,
+            (int)(Session.Augments.Value(46) / Math.Max(1, Session.Augments.Count(46)))
+        );
         Session.StartTeleportCooldown();
-        effects.Teleport(from, player.transform.position);
+        if (moved)
+        {
+            effects.Teleport(from, player.transform.position);
+        }
+
         // 46 도착 폭발 (2026-10-28): 도착 칸에서 범위 폭발 한 번 더 (피해 50%).
         Session.UseTeleportBlast(PlayerTile());
+        // S12 순간 이동음: 폭발음 0.1초 뒤, 폭발음을 끊지 않고.
+        GetComponent<CoreGuardianCombatAudio>().OrNull()?.PlayCueAfter("teleport", .1f);
         return true;
     }
 

@@ -132,7 +132,7 @@ public class CoreGuardianDataTableTests
             Is.EqualTo(100)
         );
         Assert.That(d.RewardForWave(1), Is.EqualTo(60));
-        Assert.That(d.RewardForWave(30), Is.EqualTo(130));
+        Assert.That(d.RewardForWave(30), Is.EqualTo(325));
         Assert.That(d.CoreEnergy, Is.EqualTo(20));
     }
 
@@ -151,7 +151,7 @@ public class CoreGuardianDataTableTests
                 frost.SlowDuration,
                 frost.AttackType
             ),
-            Is.EqualTo((60, 5f, .5f, 2f, 30f, 2.5f, "Pulse"))
+            Is.EqualTo((60, 4f, .5f, 2f, 30f, 2.5f, "Pulse"))
         );
         var flame = d.Towers[TowerKind.Flame];
         Assert.That(
@@ -164,18 +164,18 @@ public class CoreGuardianDataTableTests
                 flame.BurnPerStack,
                 flame.BurnDuration
             ),
-            Is.EqualTo((65, 5f, .8f, 3f, 6f, 3f, 4f))
+            Is.EqualTo((65, 4f, .8f, 3f, 6f, 2.4f, 4f))
         );
         var rail = d.Towers[TowerKind.Rail];
         Assert.That(
             (rail.Cost, rail.Damage, rail.Rate, rail.Range, rail.ProjectileSpeed, rail.PierceFalloff),
-            Is.EqualTo((75, 35f, .4f, 6f, 12f, .8f))
+            Is.EqualTo((120, 20f, .4f, 5f, 12f, .4f))
         );
         var multi = d.Towers[TowerKind.Multi];
         Assert.That(
             (multi.Cost, multi.Damage, multi.Rate, multi.MaxTargets),
-            Is.EqualTo((70, 10f, .5f, 3)),
-            "2026-10-28 범위 공격 70·10·0.5"
+            Is.EqualTo((70, 8f, .5f, 3)),
+            "2026-10-31 포탑 피해 −20%: 범위 공격 70·8·0.5"
         );
         Assert.That(d.EnemiesById[11002].WeakTowers, Is.EqualTo(1 << (int)TowerKind.Flame));
         Assert.That(d.EnemiesById[11002].ResistTowers, Is.EqualTo(1 << (int)TowerKind.Multi));
@@ -188,7 +188,7 @@ public class CoreGuardianDataTableTests
         var burn = d.Upgrades.Single(u => u.Id == 21511);
         Assert.That(
             (burn.Target, burn.Stat, burn.Delta, burn.Group),
-            Is.EqualTo(("Flame", "burnPerStack", .6f, 21501))
+            Is.EqualTo(("Flame", "burnPerStack", .48f, 21501))
         );
         Assert.That(
             d.Upgrades.Where(u => u.Target != "Player").All(u => u.Cost == 60 && u.CostIncrement == 30),
@@ -199,7 +199,7 @@ public class CoreGuardianDataTableTests
         typeof(Session).GetProperty("Crystals").SetValue(s, 1000);
         var t = s.TryInstall(TowerKind.Rail, new Vector2Int(2, 1), out _);
         Assert.That(t, Is.Not.Null);
-        Assert.That(t.Stats.PierceFalloff, Is.EqualTo(.8f));
+        Assert.That(t.Stats.PierceFalloff, Is.EqualTo(.4f));
     }
 
     [Test]
@@ -230,9 +230,9 @@ public class CoreGuardianDataTableTests
             Is.EqualTo(
                 new[]
                 {
-                    (10, "Boss", 500, 5f, 120),
-                    (20, "IronKnight", 1600, 12f, 240),
-                    (30, "CrimsonLord", 4500, 20f, 400),
+                    (10, "Boss", 1000, 5f, 120),
+                    (20, "IronKnight", 4000, 12f, 240),
+                    (30, "CrimsonLord", 16000, 20f, 400),
                 }
             )
         );
@@ -243,18 +243,18 @@ public class CoreGuardianDataTableTests
     {
         var d = Data();
         EnemySpec At(int wave, EnemyKind kind) => d.Waves.First(w => w.Wave == wave && w.Kind == kind).Enemy;
-        // 적 문서 30라운드 표본: 돌격병 103/0 · 분열체 309/8.75 · 치유사 247/8.75 · 장갑병 412/50 · 비행체 165/0.
-        Assert.That((At(30, EnemyKind.Charger).Health, At(30, EnemyKind.Charger).Defense), Is.EqualTo((103, 0f)));
-        Assert.That((At(30, EnemyKind.Splitter).Health, At(30, EnemyKind.Splitter).Defense), Is.EqualTo((309, 8.75f)));
-        Assert.That((At(30, EnemyKind.Healer).Health, At(30, EnemyKind.Healer).Defense), Is.EqualTo((247, 8.75f)));
-        Assert.That((At(30, EnemyKind.Armored).Health, At(30, EnemyKind.Armored).Defense), Is.EqualTo((412, 50f)));
-        Assert.That((At(30, EnemyKind.Flyer).Health, At(30, EnemyKind.Flyer).Defense), Is.EqualTo((165, 0f)));
+        // 적 문서 30라운드 표본(11-02 체력 21~30R ×2.2 반영): 돌격병 363/0 · 분열체 1089/8.75 · 치유사 871/8.75 · 장갑병 1452/50 · 비행체 581/0 (공격형 726 × 배율).
+        Assert.That((At(30, EnemyKind.Charger).Health, At(30, EnemyKind.Charger).Defense), Is.EqualTo((363, 0f)));
+        Assert.That((At(30, EnemyKind.Splitter).Health, At(30, EnemyKind.Splitter).Defense), Is.EqualTo((1089, 8.75f)));
+        Assert.That((At(30, EnemyKind.Healer).Health, At(30, EnemyKind.Healer).Defense), Is.EqualTo((871, 8.75f)));
+        Assert.That((At(30, EnemyKind.Armored).Health, At(30, EnemyKind.Armored).Defense), Is.EqualTo((1452, 50f)));
+        Assert.That((At(30, EnemyKind.Flyer).Health, At(30, EnemyKind.Flyer).Defense), Is.EqualTo((581, 0f)));
         Assert.That(
             At(30, EnemyKind.Charger).Speed,
             Is.EqualTo(2.2f).Within(1e-4f),
             "Charger keeps the round speed growth (+10% at 30)"
         );
-        Assert.That(At(5, EnemyKind.Charger).Health, Is.EqualTo(22));
+        Assert.That(At(5, EnemyKind.Charger).Health, Is.EqualTo(35));
         Assert.That(At(22, EnemyKind.Flyer).Flying, Is.True);
         var splitter = d.EnemiesById[11005];
         Assert.That((splitter.SplitIntoId, splitter.SplitCount), Is.EqualTo((11201, 2)));
@@ -380,7 +380,7 @@ public class CoreGuardianDataTableTests
         Bad("upgrades", t => t.Replace("21001,10001", "21001,10002"), "unknown upgrade target");
         Bad(
             "upgrades",
-            t => t.Replace("21511,12004,burnPerStack,0.6,60,30,21501", "21511,12004,burnPerStack,0.6,60,30,21401"),
+            t => t.Replace("21511,12004,burnPerStack,0.48,60,30,21501", "21511,12004,burnPerStack,0.48,60,30,21401"),
             "group of another target"
         );
         Bad("waves", t => t.Replace("41001001,1,11001", "41001001,1,11999"), "unknown wave enemy");

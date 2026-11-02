@@ -134,6 +134,74 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     }
 
     UnityEngine.UI.Button blastButton;
+    RectTransform topHint;
+    UnityEngine.UI.Text topHintText;
+    const float TopHintWidth = 460;
+
+    // 10-30 사용자 요청: 위쪽 표시(코어·라운드·골드·수정·증강)에 마우스를 올리면 아래에 설명이 뜬다.
+    void AddTopHint(int index)
+    {
+        var zone = Box(
+            "Hint_" + index,
+            topDetails,
+            new Vector2(0, 1),
+            new Vector2(8 + index * 181, -4),
+            new Vector2(176, 64),
+            false
+        );
+        var hit = zone.gameObject.AddComponent<UnityEngine.UI.Image>();
+        hit.color = Color.clear;
+        hit.raycastTarget = true;
+        zone.gameObject.AddComponent<CoreGuardianHoverHint>().Changed = on => ShowTopHint(index, on);
+    }
+
+    string TopHint(int index)
+    {
+        var s = game.Session;
+        switch (index)
+        {
+            case 0:
+                return "코어 남은 체력 / 최대 체력\n적이 코어에 닿으면 줄어들고, 0이 되면 패배합니다.";
+            case 1:
+                return "지금 라운드 / 마지막 라운드\n" + s.LastWave + "라운드까지 버티면 승리합니다.";
+            case 2:
+                return "적을 처치하면 얻습니다.\n기술병 작업대(2)에서 기술병 강화에 씁니다.";
+            case 3:
+                return "라운드를 끝내면 얻습니다.\n포탑 설치와 포탑 연구소(1) 강화에 씁니다.";
+            default:
+                return "지금까지 받은 증강 수\n"
+                    + s.Data.AugmentationEvery
+                    + "라운드마다 1장을 고릅니다. Tab을 누르는 동안 전체 목록을 봅니다.";
+        }
+    }
+
+    void ShowTopHint(int index, bool on)
+    {
+        if (topHint == null)
+        {
+            topHint = Box("TopHint", canvas, new Vector2(.5f, 1), Vector2.zero, new Vector2(TopHintWidth, 76));
+            topHint.GetComponent<UnityEngine.UI.Image>().raycastTarget = false;
+            topHintText = Text("Text", topHint, new Vector2(16, -10), new Vector2(TopHintWidth - 32, 58), 16);
+            topHintText.alignment = TextAnchor.UpperLeft;
+            topHintText.raycastTarget = false;
+        }
+        if (!on)
+        {
+            SetHudActive(topHint.gameObject, false);
+            return;
+        }
+        SetHudText(topHintText, TopHint(index));
+        // 10-31 사용자 요청: 글이 길면(증강 설명) 잘리지 않게 높이를 글에 맞춘다.
+        float textHeight = Mathf.Ceil(topHintText.preferredHeight);
+        SetHudSize(topHintText.rectTransform, new Vector2(TopHintWidth - 32, textHeight));
+        SetHudSize(topHint, new Vector2(TopHintWidth, textHeight + 20));
+        float left = -topDetails.sizeDelta.x / 2 + 8 + index * 181;
+        float half = TopHintWidth / 2;
+        float x = Mathf.Clamp(left + 88, -topDetails.sizeDelta.x / 2 + half, topDetails.sizeDelta.x / 2 - half);
+        SetHudPosition(topHint, new Vector2(x, topDetails.anchoredPosition.y - topDetails.sizeDelta.y - 6));
+        topHint.SetAsLastSibling();
+        SetHudActive(topHint.gameObject, true);
+    }
 
     void Build()
     {
@@ -153,6 +221,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
                 19
             );
             value.horizontalOverflow = HorizontalWrapMode.Overflow; // "라운드 25/30"이 줄바꿈되어 사라지지 않게
+            AddTopHint(i);
             // F4: text is rebuilt only when its two numbers change.
             int shownA = int.MinValue,
                 shownB = int.MinValue;
@@ -292,6 +361,17 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         topFold.anchoredPosition = new Vector2(0, -84);
         BuildDeveloperMenu();
         BuildAugmentStrip();
+        BuildEnemyPreview();
+        BuildHoverOutline();
+        // 11-02: 포탑·적 설명 창은 다음 적 줄보다 위에 그린다.
+        playerPanel.SetAsLastSibling();
+        towerPanel.SetAsLastSibling();
+        infoPanel.SetAsLastSibling();
+        // 10-31: 개발 도구는 나중에 만든 HUD(다음 적 줄 등)보다 위에 그린다.
+        foreach (var node in developerViews)
+        {
+            node.transform.SetAsLastSibling();
+        }
         Refresh();
         Pin("CancelPlacement", new Vector2(0, 0), new Vector2(18, 32));
     }
@@ -317,6 +397,12 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
     void LateUpdate()
     {
         var camera = Camera.main;
+        PlaceInfoPanel(camera);
+        UpdateBuildingHint(camera);
+        if (game != null && game.Ready && game.Session.Phase == SessionPhase.Combat && Time.frameCount % 10 == 0)
+        {
+            RefreshStageFold(); // 남은 적 수
+        }
         for (int i = damageNumbers.Count - 1; i >= 0; i--)
         {
             var number = damageNumbers[i];
@@ -527,9 +613,10 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
                     }
                 }
 
+                // 10-30: 아무것도 고른 것처럼 보이지 않게 비워 둔다(첫 '다시 뽑기' 버튼이 눌린 듯 보이던 문제).
                 if (!selectedChoice)
                 {
-                    EventSystem.current.SetSelectedGameObject(augmentationButtons[0].gameObject);
+                    EventSystem.current.SetSelectedGameObject(null);
                 }
             }
         }

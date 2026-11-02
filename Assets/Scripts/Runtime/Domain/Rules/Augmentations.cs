@@ -56,7 +56,8 @@ namespace CoreGuardian
             bool firstPlatinum,
             float silver = 60,
             float gold = 30,
-            float weightPercent = 25
+            float weightPercent = 25,
+            AugmentationGrade? onlyGrade = null
         )
         {
             if (cards == null || cards.Count == 0)
@@ -67,10 +68,14 @@ namespace CoreGuardian
             var pool = new List<AugmentSpec>();
             for (int slot = 0; slot < count; slot++)
             {
+                // 10-31 확정: 리롤은 바꾸는 카드와 같은 등급(onlyGrade) 안에서 다시 뽑는다.
                 var grade =
-                    slot == 0 && firstPlatinum
-                        ? AugmentationGrade.Platinum
-                        : RollGrade(random.NextDouble(), silver, gold);
+                    onlyGrade
+                    ?? (
+                        slot == 0 && firstPlatinum
+                            ? AugmentationGrade.Platinum
+                            : RollGrade(random.NextDouble(), silver, gold)
+                    );
                 pool.Clear();
                 // 1) unseen this run, not on the previous screen; 2) allow previous picks that may repeat; 3) allow the previous screen.
                 for (int pass = 0; pass < 3 && pool.Count == 0; pass++)
@@ -163,6 +168,9 @@ namespace CoreGuardian
             Rounds18,
             Rounds32,
             Rounds34,
+            Penalty12,
+            Penalty34,
+            MineIncome32,
             CleanRounds;
         public bool PendingPlatinum;
 

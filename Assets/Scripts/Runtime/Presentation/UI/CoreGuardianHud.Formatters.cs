@@ -33,7 +33,7 @@ public sealed partial class CoreGuardianHud
             case "burnDuration":
                 return "화상 지속";
             case "pierceFalloff":
-                return "관통 유지";
+                return "관통 피해";
             default:
                 return "탄환 속도";
         }
@@ -81,7 +81,15 @@ public sealed partial class CoreGuardianHud
             sb.Append(" → ");
             AppendStat(ref sb, value + delta, stat);
             sb.Append("\n+");
-            sb.Append(delta, "0.##");
+            if (stat == "pierceFalloff")
+            {
+                sb.Append(Mathf.RoundToInt(delta * 100));
+                sb.Append("%");
+            }
+            else
+            {
+                sb.Append(delta, "0.##");
+            }
             // Grouped upgrades (화염 공격력 + 화상 피해) list their partner stat too.
             if (spec != null)
             {

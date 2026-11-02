@@ -190,6 +190,10 @@ namespace CoreGuardian
         // Presentation only: the hit being reported through DamageApplied was a critical hit (치명타 숫자 표시).
         bool hitCritical;
         public bool HitCritical => hitCritical;
+        bool hitReplacesDeath;
+
+        /// <summary>처형·빙결 파쇄 처치 중: 죽는 소리 대신 그 효과음만 낸다 (사운드 확정표 S17·S19).</summary>
+        public bool HitReplacesDeath => hitReplacesDeath;
 
         readonly List<int> chainHits = new List<int>(8);
 

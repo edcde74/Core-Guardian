@@ -111,7 +111,7 @@ namespace CoreGuardian
             }
             CompletedWave = Wave;
             int reward = Data.RewardForWave(Wave);
-            // 12 수정 조각: next N completions ×mult, then −X per round.
+            // 12 수정 조각: next N completions ×mult, then −X per round for augmentPenaltyRounds (10-31 확정: 기간 한정).
             if (Augments.Has(12))
             {
                 if (Augments.Rounds12 > 0)
@@ -119,9 +119,10 @@ namespace CoreGuardian
                     reward = Mathf.FloorToInt(reward * Augments.Value(12, 1) / Augments.Count(12));
                     Augments.Rounds12--;
                 }
-                else
+                else if (Augments.Penalty12 > 0)
                 {
                     reward = Mathf.Max(0, reward - (int)Augments.Value(12, 2));
+                    Augments.Penalty12--;
                 }
             }
             // 32 수정 광산: income after a delay.
@@ -130,7 +131,7 @@ namespace CoreGuardian
                 Augments.Rounds32++;
                 if (Augments.Rounds32 > Augments.Value(32) / Augments.Count(32))
                 {
-                    reward += (int)Augments.Value(32, 1);
+                    reward += Augments.MineIncome32;
                 }
             }
             LastCompletionReward = reward;
@@ -138,6 +139,9 @@ namespace CoreGuardian
             if (Augments.Has(33))
             {
                 int moved = Mathf.FloorToInt(Gold * Augments.Value(33) / 100f);
+                float cap = Augments.Value(33, 1); // 라운드당 최대 수정 (11-02 확정 50)
+                if (cap > 0)
+                    moved = Mathf.Min(moved, Mathf.FloorToInt(cap));
                 Gold -= moved;
                 Crystals += moved;
             }
@@ -159,6 +163,10 @@ namespace CoreGuardian
             if (Augments.Rounds34 > 0)
             {
                 Augments.Rounds34--;
+            }
+            else if (Augments.Penalty34 > 0)
+            {
+                Augments.Penalty34--;
             }
 
             LastMessage = CompletedWave + "라운드 완료 +" + LastCompletionReward + " 수정";
@@ -227,6 +235,7 @@ namespace CoreGuardian
         }
 
         // Free reroll of one card (카드마다 따로). The shown cards are excluded and the timer keeps running.
+        // 10-31 확정: 새 카드는 바꾸는 카드와 같은 등급(실버는 실버끼리).
         public bool RerollAugmentation(int index)
         {
             if (Phase != SessionPhase.Augmentation || index < 0 || index >= choices.Length)
@@ -250,10 +259,11 @@ namespace CoreGuardian
                     Augments,
                     1,
                     previousScreen,
-                    index == 0 && Augments.PendingPlatinum,
+                    false,
                     Data.Setting("augmentGradeSilver", 60),
                     Data.Setting("augmentGradeGold", 30),
-                    Data.Setting("augmentSubcategoryWeight", 25)
+                    Data.Setting("augmentSubcategoryWeight", 25),
+                    choices[index].Grade
                 );
                 if (one.Length > 0 && !previousScreen.Contains(one[0].Spec.Id))
                 {
@@ -306,6 +316,12 @@ namespace CoreGuardian
             return true;
         }
 
+        // 10-31 확정: 12·34번의 손해는 이득이 끝난 뒤 augmentPenaltyRounds 라운드 동안만.
+        int PenaltyRounds => (int)Data.Setting("augmentPenaltyRounds", 5);
+
+        // 10-31 확정: 정해진 양을 주는 경제 증강(18·32)은 고른 시점 1~10 / 11~20 / 21~30라운드에 1배 / 2배 / 3배.
+        int EconomyTier() => 1 + (int)Data.Setting("augmentEconomyStep", 1) * ((Mathf.Max(1, CompletedWave) - 1) / 10);
+
         // One-time effects at selection; standing effects are read live from Augments.
         void ApplyImmediate(AugmentationCard card)
         {
@@ -323,8 +339,17 @@ namespace CoreGuardian
                     CoreMaximum += (int)v.Value(0);
                     CoreEnergy += (int)v.Value(0);
                     break;
+                case 12:
+                    Augments.Penalty12 += PenaltyRounds;
+                    break;
                 case 18:
-                    Gold += (int)v.Value(0);
+                    Gold += (int)v.Value(0) * EconomyTier();
+                    break;
+                case 32:
+                    Augments.MineIncome32 += (int)v.Value(1) * EconomyTier();
+                    break;
+                case 34:
+                    Augments.Penalty34 += PenaltyRounds;
                     break;
                 case 48:
                     CoreMaximum = Mathf.Max(1, CoreMaximum - (int)v.Value(0));

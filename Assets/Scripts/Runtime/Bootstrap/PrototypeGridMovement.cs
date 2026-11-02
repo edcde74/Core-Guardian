@@ -102,8 +102,11 @@ public sealed class PrototypeGridMovement : MonoBehaviour
 
         Vector2Int direction = pendingDirection;
         pendingDirection = Vector2Int.zero;
-        LastDirection = direction;
-        TryStep(direction);
+        // 10-30 결정: 실제로 움직인 방향만 기억한다(막힌 방향은 순간 이동 방향이 되지 않음).
+        if (TryStep(direction))
+        {
+            LastDirection = direction;
+        }
     }
 
     public bool TryStep(Vector2Int direction)
@@ -150,6 +153,54 @@ public sealed class PrototypeGridMovement : MonoBehaviour
             isMoving = false;
             pendingDirection = Vector2Int.zero;
             transform.position = TileCenter(currentCell) + spriteOffset;
+            return true;
+        }
+        return false;
+    }
+
+    // 10-30: 지금 칸이 막히면(포탑 설치) 가장 가까운 빈 칸으로 비켜난다. 거리는 상하좌우 칸 수,
+    // 같은 거리면 코어에 가까운 칸, 그래도 같으면 먼저 찾은 칸. 22 불길 발자국은 걸음이 아니라서 남기지 않는다.
+    public bool MoveOffBlockedCell(int maxDistance = 8)
+    {
+        if (!enabled || CanOccupy(currentCell))
+            return false;
+
+        Vector3 coreCenter = core.cellBounds.center;
+        for (int d = 1; d <= maxDistance; d++)
+        {
+            bool found = false;
+            Vector3Int best = currentCell;
+            float bestCore = float.MaxValue;
+            for (int dx = -d; dx <= d; dx++)
+            {
+                int dy = d - Mathf.Abs(dx);
+                for (int sign = -1; sign <= 1; sign += 2)
+                {
+                    if (dy == 0 && sign > 0)
+                        continue;
+
+                    var cell = currentCell + new Vector3Int(dx * movementTileSize.x, sign * dy * movementTileSize.y, 0);
+                    if (!CanOccupy(cell))
+                        continue;
+
+                    float toCore = ((Vector3)cell - coreCenter).sqrMagnitude;
+                    if (toCore < bestCore)
+                    {
+                        bestCore = toCore;
+                        best = cell;
+                        found = true;
+                    }
+                }
+            }
+            if (!found)
+                continue;
+
+            currentCell = best;
+            pendingDirection = Vector2Int.zero;
+            stepStart = transform.position;
+            stepEnd = TileCenter(currentCell) + spriteOffset;
+            stepProgress = 0f;
+            isMoving = true;
             return true;
         }
         return false;

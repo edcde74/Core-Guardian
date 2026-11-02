@@ -20,6 +20,9 @@ public sealed partial class CoreGuardianPrototype
         public SegmentedEnemyHealthBar Health;
         public Vector3 InitialScale;
         public Quaternion InitialRotation;
+
+        // 10-30 겹친 적 그리기(#8): 지금 위로 올린 높이(칸 단위). 전투 위치는 그대로.
+        public float Lift;
         public bool Valid => Root != null && Animation != null && Health != null && Shadow != null;
     }
 
@@ -55,6 +58,45 @@ public sealed partial class CoreGuardianPrototype
         }
     }
 
+    // 10-30 사용자 결정(#8): 거의 같은 자리에서 겹쳐 걷는 적은 뒤쪽을 살짝(약 3픽셀) 위로 올려 두 줄로 걷는 것처럼 그린다.
+    // 그림 위치만 바뀌고 전투 위치·판정은 그대로다. 보스·비행체는 빼고, 이미 올라간 적 뒤에 붙은 적은 다시 아래 줄로.
+    const float OverlapDistance = .35f,
+        OverlapLift = .09f;
+    readonly List<EnemyHandle> overlapOrder = new List<EnemyHandle>();
+    readonly HashSet<int> liftedEnemyIds = new HashSet<int>();
+    static readonly Comparison<EnemyHandle> AheadFirst = (a, b) => b.PathTravelled.CompareTo(a.PathTravelled);
+
+    void MarkOverlaps()
+    {
+        overlapOrder.Clear();
+        liftedEnemyIds.Clear();
+        foreach (var e in livingViewEnemies)
+        {
+            if (e.Kind != EnemyKind.Flyer && e.Kind != EnemyKind.Boss)
+            {
+                overlapOrder.Add(e);
+            }
+        }
+        overlapOrder.Sort(AheadFirst);
+        for (int i = 1; i < overlapOrder.Count; i++)
+        {
+            var e = overlapOrder[i];
+            for (int j = i - 1; j >= 0; j--)
+            {
+                var front = overlapOrder[j];
+                if (front.PathTravelled - e.PathTravelled > OverlapDistance)
+                    break;
+                if (liftedEnemyIds.Contains(front.Id))
+                    continue;
+                if ((front.Position - e.Position).sqrMagnitude < OverlapDistance * OverlapDistance)
+                {
+                    liftedEnemyIds.Add(e.Id);
+                    break;
+                }
+            }
+        }
+    }
+
     void SynchronizeViews()
     {
         livingViewEnemies.Clear();
@@ -70,6 +112,7 @@ public sealed partial class CoreGuardianPrototype
 
         ReturnRemovedEnemyBodies();
         SyncRemoved(auraViews, activeEnemyViewIds);
+        MarkOverlaps();
         foreach (var e in livingViewEnemies)
         {
             if (!enemyBodies.TryGetValue(e.Id, out var body))
@@ -84,7 +127,9 @@ public sealed partial class CoreGuardianPrototype
                 }
             }
             var view = body.Root;
-            view.transform.position = World(e.Position);
+            float lift = liftedEnemyIds.Contains(e.Id) ? OverlapLift : 0;
+            body.Lift = Mathf.MoveTowards(body.Lift, lift, Time.deltaTime * .6f);
+            view.transform.position = World(e.Position + Vector2.up * body.Lift);
             combatAnimation.Enemy(e, view);
             body.Health.transform.position = body.Animation.HealthBarWorld;
             body.Health.SetHealth(e.Health, e.Spec.Health);
@@ -295,6 +340,7 @@ public sealed partial class CoreGuardianPrototype
             body.Shadow.InvalidateSources();
             body.Health.Configure(enemy.Kind == EnemyKind.Boss);
         }
+        body.Lift = 0;
         body.Root.name = "Enemy_" + enemy.Kind + "_" + enemy.Id;
         body.Health.SetHealth(enemy.Health, enemy.Spec.Health);
         body.Health.transform.position = body.Animation.HealthBarWorld;

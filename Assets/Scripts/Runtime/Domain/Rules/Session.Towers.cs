@@ -170,15 +170,18 @@ namespace CoreGuardian
         int TowerStep(TowerKind kind, string stat) =>
             towerUpgradeSteps.TryGetValue(kind, out var steps) && steps.TryGetValue(stat, out var n) ? n : 0;
 
+        /// <summary>Lab upgrade steps bought for this tower kind and stat (shared by every tower of the kind).</summary>
+        public int TowerUpgradeStep(TowerKind kind, string stat) => TowerStep(kind, stat);
+
         public int InstallCost(TowerKind kind)
         {
             float cost = Data.Towers[kind].Cost;
             if (Augments.Has(34))
             {
                 cost *=
-                    Augments.Rounds34 > 0
-                        ? 1 - Augments.Value(34, 1) / Augments.Count(34) / 100f
-                        : 1 + Augments.Value(34, 2) / Augments.Count(34) / 100f;
+                    Augments.Rounds34 > 0 ? 1 - Augments.Value(34, 1) / Augments.Count(34) / 100f
+                    : Augments.Penalty34 > 0 ? 1 + Augments.Value(34, 2) / Augments.Count(34) / 100f
+                    : 1;
             }
             return Mathf.Max(0, Mathf.FloorToInt(cost + .5f));
         }

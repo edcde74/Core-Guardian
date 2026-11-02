@@ -186,6 +186,16 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
 
     void Update()
     {
+        for (int i = delayedCues.Count - 1; i >= 0; i--)
+        {
+            if (Time.unscaledTime >= delayedCues[i].at)
+            {
+                string id = delayedCues[i].id;
+                delayedCues.RemoveAt(i);
+                PlayGroupedCue(id);
+            }
+        }
+
         for (int i = 0; i < voices.Length; i++)
         {
             if (voices[i] != null)
@@ -269,30 +279,99 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         new System.Collections.Generic.Dictionary<string, float>();
     public int SessionCuePlayedCount { get; private set; }
 
+    // 사운드 확정표 (Notion 사운드 2단계): 같은 소리 묶음 간격(초). 0 = 묶지 않음.
+    static float CueGap(string id)
+    {
+        switch (id)
+        {
+            case "cold_pulse":
+            case "stun":
+            case "freeze":
+                return .3f;
+            case "flame_shot":
+                return .08f;
+            case "rail_shot":
+                return .1f;
+            case "heal_pulse":
+                return 1f;
+            case "chain":
+            case "execute":
+            case "shatter":
+            case "burn_explode":
+                return .15f;
+            case "reroll":
+                return .2f;
+            case "star_merge":
+            case "area_blast":
+            case "teleport":
+            case "shield_deploy":
+            case "summon":
+                return 0f;
+            default:
+                return .12f;
+        }
+    }
+
+    readonly System.Collections.Generic.List<(float at, string id)> delayedCues = new System.Collections.Generic.List<(
+        float at,
+        string id
+    )>();
+
+    /// <summary>앞 소리를 끊지 않고 조금 뒤에 낸다 (S12 순간 이동 0.1초, S19 빙결 0.05초).</summary>
+    public void PlayCueAfter(string id, float delay)
+    {
+        delayedCues.Add((Time.unscaledTime + delay, id));
+    }
+
     void OnSessionCue(Session.CueEvent cue)
     {
-        if (cue.Id == "split")
+        // 분열은 소리 없음. 치명타는 피격음 자리에서 대신 난다(OnMonsterHit).
+        if (cue.Id == "split" || cue.Id == "crit")
             return;
 
-        float now = Time.unscaledTime;
-        if (cueCooldowns.TryGetValue(cue.Id, out float next) && now < next)
+        if (cue.Id == "freeze")
         {
-            DroppedCount++;
+            PlayCueAfter(cue.Id, .05f);
             return;
         }
-        if (PlayCue(cue.Id))
+
+        PlayGroupedCue(cue.Id);
+    }
+
+    bool PlayGroupedCue(string id)
+    {
+        float now = Time.unscaledTime;
+        // H4·H5·H6 포탑 피격음은 일반 피격음과 같은 줄(0.1초)을 쓴다.
+        if (id.StartsWith("hit_", System.StringComparison.Ordinal))
         {
+            if (now < nextMonsterHit)
+            {
+                DroppedCount++;
+                return false;
+            }
+            if (!PlayCue(id))
+                return false;
+
+            nextMonsterHit = now + .1f;
             SessionCuePlayedCount++;
-            cueCooldowns[cue.Id] =
-                now
-                + (
-                    cue.Id == "cold_pulse"
-                    || cue.Id == "flame_shot"
-                    || cue.Id.StartsWith("hit_", System.StringComparison.Ordinal)
-                        ? .08f
-                        : .12f
-                );
+            return true;
         }
+        if (cueCooldowns.TryGetValue(id, out float next) && now < next)
+        {
+            DroppedCount++;
+            return false;
+        }
+        if (!PlayCue(id))
+            return false;
+
+        SessionCuePlayedCount++;
+        float gap = CueGap(id);
+        if (gap > 0)
+        {
+            cueCooldowns[id] = now + gap;
+        }
+
+        return true;
     }
 
     public bool PlayCue(string id)
@@ -385,6 +464,10 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
 
         if (target.Health <= 0)
         {
+            // 처형·빙결 파쇄 처치는 그 효과음이 죽는 소리를 대신한다. 치명타 처치는 죽는 소리만.
+            if (session != null && session.HitReplacesDeath)
+                return;
+
             if (Time.unscaledTime < nextMonsterDeath || !PlayClip(monsterDeathClip))
                 return;
 
@@ -406,7 +489,9 @@ public sealed class CoreGuardianCombatAudio : MonoBehaviour
         if (Time.unscaledTime < nextMonsterHit)
             return;
 
-        if (!PlayClip(monsterHitClip))
+        // S18 치명타음은 피격음을 대신한다(같은 줄 0.1초).
+        bool crit = session != null && session.HitCritical;
+        if (crit ? !PlayCue("crit") : !PlayClip(monsterHitClip))
             return;
 
         nextMonsterHit = Time.unscaledTime + .1f;

@@ -15,13 +15,8 @@ public sealed partial class CoreGuardianHud
     EnemyHandle infoEnemy;
     RectTransform infoPanel;
     Image infoIcon;
-    Text infoTitle,
-        infoNote;
-    const int InfoRows = 8;
-    readonly Image[] infoRowIcons = new Image[InfoRows];
-    readonly Text[] infoRowTexts = new Text[InfoRows];
+    Text infoTitle;
     Button infoDestroy;
-    int infoRowCount;
 
     bool InfoBlocked => game.Installing.HasValue || game.Session.Phase == SessionPhase.Augmentation;
 

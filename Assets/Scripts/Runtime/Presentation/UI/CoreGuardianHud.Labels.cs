@@ -48,32 +48,24 @@ public sealed partial class CoreGuardianHud
     static bool HasTowerTag(TowerKind kind) =>
         kind == TowerKind.Frost || kind == TowerKind.Flame || kind == TowerKind.Rail || kind == TowerKind.Multi;
 
-    void AppendTowerTag(ref Utf16ValueStringBuilder sb, TowerKind kind, CombatStats st)
+    // 정보창 효과 칸에 보이는 숫자.
+    void AppendTowerTagValue(ref Utf16ValueStringBuilder sb, TowerKind kind, CombatStats st)
     {
         switch (kind)
         {
             case TowerKind.Frost:
-                sb.Append("둔화 ");
                 sb.Append(st.SlowPercent, "0.##");
-                sb.Append("% · ");
-                sb.Append(st.SlowDuration, "0.##");
-                sb.Append("초");
+                sb.Append("%");
                 break;
             case TowerKind.Flame:
-                sb.Append("화상 스택당 초당 ");
                 sb.Append(st.BurnPerStack, "0.##");
-                sb.Append(" · ");
-                sb.Append(st.BurnDuration, "0.##");
-                sb.Append("초");
                 break;
             case TowerKind.Rail:
-                sb.Append("관통 · 통과마다 ×");
-                sb.Append(st.PierceFalloff, "0.##");
+                sb.Append(Mathf.RoundToInt(st.PierceFalloff * 100));
+                sb.Append("%");
                 break;
             case TowerKind.Multi:
-                sb.Append("최대 ");
                 sb.Append(game.Session.Data.Towers[kind].MaxTargets);
-                sb.Append("명 동시 공격");
                 break;
         }
     }
@@ -95,9 +87,14 @@ public sealed partial class CoreGuardianHud
         }
     }
 
-    static string EnemyFamily(EnemyHandle e)
+    static void AppendEnemyName(ref Utf16ValueStringBuilder sb, EnemyKind kind, EnemySpec spec) =>
+        sb.Append(kind == EnemyKind.Boss ? BossName(spec) : KindName(kind));
+
+    static string EnemyFamily(EnemyHandle e) => EnemyFamily(e.Kind, e.Spec);
+
+    static string EnemyFamily(EnemyKind kind, EnemySpec spec)
     {
-        switch (e.Kind)
+        switch (kind)
         {
             case EnemyKind.Defense:
             case EnemyKind.Armored:
@@ -106,24 +103,25 @@ public sealed partial class CoreGuardianHud
             case EnemyKind.Healer:
                 return "버프형 계열";
             case EnemyKind.Boss:
-                return e.Spec.Key == "IronKnight" ? "수비형 보스"
-                    : e.Spec.Key == "CrimsonLord" ? "버프형 보스"
+                return spec.Key == "IronKnight" ? "수비형 보스"
+                    : spec.Key == "CrimsonLord" ? "버프형 보스"
                     : "보스";
             default:
                 return "공격형 계열";
         }
     }
 
-    static void AppendAbility(ref Utf16ValueStringBuilder sb, EnemyHandle e)
+    static void AppendAbility(ref Utf16ValueStringBuilder sb, EnemyHandle e) => AppendAbility(ref sb, e.Kind, e.Spec);
+
+    static void AppendAbility(ref Utf16ValueStringBuilder sb, EnemyKind kind, EnemySpec s)
     {
-        var s = e.Spec;
         bool any = false;
         if (s.BuffRadius > 0 && s.BuffSpeed > 0)
         {
             Separate(ref sb, ref any, " · ");
             sb.Append("주변 ");
             sb.Append(s.BuffRadius, "0.##");
-            sb.Append("타일 이동속도 +");
+            sb.Append("칸 이동 속도 +");
             sb.Append(s.BuffSpeed, "0.##");
             sb.Append("%");
         }
@@ -134,7 +132,7 @@ public sealed partial class CoreGuardianHud
             sb.Append(s.HealInterval, "0.##");
             sb.Append("초마다 ");
             sb.Append(s.HealRadius, "0.##");
-            sb.Append("타일 회복 ");
+            sb.Append("칸 회복 ");
             sb.Append(s.HealPercent, "0.##");
             sb.Append("%");
         }
@@ -153,7 +151,7 @@ public sealed partial class CoreGuardianHud
             sb.Append("비행 경로(지름길)");
         }
 
-        if (e.Kind == EnemyKind.Boss)
+        if (kind == EnemyKind.Boss)
         {
             Separate(ref sb, ref any, " · ");
             sb.Append("체력 ");
@@ -195,65 +193,10 @@ public sealed partial class CoreGuardianHud
         if (!any)
         {
             sb.Append(
-                e.Kind == EnemyKind.Charger ? "매우 빠름"
-                : e.Kind == EnemyKind.Armored ? "높은 방어"
+                kind == EnemyKind.Charger ? "매우 빠름"
+                : kind == EnemyKind.Armored ? "높은 방어"
                 : "없음"
             );
-        }
-    }
-
-    static void AppendStatus(ref Utf16ValueStringBuilder sb, EnemyHandle e)
-    {
-        bool any = false;
-        float slow = e.SlowPercent;
-        if (slow > 0)
-        {
-            Separate(ref sb, ref any, " · ");
-            sb.Append("둔화 ");
-            sb.Append(slow, "0");
-            sb.Append("%");
-        }
-
-        if (e.BurnStacks > 0)
-        {
-            Separate(ref sb, ref any, " · ");
-            sb.Append("화상 ");
-            sb.Append(e.BurnStacks);
-            sb.Append("스택");
-        }
-
-        if (e.Frozen)
-        {
-            Separate(ref sb, ref any, " · ");
-            sb.Append("얼어붙음");
-        }
-        else if (e.Stunned)
-        {
-            Separate(ref sb, ref any, " · ");
-            sb.Append("기절");
-        }
-
-        if (e.Shielded)
-        {
-            Separate(ref sb, ref any, " · ");
-            sb.Append("방패 전개");
-        }
-
-        if (e.Enraged)
-        {
-            Separate(ref sb, ref any, " · ");
-            sb.Append("격노");
-        }
-
-        if (e.Buffed)
-        {
-            Separate(ref sb, ref any, " · ");
-            sb.Append("버프 받음");
-        }
-
-        if (!any)
-        {
-            sb.Append("없음");
         }
     }
 }

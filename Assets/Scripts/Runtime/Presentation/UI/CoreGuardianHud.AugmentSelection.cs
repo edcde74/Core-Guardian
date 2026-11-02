@@ -19,6 +19,11 @@ public sealed partial class CoreGuardianHud
         bossStatus = Text("BossStatus", bossPlate, new Vector2(54, -14), new Vector2(666, 32), 22);
         refresh.Add(() => bossPlate.gameObject.SetActive(!string.IsNullOrEmpty(bossStatus.text)));
         bossStatus.color = new Color(1f, .6f, .45f);
+        // 10-31 사용자 요청: 보스 체력 줄은 강화 창(연구소·작업대)보다 아래에 그린다.
+        if (playerPanel != null && towerPanel != null)
+        {
+            bossPlate.SetSiblingIndex(Mathf.Min(playerPanel.GetSiblingIndex(), towerPanel.GetSiblingIndex()));
+        }
         augmentationPanel = Box(
             "AugmentationSelection",
             canvas,

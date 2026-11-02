@@ -13,6 +13,10 @@ public sealed class CoreGuardianOriginalWalk
     readonly Sprite reference;
     readonly bool generic;
 
+    // 11-02: 분열 조각의 아래 걷기 그림 4장은 모두 같은 발(왼발)만 내딛는다.
+    // 앞 2장(내딛기·모으기)을 뒤 2장에서 좌우로 뒤집어 두 발이 번갈아 나가게 한다.
+    readonly bool mirrorDownSteps;
+
     // Joint pixels from the top of the layer canvas: hip, knee, ankle (left then right), cycle, lift, anchor x, top.
     static readonly System.Collections.Generic.Dictionary<string, float[]> NewRoles =
         new System.Collections.Generic.Dictionary<string, float[]>
@@ -21,12 +25,19 @@ public sealed class CoreGuardianOriginalWalk
             { "Splitter", new float[] { 13, 31, 12, 36, 12, 43, 23, 32, 24, 37, 24, 43, 10, 1.2f, 3, 38 } },
             { "SplitChild", new float[] { 13, 31, 12, 36, 12, 43, 23, 32, 24, 37, 24, 43, 9, 1.2f, 3, 38 } },
             { "Healer", new float[] { 11.5f, 62, 11, 67, 11, 74, 23, 62, 23, 69, 23, 77, 12, 1.6f, -.5f, 62 } },
-            // 장갑병 관절·보폭: Animation/Armored/joints.json(10-30, 아트 기록대로).
-            { "Armored", new float[] { 20, 34, 20, 39, 20, 45, 27, 32, 27, 39, 30, 47, 14, 1.4f, 5.25f, 50 } },
         };
 
     public static bool Supports(string role) =>
-        role == "Attack" || role == "Defense" || role == "Buff" || role == "Boss" || NewRoles.ContainsKey(role);
+        role == "Attack"
+        || role == "Defense"
+        || role == "Armored"
+        || role == "Buff"
+        || role == "Boss"
+        || NewRoles.ContainsKey(role);
+
+    // 10-30 사용자 결정(B안): 장갑병은 방패병 몸을 검은 강철색으로 바꾼 그림이라 관절·걷는 동작은 방패병 것을 쓴다.
+    // 그림 파일만 Armored 폴더(색을 바꾼 사본)에서 읽는다.
+    static string RigRole(string role) => role == "Armored" ? "Defense" : role;
 
     readonly Transform rig;
     readonly SpriteRenderer[] layers;
@@ -41,9 +52,7 @@ public sealed class CoreGuardianOriginalWalk
         cord;
     readonly SpriteRenderer[] backLegParts;
 
-    // 장갑병(10-30): 원본 그림엔 왼쪽 다리가 방패에 가려 없다. 보이는 오른쪽 다리 조각을 어둡게 복사해
-    // 왼쪽 엉덩이 자리(오른쪽 엉덩이에서 왼쪽 7, 아래 2픽셀)에 두고 반 박자 엇갈려 걷는다. 새로 그린 픽셀은 없다.
-    static readonly Vector2 ArmoredRearLegOffsetPixels = new Vector2(-7, -2);
+    // 뒤 다리 복사(10-30 장갑병용)는 장갑병 그림을 방패병 바탕으로 바꾸면서 쓰지 않는다. 그리기 코드는 남겨 둔다.
     static readonly Color RearLegShade = new Color(.62f, .62f, .66f, 1);
     readonly Leg rearLeg;
     readonly SpriteRenderer[] rearLegParts;
@@ -111,6 +120,7 @@ public sealed class CoreGuardianOriginalWalk
     public CoreGuardianOriginalWalk(SpriteRenderer artwork, string role)
     {
         original = artwork;
+        string rigRole = RigRole(role);
         ppu = original.sprite.pixelsPerUnit;
         initialColor = original.color;
         initialFlipY = original.flipY;
@@ -125,7 +135,8 @@ public sealed class CoreGuardianOriginalWalk
         var ru = Layer("RightUpper", role);
         var rl = Layer("RightLower", role);
         layers = new[] { body, lu, ll, ru, rl };
-        generic = NewRoles.TryGetValue(role, out var table);
+        generic = NewRoles.TryGetValue(rigRole, out var table);
+        mirrorDownSteps = role == "SplitChild";
         reference = generic ? body.sprite : original.sprite;
         float directionalTop;
         if (generic)
@@ -139,21 +150,21 @@ public sealed class CoreGuardianOriginalWalk
         }
         else
         {
-            if (role == "Attack")
+            if (rigRole == "Attack")
             {
                 left = Bone(lu, ll, 18, 43, 19, 49, 17, 61);
                 right = Bone(ru, rl, 30, 43, 31, 51, 35, 60);
                 cyclePixels = 14;
                 lift = 1.8f;
             }
-            else if (role == "Defense")
+            else if (rigRole == "Defense")
             {
                 left = Bone(lu, ll, 17, 31, 17, 36, 17, 42);
                 right = Bone(ru, rl, 24, 29, 24, 36, 27, 44);
                 cyclePixels = 10;
                 lift = 1.4f;
             }
-            else if (role == "Buff")
+            else if (rigRole == "Buff")
             {
                 left = Bone(lu, ll, 13, 61, 12, 67, 9, 74);
                 right = Bone(ru, rl, 22, 60, 24, 69, 24, 77);
@@ -170,14 +181,14 @@ public sealed class CoreGuardianOriginalWalk
             // Midpoint of the two original boot soles, in source pixels relative to its pivot.
             // This is a ground anchor, not the center of the canvas/weapon/banner.
             groundAnchor =
-                role == "Attack" ? new Vector2(3.5f, 0)
-                : role == "Defense" ? new Vector2(5.5f, 4)
-                : role == "Buff" ? new Vector2(-1.75f, 1.5f)
+                rigRole == "Attack" ? new Vector2(3.5f, 0)
+                : rigRole == "Defense" ? new Vector2(5.5f, 4)
+                : rigRole == "Buff" ? new Vector2(-1.75f, 1.5f)
                 : new Vector2(-.75f, 2);
             directionalTop =
-                role == "Attack" ? 65
-                : role == "Defense" ? 46
-                : role == "Buff" ? 84
+                rigRole == "Attack" ? 65
+                : rigRole == "Defense" ? 46
+                : rigRole == "Buff" ? 84
                 : 65;
         }
         if (role == "Splitter")
@@ -200,18 +211,6 @@ public sealed class CoreGuardianOriginalWalk
             cord.transform.SetParent(body.transform, false);
             cord.transform.localPosition = SplitterCordOffsetPixels / ppu;
             backLegParts = new[] { blu, bll, bru, brl };
-        }
-        if (role == "Armored")
-        {
-            var rearUpper = Layer("RightUpper", role);
-            var rearLower = Layer("RightLower", role);
-            var rear = new GameObject("RearLeg").transform;
-            rear.SetParent(rig, false);
-            rear.localPosition = ArmoredRearLegOffsetPixels / ppu;
-            rearUpper.transform.SetParent(rear, false);
-            rearLower.transform.SetParent(rear, false);
-            rearLeg = Bone(rearUpper, rearLower, table[6], table[7], table[8], table[9], table[10], table[11]);
-            rearLegParts = new[] { rearUpper, rearLower };
         }
         healthTopPixels = Mathf.Max(directionalTop, reference.rect.height - reference.pivot.y - groundAnchor.y);
         var parent = artwork.transform.parent;
@@ -255,7 +254,7 @@ public sealed class CoreGuardianOriginalWalk
 
         vertical.gameObject.SetActive(false);
         // New roles' Up/Down drawings are complete walking frames; no leg splitting.
-        verticalLegs = generic ? null : new VerticalLegPair(vertical, verticalFrames, role);
+        verticalLegs = generic ? null : new VerticalLegPair(vertical, verticalFrames, rigRole);
     }
 
     SpriteRenderer Layer(string name, string role)
@@ -364,7 +363,13 @@ public sealed class CoreGuardianOriginalWalk
             {
                 original.enabled = false;
             }
-            var frame = verticalFrames[verticalFacing > 0 ? 0 : 1, walking ? Mathf.Min(3, (int)(phase * 4)) : 0];
+            int step = walking ? Mathf.Min(3, (int)(phase * 4)) : 0;
+            bool flipStep = mirrorDownSteps && verticalFacing < 0 && step >= 2;
+            var frame = verticalFrames[verticalFacing > 0 ? 0 : 1, flipStep ? step - 2 : step];
+            if (vertical.flipX != flipStep)
+            {
+                vertical.flipX = flipStep;
+            }
             if (vertical.sprite != frame)
             {
                 vertical.sprite = frame;

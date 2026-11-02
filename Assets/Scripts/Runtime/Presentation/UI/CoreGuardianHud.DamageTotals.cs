@@ -278,10 +278,28 @@ public sealed partial class CoreGuardianHud
         damageTotalsPresented = true;
     }
 
+    void SelectDamageSource(string key)
+    {
+        if (key == "Player")
+        {
+            OpenPlayerSpecs();
+            return;
+        }
+        if (key.StartsWith("Tower:", StringComparison.Ordinal) && int.TryParse(key.Substring(6), out int id))
+        {
+            game.SelectTower(id);
+        }
+    }
+
     DamageRow CreateDamageRow()
     {
         var row = Box("DamageRow", damageContent, new Vector2(0, 1), Vector2.zero, new Vector2(288, 60), false);
         row.gameObject.AddComponent<UnityEngine.UI.LayoutElement>().preferredHeight = 60;
+        // 11-02: 줄(이름·막대)을 누르면 그 포탑(또는 기술병)을 고른다. 끌면 그대로 목록이 굴러간다.
+        var hit = row.gameObject.AddComponent<UnityEngine.UI.Image>();
+        hit.color = Color.clear;
+        hit.raycastTarget = true;
+        row.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(() => SelectDamageSource(row.name));
         var icon = Box("RoleIcon", row, new Vector2(0, 1), new Vector2(4, -2), new Vector2(25, 25), false)
             .gameObject.AddComponent<UnityEngine.UI.Image>();
         icon.preserveAspect = true;

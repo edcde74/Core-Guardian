@@ -101,6 +101,9 @@ namespace CoreGuardian
         bool playerAcquired;
         readonly Dictionary<WaveSpec, int> spawned = new Dictionary<WaveSpec, int>();
 
+        /// <summary>How many of this wave row have spawned this round (HUD 다음 적 줄, 10-30).</summary>
+        public int SpawnedCount(WaveSpec row) => spawned.TryGetValue(row, out int n) ? n : 0;
+
         // Rent per invocation so callbacks that re-enter Tick cannot overwrite outer snapshots.
         const int MaxRetainedWorkBuffers = 8;
 

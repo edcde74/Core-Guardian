@@ -277,7 +277,7 @@
       "gain": 0.55,
       "important": false,
       "protectCore": true,
-      "priority": 20
+      "priority": 40
     },
     {
       "id": "star_merge",
@@ -286,7 +286,7 @@
       "gain": 0.55,
       "important": true,
       "protectCore": true,
-      "priority": 40
+      "priority": 60
     },
     {
       "id": "hit_cold",
@@ -340,7 +340,7 @@
       "gain": 0.55,
       "important": false,
       "protectCore": true,
-      "priority": 20
+      "priority": 10
     },
     {
       "id": "execute",
@@ -349,7 +349,7 @@
       "gain": 0.55,
       "important": false,
       "protectCore": true,
-      "priority": 30
+      "priority": 40
     },
     {
       "id": "chain",
@@ -367,7 +367,7 @@
       "gain": 0.55,
       "important": false,
       "protectCore": true,
-      "priority": 20
+      "priority": 10
     },
     {
       "id": "freeze",
@@ -376,7 +376,7 @@
       "gain": 0.55,
       "important": false,
       "protectCore": true,
-      "priority": 30
+      "priority": 10
     },
     {
       "id": "shatter",
@@ -385,7 +385,7 @@
       "gain": 0.55,
       "important": false,
       "protectCore": true,
-      "priority": 30
+      "priority": 40
     },
     {
       "id": "burn_explode",
@@ -394,7 +394,7 @@
       "gain": 0.55,
       "important": false,
       "protectCore": true,
-      "priority": 30
+      "priority": 10
     },
     {
       "id": "heal_pulse",
@@ -403,7 +403,7 @@
       "gain": 0.55,
       "important": false,
       "protectCore": true,
-      "priority": 20
+      "priority": 10
     },
     {
       "id": "shield_deploy",
@@ -430,7 +430,7 @@
       "gain": 0.55,
       "important": true,
       "protectCore": true,
-      "priority": 40
+      "priority": 10
     }
   ]
 }

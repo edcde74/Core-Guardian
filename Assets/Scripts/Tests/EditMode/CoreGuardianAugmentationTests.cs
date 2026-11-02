@@ -346,6 +346,24 @@ public class CoreGuardianAugmentationTests
     }
 
     [Test]
+    public void ExchangeMovesTenPercentButAtMostFiftyCrystalsPerRound()
+    {
+        var s = Game(Data());
+        s.DebugGrantAugmentation(33);
+        typeof(Session).GetProperty("Gold").SetValue(s, 10000);
+        int crystals = s.Crystals;
+        Assert.That(s.StartCombat(), Is.True);
+        Finish(s);
+        Assert.That(s.Crystals - crystals - s.LastCompletionReward, Is.EqualTo(50), "11-02 확정: 라운드당 최대 50");
+        typeof(Session).GetProperty("Gold").SetValue(s, 200);
+        crystals = s.Crystals;
+        Assert.That(s.StartCombat(), Is.True);
+        Finish(s);
+        int moved = s.Crystals - crystals - s.LastCompletionReward;
+        Assert.That(moved, Is.GreaterThanOrEqualTo(20).And.LessThan(50), "상한 아래에선 남은 골드 10%");
+    }
+
+    [Test]
     public void CritCardsChangeDamageAndEveryFourthAttackCrits()
     {
         var s = Field();

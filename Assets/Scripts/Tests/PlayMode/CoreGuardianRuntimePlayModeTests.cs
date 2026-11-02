@@ -44,7 +44,7 @@ public class CoreGuardianRuntimePlayModeTests
                     .Invoke(game, new object[] { CoreGuardian.TowerKind.Multi, new Vector2Int(12, 13) }),
                 Is.EqualTo(true)
             );
-            Assert.That(s.Crystals, Is.EqualTo(30), "범위 공격 설치비 70 (10-28)");
+            Assert.That(s.Crystals, Is.EqualTo(90), "시작 수정 160(11-02) − 범위 공격 설치비 70");
             for (int wave = 1; wave <= 30; wave++)
             {
                 type.GetMethod("StartCombat").Invoke(game, null);
@@ -59,9 +59,9 @@ public class CoreGuardianRuntimePlayModeTests
                         Assert.That(
                             boss.Spec.Health,
                             Is.EqualTo(
-                                wave == 10 ? 500
-                                : wave == 20 ? 1600
-                                : 4500
+                                wave == 10 ? 1000
+                                : wave == 20 ? 4000
+                                : 16000
                             )
                         );
                         type.GetMethod(
@@ -436,7 +436,7 @@ public class CoreGuardianRuntimePlayModeTests
                     Assert.That(s.Phase, Is.EqualTo(CoreGuardian.SessionPhase.Preparation));
                     if (card.Number == 18)
                     {
-                        Assert.That(s.Gold - gold, Is.EqualTo((int)card.Spec.Value(0)));
+                        Assert.That(s.Gold - gold, Is.EqualTo((int)card.Spec.Value(0) * (s.Wave <= 10 ? 1 : s.Wave <= 20 ? 2 : 3)), "빚내기: 11~20라운드 ×2, 21~30라운드 ×3");
                     }
                     Assert.That(s.Augments.Selected.Last(), Is.EqualTo(card.Id));
                     Assert.That(
@@ -465,7 +465,7 @@ public class CoreGuardianRuntimePlayModeTests
             s = (CoreGuardian.Session)type.GetProperty("Session").GetValue(runtime);
             Assert.That(s.Wave, Is.EqualTo(1));
             Assert.That(s.Gold, Is.Zero);
-            Assert.That(s.Crystals, Is.EqualTo(100));
+            Assert.That(s.Crystals, Is.EqualTo(160));
             Assert.That(s.CoreEnergy, Is.EqualTo(20));
             Assert.That(s.Towers, Is.Empty);
             Assert.That(s.Phase, Is.EqualTo(CoreGuardian.SessionPhase.Preparation));
@@ -497,6 +497,16 @@ public class CoreGuardianRuntimePlayModeTests
                 .Invoke(runtime, new object[] { CoreGuardian.TowerKind.Single, new Vector2Int(14, 15) }),
             Is.EqualTo(true)
         );
+        // 11-01·11-02 적 체력 상향: 단일 고속 1기로는 1라운드를 다 못 막아 범위 공격 2기를 더 둠
+        typeof(CoreGuardian.Session).GetProperty("Crystals").SetValue(session, session.Crystals + 140); // 범위 공격 70 × 2 → 끝 수정은 그대로 (시작 수정 − 단일 고속)
+        foreach (var cell in new[] { new Vector2Int(13, 15), new Vector2Int(12, 15) })
+        {
+            Assert.That(
+                runtimeType.GetMethod("Place").Invoke(runtime, new object[] { CoreGuardian.TowerKind.Multi, cell }),
+                Is.EqualTo(true),
+                cell.ToString()
+            );
+        }
         runtimeType.GetMethod("StartCombat").Invoke(runtime, null);
         for (int i = 0; i < 1000 && session.Phase == CoreGuardian.SessionPhase.Combat; i++)
         {
@@ -523,7 +533,7 @@ public class CoreGuardianRuntimePlayModeTests
         Assert.That(
             session.DamageTotals.Values.Sum(),
             Is.EqualTo(
-                session.Data.Waves.Where(w => w.Wave == 1).Sum(w => w.Count * session.Data.Enemies[w.Kind].Health)
+                session.Data.Waves.Where(w => w.Wave == 1).Sum(w => w.Count * w.Enemy.Health)
             )
         );
         var expectedTowerPosition = (Vector3)
@@ -539,7 +549,8 @@ public class CoreGuardianRuntimePlayModeTests
     }
 
     [UnityTest]
-    public IEnumerator PlayerCellTower_ManualDeparture_AndReentryBlocked()
+    // 10-30 사용자 결정: 기술병이 선 칸에 포탑을 놓으면 기술병이 가장 가까운 빈 칸으로 비켜나고, 그 칸으로는 다시 못 들어간다.
+    public IEnumerator PlayerCellTower_MovesToNearestFreeCell_AndReentryBlocked()
     {
         var runtimeType = typeof(CoreGuardianPrototype);
         Assert.That(runtimeType, Is.Not.Null, "Gameplay runtime bridge has not been implemented");
@@ -552,26 +563,25 @@ public class CoreGuardianRuntimePlayModeTests
         var runtime = UnityEngine.Object.FindObjectsByType(runtimeType, FindObjectsSortMode.None).Single();
         var session = runtimeType.GetProperty("Session").GetValue(runtime);
         Assert.That(session, Is.Not.Null);
-        Assert.That(runtimeType.GetMethod("PlaceAtPlayerForTest").Invoke(runtime, null), Is.EqualTo(true));
         var movementType = typeof(PrototypeGridMovement);
         var movement = UnityEngine.Object.FindObjectsByType(movementType, FindObjectsSortMode.None).Single();
+        var towerCell = (Vector3Int)movementType.GetProperty("CurrentCell").GetValue(movement);
         var start = ((Component)movement).transform.position;
+        Assert.That(runtimeType.GetMethod("PlaceAtPlayerForTest").Invoke(runtime, null), Is.EqualTo(true));
         var ground = (UnityEngine.Tilemaps.Tilemap)runtimeType.GetField("ground").GetValue(runtime);
-        var startCell = (Vector3Int)movementType.GetProperty("CurrentCell").GetValue(movement);
-        float expectedX =
-            start.x
-            + ground.GetCellCenterWorld(startCell + Vector3Int.right).x
-            - ground.GetCellCenterWorld(startCell).x;
+        var moved = (Vector3Int)movementType.GetProperty("CurrentCell").GetValue(movement);
+        Assert.That(moved, Is.Not.EqualTo(towerCell));
         Assert.That(
-            movementType.GetMethod("TryStep").Invoke(movement, new object[] { Vector2Int.right }),
-            Is.EqualTo(true)
+            Mathf.Abs(moved.x - towerCell.x) + Mathf.Abs(moved.y - towerCell.y),
+            Is.EqualTo(1),
+            "nearest free cell"
         );
         yield return new WaitForSeconds(.16f);
-        Assert.That(((Component)movement).transform.position.x, Is.EqualTo(expectedX).Within(.001f));
-        Assert.That(
-            movementType.GetMethod("TryStep").Invoke(movement, new object[] { Vector2Int.left }),
-            Is.EqualTo(false)
-        );
+        var cellOffset = ground.GetCellCenterWorld(moved) - ground.GetCellCenterWorld(towerCell);
+        Assert.That(((Component)movement).transform.position.x, Is.EqualTo(start.x + cellOffset.x).Within(.001f));
+        Assert.That(((Component)movement).transform.position.y, Is.EqualTo(start.y + cellOffset.y).Within(.001f));
+        var back = new Vector2Int(towerCell.x - moved.x, towerCell.y - moved.y);
+        Assert.That(movementType.GetMethod("TryStep").Invoke(movement, new object[] { back }), Is.EqualTo(false));
 #else
         yield return null;
 #endif

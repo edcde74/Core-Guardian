@@ -64,8 +64,8 @@ public class CoreGuardianContentTests
         Assert.That(pulses, Is.EqualTo(1));
         Assert.That(
             new[] { a.Health, b.Health, boss.Health },
-            Is.EqualTo(new[] { 995, 995, 4995 }),
-            "5 damage to everyone within radius 2"
+            Is.EqualTo(new[] { 996, 996, 4996 }),
+            "4 damage to everyone within radius 2"
         );
         Assert.That(far.Health, Is.EqualTo(1000));
         Assert.That(a.SlowPercent, Is.EqualTo(30).Within(.01));
@@ -86,9 +86,9 @@ public class CoreGuardianContentTests
         var e = s.DebugSpawn(EnemyKind.Attack, 5, Dummy(s.Data, 1000, 50));
         s.Tick(.3f, Away);
         Assert.That(e.BurnStacks, Is.EqualTo(1));
-        Assert.That(e.Health, Is.EqualTo(997), "hit 5 × (1-0.5) = 2.5 → 3");
+        Assert.That(e.Health, Is.EqualTo(998), "hit 4 × (1-0.5) = 2");
         s.Tick(.94f, Away);
-        Assert.That(e.Health, Is.EqualTo(995), "tick 3 × (1-0.25) = 2.25 → 2, 0.25 carried");
+        Assert.That(e.Health, Is.EqualTo(997), "tick 2.4 × (1-0.25) = 1.8 → 1, 0.8 carried");
     }
 
     [Test]
@@ -121,7 +121,7 @@ public class CoreGuardianContentTests
         var e2 = s.DebugSpawn(EnemyKind.Attack, 2, Dummy(s.Data));
         var e3 = s.DebugSpawn(EnemyKind.Attack, 3, Dummy(s.Data));
         s.Tick(.6f, Away);
-        Assert.That(new[] { e1.Health, e2.Health, e3.Health }, Is.EqualTo(new[] { 965, 972, 978 }), "35 → 28 → 22.4");
+        Assert.That(new[] { e1.Health, e2.Health, e3.Health }, Is.EqualTo(new[] { 980, 992, 997 }), "20 → 8 → 3 (관통 피해 40%)");
         Assert.That(s.Projectiles, Is.Empty);
     }
 
@@ -137,7 +137,7 @@ public class CoreGuardianContentTests
         Assert.That(kids.Count, Is.EqualTo(2));
         Assert.That(kids.Select(k => k.PathTravelled).OrderBy(x => x), Is.EqualTo(new[] { 9.7f, 10.3f }).Within(.001f));
         Assert.That(
-            kids.All(k => k.Spec.Health == 16 && k.Spec.Gold == 2 && Mathf.Approximately(k.Spec.Speed, 1.3f)),
+            kids.All(k => k.Spec.Health == 25 && k.Spec.Gold == 2 && Mathf.Approximately(k.Spec.Speed, 1.3f)),
             Is.True
         );
         s.ApplyDamage(kids[0], 1000, "Test");
@@ -157,9 +157,9 @@ public class CoreGuardianContentTests
         var other = s.DebugSpawn(EnemyKind.Healer, 5);
         var hurt = s.DebugSpawn(EnemyKind.Attack, 5.5f);
         s.ApplyDamage(hurt, 20, "Test");
-        Assert.That(hurt.Health, Is.EqualTo(20));
+        Assert.That(hurt.Health, Is.EqualTo(42));
         s.Tick(3.05f, Away);
-        Assert.That(hurt.Health, Is.EqualTo(26), "8% of 40 from each healer, no overlap limit");
+        Assert.That(hurt.Health, Is.EqualTo(52), "8% of 62 (1R 체력 ×1.3) = 5 from each healer, no overlap limit");
     }
 
     [Test]
@@ -220,8 +220,8 @@ public class CoreGuardianContentTests
         s.StartCombat();
         var spec = s.Data.EnemiesById[11102];
         var k = s.DebugSpawn(EnemyKind.Boss, 1, spec);
-        s.ApplyDamage(k, 452, "Test");
-        Assert.That(k.Health, Is.EqualTo(1202), "Base defense 12");
+        s.ApplyDamage(k, 1135, "Test");
+        Assert.That(k.Health, Is.EqualTo(3001), "Base defense 12 (체력 4000)");
         Assert.That(k.Shielded, Is.False);
         s.ApplyDamage(k, 3, "Test");
         Assert.That(k.Shielded, Is.True, "Below 75%");
@@ -231,8 +231,8 @@ public class CoreGuardianContentTests
         s.Tick(5.05f, Away);
         Assert.That(k.Shielded, Is.False);
         var fresh = s.DebugSpawn(EnemyKind.Boss, 1, spec);
-        s.ApplyDamage(fresh, 1400, "Test");
-        Assert.That(fresh.Health, Is.LessThan(640));
+        s.ApplyDamage(fresh, 3500, "Test");
+        Assert.That(fresh.Health, Is.LessThan(1600), "40% of 4000");
         Assert.That(fresh.Shielded, Is.True);
         s.Tick(5.05f, Away);
         s.ApplyDamage(fresh, 50, "Test");
@@ -367,8 +367,8 @@ public class CoreGuardianContentTests
             s.Tick(.05f, Away);
             Assert.That(
                 new[] { weak.Health, resist.Health, plain.Health },
-                Is.EqualTo(exploit ? new[] { 992, 996, 995 } : new[] { 993, 996, 995 }),
-                exploit ? "5×1.6=8, 5×0.85=4.25→4" : "5×1.3=6.5→7, 5×0.7=3.5→4"
+                Is.EqualTo(exploit ? new[] { 994, 997, 996 } : new[] { 995, 997, 996 }),
+                exploit ? "4×1.6=6.4→6, 4×0.85=3.4→3" : "4×1.3=5.2→5, 4×0.7=2.8→3"
             );
         }
         var p = Game();
@@ -380,16 +380,16 @@ public class CoreGuardianContentTests
     [Test]
     public void BurnTicksCountAsFlameForWeakness()
     {
-        // 수비형은 화염 약점: 명중 5×1.3=6.5→7, 틱 3×1.3=3.9→3 (0.9 이월).
+        // 수비형은 화염 약점: 명중 4×1.3=5.2→5, 틱 2.4×1.3=3.12→3 (0.12 이월).
         var s = Game();
         string reason;
         s.TryInstall(TowerKind.Flame, new Vector2Int(5, 1), out reason);
         s.StartCombat();
         var e = s.DebugSpawn(EnemyKind.Defense, 5, Dummy(s.Data, 1000, 0, EnemyKind.Defense));
         s.Tick(.3f, Away);
-        Assert.That(e.Health, Is.EqualTo(993));
+        Assert.That(e.Health, Is.EqualTo(995));
         s.Tick(.94f, Away);
-        Assert.That(e.Health, Is.EqualTo(990));
+        Assert.That(e.Health, Is.EqualTo(992));
     }
 
     [Test]

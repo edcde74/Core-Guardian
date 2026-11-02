@@ -216,8 +216,13 @@ public class CoreGuardianSelectionOutlinePlayModeTests
                 .GetComponentsInChildren<Text>()
                 .Select(t => t.text)
                 .ToArray();
-            Assert.That(rows.Any(t => t.StartsWith("체력 ")), Is.True);
-            Assert.That(rows.Any(t => t.StartsWith("약점")), Is.True);
+            Assert.That(rows.Any(t => t.Contains(" / ")), Is.True, "Health cell shows numbers only");
+            var cell = g.transform.Find("CombatHUD/SelectionInfo/Cell0").GetComponent<CoreGuardianHoverHint>();
+            cell.Changed(true);
+            var tip = g.transform.Find("CombatHUD/InfoTooltip/Text").GetComponent<Text>().text;
+            Assert.That(tip, Does.Contain("체력"), "Hovering a symbol shows its name");
+            cell.Changed(false);
+            Assert.That(Active(g, "InfoTooltip"), Is.False, "Leaving the symbol hides the description");
             session.ApplyDamage(e, 100000, "QA");
             yield return null;
             var hud = Hud(g);

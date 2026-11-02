@@ -72,14 +72,27 @@ public sealed partial class CoreGuardianSelectionOutline : MonoBehaviour
         lastTarget;
     bool pageRasterSupported;
 
+    [Tooltip("켜면 선택 대상 대신 마우스를 올린 대상을 그립니다(10-31, HUD가 실행 때 만듦).")]
+    public bool hoverMode;
+
     void LateUpdate()
     {
         if (hud == null)
         {
-            hud = GetComponent<CoreGuardianHud>();
+            hud = GetComponentInParent<CoreGuardianHud>();
         }
 
-        Present(hud != null ? hud.InspectionTarget : null, Camera.main);
+        Transform target = null;
+        if (hud != null)
+        {
+            target = hoverMode ? hud.HoverOutlineTarget : hud.InspectionTarget;
+            // 10-31 확정: 대상 종류별 색(누름·올림 같은 색).
+            if (target != null)
+            {
+                color = hoverMode ? hud.HoverOutlineColor : hud.InspectionOutlineColor;
+            }
+        }
+        Present(target, Camera.main);
     }
 
     // Reuse the same animated-body union for a transient overlay without changing the sources.

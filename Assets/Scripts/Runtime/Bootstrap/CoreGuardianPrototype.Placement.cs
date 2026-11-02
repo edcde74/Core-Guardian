@@ -112,7 +112,13 @@ public sealed partial class CoreGuardianPrototype
         }
         // A merge (45 포탑 합체) can vacate cells, so occupancy follows the model.
         RebuildOccupied();
-        GetComponent<CoreGuardianCombatAudio>().OrNull()?.NotifyTowerInstalled();
+        // 10-30 사용자 결정: 기술병이 선 칸에 설치하면 기술병이 가장 가까운 빈 칸으로 비켜난다.
+        player.MoveOffBlockedCell();
+        // S4 합체: 합체 소리만 (설치음 없이).
+        if (tower.Stars <= 1)
+        {
+            GetComponent<CoreGuardianCombatAudio>().OrNull()?.NotifyTowerInstalled();
+        }
         SelectedTower = tower.Id;
         CancelInstall();
         Notify(tower.Stars > 1 ? Session.LastMessage : "포탑 설치 완료");

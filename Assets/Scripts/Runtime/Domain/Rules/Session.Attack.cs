@@ -28,6 +28,8 @@ namespace CoreGuardian
                 {
                     p.ExtraPierce = Augments.Count(5);
                     p.PierceFalloff = tags.PierceFalloff;
+                    // 29 관통 치명 (10-30 결정): 기술병 관통 탄에도 적용.
+                    p.CritNoFalloff = Augments.Has(29) && crit > 1;
                 }
                 if (Augments.Has(7))
                 {

@@ -97,9 +97,11 @@ namespace CoreGuardian
                     }
                 }
 
+                // 44 확정 타격 (10-30 결정): 폭발 1번 = 공격 1회. 치명타는 한 번 굴려 맞은 적 모두에 같이 적용.
+                float crit = RollCrit(ref playerAttacks, ref playerCritBonus);
+                payload.Crit = crit;
                 foreach (var e in blastWork)
                 {
-                    float crit = RollCrit(ref playerAttacks, ref playerCritBonus);
                     if (crit > 1)
                     {
                         RaiseCue("crit", e.Position);
@@ -150,9 +152,11 @@ namespace CoreGuardian
                     }
                 }
 
+                // 44 확정 타격 (10-30 결정): 폭발 1번 = 공격 1회. 치명타는 한 번 굴려 맞은 적 모두에 같이 적용.
+                float crit = RollCrit(ref playerAttacks, ref playerCritBonus);
+                payload.Crit = crit;
                 foreach (var e in blastWork)
                 {
-                    float crit = RollCrit(ref playerAttacks, ref playerCritBonus);
                     if (crit > 1)
                     {
                         RaiseCue("crit", e.Position);

@@ -87,6 +87,42 @@ public sealed partial class CoreGuardianHud
         }
     }
 
+    // 10-31 확정: 마우스 올림 아웃라인 대상(선택된 대상과 같으면 선택 아웃라인만 보임).
+    public Transform HoverOutlineTarget
+    {
+        get
+        {
+            if (game == null || !game.Ready)
+                return null;
+
+            var target = game.HoverTarget;
+            return target != null && target != InspectionTarget ? target : null;
+        }
+    }
+
+    public Color HoverOutlineColor => CoreGuardianOutlineColors.For(game.HoverKind);
+
+    public Color InspectionOutlineColor =>
+        CoreGuardianOutlineColors.For(
+            infoSubject == InfoSubject.Player ? OutlineKind.Player
+            : infoSubject == InfoSubject.Tower ? OutlineKind.Tower
+            : OutlineKind.Enemy
+        );
+
+    void BuildHoverOutline()
+    {
+        var selection = GetComponent<CoreGuardianSelectionOutline>();
+        if (selection == null || transform.Find("HoverOutline") != null)
+            return;
+
+        var host = new GameObject("HoverOutline") { hideFlags = HideFlags.DontSave };
+        host.transform.SetParent(transform, false);
+        var hover = host.AddComponent<CoreGuardianSelectionOutline>();
+        hover.hoverMode = true;
+        hover.widthPixels = CoreGuardianOutlineColors.HoverWidth;
+        hover.alphaThreshold = selection.alphaThreshold;
+    }
+
     RectTransform SmallHandle(string name, Transform parent, Action action, bool horizontal)
     {
         var r = Box(
@@ -155,17 +191,20 @@ public sealed partial class CoreGuardianHud
         var handle = stageFoldView;
         bool hidden = phase == SessionPhase.Combat && stageFolded;
         SetHudActive(stage.gameObject, !hidden);
-        SetHudActive(handle.gameObject, phase == SessionPhase.Combat);
-        SetHudPosition(
-            handle,
-            new Vector2(
-                0,
-                hidden
-                    ? topDetails.anchoredPosition.y - topDetails.sizeDelta.y
-                    : stage.anchoredPosition.y - stage.sizeDelta.y
-            )
-        );
-        var scale = new Vector3(hidden ? -1 : 1, 1, 1);
+        float below = hidden
+            ? topDetails.anchoredPosition.y - topDetails.sizeDelta.y
+            : stage.anchoredPosition.y - stage.sizeDelta.y;
+        // 10-30 #9: 다음 적 줄은 라운드 표시 바로 아래. 손잡이로 준비·전투 중 모두 접고 펼친다(전투 중엔 라운드 표시도 같이 접힘).
+        bool foldable = phase == SessionPhase.Combat || phase == SessionPhase.Preparation;
+        RefreshEnemyPreview(!stageFolded);
+        if (enemyPreview != null && enemyPreview.gameObject.activeSelf)
+        {
+            SetHudPosition(enemyPreview, new Vector2(0, below - 4));
+            below -= 4 + enemyPreview.sizeDelta.y;
+        }
+        SetHudActive(handle.gameObject, foldable);
+        SetHudPosition(handle, new Vector2(0, below));
+        var scale = new Vector3(foldable && stageFolded ? -1 : 1, 1, 1);
         if (!stageFoldArt.localScale.Equals(scale))
         {
             stageFoldArt.localScale = scale;
@@ -386,6 +425,19 @@ public sealed partial class CoreGuardianHud
         icon.anchoredPosition = new Vector2(16, -(tab.sizeDelta.y - icon.sizeDelta.y) / 2);
     }
 
+    float BenchPanelShift()
+    {
+        var camera = Camera.main;
+        if (camera == null || Screen.width <= 0)
+            return 0;
+
+        float lab = camera.WorldToScreenPoint(game.World(game.BuildingCenter(false))).x;
+        float bench = camera.WorldToScreenPoint(game.World(game.BuildingCenter(true))).x;
+        float shift = (bench - lab) * canvas.rect.width / Screen.width;
+        float limit = (canvas.rect.width - playerPanel.sizeDelta.x) * .5f - 8;
+        return Mathf.Round(Mathf.Clamp(shift, -limit, limit));
+    }
+
     public void ToggleLab() => ToggleBig(BigPanel.Lab);
 
     public void ToggleBench() => ToggleBig(BigPanel.Bench);
@@ -438,13 +490,29 @@ public sealed partial class CoreGuardianHud
         if (game.Installing.HasValue || game.Session.Phase == SessionPhase.Augmentation)
             return false;
 
-        if (!installOpen && bigPanel == BigPanel.None && infoSubject == InfoSubject.None && !developerOpen)
+        // 10-30 사용자 결정: 펼친 창은 빈 바닥을 누르면 모두 닫는다. 적 정보창만 그대로 둔다.
+        bool keepEnemy = infoSubject == InfoSubject.Enemy;
+        if (
+            !installOpen
+            && bigPanel == BigPanel.None
+            && (infoSubject == InfoSubject.None || keepEnemy)
+            && !developerOpen
+            && !augmentListPinned
+        )
             return false;
 
         game.GetComponent<CoreGuardianCombatAudio>().OrNull()?.PlayCue("ui_close");
         CloseBigPanels();
-        ReleaseInfo();
+        if (!keepEnemy)
+        {
+            ReleaseInfo();
+        }
         developerOpen = false; // 빈 바닥 클릭은 열린 개발 도구도 닫음 (2026-10-28 사용자 요청)
+        if (augmentListPinned)
+        {
+            augmentListPinned = false;
+            RefreshAugmentList();
+        }
         Refresh();
         return true;
     }
@@ -489,6 +557,12 @@ public sealed partial class CoreGuardianHud
         playerOpen = BenchOpen;
         bool labOpen = LabOpen;
         SetHudActive(playerPanel.gameObject, playerOpen);
+        // 10-31 사용자 요청: 작업대 창도 연구소 창처럼 건물 오른쪽에 떠서 건물이 가려지지 않게(두 건물 사이 거리만큼 오른쪽으로).
+        float benchShift = playerOpen ? BenchPanelShift() : 0;
+        if (playerOpen)
+        {
+            SetHudPosition(playerPanel, new Vector2(benchShift, 112));
+        }
         SetHudActive(towerPanel.gameObject, labOpen);
         RefreshAbilityPlate(playerAbilities, s.Player);
         SetHudText(playerTitle, "기술병 작업대 · " + (purchaseOpen ? "능력치 강화" : "현재 능력치"));
@@ -520,13 +594,18 @@ public sealed partial class CoreGuardianHud
                 : "같은 종류의 모든 포탑과 이후 설치분에 적용됩니다(지금 "
                     + count
                     + "기). 철거해도 공유 강화 단계는 유지됩니다."
+                    + (
+                        labKind == TowerKind.Rail
+                            ? "\n관통 피해: 레일 탄이 적을 하나 뚫을 때마다 다음 적에게 남는 피해"
+                            : ""
+                    )
         );
         bool details = playerOpen || labOpen || installOpen;
         SetHudActive(inspectorFold.gameObject, details && s.Phase != SessionPhase.Augmentation);
         SetHudPosition(
             inspectorFold,
             new Vector2(
-                0,
+                playerOpen && !installOpen ? benchShift : 0,
                 112
                     + (
                         installOpen ? installPanel.sizeDelta.y

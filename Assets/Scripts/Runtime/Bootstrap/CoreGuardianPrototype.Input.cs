@@ -89,8 +89,39 @@ public sealed partial class CoreGuardianPrototype
             Changed?.Invoke();
             return;
         }
-        // Enemy: nearest living one whose body covers the clicked tile (art stands above its foot cell).
-        EnemyHandle picked = default;
+        if (TryPickEnemy(xy, out var picked))
+        {
+            hud.ShowEnemyInfo(picked);
+            Changed?.Invoke();
+            return;
+        }
+        if (Vector2Int.RoundToInt(PlayerTile()) == xy)
+        {
+            hud.OpenPlayerSpecs();
+            return;
+        }
+        // 10-30: 빈 바닥이면 길·설치 못 하는 칸이어도 펼친 창을 닫는다(적 정보창은 그대로).
+        if (hud.TryFoldDetails())
+            return;
+
+        SelectedTower = -1;
+        Changed?.Invoke();
+    }
+
+    // 11-02: 누적 피해 목록에서 고른 포탑. 철거한 포탑이면 아무것도 하지 않는다.
+    public void SelectTower(int id)
+    {
+        if (Installing.HasValue || !Session.Towers.Any(t => t.Id == id))
+            return;
+        SelectedTower = id;
+        hud.OpenSelectedTowerSpecs();
+        Changed?.Invoke();
+    }
+
+    // Enemy: nearest living one whose body covers the tile (art stands above its foot cell).
+    bool TryPickEnemy(Vector2Int xy, out EnemyHandle picked)
+    {
+        picked = default;
         float best = float.MaxValue;
         foreach (var e in Session.Enemies)
         {
@@ -107,29 +138,84 @@ public sealed partial class CoreGuardianPrototype
                 picked = e;
             }
         }
-        if (best < float.MaxValue)
-        {
-            hud.ShowEnemyInfo(picked);
-            Changed?.Invoke();
-            return;
-        }
-        if (Vector2Int.RoundToInt(PlayerTile()) == xy)
-        {
-            hud.OpenPlayerSpecs();
-            return;
-        }
-        bool empty =
-            Session.IsBuildable(xy) // same cells as the old tilemap test (B16)
-            && !Session.Enemies.Any(e => e.Alive && Vector2Int.RoundToInt(e.Position) == xy)
-            && Vector2Int.RoundToInt(PlayerTile()) != xy;
-        if (!empty)
-            return;
+        return best < float.MaxValue;
+    }
 
-        if (hud.TryFoldDetails())
-            return;
+    // 10-31 확정: 마우스를 올린 플레이어·포탑·몬스터·코어에 1칸 아웃라인(색은 누를 때와 같음).
+    // 강화 건물은 그림 테두리(_hover)로 따로 처리한다.
+    public Transform HoverTarget { get; private set; }
+    public OutlineKind HoverKind { get; private set; }
+    SpriteRenderer hoverCoreBody;
+    bool hoverCoreSearched;
 
-        SelectedTower = -1;
-        Changed?.Invoke();
+    void RefreshHover(Vector2 mouse, Vector2Int xy, Vector3 world, bool overUi)
+    {
+        Transform target = null;
+        var kind = OutlineKind.None;
+        if (
+            !overUi
+            && !Installing.HasValue
+            && Session.Phase != SessionPhase.Augmentation
+            && !labCells.Contains(xy)
+            && !benchCells.Contains(xy)
+        )
+        {
+            if (PlayerHit(mouse))
+            {
+                target = player.transform;
+                kind = OutlineKind.Player;
+            }
+            else
+            {
+                foreach (var t in Session.Towers)
+                {
+                    if (t.Position == xy)
+                    {
+                        target = TowerView(t.Id);
+                        kind = OutlineKind.Tower;
+                        break;
+                    }
+                }
+                if (target == null && TryPickEnemy(xy, out var enemy))
+                {
+                    target = EnemyView(enemy.Id);
+                    kind = OutlineKind.Enemy;
+                }
+                if (target == null)
+                {
+                    var core = HoverCoreBody();
+                    if (core != null && core.bounds.Contains(new Vector3(world.x, world.y, core.bounds.center.z)))
+                    {
+                        target = core.transform.parent;
+                        kind = OutlineKind.Core;
+                    }
+                }
+            }
+        }
+        HoverTarget = target;
+        HoverKind = target != null ? kind : OutlineKind.None;
+    }
+
+    SpriteRenderer HoverCoreBody()
+    {
+        if (!hoverCoreSearched)
+        {
+            hoverCoreSearched = true;
+            foreach (var r in FindObjectsByType<SpriteRenderer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
+            {
+                if (
+                    r.gameObject.scene == gameObject.scene
+                    && r.name == "2D Sprite"
+                    && r.sprite != null
+                    && r.sprite.name == "core"
+                )
+                {
+                    hoverCoreBody = r;
+                    break;
+                }
+            }
+        }
+        return hoverCoreBody;
     }
 
     PointerEventData uiPointer;

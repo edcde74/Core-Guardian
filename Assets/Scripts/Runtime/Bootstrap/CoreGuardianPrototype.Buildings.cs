@@ -10,6 +10,21 @@ using UnityEngine.Tilemaps;
 // CoreGuardianPrototype: turret lab and engineer bench buildings.
 public sealed partial class CoreGuardianPrototype
 {
+    // 10-31: 강화 건물 칸의 가운데(타일 좌표). 작업대 창을 건물 옆으로 옮기는 데 쓴다.
+    public Vector2 BuildingCenter(bool bench)
+    {
+        var cells = bench ? benchCells : labCells;
+        if (cells.Count == 0)
+            return Vector2.zero;
+
+        var sum = Vector2.zero;
+        foreach (var c in cells)
+        {
+            sum += c;
+        }
+        return sum / cells.Count;
+    }
+
     void SetupBuildings()
     {
         int size = Mathf.Max(1, Mathf.RoundToInt(Session.Data.Setting("buildingSize", 2)));
@@ -37,6 +52,9 @@ public sealed partial class CoreGuardianPrototype
         labHighlight = Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H1_turret_lab_highlight");
         benchSprite = Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H2_engineer_bench");
         benchHighlight = Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H2_engineer_bench_highlight");
+        // 10-31 확정: 창이 열리면 금색 2칸(_highlight), 마우스만 올리면 금색 1칸(_hover).
+        labHover = Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H1_turret_lab_hover");
+        benchHover = Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/H2_engineer_bench_hover");
         var material = TowerArtFor(TowerKind.Single)
             .OrNull()
             ?.GetComponentInChildren<SpriteRenderer>(true)
@@ -65,18 +83,48 @@ public sealed partial class CoreGuardianPrototype
         }
 
         sr.sortingOrder = ArtDepthSorting.Order(go.transform.position.y, 0);
+        // 10-31 확정(그림자 2안): 빛은 서쪽 → 그림자는 오른쪽 위로. 포탑·코어 그림자와 같은 바닥 층(42)에 그린다.
+        var shadow = Resources.Load<Sprite>("CoreGuardian/Hud/Redesign/" + sprite.name + "_shadow");
+        if (shadow != null)
+        {
+            var cast = new GameObject("BuildingCastShadow").AddComponent<SpriteRenderer>();
+            cast.transform.SetParent(go.transform, false);
+            cast.transform.localPosition = new Vector3(
+                (shadow.pivot.x - sprite.pivot.x) / sprite.pixelsPerUnit,
+                (shadow.pivot.y - sprite.pivot.y) / sprite.pixelsPerUnit,
+                0
+            );
+            cast.sprite = shadow;
+            if (material != null)
+            {
+                cast.sharedMaterial = material;
+            }
+
+            cast.sortingOrder = 42;
+        }
         return sr;
     }
+
+    // 11-01 사용자 요청: 마우스를 올린 강화 건물(0 없음, 1 포탑 연구소, 2 기술병 작업대). HUD가 건물 위에 이름·설명창을 띄운다.
+    public int HoverBuilding { get; private set; }
+
+    // 11-01: 강화 건물 그림 윗변 가운데(타일 좌표). 이름·설명창을 이 위에 붙인다.
+    public Vector2 BuildingTop(bool bench) => BuildingCenter(bench) + new Vector2(.5f, .9f);
 
     void RefreshBuildingHighlights(Vector2Int hover, bool pointerOnBoard)
     {
         bool idle = !Installing.HasValue && Session.Phase != SessionPhase.Augmentation;
+        HoverBuilding =
+            !idle || !pointerOnBoard ? 0
+            : labCells.Contains(hover) && !hud.LabOpen ? 1
+            : benchCells.Contains(hover) && !hud.BenchOpen ? 2
+            : 0;
         if (labView != null)
         {
             var sprite =
-                (hud.LabOpen || idle && pointerOnBoard && labCells.Contains(hover)) && labHighlight != null
-                    ? labHighlight
-                    : labSprite;
+                hud.LabOpen && labHighlight != null ? labHighlight
+                : idle && pointerOnBoard && labCells.Contains(hover) && labHover != null ? labHover
+                : labSprite;
             if (labView.sprite != sprite)
             {
                 labView.sprite = sprite;
@@ -85,9 +133,9 @@ public sealed partial class CoreGuardianPrototype
         if (benchView != null)
         {
             var sprite =
-                (hud.BenchOpen || idle && pointerOnBoard && benchCells.Contains(hover)) && benchHighlight != null
-                    ? benchHighlight
-                    : benchSprite;
+                hud.BenchOpen && benchHighlight != null ? benchHighlight
+                : idle && pointerOnBoard && benchCells.Contains(hover) && benchHover != null ? benchHover
+                : benchSprite;
             if (benchView.sprite != sprite)
             {
                 benchView.sprite = sprite;

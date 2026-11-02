@@ -40,6 +40,12 @@ public sealed partial class CoreGuardianHud
         {
             sb.Append(Mathf.FloorToInt(value + .5f));
         }
+        else if (stat == "pierceFalloff")
+        {
+            // 10-31: 레일 관통 피해는 % 로 보여 준다(0.82 → 82%).
+            sb.Append(Mathf.RoundToInt(value * 100));
+            sb.Append("%");
+        }
         else
         {
             sb.Append(value, "0.##");

@@ -94,6 +94,7 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
 
     /// <summary>라운드 기록 (2026-10-30): per-round core reaches written to PerfLogs/rounds_*.csv.</summary>
     public CoreGuardianRoundLog RoundLog { get; private set; }
+    public CoreGuardianPlayLog PlayLog { get; private set; }
     CoreGuardianCombatAnimation combatAnimation;
     CoreGuardianUpgradeFeedback upgradeFeedback;
     GameObject bossArt;
@@ -105,6 +106,7 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
         pointerBlocked,
         pointerPlayer;
     Vector2Int pointerCell;
+    Vector2 pointerScreen;
     public bool HasFeedback => Time.unscaledTime < notificationUntil;
     Vector3[] route;
     public bool Ready => Session != null;
@@ -122,12 +124,23 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
         benchView;
     Sprite labSprite,
         labHighlight,
+        labHover,
         benchSprite,
-        benchHighlight;
+        benchHighlight,
+        benchHover;
 
     void Start()
     {
         Application.runInBackground = true;
+        // 10-30 결정 #1: 색보정(화면 후처리)을 다시 켠다. 씬은 건드리지 않고 실행 때 카메라에서 켬. FPS 차이 없음 확인.
+        var cameraData = Camera
+            .main.OrNull()
+            ?.GetComponent<UnityEngine.Rendering.Universal.UniversalAdditionalCameraData>();
+        if (cameraData != null)
+        {
+            cameraData.renderPostProcessing = true;
+        }
+
         try
         {
             if (ground == null || player == null || occupied == null)
@@ -182,6 +195,7 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
             // Bridge joins the Session events here, where the effects view used to, so handler order is unchanged.
             sessionEvents = new CoreGuardianSessionEvents(Session);
             RoundLog = new CoreGuardianRoundLog(Session);
+            PlayLog = new CoreGuardianPlayLog(Session);
             effects = gameObject.AddComponent<CoreGuardianEffectsView>();
             effects.Configure(this);
             upgradeFeedback = GetComponent<CoreGuardianUpgradeFeedback>();
@@ -319,7 +333,9 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
         var world = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, -Camera.main.transform.position.z));
         var cell = ground.WorldToCell(world);
         var xy = new Vector2Int(cell.x, cell.y);
-        RefreshBuildingHighlights(xy, !OverUI(mouse));
+        bool overUi = OverUI(mouse);
+        RefreshBuildingHighlights(xy, !overUi);
+        RefreshHover(mouse, xy, world, overUi);
         if (Installing.HasValue && ghost != null)
         {
             // The tile-centered preview is the visible placement cursor. Preserve normal UI input.
@@ -346,6 +362,7 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
         {
             pointerGesture = true;
             pointerCell = xy;
+            pointerScreen = mouse;
             pointerBlocked = OverUI(mouse) || Session.Phase == SessionPhase.Augmentation || phase != Session.Phase;
             pointerPlayer = !Installing.HasValue && PlayerHit(mouse);
         }
@@ -353,7 +370,16 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
             return;
 
         bool playerClick = pointerPlayer && !Installing.HasValue && PlayerHit(mouse);
-        bool worldClick = pointerGesture && !pointerBlocked && (pointerCell == xy || playerClick) && !OverUI(mouse);
+        // 10-31 (빈 바닥 클릭이 한 번 씹힘): 누른 뒤 칸 경계를 살짝 넘어도(12픽셀 이내) 누른 칸의 클릭으로 보고,
+        // 누름을 놓친 뗌(누른 기록 없음)도 UI 밖이면 그 칸의 클릭으로 받는다.
+        bool missedPress = !pointerGesture;
+        bool steady = pointerCell == xy || (mouse - pointerScreen).sqrMagnitude <= 144f;
+        bool worldClick =
+            (
+                pointerGesture && !pointerBlocked && (steady || playerClick)
+                || missedPress && Session.Phase != SessionPhase.Augmentation
+            ) && !OverUI(mouse);
+        var clicked = missedPress ? xy : pointerCell;
         pointerGesture = false;
         pointerBlocked = false;
         if (worldClick && playerClick)
@@ -363,7 +389,7 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
         }
         if (worldClick)
         {
-            HandleWorldClick(xy);
+            HandleWorldClick(clicked);
         }
     }
 
@@ -388,6 +414,8 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
         sessionEvents = null;
         RoundLog?.Dispose();
         RoundLog = null;
+        PlayLog?.Dispose();
+        PlayLog = null;
         Session?.Dispose();
         if (TestSpeed != 1 || DebugPaused)
         {
