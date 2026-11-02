@@ -594,7 +594,7 @@ public sealed partial class CoreGuardianHud
                 break;
             case TowerKind.Rail:
                 sb.Append("일직선의 적을 꿰뚫습니다. 한 명 뚫을 때마다 피해가 ");
-                sb.Append(Mathf.RoundToInt(st.PierceFalloff * 100));
+                sb.Append(Mathf.RoundToInt(game.Session.RailPierceFalloff(st.PierceFalloff) * 100));
                 sb.Append("%로 줄어듭니다.");
                 break;
             case TowerKind.Multi:

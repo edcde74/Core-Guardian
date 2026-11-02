@@ -221,6 +221,24 @@ public sealed partial class CoreGuardianPrototype
     PointerEventData uiPointer;
     EventSystem uiPointerOwner;
 
+    // 누적 피해 줄 클릭: 뗀 자리의 맨 위 UI 물체를 HUD에 넘긴다.
+    void SelectDamageRowAt(Vector2 position)
+    {
+        if (EventSystem.current == null || !OverUI(position))
+            return;
+
+        uiPointer.Reset();
+        uiPointer.position = position;
+        uiRaycastResults.Clear();
+        EventSystem.current.RaycastAll(uiPointer, uiRaycastResults);
+        var top = uiRaycastResults.Count > 0 ? uiRaycastResults[0].gameObject : null;
+        uiRaycastResults.Clear();
+        if (top != null)
+        {
+            hud.TrySelectDamageRow(top);
+        }
+    }
+
     bool OverUI(Vector2 position)
     {
         if (EventSystem.current == null)

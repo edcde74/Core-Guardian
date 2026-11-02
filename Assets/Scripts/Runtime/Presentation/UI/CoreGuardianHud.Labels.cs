@@ -61,7 +61,7 @@ public sealed partial class CoreGuardianHud
                 sb.Append(st.BurnPerStack, "0.##");
                 break;
             case TowerKind.Rail:
-                sb.Append(Mathf.RoundToInt(st.PierceFalloff * 100));
+                sb.Append(Mathf.RoundToInt(game.Session.RailPierceFalloff(st.PierceFalloff) * 100));
                 sb.Append("%");
                 break;
             case TowerKind.Multi:

@@ -367,7 +367,6 @@ namespace CoreGuardian
             ExtraPierce;
         public bool Player,
             NoBounce,
-            PierceGrowth,
             CritNoFalloff,
             Rail;
 

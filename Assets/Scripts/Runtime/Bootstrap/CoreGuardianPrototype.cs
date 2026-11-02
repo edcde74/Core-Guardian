@@ -369,6 +369,11 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
         if (!Mouse.current.leftButton.wasReleasedThisFrame)
             return;
 
+        if (pointerGesture && !Installing.HasValue && (mouse - pointerScreen).sqrMagnitude <= 144f)
+        {
+            SelectDamageRowAt(mouse);
+        }
+
         bool playerClick = pointerPlayer && !Installing.HasValue && PlayerHit(mouse);
         // 10-31 (빈 바닥 클릭이 한 번 씹힘): 누른 뒤 칸 경계를 살짝 넘어도(12픽셀 이내) 누른 칸의 클릭으로 보고,
         // 누름을 놓친 뗌(누른 기록 없음)도 UI 밖이면 그 칸의 클릭으로 받는다.

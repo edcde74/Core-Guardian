@@ -151,12 +151,8 @@ namespace CoreGuardian
                 {
                     s.HitsLeft--;
                 }
-                // 관통: ×falloff per enemy passed; 29 crit → none; 41 일직선 → none and +N% each.
-                if (payload.PierceGrowth)
-                {
-                    s.Damage *= 1 + Augments.Value(41) / 100f;
-                }
-                else if (!payload.CritNoFalloff)
+                // 관통: ×falloff per enemy passed; 29 crit → none.
+                if (!payload.CritNoFalloff)
                 {
                     s.Damage *= payload.PierceFalloff > 0 ? payload.PierceFalloff : 1;
                 }

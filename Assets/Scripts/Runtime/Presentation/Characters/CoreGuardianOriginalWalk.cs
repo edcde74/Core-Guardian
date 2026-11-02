@@ -13,9 +13,6 @@ public sealed class CoreGuardianOriginalWalk
     readonly Sprite reference;
     readonly bool generic;
 
-    // 11-02: 분열 조각의 아래 걷기 그림 4장은 모두 같은 발(왼발)만 내딛는다.
-    // 앞 2장(내딛기·모으기)을 뒤 2장에서 좌우로 뒤집어 두 발이 번갈아 나가게 한다.
-    readonly bool mirrorDownSteps;
 
     // Joint pixels from the top of the layer canvas: hip, knee, ankle (left then right), cycle, lift, anchor x, top.
     static readonly System.Collections.Generic.Dictionary<string, float[]> NewRoles =
@@ -136,7 +133,6 @@ public sealed class CoreGuardianOriginalWalk
         var rl = Layer("RightLower", role);
         layers = new[] { body, lu, ll, ru, rl };
         generic = NewRoles.TryGetValue(rigRole, out var table);
-        mirrorDownSteps = role == "SplitChild";
         reference = generic ? body.sprite : original.sprite;
         float directionalTop;
         if (generic)
@@ -364,12 +360,7 @@ public sealed class CoreGuardianOriginalWalk
                 original.enabled = false;
             }
             int step = walking ? Mathf.Min(3, (int)(phase * 4)) : 0;
-            bool flipStep = mirrorDownSteps && verticalFacing < 0 && step >= 2;
-            var frame = verticalFrames[verticalFacing > 0 ? 0 : 1, flipStep ? step - 2 : step];
-            if (vertical.flipX != flipStep)
-            {
-                vertical.flipX = flipStep;
-            }
+            var frame = verticalFrames[verticalFacing > 0 ? 0 : 1, step];
             if (vertical.sprite != frame)
             {
                 vertical.sprite = frame;

@@ -60,13 +60,16 @@ namespace CoreGuardian
                     break;
                 case TowerKind.Rail:
                     p.Rail = true;
-                    p.PierceFalloff = stats.PierceFalloff > 0 ? stats.PierceFalloff : tags.PierceFalloff;
-                    p.PierceGrowth = Augments.Has(41);
+                    p.PierceFalloff = RailPierceFalloff(stats.PierceFalloff > 0 ? stats.PierceFalloff : tags.PierceFalloff);
                     p.CritNoFalloff = Augments.Has(29) && crit > 1;
                     break;
             }
             return p;
         }
+
+        // 41 일직선(11-02 확정): 레일 관통 피해 +N%포인트, 최대 100%.
+        public float RailPierceFalloff(float falloff) =>
+            Augments.Has(41) ? Mathf.Min(1, falloff + Augments.Value(41) / 100f) : falloff;
 
         // 냉기 포탑: every 1/rate seconds, damage + slow to every enemy within the pulse radius. No target choice.
         void Pulse(TowerState t, float buff, float rateMul, float dt, EnemyRangeIndex rangeIndex)

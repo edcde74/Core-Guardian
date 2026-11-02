@@ -291,15 +291,29 @@ public sealed partial class CoreGuardianHud
         }
     }
 
+    // 11-02 사용자 요청: 클릭이 UI 버튼 입력에 묶이지 않게, 마우스를 뗀 자리의 맨 위 물체가 줄이면 고른다.
+    public bool TrySelectDamageRow(GameObject top)
+    {
+        foreach (var row in damageRows)
+        {
+            if (row.Root.gameObject == top)
+            {
+                SelectDamageSource(row.Root.name);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     DamageRow CreateDamageRow()
     {
         var row = Box("DamageRow", damageContent, new Vector2(0, 1), Vector2.zero, new Vector2(288, 60), false);
         row.gameObject.AddComponent<UnityEngine.UI.LayoutElement>().preferredHeight = 60;
-        // 11-02: 줄(이름·막대)을 누르면 그 포탑(또는 기술병)을 고른다. 끌면 그대로 목록이 굴러간다.
+        // 줄 어디든(이름·피해 숫자·막대) 누르면 그 포탑(또는 기술병)을 고른다. 판단은 TrySelectDamageRow.
         var hit = row.gameObject.AddComponent<UnityEngine.UI.Image>();
         hit.color = Color.clear;
         hit.raycastTarget = true;
-        row.gameObject.AddComponent<UnityEngine.UI.Button>().onClick.AddListener(() => SelectDamageSource(row.name));
         var icon = Box("RoleIcon", row, new Vector2(0, 1), new Vector2(4, -2), new Vector2(25, 25), false)
             .gameObject.AddComponent<UnityEngine.UI.Image>();
         icon.preserveAspect = true;
