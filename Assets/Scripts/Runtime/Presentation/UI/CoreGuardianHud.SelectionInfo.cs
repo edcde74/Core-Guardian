@@ -229,9 +229,9 @@ public sealed partial class CoreGuardianHud
                 s.DamageTotals.TryGetValue(t.AttackSource, out int dealt);
                 hudLine.Append(dealt);
                 InfoCell(InfoTip.RoundDamage, HudSprite("Damage"), InfoStatWidth);
-                NextInfoRow();
-                InfoEnemyFaces(InfoTip.GoodEnemies, H5("weakness"), 1 << (int)t.Kind, true);
-                InfoEnemyFaces(InfoTip.BadEnemies, H5("resistance"), 1 << (int)t.Kind, false);
+                InfoEnemyFaces(InfoTip.GoodEnemies, "잘 잡는 적", 1 << (int)t.Kind, true);
+                InfoEnemyFaces(InfoTip.BadEnemies, "약한 적", 1 << (int)t.Kind, false);
+                InfoRowLabel(InfoTip.Order, "공격 순서");
                 InfoCell(InfoTip.Order, InfoSymbol("Order"), InfoIconWidth);
             }
             destroy = true;
@@ -261,16 +261,15 @@ public sealed partial class CoreGuardianHud
             InfoCell(InfoTip.CoreDamage, H5("core_damage"), InfoStatWidth);
             hudLine.Append(e.Summoned ? 0 : spec.Gold);
             InfoCell(InfoTip.Gold, HudSprite("Gold"), InfoStatWidth);
-            NextInfoRow();
-            InfoTowerIcons(InfoTip.Weak, H5("weakness"), spec.WeakTowers);
-            InfoTowerIcons(InfoTip.Resist, H5("resistance"), spec.ResistTowers);
+            InfoTowerIcons(InfoTip.Weak, "약점", spec.WeakTowers);
+            InfoTowerIcons(InfoTip.Resist, "저항", spec.ResistTowers);
             hudNote.Clear();
             AppendAbility(ref hudNote, e);
             if (!hudNote.AsSpan().SequenceEqual("없음".AsSpan()))
             {
+                InfoRowLabel(InfoTip.Ability, "능력");
                 InfoCell(InfoTip.Ability, InfoSymbol("Ability"), InfoIconWidth);
             }
-            NextInfoRow();
             AddStatusCells(e);
         }
         float bottom = EndInfoCells() - 4;
@@ -287,6 +286,8 @@ public sealed partial class CoreGuardianHud
     // 걸린 상태만 심볼로 보여 준다.
     void AddStatusCells(EnemyHandle e)
     {
+        InfoRowLabel(InfoTip.Status, "상태");
+        int before = infoCellCount;
         float slow = e.SlowPercent;
         if (slow > 0)
         {
@@ -323,6 +324,11 @@ public sealed partial class CoreGuardianHud
         if (e.Buffed)
         {
             InfoCell(InfoTip.Buffed, InfoSymbol("Buffed"), InfoIconWidth);
+        }
+
+        if (infoCellCount == before)
+        {
+            InfoEmptyMark(InfoTip.Status);
         }
     }
 

@@ -39,6 +39,7 @@ public sealed partial class CoreGuardianHud
         Shield,
         Rage,
         Buffed,
+        Status,
         EnemyName,
         TowerName,
         Destroy,
@@ -51,6 +52,7 @@ public sealed partial class CoreGuardianHud
         InfoRowHeight = 32,
         InfoStatWidth = 184,
         InfoIconWidth = 30,
+        InfoLabelWidth = 92,
         InfoTipWidth = 300;
 
     readonly RectTransform[] infoCells = new RectTransform[InfoCells];
@@ -134,6 +136,9 @@ public sealed partial class CoreGuardianHud
             infoCellIcons[i].sprite = icon;
         }
 
+        // 11-02 사용자 확정: 심볼이 없는 칸은 줄 이름이나 '-' 글자만 보여 준다.
+        SetHudActive(infoCellIcons[i].gameObject, icon != null);
+        SetHudPosition(infoCellTexts[i].rectTransform, new Vector2(icon != null ? 32 : 0, 0));
         SetHudText(infoCellTexts[i], ref hudLine);
         hudLine.Clear();
         SetHudPosition(infoCells[i], new Vector2(infoFlowX, infoFlowY));
@@ -166,9 +171,28 @@ public sealed partial class CoreGuardianHud
 
     static Sprite InfoSymbol(string name) => HudSprite("InfoSymbols/" + name);
 
-    void InfoEnemyFaces(InfoTip tip, Sprite icon, int towerBit, bool weak)
+    // 줄을 새로 시작하고 맨 앞에 이름을 놓는다.
+    void InfoRowLabel(InfoTip tip, string label)
     {
-        NextInfoListStart(tip, icon, HasEnemyInList(towerBit, weak));
+        NextInfoRow();
+        hudLine.Append(label);
+        InfoCell(tip, null, InfoLabelWidth);
+    }
+
+    void InfoEmptyMark(InfoTip tip)
+    {
+        hudLine.Append("-");
+        InfoCell(tip, null, InfoIconWidth);
+    }
+
+    void InfoEnemyFaces(InfoTip tip, string label, int towerBit, bool weak)
+    {
+        InfoRowLabel(tip, label);
+        if (!HasEnemyInList(towerBit, weak))
+        {
+            InfoEmptyMark(tip);
+        }
+
         int seen = 0;
         foreach (var e in game.Session.Data.EnemiesById.Values)
         {
@@ -199,9 +223,14 @@ public sealed partial class CoreGuardianHud
         return false;
     }
 
-    void InfoTowerIcons(InfoTip tip, Sprite icon, int mask)
+    void InfoTowerIcons(InfoTip tip, string label, int mask)
     {
-        NextInfoListStart(tip, icon, mask != 0);
+        InfoRowLabel(tip, label);
+        if (mask == 0)
+        {
+            InfoEmptyMark(tip);
+        }
+
         foreach (var k in allTowerKinds)
         {
             if ((mask & (1 << (int)k)) != 0)
@@ -209,16 +238,6 @@ public sealed partial class CoreGuardianHud
                 InfoCell(InfoTip.TowerName, InstallSprite(k), InfoIconWidth, (int)k);
             }
         }
-    }
-
-    void NextInfoListStart(InfoTip tip, Sprite icon, bool any)
-    {
-        if (!any)
-        {
-            hudLine.Append("-");
-        }
-
-        InfoCell(tip, icon, any ? InfoIconWidth : 56);
     }
 
     void SetInfoTip(int index, bool on)
@@ -359,6 +378,8 @@ public sealed partial class CoreGuardianHud
                 return "격노";
             case InfoTip.Buffed:
                 return "버프 받음";
+            case InfoTip.Status:
+                return "상태";
             case InfoTip.EnemyName:
                 return KindName((EnemyKind)arg);
             case InfoTip.TowerName:
@@ -509,6 +530,9 @@ public sealed partial class CoreGuardianHud
                 break;
             case InfoTip.Buffed:
                 sb.Append("군기병에게 이동 속도를 받고 있습니다.");
+                break;
+            case InfoTip.Status:
+                sb.Append("지금 걸린 효과입니다. 심볼에 올리면 내용이 나옵니다.");
                 break;
             case InfoTip.Destroy:
                 sb.Append("포탑을 없애고 설치비의 ");
