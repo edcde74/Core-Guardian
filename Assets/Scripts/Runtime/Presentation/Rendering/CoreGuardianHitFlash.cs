@@ -8,7 +8,7 @@ using UnityEngine;
 public sealed class CoreGuardianHitFlash
 {
     public const float Duration = .09f,
-        RetriggerDelay = .1f,
+        RetriggerDelay = .2f,
         Strength = .22f;
     static readonly int AmountId = Shader.PropertyToID("_HitFlashAmount"),
         RampId = Shader.PropertyToID("_RampTex"),

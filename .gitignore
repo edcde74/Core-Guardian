@@ -54,3 +54,7 @@ docs/development/**/*.data
 
 # Runtime performance logs (F4 recorder; Editor runs write here)
 /[Pp]erf[Ll]ogs/
+
+# Unity crash-recovery scene backups (auto-created after an editor crash)
+/[Aa]ssets/_Recovery/
+/[Aa]ssets/_Recovery.meta

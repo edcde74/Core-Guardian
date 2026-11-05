@@ -82,7 +82,8 @@ namespace CoreGuardian
                 {
                     foreach (var c in cards)
                     {
-                        if (c.Grade != grade || result.Any(r => r.Spec.Id == c.Id))
+                        // 11-04 확정: 뽑기에서 뺀 카드(draw 0)는 나오지 않음.
+                        if (!c.Drawable || c.Grade != grade || result.Any(r => r.Spec.Id == c.Id))
                             continue;
 
                         bool picked = owned != null && owned.Count(c.Number) > 0;

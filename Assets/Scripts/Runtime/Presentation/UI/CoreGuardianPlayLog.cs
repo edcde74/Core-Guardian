@@ -232,7 +232,7 @@ public sealed class CoreGuardianPlayLog : IDisposable
                 .Append(',')
                 .Append(info.Spent)
                 .Append(',')
-                .Append(info.Gone ? "없음(합체·철거)" : "설치됨")
+                .Append(info.Gone ? "없음(합체·파괴)" : "설치됨")
                 .Append(',')
                 .Append(TowerSteps(info.Kind, out _))
                 .Append(',')
@@ -437,7 +437,7 @@ public sealed class CoreGuardianPlayLog : IDisposable
             case "damage":
                 return "공격력";
             case "rate":
-                return "공격속도";
+                return "공격 속도";
             case "range":
                 return "사거리";
             case "buffDamage":
@@ -451,7 +451,7 @@ public sealed class CoreGuardianPlayLog : IDisposable
             case "pierceFalloff":
                 return "관통 피해";
             case "projectileSpeed":
-                return "탄환 속도";
+                return "투사체 속도";
             default:
                 return Clean(stat);
         }

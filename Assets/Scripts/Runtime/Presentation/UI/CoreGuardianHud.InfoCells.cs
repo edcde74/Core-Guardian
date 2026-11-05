@@ -323,7 +323,7 @@ public sealed partial class CoreGuardianHud
             case InfoTip.Range:
                 return "사거리";
             case InfoTip.Projectile:
-                return "탄환 속도";
+                return "투사체 속도";
             case InfoTip.Blast:
                 return "범위 폭발";
             case InfoTip.RoundDamage:

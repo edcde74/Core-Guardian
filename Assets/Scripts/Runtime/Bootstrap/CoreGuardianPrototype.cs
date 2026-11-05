@@ -279,7 +279,7 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
             combatArt.CoreDamaged(coreDamage);
             GetComponent<CoreGuardianCombatAudio>().OrNull()?.NotifyCoreDamage(coreDamage);
             // Only the notice line changes here; the rest of the HUD keeps its 0.2 s refresh (F5).
-            Feedback = "코어 에너지 -" + coreDamage;
+            Feedback = "코어 체력 -" + coreDamage;
             notificationUntil = Time.unscaledTime + 3;
             hud.RefreshFeedback();
         }
@@ -292,10 +292,25 @@ public sealed partial class CoreGuardianPrototype : MonoBehaviour
             Notify(Session.LastMessage);
         }
         SynchronizeViews();
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame && hud.CancelInstallation())
+        // Esc: 설치 중이면 취소, 아니면 설정 창 여닫기 (11-04).
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            pointerBlocked = true;
-            return;
+            if (hud.CancelInstallation())
+            {
+                pointerBlocked = true;
+                return;
+            }
+            hud.ToggleSettings();
+        }
+        // Ctrl+; : 개발 도구 버튼 보이기/숨기기 (11-04, 에디터·빌드 모두 평소 숨김. Shift는 순간 이동과 겹쳐 Ctrl).
+        if (
+            Keyboard.current != null
+            && Keyboard.current.semicolonKey.wasPressedThisFrame
+            && Keyboard.current.ctrlKey.isPressed
+        )
+        {
+            hud.ToggleDeveloperUnlocked();
+            Notify(hud.DeveloperUnlocked ? "개발 도구 버튼 보임" : "개발 도구 버튼 숨김");
         }
         // Space belongs to the skill: drop any UI selection so it never submits a focused button.
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)

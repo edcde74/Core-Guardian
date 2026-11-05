@@ -133,7 +133,10 @@ public class CoreGuardianHitFlashTests
             renderer.GetPropertyBlock(block);
             Assert.That(block.GetFloat("_UnrelatedDiagnostic"), Is.EqualTo(.37f));
             Assert.That(block.GetFloat("_HitFlashAmount"), Is.Zero);
-            type.GetMethod("Advance").Invoke(flash, new object[] { .015f });
+            // Retrigger limit is 0.2 s (CoreGuardianHitFlash.RetriggerDelay): still blocked just before it.
+            type.GetMethod("Advance").Invoke(flash, new object[] { .095f });
+            Assert.That(type.GetMethod("Trigger").Invoke(flash, null), Is.EqualTo(false));
+            type.GetMethod("Advance").Invoke(flash, new object[] { .02f });
             Assert.That(type.GetMethod("Trigger").Invoke(flash, null), Is.EqualTo(true));
             type.GetMethod("Clear").Invoke(flash, null);
             Assert.That(renderer.sharedMaterial, Is.SameAs(original));

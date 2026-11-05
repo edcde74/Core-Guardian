@@ -135,7 +135,7 @@ public sealed partial class CoreGuardianHud
         if (source.StartsWith("Tower:", StringComparison.Ordinal) && int.TryParse(source.Substring(6), out id))
         {
             var tower = game.Session.Towers.FirstOrDefault(t => t.Id == id);
-            return (tower == null ? "철거한 포탑" : TowerName(tower.Kind)) + " #" + id;
+            return (tower == null ? "파괴한 포탑" : TowerName(tower.Kind)) + " #" + id;
         }
         return source;
     }

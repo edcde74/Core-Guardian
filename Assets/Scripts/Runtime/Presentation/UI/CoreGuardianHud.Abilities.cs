@@ -167,8 +167,8 @@ public sealed partial class CoreGuardianHud
                 {
                     hudLine.Append(
                         i == 1 ? "발/초"
-                        : i == 2 ? "타일"
-                        : "타일/초"
+                        : i == 2 ? "칸"
+                        : "칸/초"
                     );
                 }
 

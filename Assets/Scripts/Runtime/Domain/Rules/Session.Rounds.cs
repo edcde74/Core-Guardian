@@ -277,7 +277,7 @@ namespace CoreGuardian
             choices[index] = drawn;
             RaiseCue("reroll", Vector2.zero);
             FlushCues();
-            LastMessage = "증강 리롤";
+            LastMessage = "증강 다시 뽑기";
             return true;
         }
 

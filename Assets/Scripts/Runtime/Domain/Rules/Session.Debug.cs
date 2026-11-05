@@ -23,7 +23,7 @@ namespace CoreGuardian
         public void DebugRestoreCore()
         {
             CoreEnergy = CoreMaximum;
-            LastMessage = "개발 도구 · 코어 에너지 회복";
+            LastMessage = "개발 도구 · 코어 체력 회복";
         }
 
         public void DebugResetAreaBlast()

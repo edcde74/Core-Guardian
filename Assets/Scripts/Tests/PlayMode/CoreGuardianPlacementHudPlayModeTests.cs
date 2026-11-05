@@ -94,7 +94,7 @@ public class CoreGuardianPlacementHudPlayModeTests
             Click(hud, "DamageFold");
             Click(hud, "TopFold");
             float topHeight = hud.Find("TopStatus").GetComponent<RectTransform>().sizeDelta.y;
-            var speed = hud.Find("TestSpeed").gameObject.AddComponent<CanvasGroup>();
+            var speed = hud.Find("Settings").gameObject.AddComponent<CanvasGroup>();
             speed.alpha = .6f;
             speed.blocksRaycasts = false;
             Begin(hud);

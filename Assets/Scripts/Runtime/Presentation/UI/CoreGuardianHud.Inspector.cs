@@ -213,7 +213,8 @@ public sealed partial class CoreGuardianHud
 
     void BuildDeveloperMenu()
     {
-        Button(
+        // 11-04: 개발 도구 버튼은 평소 숨김, Ctrl+; 로 보이기/숨기기(CoreGuardianHud.Settings.cs).
+        developerMenuView = Button(
             "DeveloperMenu",
             canvas,
             new Vector2(16, -14),
@@ -224,20 +225,16 @@ public sealed partial class CoreGuardianHud
                 developerOpen = !developerOpen;
                 game.GetComponent<CoreGuardianCombatAudio>().OrNull()?.PlayCue(developerOpen ? "ui_open" : "ui_close");
             }
-        );
+        ).gameObject;
         var debug = canvas.Find("PrototypeActions") as RectTransform;
         debug.anchoredPosition = new Vector2(16, -72);
         var reload = canvas.Find("Reload") as RectTransform;
         reload.anchorMin = reload.anchorMax = reload.pivot = new Vector2(0, 1);
         reload.anchoredPosition = new Vector2(32, -168);
-        var speed = canvas.Find("TestSpeed") as RectTransform;
-        speed.anchorMin = speed.anchorMax = speed.pivot = new Vector2(0, 1);
-        speed.anchoredPosition = new Vector2(32, -232);
         BuildSoundControls();
         BuildCheatPanel();
         developerViews.Add(debug.gameObject);
         developerViews.Add(reload.gameObject);
-        developerViews.Add(speed.gameObject);
         var sound = canvas.Find("SoundControls");
         if (sound != null)
         {
@@ -497,6 +494,7 @@ public sealed partial class CoreGuardianHud
             && bigPanel == BigPanel.None
             && (infoSubject == InfoSubject.None || keepEnemy)
             && !developerOpen
+            && !settingsOpen
             && !augmentListPinned
         )
             return false;
@@ -508,6 +506,8 @@ public sealed partial class CoreGuardianHud
             ReleaseInfo();
         }
         developerOpen = false; // 빈 바닥 클릭은 열린 개발 도구도 닫음 (2026-10-28 사용자 요청)
+        settingsOpen = false; // 11-04: 설정 창도 같이 닫음
+        settingsAsk = SettingsAsk.None;
         if (augmentListPinned)
         {
             augmentListPinned = false;
@@ -593,7 +593,7 @@ public sealed partial class CoreGuardianHud
                 ? "이 종류 포탑을 1기 이상 설치하면 강화할 수 있습니다."
                 : "같은 종류의 모든 포탑과 이후 설치분에 적용됩니다(지금 "
                     + count
-                    + "기). 철거해도 공유 강화 단계는 유지됩니다."
+                    + "기). 파괴해도 공유 강화 단계는 유지됩니다."
                     + (
                         labKind == TowerKind.Rail
                             ? "\n관통 피해: 레일 탄이 적을 하나 뚫을 때마다 다음 적에게 남는 피해"

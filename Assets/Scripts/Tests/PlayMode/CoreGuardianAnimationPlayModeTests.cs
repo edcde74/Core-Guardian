@@ -31,7 +31,7 @@ public class CoreGuardianAnimationPlayModeTests
         Assert.That(label.text, Is.Empty);
         var boss = session.DebugSpawn(CoreGuardian.EnemyKind.Boss, 1);
         refresh.Invoke(hud, null);
-        Assert.That(label.text, Does.StartWith("보스 · "));
+        Assert.That(label.text, Does.StartWith("파성장군 · ")); // 11-04: 10라운드 보스 이름
         session.DebugRemoveEnemy(boss);
         Assert.That(boss.IsValid, Is.False);
         refresh.Invoke(hud, null);

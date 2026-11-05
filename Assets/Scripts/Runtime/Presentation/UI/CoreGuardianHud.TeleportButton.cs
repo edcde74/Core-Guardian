@@ -6,8 +6,9 @@ using UnityEngine.UI;
 // 대기 표시는 범위 폭발과 같다: 대기 중 아이콘 회색 + 큰 숫자, 다 차면 한 번 반짝 + ui_open 소리.
 public sealed partial class CoreGuardianHud
 {
-    const float ControlsWidth = 556,
-        ControlsWidthWithTeleport = 640;
+    // 11-04: 배속 버튼이 들어가 84씩 넓어짐.
+    const float ControlsWidth = 640,
+        ControlsWidthWithTeleport = 724;
     RectTransform bottomControls;
     Button teleportButton;
     Image teleportIcon,
@@ -21,7 +22,7 @@ public sealed partial class CoreGuardianHud
     void BuildTeleportButton(RectTransform controls)
     {
         bottomControls = controls;
-        var r = Box("Teleport", controls, new Vector2(0, 1), new Vector2(552, -8), new Vector2(76, 72));
+        var r = Box("Teleport", controls, new Vector2(0, 1), new Vector2(636, -8), new Vector2(76, 72));
         CoreGuardianHudSkin.Frame(r.GetComponent<Image>(), "Button");
         var b = r.gameObject.AddComponent<Button>();
         b.navigation = new Navigation { mode = Navigation.Mode.None };

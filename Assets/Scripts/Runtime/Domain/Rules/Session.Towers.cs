@@ -277,7 +277,7 @@ namespace CoreGuardian
             Towers.Remove(t);
             int refund = t.Spent * RefundPercent / 100;
             Crystals += refund;
-            LastMessage = "철거 +" + refund + " 수정";
+            LastMessage = "파괴 +" + refund + " 수정";
             return true;
         }
 
@@ -349,7 +349,7 @@ namespace CoreGuardian
             }
         }
 
-        // Grouped upgrades (21501 + 21511) share the step of their group leader's stat.
+        // Grouped upgrades (21041 + 21046) share the step of their group leader's stat.
         string UpgradeKey(UpgradeSpec u)
         {
             if (u.Group == 0 || u.Group == u.Id)

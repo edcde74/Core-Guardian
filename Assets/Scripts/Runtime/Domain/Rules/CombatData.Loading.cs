@@ -272,8 +272,15 @@ namespace CoreGuardian
             var settings = new Dictionary<string, string>();
             foreach (var r in stageTable.Rows)
             {
-                Unique(ids, stageTable.Id(r, 42000, 42999), "stage");
                 var key = stageTable.Required(r, "key");
+                // 라운드별 완료 보상(waveRewardN)은 43001~43999, 끝 세 자리 = 라운드. 나머지 설정은 42000~42999.
+                bool roundReward = key.StartsWith("waveReward") && key != "waveReward";
+                int stageId = roundReward ? stageTable.Id(r, 43000, 43999) : stageTable.Id(r, 42000, 42999);
+                Unique(ids, stageId, "stage");
+                if (roundReward && stageId - 43000 != I(key.Substring("waveReward".Length)))
+                {
+                    throw new ArgumentException("stage: ID " + stageId + " does not match " + key);
+                }
                 if (settings.ContainsKey(key))
                 {
                     throw new ArgumentException("stage: duplicate key " + key);
@@ -502,13 +509,10 @@ namespace CoreGuardian
             ids.Clear();
             foreach (var r in tt.Rows)
             {
-                int id = tt.Id(r, 12000, 12999);
+                // 포탑 ID 끝 두 자리 = 강화 ID의 대상 번호라서 12001~12099만 씁니다.
+                int id = tt.Id(r, 12001, 12099);
                 Unique(ids, id, "towers");
                 var kind = Kind<TowerKind>(tt.Required(r, "key"));
-                if (kind == TowerKind.Support != (id >= 12101))
-                {
-                    throw new ArgumentException("towers: support ID range mismatch " + id);
-                }
 
                 if (d.Towers.ContainsKey(kind))
                 {
@@ -588,6 +592,11 @@ namespace CoreGuardian
                 else
                 {
                     throw new ArgumentException("upgrades: unknown target " + target);
+                }
+                // 강화 ID = 21 + 대상 두 자리(기술병 00, 포탑 ID 끝 두 자리) + 능력치 한 자리.
+                if (id / 10 % 100 != (target == 10001 ? 0 : target - 12000))
+                {
+                    throw new ArgumentException("upgrades: ID " + id + " does not match target " + target);
                 }
 
                 d.AddUpgrade(
@@ -778,6 +787,7 @@ namespace CoreGuardian
                             Values = values.ToArray(),
                             Repeatable = t.B(r, "repeatable"),
                             Text = t.Required(r, "text"),
+                            Drawable = !t.Has("draw") || t.B(r, "draw"),
                         }
                     );
                 }

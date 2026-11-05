@@ -32,6 +32,7 @@ namespace CoreGuardian
 
         public static string Boss(EnemySpec spec) =>
             spec == null ? "보스"
+            : spec.Key == "Boss" ? "파성장군" // 11-04 확정: 10라운드 보스 이름
             : spec.Key == "IronKnight" ? "철벽 기사"
             : spec.Key == "CrimsonLord" ? "진홍의 군주"
             : "보스";

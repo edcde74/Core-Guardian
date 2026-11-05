@@ -248,13 +248,13 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
                     : "증강 " + a;
             });
         }
-        var controls = Box("BottomControls", canvas, new Vector2(.5f, 0), new Vector2(0, 12), new Vector2(556, 88));
+        var controls = Box("BottomControls", canvas, new Vector2(.5f, 0), new Vector2(0, 12), new Vector2(ControlsWidth, 88));
         Button(
             "Installation",
             controls,
             new Vector2(16, -16),
             new Vector2(180, 56),
-            () => "타워 설치",
+            () => "포탑 설치", // 11-05 확정: '타워' → '포탑'
             () => SetInstallPanelOpen(!installOpen),
             () => game.Session.CanBuildNow
         );
@@ -272,6 +272,8 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
             () => game.StartCombat(),
             () => game.Session.Phase == SessionPhase.Preparation
         );
+        // 11-04: 배속 버튼은 라운드 시작 오른쪽(개발 도구에서 꺼냄).
+        BuildSpeedButton(controls);
         // 범위 폭발 (Space / 클릭): 아이콘 + 시계 방향 쿨타임 덮개 (HUD 개편 B안).
         BuildBlastButton(controls);
         BuildTeleportButton(controls);
@@ -296,14 +298,6 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
             new Vector2(276, 56),
             () => "처음부터 다시 시작",
             () => game.Restart()
-        );
-        Button(
-            "TestSpeed",
-            canvas,
-            new Vector2(1630, -80),
-            new Vector2(276, 48),
-            () => "전투 배속 ×" + game.TestSpeed,
-            () => game.CycleTestSpeed()
         );
 
         installPanel = Box(
@@ -360,6 +354,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         topFold.anchorMin = topFold.anchorMax = topFold.pivot = new Vector2(.5f, 1);
         topFold.anchoredPosition = new Vector2(0, -84);
         BuildDeveloperMenu();
+        BuildSettings();
         BuildAugmentStrip();
         BuildEnemyPreview();
         BuildHoverOutline();
@@ -372,6 +367,9 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
         {
             node.transform.SetAsLastSibling();
         }
+        // 11-04: 설정 버튼·창은 가장 위에.
+        canvas.Find("Settings").SetAsLastSibling();
+        settingsPanel.transform.SetAsLastSibling();
         Refresh();
         Pin("CancelPlacement", new Vector2(0, 0), new Vector2(18, 32));
     }
@@ -537,7 +535,7 @@ public sealed partial class CoreGuardianHud : MonoBehaviour
                         + " / "
                         + boss.Spec.Health
                         + (boss.Shielded ? " · 방패 전개" : "")
-                        + (boss.Enraged ? " · 격노: 이동속도 +" + boss.Spec.RageBoost.ToString("0") + "%" : "");
+                        + (boss.Enraged ? " · 격노: 이동 속도 +" + boss.Spec.RageBoost.ToString("0") + "%" : "");
             }
         }
         int centerNumber =

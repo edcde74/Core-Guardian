@@ -21,7 +21,7 @@ public sealed partial class CoreGuardianHud
             case "damage":
                 return "공격력";
             case "rate":
-                return "공격속도";
+                return "공격 속도";
             case "range":
                 return "사거리";
             case "buffDamage":
@@ -35,7 +35,7 @@ public sealed partial class CoreGuardianHud
             case "pierceFalloff":
                 return "관통 피해";
             default:
-                return "탄환 속도";
+                return "투사체 속도";
         }
     }
 

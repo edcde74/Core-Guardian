@@ -12,7 +12,7 @@ public sealed partial class CoreGuardianHud
 {
     void BuildBlastButton(RectTransform controls)
     {
-        var r = Box("AreaBlast", controls, new Vector2(0, 1), new Vector2(468, -8), new Vector2(76, 72));
+        var r = Box("AreaBlast", controls, new Vector2(0, 1), new Vector2(552, -8), new Vector2(76, 72));
         CoreGuardianHudSkin.Frame(r.GetComponent<Image>(), "Button");
         var b = r.gameObject.AddComponent<Button>();
         b.navigation = new Navigation { mode = Navigation.Mode.None };

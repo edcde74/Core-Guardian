@@ -115,6 +115,9 @@ namespace CoreGuardian
         public float[] Values;
         public bool Repeatable;
 
+        // 11-04 확정: false면 증강 뽑기(다시 뽑기 포함)에 나오지 않음. 카드 자체는 표에 남김.
+        public bool Drawable = true;
+
         public float Value(int index) => index < Values.Length ? Values[index] : 0;
     }
 

@@ -66,6 +66,7 @@ namespace CoreGuardian
                 return 0;
 
             var e = target.Slot;
+            var hitPosition = e.Position;
             float affinity = Affinity(e, payload.Tower);
             float scaled = damage * (1 + DamageIncreasePercent(e) / 100f) * affinity;
             int affinityMark =
@@ -90,6 +91,11 @@ namespace CoreGuardian
             {
                 hitAffinity = 0;
                 hitCritical = false;
+            }
+            // 11-03 확정: 레일 명중마다 관통 섬광을 재생한다(처치한 적 포함).
+            if (payload.Rail)
+            {
+                RaiseCue("hit_rail", hitPosition);
             }
             if (!target.Alive)
                 return dealt;

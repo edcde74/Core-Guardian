@@ -145,6 +145,13 @@ public sealed partial class CoreGuardianHud
 
     void RefreshPlacementVisibility()
     {
+        // 11-05 결정: 포탑을 고른 동안에는 설치 창을 끈다(준비·전투 모두, 창이 덮은 칸에도 설치되게).
+        // 설치에 성공하면 창이 열린 상태(installOpen)는 그대로라 다시 켜져 연달아 설치할 수 있다.
+        if (installOpen)
+        {
+            SetHudActive(installPanel.gameObject, !game.Installing.HasValue);
+        }
+
         bool focused = game.Installing.HasValue && game.Session.Phase == SessionPhase.Preparation;
         if (!focused)
         {

@@ -13,6 +13,15 @@ public class CoreGuardianSelectionOutlineShaderTests
     const string Reference = "Assets/Scripts/Tests/EditMode/Fixtures/SelectionOutlineReference.shader";
     const string Evidence = "docs/development/outline_sampling_20261023/";
     static string Phase => File.ReadAllText(Evidence + "phase.txt").Trim();
+    // 11-05: measurement rows go to Temp (git-ignored); the committed evidence files stay unchanged.
+    static string Output
+    {
+        get
+        {
+            Directory.CreateDirectory("Temp/outline_sampling_20261023/");
+            return "Temp/outline_sampling_20261023/";
+        }
+    }
 
     static Texture2D Neighborhoods()
     {
@@ -126,7 +135,7 @@ public class CoreGuardianSelectionOutlineShaderTests
         var candidate = Render(input, AssetDatabase.LoadAssetAtPath<Shader>(Product), width);
         int differences = original.Where((p, i) => !p.Equals(candidate[i])).Count();
         File.AppendAllText(
-            Evidence + Phase + "_pixels.csv",
+            Output + Phase + "_pixels.csv",
             label + "," + width + "," + input.width + "," + input.height + "," + differences + Environment.NewLine
         );
         Assert.That(differences, Is.Zero, label + " width" + width);
@@ -231,7 +240,7 @@ public class CoreGuardianSelectionOutlineShaderTests
             var reads = Render(input, shader, 1).Where(p => p.a > 0).Select(p => p.r).ToArray();
             Assert.That(reads.Length, Is.GreaterThan(100));
             File.AppendAllText(
-                Evidence + Phase + "_logical_reads.csv",
+                Output + Phase + "_logical_reads.csv",
                 reads.Length
                     + ","
                     + reads.Min()

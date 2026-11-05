@@ -50,8 +50,18 @@ public static class CoreGuardianHudSkin
             name = "Install_" + name.Substring(8); // 연구소 종류 탭 = 설치 아이콘
         }
 
-        if (name == "InfoClose")
+        if (name == "InfoClose" || name == "ConfirmNo")
             return "Cancel";
+
+        // 11-04 설정 창
+        if (name == "SettingsRestart")
+            return "Restart";
+
+        if (name == "SettingsQuit")
+            return "Quit";
+
+        if (name == "ConfirmYes")
+            return "Confirm";
 
         if (name == "Installation" || name == "공격 포탑")
             return "TowerAttackCategory";

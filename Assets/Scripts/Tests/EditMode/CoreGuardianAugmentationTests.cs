@@ -195,6 +195,27 @@ public class CoreGuardianAugmentationTests
         Assert.That(s.Phase, Is.EqualTo(SessionPhase.Preparation));
     }
 
+    // 11-04 확정: 49번 약점 공략은 표에는 남기고 뽑기(다시 뽑기 포함)에서만 뺀다.
+    [Test]
+    public void CardFortyNineStaysInTableButIsNeverDrawn()
+    {
+        var cards = Data().Augments;
+        Assert.That(cards.Count, Is.EqualTo(50));
+        Assert.That(cards.Single(c => c.Number == 49).Drawable, Is.False);
+        Assert.That(cards.Count(c => c.Drawable), Is.EqualTo(49));
+        Assert.That(cards.Count(c => c.Drawable && c.Grade == AugmentationGrade.Platinum), Is.EqualTo(11));
+        var random = new System.Random(11);
+        var owned = new AugmentationEffects();
+        for (int i = 0; i < 2000; i++)
+        {
+            Assert.That(AugmentationDeck.Draw(random, cards, owned, 3, null, i % 2 == 0).Any(c => c.Number == 49), Is.False);
+            Assert.That(
+                AugmentationDeck.Draw(random, cards, owned, 1, null, false, 60, 30, 25, AugmentationGrade.Platinum).Any(c => c.Number == 49),
+                Is.False
+            );
+        }
+    }
+
     [Test]
     public void DrawHasNoDuplicatesExcludesPicksAndPreviousScreenAndWeightsOwnedSubcategories()
     {

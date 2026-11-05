@@ -171,5 +171,7 @@ public class CoreGuardianBugFixTests
             Assert.That(s.DebugEnemyName(id), Is.EqualTo(EnemyNames.Of(spec)), id.ToString());
             Assert.That(s.DebugEnemyName(id), Does.Not.Match("[A-Za-z]"), id + " shows a Korean name");
         }
+        // 11-04 확정: 10라운드 보스 이름은 파성장군.
+        Assert.That(EnemyNames.Of(s.Data.EnemiesById[11101]), Is.EqualTo("파성장군"));
     }
 }

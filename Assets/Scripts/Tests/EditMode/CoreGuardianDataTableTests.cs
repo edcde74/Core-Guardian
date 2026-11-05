@@ -97,7 +97,7 @@ public class CoreGuardianDataTableTests
             d.EnemiesById.Keys.OrderBy(x => x),
             Is.EqualTo(new[] { 11001, 11002, 11003, 11004, 11005, 11006, 11007, 11008, 11101, 11102, 11103, 11201 })
         );
-        Assert.That(d.TowersById.Keys.OrderBy(x => x), Is.EqualTo(new[] { 12001, 12002, 12003, 12004, 12005, 12101 }));
+        Assert.That(d.TowersById.Keys.OrderBy(x => x), Is.EqualTo(new[] { 12001, 12002, 12003, 12004, 12005, 12006 }));
         Assert.That(Enum.GetValues(typeof(TowerKind)).Cast<TowerKind>().All(d.Towers.ContainsKey), Is.True);
         Assert.That(d.Player.Damage, Is.EqualTo(10));
         Assert.That(d.Player.Rate, Is.EqualTo(1));
@@ -185,16 +185,16 @@ public class CoreGuardianDataTableTests
         Assert.That((exploit.Name, exploit.Value(0), exploit.Value(1)), Is.EqualTo(("약점 공략", 1.6f, .85f)));
         Assert.That(d.Augments.Single(a => a.Number == 46).Value(1), Is.EqualTo(.5f));
         Assert.That(d.Upgrades.Count, Is.EqualTo(27));
-        var burn = d.Upgrades.Single(u => u.Id == 21511);
+        var burn = d.Upgrades.Single(u => u.Id == 21046);
         Assert.That(
             (burn.Target, burn.Stat, burn.Delta, burn.Group),
-            Is.EqualTo(("Flame", "burnPerStack", .48f, 21501))
+            Is.EqualTo(("Flame", "burnPerStack", .48f, 21041))
         );
         Assert.That(
             d.Upgrades.Where(u => u.Target != "Player").All(u => u.Cost == 60 && u.CostIncrement == 30),
             Is.True
         );
-        Assert.That(d.Upgrades.Where(u => u.Id != u.Group).Select(u => u.Id), Is.EqualTo(new[] { 21511 }));
+        Assert.That(d.Upgrades.Where(u => u.Id != u.Group).Select(u => u.Id), Is.EqualTo(new[] { 21046 }));
         var s = Game(d);
         typeof(Session).GetProperty("Crystals").SetValue(s, 1000);
         var t = s.TryInstall(TowerKind.Rail, new Vector2Int(2, 1), out _);
@@ -376,13 +376,14 @@ public class CoreGuardianDataTableTests
         Bad("enemies", t => t.Replace("11004,Charger", "13004,Charger"), "enemy ID outside 11000~11999");
         Bad("enemies", t => t.Replace("11201*2", "11001*2"), "split must reference a derived enemy");
         Bad("enemies", t => t.Replace("11002*2", "11999*2"), "unknown defenseRef");
-        Bad("towers", t => t.Replace("12101,Support", "12006,Support"), "support outside 12101~");
+        Bad("towers", t => t.Replace("12006,Support", "12106,Support"), "tower ID outside 12001~12099");
         Bad("upgrades", t => t.Replace("21001,10001", "21001,10002"), "unknown upgrade target");
         Bad(
             "upgrades",
-            t => t.Replace("21511,12004,burnPerStack,0.48,60,30,21501", "21511,12004,burnPerStack,0.48,60,30,21401"),
+            t => t.Replace("21046,12004,burnPerStack,0.48,60,30,21041", "21046,12004,burnPerStack,0.48,60,30,21031"),
             "group of another target"
         );
+        Bad("upgrades", t => t.Replace("21041,12004,damage", "21041,12005,damage"), "upgrade ID must match target");
         Bad("waves", t => t.Replace("41001001,1,11001", "41001001,1,11999"), "unknown wave enemy");
         Bad("waves", t => t.Replace("41001001,1,11001", "41001001,1,11201"), "derived enemy scheduled");
         Bad("waves", t => t.Replace("41002001,2,", "41002001,3,"), "wave ID does not match round");
@@ -392,13 +393,15 @@ public class CoreGuardianDataTableTests
             "grade chances must sum to 100"
         );
         Bad("stage", t => t.Replace("42101,coreEnergy", "52101,coreEnergy"), "stage ID outside 42000~42999");
+        Bad("stage", t => t.Replace("43030,waveReward30", "43031,waveReward30"), "round reward ID must match round");
+        Bad("stage", t => t.Replace("43030,waveReward30", "42630,waveReward30"), "round reward ID outside 43000~43999");
         Bad(
             "augments",
             t => string.Join("\n", t.Replace("\r", "").Split('\n').Where(l => !l.StartsWith("22050,"))),
             "augments must stay 50 cards"
         );
         Bad("augments", t => t.Replace("22050,유리 대포,Platinum", "22050,유리 대포,Gold"), "grade counts 18/20/12");
-        Bad("effectTags", t => t + "\n31101,Slow,maxPercent,60,30,%", "duplicate tag ID");
+        Bad("effectTags", t => t + "\n31011,Slow,maxPercent,60,30,%", "duplicate tag ID");
         Bad("skills", t => t.Replace("32001,AreaBlast,10001", "32001,AreaBlast,10002"), "unknown skill owner");
     }
 }
