@@ -1,0 +1,6 @@
+# Extra evidence read live from the PC project (2026-10-28, by the coordinator via Unity eval)
+- ProjectSettings/EditorSettings.asset: m_EnterPlayModeOptionsEnabled: 1, m_EnterPlayModeOptions: 1 (= DisableDomainReload; scene reload still on). m_SpritePackerMode: 5 (SpriteAtlas V2 enabled). m_SerializationMode: 2.
+- Assets/Settings/Rendering/UniversalRP.asset: m_UseSRPBatcher: 0, m_SupportsDynamicBatching: 0. Runtime GraphicsSettings.useScriptableRenderPipelineBatching = False.
+- CSV GUIDs (map scene TextAsset references):
+  augments 50f0654b9909223498f24f7afb15db4b · effectTags d2848a4f1f68376499ffc0678d964845 · enemies 4abc4794009656b4ea7ceca0b0db4009 · player 9c9e44eb818af4e4da0148b79cf9363e · skills 084321298ad13ac4690ab04322a12740 · stage 863aab37f57422f42a600eada7cce8ce · towers 1d2da26488f431840b5e9bb4b4714fae · upgrades a0591fcf8b759904ebb385938a7a2f85 · waves e6eecdb3bbdf146438ed319e8d5d1019 (all Assets/Data/Balance/Resources/CoreGuardian/)
+  Test fixtures (Assets/Scripts/Tests/EditMode/Fixtures/LegacyData/): enemies 867bdd8c9de24f44b999d3bcfe185cb3 · stage dc7577fcd0d66e341ad6146c231514c4 · towers 3111823083f3ad547b1f7fbb50944673 · upgrades 6a8e770fd53a8c94a8ea7e8895ff7ec6 · waves 18d7dcb6edeba0e4e85a0b741774d1b9

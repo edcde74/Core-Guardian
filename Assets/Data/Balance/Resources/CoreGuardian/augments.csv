@@ -1,0 +1,51 @@
+id,name,grade,category,subcategory,personality,effect,value1,value2,value3,repeatable,text,icon,draw
+22001,든든한 탄약,Silver,Combat,Tower,Steady,TowerDamagePercent,8,,,1,모든 포탑 피해 +8%,augment_01,1
+22002,단련된 손,Silver,Combat,Player,Steady,PlayerDamageAndRate,2,10,,1,"기술병 공격력 +2, 공격 속도 +10%",augment_02,1
+22003,차가운 손끝,Silver,Combat,Slow,Synergy,PlayerHitSlow,15,1,,1,기술병 명중 시 1초 동안 둔화 15%,augment_03,1
+22004,불씨,Silver,Combat,Burn,Synergy,SingleHitBurn,1,,,1,단일 고속 포탑 명중 시 화상 1스택,augment_04,1
+22005,꿰뚫는 탄,Silver,Combat,Pierce,Synergy,PlayerPierce,1,,,0,기술병 투사체가 1명 관통,augment_05,1
+22006,튕기는 탄,Silver,Combat,Chain,Synergy,MultiChain,1,,,0,범위 공격 포탑 공격이 1회 연쇄,augment_06,1
+22007,마무리 일격,Silver,Combat,Execute,Synergy,PlayerExecute,8,,,1,기술병 공격에 처형(체력 8% 이하),augment_07,1
+22008,날카로운 눈,Silver,Combat,Crit,Steady,CritChance,10,,,1,모든 공격의 치명타 확률 +10%,augment_08,1
+22009,성장통,Silver,Combat,Player,Future,PlayerDamagePerKill,0.05,,,1,기술병이 처치할 때마다 공격력 +0.05,augment_09,1
+22010,현상금,Silver,Economy,Gold,Steady,KillGoldPercent,10,,,1,처치 골드 +10%,augment_10,1
+22011,저금통,Silver,Economy,Gold,Future,KillGoldPerKills,100,2,30,1,100마리 처치마다 처치 골드 +2% (최대 +30%),augment_11,1
+22012,수정 조각,Silver,Economy,Crystal,Instant,CrystalBoostThenPenalty,3,1.5,5,1,"다음 3라운드 완료 수정 ×1.5, 그 뒤 5라운드 동안 매 라운드 −5",augment_12,1
+22013,재활용,Silver,Economy,Exchange,Steady,RefundPercent,75,,,1,포탑 철거 환급 50% → 75%,augment_13,1
+22014,비상 장벽,Silver,Defense,Core,Steady,CoreMaxEnergy,5,,,1,코어 최대 체력 +5,augment_14,1
+22015,끈끈이 바닥,Silver,Defense,Control,Steady,EntranceSlow,5,10,,1,경로 첫 6칸에서 적 이동 속도 −10%,augment_15,1
+22016,촘촘한 진지,Silver,Placement,TowerPlacement,Synergy,AdjacentTowerRate,8,,,1,바로 옆에 포탑이 있으면 공격 속도 +8%,augment_16,1
+22017,한 번 더,Silver,Augment,Reroll,Steady,ExtraRerolls,1,,,1,남은 증강 선택마다 카드마다 다시 뽑기 +1,augment_17,1
+22018,빚내기,Silver,Economy,Gold,Gamble,GoldLoan,150,3,20,1,"즉시 골드 150(11~20라운드에 고르면 300, 21~30라운드는 450), 다음 3라운드 처치 골드 −20%",augment_18,1
+22019,정비 완료,Gold,Combat,Tower,Steady,TowerDamagePercent,20,,,1,모든 포탑 피해 +20%,augment_19,1
+22020,전투 본능,Gold,Combat,Player,Steady,PlayerDamageAndRange,5,0.5,,1,"기술병 공격력 +5, 사거리 +0.5",augment_20,1
+22021,동상,Gold,Combat,Slow,Synergy,SlowedDamageBonus,40,25,,1,둔화 40% 이상인 적이 받는 피해 +25%,augment_21,1
+22022,불길 발자국,Gold,Combat,Burn,Synergy,FireTrail,2,1,,0,기술병이 지나간 칸에 맞닿은 경로 칸에 2초간 불길(화상 1스택),augment_22,1
+22023,레일 반사,Gold,Combat,Pierce,Synergy,RailReflect,1,,,0,레일 탄이 사거리 끝에서 한 번 되돌아옴,augment_23,1
+22024,번개 사슬,Gold,Combat,Chain,Synergy,ChainBounceNoFalloff,1,,,1,"연쇄 튕김 +1, 튕길 때마다 피해 감소 없음",augment_24,1
+22025,처형인,Gold,Combat,Execute,Synergy,ExecuteSkillCooldown,1,,,1,처형할 때마다 범위 폭발 쿨다운 −1초,augment_25,1
+22026,급소 사냥,Gold,Combat,Crit,Synergy,CritBonusAndChainChance,50,20,,1,"치명타 배율 +50%, 치명타가 나면 다음 공격의 치명타 확률 +20%",augment_26,1
+22027,얼음 감옥,Gold,Combat,Slow|Execute,Synergy,SlowedExecuteBonus,5,,,1,둔화된 적의 처형 기준 +5%p,augment_27,1
+22028,번지는 불,Gold,Combat,Burn|Chain,Synergy,BurnSpreadOnDeath,,,,0,화상으로 죽은 적의 스택이 가장 가까운 적에게 옮겨붙음,augment_28,1
+22029,관통 치명,Gold,Combat,Pierce|Crit,Synergy,CritNoPierceFalloff,,,,0,치명타가 터진 탄은 적을 뚫고 지나가도 피해가 줄지 않습니다,augment_29,1
+22030,화력 지원,Gold,Placement,PlayerPosition,Synergy,PlayerNearbyTowerRate,2,15,,1,기술병 주변 2칸 안의 포탑 공격 속도 +15%,augment_30,1
+22031,사냥 기록,Gold,Combat,Player,Future,PlayerDamagePerBoss,5,,,1,보스 처치마다 기술병 공격력 +5,augment_31,1
+22032,수정 광산,Gold,Economy,Crystal,Future,DelayedCrystalIncome,10,10,,1,"10라운드 뒤부터 매 라운드 수정 +10(11~20라운드에 고르면 +20, 21~30라운드는 +30)",augment_32,1
+22033,환전소,Gold,Economy,Exchange,Steady,GoldToCrystals,10,50,,1,라운드 종료 시 남은 골드 10%를 수정으로 전환 (라운드당 최대 50),augment_33,1
+22034,급속 건설,Gold,Economy,Crystal,Instant,BuildDiscountThenTax,2,40,10,1,"다음 2라운드 설치비 −40%, 그 뒤 5라운드 동안 설치비 +10%",augment_34,1
+22035,철벽,Gold,Defense,Core,Steady,CoreRegenPerRound,1,,,1,라운드마다 코어 체력 1 회복,augment_35,1
+22036,무피해 보상,Gold,Defense,Core,Future,TowerDamagePerCleanRound,1,,,1,코어 피해 없이 끝난 라운드마다 모든 포탑 피해 +1%,augment_36,1
+22037,위기 대응,Gold,Defense,Core,Synergy,LowCoreDamageBonus,30,30,,1,코어 체력 30% 이하일 때 모든 피해 +30%,augment_37,1
+22038,보스 사냥꾼,Gold,Combat,All,Steady,BossDamagePercent,20,,,1,보스에게 주는 피해 +20%,augment_38,1
+22039,절대 영도,Platinum,Combat,Slow,Synergy,FreezeShatter,60,2,1,0,둔화 60% 이상인 적이 2초 동안 얼어붙었다가 부서지며 주변 1칸에 피해,augment_39,1
+22040,업화,Platinum,Combat,Burn,Synergy,BurnExplosion,1.5,3,,0,화상 최대 스택인 적이 죽으면 폭발해 반지름 1.5칸 안 적에게 화상 3스택,augment_40,1
+22041,일직선,Platinum,Combat,Pierce,Synergy,RailPierceBonus,30,,,1,레일 관통 피해 +30% (최대 100%),augment_41,1
+22042,연쇄 폭풍,Platinum,Combat,Chain,Synergy,OverkillBounce,,,,0,처치하면 남은 피해가 다음 적에게 튕김,augment_42,1
+22043,사신,Platinum,Combat,Execute,Synergy,SkillExecute,2,,,0,"범위 폭발에 처형 적용, 처형 기준 2배",augment_43,1
+22044,확정 타격,Platinum,Combat,Crit,Synergy,EveryNthCrit,4,,,0,모든 공격의 4번째는 반드시 치명타,augment_44,1
+22045,포탑 합체,Platinum,Placement,TowerPlacement,Synergy,TowerMerge,,,,0,같은 종류 포탑 2기를 붙여 지으면 합체해 한 단계 위 포탑 1기로,augment_45,1
+22046,순간 이동,Platinum,Combat,Player,Synergy,SkillTeleport,3,0.5,12,0,"Shift: 마지막으로 움직인 방향으로 3칸 순간 이동, 도착 지점에서 범위 폭발(피해 50%). 쿨다운 12초",augment_46,1
+22047,넓은 선택,Platinum,Augment,CardCount,Future,AugmentCardCount,4,,,0,이후 증강 선택마다 카드 4장 표시,augment_47,1
+22048,황금 거래,Platinum,Augment,Grade,Gamble,GoldenDeal,5,,,1,"코어 최대 체력 −5, 다음 증강 화면 첫 칸은 반드시 플래티넘",augment_48,1
+22049,약점 공략,Platinum,Placement,TowerPlacement,Synergy,WeaknessExploit,1.6,0.85,,0,"모든 포탑의 약점 배율 ×1.3 → ×1.6, 저항 배율 ×0.7 → ×0.85",augment_49,0
+22050,유리 대포,Platinum,Defense,Core,Gamble,GlassCannon,50,40,,0,"코어 최대 체력 절반, 모든 피해 +40%",augment_50,1

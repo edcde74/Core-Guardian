@@ -251,6 +251,186 @@
       "important": false,
       "protectCore": true,
       "priority": 10
+    },
+    {
+      "id": "cold_pulse",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/cold_pulse",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "flame_shot",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/flame_shot",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "rail_shot",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/rail_shot",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "star_merge",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/star_merge",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 60
+    },
+    {
+      "id": "hit_cold",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/hit_cold",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "hit_flame",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/hit_flame",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "hit_rail",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/hit_rail",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "area_blast",
+      "category": "Player",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/area_blast",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "teleport",
+      "category": "Player",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/teleport",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "crit",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/crit",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "execute",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/execute",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "chain",
+      "category": "Tower",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/chain",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "stun",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/stun",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "freeze",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/freeze",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "shatter",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/shatter",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 40
+    },
+    {
+      "id": "burn_explode",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/burn_explode",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "heal_pulse",
+      "category": "MonsterCore",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/heal_pulse",
+      "gain": 0.55,
+      "important": false,
+      "protectCore": true,
+      "priority": 10
+    },
+    {
+      "id": "shield_deploy",
+      "category": "Progress",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/shield_deploy",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 60
+    },
+    {
+      "id": "summon",
+      "category": "Progress",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/summon",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 60
+    },
+    {
+      "id": "reroll",
+      "category": "UI",
+      "resourcePath": "CoreGuardian/Audio/SelectedB/Slice/reroll",
+      "gain": 0.55,
+      "important": true,
+      "protectCore": true,
+      "priority": 10
     }
   ]
 }

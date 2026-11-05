@@ -6,11 +6,20 @@ using UnityEngine;
 [ExecuteAlways, DisallowMultipleComponent, AddComponentMenu("")]
 public sealed class CoreGuardianHierarchyWatch : MonoBehaviour
 {
-    public int Version {get;private set;}
-    void OnTransformChildrenChanged()=>Bump(transform);
-    void OnTransformParentChanged()=>Bump(transform);
+    public int Version { get; private set; }
+
+    void OnTransformChildrenChanged() => Bump(transform);
+
+    void OnTransformParentChanged() => Bump(transform);
+
     static void Bump(Transform from)
     {
-        for(var t=from;t!=null;t=t.parent)if(t.TryGetComponent(out CoreGuardianHierarchyWatch watch))watch.Version++;
+        for (var t = from; t != null; t = t.parent)
+        {
+            if (t.TryGetComponent(out CoreGuardianHierarchyWatch watch))
+            {
+                watch.Version++;
+            }
+        }
     }
 }

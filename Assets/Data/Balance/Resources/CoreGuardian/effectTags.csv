@@ -1,0 +1,17 @@
+id,tag,param,value,bossValue,unit
+31011,Slow,maxPercent,60,30,%
+31012,Slow,effectScale,1,0.5,multiplier
+31021,Burn,maxStacks,5,,stacks
+31022,Burn,tickSeconds,1,,seconds
+31023,Burn,defenseIgnore,50,,%
+31031,Pierce,falloff,0.8,,multiplier
+31041,Chain,radius,2,,tiles
+31042,Chain,falloff,0.7,,multiplier
+31051,Execute,baseThreshold,8,immune,%
+31061,Crit,baseMultiplier,2,,multiplier
+31062,Crit,chanceCap,100,,%
+31063,Crit,baseChance,0,,%
+31071,Stun,durationScale,1,0.25,multiplier
+31072,Stun,immuneSeconds,3,,seconds
+31081,Affinity,weakMultiplier,1.3,,multiplier
+31082,Affinity,resistMultiplier,0.7,,multiplier

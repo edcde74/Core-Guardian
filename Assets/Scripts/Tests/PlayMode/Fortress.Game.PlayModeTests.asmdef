@@ -2,7 +2,8 @@
   "name": "Fortress.Game.PlayModeTests",
   "rootNamespace": "Fortress.Game.Tests",
   "references": [
-    "Fortress.Game"
+    "Fortress.Game",
+    "CoreGuardian.Game"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

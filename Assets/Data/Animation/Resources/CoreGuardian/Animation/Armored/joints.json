@@ -1,0 +1,35 @@
+{
+  "convention": "CoreGuardianOriginalWalk.cs와 같은 좌표계(픽셀, 원점 왼쪽 위)",
+  "legs": {
+    "Left": {
+      "hip": [
+        20,
+        34
+      ],
+      "knee": [
+        20,
+        39
+      ],
+      "ankle": [
+        20,
+        45
+      ]
+    },
+    "Right": {
+      "hip": [
+        27,
+        32
+      ],
+      "knee": [
+        27,
+        39
+      ],
+      "ankle": [
+        30,
+        47
+      ]
+    }
+  },
+  "sourceRole": "Defense",
+  "cyclePixels": 14
+}
